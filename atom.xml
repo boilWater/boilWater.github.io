@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-29T10:42:52.000Z</updated>
+  <updated>2016-05-29T11:49:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,156 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cocoaPods使用和静态库的建立</title>
+    <link href="http://yoursite.com/2016/05/29/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/"/>
+    <id>http://yoursite.com/2016/05/29/cocoaPods使用和静态库的建立/</id>
+    <published>2016-05-29T11:47:03.000Z</published>
+    <updated>2016-05-29T11:49:23.000Z</updated>
+    
+    <content type="html">&lt;p&gt;cocoaPods个人介绍：是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
+&lt;p&gt;一般我们复制三方框架到项目有两种方式：（1）直接进行复制，（2）使用cocoaPods来进行管理，本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题&lt;/p&gt;
+&lt;p&gt;但是直接复制存在问题：&lt;/p&gt;
+&lt;p&gt;(1)库更新存在问题，如果一个库引用另一个库，需要对于库全部更新&lt;/p&gt;
+&lt;p&gt;(2)对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用SedWebImage时对图片进行截图得到圆形图片，如果进行更新就有问题&lt;/p&gt;
+&lt;p&gt;(3)比较难判断在APP引进库的具体版本，除非在以前APP中进行记录&lt;/p&gt;
+&lt;p&gt;(4)没有中心管理，很难对于所有的第三方库进行统一管理&lt;br&gt;cocoaPods（&lt;a href=&quot;https://realm.io/cn/news/gotocph-rackwitz-therox-learnings-from-cocoapods/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cocoaPods链接&lt;/a&gt;）对于上面问题有很好处理：可以解决库之间存在依赖关系，而且帮忙发现是新的库，以最简单方式为我们码农配置环&lt;/p&gt;
+&lt;p&gt;废话不多说，下面开始在mac中配置安装cocoaPods&lt;/p&gt;
+&lt;p&gt;如果系统是10.7之后系统中带有配置Ruby环境，只需安装cocoaPods即可，如果不是可以搜索下Ruby环境安装&lt;/p&gt;
+&lt;p&gt;方法一：(1)打开终端：control+空格键，然后搜索“终端”&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo gem install cocoaPods &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;(2)然后在终端中进行设置&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ pod setup --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果在执行一时比较慢我们就需要执行其他安装，通过只用淘宝的Ruby进行访问cocoaPod，&lt;/p&gt;
+&lt;p&gt;方法二：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem sources --remove https://rubygems.org/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;//等有反应之后再敲入以下命令&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem sources -a http://ruby.taobao.org/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果要查看是否是taobao镜像&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem source -l&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果显示一下情况&lt;br&gt;&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;*** CURRENT SOURCES ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;http:&lt;/span&gt;/&lt;span class=&quot;regexp&quot;&gt;/ruby.taobao.org/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最后执行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo gem install cocoaPods&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;经过上述爽过之后，我们就成功安装cocosPods，接下来我们来看下怎么使用&lt;br&gt;（1）使用cocoaPods查看相关框架信息，查看AFNetWorking信息&lt;/p&gt;
+&lt;p&gt;$ pod search AFNetWorking&lt;br&gt;下面在项目中使用cocoaPods加入第三方框架&lt;br&gt;（1）打开终端，进行项目文件的根目录然后使用vim创建podFile文件：例如我们项目放在 文档/项目名&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$cd /users/用户名/documents/项目名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$vim podFile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;（2）再输如框中输入加入平台和相关框架以及框架版本号（如果出现不能输入就要按键a后者是i，进行文本编辑）&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;paltform : iOS, &amp;apos;7.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod &amp;quot;AFNetworking&amp;quot;, &amp;quot;~&amp;gt; 2.0&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;（3）输入上述文本，后保存并退出编辑按键esc进行退出，输入下面文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;:wq&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;（4）最后下载AFNetWorking文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$pod install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;大功告成，这样就可以在我们文件中生成一个pods文件，打开项目就可以看到下面除啦我们项目外还多余一个pods文件&lt;/p&gt;
+&lt;p&gt;注：可以在文件中放置多个框架，只要在上面（2）中pod “框架名”, “~&amp;gt;3.0”&lt;br&gt;cocosPods后续产生问题解析：&lt;/p&gt;
+&lt;p&gt;如果我们从github上下载开源项目有的项目时需要我们重新更新配置开源框架；&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/desktop/项目名                  //我的项目放在桌面&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod install &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果出现&lt;/p&gt;
+&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[!] The dependency &lt;span class=&quot;string&quot;&gt;`Masonry (~&amp;gt; 0.6.2)`&lt;/span&gt; is &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; used &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The dependency &lt;span class=&quot;string&quot;&gt;`SDWebImage (~&amp;gt; 3.7)`&lt;/span&gt; is &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; used &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The dependency &lt;span class=&quot;string&quot;&gt;`GPUImage`&lt;/span&gt; is &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; used &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;打开配置文件Podfile文件修改配置文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;target &lt;span class=&quot;string&quot;&gt;&#39;BeautifyFaceDemo&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &lt;span class=&quot;string&quot;&gt;&#39;Masonry&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;~&amp;gt; 0.6.2&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &lt;span class=&quot;string&quot;&gt;&#39;SDWebImage&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;~&amp;gt;3.7&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &lt;span class=&quot;string&quot;&gt;&#39;GPUImage&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;既可以解决生面的问题。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;cocoaPods个人介绍：是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
+&lt;p&gt;一般我们复制三方框架到项目有两种方式：（1）直接进行复制，（2）使用cocoaPods来进行管理，本
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOS的永久话储存</title>
+    <link href="http://yoursite.com/2016/05/29/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/"/>
+    <id>http://yoursite.com/2016/05/29/IOS的永久话储存/</id>
+    <published>2016-05-29T11:32:04.000Z</published>
+    <updated>2016-05-29T11:35:27.000Z</updated>
+    
+    <content type="html">&lt;p&gt;沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。&lt;/p&gt;
+&lt;p&gt;沙盒中有三个文件夹：document，library，temp&lt;/p&gt;
+&lt;p&gt;(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *path = &lt;span class=&quot;built_in&quot;&gt;NSHomeDirectory&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath = [path stringByAppendingString:&lt;span class=&quot;string&quot;&gt;@&quot;/saveMessage&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath1 = [path stringByAppendingPathComponent:&lt;span class=&quot;string&quot;&gt;@&quot;saveMessage&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath2 = [&lt;span class=&quot;built_in&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSDocumentDirectory&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSUserDomainMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;)lastObject];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;对于数据相关的path 进行操作，判断其是否存在，如果存在就可以进行相关操作&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSFileManager&lt;/span&gt; *fileManger = [&lt;span class=&quot;built_in&quot;&gt;NSFileManager&lt;/span&gt; defaultManager];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *pathLists = [fileManger contentsOfDirectoryAtPath:path error:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt; flag = [fileManger fileExistsAtPath:docPath1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[fileManger removeItemAtPath:docPath1 error:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;(2)temp：保存运行时需要的临时数据，当APP结束后就会清楚其中的数据。当APP没有运行时其中数据也可能被删除&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSString *temp =  NSTemporaryDirectory();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;(3)library：其中有两个文件caches和preference。caches中存放临时程序运行时临时数据，就像我们在每个APP中的缓存可以进行清除。preference中存放我们自己设置是plist文件存放地址&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *library = [&lt;span class=&quot;built_in&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSLibraryDirectory&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSUserDomainMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;)lastObject];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *chches = [&lt;span class=&quot;built_in&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSCachesDirectory&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSUserDomainMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;)lastObject];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;访问上面三个文件夹方法（&lt;a href=&quot;http://www.cnblogs.com/xiejw/p/5196798.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考链接&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;上述是关于在IOS储存数据是具体储存位置和其获取的方法，过程大同小异。但是在储存数据是我们要注意细节：比如是使用NSSarry是我们需要储存array数据，如果是其他数据例如NSdata需要将其转化&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *arr1 = [[&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; alloc]initWithObjects:&lt;span class=&quot;string&quot;&gt;@&quot;0&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;@&quot;5&quot;&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSData&lt;/span&gt; *data = [&lt;span class=&quot;built_in&quot;&gt;NSKeyedArchiver&lt;/span&gt; archivedDataWithRootObject:arr1];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;除沙盒外IOS还向我们提供其他的储存方式：Sqlite，Core data, NSKeyedArchiver(coding)归档，NSUserDefaults&lt;/p&gt;
+&lt;p&gt;(1)Sqlite：iOS自带数据库，可以保存数据&lt;/p&gt;
+&lt;h4 id=&quot;使用的第三方的库FMDB&quot;&gt;&lt;a href=&quot;#使用的第三方的库FMDB&quot; class=&quot;headerlink&quot; title=&quot;使用的第三方的库FMDB&quot;&gt;&lt;/a&gt;使用的第三方的库&lt;a href=&quot;https://github.com/ccgus/fmdb.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FMDB&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;(2)Core data：是苹果提出的基于sqlite储存数据的结构，实际是sqlite只不过对其进行简化&lt;/p&gt;
+&lt;p&gt;(3)NSkeyedArchiver(coding)：&lt;/p&gt;
+&lt;p&gt;(4)NSUserDefaults：就是我们上述所说的放在library/preference中的偏好设置，实际是存放在plist文件中。存储数据类型是NSString,NSData,NSInteger,NSDictionary,NSArray,NSNumber,bool和其他的基本数据类型（但是NSUserDefaults有个缺点：在储存过程中可能由于时间问题结束存储，而且如果修改其中一项数据整个数据都要重新加载）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSUserDefaults_Class/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;：The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData.&lt;/p&gt;
+&lt;p&gt;文章是对于数据储存初次探究，后面会对文章进行修改有详细的使用方法和具体官方文档补充&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。&lt;/p&gt;
+&lt;p&gt;沙盒中有三个文件夹：document，library，temp&lt;/p&gt;
+&lt;p&gt;(1)document：保存应用运行时生成重要的数据，Itunes也会同
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOS整体框架</title>
+    <link href="http://yoursite.com/2016/05/29/IOS%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6/"/>
+    <id>http://yoursite.com/2016/05/29/IOS整体框架/</id>
+    <published>2016-05-29T11:21:14.000Z</published>
+    <updated>2016-05-29T11:35:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。&lt;a href=&quot;http://www.cnblogs.com/kenshincui/p/3885689.html#foundation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;大牛文章关于框架&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：&lt;/p&gt;
+&lt;p&gt;下面是关于OS X的结构图（&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网地址&lt;/a&gt;）：&lt;br&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;官方文档的具体内容：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Cocoa (Application) layer（应用层） includes technologies &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; building an &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app’s user interface, &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; responding to user events, and &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; managing app &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;behavior.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Media layer （媒体层）encompasses specialized technologies &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; playing, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;recording, and editing audiovisual media and &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; rendering and animating &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;D and &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;D graphics.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Core Services layer（核心服务层） contains many fundamental services and &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;technologies that range from Automatic Reference Counting and low-level network &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;communication to string manipulation and data formatting.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Core OS layer （核心系统操作层）defines programming interfaces that are &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;related to hardware and networking, including interfaces &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; running high-&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;performance computation tasks on a computer’s CPU and GPU.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Kernel and Device Drivers layer（内核和驱动层） consists of the Mach kernel &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;environment, device drivers, BSD library functions (libSystem), and other low-&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;level components. The layer includes support &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; file systems, networking, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;security, interprocess communication, programming languages, device drivers, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;and extensions to the kernel.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下面对于每层的讲解：&lt;/p&gt;
+&lt;p&gt;（1）应用层即可触摸层（cocoa touch layer）&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;地址&lt;/a&gt;:提供接口为应用，主要用于touch和管理应用的操作。其中我们最常用的UIKit的框架在Cocoa Touch层&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;（2）媒体层（media layer）&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方地址&lt;/a&gt;：包括多种多样的媒体文件，录音，播放，图像绘制，2D和3D图形基础动画&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;主要包括以下：AV Foundation, Core Animation, Core Audio, Core Image, Core Text, OpenAl, OpenGL, Quartez&lt;/p&gt;
+&lt;p&gt;（3）核心服务层（Core Service Layer）&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方地址&lt;/a&gt;：通过提供一些接口进行网络连接，包括一些在CPU和GPU更高计算性能，使用广泛的Foundation框架位于本层&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;只要包括以下：Address Book, Core Foundation, Foundation, Core Data, Quick Look&lt;/p&gt;
+&lt;p&gt;, Social, WebKit, Security&lt;/p&gt;
+&lt;p&gt;(4)核心系统操作层（Core OS Layer）&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方地址&lt;/a&gt;：内存管理、文件系统、电源管理以及一些其他的操作系统任务。它可以直接和硬件设备进行交互&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;只要包括以下：Accelerate, Open CL, Directory Services, System Configuration, Disk Arbitration&lt;/p&gt;
+&lt;p&gt;这只是写出基本的层次模型，后续将对此进行相关的更新和总结。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。&lt;a href=&quot;http://www.cnblogs.com/kenshincui/p/3885689.html#foundation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
   
   <entry>
     <title>runtime理解</title>
