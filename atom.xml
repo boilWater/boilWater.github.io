@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-29T08:38:58.000Z</updated>
+  <updated>2016-05-29T10:42:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/"/>
     <id>http://yoursite.com/2016/05/29/runtime理解/</id>
     <published>2016-05-29T04:15:38.000Z</published>
-    <updated>2016-05-29T08:38:58.000Z</updated>
+    <updated>2016-05-29T10:42:52.000Z</updated>
     
     <content type="html">&lt;p&gt;网上其实有很多关于讲述runtime的学习资料，也是站在巨人肩上看的更远。写这篇文章也是对于其他人借鉴和翻阅源码，向源码寻求解释吧。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -77,8 +77,6 @@
     
     
       <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
-    
-      <category term="[object Object]" scheme="http://yoursite.com/tags/object-Object/"/>
     
   </entry>
   
