@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> block，注册监听，委托协议和KVO · JackJin's 博客</title><meta name="description" content="block，注册监听，委托协议和KVO - JackJin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">block，注册监听，委托协议和KVO</h1><div class="post-info">May 29, 2016</div><div class="post-content"><p><link rel="stylesheet" href="/Users/liangbai/highlight/styles/xcode.css">  </p>
+<script src="/Users/liangbai/highlight/highlight.pack.js"></script>  
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。</p>
+<p>#####四者总体比较然后进行一一详解进行讲解：</p>
+<p>block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。<br>委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。<br>NSNotification：在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。<br>KVO：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。</p>
+<p>以前读过一个砍柴的故事，如果我们想要追求搞得效率就要对所用到的工具了解，下面我们就开始磨我们搜中的刀。 </p>
+<p>#####block的来龙去脉：<br>block是IOS SDK 4.0中引入的，block在IOS中实际就是一个代码块，有点像C++中内联函数inline有点相似，最让人惊奇的是我们还可以向其传递参数。闲来没事想要知道block在C++中的具体实现就是用Clang编辑^{printf”Hello, World!”}()，此时我们在block仅仅是输出一个语句。<br>//hello.c是我们把想要编辑的内容放置的文件名称</p>
+<p>######block在没有传入参数情况</p>
+<blockquote>
+<p>$ clang -rewrite-objc hello.c </p>
+</blockquote>
+<p></p><p>在编译后再文件后会生成 hello.cpp文件</p><p></p>
+<p><pre><br><code><br>struct __mian_block_impl_0 </code></pre></p>
+<blockquote>
+<p>{<br>  struct <strong>block_impl impl;<br>  struct </strong>mian_block_desc_0* Desc;</p>
+<p> <strong>mian_block_impl_0(void *fp, struct </strong>mian_block_desc_0 *desc, int flags=0)</p>
+<p> {    impl.isa = &amp;_NSConcreteStackBlock;</p>
+<pre><code>impl.Flags = flags;
+impl.FuncPtr = fp;
+Desc = desc;
+</code></pre><p> }</p>
+<p>};</p>
+</blockquote>
+<p>static void <strong>mian_block_func_0(struct </strong>mian_block_impl_0 *__cself) </p>
+<blockquote>
+<p>{<br>     printf(“Hello, World!\n”);</p>
+<p>}</p>
+</blockquote>
+<p>static struct __mian_block_desc_0 {</p>
+<p>  size_t reserved;<br>  size_t Block_size;</p>
+<p>} </p>
+<blockquote>
+<p><strong>mian_block_desc_0_DATA = { 0, sizeof(struct </strong>mian_block_impl_0)<br>};</p>
+</blockquote>
+<p>int mian(){</p>
+<pre><code>((void (*)())&amp;__mian_block_impl_0((void *)
+</code></pre><p><strong>mian_block_func_0, &amp;</strong>mian_block_desc_0_DATA)) ();</p>
+<pre><code>return 0;
+</code></pre><p>}</p>
+<p>static struct IMAGE_INFO<br>{ unsigned version; unsigned flag; } </p>
+<p>_OBJC_IMAGE_INFO = { 0, 2 };<br><br><br>上面的代码既是我们通过编译截取的hello.cpp的具体代码，根据上面代码我们可以看到block实际是struct结构。看出_mian_block_impl_0 其中传入其中也是block_impl&amp;mian_block_desc_0两个block，下面是_mian_block_impl_0的构造函数。</p>
+<p>######block在有传入参数情况</p>
+<blockquote>
+<p>clang -rewrite-objc hello1.c</p>
+</blockquote>
+<p>同样在我们编译过后会生成hello.cpp</p>
+<p><pre><br><code><br>struct __mian_block_impl_0 {</code></pre></p>
+<p>  struct __block_impl impl;</p>
+<p>  struct __mian_block_desc_0* Desc;</p>
+<p>  float perperson;<br>  <strong>mian_block_impl_0(void *fp, struct </strong>mian_block_desc_0 </p>
+<p>*desc, float _perperson, int flags=0) : perperson(_perperson)<br> {</p>
+<pre><code>impl.isa = &amp;_NSConcreteStackBlock;
+impl.Flags = flags;
+impl.FuncPtr = fp;
+Desc = desc;
+</code></pre><p>  }<br>};</p>
+<p>static float <strong>mian_block_func_0(struct </strong>mian_block_impl_0 *__cself, </p>
+<p>int totalNum) {</p>
+<p>  float perperson = __cself-&gt;perperson; // bound by copy</p>
+<pre><code>    return perperson * totalNum;
+}
+</code></pre><p>static struct __mian_block_desc_0 {</p>
+<p>  size_t reserved;<br>  size_t Block_size;<br>}</p>
+<p> <strong>mian_block_desc_0_DATA = { 0, sizeof(struct </strong>mian_block_impl_0)};</p>
+<p>int mian(){</p>
+<pre><code>float perperson = 34.5;
+float (*sunClassFee)(int) = ((float (*)(int))
+</code></pre><p>&amp;<strong>mian_block_impl_0((void *)</strong>mian_block_func_0, &amp;__mian_block_desc_0_DATA, </p>
+<p>perperson));</p>
+<pre><code>return 0;
+</code></pre><p>}</p>
+<p>static struct IMAGE_INFO { unsigned version; unsigned flag; } </p>
+<p>_OBJC_IMAGE_INFO = { 0, 2 };</p>
+<p><br><br>可以看出在block中使用外部变量perperson时，block初始化时这样的：</p>
+<p><pre><br>是在<strong>mian_block_impl_0进行初始化perperson，在block构造时作为block的其中<br>一个成员初始。在访问时通过</strong>cself-&gt;perperson指针进行访问。<br></pre></p>
+<p>######block在有传入参数情况</p>
+<blockquote>
+<p>clang -rewrite-objc hello2.c</p>
+</blockquote>
+<p><pre><br><code><br>struct __Block_byref_perperson_0 {</code></pre></p>
+<p>  void *__isa;</p>
+<p> <strong>Block_byref_perperson_0 *</strong>forwarding;<br>  int __flags;</p>
+<p> int __size;<br> float perperson;</p>
+<p>};</p>
+<p>struct __mian_block_impl_0 {</p>
+<p>  struct <strong>block_impl impl;<br>  struct </strong>mian_block_desc_0* Desc;</p>
+<p>  <strong>Block_byref_perperson_0 *perperson; // by ref
+  </strong>mian_block_impl_0(void <em>fp, struct __mian_block_desc_0 </em>desc, </p>
+<p> __Block_byref_perperson_0 *_perperson, int flags=0) : </p>
+<p>perperson(_perperson-&gt;__forwarding) {</p>
+<pre><code>impl.isa = &amp;_NSConcreteStackBlock;
+impl.Flags = flags;
+impl.FuncPtr = fp;
+Desc = desc;
+</code></pre><p>  }<br>};</p>
+<p>static float <strong>mian_block_func_0(struct </strong>mian_block_impl_0 *__cself,</p>
+<p> int totalNum) {</p>
+<pre><code>__Block_byref_perperson_0 *perperson = __cself-&gt;perperson; // bound by ref
+ (perperson-&gt;__forwarding-&gt;perperson) = (perperson-&gt;__forwarding-&gt;
+</code></pre><p>perperson) + 6;</p>
+<pre><code>    return (perperson-&gt;__forwarding-&gt;perperson) * totalNum;
+}
+</code></pre><p>static void <strong>mian_block_copy_0(struct </strong>mian_block_impl_0*dst, </p>
+<p>struct __mian_block_impl_0*src) </p>
+<p>{_Block_object_assign((void*)&amp;dst-&gt;perperson, </p>
+<p>(void<em>)src-&gt;perperson, 8/</em>BLOCK_FIELD_IS_BYREF*/);}</p>
+<p>static void <strong>mian_block_dispose_0(struct </strong>mian_block_impl_0*src) {</p>
+<p>_Block_object_dispose((void<em>)src-&gt;perperson, 8/</em>BLOCK_FIELD_IS_BYREF*/);</p>
+<p>}</p>
+<p>static struct __mian_block_desc_0 {<br>  size_t reserved;<br>  size_t Block_size;</p>
+<p>  void (<em>copy)(struct __mian_block_impl_0</em>, struct __mian_block_impl_0*);</p>
+<p>  void (<em>dispose)(struct __mian_block_impl_0</em>);<br>} __mian_block_desc_0_DATA = { </p>
+<p>0, sizeof(struct <strong>mian_block_impl_0), </strong>mian_block_copy_0, </p>
+<p>__mian_block_dispose_0};<br>int mian(){</p>
+<pre><code>__attribute__((__blocks__(byref))) __Block_byref_perperson_0 perperson = {
+</code></pre><p>(void<em>)0,(__Block_byref_perperson_0 </em>)&amp;perperson, 0, </p>
+<p>sizeof(__Block_byref_perperson_0), 34.5<br>};</p>
+<pre><code>float (*sunClassFee)(int) = ((float (*)(int))&amp;__mian_block_impl_0((void *)
+</code></pre><p><strong>mian_block_func_0, &amp;</strong>mian_block_desc_0_DATA, </p>
+<p>(__Block_byref_perperson_0 *)&amp;perperson, 570425344));<br>    return 0;</p>
+<p>}</p>
+<p>static struct IMAGE_INFO { unsigned version; unsigned flag; } </p>
+<p>_OBJC_IMAGE_INFO = { 0, 2 };<br><br><br>我们在对于block外的perperson计算重新复制，和上面在block仅仅在block中使用外面的参数。两者经过对比可以看出：在block中对于外部值进行复制，会出现下面的情况。使用clang对于block进行编码，可以看书对于perperson进行_block的修饰后编码生成Block_byref_perperson_0的struct结构体，其中__Block_byref_perperson_0的指针指向在block中perperson的地址。</p>
+<p><pre><br>struct <strong>Block_byref_perperson_0 {<br>  void *</strong>isa;<br> <strong>Block_byref_perperson_0 *</strong>forwarding;  int <strong>flags;<br> int </strong>size; float perperson;<br>};<br></pre></p>
+<p>#####block的使用方法~传入参数：</p>
+<p><pre><br><code><br>  int (^isInputEven)(int) = ^(int n){</code></pre></p>
+<pre><code>if (n&gt;1) {
+       return n*isInputEven(n-1);
+    }else{
+       return 1;
+  }
+</code></pre><p> };<br><br><br>上面我们定义一个block代码段，代码的实现功能是利用递归计算n的基乘。代码可以作为整个代码块进行调用，而且在调用过程中我们只需isInputEven（）函数名和传入参数即可实现。</p>
+<p>#####block的使用方法~使用外部参数参数：</p>
+<p><pre><br><code><br>float perperson = 34.5;</code></pre></p>
+<pre><code>float (^sunClassFee)(int) = ^(int totalNum){
+    return perperson * totalNum;
+</code></pre><p>};<br><br><br>使用外部参数perperson，让我们感觉block可以想一个类一样使用socpe里面的变量目前无法做到。</p>
+<p><pre><br>主要原因是因为：在block的编译过程中我们看到，在block中进行访问其中元素时需要是<br>block默认构造函数对于block其中的元素访问。<br></pre></p>
+<p>#####block的使用方法~使用外部参数参数：</p>
+<p><pre><br><code><br>__block float perperson = 34.5;</code></pre></p>
+<pre><code>float (^sunClassFee)(int) = ^(int totalNum){
+    perperson = perperson + 6;
+    return perperson * totalNum;
+</code></pre><p> };<br><br></p>
+<p>#####block的使用方法~在（UIView）的动画中使用：</p>
+<p><pre><br><code><br>[UIView animateWithDuration:3.0f animations:^{</code></pre></p>
+<pre><code>view.alpha = 0;
+</code></pre><p> }];<br><br><br>IOS的开发到今天差不多已经有7年之久，block在开发中使用广度越来越广泛：</p>
+<p><ul></ul></p>
+<p><li>枚举–来过去对象。例如：NSDictionary的枚举过程</li></p>
+<p><li>UIView–对于UIView的动画设置，后面有机会会对动画专门讲述…</li></p>
+<p><li>通知–在本文讲述的就是在调用过程中与其他通知不同点所在</li></p>
+<p><li>完成处理–在相应程序结束后，需要对于程序结果的处理。例如：AFNetWork在访问网络后，对于成功和失败进行处理</li></p>
+<p><li>GCD–在GCD的过程中都是含有block使用的方法</li></p>
+<p><li>排序–平时我们使用的一些简单算法均可以block进行相关处理</li><br></p>
+<p>####委托代理详解<br>在发C++过程中经常见到多组继承，但是在IOS开发过程中只能进行单继承，很多方法我们需要实现接口的形式。正如我们在使用UITableView时，经常会用到UITableViewDataSource和UITableViewDelegate。<br>如果要使用使用委托代理，需要知道协议和委托两者关系。</p>
+<p>#####协议<br>协议一般分为两种：</p>
+<blockquote>
+<p>@ required:        //是我们在继承过程中必须实现的<br>   @optional :        //在实现接口中需要进行选择性实现的方式</p>
+</blockquote>
+<p>#####委托<br>常见的一种设计模式，身为老板一般负责管理员工、打电话、发薪水，这样由于公司业务发展就请一个秘书负责：打电话和发薪水。</p>
+<blockquote>
+<p>首先进行协议提取（需要员工所得事情）：(boss.h文件中声明)</p>
+</blockquote>
+<p><pre><br>@protocol protocol <nsobject><br>-(void)payoff;<br>-(void)tel;<br>@end<br>@interface boss : NSObject<br>@property(nonatomic,strong) id<protocol> delegate;<br>-(void)manage;<br>-(void)payoff;<br>-(void)tel;<br>@end<br></protocol></nsobject></pre></p>
+<blockquote>
+<p>对于老板在具体工作的实现：(boss.m文件中实现)</p>
+</blockquote>
+<p><pre><br>@implementation boss<br>-(void)manage{<br>    NSLog(@”boss–&gt;manage”);<br>}<br>-(void)payoff{<br>    [self.delegate payoff];<br>}<br>-(void)tel{<br>    [self.delegate tel];<br>}<br>@end<br></pre></p>
+<blockquote>
+<p>委托秘书所要做的事物：（在sec.m的文件中实现完成boss的代理）</p>
+</blockquote>
+<p><pre><br>@interface Sec ()<protocol><br>@end<br>@implementation Sec<br>-(void)payoff{<br>    NSLog(@”sec–&gt;payoff”);<br>}<br>-(void)tel{<br>    NSLog(@”sec–&gt;tel”);<br>}<br></protocol></pre></p>
+<p>####注册监听小试<br>NSNotificationCenter就相当于广播一样，可以对对象进行一次注册然后有多个监听。就像我们知道如果有注册的话，就需要我们对于对象进行释放（remove）。</p>
+<blockquote>
+<p> [[NSNotificationCenter defaultCenter] postNotificationName:@”clickbt” object:nil];</p>
+<p>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(click) name:@”clickbt” object:nil];</p>
+</blockquote>
+<p>在上面的代码可以看出我们在使用注册监听时可以进行相关内容传递，需要传递的内容放在object（为id类型）。<br>在remove监听的方法，经过查找资料：</p>
+<p><pre><br><code><br> -(void)viewWillAppear:(BOOL)animated<br>{</code></pre></p>
+<p>   [super viewWillAppear:animated];</p>
+<p>   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test) name:@”clickbt” object:nil];<br>}</p>
+<p>-(void)viewWillDisappear:(BOOL)animated<br>{</p>
+<p>   [super viewWillDisappear:animated];</p>
+<p>   [[NSNotificationCenter defaultCenter] removeObserver:self name:@”clickbt” object:nil];<br>}<br><br></p>
+<p>####KVO简史<br>当我们说起KVO(key-value-observe)时不免想起他的孪生大哥KVC（key-value-coding）。KVO是观察者模式的继承者，基于键值变化监听者，基于KVC基础完成之一。</p>
+<blockquote>
+<p>下列对于界面的UILabel进行监听：</p>
+</blockquote>
+<p><pre><br>[self.label addObserver:self forKeyPath:@”narcotics” options:<br>NSKeyValueObservingOptionNew |NSKeyValueObservingOptionOld context:nil];<br></pre></p>
+<blockquote>
+<p>一旦UILabel发生变化就会调用方法：</p>
+</blockquote>
+<p><pre><br>-(void)observeValueForKeyPath:(NSString <em>)keyPath ofObject:(id)object<br>change:(NSDictionary </em>)change context:(void *)context{<br>     //一旦有所变化调用方法<br>}<br></pre><br>附带：</p>
+<blockquote>
+<p>KVC：通过设置key值，进行标记。然后通过key值找到进行重新设置，说的通俗点点就是键值对。类似NSDictionary相似。</p>
+</blockquote>
+<p>以前经常看些大牛写的博客，在看博客过程中也学到很多知识。心向往之，开始动手写关于自己在IOS成长路上见证。</p>
+<p>###简述block和delegation使用场景的比较<br>我们知道<code>block</code>和<code>delegation</code>是关于通信方面，在开发的过程中我们也经常会使用两者。面对具体情况我们需要怎么样做出选着呢？</p>
+<p>#####1.当在一个方法的参数中需要多个对象时使用delegation<br>我们在开发过程中经常使用<code>UITableView</code>，这时我们就要实现接口协议<code>UITableViewDataSource</code>, <code>UITableViewDelegate</code>两者是我们在使用<code>UITableView</code>的相关数据协议和相关协议。从tableView角度出发：实现展示需要数据、对一些展示过程的控制等，这些可以使用<code>block</code>来进行实现。</p>
+<blockquote>
+<p>void (^ showTableView)(NSData *data, NSInteger number, CGFloat heightForRowAtIndexPath);</p>
+</blockquote>
+<p>上面我们定义告诉过程需要参数在<code>NSIndexPath</code>,所以第三个参数应该是 <code>block</code>形式。我们上面知道block在编译过程会被编译为<strong>struct</strong>结构，在相互嵌套过程中使用<code>delegation</code>更加方便。</p>
+<p>#####2. 一个对象只能有一个delegation<br>由于一个对象只能有一个delegate，而且它只能与这个delegate通信。让我们看看CLLocationManager 这个类，当发现地理位置后，location manager 只会通知一个对象（有且只有一个）。当然，如果我们需要更多的对象去知道这个更新，我们最好创建其他的location manager。</p>
+<p>这里有的人可能想到，如果CLLocationManager是个单例呢？如果我们不能创建CLLocationManager的其他实例，就必须不断地切换delegate指针到需要地理数据的对象上（或者创建一个只有你理解的精密的广播系统）。因此，这样看起来，delegatetion在单例上没有多大意义。</p>
+<p>关于这点，最好的印证例子就是UIAccelerometer。在早期版本的iOS中，单例的 accelerometer 实例有一个delegate，导致我们必须偶尔切换一下。这个愚蠢的问题在之后的IOS版本被修改了，现在，任意一个对象都可以访问CMMotionManager block，而不需要阻止其他的对象来接收更新。</p>
+<p>因此，我们可以得出另一个结论：“如果一个对象是单例，不要使用delegation”。</p>
+<p>#####3. 一般delegation都有自己的而返回值<br>还是拿上面的例子说明：</p>
+<p><pre><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;</code></pre></p>
+<p>-(UITableViewCell <em>)tableView:(UITableView </em>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;<br><br>上面是<code>UITableViewDataSource</code>协议中必须实现协议，可看出是使用返回值。而我们也可以看其他的一些协议表示情况，一般均是需要返回值的。</p>
+<p>#####4.delegation偏向于使用的过程 VS block偏向于使用结果<br>如果查看<code>NSURLConnectionDelegate</code> 以及 <code>NSURLConnectionDataDelegate</code>，我们在可以<strong>protocol</strong>中看到这样的消息：我将要做什么（如： <strong>willSendRequest</strong>，将要发送请求）、到目前为止我知道的信息（如：<code>canAuthenticateAgainstProtectionSpace</code>）、我已经完成这些啦（ <strong>didReceiveResponse</strong>，收到请求的回复，即完成请求）。这些消息组成一个流程，而那些对流程感兴趣的<strong>delegate</strong>将会在每一步得到相应的通知。</p>
+<p>当我们观察<strong>handler</strong>和完整的方法时，我们发现一个<strong>block</strong>包含一个响应对象和一个错误对象。显然这里没有任何有关“我在哪里，我正在做什么的”的交互。</p>
+<p>因此我们可以这样认为，<strong>delegate</strong>的回调更多的面向过程，而<strong>block</strong>则是面向结果的。如果你需要得到一条多步进程的通知，你应该使用<strong>delegation</strong>。而当你只是希望得到你请求的信息（或者获取信息时的错误提示），你应该使用<strong>block</strong>。（如果你结合之前的3个结论，你会发现<strong>delegate</strong>可以在所有事件中维持<strong>state</strong>，而多个独立的<strong>block</strong>确不能）。<br><br></p>
+<p>######参考：<br><a herf="http://www.cocoachina.com/ios/20150925/13525.html">开发该选择Blocks还是Delegates</a></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/05/29/Fastlane讲解/" class="prev">PREV</a><a href="/2016/05/29/从叮叮CTO采访演讲随笔/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2016 <a href="http://yoursite.com">JackJin</a>, unless otherwise noted.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
