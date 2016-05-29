@@ -1,48 +1,13 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Fastlane讲解 · JackJin's 博客</title><meta name="description" content="Fastlane讲解 - JackJin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Fastlane讲解</h1><div class="post-info">May 29, 2016</div><div class="post-content"><p><link rel="stylesheet" href="/Users/liangbai/highlight/styles/xcode.css">  </p>
-<script src="/Users/liangbai/highlight/highlight.pack.js"></script>  
-<script>hljs.initHighlightingOnLoad();</script>
-
-
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Fastlane讲解 · JackJin's 博客</title><meta name="description" content="Fastlane讲解 - JackJin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Fastlane讲解</h1><div class="post-info">May 29, 2016</div><div class="post-content"><p>大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。<br><a id="more"></a></p>
 <p>大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。<br>想知道fastlane了解点击<a href="https://fastlane.tools" target="_blank" rel="external">这里<br></a>获取fastlan的github下载点击<a href="https://github.com/fastlane/fastlane" target="_blank" rel="external">这里</a></p>
-<p>####fastlane安装<br>fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达到简便的开发。如果你在自己MAC上已经安装Ruby及其环境，只需要执行下列安装就可以实现安装</p>
-<pre>
-<code>
-sudo gem install fastlane --verbose
-</code>
-</pre>确定自己安装的是最新版本的Xcode:
-<pre>
-<code>
-Xcode-select --install
-</code>
-</pre>如果在启动fastlane比较慢的情况可以执行:
-<pre>
-<code>
-gem cleanup
-</code>
-</pre>
-
-<p>####fastlane使用具体方法和具体功能<br>了解具体使用点击<a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external">这里</a></p>
+<h4 id="fastlane安装"><a href="#fastlane安装" class="headerlink" title="fastlane安装"></a>fastlane安装</h4><p>fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达到简便的开发。如果你在自己MAC上已经安装Ruby及其环境，只需要执行下列安装就可以实现<br>    sudo gem install fastlane –verbose<br>确定自己安装的是最新版本的Xcode:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Xcode-select --install</span><br><span class="line"></span><br><span class="line">如果在启动fastlane比较慢的情况可以执行:</span><br><span class="line"></span><br><span class="line">gem cleanup</span><br></pre></td></tr></table></figure>
+<h4 id="fastlane使用具体方法和具体功能"><a href="#fastlane使用具体方法和具体功能" class="headerlink" title="fastlane使用具体方法和具体功能"></a>fastlane使用具体方法和具体功能</h4><p>了解具体使用点击<a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external">这里</a></p>
 <ul><br><li>deliver：上传屏幕截图、二进制程序数据和应用程序到AppStore</li><br><li>snapshot：自动截取你的程序在每个设备上的图片</li><br><li>frameit：应用截屏外添加设备框架</li><br><li>pem：可以自动化地生成和更新应用推送通知描述文件</li><br><li>sigh：生成下载开发商店的配置文件</li><br><li>pilot：最好的在终端管理测试和建立的文件</li><br><li>boarding：很容易的方式邀请你测试beta测试</li><br><li>gyp：建立新的发布的版本</li><br><li>match：使用git同步你成员间的开发者证书和文件配置</li><br></ul>
 
-<p>####fastlane举例：<br>使用deliver自动打包我们App提交到AppStore，官方使用点击<a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external">这里</a></p>
-<pre>打开终端进行我们项目所在的floder，我的项目是在桌面上名称是hello
-<code>
-cd ~/desktop/hello
-</code>
-然后输入：
-<code>
-deliver init
-</code><br>
-然后输入我们的Apple ID Username:
-再输入我们的Password 
-</pre>
+<h4 id="fastlane举例："><a href="#fastlane举例：" class="headerlink" title="fastlane举例："></a>fastlane举例：</h4><p>使用deliver自动打包我们App提交到AppStore，官方使用点击<a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external">这里</a><br>打开终端进行我们项目所在的floder，我的项目是在桌面上名称是hello<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd ~/desktop/hello</span><br><span class="line"></span><br><span class="line">然后输入：</span><br><span class="line"></span><br><span class="line">deliver init</span><br><span class="line"></span><br><span class="line">然后输入我们的Apple ID Username:</span><br><span class="line">再输入我们的Password </span><br></pre></td></tr></table></figure></p>
+<h4 id="fastlane使用场景"><a href="#fastlane使用场景" class="headerlink" title="fastlane使用场景"></a>fastlane使用场景</h4><ul><br><li>在我们开发后每次提交时执行的测试（有team的单元测试和团队开发的集成测试）(pilot)</li><br><li>构建我们使用的Bate版本时（boarding）</li><br><li>开发好项目需要提给界面截图时(snapshot)</li><br><li>构建并分发至应用商店（这包括更新配置文件，创建新的屏幕截图，上传应用至应用商店并提交应用）(deliver)</li><br></ul>
 
-<p>####fastlane使用场景</p>
-<p><ul></ul></p>
-<p><li>在我们开发后每次提交时执行的测试（有team的单元测试和团队开发的集成测试）(pilot)</li></p>
-<p><li>构建我们使用的Bate版本时（boarding）</li></p>
-<p><li>开发好项目需要提给界面截图时(snapshot)</li></p>
-<p><li>构建并分发至应用商店（这包括更新配置文件，创建新的屏幕截图，上传应用至应用商店并提交应用）(deliver)</li><br></p>
-<p>####fastlane典型的开发流程<br>此开发流程也是我们团队开发过程中基本开发顺序</p>
-<p><pre><br><code><br>lane :appstore do<br>  increment_build_number<br>  cocoapods<br>  xctool<br>  snapshot<br>  sigh<br>  deliver<br>  frameit<br>  sh “./customScript.sh”<br><br><br>  slack<br>end<br></code><br></pre><br>cocoaPods帮助我们管理三方开源库，fastlane可以在我们开发过程中简化我们开发过程以及简化我们发布流程。如果要提高自己IOS方面能力需要我们进一步深入研究。</p>
+<h4 id="fastlane典型的开发流程"><a href="#fastlane典型的开发流程" class="headerlink" title="fastlane典型的开发流程"></a>fastlane典型的开发流程</h4><p>此开发流程也是我们团队开发过程中基本开发顺序<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lane :appstore <span class="keyword">do</span></span><br><span class="line">  increment_build_number</span><br><span class="line">  cocoapods</span><br><span class="line">  xctool</span><br><span class="line">  snapshot</span><br><span class="line">  sigh</span><br><span class="line">  deliver</span><br><span class="line">  frameit</span><br><span class="line">  sh <span class="string">"./customScript.sh"</span></span><br><span class="line">  slack</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>cocoaPods帮助我们管理三方开源库，fastlane可以在我们开发过程中简化我们开发过程以及简化我们发布流程。如果要提高自己IOS方面能力需要我们进一步深入研究。</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/05/29/runtime理解/" class="prev">PREV</a><a href="/2016/05/29/block，注册监听，委托协议和KVO/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2016 <a href="http://yoursite.com">JackJin</a>, unless otherwise noted.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
