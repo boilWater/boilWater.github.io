@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-02T00:36:33.000Z</updated>
+  <updated>2016-06-04T05:04:33.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SDWebImage</title>
+    <link href="http://yoursite.com/2016/06/03/SDWebImage/"/>
+    <id>http://yoursite.com/2016/06/03/SDWebImage/</id>
+    <published>2016-06-03T13:23:21.000Z</published>
+    <updated>2016-06-04T05:04:33.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;SDWebImage解析&quot;&gt;&lt;a href=&quot;#SDWebImage解析&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage解析&quot;&gt;&lt;/a&gt;SDWebImage解析&lt;/h3&gt;&lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SDWebImage的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage的下载器&quot;&gt;&lt;/a&gt;SDWebImage的下载器&lt;/h4&gt;&lt;p&gt;SDWebImage的下载器是SDWebImageDownloader利用单例模式sharedDownloader，可以对下载的图片进行相关配置。可以配置的部分如下：&lt;/p&gt;
+&lt;p&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;&lt;li&gt;下载选项&lt;/li&gt;&lt;/p&gt;
+&lt;p&gt;&lt;li&gt;HTTP的头部&lt;/li&gt;&lt;/p&gt;
+&lt;p&gt;&lt;li&gt;压缩、下载超时、下载顺序、最大并发数等&lt;/li&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h5 id=&quot;下载选项&quot;&gt;&lt;a href=&quot;#下载选项&quot; class=&quot;headerlink&quot; title=&quot;下载选项&quot;&gt;&lt;/a&gt;下载选项&lt;/h5&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;NS_OPTIONS&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSUInteger&lt;/span&gt;, SDWebImageDownloaderOptions) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载的优先级&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderLowPriority = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载进度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderProgressiveDownload = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载路径缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderUseNSURLCache = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载过程的请求缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderIgnoreCachedResponse = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//后台进行继续下载&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderContinueInBackground = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderHandleCookies = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderAllowInvalidSSLCertificates = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderHighPriority = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SDWebImage解析&quot;&gt;&lt;a href=&quot;#SDWebImage解析&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage解析&quot;&gt;&lt;/a&gt;SDWebImage解析&lt;/h3&gt;&lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过
+    
+    </summary>
+    
+      <category term="第三方框架" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="三方框架解析" scheme="http://yoursite.com/tags/%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOS面试&amp;自己理解&amp;详细资料库</title>
+    <link href="http://yoursite.com/2016/06/02/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
+    <id>http://yoursite.com/2016/06/02/IOS面试梳理&自己理解&详细资料库/</id>
+    <published>2016-06-02T11:01:41.000Z</published>
+    <updated>2016-06-03T13:21:58.000Z</updated>
+    
+    <content type="html">&lt;p&gt;开启关于IOS面试之路总结，说实话目前IOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前还是在广州，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
+&lt;h3 id=&quot;OC的理解和特性&quot;&gt;&lt;a href=&quot;#OC的理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC的理解和特性&quot;&gt;&lt;/a&gt;OC的理解和特性&lt;/h3&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。Objc就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
+&lt;ul&gt;&lt;br&gt;&lt;li&gt;封装：对于要处理的问题进行模块开发，好处有利于我们对于功能的拓展&lt;/li&gt;&lt;br&gt;&lt;li&gt;继承：通过继承实现对父类方法的实现，也可以在子类中重写父类方法&lt;/li&gt;&lt;br&gt;&lt;li&gt;多态：通过同名函数但是输入形式参数的种类，数目，类型不同实现具体函数功能不同（具体实现可以参照C&amp;amp;C++在编译后形式~想了解的可以自己查找）&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;Objc的动态特性：动态类型、动态加载、动态绑定。其实前面我们在runtime的理解过程中有所讲解。&lt;a href=&quot;http://boilwater.github.io/2016/05/29/runtime理解/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址&lt;/a&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;动态类型：在IOS中我们经常见到id类型，id类型指在Objc中动态类型。在实际应用中我们一般使用静态类型，静态类型：固定和可预知性。静态类型是强类型，动态类型是弱类型。例如：我们经常见到的protrcol委托协议就是采取@proerty(nonatomic, weak) id&lt;protrcol&gt; delegate&lt;/protrcol&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;动态加载：基于动态类型，在某个实例对象被确定后，其类型便被确定了，该对象对应的属性和响应消息也被完全确定。&lt;/li&gt;&lt;br&gt;&lt;li&gt;动态绑定：是我们在适配机型加载过程中，动态实现图片的实现。例如，在Retina设备上加载@2x的图片。&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+&lt;h3 id=&quot;内存管理原则&quot;&gt;&lt;a href=&quot;#内存管理原则&quot; class=&quot;headerlink&quot; title=&quot;内存管理原则&quot;&gt;&lt;/a&gt;内存管理原则&lt;/h3&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;IOS5.0之前：在IOS 5.0之前Objc内存管理试行谁创建，谁释放的原则。如果要对是初始化的类型进行alloc,retain,copy，就需要手动进行release进行释放。当计数为0时才会释放对应的初始化内存空间和指针，我们称为MRC时代。&lt;/li&gt;&lt;br&gt;&lt;li&gt;IOS 5.0之后：使用戏言IOS开发那就是一个字：爽。在ARC：自动计数模式开发程序，我们不用再手动释放申请的对象，程序开发过程终于见不到release,autorelease,retain语句。不过我们这是就该注意到strong和weak的细微区别。&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;—&lt;br&gt;strong &amp;amp; weak区别&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;strong:用来修饰强引用属性&lt;/li&gt;&lt;br&gt;&lt;li&gt;weak:用来修饰弱引用属性&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;strong &amp;amp; weak实现具体情况&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;我们知道strong的使用时强引用，使用强引用使我们在赋值时会使计数器+1；&lt;br&gt;&lt;br&gt;&lt;br&gt;释放时间：当指针指向新值或者指针不存在，指针不存在一般是在自动计数为0时指针会自动释放。&lt;/li&gt;&lt;br&gt;&lt;li&gt;weak是弱引用，悲剧的是弱引用是不会再计数+1的。不过这也使我们在使用时很方便，因为我们如果要防止block中发生循环引用的时候，可以在block外使用_weak进行修饰。&lt;br&gt;&lt;br&gt;&lt;br&gt;释放时间：对象的拥有者指向新值或者不存在时weak修饰的指针会自动置为nil。&lt;br&gt;&lt;br&gt;&lt;br&gt;weak的实现原理：在每一个类中都有一个弱引用的列表，在释放时都会对列表进行访问。如果找到相应的对象就执行释放。&lt;br&gt;&lt;br&gt;&lt;br&gt;Strong：是通过ARC的自动计数来实现对于对象的释放。&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;—&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/leikezhu1981/article/details/42697977&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料&lt;/a&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;在想一个对象发送autorelease消息时，其实目标不会立即释放，会有一个具体的时间值。在autorelease调用的时候，会对其中的对象挨个发送release语句对于每个对象进行相应的释放。后面会对于autorelease进行专项讲解，不过这里可以给大牛资料，下文&lt;/li&gt;&lt;br&gt;&lt;li&gt;在ARC中我们不用手动向实例化对象发送release进行释放，但是在MRC中就需要我们对申请的对象进行手动释放对象。那么问题来啦，对象会立即释放吗？&lt;br&gt;&lt;br&gt;&lt;br&gt;记住一点在MRC也是对象有时也不会立即释放，需要当前对象的计数为0时才会使用dealloc进行对象中所有的内容。&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20150610/12093.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AutoreleasePool大牛的资料&lt;/a&gt;&lt;br&gt;#### 其他注意事项&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;当一个对象被_strong指向时，该对象是不会被释放的。但是当对象在超出其作用区域时（在C++中局部变量在超出作用区域就会nil），此时指针也会被置为nil于此同时指针所指的内存空间也会被释放。&lt;br&gt;&lt;br&gt;&lt;br&gt;还有就是当试图控制器（ViewController）进行释放，其中的全局变量和局部变量都会被释放。也有意外就是实现循环引用，恭喜你好好修改下吧，因为这是个BUG。&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;局部变量：上面讲到的局部变量如果超出其范围就会置为nil&lt;/li&gt;&lt;br&gt;&lt;li&gt;在方法中对象创建，为啦使内存能够尽可能的减少可以使用autoreleasepool。使用方法：@autoreleasepool{};&lt;/li&gt;&lt;br&gt;&lt;li&gt;block中为了避免循环引用就会使用_weak进行修饰&lt;/li&gt;&lt;br&gt;&lt;li&gt;ARC不是万能的🔑：ARC是基于在Foundation之上进行的变量的管理，如果是CGtypeRef类型就无法进行管理。例如：CGImageRef的图片的信息&lt;/li&gt;&lt;br&gt;&lt;li&gt;同样我们可以实现ARC和非ARC之间的进行混合编译，具体操作如下：&lt;br&gt;&lt;br&gt;&lt;br&gt;在ARC中进行非ARC程序的混合编译：-fno-fobjc-arc;&lt;br&gt;&lt;br&gt;&lt;br&gt;在非ARC中进行ARC的混合编译：-fobjc-arc;&lt;br&gt;&lt;br&gt;&lt;br&gt;不过目前我们使用ARC较多，所以使用第一种的情形较多。swift毕竟也发布两年之久，很多创业公司已经开始使用swift&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;#### 拓展介绍&lt;br&gt;—&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;nonatomic:&lt;/li&gt;&lt;br&gt;&lt;li&gt;atomic:&lt;/li&gt;&lt;br&gt;&lt;li&gt;assign:&lt;/li&gt;&lt;br&gt;&lt;li&gt;readwrite:&lt;/li&gt;&lt;br&gt;&lt;li&gt;readonly:&lt;/li&gt;&lt;br&gt;&lt;li&gt;copy:&lt;/li&gt;&lt;br&gt;&lt;li&gt;retain:&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&quot;设计模式&quot;&gt;&lt;a href=&quot;#设计模式&quot; class=&quot;headerlink&quot; title=&quot;设计模式&quot;&gt;&lt;/a&gt;设计模式&lt;/h3&gt;&lt;p&gt;开发过程中我们都会使用到设计模式，这里就以两种设计模式进行举例：&lt;/p&gt;
+&lt;h4 id=&quot;MVC设计模式&quot;&gt;&lt;a href=&quot;#MVC设计模式&quot; class=&quot;headerlink&quot; title=&quot;MVC设计模式&quot;&gt;&lt;/a&gt;MVC设计模式&lt;/h4&gt;&lt;p&gt;MVC是一种架构模式，M表示MOdel，V表示视图View，C表示控制器Controller：&lt;br&gt;其实重要的还是需要自己动手亲自实现，这样可以锻炼自己的编码能力。&lt;a href=&quot;http://www.cocoachina.com/design/20130917/7009.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;资料点击&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;&lt;br&gt;&lt;li&gt;Model负责存储、定义、操作数据；&lt;/li&gt;&lt;br&gt;&lt;li&gt;View用来展示书给用户，和用户进行操作交互；&lt;/li&gt;&lt;br&gt;&lt;li&gt;Controller是Model和View的协调者，Controller把Model中的数据拿过来给View用。Controller可以直接与Model和View进行通信，而View不能和Controller直接通信。View与Controller通信需要利用代理协议的方式，当有数据更新时，MOdel也要与Controller进行通信，这个时候就要用Notification和KVO，这个方式就像一个广播一样，MOdel发信号，Controller设置监听接受信号，当有数据更新时就发信号给Controller，Model和View不能直接进行通信，这样会违背MVC设计模式。&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开启关于IOS面试之路总结，说实话目前IOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前还是在广州，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
+&lt;h3 id=&quot;OC的理解和特性&quot;&gt;&lt;a href=&quot;#OC的理解和特性&quot; class=&quot;headerlink
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS基础知识" scheme="http://yoursite.com/tags/IOS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>UIView &amp; CALayer &amp; Core Animation</title>
@@ -440,10 +530,10 @@
     <link href="http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/"/>
     <id>http://yoursite.com/2016/05/28/博客开启/</id>
     <published>2016-05-28T13:44:27.000Z</published>
-    <updated>2016-06-02T08:31:03.000Z</updated>
+    <updated>2016-06-03T13:22:06.000Z</updated>
     
     <content type="html">&lt;p&gt; &lt;br&gt;&lt;br&gt; &lt;br&gt; &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心&lt;/p&gt;
