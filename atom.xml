@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-04T08:55:11.000Z</updated>
+  <updated>2016-06-04T08:57:41.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/04/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/06/04/SDWebImage之图片缓存分析/</id>
     <published>2016-06-04T08:55:11.000Z</published>
-    <updated>2016-06-04T08:55:11.000Z</updated>
+    <updated>2016-06-04T08:57:41.000Z</updated>
     
     <content type="html"></content>
     
@@ -40,7 +40,7 @@
     <link href="http://yoursite.com/2016/06/03/SDWebImage/"/>
     <id>http://yoursite.com/2016/06/03/SDWebImage/</id>
     <published>2016-06-03T13:23:21.000Z</published>
-    <updated>2016-06-04T08:44:20.000Z</updated>
+    <updated>2016-06-04T08:57:52.000Z</updated>
     
     <content type="html">&lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;SDWebImage的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage的下载器&quot;&gt;&lt;/a&gt;SDWebImage的下载器&lt;/h2&gt;&lt;p&gt;SDWebImage的下载器是SDWebImageDownloader利用单例模式sharedDownloader，可以对下载的图片进行相关配置。可以配置的部分如下：&lt;/p&gt;
