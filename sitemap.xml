@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/05/30/UIView&CALayer/</loc>
-    
-    <lastmod>2016-06-06T17:37:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/06/02/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/</loc>
     
-    <lastmod>2016-06-05T09:27:38.000Z</lastmod>
+    <lastmod>2016-06-07T15:35:38.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/</loc>
     
-    <lastmod>2016-06-05T02:43:16.000Z</lastmod>
+    <lastmod>2016-06-07T01:31:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/30/UIView&CALayer/</loc>
+    
+    <lastmod>2016-06-07T01:31:51.000Z</lastmod>
     
   </url>
   
