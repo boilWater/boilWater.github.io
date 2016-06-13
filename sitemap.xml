@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/05/30/UIView&CALayer/</loc>
+    
+    <lastmod>2016-06-12T14:56:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/</loc>
     
     <lastmod>2016-06-09T14:19:58.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2016/06/02/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/</loc>
     
     <lastmod>2016-06-07T16:06:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/30/UIView&CALayer/</loc>
-    
-    <lastmod>2016-06-07T16:06:48.000Z</lastmod>
     
   </url>
   
