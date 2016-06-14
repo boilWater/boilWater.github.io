@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/06/15/IOS%2010/</loc>
+    
+    <lastmod>2016-06-14T17:56:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/30/UIView&CALayer/</loc>
     
     <lastmod>2016-06-12T14:56:18.000Z</lastmod>
