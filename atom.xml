@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-14T18:29:57.000Z</updated>
+  <updated>2016-06-14T18:36:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="http://yoursite.com/2016/06/15/IOS%2010/"/>
     <id>http://yoursite.com/2016/06/15/IOS 10/</id>
     <published>2016-06-14T16:07:59.000Z</published>
-    <updated>2016-06-14T18:29:57.000Z</updated>
+    <updated>2016-06-14T18:36:05.000Z</updated>
     
     <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下面我们列表IOS 10的新功能的体现，下面将给出相关知识的思维导图。&lt;br&gt;&lt;img src=&quot;/images/WWDC（2016）.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下面我们列表IOS 10的新功能的体现，下面将给出相关知识的思维导图。&lt;br&gt;&lt;img src=&quot;https://github.com/boilWater/boilWater.github.io/blob/master/Images/WWDC（2016）.png&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/WWDC（2016）.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;具体的讲解：&lt;/p&gt;
 &lt;h3 id=&quot;全新界面功能设计&quot;&gt;&lt;a href=&quot;#全新界面功能设计&quot; class=&quot;headerlink&quot; title=&quot;全新界面功能设计&quot;&gt;&lt;/a&gt;全新界面功能设计&lt;/h3&gt;&lt;p&gt;首先是新的锁屏界面，互动性大幅增强，支持新的通知显示方式和手势功能，可以直接使用 3D Touch 进行预览与信息回复，或者重按全部清除通知，更快速的进入拍照界面等，界面看起来更加清晰直观。&lt;/p&gt;
 &lt;p&gt;值得一提的是，iPhone 支持抬手唤醒屏幕功能了， 当你抬起 iPhone 的时候锁屏界面就会亮起，直接显示通知信息和相关内容，而不触碰任何按键和所动操作，有点类似于竞争对手的平台设计理念。&lt;/p&gt;
