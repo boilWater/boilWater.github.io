@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-14T18:46:33.000Z</updated>
+  <updated>2016-06-15T04:03:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,24 @@
     <link href="http://yoursite.com/2016/06/15/IOS%2010/"/>
     <id>http://yoursite.com/2016/06/15/IOS 10/</id>
     <published>2016-06-14T16:07:59.000Z</published>
-    <updated>2016-06-14T18:46:33.000Z</updated>
+    <updated>2016-06-15T04:03:51.000Z</updated>
     
     <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;展示会第一个是APPLE的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在siri操作程序和Apple Pay的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
 &lt;p&gt;下面我们列表IOS 10的新功能的体现，下面将给出相关知识的思维导图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/Images/WWDC（2016）.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;p&gt;具体的讲解：&lt;/p&gt;
-&lt;h3 id=&quot;全新界面功能设计&quot;&gt;&lt;a href=&quot;#全新界面功能设计&quot; class=&quot;headerlink&quot; title=&quot;全新界面功能设计&quot;&gt;&lt;/a&gt;全新界面功能设计&lt;/h3&gt;&lt;p&gt;首先是新的锁屏界面，互动性大幅增强，支持新的通知显示方式和手势功能，可以直接使用 3D Touch 进行预览与信息回复，或者重按全部清除通知，更快速的进入拍照界面等，界面看起来更加清晰直观。&lt;/p&gt;
+&lt;p&gt;##Watch OS&lt;/p&gt;
+&lt;h3 id=&quot;寻找APPS&quot;&gt;&lt;a href=&quot;#寻找APPS&quot; class=&quot;headerlink&quot; title=&quot;寻找APPS&quot;&gt;&lt;/a&gt;寻找APPS&lt;/h3&gt;&lt;p&gt;我们通过Apple Watch傍边的旋转手柄可以快速寻找我们装在的APP以及设定首界面显示的具体内容&lt;/p&gt;
+&lt;h3 id=&quot;表盘界面&quot;&gt;&lt;a href=&quot;#表盘界面&quot; class=&quot;headerlink&quot; title=&quot;表盘界面&quot;&gt;&lt;/a&gt;表盘界面&lt;/h3&gt;&lt;p&gt;Apple Watch提供多个表盘界面，其中一个竟然是米老鼠的显示时间真心醉啦，没有保持乔帮主时double做法&lt;/p&gt;
+&lt;h3 id=&quot;活动&quot;&gt;&lt;a href=&quot;#活动&quot; class=&quot;headerlink&quot; title=&quot;活动&quot;&gt;&lt;/a&gt;活动&lt;/h3&gt;&lt;p&gt;活动方面Apple Watch为我们添加一些使用的功能。我们可以对活动任务进行分享、查看活动完成进度和与朋友活动进度进行比较&lt;/p&gt;
+&lt;h3 id=&quot;Wheelchair-Use&quot;&gt;&lt;a href=&quot;#Wheelchair-Use&quot; class=&quot;headerlink&quot; title=&quot;Wheelchair Use&quot;&gt;&lt;/a&gt;Wheelchair Use&lt;/h3&gt;&lt;p&gt;为做轮椅的人提供可以帮助，可以提醒使用者休息、工作和显示旋转速度&lt;/p&gt;
+&lt;h3 id=&quot;Workout&quot;&gt;&lt;a href=&quot;#Workout&quot; class=&quot;headerlink&quot; title=&quot;Workout&quot;&gt;&lt;/a&gt;Workout&lt;/h3&gt;&lt;p&gt;在工作之余我们可以使用Apple Watch来查看我们走的距离、watch的活跃内存空间、消耗卡路里、心率和运动时间，可以选择重要的运动项目，进行特别标注，在跑步过程会自动停止&lt;/p&gt;
+&lt;h3 id=&quot;Breathe-App&quot;&gt;&lt;a href=&quot;#Breathe-App&quot; class=&quot;headerlink&quot; title=&quot;Breathe App&quot;&gt;&lt;/a&gt;Breathe App&lt;/h3&gt;&lt;p&gt;帮助你可以进行冥想，释放自己的压力，把语音信心转换为文字，进行回复&lt;/p&gt;
+&lt;h3 id=&quot;Messages&quot;&gt;&lt;a href=&quot;#Messages&quot; class=&quot;headerlink&quot; title=&quot;Messages&quot;&gt;&lt;/a&gt;Messages&lt;/h3&gt;&lt;p&gt;把语音信心转换为文字，进行回复，重要的是支持汉字手写&lt;/p&gt;
+&lt;h3 id=&quot;保留功能&quot;&gt;&lt;a href=&quot;#保留功能&quot; class=&quot;headerlink&quot; title=&quot;保留功能&quot;&gt;&lt;/a&gt;保留功能&lt;/h3&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;Home：可以通过Apple Watch链接控制家中使用Home的所有硬件设备&lt;/li&gt;&lt;br&gt;&lt;li&gt;SOS：试下紧急呼叫的功能&lt;/li&gt;&lt;br&gt;&lt;li&gt;Apple Pay：可以在Mac上购买然后通过IPhone直接指纹识别进行付款&lt;/li&gt;&lt;br&gt;&lt;li&gt;Unlock Mac：解锁我们使用的Mac电脑&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+
+&lt;h2 id=&quot;IOS-10&quot;&gt;&lt;a href=&quot;#IOS-10&quot; class=&quot;headerlink&quot; title=&quot;IOS 10&quot;&gt;&lt;/a&gt;IOS 10&lt;/h2&gt;&lt;h3 id=&quot;全新界面功能设计&quot;&gt;&lt;a href=&quot;#全新界面功能设计&quot; class=&quot;headerlink&quot; title=&quot;全新界面功能设计&quot;&gt;&lt;/a&gt;全新界面功能设计&lt;/h3&gt;&lt;p&gt;首先是新的锁屏界面，互动性大幅增强，支持新的通知显示方式和手势功能，可以直接使用 3D Touch 进行预览与信息回复，或者重按全部清除通知，更快速的进入拍照界面等，界面看起来更加清晰直观。&lt;/p&gt;
 &lt;p&gt;值得一提的是，iPhone 支持抬手唤醒屏幕功能了， 当你抬起 iPhone 的时候锁屏界面就会亮起，直接显示通知信息和相关内容，而不触碰任何按键和所动操作，有点类似于竞争对手的平台设计理念。&lt;/p&gt;
 &lt;p&gt;通知中心和控制中心界面进行了新的设计，包括桌面亦是如此，很多操作操作利用 3D Touch 更加便捷，比如在 app 图标上预览更多相关信息，甚至是视频预览。&lt;/p&gt;
 &lt;h3 id=&quot;Siri&quot;&gt;&lt;a href=&quot;#Siri&quot; class=&quot;headerlink&quot; title=&quot;Siri&quot;&gt;&lt;/a&gt;Siri&lt;/h3&gt;&lt;p&gt;Siri 果然每一年都会努力提升 Siri 的水平，苹果表示每周有 200 万个用户使用 Siri。新升级之后 Siri 可以搜索的内容更多了，比如图片搜索、应用搜索，同时 Siri 还能够查看日期、打开 app、发送短息。&lt;/p&gt;
