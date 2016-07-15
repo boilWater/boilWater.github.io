@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-16T07:00:05.000Z</updated>
+  <updated>2016-07-15T16:41:42.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>广州~两周感悟</title>
+    <link href="http://yoursite.com/2016/07/16/%E4%B8%A4%E5%91%A8%E6%84%9F%E6%82%9F~%E5%B9%BF%E5%B7%9E/"/>
+    <id>http://yoursite.com/2016/07/16/两周感悟~广州/</id>
+    <published>2016-07-15T16:27:32.000Z</published>
+    <updated>2016-07-15T16:41:42.000Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;从汕大毕业来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;人😚。心之所向，就会有一种家的感觉，让自己感到放松！嗨，目前自己没有完全确定下来就不知道见&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;到怎么说😂，但是离你很近，打车20分钟多路程… … Miss you!&lt;/p&gt;
+&lt;hr&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;从汕大毕业来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;人😚。心之所向，就会有一种家的感觉，
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="广州" scheme="http://yoursite.com/tags/%E5%B9%BF%E5%B7%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>UIView &amp; CALayer&amp; Core Animation ~ （UIView 和 CALayer）（1）</title>
