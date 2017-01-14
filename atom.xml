@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-15T16:41:42.000Z</updated>
+  <updated>2017-01-14T08:05:28.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
+    <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
+    <published>2017-01-13T13:57:36.000Z</published>
+    <updated>2017-01-14T08:05:28.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+&lt;h2 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h2&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
+&lt;h3 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h3&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>IOS整体框架</title>
+    <link href="http://yoursite.com/2016/09/09/IOS%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE/"/>
+    <id>http://yoursite.com/2016/09/09/IOS响应者链/</id>
+    <published>2016-09-09T06:01:25.000Z</published>
+    <updated>2016-09-09T09:26:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://itangqi.me/2016/04/18/the-first-meet-with-event-delivery/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初探 iOS 事件分发机制&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://itangqi.me/2016/04/18/the-first-meet-with-event-delivery/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初探 iOS 事
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>吐槽之言</title>
+    <link href="http://yoursite.com/2016/08/17/%E5%90%90%E6%A7%BD%E4%B9%8B%E8%A8%80/"/>
+    <id>http://yoursite.com/2016/08/17/吐槽之言/</id>
+    <published>2016-08-17T09:09:17.000Z</published>
+    <updated>2016-08-17T09:09:17.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+    
+    
+      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
   
   <entry>
     <title>广州~两周感悟</title>
