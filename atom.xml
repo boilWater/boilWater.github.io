@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-16T16:46:35.000Z</updated>
+  <updated>2017-01-16T16:57:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/01/16/16%E6%80%BB%E7%BB%93-17%E5%B1%95%E6%9C%9B/"/>
     <id>http://yoursite.com/2017/01/16/16总结-17展望/</id>
     <published>2017-01-16T15:56:06.000Z</published>
-    <updated>2017-01-16T16:46:35.000Z</updated>
+    <updated>2017-01-16T16:57:53.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;2016总结&quot;&gt;&lt;a href=&quot;#2016总结&quot; class=&quot;headerlink&quot; title=&quot;2016总结&quot;&gt;&lt;/a&gt;2016总结&lt;/h2&gt;&lt;p&gt;踩着16年的小尾巴写下这边文章，离回家还有8天时间👊&lt;/p&gt;
 &lt;p&gt;今年也是自己第一次这么久离开家，大概有近 1 年时间&lt;/p&gt;
@@ -68,8 +68,9 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;(3)参加至少 3 次马拉松赛事&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(4)进行间隔封闭式编程训练，年底或后年暑假进入一线互联网公司&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;*（4)进行间隔封闭式编程训练，年底或后年暑假进入一线互联网公司&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;17工作&quot;&gt;&lt;a href=&quot;#17工作&quot; class=&quot;headerlink&quot; title=&quot;17工作&quot;&gt;&lt;/a&gt;17工作&lt;/h3&gt;&lt;blockquote&gt;
 &lt;ul&gt;
@@ -103,12 +104,12 @@
     <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
     <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-01-16T15:42:05.000Z</updated>
+    <updated>2017-01-19T06:09:07.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
-&lt;h2 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h2&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
+&lt;h1 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h1&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/APP控件在屏幕上显示.png&quot; alt=&quot;APP 控件在屏幕上显示&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h3&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。&lt;br&gt;上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：&lt;/p&gt;
+&lt;h2 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h2&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。&lt;br&gt;上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/CRT.png&quot; alt=&quot;CRT 扫描过程模拟&quot;&gt;&lt;/p&gt;
 &lt;p&gt;其原理：CRT 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：&lt;strong&gt;HSync&lt;/strong&gt;，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：&lt;strong&gt;VSync&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -119,6 +120,11 @@
 &lt;p&gt;😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😁&lt;/p&gt;
 &lt;p&gt;在一些游戏中我们经常会见到一些场景如下：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/屏幕错位.png&quot; alt=&quot;屏幕错位&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;CPU和GPU的工作原理&quot;&gt;&lt;a href=&quot;#CPU和GPU的工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU和GPU的工作原理&quot;&gt;&lt;/a&gt;CPU和GPU的工作原理&lt;/h2&gt;&lt;h3 id=&quot;CPU工作原理&quot;&gt;&lt;a href=&quot;#CPU工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU工作原理&quot;&gt;&lt;/a&gt;CPU工作原理&lt;/h3&gt;&lt;p&gt;CPU（中央处理器，Central Processing Unit）主要是解释计算机中的指令，处理计算机软件中的数据。CPU、内部存储器和输入/输出设备是计算机的三大核心组件。&lt;/p&gt;
+&lt;p&gt;CPU目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回&lt;/p&gt;
+&lt;p&gt;提取：&lt;br&gt;解码：&lt;br&gt;执行：&lt;br&gt;调回：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/CPU.png&quot; alt=&quot;CPU AMD Opteron六核心处理器&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;GPU工作原理&quot;&gt;&lt;a href=&quot;#GPU工作原理&quot; class=&quot;headerlink&quot; title=&quot;GPU工作原理&quot;&gt;&lt;/a&gt;GPU工作原理&lt;/h3&gt;&lt;p&gt;GPU（图形处理器，Graphics Processing Unit）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作&lt;br&gt;后面随着 OpenGL APL 和 DirectX 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作&lt;/p&gt;
 &lt;h2 id=&quot;iOS-绘制像素在屏幕上&quot;&gt;&lt;a href=&quot;#iOS-绘制像素在屏幕上&quot; class=&quot;headerlink&quot; title=&quot;iOS 绘制像素在屏幕上&quot;&gt;&lt;/a&gt;iOS 绘制像素在屏幕上&lt;/h2&gt;&lt;h3 id=&quot;APP绘制像素过程分析&quot;&gt;&lt;a href=&quot;#APP绘制像素过程分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素过程分析&quot;&gt;&lt;/a&gt;APP绘制像素过程分析&lt;/h3&gt;&lt;p&gt;下面绘制像素在屏幕上的原理图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/GPU显示.png&quot; alt=&quot;iOS 绘制像素在屏幕&quot;&gt;&lt;/p&gt;
 &lt;p&gt;iOS 界面上的内容大多是通过 Core Animation 来完成绘制&lt;br&gt;在 Mac OS 大多是绕过 Core Animation 使用 Core Graphics 来进行绘制&lt;br&gt;手游行业中直接使用 OpenGL/OpenGL ES 来进行相关材质的内容绘制&lt;/p&gt;
@@ -128,7 +134,7 @@
 &lt;h3 id=&quot;APP绘制像素硬件分析&quot;&gt;&lt;a href=&quot;#APP绘制像素硬件分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素硬件分析&quot;&gt;&lt;/a&gt;APP绘制像素硬件分析&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/GPU缓存.png&quot; alt=&quot;iOS 绘制像素需要的硬件&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在图片显示的过程中，我们需要相关的 GPU 对图片生成 frame 的纹理，&lt;br&gt;我们在生成纹理的过程中会使用 VRAM 的空间，所以在生成过程是有限制的&lt;br&gt;把相关的数据从 CPU 上传输到 GPU 上 ——&amp;gt; 既是把内容从 RAM 上传到 VRAM 上， 如果上传的纹理太大就会对性能有所影响&lt;/p&gt;
 &lt;p&gt;在文本显示的过程中，我们使用 GPU 进行文本的绘制比较复杂，这会促使 Core Text 和 Core Graphics 来合成生成一个文本，然后上传到 GPU。&lt;br&gt;但我们在界面滑动过程中， CPU 只需要把相关的文本坐标发送到 GPU 就行， GPU会根据相关的信息进行绘制&lt;/p&gt;
-&lt;h4 id=&quot;合成：&quot;&gt;&lt;a href=&quot;#合成：&quot; class=&quot;headerlink&quot; title=&quot;合成：&quot;&gt;&lt;/a&gt;合成：&lt;/h4&gt;&lt;p&gt;在我们看到的所有的视图都是基于不同图片进行相关的合成而来&lt;br&gt;这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中&lt;/p&gt;
+&lt;h3 id=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;a href=&quot;#APP绘制过程方式和细节讲解&quot; class=&quot;headerlink&quot; title=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;/a&gt;APP绘制过程方式和细节讲解&lt;/h3&gt;&lt;h4 id=&quot;合成：&quot;&gt;&lt;a href=&quot;#合成：&quot; class=&quot;headerlink&quot; title=&quot;合成：&quot;&gt;&lt;/a&gt;合成：&lt;/h4&gt;&lt;p&gt;在我们看到的所有的视图都是基于不同图片进行相关的合成而来&lt;br&gt;这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;合成方法很多种：&lt;/li&gt;
@@ -156,7 +162,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;rasterized layer 的缓冲区大小是有所限制的，大概是屏幕大小的两倍空间 屏幕外的缓冲区&lt;/p&gt;
 &lt;h4 id=&quot;CALayer：&quot;&gt;&lt;a href=&quot;#CALayer：&quot; class=&quot;headerlink&quot; title=&quot;CALayer：&quot;&gt;&lt;/a&gt;CALayer：&lt;/h4&gt;&lt;p&gt;GPU 测试的步骤：&lt;br&gt;要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。&lt;/p&gt;
-&lt;h3 id=&quot;Core-Graphics-amp-Quartz-2D：&quot;&gt;&lt;a href=&quot;#Core-Graphics-amp-Quartz-2D：&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics &amp;amp; Quartz 2D：&quot;&gt;&lt;/a&gt;Core Graphics &amp;amp; Quartz 2D：&lt;/h3&gt;&lt;p&gt;Core Graphics 是功能强大的绘图框架&lt;/p&gt;
+&lt;h4 id=&quot;Core-Graphics-amp-Quartz-2D：&quot;&gt;&lt;a href=&quot;#Core-Graphics-amp-Quartz-2D：&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics &amp;amp; Quartz 2D：&quot;&gt;&lt;/a&gt;Core Graphics &amp;amp; Quartz 2D：&lt;/h4&gt;&lt;p&gt;Core Graphics 是功能强大的绘图框架&lt;/p&gt;
 &lt;p&gt;GPU加速下的图像处理：&lt;br&gt;好的图像处理的开源第三方框架：&lt;/p&gt;
 &lt;p&gt;GPUImage ：&lt;a href=&quot;https://github.com/BradLarson/GPUImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/BradLarson/GPUImage&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;ShaderToy :  &lt;a href=&quot;https://www.shadertoy.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.shadertoy.com&lt;/a&gt;&lt;/p&gt;
@@ -166,7 +172,7 @@
 &lt;p&gt;&lt;a href=&quot;http://www.sunsetlakesoftware.com/2013/10/21/optimizing-gaussian-blurs-mobile-gpu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;测试大🐮的博客 ：&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://community.imgtec.com/developers/powervr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 的测试框架：&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;如果想要保持高的帧速  就要保证着色器比较低的周期数  （如果是 60帧每秒， 那么在完成一个周期就需要仅仅 16.67 毫秒）&lt;/p&gt;
-&lt;h4 id=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;a href=&quot;#降低着色器渲染周期方法：&quot; class=&quot;headerlink&quot; title=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;/a&gt;降低着色器渲染周期方法：&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;a href=&quot;#降低着色器渲染周期方法：&quot; class=&quot;headerlink&quot; title=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;/a&gt;降低着色器渲染周期方法：&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;消除条件逻辑 ：条件逻辑有时是必须的，但有时可以做优化。着色器中使用 step（）函数变通避免逻辑的运用&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;减少依赖纹理的读取 ：在片段的着色器取样时，如果纹理坐标不是以 varying 的形式传入，而是在片段着色器中进行计算，就会发生纹理依赖。（👉🏿想从附近的像素取样，而不是计算和片段着色器中相邻像素的偏差，最好在顶点着色器中进行计算，然后把结果以 varying 的方式传入片段着色器👈）&lt;/p&gt;
@@ -176,6 +182,8 @@
 &lt;li&gt;&lt;p&gt;如果有可能的话，把相关计算使用到顶点着色器。    😁 😀😁 😀😁 😀 顶点着色器是每个顶点运行一次，片段着色器是每一个像素运行一次&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/中央处理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CPU 的参考资料&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/圖形處理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 的参考资料&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://blog.ibireme.com/author/ibireme/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;资料参考1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://objccn.io/issue-21-7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料2&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://objccn.io/issue-21-8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料3&lt;/a&gt;&lt;/p&gt;
