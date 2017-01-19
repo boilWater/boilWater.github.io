@@ -104,7 +104,7 @@
     <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
     <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-01-19T06:09:07.000Z</updated>
+    <updated>2017-01-19T06:12:49.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
 &lt;h1 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h1&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
@@ -126,7 +126,7 @@
 &lt;p&gt;&lt;img src=&quot;/images/CPU.png&quot; alt=&quot;CPU AMD Opteron六核心处理器&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;GPU工作原理&quot;&gt;&lt;a href=&quot;#GPU工作原理&quot; class=&quot;headerlink&quot; title=&quot;GPU工作原理&quot;&gt;&lt;/a&gt;GPU工作原理&lt;/h3&gt;&lt;p&gt;GPU（图形处理器，Graphics Processing Unit）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作&lt;br&gt;后面随着 OpenGL APL 和 DirectX 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作&lt;/p&gt;
 &lt;h2 id=&quot;iOS-绘制像素在屏幕上&quot;&gt;&lt;a href=&quot;#iOS-绘制像素在屏幕上&quot; class=&quot;headerlink&quot; title=&quot;iOS 绘制像素在屏幕上&quot;&gt;&lt;/a&gt;iOS 绘制像素在屏幕上&lt;/h2&gt;&lt;h3 id=&quot;APP绘制像素过程分析&quot;&gt;&lt;a href=&quot;#APP绘制像素过程分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素过程分析&quot;&gt;&lt;/a&gt;APP绘制像素过程分析&lt;/h3&gt;&lt;p&gt;下面绘制像素在屏幕上的原理图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/GPU显示.png&quot; alt=&quot;iOS 绘制像素在屏幕&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/Images/GPU显示.png&quot; alt=&quot;iOS 绘制像素在屏幕&quot;&gt;&lt;/p&gt;
 &lt;p&gt;iOS 界面上的内容大多是通过 Core Animation 来完成绘制&lt;br&gt;在 Mac OS 大多是绕过 Core Animation 使用 Core Graphics 来进行绘制&lt;br&gt;手游行业中直接使用 OpenGL/OpenGL ES 来进行相关材质的内容绘制&lt;/p&gt;
 &lt;p&gt;Core Animation 大多使用 Core Graphics 来进行内容的渲染&lt;/p&gt;
 &lt;p&gt;GPU Driver 是直接和 GPU 进行相关交互的代码块，可以对对 GPU 直接操作&lt;/p&gt;
