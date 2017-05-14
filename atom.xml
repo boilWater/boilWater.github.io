@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-14T16:13:12.000Z</updated>
+  <updated>2017-05-14T16:16:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>iOS-Responder Chain (响应链)</title>
     <link href="http://yoursite.com/2017/05/15/iOS-Responder%20Chain/"/>
     <id>http://yoursite.com/2017/05/15/iOS-Responder Chain/</id>
     <published>2017-05-14T16:12:14.000Z</published>
-    <updated>2017-05-14T16:13:12.000Z</updated>
+    <updated>2017-05-14T16:16:52.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-Responder-Chain-响应链&quot;&gt;&lt;a href=&quot;#iOS-Responder-Chain-响应链&quot; class=&quot;headerlink&quot; title=&quot;iOS-Responder Chain (响应链)&quot;&gt;&lt;/a&gt;iOS-Responder Chain (响应链)&lt;/h1&gt;&lt;p&gt;工作接近一年，很久没有更新博客。工作中学到很多知识点后面将花时间整理，作为对一年知识学习的总结：&lt;/p&gt;
 &lt;p&gt;下面是本篇博客的写作思路：&lt;/p&gt;
@@ -93,6 +93,10 @@
     
     </summary>
     
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
