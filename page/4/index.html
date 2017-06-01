@@ -85,10 +85,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -129,10 +125,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -183,21 +175,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天在看One’s Cat大神的博客时讲到如何创建我们个人的开源框架，就涉及到fastlane就找来看下，无意中看到叮叮的CTO朱鸿大神（又一尊大神）讲述自己的产品。短短22：05的视频让自己感触很大，写这篇文章也就是无聊说下自己所学知识吧。</p>
-<h3 id="总的来说以技术来简化我们生活，目前比想象中要难。"><a href="#总的来说以技术来简化我们生活，目前比想象中要难。" class="headerlink" title="总的来说以技术来简化我们生活，目前比想象中要难。"></a>总的来说以技术来简化我们生活，目前比想象中要难。</h3><h3 id="人员配置方面"><a href="#人员配置方面" class="headerlink" title="人员配置方面"></a>人员配置方面</h3><p>首先朱大神讲述团队人数有120人，而在客户端和后端比例2：1估计这样的标配也只有像阿里这样想要在移动端尤其社交这块站住一定地位强悍标配。</p>
-<h3 id="踩过的大坑"><a href="#踩过的大坑" class="headerlink" title="踩过的大坑"></a>踩过的大坑</h3><p>朱大神讲述在数据解析方便曾经踩过一个大坑，所谓大坑就是在IOS&amp;Android两个客户端对于数据解析有所不同。就是在于基本数据类型方面对于数据解析产生不同的结果，估计是使用加密方式在服务器得到数据解析有一定乱码想象只是不知道是Json还是Xml得解析（小编自己猜测）。</p>
-<h3 id="企业电话方面"><a href="#企业电话方面" class="headerlink" title="企业电话方面"></a>企业电话方面</h3><p>大神说出目前我们移动的端所在2G用户比重挺大，采用融合通信方向期间还是用阿里的线路。关于在WiFi情况下测试使用OA通信方式，随便讲述在手机网络提供商不同的情况下具体情况（联通网络通信一旦打开网络就会占用一条信道进行通信，所以在数据较大时带宽就是占用较大问题~小心脏作为客户端开发的小编之前竟没有听说过）。</p>
-<h3 id="发布机制和团队意思"><a href="#发布机制和团队意思" class="headerlink" title="发布机制和团队意思"></a>发布机制和团队意思</h3><p>由于叮叮是基于企业通信服务的行业应用性能方便真是个大问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 嗨，记得去年的暑假在参加深圳一个活动时，黄老大奔去深圳创业~那时我们住在旅社</span><br><span class="line">他说要做企业OA，我随口说现在创业那么火要不做一个给创业者做个服务型的应用提高效率。看到这个感觉</span><br><span class="line">事情真的不想我们想象的那么简单！</span><br></pre></td></tr></table></figure></p>
-<p>作为开发人员我们都知道如何做到流畅滚动界面和通信方面及时，这个是很大的挑战。这个后面有所涉及大家还是耐心看下去。<br>其实真正触动💘项目组技术、产品和运营拆分为7个team，实行竞争估计机制。产品经理对于自己team负责的功能进行跟进，技术和运营负责相关技术开发。这样完成每天都可以进行一个bate的提交，三周进行产品的一次迭代。项目开发之快。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 最让小编疑惑的是产品之间功能可以进行模块开发~基于面向对象有点（针对功能实现</span><br><span class="line">可以进行模块划分），但是运营是怎么在一个大的team然后7个小团队之间实现😂</span><br></pre></td></tr></table></figure>
-<p>记得不久前有个标题党：BAT未来还会存在吗？中间就是利用“二八法则”来讲述大企业面对科技什么鬼突变时难以进行改革，小企业更有活力。来辩证讲述自己的观点，看小编微微一笑就喝下水平静平静。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 不过目前看来这个定理估计是有自己价值，以后如果是自己出来尝试就可以试验下，此</span><br><span class="line">处可以hulue</span><br></pre></td></tr></table></figure></p>
-<h3 id="灰度用户"><a href="#灰度用户" class="headerlink" title="灰度用户"></a>灰度用户</h3><p>听到的第一感觉就是“恩？”请问和37度灰有关系不。我可是窦文涛的粉丝啊，难道是自己见识太少。认认真<br>真百度一下关于灰度的问题，所说没有找到灰度用户说法但是却看到关于QQ传授灰度法则：需求度、速度、灵活度、冗余度、开放协作度、创新度和进化度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">小编下面就为大家讲述下：</span><br><span class="line">需求度：用户需求就是使用者最想要。例如：只从去年国家放开二胎政策，我们就会看到今年母婴行业天天</span><br><span class="line">火爆的行业，毕竟70，80后大叔和阿姨估计从那天就开始人类伟大的传承奋斗啦😛</span><br><span class="line">速度：这个估计大家都知道，刘翔110跨栏成为亚洲飞人的称号。对于互联网而言速度就更难能可贵的，估</span><br><span class="line">计这也是面对微信的叮叮三周一个版本更新具体体现吧。</span><br><span class="line">灵活度：面对当前局势有所判断和对未知的预见，就像神雕侠侣里的段誉，面对强大恶老三（一直都自称老</span><br><span class="line">二来着）虽说武术哥不行。但是好在凌波微步，照样在打赌中成为你小子的师傅不是。</span><br><span class="line">冗余度：看到这心里凉把把的，QQ老大你也是程序员开始的，冗余度是在程序开发过程中我们想法设法解</span><br><span class="line">决。后来定睛一看，哦，原来是是试错啊，好吧奉上我的膝盖👍🏻。</span><br><span class="line">开放协作度：在互联网中把自家的资源拿来共享合作，大家都知道蜜蜂一般蜂巢中只有一个蜂后无数工蜂，</span><br><span class="line">蜂后向工蜂提供生命工蜂负责具体事务。之后大家在一个集体里把自己越做越大，蜂后后期几乎可以独资。</span><br><span class="line">创新度：只记得去年克强大大所得万众创新，大众创业。后面身边很多人就去啦，一路好走🌵</span><br><span class="line">进化度：QQ大佬说6个如果做到的话，这个会自动完成。有点生物进化的味道，但是缺少物竞天择。</span><br></pre></td></tr></table></figure>
-<h3 id="问题调试"><a href="#问题调试" class="headerlink" title="问题调试"></a>问题调试</h3><blockquote><p>这里之所使用代码格式是真的有重要，仅对于码农来说，比方说本人。<br>还像是Android段可以进行fix后台自动修复功能，IOS客户端是在IOS端直接进行修改。</p>
-</blockquote>
-<h3 id="性能优化要求"><a href="#性能优化要求" class="headerlink" title="性能优化要求"></a>性能优化要求</h3><p>省电和顺滑，具体怎么完成和实现，朱大神微微😃。当讲到在图片下载处理时主要将海外，朱大神说我们在海外有简历服务器然后跟具体的路由优化选择可以对图片下载加快速度。</p>
-<h3 id="企业群聊处理"><a href="#企业群聊处理" class="headerlink" title="企业群聊处理"></a>企业群聊处理</h3><p>假设一种情况：当很多在一个群组中一起聊天，一秒可以让数据达到几千条。请问你怎么解决？<br>朱大神解决方式：一起把数据下载下来，保存不至于丢失。但是最后显示的数据大多是最后十几二十几条。这样可以减少屏幕的刷屏率，优化性能。至少在GPU渲染显示方面肯定有所优化🙅🏻</p>
-<blockquote><p>之所以写这些随笔，是想让自己记住自己看过知识。毕竟好记性是在不如一个烂笔头，写的过程也是在记忆<br>中重新思考的过程。</p>
-</blockquote>
+<h3 id="总的来说以技术来简化我们生活，目前比想象中要难。"><a href="#总的来说以技术来简化我们生活，目前比想象中要难。" class="headerlink" title="总的来说以技术来简化我们生活，目前比想象中要难。"></a>总的来说以技术来简化我们生活，目前比想象中要难。</h3><h3 id="人员配置方面"><a href="#人员配置方面" class="headerlink" title="人员配置方面"></a>人员配置方面</h3>
+        
+          <a class="article-more-a" href="/2016/05/29/从叮叮CTO采访演讲随笔/#more">more >></a>
+        
       
 
       
@@ -231,7 +212,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/29/从叮叮CTO采访演讲随笔/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/05/29/从叮叮CTO采访演讲随笔/">产看详细 >></a>
         </p>
       
 
@@ -266,23 +247,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> <br><br> <br> </p>
+        <p> </br><br> </br> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学</span><br><span class="line"></span><br><span class="line">习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 </span><br></pre></td></tr></table></figure>
-<p><br><br><br></p>
-<hr>
-<p>昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心</p>
-<hr>
-<p>的。而且自己也将要离开生活四年头大开始新的征程，有的同学说自己上大学优劣，不过我是真心感</p>
-<hr>
-<p>谢头大。在四年间自己做过很多事情，也收获很多。其实最大的收获是有一件事值得自己一直去等待</p>
-<hr>
-<p>这也需是自己在大学最大的收获，也是在大学最开心大三下半学期╮(╯▽╰)╭。</p>
-<hr>
-<p><br><br><br></p>
-<p style="text-align:right;"><br>    – <a href="https://github.com/boilWater/boilWater.github.io" target="_blank" rel="external"> 后面会附上自己简历独自介绍😘</a><br></p>
-
-
-
+<p></br><br></br></p>
+        
+          <a class="article-more-a" href="/2016/05/28/博客开启/#more">more >></a>
+        
       
 
       
@@ -316,7 +286,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/28/博客开启/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/05/28/博客开启/">产看详细 >></a>
         </p>
       
 
@@ -396,6 +366,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -460,11 +441,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

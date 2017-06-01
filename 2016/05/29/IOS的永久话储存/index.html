@@ -10,23 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。
 沙盒中有三个文件夹：document，library，temp
-(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）
-1234NSString *path = NSHomeDir">
+(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS的永久话储存">
 <meta property="og:url" content="http://yoursite.com/2016/05/29/IOS的永久话储存/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。
 沙盒中有三个文件夹：document，library，temp
-(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）
-1234NSString *path = NSHomeDir">
-<meta property="og:updated_time" content="2016-06-02T08:39:20.000Z">
+(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）">
+<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS的永久话储存">
 <meta name="twitter:description" content="沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。
 沙盒中有三个文件夹：document，library，temp
-(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）
-1234NSString *path = NSHomeDir">
+(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -95,10 +92,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -139,10 +132,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -193,6 +182,7 @@
         <p>沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。</p>
 <p>沙盒中有三个文件夹：document，library，temp</p>
 <p>(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）</p>
+<a id="more"></a>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *path = <span class="built_in">NSHomeDirectory</span>();</span><br><span class="line"><span class="built_in">NSString</span> *docPath = [path stringByAppendingString:<span class="string">@"/saveMessage"</span>];</span><br><span class="line"><span class="built_in">NSString</span> *docPath1 = [path stringByAppendingPathComponent:<span class="string">@"saveMessage"</span>];</span><br><span class="line"><span class="built_in">NSString</span> *docPath2 = [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>)lastObject];</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于数据相关的path 进行操作，判断其是否存在，如果存在就可以进行相关操作</span><br></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSFileManager</span> *fileManger = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line"><span class="built_in">NSArray</span> *pathLists = [fileManger contentsOfDirectoryAtPath:path error:<span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">BOOL</span> flag = [fileManger fileExistsAtPath:docPath1];</span><br><span class="line">[fileManger removeItemAtPath:docPath1 error:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
@@ -212,27 +202,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -412,6 +381,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -476,11 +456,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

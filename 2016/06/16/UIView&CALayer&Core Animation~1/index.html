@@ -9,24 +9,18 @@
   <title>UIView &amp; CALayer&amp; Core Animation ~ （UIView 和 CALayer）（1） | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。
-
-UI">
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIView & CALayer& Core Animation ~ （UIView 和 CALayer）（1）">
 <meta property="og:url" content="http://yoursite.com/2016/06/16/UIView&CALayer&Core Animation~1/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。
-
-UI">
-<meta property="og:updated_time" content="2016-06-16T07:00:05.000Z">
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
+<meta property="og:updated_time" content="2017-06-01T07:45:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIView & CALayer& Core Animation ~ （UIView 和 CALayer）（1）">
 <meta name="twitter:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。
-
-UI">
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -95,10 +89,6 @@ UI">
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -139,10 +129,6 @@ UI">
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -193,6 +179,7 @@ UI">
         <p>目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。</p>
 <div style="color:#008B8B"><br><p>今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。<br>下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。</p><br></div>
 
+<a id="more"></a>
 <h3 id="UIView和CALayer之间的关系"><a href="#UIView和CALayer之间的关系" class="headerlink" title="UIView和CALayer之间的关系"></a>UIView和CALayer之间的关系</h3><p>打开UIView和CALyer中实际实现的代码，下面是UIView实现源码</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NS_CLASS_AVAILABLE_IOS</span>(<span class="number">2</span>_0) <span class="class"><span class="keyword">@interface</span> <span class="title">UIView</span> : <span class="title">UIResponder</span> &lt;<span class="title">NSCoding</span>, <span class="title">UIAppearance</span>, <span class="title">UIAppearanceContainer</span>, <span class="title">UIDynamicItem</span>, <span class="title">UITraitEnvironment</span>, <span class="title">UICoordinateSpace</span>, <span class="title">UIFocusEnvironment</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">readonly</span>,<span class="keyword">strong</span>)                 <span class="built_in">CALayer</span>  *layer; </span><br></pre></td></tr></table></figure>
 <p>CALayer实现源码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CALayer</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCoding</span>, <span class="title">CAMediaTiming</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">@private</span></span><br><span class="line">  <span class="keyword">struct</span> _CALayerIvars &#123;</span><br><span class="line">    int32_t refcount;</span><br><span class="line">    uint32_t magic;</span><br><span class="line">    <span class="keyword">void</span> *layer;</span><br><span class="line"><span class="meta">#if TARGET_OS_MAC &amp;&amp; !TARGET_RT_64_BIT</span></span><br><span class="line">    <span class="keyword">void</span> *unused1[<span class="number">8</span>];</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">  &#125; _attr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>我们可以看出UIView是继承自UIResponder，而CALayer继承自NSObject。这也是UIView可以相应触摸事件，并实现响应链中最后一环所在后面我们会具体讲述。CALayer继承自NSObject，其中UIView中又包含自己所特有的layer。我们可以看做CALayer是UIView的具体内容细节的实现，两者具有平行关系。</p>
@@ -219,27 +206,6 @@ UI">
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -419,6 +385,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -483,11 +460,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

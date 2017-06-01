@@ -85,10 +85,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -129,10 +125,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -182,7 +174,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息</p>
+        <p>开发过过程中我们经常会遇到异常问题</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS异常.png"></p>
+<h1 id="iOS-开发过程中的错误处理"><a href="#iOS-开发过程中的错误处理" class="headerlink" title="iOS-开发过程中的错误处理"></a>iOS-开发过程中的错误处理</h1>
         
           <a class="article-more-a" href="/2017/05/31/NSError(错误信息)/#more">more >></a>
         
@@ -219,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/31/NSError(错误信息)/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/31/NSError(错误信息)/">产看详细 >></a>
         </p>
       
 
@@ -257,67 +251,10 @@
         <p>工作接近一年，很久没有更新博客。工作中学到很多知识点后面将花时间整理，作为对一年知识学习的总结：</p>
 <p>下面是本篇博客的写作思路：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-56a34538a5ab0e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain.png"></p>
-<h1 id="iOS-Responder-Chain-响应链"><a href="#iOS-Responder-Chain-响应链" class="headerlink" title="iOS-Responder Chain (响应链)"></a>iOS-Responder Chain (响应链)</h1><h2 id="人与计算机交互"><a href="#人与计算机交互" class="headerlink" title="人与计算机交互"></a>人与计算机交互</h2><p>目前计算机在我们生活中扮演很重要的角色，我们与计算机之间的交互也很普遍。多数情况使用最多的是 PC 和 移动端，而两种交互方式有很大的不同</p>
-<ul>
-<li>PC 与人的交互</li>
-<li>移动端与人的交互</li>
-</ul>
-<p>a)  在 PC 端我们通过键盘、鼠标等来对界面的内容进行操作和完成相关的任务</p>
-<p>b）在移动端我们可以通过手指对界面内容进行点击控件和实现相应的操作</p>
-<blockquote>
-<p>这里提出一个疑问，PC 端我们通过点击可以实现控件的相关操作。但是移动端我们手指点击控件是怎么被检测点击的位置、传递信息和做出相应的操作呢？</p>
-</blockquote>
-<p>这里引入一个概念：Responder Chain (响应者链)</p>
-<h2 id="Responder-Chain-响应者链"><a href="#Responder-Chain-响应者链" class="headerlink" title="Responder Chain (响应者链)"></a>Responder Chain (响应者链)</h2><ul>
-<li>NSResponder.h 头文件的源码</li>
-<li>UIKit 控件之间的继承关系</li>
-</ul>
-<h5 id="NSResponder-h-头文件的源码"><a href="#NSResponder-h-头文件的源码" class="headerlink" title="NSResponder.h 头文件的源码"></a>NSResponder.h 头文件的源码</h5><p>在我们点击手机屏幕的一个控件时，与 Responder Chain (响应者链)之间联系紧密。下面是小编在 <code>UIKit</code> 框架中找到相应相关的代码，如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UIResponder</span> : <span class="title">NSObject</span> &lt;<span class="title">UIResponderStandardEditActions</span>&gt;</span></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, nullable) <span class="built_in">UIResponder</span> *nextResponder;</span><br><span class="line">- (nullable <span class="built_in">UIResponder</span>*)nextResponder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> canBecomeFirstResponder;    <span class="comment">// default is NO</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)canBecomeFirstResponder;    <span class="comment">// default is NO</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)becomeFirstResponder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> canResignFirstResponder;   </span><br><span class="line">- (<span class="built_in">BOOL</span>)canResignFirstResponder;    <span class="comment">// default is YES</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)resignFirstResponder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> isFirstResponder;</span><br><span class="line">- (<span class="built_in">BOOL</span>)isFirstResponder;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(nullable <span class="built_in">UIEvent</span> *)event;</span><br><span class="line">- (<span class="keyword">void</span>)touchesMoved:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(nullable <span class="built_in">UIEvent</span> *)event;</span><br><span class="line">- (<span class="keyword">void</span>)touchesEnded:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(nullable <span class="built_in">UIEvent</span> *)event;</span><br><span class="line">- (<span class="keyword">void</span>)touchesCancelled:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(nullable <span class="built_in">UIEvent</span> *)event;</span><br><span class="line">- (<span class="keyword">void</span>)touchesEstimatedPropertiesUpdated:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">9</span>_1);</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)pressesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UIPress</span> *&gt; *)presses withEvent:(nullable <span class="built_in">UIPressesEvent</span> *)event <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">9</span>_0);</span><br><span class="line">- (<span class="keyword">void</span>)pressesChanged:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UIPress</span> *&gt; *)presses withEvent:(nullable <span class="built_in">UIPressesEvent</span> *)event <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">9</span>_0);</span><br><span class="line">- (<span class="keyword">void</span>)pressesEnded:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UIPress</span> *&gt; *)presses withEvent:(nullable <span class="built_in">UIPressesEvent</span> *)event <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">9</span>_0);</span><br><span class="line">- (<span class="keyword">void</span>)pressesCancelled:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UIPress</span> *&gt; *)presses withEvent:(nullable <span class="built_in">UIPressesEvent</span> *)event <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">9</span>_0);</span><br></pre></td></tr></table></figure></p>
-<p>在上面 <code>&lt;UIKit/UIResponder.h&gt;</code> 的文件中我们可以看出 <code>UIResponder</code> 的类可以实现 <code>Touch</code> 和 <code>Press</code> 相关操作的做出监听</p>
-<h5 id="UIKit-控件之间的继承关系"><a href="#UIKit-控件之间的继承关系" class="headerlink" title="UIKit 控件之间的继承关系"></a>UIKit 控件之间的继承关系</h5><p>下面是小编对 <code>UIKit</code> 框架中点击相应控件有关 <code>Class</code> (类)继承关系整理，如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-faaebfb7fe3a7067.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain-UIKit.png"></p>
-<blockquote>
-<p>由上面我们可以看出，在界面上我们平时使用控件时通过继承 <code>UIResponder</code> 来实现对界面 <code>Touch</code> 和 <code>Press</code> 相关操作的做出监听</p>
-</blockquote>
-<h2 id="响应链的创建"><a href="#响应链的创建" class="headerlink" title="响应链的创建"></a>响应链的创建</h2><ul>
-<li>控制器中的 <code>View</code> 树状结构</li>
-<li>点击相应的测试&amp;打印</li>
-</ul>
-<h5 id="控制器中的-View-树状结构"><a href="#控制器中的-View-树状结构" class="headerlink" title="控制器中的 View 树状结构"></a>控制器中的 <code>View</code> 树状结构</h5><p>在手机的 GUI 中我们多数情况下使用 <code>UIViewController</code> 和 <code>UINavigationViewController</code> 控制器来实现界面控件的管理，其中以控制器的 <code>View</code> 为界面显示创建和添加控件，最后形成 <code>View</code> 的控件树状结构</p>
-<p>GUI 手机界面中，我们知道 <code>UIView</code> 中用 <code>property</code> (属性) <code>superView</code> 可以用来添加新的 <code>UIView</code> 到当前的 <code>View</code> 中，添加的子类 <code>View</code> 中 <code>property</code> (属性) <code>nextResponder</code> 可以指向父类 <code>View</code> 的 <code>property</code> (属性) <code>superView</code></p>
-<p>每一个  <code>ViewController</code> 中有 <code>property</code>(属性) <code>view</code> -&gt; 既<code>self.view</code> 来进行添加子类 <code>View</code>，同样：<code>view</code> 的 <code>property</code> (属性) 通过   <code>property</code> (属性) <code>nextResponder</code> 来指向   <code>ViewController</code> </p>
-<p>下图是 <code>View</code> 初始化布局：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ff79d6261a13c062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain-View-Front.png"><br><img src="http://upload-images.jianshu.io/upload_images/1877765-bbfe167edcd04fed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain-View-Hierarchy.png"></p>
-<h5 id="点击相应的测试-amp-打印"><a href="#点击相应的测试-amp-打印" class="headerlink" title="点击相应的测试&amp;打印"></a>点击相应的测试&amp;打印</h5><p>在定义的 ViewA1 中重写<code>touch</code>方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="built_in">UIResponder</span> *next = [<span class="keyword">self</span> nextResponder];</span><br><span class="line">    <span class="built_in">NSMutableString</span> *prefix  = <span class="string">@""</span>.mutableCopy;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">nil</span> != next) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@%@"</span>, prefix, [next class]);</span><br><span class="line">        [prefix appendString:<span class="string">@"--"</span>];</span><br><span class="line">        next = [next nextResponder];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>点击 <code>ViewA1</code> 得到的打印结果：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.278</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] ViewA0</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.278</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] --ViewA</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.278</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] ----<span class="built_in">UIView</span></span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.279</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] ------ViewController</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.279</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] --------<span class="built_in">UIWindow</span></span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.279</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] ----------<span class="built_in">UIApplication</span></span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-08</span> <span class="number">23</span>:<span class="number">55</span>:<span class="number">12.280</span> DesignPattern-Create[<span class="number">19441</span>:<span class="number">727956</span>] ------------AppDelegate</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>基于上面：小编从上面代码打印的结果可以验证，子 View 的 property(属性) <code>nextResponder</code> 指向父 View，父类的 View 的property(属性) <code>nextResponder</code> 最后指向 ViewController </p>
-</blockquote>
-<h2 id="如何找打第一响应者"><a href="#如何找打第一响应者" class="headerlink" title="如何找打第一响应者"></a>如何找打第一响应者</h2><ul>
-<li>探测器 <code>Hit - Test</code></li>
-<li>寻找第一相应的探测猜想</li>
-</ul>
-<h5 id="探测器-Hit-Test"><a href="#探测器-Hit-Test" class="headerlink" title="探测器 Hit - Test"></a>探测器 <code>Hit - Test</code></h5><p>在响应链查找过程中，有两个函数起到很重要的作用<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIView</span> *)hitTest:(<span class="built_in">CGPoint</span>)point withEvent:(<span class="built_in">UIEvent</span> *)event;</span><br><span class="line">- (<span class="built_in">BOOL</span>)pointInside:(<span class="built_in">CGPoint</span>)point withEvent:(<span class="built_in">UIEvent</span> *)event;</span><br></pre></td></tr></table></figure></p>
-<p>在响应链创建的情况下，我们在把寻找响应者的过程称为：<code>Hit - Testing View</code> 在寻找相应 View 的过程称为：<code>Hit - Test</code><br>我们把 <code>Hit - Test</code> 可以比作一个探测器，通过这个探测器来检测手指点击在哪个 <code>UIView</code> 上面 </p>
-<p>通过上面的继承关系和点击后打印出的结果可以看到，当我们点击界面 <code>UIApplication</code> 就会调用 <code>hitTest: withEvent</code> 查看点击是否在 <code>UIWindow</code> 中如果不在就返回 <code>nil</code> , 如果在 <code>UIWindow</code> 也会调用 <code>hitTest: withEvent</code> 对<code>UIWindow</code> 中 <code>subViews</code> 进行探测</p>
-<blockquote>
-<p><code>hitTest: withEvent</code> 在探测过程中采用我们比较常见 递归的方式来查找点击 <code>UIView</code>， 通过我们在初始化过程中最后被初始化的放在最上面</p>
-</blockquote>
-<p>在点击 <code>ViewA1</code> 来进行验证下一个 <code>nextResponder</code> 过程中在每一个 <code>View</code>重写 <code>hitTest</code> 如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIView</span> *)hitTest:(<span class="built_in">CGPoint</span>)point withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">self</span>.isUserInteractionEnabled || <span class="keyword">self</span>.hidden || <span class="keyword">self</span>.alpha &lt;= <span class="number">0.01</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ResponderChain : %@"</span>, [<span class="keyword">self</span> class]);</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span> pointInside:point withEvent:event]) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">UIView</span> *subView <span class="keyword">in</span> [<span class="keyword">self</span>.subviews reverseObjectEnumerator]) &#123;</span><br><span class="line">            <span class="built_in">CGPoint</span> converPoin = [subView convertPoint:point fromView:<span class="keyword">self</span>];</span><br><span class="line">            <span class="built_in">UIView</span> *hitTestView = [subView hitTest:converPoin withEvent:event];</span><br><span class="line">            <span class="keyword">if</span> (hitTestView) &#123;</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"ViewA : hitTestView -&gt; %@"</span>, [hitTestView class]);</span><br><span class="line">                <span class="keyword">return</span> hitTestView;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>点击 <code>ViewA1</code> 得到打印的结果如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">07</span>:<span class="number">42</span>:<span class="number">05.968</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewB</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">07</span>:<span class="number">42</span>:<span class="number">05.969</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewA</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">07</span>:<span class="number">42</span>:<span class="number">05.969</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewA0</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">07</span>:<span class="number">42</span>:<span class="number">05.969</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewA1</span><br></pre></td></tr></table></figure></p>
-<h5 id="寻找第一相应的探测猜想"><a href="#寻找第一相应的探测猜想" class="headerlink" title="寻找第一相应的探测猜想"></a>寻找第一相应的探测猜想</h5><p>根据打印的结果，我们可以验证点击具体查找的流程如下图所示：（实例是点击 viewA1）<br>UIApplication —&gt; UIWindow  —&gt; viewB —&gt; viewA —&gt; viewA0 —&gt; viewA1</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-4b1f59d1c65500ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain-Hit-Testing-View.png"></p>
-<h2 id="利用响应者在应用中的体现"><a href="#利用响应者在应用中的体现" class="headerlink" title="利用响应者在应用中的体现"></a>利用响应者在应用中的体现</h2><ul>
-<li>改变控件的相应范围</li>
-</ul>
-<h5 id="改变控件的相应范围"><a href="#改变控件的相应范围" class="headerlink" title="改变控件的相应范围"></a>改变控件的相应范围</h5><p>我们可以利用 <code>hitTest</code> 根据 <code>point</code> 方式来重新设置 <code>ponit</code> 的点击相应的范围大小<br>在 ViewB1 中实现点击相应范围在布局显示基础上下左右拓展 10 px，实现代码如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIView</span> *)hitTest:(<span class="built_in">CGPoint</span>)point withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">self</span>.isUserInteractionEnabled || <span class="keyword">self</span>.isHidden || <span class="keyword">self</span>.alpha &lt;= <span class="number">0.01</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ResponderChain : %@"</span>, [<span class="keyword">self</span> class]);</span><br><span class="line">    <span class="built_in">CGRect</span> touchRect = <span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.bounds, <span class="number">-10</span>, <span class="number">-10</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">CGRectContainsPoint</span>(touchRect, point)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">UIView</span> *subView <span class="keyword">in</span> [<span class="keyword">self</span>.subviews reverseObjectEnumerator]) &#123;</span><br><span class="line">            <span class="built_in">CGPoint</span> converPoint = [subView convertPoint:point fromView:<span class="keyword">self</span>];</span><br><span class="line">            <span class="built_in">UIView</span> *hitTestView = [subView hitTest:converPoint withEvent:event];</span><br><span class="line">            <span class="keyword">if</span> (hitTestView) &#123;</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"ViewB1 : hitTestView -&gt; %@"</span>, [hitTestView class]);</span><br><span class="line">                <span class="keyword">return</span> hitTestView;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>ViewB1</code> 界面中实际范围，和点击相应的 <code>viewB1</code> 外的虚框的范围也会做出相应的相应。如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-f4e683de8d0ab2cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain-Apply.png"></p>
-<p>打印的结果：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">34</span>:<span class="number">00.437</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewB</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">34</span>:<span class="number">00.437</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ResponderChain : ViewB1</span><br><span class="line"><span class="number">2017</span><span class="number">-05</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">34</span>:<span class="number">00.437</span> DesignPattern-Create[<span class="number">1197</span>:<span class="number">22554</span>] ViewB : hitTestView -&gt; ViewB1</span><br></pre></td></tr></table></figure></p>
-<p>相关的测试的<a href="https://github.com/boilWater/DesignPattern-Create.git" target="_blank" rel="external">Dome</a>下载地址</p>
-<p>时间：2017/5/8 23:58:44 (后面会继承写作)<br>修改时间： 2017/5/9 22:30:45</p>
-
+<h1 id="iOS-Responder-Chain-响应链"><a href="#iOS-Responder-Chain-响应链" class="headerlink" title="iOS-Responder Chain (响应链)"></a>iOS-Responder Chain (响应链)</h1>
+        
+          <a class="article-more-a" href="/2017/05/15/iOS-Responder Chain/#more">more >></a>
+        
       
 
       
@@ -351,7 +288,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/iOS-Responder Chain/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/15/iOS-Responder Chain/">产看详细 >></a>
         </p>
       
 
@@ -392,62 +329,9 @@
 <p>16年7月1号离开汕头（头大）截止到今天差不多半年时间</p>
 <p>一年来从学生成长为社会工作的 90 后，公司不像学校可以自由的犯错</p>
 <p>在这里呆的久啦，感觉学校里原来很难做到的事情越来只要咬牙坚持就可以完成</p>
-<h3 id="16观念"><a href="#16观念" class="headerlink" title="16观念"></a>16观念</h3><blockquote>
-<ul>
-<li><p>以前的 8 千米对我来说很难，现在 20 千米也是可以完成的</p>
-</li>
-<li><p>以前的自己主张读书无用论，现在自己会主动买书📚来看</p>
-</li>
-<li><p>以前的自己只知道往前走，现在自己会每天复盘一天中事情查找不足</p>
-</li>
-<li><p>以前的自己不会妥协，现在自己知道只要大方向不变可以临时做出改变</p>
-</li>
-<li><p>以前的自己知道说服别人，现在自己知道沟通需要听👂对方所讲</p>
-</li>
-<li><p>以前自己只知道喜欢一个人就想时刻知道近况，现在自己看到她的开心就感到欣喜</p>
-</li>
-<li><p>以前自己拥有梦想但所做很少，现在自己脚踏实地并学会与他人分享梦想</p>
-</li>
-</ul>
-</blockquote>
-<h3 id="16所做"><a href="#16所做" class="headerlink" title="16所做"></a>16所做</h3><blockquote>
-<ul>
-<li><p>E 出行目前还在汕大为汕大学子服务</p>
-</li>
-<li><p>十一背起行囊到达大学期间最想去的地方~拉萨，路程中遇见一位在杭州的做IT老乡哥们，碰到一位杭州生意人;逛过拉萨的寺庙，没有留下一张照片</p>
-</li>
-<li><p>天河公园独自一个人连续跑近 5 个小时，第一次完成 20 多公里</p>
-</li>
-<li><p>做过目前最后悔的事，让一位大美女狂怒😂</p>
-</li>
-<li><p>做过最蠢的事，把楼上大美女删除（16年蠢事的集合都没有这个问题大）</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="17年展望"><a href="#17年展望" class="headerlink" title="17年展望"></a>17年展望</h2><h3 id="17四件事"><a href="#17四件事" class="headerlink" title="17四件事"></a>17四件事</h3><blockquote>
-<ul>
-<li><p>(1)想办法让楼上大美女原谅我，可以正常面对我</p>
-</li>
-<li><p>(2)完成自己考雅思计划</p>
-</li>
-<li><p>(3)参加至少 3 次马拉松赛事</p>
-</li>
-<li><p>(4)进行间隔封闭式编程训练，年底或后年暑假进入一线互联网公司</p>
-</li>
-</ul>
-</blockquote>
-<h3 id="17工作"><a href="#17工作" class="headerlink" title="17工作"></a>17工作</h3><blockquote>
-<ul>
-<li><p>努力工作</p>
-</li>
-<li><p>后面加班将成为常态</p>
-</li>
-<li><p>把自己想学习的东西一一实现</p>
-</li>
-</ul>
-</blockquote>
-<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>🙈后面将会慢慢添加和修改，但 17 年四件事不变🙈</p>
-
+        
+          <a class="article-more-a" href="/2017/01/16/16总结-17展望/#more">more >></a>
+        
       
 
       
@@ -481,7 +365,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/16/16总结-17展望/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/01/16/16总结-17展望/">产看详细 >></a>
         </p>
       
 
@@ -517,89 +401,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="APP控件在屏幕上显示"><a href="#APP控件在屏幕上显示" class="headerlink" title="APP控件在屏幕上显示"></a>APP控件在屏幕上显示</h1><p>在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
-<h1 id="文章知识点讲述的思路"><a href="#文章知识点讲述的思路" class="headerlink" title="文章知识点讲述的思路"></a>文章知识点讲述的思路</h1><p>使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：</p>
-<p><img src="/images/APP控件在屏幕上显示.png" alt="APP 控件在屏幕上显示"></p>
-<h2 id="屏幕显示图像的原理"><a href="#屏幕显示图像的原理" class="headerlink" title="屏幕显示图像的原理"></a>屏幕显示图像的原理</h2><p>记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。<br>上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：</p>
-<p><img src="/images/CRT.png" alt="CRT 扫描过程模拟"></p>
-<p>其原理：CRT 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：<strong>HSync</strong>，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：<strong>VSync</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化</span><br></pre></td></tr></table></figure>
-<p>👈👈👈👈👈👈目前我们一般是采取双缓冲的机制， GPU会预先缓冲好一帧存放在缓冲中，让视频控制器读取，当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题👉🏿👉🏿👉🏿👉🏿👉🏿👉🏿</p>
-<p>采用双缓存可能会引入一个问题就是屏幕内容显示一半， GPU 将新的内容提交到缓存区对其进行交换，视频控制器把新的下半段的显示在屏幕上<br>可能形成画面撕裂，<br>解决方式：GPU 引入垂直同步（V-Sync）当开启垂直同步后， GPU会等待 VSync 信号发出，才会对缓存的内容进行更新，这样就可以是画面更加流畅，减少延迟</p>
-<p>😀😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆</p>
-<p>iOS 设备采用双缓存 + 垂直同步； Android采用的三缓存 + 垂直同步</p>
-<p>😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😁</p>
-<p>在一些游戏中我们经常会见到一些场景如下：</p>
-<p><img src="/images/屏幕错位.png" alt="屏幕错位"></p>
-<h2 id="CPU和GPU的工作原理"><a href="#CPU和GPU的工作原理" class="headerlink" title="CPU和GPU的工作原理"></a>CPU和GPU的工作原理</h2><h3 id="CPU工作原理"><a href="#CPU工作原理" class="headerlink" title="CPU工作原理"></a>CPU工作原理</h3><p>CPU（中央处理器，Central Processing Unit）主要是解释计算机中的指令，处理计算机软件中的数据。CPU、内部存储器和输入/输出设备是计算机的三大核心组件。</p>
-<p>CPU目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回</p>
-<p>提取：<br>解码：<br>执行：<br>调回：</p>
-<p><img src="/images/CPU.png" alt="CPU AMD Opteron六核心处理器"></p>
-<h3 id="GPU工作原理"><a href="#GPU工作原理" class="headerlink" title="GPU工作原理"></a>GPU工作原理</h3><p>GPU（图形处理器，Graphics Processing Unit）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作<br>后面随着 OpenGL APL 和 DirectX 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作</p>
-<h2 id="iOS-绘制像素在屏幕上"><a href="#iOS-绘制像素在屏幕上" class="headerlink" title="iOS 绘制像素在屏幕上"></a>iOS 绘制像素在屏幕上</h2><h3 id="APP绘制像素过程分析"><a href="#APP绘制像素过程分析" class="headerlink" title="APP绘制像素过程分析"></a>APP绘制像素过程分析</h3><p>下面绘制像素在屏幕上的原理图：</p>
-<p><img src="/Images/GPU显示.png" alt="iOS 绘制像素在屏幕"></p>
-<p>iOS 界面上的内容大多是通过 Core Animation 来完成绘制<br>在 Mac OS 大多是绕过 Core Animation 使用 Core Graphics 来进行绘制<br>手游行业中直接使用 OpenGL/OpenGL ES 来进行相关材质的内容绘制</p>
-<p>Core Animation 大多使用 Core Graphics 来进行内容的渲染</p>
-<p>GPU Driver 是直接和 GPU 进行相关交互的代码块，可以对对 GPU 直接操作</p>
-<p>GPU 是专门为图形高并发计算量身定制的处理单元，优点：短时间可以实现图像浮点运算，耗电少，高效</p>
-<h3 id="APP绘制像素硬件分析"><a href="#APP绘制像素硬件分析" class="headerlink" title="APP绘制像素硬件分析"></a>APP绘制像素硬件分析</h3><p><img src="/images/GPU缓存.png" alt="iOS 绘制像素需要的硬件"></p>
-<p>在图片显示的过程中，我们需要相关的 GPU 对图片生成 frame 的纹理，<br>我们在生成纹理的过程中会使用 VRAM 的空间，所以在生成过程是有限制的<br>把相关的数据从 CPU 上传输到 GPU 上 ——&gt; 既是把内容从 RAM 上传到 VRAM 上， 如果上传的纹理太大就会对性能有所影响</p>
-<p>在文本显示的过程中，我们使用 GPU 进行文本的绘制比较复杂，这会促使 Core Text 和 Core Graphics 来合成生成一个文本，然后上传到 GPU。<br>但我们在界面滑动过程中， CPU 只需要把相关的文本坐标发送到 GPU 就行， GPU会根据相关的信息进行绘制</p>
-<h3 id="APP绘制过程方式和细节讲解"><a href="#APP绘制过程方式和细节讲解" class="headerlink" title="APP绘制过程方式和细节讲解"></a>APP绘制过程方式和细节讲解</h3><h4 id="合成："><a href="#合成：" class="headerlink" title="合成："></a>合成：</h4><p>在我们看到的所有的视图都是基于不同图片进行相关的合成而来<br>这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中</p>
-<blockquote>
-<ul>
-<li>合成方法很多种：</li>
-<li>如果两个纹理对其时：采用公式    ——&gt;    R(最终显示的色彩的值) = S(上层纹理的相关的参数) +D(下层纹理相关参数) * (1 - Sa(上层纹理的透明度))</li>
-</ul>
-</blockquote>
-<h4 id="透明-VS-不透明："><a href="#透明-VS-不透明：" class="headerlink" title="透明 VS 不透明："></a>透明 VS 不透明：</h4><p>当纹理完全不透明时目标像素就是纹理的值， GPU 就只会从目标像素直接取出纹理显示 不会做相关的操作<br>在加载一张没有  alpha 的图片进行显示，会被默认为 opaque 的属性是 YES ； 加载一张图片 alpha = 100%， Core Animation 会认为是不为 100% 对其进行解析</p>
-<h4 id="像素对其-VS-不重合在一起："><a href="#像素对其-VS-不重合在一起：" class="headerlink" title="像素对其 VS 不重合在一起："></a>像素对其 VS 不重合在一起：</h4><p>当两个 layer 完全重合在一起，这时就需要我们对其进行相关的计算<br>layer 上所有的像素和屏幕上的像素完全对其，这就是 layer 像素对其； </p>
-<ol>
-<li>像素对不齐主要原因：<blockquote>
-<ul>
-<li>缩放，在图像进行缩方时，layer 和屏幕的像素很难对其</li>
-<li>纹理的起点在在一个像素的边界 </li>
-<li>在像素不对其的情况下可能会要经过过多的运算， 在 Core Animation 和 模拟器中 color misaligned images 的选项可以进行相关的调节</li>
-</ul>
-</blockquote>
-</li>
-</ol>
-<h4 id="离屏渲染："><a href="#离屏渲染：" class="headerlink" title="离屏渲染："></a>离屏渲染：</h4><p>离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上</p>
-<blockquote>
-<ul>
-<li>离屏渲染也可能产生副作用。如果你正在直接或者间接的将mask应用到一个图层上，Core Animation 为了应用这个 mask，会强制进行屏幕外渲染。这会对 GPU 产生重负。通常情况下 mask 只能被直接渲染到帧的缓冲区中(在屏幕内)</li>
-<li>Instrument 的 Core Animation 工具有一个叫做 Color Offscreen-Rendered Yellow 的选项，它会将已经被渲染到屏幕外缓冲区的区域标注为黄色(这个选项在模拟器中也可以用)。同时记得检查 Color Hits Green and Misses Red 选项。绿色代表无论何时一个屏幕外缓冲区被复用，而红色代表当缓冲区被重新创建</li>
-</ul>
-</blockquote>
-<p>rasterized layer 的缓冲区大小是有所限制的，大概是屏幕大小的两倍空间 屏幕外的缓冲区</p>
-<h4 id="CALayer："><a href="#CALayer：" class="headerlink" title="CALayer："></a>CALayer：</h4><p>GPU 测试的步骤：<br>要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。</p>
-<h4 id="Core-Graphics-amp-Quartz-2D："><a href="#Core-Graphics-amp-Quartz-2D：" class="headerlink" title="Core Graphics &amp; Quartz 2D："></a>Core Graphics &amp; Quartz 2D：</h4><p>Core Graphics 是功能强大的绘图框架</p>
-<p>GPU加速下的图像处理：<br>好的图像处理的开源第三方框架：</p>
-<p>GPUImage ：<a href="https://github.com/BradLarson/GPUImage" target="_blank" rel="external">https://github.com/BradLarson/GPUImage</a></p>
-<p>ShaderToy :  <a href="https://www.shadertoy.com" target="_blank" rel="external">https://www.shadertoy.com</a></p>
-<p>Shaderific :  <a href="http://www.shaderific.com" target="_blank" rel="external">http://www.shaderific.com</a></p>
-<p>着色器的调试 ：是测算帧渲染的时间，不是 1s 渲染多少帧<br>FPS是帧时间的倒数，帧渲染的时间：是帧开始处理到完全结束并且渲染到屏幕或者一张图片所花费的时间。</p>
-<p>👉🏿 在移动端的 GPU 中有很多是 把指令集中起来，最后统一做一次渲染  ——&gt; 在测试时需要测试整个过程，而不是一个中间过程</p>
-<p><a href="http://www.sunsetlakesoftware.com/2013/10/21/optimizing-gaussian-blurs-mobile-gpu" target="_blank" rel="external">测试大🐮的博客 ：</a></p>
-<p><a href="https://community.imgtec.com/developers/powervr/" target="_blank" rel="external">GPU 的测试框架：</a></p>
-<p>如果想要保持高的帧速  就要保证着色器比较低的周期数  （如果是 60帧每秒， 那么在完成一个周期就需要仅仅 16.67 毫秒）</p>
-<h3 id="降低着色器渲染周期方法："><a href="#降低着色器渲染周期方法：" class="headerlink" title="降低着色器渲染周期方法："></a>降低着色器渲染周期方法：</h3><ul>
-<li><p>消除条件逻辑 ：条件逻辑有时是必须的，但有时可以做优化。着色器中使用 step（）函数变通避免逻辑的运用</p>
-</li>
-<li><p>减少依赖纹理的读取 ：在片段的着色器取样时，如果纹理坐标不是以 varying 的形式传入，而是在片段着色器中进行计算，就会发生纹理依赖。（👉🏿想从附近的像素取样，而不是计算和片段着色器中相邻像素的偏差，最好在顶点着色器中进行计算，然后把结果以 varying 的方式传入片段着色器👈）</p>
-</li>
-<li><p>让计算更加简单 ： 在计算过程中如果使用简单的计算可以得到一个足够近似的值，就需要避免昂贵的计算方式（例如：sin()，cos()，tan() ）</p>
-</li>
-<li><p>如果有可能的话，把相关计算使用到顶点着色器。    😁 😀😁 😀😁 😀 顶点着色器是每个顶点运行一次，片段着色器是每一个像素运行一次</p>
-</li>
-</ul>
-<p><a href="https://zh.wikipedia.org/wiki/中央处理器" target="_blank" rel="external">CPU 的参考资料</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/圖形處理器" target="_blank" rel="external">GPU 的参考资料</a></p>
-<p><a href="http://blog.ibireme.com/author/ibireme/" target="_blank" rel="external">资料参考1</a></p>
-<p><a href="https://objccn.io/issue-21-7/" target="_blank" rel="external">参考资料2</a></p>
-<p><a href="https://objccn.io/issue-21-8/" target="_blank" rel="external">参考资料3</a></p>
-<p><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">参考资料4</a></p>
-<p><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">资料的参考5</a></p>
-
+        
+          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/#more">more >></a>
+        
       
 
       
@@ -633,7 +437,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/">产看详细 >></a>
         </p>
       
 
@@ -703,7 +507,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/09/IOS响应者链/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/09/09/IOS响应者链/">产看详细 >></a>
         </p>
       
 
@@ -743,12 +547,9 @@
 <p>从汕大毕业来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉</p>
 <hr>
 <p>离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的</p>
-<hr>
-<p>人😚。心之所向，就会有一种家的感觉，让自己感到放松！嗨，目前自己没有完全确定下来就不知道见</p>
-<hr>
-<p>到怎么说😂，但是离你很近，打车20分钟多路程… … Miss you!</p>
-<hr>
-
+        
+          <a class="article-more-a" href="/2016/07/16/两周感悟~广州/#more">more >></a>
+        
       
 
       
@@ -782,7 +583,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/16/两周感悟~广州/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/07/16/两周感悟~广州/">产看详细 >></a>
         </p>
       
 
@@ -862,6 +663,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -926,11 +738,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

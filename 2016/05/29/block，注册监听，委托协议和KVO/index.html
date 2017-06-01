@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="总结IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。
 四者总体比较然后进行一一详解进行讲解：block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。NSNotifica">
-<meta property="og:updated_time" content="2016-06-02T08:44:49.000Z">
+<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="block，注册监听，委托协议和KVO">
 <meta name="twitter:description" content="总结IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。
@@ -89,10 +89,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -133,10 +129,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -186,6 +178,7 @@
       
         <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。</p>
 <h3 id="四者总体比较然后进行一一详解进行讲解："><a href="#四者总体比较然后进行一一详解进行讲解：" class="headerlink" title="四者总体比较然后进行一一详解进行讲解："></a>四者总体比较然后进行一一详解进行讲解：</h3><p>block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。<br>委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。<br>NSNotification：在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。<br>KVO：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。</p>
+<a id="more"></a>
 <p>以前读过一个砍柴的故事，如果我们想要追求搞得效率就要对所用到的工具了解，下面我们就开始磨我们搜中的刀。 </p>
 <h3 id="block的来龙去脉："><a href="#block的来龙去脉：" class="headerlink" title="block的来龙去脉："></a>block的来龙去脉：</h3><p>block是IOS SDK 4.0中引入的，block在IOS中实际就是一个代码块，有点像C++中内联函数inline有点相似，最让人惊奇的是我们还可以向其传递参数。闲来没事想要知道block在C++中的具体实现就是用Clang编辑^{printf”Hello, World!”}()，此时我们在block仅仅是输出一个语句。<br>//hello.c是我们把想要编辑的内容放置的文件名称</p>
 <h3 id="block在没有传入参数情况"><a href="#block在没有传入参数情况" class="headerlink" title="block在没有传入参数情况"></a>block在没有传入参数情况</h3><blockquote>
@@ -273,27 +266,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -473,6 +445,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -537,11 +520,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

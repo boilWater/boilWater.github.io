@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-01T07:17:06.000Z</updated>
+  <updated>2017-06-01T07:48:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,12 @@
     <link href="http://yoursite.com/2017/05/31/NSError(%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF)/"/>
     <id>http://yoursite.com/2017/05/31/NSError(错误信息)/</id>
     <published>2017-05-31T06:35:13.000Z</published>
-    <updated>2017-06-01T07:17:06.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
-    <content type="html">&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;开发过过程中我们经常会遇到异常问题&lt;/p&gt;
+    <content type="html">&lt;p&gt;开发过过程中我们经常会遇到异常问题&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
+&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
 &lt;h3 id=&quot;NSError-错误信息&quot;&gt;&lt;a href=&quot;#NSError-错误信息&quot; class=&quot;headerlink&quot; title=&quot;NSError(错误信息)&quot;&gt;&lt;/a&gt;NSError(错误信息)&lt;/h3&gt;&lt;h4 id=&quot;采用NSError的情况&quot;&gt;&lt;a href=&quot;#采用NSError的情况&quot; class=&quot;headerlink&quot; title=&quot;采用NSError的情况&quot;&gt;&lt;/a&gt;采用NSError的情况&lt;/h4&gt;&lt;p&gt;  使用 &lt;code&gt;NSError&lt;/code&gt; 的形式可以把程序中导致错误原因回报给调用者，而且使程序正常运行不会造成奔溃的后果&lt;/p&gt;
 &lt;h4 id=&quot;NSError包含的内容&quot;&gt;&lt;a href=&quot;#NSError包含的内容&quot; class=&quot;headerlink&quot; title=&quot;NSError包含的内容&quot;&gt;&lt;/a&gt;NSError包含的内容&lt;/h4&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NSError&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCopying&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;NSSecureCoding&lt;/span&gt;&amp;gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;@private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *_reserved;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSInteger&lt;/span&gt; _code;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *_domain;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; *_userInfo;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -85,7 +84,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
+      &lt;p&gt;开发过过程中我们经常会遇到异常问题&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;
     
     </summary>
     
@@ -101,12 +102,13 @@
     <link href="http://yoursite.com/2017/05/15/iOS-Responder%20Chain/"/>
     <id>http://yoursite.com/2017/05/15/iOS-Responder Chain/</id>
     <published>2017-05-14T16:12:14.000Z</published>
-    <updated>2017-05-31T15:46:02.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;工作接近一年，很久没有更新博客。工作中学到很多知识点后面将花时间整理，作为对一年知识学习的总结：&lt;/p&gt;
 &lt;p&gt;下面是本篇博客的写作思路：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-56a34538a5ab0e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-Responder Chain.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;iOS-Responder-Chain-响应链&quot;&gt;&lt;a href=&quot;#iOS-Responder-Chain-响应链&quot; class=&quot;headerlink&quot; title=&quot;iOS-Responder Chain (响应链)&quot;&gt;&lt;/a&gt;iOS-Responder Chain (响应链)&lt;/h1&gt;&lt;h2 id=&quot;人与计算机交互&quot;&gt;&lt;a href=&quot;#人与计算机交互&quot; class=&quot;headerlink&quot; title=&quot;人与计算机交互&quot;&gt;&lt;/a&gt;人与计算机交互&lt;/h2&gt;&lt;p&gt;目前计算机在我们生活中扮演很重要的角色，我们与计算机之间的交互也很普遍。多数情况使用最多的是 PC 和 移动端，而两种交互方式有很大的不同&lt;/p&gt;
+&lt;h1 id=&quot;iOS-Responder-Chain-响应链&quot;&gt;&lt;a href=&quot;#iOS-Responder-Chain-响应链&quot; class=&quot;headerlink&quot; title=&quot;iOS-Responder Chain (响应链)&quot;&gt;&lt;/a&gt;iOS-Responder Chain (响应链)&lt;/h1&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;人与计算机交互&quot;&gt;&lt;a href=&quot;#人与计算机交互&quot; class=&quot;headerlink&quot; title=&quot;人与计算机交互&quot;&gt;&lt;/a&gt;人与计算机交互&lt;/h2&gt;&lt;p&gt;目前计算机在我们生活中扮演很重要的角色，我们与计算机之间的交互也很普遍。多数情况使用最多的是 PC 和 移动端，而两种交互方式有很大的不同&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;PC 与人的交互&lt;/li&gt;
 &lt;li&gt;移动端与人的交互&lt;/li&gt;
@@ -172,7 +174,8 @@
     
       &lt;p&gt;工作接近一年，很久没有更新博客。工作中学到很多知识点后面将花时间整理，作为对一年知识学习的总结：&lt;/p&gt;
 &lt;p&gt;下面是本篇博客的写作思路：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-56a34538a5ab0e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-Responder Chain.png&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;iOS-Responder-Chain-响应链&quot;&gt;&lt;a href=&quot;#iOS-Responder-Chain-响应链&quot; class=&quot;headerlink&quot; title=&quot;iOS-Responder Chain (响应链)&quot;&gt;&lt;/a&gt;iOS-Responder Chain (响应链)&lt;/h1&gt;
     
     </summary>
     
@@ -188,7 +191,7 @@
     <link href="http://yoursite.com/2017/01/16/16%E6%80%BB%E7%BB%93-17%E5%B1%95%E6%9C%9B/"/>
     <id>http://yoursite.com/2017/01/16/16总结-17展望/</id>
     <published>2017-01-16T15:56:06.000Z</published>
-    <updated>2017-01-16T16:57:53.000Z</updated>
+    <updated>2017-06-01T07:43:20.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;2016总结&quot;&gt;&lt;a href=&quot;#2016总结&quot; class=&quot;headerlink&quot; title=&quot;2016总结&quot;&gt;&lt;/a&gt;2016总结&lt;/h2&gt;&lt;p&gt;踩着16年的小尾巴写下这边文章，离回家还有8天时间👊&lt;/p&gt;
 &lt;p&gt;今年也是自己第一次这么久离开家，大概有近 1 年时间&lt;/p&gt;
@@ -196,6 +199,7 @@
 &lt;p&gt;16年7月1号离开汕头（头大）截止到今天差不多半年时间&lt;/p&gt;
 &lt;p&gt;一年来从学生成长为社会工作的 90 后，公司不像学校可以自由的犯错&lt;/p&gt;
 &lt;p&gt;在这里呆的久啦，感觉学校里原来很难做到的事情越来只要咬牙坚持就可以完成&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;16观念&quot;&gt;&lt;a href=&quot;#16观念&quot; class=&quot;headerlink&quot; title=&quot;16观念&quot;&gt;&lt;/a&gt;16观念&lt;/h3&gt;&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;以前的 8 千米对我来说很难，现在 20 千米也是可以完成的&lt;/p&gt;
@@ -256,7 +260,11 @@
     <summary type="html">
     
       &lt;h2 id=&quot;2016总结&quot;&gt;&lt;a href=&quot;#2016总结&quot; class=&quot;headerlink&quot; title=&quot;2016总结&quot;&gt;&lt;/a&gt;2016总结&lt;/h2&gt;&lt;p&gt;踩着16年的小尾巴写下这边文章，离回家还有8天时间👊&lt;/p&gt;
-&lt;p&gt;今年也是自己第一次这么久离开家，大概有
+&lt;p&gt;今年也是自己第一次这么久离开家，大概有近 1 年时间&lt;/p&gt;
+&lt;p&gt;早上老妹发来语音说，放假回家的（本来说好要QQ和老妹聊天，加班到9：30就忘记啦😛）&lt;/p&gt;
+&lt;p&gt;16年7月1号离开汕头（头大）截止到今天差不多半年时间&lt;/p&gt;
+&lt;p&gt;一年来从学生成长为社会工作的 90 后，公司不像学校可以自由的犯错&lt;/p&gt;
+&lt;p&gt;在这里呆的久啦，感觉学校里原来很难做到的事情越来只要咬牙坚持就可以完成&lt;/p&gt;
     
     </summary>
     
@@ -272,9 +280,10 @@
     <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
     <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-01-19T06:12:49.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h1 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h1&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/APP控件在屏幕上显示.png&quot; alt=&quot;APP 控件在屏幕上显示&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h2&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。&lt;br&gt;上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：&lt;/p&gt;
@@ -361,7 +370,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控
+      &lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
     
     </summary>
     
@@ -400,13 +409,14 @@
     <link href="http://yoursite.com/2016/07/16/%E4%B8%A4%E5%91%A8%E6%84%9F%E6%82%9F~%E5%B9%BF%E5%B7%9E/"/>
     <id>http://yoursite.com/2016/07/16/两周感悟~广州/</id>
     <published>2016-07-15T16:27:32.000Z</published>
-    <updated>2017-01-16T15:53:37.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;从汕大毕业来到广州&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;从汕大毕业来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;hr&gt;
 &lt;p&gt;人😚。心之所向，就会有一种家的感觉，让自己感到放松！嗨，目前自己没有完全确定下来就不知道见&lt;/p&gt;
 &lt;hr&gt;
@@ -421,8 +431,6 @@
 &lt;p&gt;从汕大毕业来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;人�
     
     </summary>
     
@@ -438,11 +446,12 @@
     <link href="http://yoursite.com/2016/06/16/UIView&CALayer&Core%20Animation~1/"/>
     <id>http://yoursite.com/2016/06/16/UIView&CALayer&Core Animation~1/</id>
     <published>2016-06-16T06:41:28.000Z</published>
-    <updated>2016-06-16T07:00:05.000Z</updated>
+    <updated>2017-06-01T07:45:54.000Z</updated>
     
     <content type="html">&lt;p&gt;目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。&lt;/p&gt;
 &lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。&lt;br&gt;下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
 
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;UIView和CALayer之间的关系&quot;&gt;&lt;a href=&quot;#UIView和CALayer之间的关系&quot; class=&quot;headerlink&quot; title=&quot;UIView和CALayer之间的关系&quot;&gt;&lt;/a&gt;UIView和CALayer之间的关系&lt;/h3&gt;&lt;p&gt;打开UIView和CALyer中实际实现的代码，下面是UIView实现源码&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NS_CLASS_AVAILABLE_IOS&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;_0) &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIView&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;UIResponder&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCoding&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIAppearance&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIAppearanceContainer&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIDynamicItem&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UITraitEnvironment&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UICoordinateSpace&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIFocusEnvironment&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@property&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;nonatomic&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;readonly&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;strong&lt;/span&gt;)                 &lt;span class=&quot;built_in&quot;&gt;CALayer&lt;/span&gt;  *layer; &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;CALayer实现源码：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CALayer&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCoding&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;CAMediaTiming&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; _CALayerIvars &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    int32_t refcount;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    uint32_t magic;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *layer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#if TARGET_OS_MAC &amp;amp;&amp;amp; !TARGET_RT_64_BIT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *unused1[&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#endif&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125; _attr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;我们可以看出UIView是继承自UIResponder，而CALayer继承自NSObject。这也是UIView可以相应触摸事件，并实现响应链中最后一环所在后面我们会具体讲述。CALayer继承自NSObject，其中UIView中又包含自己所特有的layer。我们可以看做CALayer是UIView的具体内容细节的实现，两者具有平行关系。&lt;/p&gt;
@@ -471,7 +480,7 @@
     <summary type="html">
     
       &lt;p&gt;目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。&lt;/p&gt;
-&lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以
+&lt;div style=&quot;color:#008B8B&quot; &gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。&lt;br&gt;下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
     
     </summary>
     
@@ -487,10 +496,11 @@
     <link href="http://yoursite.com/2016/06/16/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/"/>
     <id>http://yoursite.com/2016/06/16/UIView&CALayer&Core Animation-总体/</id>
     <published>2016-06-16T06:35:22.000Z</published>
-    <updated>2016-06-16T09:34:50.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;一直想做个dome来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于UIView&amp;amp;CALayer&amp;amp;Core Animation 进行分装做出一个dome。&lt;/p&gt;
 &lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;img src=&quot;/images/UIView&amp;amp;CALayer动画.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/boilWater/boilWater.github.io/tree/master/Xmind&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;思维导图下载地址&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -499,7 +509,6 @@
     
       &lt;p&gt;一直想做个dome来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于UIView&amp;amp;CALayer&amp;amp;Core Animation 进行分装做出一个dome。&lt;/p&gt;
 &lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
-&lt;p&gt;&lt;img sr
     
     </summary>
     
@@ -515,10 +524,11 @@
     <link href="http://yoursite.com/2016/06/15/IOS%2010/"/>
     <id>http://yoursite.com/2016/06/15/IOS 10/</id>
     <published>2016-06-14T16:07:59.000Z</published>
-    <updated>2016-06-15T07:05:34.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;展示会第一个是APPLE的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在siri操作程序和Apple Pay的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;下面我们列表IOS 10的新功能的体现，下面将给出相关知识的思维导图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/Images/WWDC（2016）.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Watch-OS&quot;&gt;&lt;a href=&quot;#Watch-OS&quot; class=&quot;headerlink&quot; title=&quot;Watch OS&quot;&gt;&lt;/a&gt;Watch OS&lt;/h2&gt;&lt;h3 id=&quot;寻找APPS&quot;&gt;&lt;a href=&quot;#寻找APPS&quot; class=&quot;headerlink&quot; title=&quot;寻找APPS&quot;&gt;&lt;/a&gt;寻找APPS&lt;/h3&gt;&lt;p&gt;我们通过Apple Watch傍边的旋转手柄可以快速寻找我们装在的APP以及设定首界面显示的具体内容&lt;/p&gt;
@@ -555,7 +565,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;br&gt;&lt;br&gt;&lt;a href
+      &lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;/br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;/br&gt;&lt;br&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;展示会第一个是APPLE的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在siri操作程序和Apple Pay的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
     
     </summary>
     
@@ -571,10 +582,11 @@
     <link href="http://yoursite.com/2016/06/04/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/06/04/SDWebImage之图片缓存分析/</id>
     <published>2016-06-04T08:55:11.000Z</published>
-    <updated>2016-06-05T01:44:29.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。&lt;br&gt;&lt;br&gt;&lt;br&gt;经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？&lt;/p&gt;
 &lt;p&gt;在使用时我们知道需要导入包：UIImageView+WebCache.h我们可以根据这看出SDWebImage是一个UIImageView的分类，使用Category进行分装的类。下面列出SDWebImage可以实现的功能：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/p&gt;
 &lt;p&gt;&lt;li&gt;提供UIImageView的一个分类，可以对图片进行异步加载和缓存管理&lt;/li&gt;&lt;/p&gt;
 &lt;p&gt;&lt;li&gt;一步内存 &amp;amp; 磁盘管理 &amp;amp; 自动对过期的缓存进行相关的处理&lt;/li&gt;&lt;/p&gt;
@@ -626,8 +638,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。&lt;br&gt;&lt;br&gt;&lt;br&gt;经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？&lt;/p&gt;
-&lt;p
+      &lt;p&gt;这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。&lt;br&gt;&lt;/br&gt;&lt;br&gt;经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？&lt;/p&gt;
+&lt;p&gt;在使用时我们知道需要导入包：UIImageView+WebCache.h我们可以根据这看出SDWebImage是一个UIImageView的分类，使用Category进行分装的类。下面列出SDWebImage可以实现的功能：&lt;/p&gt;
     
     </summary>
     
@@ -643,14 +655,13 @@
     <link href="http://yoursite.com/2016/06/03/SDWebImage/"/>
     <id>http://yoursite.com/2016/06/03/SDWebImage/</id>
     <published>2016-06-03T13:23:21.000Z</published>
-    <updated>2016-06-04T09:08:43.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;SDWebImage的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage的下载器&quot;&gt;&lt;/a&gt;SDWebImage的下载器&lt;/h2&gt;&lt;p&gt;SDWebImage的下载器是SDWebImageDownloader利用单例模式sharedDownloader，可以对下载的图片进行相关配置。可以配置的部分如下：&lt;/p&gt;
-&lt;p&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/p&gt;
-&lt;p&gt;&lt;li&gt;下载选项&lt;/li&gt;&lt;/p&gt;
-&lt;p&gt;&lt;li&gt;HTTP的头部&lt;/li&gt;&lt;/p&gt;
-&lt;p&gt;&lt;li&gt;压缩、下载超时、下载顺序、最大并发数等&lt;/li&gt;&lt;br&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;br&gt;&lt;li&gt;下载选项&lt;/li&gt;&lt;br&gt;&lt;li&gt;HTTP的头部&lt;/li&gt;&lt;br&gt;&lt;li&gt;压缩、下载超时、下载顺序、最大并发数等&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;下载选项&quot;&gt;&lt;a href=&quot;#下载选项&quot; class=&quot;headerlink&quot; title=&quot;下载选项&quot;&gt;&lt;/a&gt;下载选项&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;NS_OPTIONS&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSUInteger&lt;/span&gt;, SDWebImageDownloaderOptions) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载的优先级&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderLowPriority = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载进度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderProgressiveDownload = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载路径缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderUseNSURLCache = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//下载过程的请求缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderIgnoreCachedResponse = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//后台进行继续下载&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderContinueInBackground = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderHandleCookies = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderAllowInvalidSSLCertificates = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SDWebImageDownloaderHighPriority = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;HTTP的头部设置&quot;&gt;&lt;a href=&quot;#HTTP的头部设置&quot; class=&quot;headerlink&quot; title=&quot;HTTP的头部设置&quot;&gt;&lt;/a&gt;HTTP的头部设置&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#ifdef SD_WEBP&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _HTTPHeaders = [@&amp;#123;&lt;span class=&quot;string&quot;&gt;@&quot;Accept&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;@&quot;image/webp,image/*;q=0.8&quot;&lt;/span&gt;&amp;#125; mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _HTTPHeaders = [@&amp;#123;&lt;span class=&quot;string&quot;&gt;@&quot;Accept&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;@&quot;image/*;q=0.8&quot;&lt;/span&gt;&amp;#125; mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#endif&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)setValue:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *)value forHTTPHeaderField:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *)field &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (value) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.HTTPHeaders[field] = value;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.HTTPHeaders removeObjectForKey:field];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *)valueForHTTPHeaderField:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *)field &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.HTTPHeaders[field];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;我们可以通过上述forHTTPHeaderField的参数进行相应HTTPheader的设置，使用者可以对头部信息进行相关的添加或者是删除HTTP头部信息。&lt;/p&gt;
@@ -681,7 +692,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;ext
+      &lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;SDWebImage的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage的下载器&quot;&gt;&lt;/a&gt;SDWebImage的下载器&lt;/h2&gt;&lt;p&gt;SDWebImage的下载器是SDWebImageDownloader利用单例模式sharedDownloader，可以对下载的图片进行相关配置。可以配置的部分如下：&lt;/p&gt;
+&lt;ul&gt;&lt;br&gt;&lt;li&gt;下载选项&lt;/li&gt;&lt;br&gt;&lt;li&gt;HTTP的头部&lt;/li&gt;&lt;br&gt;&lt;li&gt;压缩、下载超时、下载顺序、最大并发数等&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -697,10 +710,11 @@
     <link href="http://yoursite.com/2016/06/02/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
     <id>http://yoursite.com/2016/06/02/IOS面试梳理&自己理解&详细资料库/</id>
     <published>2016-06-02T11:01:41.000Z</published>
-    <updated>2016-06-17T09:46:36.000Z</updated>
+    <updated>2017-06-01T07:44:41.000Z</updated>
     
     <content type="html">&lt;p&gt;开启关于IOS面试之路总结，说实话目前IOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前还是在广州，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
 &lt;h3 id=&quot;OC的理解和特性&quot;&gt;&lt;a href=&quot;#OC的理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC的理解和特性&quot;&gt;&lt;/a&gt;OC的理解和特性&lt;/h3&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。Objc就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;ul&gt;&lt;br&gt;&lt;li&gt;封装：对于要处理的问题进行模块开发，好处有利于我们对于功能的拓展&lt;/li&gt;&lt;br&gt;&lt;li&gt;继承：通过继承实现对父类方法的实现，也可以在子类中重写父类方法&lt;/li&gt;&lt;br&gt;&lt;li&gt;多态：通过同名函数但是输入形式参数的种类，数目，类型不同实现具体函数功能不同（具体实现可以参照C&amp;amp;C++在编译后形式~想了解的可以自己查找）&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;Objc的动态特性：动态类型、动态加载、动态绑定。其实前面我们在runtime的理解过程中有所讲解。&lt;a href=&quot;http://boilwater.github.io/2016/05/29/runtime理解/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址&lt;/a&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;动态类型：在IOS中我们经常见到id类型，id类型指在Objc中动态类型。在实际应用中我们一般使用静态类型，静态类型：固定和可预知性。静态类型是强类型，动态类型是弱类型。例如：我们经常见到的protrcol委托协议就是采取@proerty(nonatomic, weak) id&lt;protrcol&gt; delegate&lt;/protrcol&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;动态加载：基于动态类型，在某个实例对象被确定后，其类型便被确定了，该对象对应的属性和响应消息也被完全确定。&lt;/li&gt;&lt;br&gt;&lt;li&gt;动态绑定：是我们在适配机型加载过程中，动态实现图片的实现。例如，在Retina设备上加载@2x的图片。&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
 
 &lt;h3 id=&quot;内存管理原则&quot;&gt;&lt;a href=&quot;#内存管理原则&quot; class=&quot;headerlink&quot; title=&quot;内存管理原则&quot;&gt;&lt;/a&gt;内存管理原则&lt;/h3&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;IOS5.0之前：在IOS 5.0之前Objc内存管理试行谁创建，谁释放的原则。如果要对是初始化的类型进行alloc,retain,copy，就需要手动进行release进行释放。当计数为0时才会释放对应的初始化内存空间和指针，我们称为MRC时代。&lt;/li&gt;&lt;br&gt;&lt;li&gt;IOS 5.0之后：使用戏言IOS开发那就是一个字：爽。在ARC：自动计数模式开发程序，我们不用再手动释放申请的对象，程序开发过程终于见不到release,autorelease,retain语句。不过我们这是就该注意到strong和weak的细微区别。&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
@@ -752,7 +766,7 @@
     <summary type="html">
     
       &lt;p&gt;开启关于IOS面试之路总结，说实话目前IOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前还是在广州，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
-&lt;h3 id=&quot;OC的理解和特性&quot;&gt;&lt;a href=&quot;#OC的理解和特性&quot; class=&quot;headerlink
+&lt;h3 id=&quot;OC的理解和特性&quot;&gt;&lt;a href=&quot;#OC的理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC的理解和特性&quot;&gt;&lt;/a&gt;OC的理解和特性&lt;/h3&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。Objc就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
     
     </summary>
     
@@ -768,11 +782,12 @@
     <link href="http://yoursite.com/2016/05/29/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/"/>
     <id>http://yoursite.com/2016/05/29/cocoaPods使用和静态库的建立/</id>
     <published>2016-05-29T11:47:03.000Z</published>
-    <updated>2016-06-18T14:53:54.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;cocoaPods个人介绍：是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
 &lt;p&gt;一般我们复制三方框架到项目有两种方式：（1）直接进行复制，（2）使用cocoaPods来进行管理，本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题&lt;/p&gt;
 &lt;p&gt;但是直接复制存在问题：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;(1)库更新存在问题，如果一个库引用另一个库，需要对于库全部更新&lt;/p&gt;
 &lt;p&gt;(2)对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用SedWebImage时对图片进行截图得到圆形图片，如果进行更新就有问题&lt;/p&gt;
 &lt;p&gt;(3)比较难判断在APP引进库的具体版本，除非在以前APP中进行记录&lt;/p&gt;
@@ -815,7 +830,8 @@
     <summary type="html">
     
       &lt;p&gt;cocoaPods个人介绍：是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
-&lt;p&gt;一般我们复制三方框架到项目有两种方式：（1）直接进行复制，（2）使用cocoaPods来进行管理，本
+&lt;p&gt;一般我们复制三方框架到项目有两种方式：（1）直接进行复制，（2）使用cocoaPods来进行管理，本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题&lt;/p&gt;
+&lt;p&gt;但是直接复制存在问题：&lt;/p&gt;
     
     </summary>
     
@@ -831,11 +847,12 @@
     <link href="http://yoursite.com/2016/05/29/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/"/>
     <id>http://yoursite.com/2016/05/29/IOS的永久话储存/</id>
     <published>2016-05-29T11:32:04.000Z</published>
-    <updated>2016-06-02T08:39:20.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。&lt;/p&gt;
 &lt;p&gt;沙盒中有三个文件夹：document，library，temp&lt;/p&gt;
 &lt;p&gt;(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *path = &lt;span class=&quot;built_in&quot;&gt;NSHomeDirectory&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath = [path stringByAppendingString:&lt;span class=&quot;string&quot;&gt;@&quot;/saveMessage&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath1 = [path stringByAppendingPathComponent:&lt;span class=&quot;string&quot;&gt;@&quot;saveMessage&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath2 = [&lt;span class=&quot;built_in&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSDocumentDirectory&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSUserDomainMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;)lastObject];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;对于数据相关的path 进行操作，判断其是否存在，如果存在就可以进行相关操作&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSFileManager&lt;/span&gt; *fileManger = [&lt;span class=&quot;built_in&quot;&gt;NSFileManager&lt;/span&gt; defaultManager];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *pathLists = [fileManger contentsOfDirectoryAtPath:path error:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt; flag = [fileManger fileExistsAtPath:docPath1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[fileManger removeItemAtPath:docPath1 error:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -858,7 +875,7 @@
     
       &lt;p&gt;沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。&lt;/p&gt;
 &lt;p&gt;沙盒中有三个文件夹：document，library，temp&lt;/p&gt;
-&lt;p&gt;(1)document：保存应用运行时生成重要的数据，Itunes也会同
+&lt;p&gt;(1)document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）&lt;/p&gt;
     
     </summary>
     
@@ -874,11 +891,12 @@
     <link href="http://yoursite.com/2016/05/29/IOS%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6/"/>
     <id>http://yoursite.com/2016/05/29/IOS整体框架/</id>
     <published>2016-05-29T11:21:14.000Z</published>
-    <updated>2016-06-02T08:36:24.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。&lt;a href=&quot;http://www.cnblogs.com/kenshincui/p/3885689.html#foundation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;大牛文章关于框架&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：&lt;/p&gt;
 &lt;p&gt;下面是关于OS X的结构图（&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网地址&lt;/a&gt;）：&lt;br&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;官方文档的具体内容：&quot;&gt;&lt;a href=&quot;#官方文档的具体内容：&quot; class=&quot;headerlink&quot; title=&quot;官方文档的具体内容：&quot;&gt;&lt;/a&gt;官方文档的具体内容：&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Cocoa (Application) layer（应用层） includes technologies &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; building an &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app’s user interface, &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; responding to user events, and &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; managing app &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;behavior.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Media layer （媒体层）encompasses specialized technologies &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; playing, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;recording, and editing audiovisual media and &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; rendering and animating &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;D and &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;D graphics.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The Core Services layer（核心服务层） contains many fundamental services and &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;technologies that range from Automatic Reference Counting and low-level network &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;communication to string manipulation and data formatting.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -901,7 +919,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。&lt;a href=&quot;http://www.cnblogs.com/kenshincui/p/3885689.html#foundation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;
+      &lt;p&gt;感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。&lt;a href=&quot;http://www.cnblogs.com/kenshincui/p/3885689.html#foundation&quot;&gt;大牛文章关于框架&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：&lt;/p&gt;
+&lt;p&gt;下面是关于OS X的结构图（&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101&quot;&gt;官网地址&lt;/a&gt;）：&lt;br&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -917,11 +937,12 @@
     <link href="http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/"/>
     <id>http://yoursite.com/2016/05/29/runtime理解/</id>
     <published>2016-05-29T04:15:38.000Z</published>
-    <updated>2016-06-09T14:19:58.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;网上其实有很多关于讲述runtime的学习资料，也是站在巨人肩上看的更远。写这篇文章也是对于其他人借鉴和翻阅源码，向源码寻求解释吧。&lt;br&gt;&lt;br&gt;无意间看到一份关于runtime的博客，感觉写的挺不错的就耐心的看下。看后发现自己对runtime的理解还是比较浅，就决定对自己博客进行重新修改。&lt;/p&gt;
 &lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;随便在这里抛出一个问题：假如我们程序员自己是系统我们怎么执行程序呢？当然换个高级点的说法，如果我们是系统设计者我们想要runtime怎么运行？&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
 
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;在介绍runtime之前我现在这里给大家梳理一下我们在Objc类中可能见到的内容：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-成员变量、成员属性：&amp;lt;br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-数据成员：&amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-协议实现：&amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;runtime简介&quot;&gt;&lt;a href=&quot;#runtime简介&quot; class=&quot;headerlink&quot; title=&quot;runtime简介&quot;&gt;&lt;/a&gt;runtime简介&lt;/h3&gt;&lt;p&gt;Objc被我们成为动态语言，换句话说就是把我们平时看到一些关键方法由编译连接推迟到运行时执行。Objc底层是基于C/C++的编译语言，在C/C++项目运行过程中链接、编译生成可执行文件。而Objc语言是在执行过程中进行编译源码，生成我们熟悉的C/C++后面最终生成机器可以识别的汇编语言。Objc中有三大自己特色：动态类型，动态绑定和动态加载。&lt;br&gt;&lt;br&gt;获runtime的源码点击&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/doc/uid/TP40001418&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
@@ -990,7 +1011,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;网上其实有很多关于讲述runtime的学习资料，也是站在巨人肩上看的更远。写这篇文章也是对于其他人借鉴和翻阅源码，向源码寻求解释吧。&lt;br&gt;&lt;br&gt;无意间看到一份关于runtime的博客，感觉写的挺不错的就耐心的看下。看后发现自己对runtime的理解还是比较浅，就决定对自
+      &lt;p&gt;网上其实有很多关于讲述runtime的学习资料，也是站在巨人肩上看的更远。写这篇文章也是对于其他人借鉴和翻阅源码，向源码寻求解释吧。&lt;/br&gt;&lt;br&gt;无意间看到一份关于runtime的博客，感觉写的挺不错的就耐心的看下。看后发现自己对runtime的理解还是比较浅，就决定对自己博客进行重新修改。&lt;/p&gt;
+&lt;div style=&quot;color:#008B8B&quot; &gt;&lt;br&gt;&lt;p&gt;随便在这里抛出一个问题：假如我们程序员自己是系统我们怎么执行程序呢？当然换个高级点的说法，如果我们是系统设计者我们想要runtime怎么运行？&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
     
     </summary>
     
@@ -1006,9 +1028,10 @@
     <link href="http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/"/>
     <id>http://yoursite.com/2016/05/29/Fastlane讲解/</id>
     <published>2016-05-29T04:13:46.000Z</published>
-    <updated>2016-06-02T08:40:32.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt;大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;br&gt;想知道fastlane了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;fastlane安装&quot;&gt;&lt;a href=&quot;#fastlane安装&quot; class=&quot;headerlink&quot; title=&quot;fastlane安装&quot;&gt;&lt;/a&gt;fastlane安装&lt;/h3&gt;&lt;p&gt;fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达到简便的开发。如果你在自己MAC上已经安装Ruby及其环境，只需要执行下列安装就可以实现&lt;br&gt;    sudo gem install fastlane –verbose&lt;br&gt;确定自己安装的是最新版本的Xcode:&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Xcode-select --install&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如果在启动fastlane比较慢的情况可以执行:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gem cleanup&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;a href=&quot;#fastlane使用具体方法和具体功能&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;/a&gt;fastlane使用具体方法和具体功能&lt;/h3&gt;&lt;p&gt;了解具体使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
@@ -1023,7 +1046,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;br&gt;想知道fastlane了解点击&lt;a hr
+      &lt;p&gt;大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;br&gt;想知道fastlane了解点击&lt;a href=&quot;https://fastlane.tools&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href =&quot;https://github.com/fastlane/fastlane&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1039,10 +1062,11 @@
     <link href="http://yoursite.com/2016/05/29/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/"/>
     <id>http://yoursite.com/2016/05/29/block，注册监听，委托协议和KVO/</id>
     <published>2016-05-29T04:12:40.000Z</published>
-    <updated>2016-06-02T08:44:49.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。&lt;/p&gt;
 &lt;h3 id=&quot;四者总体比较然后进行一一详解进行讲解：&quot;&gt;&lt;a href=&quot;#四者总体比较然后进行一一详解进行讲解：&quot; class=&quot;headerlink&quot; title=&quot;四者总体比较然后进行一一详解进行讲解：&quot;&gt;&lt;/a&gt;四者总体比较然后进行一一详解进行讲解：&lt;/h3&gt;&lt;p&gt;block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。&lt;br&gt;委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。&lt;br&gt;NSNotification：在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。&lt;br&gt;KVO：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;以前读过一个砍柴的故事，如果我们想要追求搞得效率就要对所用到的工具了解，下面我们就开始磨我们搜中的刀。 &lt;/p&gt;
 &lt;h3 id=&quot;block的来龙去脉：&quot;&gt;&lt;a href=&quot;#block的来龙去脉：&quot; class=&quot;headerlink&quot; title=&quot;block的来龙去脉：&quot;&gt;&lt;/a&gt;block的来龙去脉：&lt;/h3&gt;&lt;p&gt;block是IOS SDK 4.0中引入的，block在IOS中实际就是一个代码块，有点像C++中内联函数inline有点相似，最让人惊奇的是我们还可以向其传递参数。闲来没事想要知道block在C++中的具体实现就是用Clang编辑^{printf”Hello, World!”}()，此时我们在block仅仅是输出一个语句。&lt;br&gt;//hello.c是我们把想要编辑的内容放置的文件名称&lt;/p&gt;
 &lt;h3 id=&quot;block在没有传入参数情况&quot;&gt;&lt;a href=&quot;#block在没有传入参数情况&quot; class=&quot;headerlink&quot; title=&quot;block在没有传入参数情况&quot;&gt;&lt;/a&gt;block在没有传入参数情况&lt;/h3&gt;&lt;blockquote&gt;
@@ -1131,7 +1155,8 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。&lt;/
+      &lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。&lt;/p&gt;
+&lt;h3 id=&quot;四者总体比较然后进行一一详解进行讲解：&quot;&gt;&lt;a href=&quot;#四者总体比较然后进行一一详解进行讲解：&quot; class=&quot;headerlink&quot; title=&quot;四者总体比较然后进行一一详解进行讲解：&quot;&gt;&lt;/a&gt;四者总体比较然后进行一一详解进行讲解：&lt;/h3&gt;&lt;p&gt;block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。&lt;br&gt;委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。&lt;br&gt;NSNotification：在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。&lt;br&gt;KVO：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。&lt;/p&gt;
     
     </summary>
     
@@ -1147,10 +1172,11 @@
     <link href="http://yoursite.com/2016/05/29/%E4%BB%8E%E5%8F%AE%E5%8F%AECTO%E9%87%87%E8%AE%BF%E6%BC%94%E8%AE%B2%E9%9A%8F%E7%AC%94/"/>
     <id>http://yoursite.com/2016/05/29/从叮叮CTO采访演讲随笔/</id>
     <published>2016-05-29T04:09:11.000Z</published>
-    <updated>2016-06-02T08:57:27.000Z</updated>
+    <updated>2017-06-01T07:43:44.000Z</updated>
     
     <content type="html">&lt;p&gt;今天在看One’s Cat大神的博客时讲到如何创建我们个人的开源框架，就涉及到fastlane就找来看下，无意中看到叮叮的CTO朱鸿大神（又一尊大神）讲述自己的产品。短短22：05的视频让自己感触很大，写这篇文章也就是无聊说下自己所学知识吧。&lt;/p&gt;
-&lt;h3 id=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;a href=&quot;#总的来说以技术来简化我们生活，目前比想象中要难。&quot; class=&quot;headerlink&quot; title=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;/a&gt;总的来说以技术来简化我们生活，目前比想象中要难。&lt;/h3&gt;&lt;h3 id=&quot;人员配置方面&quot;&gt;&lt;a href=&quot;#人员配置方面&quot; class=&quot;headerlink&quot; title=&quot;人员配置方面&quot;&gt;&lt;/a&gt;人员配置方面&lt;/h3&gt;&lt;p&gt;首先朱大神讲述团队人数有120人，而在客户端和后端比例2：1估计这样的标配也只有像阿里这样想要在移动端尤其社交这块站住一定地位强悍标配。&lt;/p&gt;
+&lt;h3 id=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;a href=&quot;#总的来说以技术来简化我们生活，目前比想象中要难。&quot; class=&quot;headerlink&quot; title=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;/a&gt;总的来说以技术来简化我们生活，目前比想象中要难。&lt;/h3&gt;&lt;h3 id=&quot;人员配置方面&quot;&gt;&lt;a href=&quot;#人员配置方面&quot; class=&quot;headerlink&quot; title=&quot;人员配置方面&quot;&gt;&lt;/a&gt;人员配置方面&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;首先朱大神讲述团队人数有120人，而在客户端和后端比例2：1估计这样的标配也只有像阿里这样想要在移动端尤其社交这块站住一定地位强悍标配。&lt;/p&gt;
 &lt;h3 id=&quot;踩过的大坑&quot;&gt;&lt;a href=&quot;#踩过的大坑&quot; class=&quot;headerlink&quot; title=&quot;踩过的大坑&quot;&gt;&lt;/a&gt;踩过的大坑&lt;/h3&gt;&lt;p&gt;朱大神讲述在数据解析方便曾经踩过一个大坑，所谓大坑就是在IOS&amp;amp;Android两个客户端对于数据解析有所不同。就是在于基本数据类型方面对于数据解析产生不同的结果，估计是使用加密方式在服务器得到数据解析有一定乱码想象只是不知道是Json还是Xml得解析（小编自己猜测）。&lt;/p&gt;
 &lt;h3 id=&quot;企业电话方面&quot;&gt;&lt;a href=&quot;#企业电话方面&quot; class=&quot;headerlink&quot; title=&quot;企业电话方面&quot;&gt;&lt;/a&gt;企业电话方面&lt;/h3&gt;&lt;p&gt;大神说出目前我们移动的端所在2G用户比重挺大，采用融合通信方向期间还是用阿里的线路。关于在WiFi情况下测试使用OA通信方式，随便讲述在手机网络提供商不同的情况下具体情况（联通网络通信一旦打开网络就会占用一条信道进行通信，所以在数据较大时带宽就是占用较大问题~小心脏作为客户端开发的小编之前竟没有听说过）。&lt;/p&gt;
 &lt;h3 id=&quot;发布机制和团队意思&quot;&gt;&lt;a href=&quot;#发布机制和团队意思&quot; class=&quot;headerlink&quot; title=&quot;发布机制和团队意思&quot;&gt;&lt;/a&gt;发布机制和团队意思&lt;/h3&gt;&lt;p&gt;由于叮叮是基于企业通信服务的行业应用性能方便真是个大问题。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; 嗨，记得去年的暑假在参加深圳一个活动时，黄老大奔去深圳创业~那时我们住在旅社&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;他说要做企业OA，我随口说现在创业那么火要不做一个给创业者做个服务型的应用提高效率。看到这个感觉&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;事情真的不想我们想象的那么简单！&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -1164,12 +1190,13 @@
 &lt;h3 id=&quot;性能优化要求&quot;&gt;&lt;a href=&quot;#性能优化要求&quot; class=&quot;headerlink&quot; title=&quot;性能优化要求&quot;&gt;&lt;/a&gt;性能优化要求&lt;/h3&gt;&lt;p&gt;省电和顺滑，具体怎么完成和实现，朱大神微微😃。当讲到在图片下载处理时主要将海外，朱大神说我们在海外有简历服务器然后跟具体的路由优化选择可以对图片下载加快速度。&lt;/p&gt;
 &lt;h3 id=&quot;企业群聊处理&quot;&gt;&lt;a href=&quot;#企业群聊处理&quot; class=&quot;headerlink&quot; title=&quot;企业群聊处理&quot;&gt;&lt;/a&gt;企业群聊处理&lt;/h3&gt;&lt;p&gt;假设一种情况：当很多在一个群组中一起聊天，一秒可以让数据达到几千条。请问你怎么解决？&lt;br&gt;朱大神解决方式：一起把数据下载下来，保存不至于丢失。但是最后显示的数据大多是最后十几二十几条。这样可以减少屏幕的刷屏率，优化性能。至少在GPU渲染显示方面肯定有所优化🙅🏻&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;之所以写这些随笔，是想让自己记住自己看过知识。毕竟好记性是在不如一个烂笔头，写的过程也是在记忆&lt;br&gt;中重新思考的过程。&lt;/p&gt;
-&lt;/blockquote&gt;</content>
+&lt;/blockquote&gt;
+</content>
     
     <summary type="html">
     
       &lt;p&gt;今天在看One’s Cat大神的博客时讲到如何创建我们个人的开源框架，就涉及到fastlane就找来看下，无意中看到叮叮的CTO朱鸿大神（又一尊大神）讲述自己的产品。短短22：05的视频让自己感触很大，写这篇文章也就是无聊说下自己所学知识吧。&lt;/p&gt;
-&lt;h3 id=&quot;总的来
+&lt;h3 id=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;a href=&quot;#总的来说以技术来简化我们生活，目前比想象中要难。&quot; class=&quot;headerlink&quot; title=&quot;总的来说以技术来简化我们生活，目前比想象中要难。&quot;&gt;&lt;/a&gt;总的来说以技术来简化我们生活，目前比想象中要难。&lt;/h3&gt;&lt;h3 id=&quot;人员配置方面&quot;&gt;&lt;a href=&quot;#人员配置方面&quot; class=&quot;headerlink&quot; title=&quot;人员配置方面&quot;&gt;&lt;/a&gt;人员配置方面&lt;/h3&gt;
     
     </summary>
     
@@ -1185,11 +1212,12 @@
     <link href="http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/"/>
     <id>http://yoursite.com/2016/05/28/博客开启/</id>
     <published>2016-05-28T13:44:27.000Z</published>
-    <updated>2016-07-15T16:28:15.000Z</updated>
+    <updated>2017-06-01T07:48:51.000Z</updated>
     
     <content type="html">&lt;p&gt; &lt;br&gt;&lt;br&gt; &lt;br&gt; &lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;hr&gt;
 &lt;p&gt;昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心&lt;/p&gt;
 &lt;hr&gt;
@@ -1207,8 +1235,9 @@
     
     <summary type="html">
     
-      &lt;p&gt; &lt;br&gt;&lt;br&gt; &lt;br&gt; &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;
+      &lt;p&gt; &lt;/br&gt;&lt;br&gt; &lt;/br&gt; &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;/p&gt;
     
     </summary>
     

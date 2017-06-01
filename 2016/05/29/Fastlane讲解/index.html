@@ -8,19 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Fastlane讲解 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里
-fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达">
+  <meta name="description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fastlane讲解">
 <meta property="og:url" content="http://yoursite.com/2016/05/29/Fastlane讲解/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里
-fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达">
-<meta property="og:updated_time" content="2016-06-02T08:40:32.000Z">
+<meta property="og:description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里">
+<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fastlane讲解">
-<meta name="twitter:description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里
-fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达">
+<meta name="twitter:description" content="大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。想知道fastlane了解点击这里获取fastlan的github下载点击这里">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -89,10 +86,6 @@ fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -133,10 +126,6 @@ fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -185,6 +174,7 @@ fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开
     <div class="article-entry" itemprop="articleBody">
       
         <p>大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。<br>想知道fastlane了解点击<a href="https://fastlane.tools" target="_blank" rel="external">这里<br></a>获取fastlan的github下载点击<a href="https://github.com/fastlane/fastlane" target="_blank" rel="external">这里</a></p>
+<a id="more"></a>
 <h3 id="fastlane安装"><a href="#fastlane安装" class="headerlink" title="fastlane安装"></a>fastlane安装</h3><p>fastlane是基于Ruby的开发脚本集合有助于我们在IOS开发过程中达到简便的开发。如果你在自己MAC上已经安装Ruby及其环境，只需要执行下列安装就可以实现<br>    sudo gem install fastlane –verbose<br>确定自己安装的是最新版本的Xcode:</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Xcode-select --install</span><br><span class="line"></span><br><span class="line">如果在启动fastlane比较慢的情况可以执行:</span><br><span class="line"></span><br><span class="line">gem cleanup</span><br></pre></td></tr></table></figure>
 <h3 id="fastlane使用具体方法和具体功能"><a href="#fastlane使用具体方法和具体功能" class="headerlink" title="fastlane使用具体方法和具体功能"></a>fastlane使用具体方法和具体功能</h3><p>了解具体使用点击<a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external">这里</a></p>
@@ -198,27 +188,6 @@ fastlane安装fastlane是基于Ruby的开发脚本集合有助于我们在IOS开
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -398,6 +367,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -462,11 +442,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

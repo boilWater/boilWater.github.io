@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？
 在使用时我们知道需要导入包：UIImageView+WebCache.h我们可以根据这看出SDWebImage是一个UIImageView的分类，使用Catego">
-<meta property="og:updated_time" content="2016-06-05T01:44:29.000Z">
+<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage之图片缓存处理">
 <meta name="twitter:description" content="这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？
@@ -89,10 +89,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -133,10 +129,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -186,6 +178,7 @@
       
         <p>这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。<br><br><br>经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？</p>
 <p>在使用时我们知道需要导入包：UIImageView+WebCache.h我们可以根据这看出SDWebImage是一个UIImageView的分类，使用Category进行分装的类。下面列出SDWebImage可以实现的功能：</p>
+<a id="more"></a>
 <p><ul></ul></p>
 <p><li>提供UIImageView的一个分类，可以对图片进行异步加载和缓存管理</li></p>
 <p><li>一步内存 &amp; 磁盘管理 &amp; 自动对过期的缓存进行相关的处理</li></p>
@@ -236,27 +229,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -436,6 +408,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -500,11 +483,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -10,28 +10,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
 我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
-下面是关于OS X的结构图（官网地址）：
-官方文档的具体内容：123The Cocoa (Application) layer（应用层） includes technologies for">
+下面是关于OS X的结构图（官网地址）：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS整体框架">
 <meta property="og:url" content="http://yoursite.com/2016/05/29/IOS整体框架/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
 我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
-下面是关于OS X的结构图（官网地址）：
-官方文档的具体内容：123The Cocoa (Application) layer（应用层） includes technologies for">
+下面是关于OS X的结构图（官网地址）：">
 <meta property="og:image" content="http://yoursite.com/path/to/img.jpg">
 <meta property="og:image" content="http://yoursite.com/path/to/img.jpg">
 <meta property="og:image" content="http://yoursite.com/path/to/img.jpg">
 <meta property="og:image" content="http://yoursite.com/path/to/img.jpg">
 <meta property="og:image" content="http://yoursite.com/path/to/img.jpg">
-<meta property="og:updated_time" content="2016-06-02T08:36:24.000Z">
+<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS整体框架">
 <meta name="twitter:description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
 我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
-下面是关于OS X的结构图（官网地址）：
-官方文档的具体内容：123The Cocoa (Application) layer（应用层） includes technologies for">
+下面是关于OS X的结构图（官网地址）：">
 <meta name="twitter:image" content="http://yoursite.com/path/to/img.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
@@ -101,10 +98,6 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 			</div>
@@ -145,10 +138,6 @@
 						<a class="github" target="_blank" href="https://github.com/boilWater" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/2815612403/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="http://www.jianshu.com/u/c48ed5ae3925" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -199,6 +188,7 @@
         <p>感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。<a href="http://www.cnblogs.com/kenshincui/p/3885689.html#foundation" target="_blank" rel="external">大牛文章关于框架</a></p>
 <p>我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
 <p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">官网地址</a>）：<br><img src="/path/to/img.jpg" alt="alt text" title="Title"></p>
+<a id="more"></a>
 <h3 id="官方文档的具体内容："><a href="#官方文档的具体内容：" class="headerlink" title="官方文档的具体内容："></a>官方文档的具体内容：</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The Cocoa (Application) layer（应用层） includes technologies <span class="keyword">for</span> building an </span><br><span class="line">app’s user interface, <span class="keyword">for</span> responding to user events, and <span class="keyword">for</span> managing app </span><br><span class="line">behavior.</span><br></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The Media layer （媒体层）encompasses specialized technologies <span class="keyword">for</span> playing, </span><br><span class="line">recording, and editing audiovisual media and <span class="keyword">for</span> rendering and animating <span class="number">2</span>D and </span><br><span class="line"><span class="number">3</span>D graphics.</span><br></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The Core Services layer（核心服务层） contains many fundamental services and </span><br><span class="line">technologies that range from Automatic Reference Counting and low-level network </span><br><span class="line">communication to string manipulation and data formatting.</span><br></pre></td></tr></table></figure>
@@ -220,27 +210,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -420,6 +389,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?52e5afd5dc450b621a57cd7f508bebe2";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -484,11 +464,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">三方框架解析</a>
               </li>
              
               <li class="article-tag-list-item">
