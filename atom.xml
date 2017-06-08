@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-01T09:51:07.000Z</updated>
+  <updated>2017-06-08T16:32:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-视频大纲总结</title>
+    <link href="http://yoursite.com/2017/06/09/iOS-%E8%A7%86%E9%A2%91%E5%A4%A7%E7%BA%B2%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/06/09/iOS-视频大纲总结/</id>
+    <published>2017-06-08T16:31:48.000Z</published>
+    <updated>2017-06-08T16:32:52.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。&lt;/p&gt;
+&lt;p&gt;下面是本博文的写作思路：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;流媒体数据接收到播放&quot;&gt;&lt;a href=&quot;#流媒体数据接收到播放&quot; class=&quot;headerlink&quot; title=&quot;流媒体数据接收到播放&quot;&gt;&lt;/a&gt;流媒体数据接收到播放&lt;/h2&gt;&lt;p&gt;在网络传输过程中我们接收到相关媒体数据要经过一些列的处理来实现对媒体数据的播放，具体过程如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-aab07b57fde17c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 视频播放流程图.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以看出我们在获取流媒体协议需要经过一下处理方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解协议 —&amp;gt; 解封装  —&amp;gt; 音视频的解码 （实现音视频同步 &amp;amp; 播放）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;流媒体数据解析&quot;&gt;&lt;a href=&quot;#流媒体数据解析&quot; class=&quot;headerlink&quot; title=&quot;流媒体数据解析&quot;&gt;&lt;/a&gt;流媒体数据解析&lt;/h3&gt;&lt;p&gt;在获取流媒体数据后，要对其进行协议的解析来获取封装的媒体数据进行播放。我们常见的协议：&lt;code&gt;HTTP&lt;/code&gt;、&lt;code&gt;RTMP&lt;/code&gt;和&lt;code&gt;MMS&lt;/code&gt;媒体协议&lt;/p&gt;
+&lt;h4 id=&quot;协议简介&quot;&gt;&lt;a href=&quot;#协议简介&quot; class=&quot;headerlink&quot; title=&quot;协议简介&quot;&gt;&lt;/a&gt;协议简介&lt;/h4&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;HTTP：超文本传输协议（HyperText Transfer Protocol）是一个客户端（用户）和服务端（网站）请求和应答的标准。&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/超文本传输协议&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;RTMP：实时信息传输协议（Real Time Message Protocol）基于TCP实现持久链接和低延迟通信。流分解成片，客户端和服务端可设置大小（音：64，视频：128）。&lt;br&gt;&lt;a href=&quot;http://mingyangshang.github.io/2016/03/06/RTMP协议/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址1：&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://translate.google.co.jp/translate?hl=zh-CN&amp;amp;sl=en&amp;amp;u=https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol&amp;amp;prev=search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址2：&lt;/a&gt;&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;MMS：串流媒体传送协议（Microsoft Media Server）用来访问并流式接受 Windows Media 服务器中 .asf 文件协议。&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/MMS_(协议&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;)&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;HLS：流媒体网络传输协议（HTTP Live Streaming）把数据源分解为基于 HTTP 的片段，每次下载一些。下载数据之前需要一个包含数据的 m3u8 playlist文件来查找可用的媒体流。&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/HTTP_Live_Streaming&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;RTP：实时传输协议（Real-time Transport Protocol）被设置为多播协议，和 RTP 协议、RTP 控制协议一起使用。&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/实时传输协议&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;RTCP：实时传输控制协议（Real-time Transport Protocol）搜集媒体链接统计信息，为 RTP 提供服务质量反馈。&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/实时传输控制协议&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;&lt;br&gt;&lt;/li&gt;&lt;br&gt;&lt;br&gt;&lt;li&gt;RTSP：实时流协议，用于建立和控制终端之间的媒体会话，和 RTP 、RTCP 结合的，媒体流传输。&lt;br&gt;&lt;a href=&quot;https://translate.google.co.jp/translate?hl=zh-CN&amp;amp;sl=en&amp;amp;u=https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol&amp;amp;prev=search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考地址：&lt;/a&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
+
+&lt;h3 id=&quot;媒体封装格式&quot;&gt;&lt;a href=&quot;#媒体封装格式&quot; class=&quot;headerlink&quot; title=&quot;媒体封装格式&quot;&gt;&lt;/a&gt;媒体封装格式&lt;/h3&gt;&lt;p&gt;媒体封装就是把视频数据和音频数据进行按照一定的格式进行封装。我们常见的封装格式：&lt;code&gt;AVI&lt;/code&gt;、&lt;code&gt;MP4&lt;/code&gt;、&lt;code&gt;TS&lt;/code&gt;、&lt;code&gt;FLV&lt;/code&gt;、&lt;code&gt;MKV&lt;/code&gt;和&lt;code&gt;RMVB&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;媒体封装格式简介&quot;&gt;&lt;a href=&quot;#媒体封装格式简介&quot; class=&quot;headerlink&quot; title=&quot;媒体封装格式简介&quot;&gt;&lt;/a&gt;媒体封装格式简介&lt;/h4&gt;&lt;p&gt;下面是对媒体封装格式的整理和简介：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0491caa322fa42c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;媒体封装格式整理.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;音视频编码格式&quot;&gt;&lt;a href=&quot;#音视频编码格式&quot; class=&quot;headerlink&quot; title=&quot;音视频编码格式&quot;&gt;&lt;/a&gt;音视频编码格式&lt;/h3&gt;&lt;p&gt;在音视频录制完成后为方便传输需要对其进行编码压缩处理，我们常见的音视频编码格式：&lt;/p&gt;
+&lt;p&gt;视频编码格式：&lt;code&gt;H.264&lt;/code&gt;、&lt;code&gt;H.265(HEVC)&lt;/code&gt;、&lt;code&gt;MPEG4&lt;/code&gt;、&lt;code&gt;MPEG2&lt;/code&gt;、&lt;code&gt;VP9&lt;/code&gt;、&lt;code&gt;VP8&lt;/code&gt;和&lt;code&gt;VC-1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;音频编码格式：&lt;code&gt;AAC&lt;/code&gt;、&lt;code&gt;AC-3&lt;/code&gt;、&lt;code&gt;MP3&lt;/code&gt;和&lt;code&gt;WMP&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;视音频编码格式&quot;&gt;&lt;a href=&quot;#视音频编码格式&quot; class=&quot;headerlink&quot; title=&quot;视音频编码格式&quot;&gt;&lt;/a&gt;视音频编码格式&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1e3ce321225f5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;视音频编码格式.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;编码格式地址&quot;&gt;&lt;a href=&quot;#编码格式地址&quot; class=&quot;headerlink&quot; title=&quot;编码格式地址&quot;&gt;&lt;/a&gt;编码格式地址&lt;/h4&gt;&lt;p&gt;下面是编码格式地址：&lt;/p&gt;
+&lt;p&gt;H.264 :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;链接        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/H.264/MPEG-4_AVC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zh.wikipedia.org/wiki/H.264/MPEG-4_AVC&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;地址2&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;a href=&quot;https://abson.github.io/2016/11/15/深入浅出理解视频编码H264结构/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://abson.github.io/2016/11/15/深入浅出理解视频编码H264结构/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;H.265 :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;链接        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;www.4k123.com/thread-6369-1-1.html&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;AAC：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;链接        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;www.4k123.com/thread-6369-1-1.html&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;AC-3：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;链接        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;blog.csdn.net/leixiaohua1020/article/details/11822737&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;MP3：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;链接        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/MP3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zh.wikipedia.org/zh-hans/MP3&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;解码简介&quot;&gt;&lt;a href=&quot;#解码简介&quot; class=&quot;headerlink&quot; title=&quot;解码简介&quot;&gt;&lt;/a&gt;解码简介&lt;/h3&gt;&lt;p&gt;在视频播放过程中我们需要对视频进行解码处理，常见的解码方式：硬解码和软解码。&lt;/p&gt;
+&lt;h4 id=&quot;解码方式简介&quot;&gt;&lt;a href=&quot;#解码方式简介&quot; class=&quot;headerlink&quot; title=&quot;解码方式简介&quot;&gt;&lt;/a&gt;解码方式简介&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b70e26b3769a95c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;软解码&amp;amp;硬解码对比.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;编码资料地址&quot;&gt;&lt;a href=&quot;#编码资料地址&quot; class=&quot;headerlink&quot; title=&quot;编码资料地址&quot;&gt;&lt;/a&gt;编码资料地址&lt;/h4&gt;&lt;h3 id=&quot;AVFoundation-框架介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-框架介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 框架介绍&quot;&gt;&lt;/a&gt;AVFoundation 框架介绍&lt;/h3&gt;&lt;h4 id=&quot;AVFoundation-功能介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-功能介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 功能介绍&quot;&gt;&lt;/a&gt;AVFoundation 功能介绍&lt;/h4&gt;&lt;h4 id=&quot;AVFoundation-接口介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-接口介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 接口介绍&quot;&gt;&lt;/a&gt;AVFoundation 接口介绍&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c3069ae787712d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetTrack.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ed13785f38e3a77c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableAudioMix.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1ee84500bda738b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableVideoComposition.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-9993bccb095d6642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetExportSession.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;AVFoundation-类继承关系&quot;&gt;&lt;a href=&quot;#AVFoundation-类继承关系&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 类继承关系&quot;&gt;&lt;/a&gt;AVFoundation 类继承关系&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/boilWater/boilWater.github.io/tree/master/Images/PPT&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公司分享 PPT 下载地址&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。&lt;/p&gt;
+&lt;p&gt;下面是本博文的写作思路：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS-开发过程中的错误处理</title>
@@ -1204,47 +1335,6 @@
     
     
       <category term="视频心得" scheme="http://yoursite.com/tags/%E8%A7%86%E9%A2%91%E5%BF%83%E5%BE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客搬家感觉</title>
-    <link href="http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/"/>
-    <id>http://yoursite.com/2016/05/28/博客开启/</id>
-    <published>2016-05-28T13:44:27.000Z</published>
-    <updated>2017-06-01T07:48:51.000Z</updated>
-    
-    <content type="html">&lt;p&gt; &lt;br&gt;&lt;br&gt; &lt;br&gt; &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;hr&gt;
-&lt;p&gt;昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;的。而且自己也将要离开生活四年头大开始新的征程，有的同学说自己上大学优劣，不过我是真心感&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;谢头大。在四年间自己做过很多事情，也收获很多。其实最大的收获是有一件事值得自己一直去等待&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;这也需是自己在大学最大的收获，也是在大学最开心大三下半学期╮(╯▽╰)╭。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-&lt;p style=&quot;text-align:right;&quot;&gt;&lt;br&gt;    – &lt;a href=&quot;https://github.com/boilWater/boilWater.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 后面会附上自己简历独自介绍😘&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
-
-
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; &lt;/br&gt;&lt;br&gt; &lt;/br&gt; &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="博客之初" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%88%9D/"/>
     
   </entry>
   
