@@ -191,9 +191,156 @@ var _hmt = _hmt || [];
         <p>本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。</p>
 <p>下面是本博文的写作思路：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-视频大纲总结.png"></p>
-        
-          <a class="article-more-a" href="/2017/06/09/iOS-视频大纲总结/#more">more >></a>
-        
+<h2 id="流媒体数据接收到播放"><a href="#流媒体数据接收到播放" class="headerlink" title="流媒体数据接收到播放"></a>流媒体数据接收到播放</h2><p>在网络传输过程中我们接收到相关媒体数据要经过一些列的处理来实现对媒体数据的播放，具体过程如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-aab07b57fde17c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 视频播放流程图.png"></p>
+<p>可以看出我们在获取流媒体协议需要经过一下处理方式：</p>
+<blockquote>
+<p>解协议 —&gt; 解封装  —&gt; 音视频的解码 （实现音视频同步 &amp; 播放）</p>
+</blockquote>
+<h3 id="流媒体数据解析"><a href="#流媒体数据解析" class="headerlink" title="流媒体数据解析"></a>流媒体数据解析</h3><p>在获取流媒体数据后，要对其进行协议的解析来获取封装的媒体数据进行播放。我们常见的协议：<code>HTTP</code>、<code>RTMP</code>和<code>MMS</code>媒体协议</p>
+<h4 id="协议简介"><a href="#协议简介" class="headerlink" title="协议简介"></a>协议简介</h4><ul><br><li>HTTP：超文本传输协议（HyperText Transfer Protocol）是一个客户端（用户）和服务端（网站）请求和应答的标准。<br><a href="https://zh.wikipedia.org/wiki/超文本传输协议" target="_blank" rel="external">参考地址：</a><br></li><br><br><li>RTMP：实时信息传输协议（Real Time Message Protocol）基于TCP实现持久链接和低延迟通信。流分解成片，客户端和服务端可设置大小（音：64，视频：128）。<br><a href="http://mingyangshang.github.io/2016/03/06/RTMP协议/" target="_blank" rel="external">参考地址1：</a><br><a href="https://translate.google.co.jp/translate?hl=zh-CN&amp;sl=en&amp;u=https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol&amp;prev=search" target="_blank" rel="external">参考地址2：</a></li><br><br><li>MMS：串流媒体传送协议（Microsoft Media Server）用来访问并流式接受 Windows Media 服务器中 .asf 文件协议。<br><a href="https://zh.wikipedia.org/wiki/MMS_(协议" target="_blank" rel="external">参考地址：</a>)</li><br><br><li>HLS：流媒体网络传输协议（HTTP Live Streaming）把数据源分解为基于 HTTP 的片段，每次下载一些。下载数据之前需要一个包含数据的 m3u8 playlist文件来查找可用的媒体流。<br><a href="https://zh.wikipedia.org/wiki/HTTP_Live_Streaming" target="_blank" rel="external">参考地址：</a><br></li><br><br><li>RTP：实时传输协议（Real-time Transport Protocol）被设置为多播协议，和 RTP 协议、RTP 控制协议一起使用。<br><a href="https://zh.wikipedia.org/wiki/实时传输协议" target="_blank" rel="external">参考地址：</a></li><br><br><li>RTCP：实时传输控制协议（Real-time Transport Protocol）搜集媒体链接统计信息，为 RTP 提供服务质量反馈。<br><a href="https://zh.wikipedia.org/wiki/实时传输控制协议" target="_blank" rel="external">参考地址：</a><br></li><br><br><li>RTSP：实时流协议，用于建立和控制终端之间的媒体会话，和 RTP 、RTCP 结合的，媒体流传输。<br><a href="https://translate.google.co.jp/translate?hl=zh-CN&amp;sl=en&amp;u=https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol&amp;prev=search" target="_blank" rel="external">参考地址：</a></li><br></ul>
+
+<h3 id="媒体封装格式"><a href="#媒体封装格式" class="headerlink" title="媒体封装格式"></a>媒体封装格式</h3><p>媒体封装就是把视频数据和音频数据进行按照一定的格式进行封装。我们常见的封装格式：<code>AVI</code>、<code>MP4</code>、<code>TS</code>、<code>FLV</code>、<code>MKV</code>和<code>RMVB</code>。</p>
+<h4 id="媒体封装格式简介"><a href="#媒体封装格式简介" class="headerlink" title="媒体封装格式简介"></a>媒体封装格式简介</h4><p>下面是对媒体封装格式的整理和简介：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0491caa322fa42c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="媒体封装格式整理.png"></p>
+<h3 id="音视频编码格式"><a href="#音视频编码格式" class="headerlink" title="音视频编码格式"></a>音视频编码格式</h3><p>在音视频录制完成后为方便传输需要对其进行编码压缩处理，我们常见的音视频编码格式：</p>
+<p>视频编码格式：<code>H.264</code>、<code>H.265(HEVC)</code>、<code>MPEG4</code>、<code>MPEG2</code>、<code>VP9</code>、<code>VP8</code>和<code>VC-1</code></p>
+<p>音频编码格式：<code>AAC</code>、<code>AC-3</code>、<code>MP3</code>和<code>WMP</code></p>
+<h4 id="视音频编码格式"><a href="#视音频编码格式" class="headerlink" title="视音频编码格式"></a>视音频编码格式</h4><p><img src="http://upload-images.jianshu.io/upload_images/1877765-1e3ce321225f5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="视音频编码格式.png"></p>
+<h4 id="编码格式地址"><a href="#编码格式地址" class="headerlink" title="编码格式地址"></a>编码格式地址</h4><p>下面是编码格式地址：</p>
+<p>H.264 :</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:center">链接        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址1</td>
+<td style="text-align:center"><a href="https://zh.wikipedia.org/wiki/H.264/MPEG-4_AVC" target="_blank" rel="external">https://zh.wikipedia.org/wiki/H.264/MPEG-4_AVC</a></td>
+</tr>
+<tr>
+<td>地址2</td>
+<td style="text-align:center"><a href="https://abson.github.io/2016/11/15/深入浅出理解视频编码H264结构/" target="_blank" rel="external">https://abson.github.io/2016/11/15/深入浅出理解视频编码H264结构/</a></td>
+</tr>
+</tbody>
+</table>
+<p>H.265 :</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:left">链接        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址1</td>
+<td style="text-align:left">www.4k123.com/thread-6369-1-1.html</td>
+</tr>
+</tbody>
+</table>
+<p>AAC：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:left">链接        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址1</td>
+<td style="text-align:left">www.4k123.com/thread-6369-1-1.html</td>
+</tr>
+</tbody>
+</table>
+<p>AC-3：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:left">链接        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址1</td>
+<td style="text-align:left">blog.csdn.net/leixiaohua1020/article/details/11822737</td>
+</tr>
+</tbody>
+</table>
+<p>MP3：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:left">链接        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址1</td>
+<td style="text-align:left"><a href="https://zh.wikipedia.org/zh-hans/MP3" target="_blank" rel="external">https://zh.wikipedia.org/zh-hans/MP3</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="解码简介"><a href="#解码简介" class="headerlink" title="解码简介"></a>解码简介</h3><p>在视频播放过程中我们需要对视频进行解码处理，常见的解码方式：硬解码和软解码。</p>
+<h4 id="解码方式简介"><a href="#解码方式简介" class="headerlink" title="解码方式简介"></a>解码方式简介</h4><p><img src="http://upload-images.jianshu.io/upload_images/1877765-b70e26b3769a95c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="软解码&amp;硬解码对比.png"></p>
+<h4 id="编码资料地址"><a href="#编码资料地址" class="headerlink" title="编码资料地址"></a>编码资料地址</h4><table>
+<thead>
+<tr>
+<th>框架名称</th>
+<th style="text-align:left">资料地址-1</th>
+<th>资料地址-2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVFoundation</td>
+<td style="text-align:left"><a href="http://yoferzhang.com/post/20160803AVFoundation01Introduction/" target="_blank" rel="external">http://yoferzhang.com/post/20160803AVFoundation01Introduction/</a></td>
+<td><a href="http://www.superqq.com/blog/2015/08/24/avfoundation-gpuimage-find/" target="_blank" rel="external">http://www.superqq.com/blog/2015/08/24/avfoundation-gpuimage-find/</a></td>
+</tr>
+<tr>
+<td>VideoToolBox</td>
+<td style="text-align:left"><a href="http://www.4k123.com/thread-6369-1-1.html" target="_blank" rel="external">http://www.4k123.com/thread-6369-1-1.html</a></td>
+</tr>
+<tr>
+<td>FFMpeg</td>
+<td style="text-align:left">blog.csdn.net/leixiaohua1020/article/category/1360795</td>
+<td>www.tuicool.com/articles/22A7na3</td>
+</tr>
+</tbody>
+</table>
+<p><code>CPU</code> &amp; <code>GPU</code> 的参考：</p>
+<table>
+<thead>
+<tr>
+<th>框架名称</th>
+<th style="text-align:left">资料地址-1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td style="text-align:left"><a href="https://zh.wikipedia.org/wiki/中央处理器" target="_blank" rel="external">https://zh.wikipedia.org/wiki/中央处理器</a></td>
+</tr>
+<tr>
+<td>GPU</td>
+<td style="text-align:left"><a href="https://zh.wikipedia.org/zh/圖形處理器" target="_blank" rel="external">https://zh.wikipedia.org/zh/圖形處理器</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="AVFoundation-框架介绍"><a href="#AVFoundation-框架介绍" class="headerlink" title="AVFoundation 框架介绍"></a>AVFoundation 框架介绍</h3><p>AVFoundation 可以用来播放和创建基于时间视听媒体的框架之一，提供基于时间的视听数据详细的 Objective-C上的接口。</p>
+<h4 id="AVFoundation-功能介绍"><a href="#AVFoundation-功能介绍" class="headerlink" title="AVFoundation 功能介绍"></a>AVFoundation 功能介绍</h4><p>使用 <code>AVFoundation</code> 可以实现视频的播放、编辑、静态媒体的捕捉、输出和时间媒体的表现等功能，如果仅仅是播放电影的话可以使用 <code>AVKit</code>框架。 </p>
+<h4 id="AVFoundation-接口介绍"><a href="#AVFoundation-接口介绍" class="headerlink" title="AVFoundation 接口介绍"></a>AVFoundation 接口介绍</h4><p><img src="http://upload-images.jianshu.io/upload_images/1877765-c3069ae787712d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-AVFoundation-AVMutableComposition-AVAssetTrack.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ed13785f38e3a77c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-AVFoundation-AVMutableComposition-AVMutableAudioMix.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1ee84500bda738b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-AVFoundation-AVMutableComposition-AVMutableVideoComposition.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-9993bccb095d6642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-AVFoundation-AVMutableComposition-AVAssetExportSession.png"></p>
+<h4 id="AVFoundation-类继承关系"><a href="#AVFoundation-类继承关系" class="headerlink" title="AVFoundation 类继承关系"></a>AVFoundation 类继承关系</h4><p><a href="https://github.com/boilWater/boilWater.github.io/tree/master/Images/PPT" target="_blank" rel="external">公司分享 PPT 下载地址</a></p>
+
       
 
       
