@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | JackJin&#39;s 博客</title>
+  <title>iOS-视频大纲总结 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 AVCaptureSession ，并最后给出 FYCameraKit 项目Demo。下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-视频大纲总结">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 AVCaptureSession ，并最后给出 FYCameraKit 项目Demo。下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4cbf9ba736afdb69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-10T16:08:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS-视频大纲总结">
+<meta name="twitter:description" content="iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 AVCaptureSession ，并最后给出 FYCameraKit 项目Demo。下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -166,36 +170,95 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-iOS-Camera Capture (iOS 镜头采集)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      iOS-视频大纲总结
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/" class="archive-article-date">
+
+        
+        <a href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/" class="archive-article-date">
   	<time datetime="2017-08-10T16:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/">iOS-视频大纲总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp; 录制很有趣的视频。本章将详细讲解 <code>AVCaptureSession</code> ，并最后给出 <code>FYCameraKit</code> 项目Demo。<br>下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Camera Capture (iOS 镜头采集).png"></p>
+<a id="more"></a>
+<h2 id="总体介绍"><a href="#总体介绍" class="headerlink" title="总体介绍"></a>总体介绍</h2><p>在整个镜头采集过程小编把整个过程比作我们常见发电过程：均是通过特定的步骤实现得到最后的产物。下面👇做详细解释：</p>
+<h3 id="AVCaptureSession-发电机"><a href="#AVCaptureSession-发电机" class="headerlink" title="AVCaptureSession (发电机)"></a>AVCaptureSession (发电机)</h3><p><code>AVCaptureSession</code> ：作为音视频捕捉会话，把镜头和麦克风捕捉到的音视频源输出到设备中。<br>提示：可以有多个输入和输出。</p>
+<h3 id="AVCaptureDevice-发电设备"><a href="#AVCaptureDevice-发电设备" class="headerlink" title="AVCaptureDevice (发电设备)"></a>AVCaptureDevice (发电设备)</h3><p><code>AVCaptureDevice</code>：输入设备，包括：摄像头和麦克风。可以通过设置一些参数来调节设备采集效果（例如：曝光，白平衡和聚焦等）。</p>
+<h3 id="AVCaptureInput-水风能源"><a href="#AVCaptureInput-水风能源" class="headerlink" title="AVCaptureInput (水风能源)"></a>AVCaptureInput (水风能源)</h3><p><code>AVCaptureInput</code>：输入数据管理对象，经过 AVCaptureDevice 实现初始化，然后添加到 AVCaptureSession (发电机) 中进行相应的输出。<br>子类：<code>AVCaptureDeviceInput</code>、<code>AVCaptureScreenInput</code>和<code>AVCaptureMetadataInput</code>。</p>
+<h3 id="AVCaptureOutput-电力"><a href="#AVCaptureOutput-电力" class="headerlink" title="AVCaptureOutput (电力)"></a>AVCaptureOutput (电力)</h3><p><code>AVCaptureOut</code>：数据输出管理，通过 AVCaptureSession 中输出。可以通过相关的协议实对应的数据输出。<br>子类：<code>AVCaptureFileOutput</code>、<code>AVCapturePhotoOutput</code>、<code>AVCaptureStillImageOutput</code>、<code>AVCaptureVideoDataOutput</code>、<code>AVCaptureAudioDataOutput</code>、<code>AVCaptureAudioPreviewOutput</code>、<code>AVCaptureDepthDataOutput</code>和<code>AVCaptureMetadataOutput</code>。</p>
+<h3 id="AVCaptureVideoPreviewLayer-发电预览"><a href="#AVCaptureVideoPreviewLayer-发电预览" class="headerlink" title="AVCaptureVideoPreviewLayer (发电预览)"></a>AVCaptureVideoPreviewLayer (发电预览)</h3><p><code>AVCaptureVideoPreviewLayer</code>：可以支持在拍摄过程中进行相关的预览，只需要在初始时实现对应的 AVCaptureSession 即可。</p>
+<h2 id="视频录制"><a href="#视频录制" class="headerlink" title="视频录制"></a>视频录制</h2><p>下面展示在苹果官方开发文档给出的图：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-4cbf9ba736afdb69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Video Capture(iOS 视频录制).png"></p>
+<h3 id="视频录制总概"><a href="#视频录制总概" class="headerlink" title="视频录制总概"></a>视频录制总概</h3><ul>
+<li>创建 <code>AVCaptureSession</code> 对象</li>
+<li>使用 <code>AVCaptureDevice</code> 静态方法获取设备常使用设备，例如：拍照和录像需要的摄像头，录音所需的麦克风</li>
+<li>利用输入设备 <code>AVCaptureDevice</code> 初始化 <code>AVCaptureDeviceInput</code> 对象</li>
+<li>初始化输出数据管理对象，拍照进行初始化 <code>AVCaptureStillImageOutput</code> 对象，拍照初始化 <code>AVCaptureMovieFileOutput</code> 对象</li>
+<li>将数据输入对象 <code>AVCaptureDeviceInput</code>  和数据输出对象   <code>AVCaptureDeviceOutput</code>  添加到媒体会话管理对象   <code>AVCaptureSession</code> 中</li>
+<li>创建预览的图层   <code>AVCaptureVideoPreviewLayer</code>   指定媒体会话，添加图层到容器，调用  <code>AVCaptureSession</code>  中的 <code>StartRunning</code>  方法开始捕捉</li>
+<li>将捕捉到内容保存到指定文件中</li>
+</ul>
+<h2 id="详解镜头采集类"><a href="#详解镜头采集类" class="headerlink" title="详解镜头采集类"></a>详解镜头采集类</h2><h3 id="AVCaptureSession"><a href="#AVCaptureSession" class="headerlink" title="AVCaptureSession"></a>AVCaptureSession</h3><p>小编查看 <code>AVCaptureSession.h</code>文件看到，在镜头采集的过程中有两种实现方式。</p>
+<blockquote>
+<ul>
+<li>使用系统 <code>AVCaptureSession</code>自动配置输入和输出</li>
+<li>手动配置输入和输出之间的对应关系</li>
+</ul>
+</blockquote>
+<p>（1） AVCaptureSession 初始化</p>
+<ul>
+<li>使用<code>AVCaptureSession</code> 自动配置输入和输出之间对应关系</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AVCaptureSession</span> *captureSession = [[<span class="built_in">AVCaptureSession</span> alloc] init];</span><br><span class="line"><span class="built_in">AVCaptureDevice</span> *audioCaptureDevice = [<span class="built_in">AVCaptureDevice</span> defaultDeviceWithMediaType:<span class="built_in">AVMediaTypeAudio</span>];</span><br><span class="line"><span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line"><span class="built_in">AVCaptureDeviceInput</span> *audioInput = [<span class="built_in">AVCaptureDeviceInput</span> deviceInputWithDevice:audioCaptureDevice error:&amp;error];</span><br><span class="line">[captureSession beginConfiguration];</span><br><span class="line"><span class="keyword">if</span> (audioInput) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//// Handle the failure.</span></span><br><span class="line">    [captureSession commitConfiguration];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ([captureSession canAddInput:audioInput]) &#123;</span><br><span class="line">    [captureSession addInput:audioInput];</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Handle the failure.</span></span><br><span class="line">    [captureSession commitConfiguration];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码是 <code>AVCaptureSession</code> 进行初始化并且实现初始化麦克风进行相关音频录制，并添加到 <code>AVCaptureSession</code>中。<br><code>beginConfiguration</code> &amp; <code>commitConfiguration</code> 在进行配置 <code>AVCaptureSession</code> 的相关属性值时需要对这两个函数调用，并且这两个函数是成对出现。</p>
+<ul>
+<li>手动配置 <code>AVCaptureSession</code> 输入和输出之间对应关系</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AVCaptureSession</span> *session = [[<span class="built_in">AVCaptureSession</span> alloc] init];</span><br><span class="line">    </span><br><span class="line">    [session beginConfiguration];</span><br><span class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">AVCaptureDevice</span> *videoDevice = [<span class="built_in">AVCaptureDevice</span> defaultDeviceWithMediaType:<span class="built_in">AVMediaTypeVideo</span>];</span><br><span class="line">    <span class="built_in">AVCaptureDeviceInput</span> *videoInput = [<span class="built_in">AVCaptureDeviceInput</span> deviceInputWithDevice:videoDevice error:&amp;error];</span><br><span class="line">    <span class="keyword">if</span> (!videoInput) &#123;</span><br><span class="line">        <span class="comment">//handle configuration video device</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">AVCaptureInputPort</span> *videoPort = videoInput.ports[<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">AVCaptureDevice</span> *audioDevice = [<span class="built_in">AVCaptureDevice</span> defaultDeviceWithMediaType:<span class="built_in">AVMediaTypeAudio</span>];</span><br><span class="line">    <span class="built_in">AVCaptureDeviceInput</span> *audioInput = [<span class="built_in">AVCaptureDeviceInput</span> deviceInputWithDevice:audioDevice error:&amp;error];</span><br><span class="line">    <span class="keyword">if</span> (!videoInput) &#123;</span><br><span class="line">        <span class="comment">//handle configuration audio device</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">AVCaptureInputPort</span> *audioPort = audioInput.ports[<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span>&lt;<span class="built_in">AVCaptureInputPort</span> *&gt; *inputPorts = @[videoPort, audioPort];</span><br><span class="line">    <span class="built_in">AVCaptureVideoDataOutput</span> *videoDataOutput = [[<span class="built_in">AVCaptureVideoDataOutput</span> alloc] init];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">AVCaptureConnection</span> *connection = [<span class="built_in">AVCaptureConnection</span> connectionWithInputPorts:inputPorts output:videoDataOutput];</span><br><span class="line">    <span class="keyword">if</span> ([session canAddConnection:connection]) &#123;</span><br><span class="line">        [session addConnection:connection];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//handle session can not add AVCaptureConnection</span></span><br><span class="line">        </span><br><span class="line">        [session commitConfiguration];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    [session commitConfiguration];</span><br></pre></td></tr></table></figure>
+<p>上面👆代码是使用 <code>AVCaptureConnection</code>实现在 <code>AVCaptureSession</code> 使输入和输出进行自己配置。<br>详细的细节会在 <code>FYCameraKit</code> 进行详细的讲解。 </p>
+<blockquote>
+<p>注释：<br>1）只有在调用 <code>beginConfiguration</code> 时我们对 <code>AVCaptureSession</code> 配置才会被真正开始修改。</p>
+</blockquote>
+<p>（2） AVCaptureSession 中断</p>
+<p>在音视频录制过程中可能对因为电话导致中断，开发过程中提供中断结束后获取中断产生的原因。</p>
+<ul>
+<li>注册中断监听 &amp; 删除监听</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监听注册</span></span><br><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(handleCaptureSession:) name:<span class="built_in">AVCaptureSessionInterruptionEndedNotification</span> object:_session];</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听清除   </span></span><br><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span> name:<span class="built_in">AVCaptureSessionInterruptionEndedNotification</span> object:_session];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从传递的 <code>userInfo</code> 通过关键 <code>key</code> 获取原因：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AVCaptureSessionInterruptionReasonKey</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取具体的中断原因：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_ENUM</span>(<span class="built_in">NSInteger</span>, <span class="built_in">AVCaptureSessionInterruptionReason</span>) &#123;</span><br><span class="line">    <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceNotAvailableInBackground</span>               = <span class="number">1</span>,<span class="comment">//从后台运行开启 camera，不够 iOS 9.0 之后不提供中断 </span></span><br><span class="line">    <span class="built_in">AVCaptureSessionInterruptionReasonAudioDeviceInUseByAnotherClient</span>                   = <span class="number">2</span>,<span class="comment">//音频软软件被占用</span></span><br><span class="line">    <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceInUseByAnotherClient</span>                   = <span class="number">3</span>,<span class="comment">//视频软件被占用</span></span><br><span class="line">    <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceNotAvailableWithMultipleForegroundApps</span> = <span class="number">4</span>,<span class="comment">//全屏或者是录制屏幕变化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>监听事件的处理</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)handleCaptureSession:(<span class="built_in">NSNotification</span> *)notification &#123;</span><br><span class="line">    <span class="built_in">AVCaptureSessionInterruptionReason</span> reason = [[notification.userInfo objectForKey:<span class="built_in">AVCaptureSessionInterruptionReasonKey</span>] unsignedIntegerValue];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (reason) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceNotAvailableInBackground</span>:</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment">//handle device not available background</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">AVCaptureSessionInterruptionReasonAudioDeviceInUseByAnotherClient</span>:</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment">//handle that audio was occupied  </span></span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceInUseByAnotherClient</span>:</span><br><span class="line">        &#123;  </span><br><span class="line">           <span class="comment">//handle that video was occupied  </span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">AVCaptureSessionInterruptionReasonVideoDeviceNotAvailableWithMultipleForegroundApps</span>:</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment">//handle that UI was multiple</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现拍照和视频录制的 <code>FYCameraKit</code> 的下载地址： <a href="https://github.com/boilWater/FYCameraKit" target="_blank" rel="external">FYCameraKit</a> </p>
+<p>参考资料：<br><a href="https://developer.apple.com/documentation/avfoundation/avcapturesession?changes=latest_minor&amp;language=objc" target="_blank" rel="external">AVCaptureSession</a><br><a href="https://developer.apple.com/documentation/avfoundation/avcapturedevice" target="_blank" rel="external">AVCaptureDevice</a><br><a href="https://developer.apple.com/documentation/avfoundation/avcaptureconnection?changes=latest_minor" target="_blank" rel="external">AVCaptureConnection</a></p>
+<p>第一次发布：2017/8/10 20:49:21 星期四<br>第二次发布：2017/8/10 23:36:34 星期四</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -207,7 +270,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -220,267 +283,117 @@ var _hmt = _hmt || [];
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/09/iOS-视频大纲总结/" class="archive-article-date">
-  	<time datetime="2017-06-08T16:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/09/iOS-视频大纲总结/">iOS-视频大纲总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/31/NSError(错误信息)/" class="archive-article-date">
-  	<time datetime="2017-05-31T06:35:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/31/NSError(错误信息)/">iOS-开发过程中的错误处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/15/iOS-Responder Chain/" class="archive-article-date">
-  	<time datetime="2017-05-14T16:12:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/15/iOS-Responder Chain/">iOS-Responder Chain (响应链)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/16/16总结-17展望/" class="archive-article-date">
-  	<time datetime="2017-01-16T15:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/16/16总结-17展望/">2016年末~2017年初</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/13/APP控件在屏幕上显示/" class="archive-article-date">
-  	<time datetime="2017-01-13T13:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/13/APP控件在屏幕上显示/">APP控件在屏幕上显示</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/06/09/iOS-视频大纲总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS-视频大纲总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
+  
+
+
+
+<!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总体介绍"><span class="toc-number">1.</span> <span class="toc-text">总体介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureSession-发电机"><span class="toc-number">1.1.</span> <span class="toc-text">AVCaptureSession (发电机)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureDevice-发电设备"><span class="toc-number">1.2.</span> <span class="toc-text">AVCaptureDevice (发电设备)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureInput-水风能源"><span class="toc-number">1.3.</span> <span class="toc-text">AVCaptureInput (水风能源)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureOutput-电力"><span class="toc-number">1.4.</span> <span class="toc-text">AVCaptureOutput (电力)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureVideoPreviewLayer-发电预览"><span class="toc-number">1.5.</span> <span class="toc-text">AVCaptureVideoPreviewLayer (发电预览)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频录制"><span class="toc-number">2.</span> <span class="toc-text">视频录制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视频录制总概"><span class="toc-number">2.1.</span> <span class="toc-text">视频录制总概</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#详解镜头采集类"><span class="toc-number">3.</span> <span class="toc-text">详解镜头采集类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AVCaptureSession"><span class="toc-number">3.1.</span> <span class="toc-text">AVCaptureSession</span></a></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
+
+<!-- 目录内容结束 -->
 
           </div>
         </div>
@@ -502,8 +415,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
