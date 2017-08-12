@@ -30,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/05/29/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
@@ -51,7 +44,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/06/16/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/</loc>
+    <loc>http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
     
@@ -72,28 +65,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/29/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/29/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/</loc>
+    <loc>http://yoursite.com/2016/06/16/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
     
@@ -107,7 +79,35 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/15/iOS-Responder%20Chain/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
     
