@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JackJin&#39;s 博客</title>
+  <title>iOS Deep Copy &amp; Shallow Copy(深层和浅层复制) | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+  <meta name="description" content="iOS Deep Copy &amp;amp; Shallow Copy(深层和浅层复制)总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
+下面展示浅层 Copy 和 深层 Copy 展示：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS Deep Copy & Shallow Copy(深层和浅层复制)">
+<meta property="og:url" content="http://yoursite.com/2017/01/20/iOS 复制理解/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="iOS Deep Copy &amp;amp; Shallow Copy(深层和浅层复制)总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
+下面展示浅层 Copy 和 深层 Copy 展示：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-23T08:10:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS Deep Copy & Shallow Copy(深层和浅层复制)">
+<meta name="twitter:description" content="iOS Deep Copy &amp;amp; Shallow Copy(深层和浅层复制)总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
+下面展示浅层 Copy 和 深层 Copy 展示：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -162,33 +168,79 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-block，注册监听，委托协议和KVO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-iOS 复制理解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/29/block，注册监听，委托协议和KVO/">block，注册监听，委托协议和KVO</a>
+    <h1 class="article-title" itemprop="name">
+      iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)
     </h1>
   
 
         
-        <a href="/2016/05/29/block，注册监听，委托协议和KVO/" class="archive-article-date">
-  	<time datetime="2016-05-29T04:12:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-29</time>
+        <a href="/2017/01/20/iOS 复制理解/" class="archive-article-date">
+  	<time datetime="2017-01-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>IOS中关于信息传递过程中经常会使用block，委托代理，NSNotification，KVO进行调用，但是查找资料后有些资料不是很全。</p>
-<h3 id="四者总体比较然后进行一一详解进行讲解："><a href="#四者总体比较然后进行一一详解进行讲解：" class="headerlink" title="四者总体比较然后进行一一详解进行讲解："></a>四者总体比较然后进行一一详解进行讲解：</h3><p>block：一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用delegate。<br>委托代理：和block一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。<br>NSNotification：在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。<br>KVO：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。</p>
-        
-          <a class="article-more-a" href="/2016/05/29/block，注册监听，委托协议和KVO/#more">more >></a>
-        
+        <h1 id="iOS-Deep-Copy-amp-Shallow-Copy-深层和浅层复制"><a href="#iOS-Deep-Copy-amp-Shallow-Copy-深层和浅层复制" class="headerlink" title="iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)"></a>iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)</h1><p>总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。</p>
+<p>下面展示浅层 Copy 和 深层 Copy 展示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 深层复制和浅层复制.png"></p>
+<a id="more"></a>
+<blockquote>
+<p>简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp; 内存地址发生改变。</p>
+</blockquote>
+<p>更具复制的对象不同可以分为两种情况：</p>
+<ul>
+<li>集合类对象复制</li>
+<li>非集合类对象</li>
+</ul>
+<h2 id="集合类复制"><a href="#集合类复制" class="headerlink" title="集合类复制"></a>集合类复制</h2><h3 id="集合类的浅复制-Shallow-Copy"><a href="#集合类的浅复制-Shallow-Copy" class="headerlink" title="集合类的浅复制(Shallow Copy)"></a>集合类的浅复制(Shallow Copy)</h3><p>集合类在浅层复制即时 retain 计数进行 + 1，而且指向内存对象复制添加到新的集合之中。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *person = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"name"</span>, <span class="string">@"age"</span>, <span class="string">@"school"</span>, <span class="string">@"company"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *personShallowCopy = [person copyWithZone:<span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"person : %p, personCopy : %p"</span>, person, personShallowCopy);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//打印的结果：</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[31046:7675704] person : 0x604000443d20, personCopy : 0x604000443d20</span></span><br></pre></td></tr></table></figure>
+<h3 id="集合类的深复制-Deep-Copy"><a href="#集合类的深复制-Deep-Copy" class="headerlink" title="集合类的深复制(Deep Copy)"></a>集合类的深复制(Deep Copy)</h3><p>集合类深层复制有两种方法可以实现：</p>
+<p>1）使用 iOS 提供的 API 的接口</p>
+<p>2）使用归档(archive)和解档(unarchive)形式进行</p>
+<p>3) 使用系统的 <code>Copy</code> 和 <code>MutableCopy</code></p>
+<h4 id="iOS-给定-API"><a href="#iOS-给定-API" class="headerlink" title="iOS 给定 API"></a>iOS 给定 API</h4><p>集合类的深层复制，只需要把 <code>initWithArray:copyItems:</code> 的函数值设置为 <code>YES</code> 就可以实现当前集合类实现深层复制。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *person = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"name"</span>, <span class="string">@"age"</span>, <span class="string">@"school"</span>, <span class="string">@"company"</span>, <span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSArray</span> *personDeepCopy = [[<span class="built_in">NSArray</span> alloc] initWithArray:person copyItems:<span class="literal">YES</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"person : %p, personCopy : %p"</span>, person, personDeepCopy);</span><br><span class="line"><span class="comment">//打印的结果：</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[31046:7675704] person : 0x604000443d20, personCopy : 0x604000444080</span></span><br></pre></td></tr></table></figure>
+<h4 id="归档-archive-和解档-unarchive"><a href="#归档-archive-和解档-unarchive" class="headerlink" title="归档(archive)和解档(unarchive)"></a>归档(archive)和解档(unarchive)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *person = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"name"</span>, <span class="string">@"age"</span>, <span class="string">@"school"</span>, <span class="string">@"company"</span>, <span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSArray</span> *persionArchiveCopy = [<span class="built_in">NSKeyedUnarchiver</span> unarchiveObjectWithData:[<span class="built_in">NSKeyedArchiver</span> archivedDataWithRootObject:person]];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"person : %p, personCopy : %p"</span>, person, persionArchiveCopy);</span><br><span class="line"><span class="comment">//打印的结果：</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[31900:7726351] person : 0x6000004529f0, personCopy : 0x604000255a50</span></span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<blockquote>
+<p>（1）在集合类的深层复制过程中，需要满足一个前提条件：当前集合类需要实现 <code>NSCoping</code> 或者 <code>NSMutableCopying</code> 协议。否则会抛出异常。<br>（2）在使用 iOS 提供的 API 中完成的 <code>Copy</code> 是 <code>one-level-deep copy</code>，使用 <code>归档(archive)和解档(unarchive)</code> 完成是真正的深层 <code>Copy</code>。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html#//apple_ref/doc/uid/TP40010162-SW3" target="_blank" rel="external">苹果开发文档</a></p>
+</blockquote>
+<h4 id="使用系统的-Copy-和-MutableCopy"><a href="#使用系统的-Copy-和-MutableCopy" class="headerlink" title="使用系统的 Copy 和 MutableCopy"></a>使用系统的 <code>Copy</code> 和 <code>MutableCopy</code></h4><ul>
+<li>不可变对象的复制</li>
+<li>可变对象的复制</li>
+</ul>
+<p>1)不可变对象的复制</p>
+<p>下面👇代码实现不可变对象：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *personCopy = [person <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableArray</span> *personMutableCopy = [person mutableCopy];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"person:%p, personCopy:%p, personMutableCopy:%p"</span>, person, personCopy, personMutableCopy);</span><br><span class="line"><span class="comment">//打印的结果:</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[33871:7842173] person:0x60000025a760, personCopy:0x60000025a760, personMutableCopy:0x60000025ab80</span></span><br></pre></td></tr></table></figure>
+<p>2)可变对象复制</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableArray</span> *family = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"father"</span>, <span class="string">@"mother"</span>, <span class="string">@"sister"</span>, <span class="string">@"brother"</span>, <span class="string">@"son"</span>, <span class="string">@"daughter"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *familyCopy = [family <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableArray</span> *familyMutableCopy = [family mutableCopy];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"family:%p, familyCopy:%p, familyMutableCopy:%p"</span>, family, familyCopy, familyMutableCopy);</span><br><span class="line"><span class="comment">//打印的结果:</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[33871:7842173] family:0x60000025a9d0, familyCopy:0x60000025aca0, familyMutableCopy:0x60000025abe0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>根据上面：<br>(1)不可变 copy 浅复制<br>(2)可变 copy 单层深复制<br>(3)不可变 mutableCopy 单层深复制<br>(4)可变 mutableCopy 单层深复制 </p>
+</blockquote>
+<h2 id="非集合类复制"><a href="#非集合类复制" class="headerlink" title="非集合类复制"></a>非集合类复制</h2><p>在非集合类实现复制通常使用系统提供的方法：</p>
+<ul>
+<li>不可变对象的复制</li>
+<li>可变对象的复制</li>
+</ul>
+<h3 id="不可变对象复制"><a href="#不可变对象复制" class="headerlink" title="不可变对象复制"></a>不可变对象复制</h3><p>下面👇代码实现不可变对象：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *nameCopy = [name <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableString</span> *nameMutableCopy = [name mutableCopy];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"name:%p, nameCopy:%p, nameMutableCopy:%p"</span>, name, nameCopy, nameMutableCopy);</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印的结果:</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[32820:7780776] name:0x107356108, nameCopy:0x107356108, nameMutableCopy:0x604000247620</span></span><br></pre></td></tr></table></figure>
+<h3 id="可变对象复制"><a href="#可变对象复制" class="headerlink" title="可变对象复制"></a>可变对象复制</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableString</span> *mutableName = [<span class="built_in">NSMutableString</span> stringWithString:<span class="string">@"Jack Jin"</span>];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSString</span> *mutableNameCopy = [mutableName <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableString</span> *mutableNameMutableCopy = [mutableName mutableCopy];</span><br><span class="line">    </span><br><span class="line">[mutableNameCopy stringByAppendingString:<span class="string">@"Bai"</span>];</span><br><span class="line">[mutableNameMutableCopy appendString:<span class="string">@"Bai"</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"mutableName:%p, mutableNameCopy:%p, mutableNameMutableCopy:%p"</span>, mutableName, mutableNameCopy, mutableNameMutableCopy);</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印的结果：</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[33102:7797073] mutableName:0x600000445dc0, mutableNameCopy:0xa00ec83923fb04b8, mutableNameMutableCopy:0x600000445fa0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>根据上面：<br>(1)不可变 copy 浅复制<br>(2)可变 copy 深复制<br>(3)不可变 mutableCopy 深复制<br>(4)可变 mutableCopy 深复制</p>
+</blockquote>
+<hr>
+<p>参考资料：</p>
+<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html#//apple_ref/doc/uid/TP40010162-SW3" target="_blank" rel="external">Copying Collections</a><br><a href="http://www.jianshu.com/p/f84803356cbb" target="_blank" rel="external">NSCopying和NSMutableCopying协议</a><br><a href="https://en.wikipedia.org/wiki/Object_copying" target="_blank" rel="external">Object copying</a><br><a href="https://stackoverflow.com/questions/184710/what-is-the-difference-between-a-deep-copy-and-a-shallow-copy" target="_blank" rel="external">What is the difference between a deep copy and a shallow copy?
+</a></p>
+
       
 
       
@@ -201,7 +253,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
@@ -213,7 +265,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
@@ -221,16 +273,84 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/29/block，注册监听，委托协议和KVO/">产看详细 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/20/iOS 复制理解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/01/20/iOS Categroy  & Extension(类目和类拓展)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS Catergory &amp; Extension(类目和类拓展)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/13/APP控件在屏幕上显示/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">APP控件在屏幕上显示</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -239,254 +359,31 @@ var _hmt = _hmt || [];
 
 <!-- 目录内容 -->
 
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-从叮叮CTO采访演讲随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/29/从叮叮CTO采访演讲随笔/">从叮叮CTO采访演讲随笔</a>
-    </h1>
-  
-
-        
-        <a href="/2016/05/29/从叮叮CTO采访演讲随笔/" class="archive-article-date">
-  	<time datetime="2016-05-29T04:09:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在看One’s Cat大神的博客时讲到如何创建我们个人的开源框架，就涉及到fastlane就找来看下，无意中看到叮叮的CTO朱鸿大神（又一尊大神）讲述自己的产品。短短22：05的视频让自己感触很大，写这篇文章也就是无聊说下自己所学知识吧。</p>
-<h3 id="总的来说以技术来简化我们生活，目前比想象中要难。"><a href="#总的来说以技术来简化我们生活，目前比想象中要难。" class="headerlink" title="总的来说以技术来简化我们生活，目前比想象中要难。"></a>总的来说以技术来简化我们生活，目前比想象中要难。</h3><h3 id="人员配置方面"><a href="#人员配置方面" class="headerlink" title="人员配置方面"></a>人员配置方面</h3>
-        
-          <a class="article-more-a" href="/2016/05/29/从叮叮CTO采访演讲随笔/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">视频心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/29/从叮叮CTO采访演讲随笔/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-Deep-Copy-amp-Shallow-Copy-深层和浅层复制"><span class="toc-number">1.</span> <span class="toc-text">iOS Deep Copy & Shallow Copy(深层和浅层复制)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类复制"><span class="toc-number">1.1.</span> <span class="toc-text">集合类复制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#集合类的浅复制-Shallow-Copy"><span class="toc-number">1.1.1.</span> <span class="toc-text">集合类的浅复制(Shallow Copy)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合类的深复制-Deep-Copy"><span class="toc-number">1.1.2.</span> <span class="toc-text">集合类的深复制(Deep Copy)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-给定-API"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">iOS 给定 API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#归档-archive-和解档-unarchive"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">归档(archive)和解档(unarchive)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用系统的-Copy-和-MutableCopy"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">使用系统的 Copy 和 MutableCopy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非集合类复制"><span class="toc-number">1.2.</span> <span class="toc-text">非集合类复制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变对象复制"><span class="toc-number">1.2.1.</span> <span class="toc-text">不可变对象复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变对象复制"><span class="toc-number">1.2.2.</span> <span class="toc-text">可变对象复制</span></a></li></ol></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
-
-  
-    <article id="post-博客开启" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/博客开启/">博客搬家感觉</a>
-    </h1>
-  
-
-        
-        <a href="/2016/05/28/博客开启/" class="archive-article-date">
-  	<time datetime="2016-05-28T13:44:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> </br><br> </br> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学</span><br><span class="line"></span><br><span class="line">习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 </span><br></pre></td></tr></table></figure>
-<p></br><br></br></p>
-        
-          <a class="article-more-a" href="/2016/05/28/博客开启/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客之初</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/28/博客开启/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-16总结-17展望" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/28/16总结-17展望/">2016年末~2017年初</a>
-    </h1>
-  
-
-        
-        <a href="/2015/04/28/16总结-17展望/" class="archive-article-date">
-  	<time datetime="2015-04-28T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2016总结"><a href="#2016总结" class="headerlink" title="2016总结"></a>2016总结</h2><p>踩着16年的小尾巴写下这边文章，离回家还有8天时间👊</p>
-<p>今年也是自己第一次这么久离开家，大概有近 1 年时间</p>
-<p>早上老妹发来语音说，放假回家的（本来说好要QQ和老妹聊天，加班到9：30就忘记啦😛）</p>
-<p>16年7月1号离开汕头（头大）截止到今天差不多半年时间</p>
-<p>一年来从学生成长为社会工作的 90 后，公司不像学校可以自由的犯错</p>
-<p>在这里呆的久啦，感觉学校里原来很难做到的事情越来只要咬牙坚持就可以完成</p>
-        
-          <a class="article-more-a" href="/2015/04/28/16总结-17展望/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/04/28/16总结-17展望/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -507,8 +404,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
