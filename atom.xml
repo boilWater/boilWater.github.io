@@ -920,10 +920,10 @@
   
   <entry>
     <title>UIView &amp; CALayer&amp; Core Animation ~ （UIView 和 CALayer）（1）</title>
-    <link href="http://yoursite.com/2016/06/26/UIView&CALayer&Core%20Animation~1/"/>
-    <id>http://yoursite.com/2016/06/26/UIView&CALayer&Core Animation~1/</id>
-    <published>2016-06-26T09:42:32.000Z</published>
-    <updated>2017-08-25T18:25:05.000Z</updated>
+    <link href="http://yoursite.com/2016/07/16/UIView&CALayer&Core%20Animation~1/"/>
+    <id>http://yoursite.com/2016/07/16/UIView&CALayer&Core Animation~1/</id>
+    <published>2016-07-16T09:42:32.000Z</published>
+    <updated>2017-08-25T18:41:36.000Z</updated>
     
     <content type="html">&lt;p&gt;目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。&lt;/p&gt;
 &lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。&lt;br&gt;下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
@@ -968,10 +968,10 @@
   
   <entry>
     <title>UIView&amp;CALayer&amp;Core Animation~开篇</title>
-    <link href="http://yoursite.com/2016/06/21/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/"/>
-    <id>http://yoursite.com/2016/06/21/UIView&CALayer&Core Animation-总体/</id>
-    <published>2016-06-21T09:42:32.000Z</published>
-    <updated>2017-08-25T18:21:49.000Z</updated>
+    <link href="http://yoursite.com/2016/07/11/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/"/>
+    <id>http://yoursite.com/2016/07/11/UIView&CALayer&Core Animation-总体/</id>
+    <published>2016-07-11T09:42:32.000Z</published>
+    <updated>2017-08-25T18:41:10.000Z</updated>
     
     <content type="html">&lt;p&gt;一直想做个dome来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于UIView&amp;amp;CALayer&amp;amp;Core Animation 进行分装做出一个dome。&lt;/p&gt;
 &lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
@@ -996,10 +996,10 @@
   
   <entry>
     <title>iOS面试 &amp; 自己理解 &amp; 详细资料库</title>
-    <link href="http://yoursite.com/2016/06/16/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
-    <id>http://yoursite.com/2016/06/16/IOS面试梳理&自己理解&详细资料库/</id>
-    <published>2016-06-16T09:42:32.000Z</published>
-    <updated>2017-08-25T18:21:41.000Z</updated>
+    <link href="http://yoursite.com/2016/07/05/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
+    <id>http://yoursite.com/2016/07/05/IOS面试梳理&自己理解&详细资料库/</id>
+    <published>2016-07-05T09:42:32.000Z</published>
+    <updated>2017-08-25T18:40:40.000Z</updated>
     
     <content type="html">&lt;p&gt;开启关于&lt;code&gt;iOS&lt;/code&gt;面试之路总结，说实话目前&lt;code&gt;iOS&lt;/code&gt;开发真是太多很多情况下大家情况良莠不齐很难分辨。目前还是在广州，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
 &lt;h2 id=&quot;OC理解和特性&quot;&gt;&lt;a href=&quot;#OC理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC理解和特性&quot;&gt;&lt;/a&gt;OC理解和特性&lt;/h2&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。&lt;code&gt;Objc&lt;/code&gt;就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
@@ -1077,10 +1077,10 @@
   
   <entry>
     <title>iOS 10.0</title>
-    <link href="http://yoursite.com/2016/06/15/IOS%2010/"/>
-    <id>http://yoursite.com/2016/06/15/IOS 10/</id>
-    <published>2016-06-15T09:42:32.000Z</published>
-    <updated>2017-08-25T18:19:38.000Z</updated>
+    <link href="http://yoursite.com/2016/07/01/IOS%2010/"/>
+    <id>http://yoursite.com/2016/07/01/IOS 10/</id>
+    <published>2016-07-01T09:42:32.000Z</published>
+    <updated>2017-08-25T18:39:55.000Z</updated>
     
     <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码IOS 10.0新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨IOS 举行 WWDC全球发布者大会，watch OS、tv OS、OS X以及iOS 10系统的新特性。&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;展示会第一个是APPLE的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在siri操作程序和Apple Pay的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
@@ -1135,10 +1135,10 @@
   
   <entry>
     <title>runtime 基本应用</title>
-    <link href="http://yoursite.com/2016/06/12/runtime%E7%90%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/06/12/runtime理解/</id>
-    <published>2016-06-12T09:42:32.000Z</published>
-    <updated>2017-08-25T18:10:14.000Z</updated>
+    <link href="http://yoursite.com/2016/06/23/runtime%E7%90%86%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/06/23/runtime理解/</id>
+    <published>2016-06-23T09:42:32.000Z</published>
+    <updated>2017-08-25T18:38:29.000Z</updated>
     
     <content type="html">&lt;p&gt;网上其实有很多关于讲述&lt;code&gt;runtime&lt;/code&gt;的学习资料，也是站在巨人肩上看的更远。写这篇文章也是对于其他人借鉴和翻阅源码，向源码寻求解释吧。&lt;/p&gt;
 &lt;p&gt;无意间看到一份关于&lt;code&gt;runtime&lt;/code&gt;的博客，感觉写的挺不错的就耐心的看下。看后发现自己对&lt;code&gt;runtime&lt;/code&gt;的理解还是比较浅，就决定对自己博客进行重新修改。&lt;/p&gt;
@@ -1263,10 +1263,10 @@
   
   <entry>
     <title>Fastlane 使用说明</title>
-    <link href="http://yoursite.com/2016/06/05/Fastlane%E8%AE%B2%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/06/05/Fastlane讲解/</id>
-    <published>2016-06-05T09:42:32.000Z</published>
-    <updated>2017-08-25T17:46:06.000Z</updated>
+    <link href="http://yoursite.com/2016/06/18/Fastlane%E8%AE%B2%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/06/18/Fastlane讲解/</id>
+    <published>2016-06-18T09:42:32.000Z</published>
+    <updated>2017-08-25T18:37:45.000Z</updated>
     
     <content type="html">&lt;p&gt;大概在一个月左右写过关于&lt;code&gt;cocoaPods&lt;/code&gt;安装和使用方法，如果说&lt;code&gt;cocoaPods&lt;/code&gt;是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
 &lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
@@ -1321,10 +1321,10 @@
   
   <entry>
     <title>SDWebImage之图片缓存处理</title>
-    <link href="http://yoursite.com/2016/06/04/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/"/>
-    <id>http://yoursite.com/2016/06/04/SDWebImage之图片缓存分析/</id>
-    <published>2016-06-04T08:55:11.000Z</published>
-    <updated>2017-06-01T07:48:51.000Z</updated>
+    <link href="http://yoursite.com/2016/06/13/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2016/06/13/SDWebImage之图片缓存分析/</id>
+    <published>2016-06-13T09:42:32.000Z</published>
+    <updated>2017-08-25T18:37:05.000Z</updated>
     
     <content type="html">&lt;p&gt;这篇文章我将接着节讲述关于SDWebImage图片下载后处理方式，缓存进行讲解。&lt;br&gt;&lt;br&gt;&lt;br&gt;经过上面我们可以知道SDWebImage是可以从远程的服务器加载图片，然后在UIImageView上进行显示。但是你有想过SDWebImage到底是什么呢？&lt;/p&gt;
 &lt;p&gt;在使用时我们知道需要导入包：UIImageView+WebCache.h我们可以根据这看出SDWebImage是一个UIImageView的分类，使用Category进行分装的类。下面列出SDWebImage可以实现的功能：&lt;/p&gt;
@@ -1394,10 +1394,10 @@
   
   <entry>
     <title>SDWebImage之图片下载</title>
-    <link href="http://yoursite.com/2016/06/03/SDWebImage/"/>
-    <id>http://yoursite.com/2016/06/03/SDWebImage/</id>
-    <published>2016-06-03T13:23:21.000Z</published>
-    <updated>2017-06-01T07:48:51.000Z</updated>
+    <link href="http://yoursite.com/2016/06/10/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://yoursite.com/2016/06/10/SDWebImage之图片下载/</id>
+    <published>2016-06-10T09:42:32.000Z</published>
+    <updated>2017-08-25T18:36:47.000Z</updated>
     
     <content type="html">&lt;p&gt;我们经常使用SDWebImage在加载图片，但对于图片加载过程中怎么样实现不会深究。下面我们就对SDWebImage进行相应的分析：&lt;br&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;SDWebImage的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage的下载器&quot;&gt;&lt;/a&gt;SDWebImage的下载器&lt;/h2&gt;&lt;p&gt;SDWebImage的下载器是SDWebImageDownloader利用单例模式sharedDownloader，可以对下载的图片进行相关配置。可以配置的部分如下：&lt;/p&gt;
