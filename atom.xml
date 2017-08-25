@@ -809,50 +809,58 @@
   </entry>
   
   <entry>
-    <title>APP控件在屏幕上显示</title>
+    <title>iOS 控件在屏幕上显示</title>
     <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
     <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-06-01T07:48:51.000Z</updated>
+    <updated>2017-08-25T15:42:57.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+    <content type="html">&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 控件在屏幕上显示思维导图.png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;文章知识点讲述的思路&quot;&gt;&lt;a href=&quot;#文章知识点讲述的思路&quot; class=&quot;headerlink&quot; title=&quot;文章知识点讲述的思路&quot;&gt;&lt;/a&gt;文章知识点讲述的思路&lt;/h1&gt;&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/APP控件在屏幕上显示.png&quot; alt=&quot;APP 控件在屏幕上显示&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h2&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。&lt;br&gt;上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/CRT.png&quot; alt=&quot;CRT 扫描过程模拟&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;CRT.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;其原理：CRT 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：&lt;strong&gt;HSync&lt;/strong&gt;，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：&lt;strong&gt;VSync&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;👈👈👈👈👈👈目前我们一般是采取双缓冲的机制， GPU会预先缓冲好一帧存放在缓冲中，让视频控制器读取，当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题👉🏿👉🏿👉🏿👉🏿👉🏿👉🏿&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;👈&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;目前我们一般是采取双缓冲的机制， GPU会预先缓冲好一帧存放在缓冲中，让视频控制器读取，当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;👉🏿&lt;/p&gt;
 &lt;p&gt;采用双缓存可能会引入一个问题就是屏幕内容显示一半， GPU 将新的内容提交到缓存区对其进行交换，视频控制器把新的下半段的显示在屏幕上&lt;br&gt;可能形成画面撕裂，&lt;br&gt;解决方式：GPU 引入垂直同步（V-Sync）当开启垂直同步后， GPU会等待 VSync 信号发出，才会对缓存的内容进行更新，这样就可以是画面更加流畅，减少延迟&lt;/p&gt;
-&lt;p&gt;😀😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;iOS 设备采用双缓存 + 垂直同步； Android采用的三缓存 + 垂直同步&lt;/p&gt;
-&lt;p&gt;😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😁&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在一些游戏中我们经常会见到一些场景如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/屏幕错位.png&quot; alt=&quot;屏幕错位&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕错位.png&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;CPU和GPU的工作原理&quot;&gt;&lt;a href=&quot;#CPU和GPU的工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU和GPU的工作原理&quot;&gt;&lt;/a&gt;CPU和GPU的工作原理&lt;/h2&gt;&lt;h3 id=&quot;CPU工作原理&quot;&gt;&lt;a href=&quot;#CPU工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU工作原理&quot;&gt;&lt;/a&gt;CPU工作原理&lt;/h3&gt;&lt;p&gt;CPU（中央处理器，Central Processing Unit）主要是解释计算机中的指令，处理计算机软件中的数据。CPU、内部存储器和输入/输出设备是计算机的三大核心组件。&lt;/p&gt;
 &lt;p&gt;CPU目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回&lt;/p&gt;
 &lt;p&gt;提取：&lt;br&gt;解码：&lt;br&gt;执行：&lt;br&gt;调回：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/CPU.png&quot; alt=&quot;CPU AMD Opteron六核心处理器&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;CPU.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;GPU工作原理&quot;&gt;&lt;a href=&quot;#GPU工作原理&quot; class=&quot;headerlink&quot; title=&quot;GPU工作原理&quot;&gt;&lt;/a&gt;GPU工作原理&lt;/h3&gt;&lt;p&gt;GPU（图形处理器，Graphics Processing Unit）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作&lt;br&gt;后面随着 OpenGL APL 和 DirectX 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作&lt;/p&gt;
 &lt;h2 id=&quot;iOS-绘制像素在屏幕上&quot;&gt;&lt;a href=&quot;#iOS-绘制像素在屏幕上&quot; class=&quot;headerlink&quot; title=&quot;iOS 绘制像素在屏幕上&quot;&gt;&lt;/a&gt;iOS 绘制像素在屏幕上&lt;/h2&gt;&lt;h3 id=&quot;APP绘制像素过程分析&quot;&gt;&lt;a href=&quot;#APP绘制像素过程分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素过程分析&quot;&gt;&lt;/a&gt;APP绘制像素过程分析&lt;/h3&gt;&lt;p&gt;下面绘制像素在屏幕上的原理图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/Images/GPU显示.png&quot; alt=&quot;iOS 绘制像素在屏幕&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;GPU显示.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;iOS 界面上的内容大多是通过 Core Animation 来完成绘制&lt;br&gt;在 Mac OS 大多是绕过 Core Animation 使用 Core Graphics 来进行绘制&lt;br&gt;手游行业中直接使用 OpenGL/OpenGL ES 来进行相关材质的内容绘制&lt;/p&gt;
 &lt;p&gt;Core Animation 大多使用 Core Graphics 来进行内容的渲染&lt;/p&gt;
 &lt;p&gt;GPU Driver 是直接和 GPU 进行相关交互的代码块，可以对对 GPU 直接操作&lt;/p&gt;
 &lt;p&gt;GPU 是专门为图形高并发计算量身定制的处理单元，优点：短时间可以实现图像浮点运算，耗电少，高效&lt;/p&gt;
-&lt;h3 id=&quot;APP绘制像素硬件分析&quot;&gt;&lt;a href=&quot;#APP绘制像素硬件分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素硬件分析&quot;&gt;&lt;/a&gt;APP绘制像素硬件分析&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/GPU缓存.png&quot; alt=&quot;iOS 绘制像素需要的硬件&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;APP绘制像素硬件分析&quot;&gt;&lt;a href=&quot;#APP绘制像素硬件分析&quot; class=&quot;headerlink&quot; title=&quot;APP绘制像素硬件分析&quot;&gt;&lt;/a&gt;APP绘制像素硬件分析&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;GPU缓存.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在图片显示的过程中，我们需要相关的 GPU 对图片生成 frame 的纹理，&lt;br&gt;我们在生成纹理的过程中会使用 VRAM 的空间，所以在生成过程是有限制的&lt;br&gt;把相关的数据从 CPU 上传输到 GPU 上 ——&amp;gt; 既是把内容从 RAM 上传到 VRAM 上， 如果上传的纹理太大就会对性能有所影响&lt;/p&gt;
 &lt;p&gt;在文本显示的过程中，我们使用 GPU 进行文本的绘制比较复杂，这会促使 Core Text 和 Core Graphics 来合成生成一个文本，然后上传到 GPU。&lt;br&gt;但我们在界面滑动过程中， CPU 只需要把相关的文本坐标发送到 GPU 就行， GPU会根据相关的信息进行绘制&lt;/p&gt;
-&lt;h3 id=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;a href=&quot;#APP绘制过程方式和细节讲解&quot; class=&quot;headerlink&quot; title=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;/a&gt;APP绘制过程方式和细节讲解&lt;/h3&gt;&lt;h4 id=&quot;合成：&quot;&gt;&lt;a href=&quot;#合成：&quot; class=&quot;headerlink&quot; title=&quot;合成：&quot;&gt;&lt;/a&gt;合成：&lt;/h4&gt;&lt;p&gt;在我们看到的所有的视图都是基于不同图片进行相关的合成而来&lt;br&gt;这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中&lt;/p&gt;
+&lt;h2 id=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;a href=&quot;#APP绘制过程方式和细节讲解&quot; class=&quot;headerlink&quot; title=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;/a&gt;APP绘制过程方式和细节讲解&lt;/h2&gt;&lt;h3 id=&quot;合成：&quot;&gt;&lt;a href=&quot;#合成：&quot; class=&quot;headerlink&quot; title=&quot;合成：&quot;&gt;&lt;/a&gt;合成：&lt;/h3&gt;&lt;p&gt;在我们看到的所有的视图都是基于不同图片进行相关的合成而来&lt;br&gt;这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;合成方法很多种：&lt;/li&gt;
 &lt;li&gt;如果两个纹理对其时：采用公式    ——&amp;gt;    R(最终显示的色彩的值) = S(上层纹理的相关的参数) +D(下层纹理相关参数) * (1 - Sa(上层纹理的透明度))&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;透明-VS-不透明：&quot;&gt;&lt;a href=&quot;#透明-VS-不透明：&quot; class=&quot;headerlink&quot; title=&quot;透明 VS 不透明：&quot;&gt;&lt;/a&gt;透明 VS 不透明：&lt;/h4&gt;&lt;p&gt;当纹理完全不透明时目标像素就是纹理的值， GPU 就只会从目标像素直接取出纹理显示 不会做相关的操作&lt;br&gt;在加载一张没有  alpha 的图片进行显示，会被默认为 opaque 的属性是 YES ； 加载一张图片 alpha = 100%， Core Animation 会认为是不为 100% 对其进行解析&lt;/p&gt;
-&lt;h4 id=&quot;像素对其-VS-不重合在一起：&quot;&gt;&lt;a href=&quot;#像素对其-VS-不重合在一起：&quot; class=&quot;headerlink&quot; title=&quot;像素对其 VS 不重合在一起：&quot;&gt;&lt;/a&gt;像素对其 VS 不重合在一起：&lt;/h4&gt;&lt;p&gt;当两个 layer 完全重合在一起，这时就需要我们对其进行相关的计算&lt;br&gt;layer 上所有的像素和屏幕上的像素完全对其，这就是 layer 像素对其； &lt;/p&gt;
+&lt;h3 id=&quot;透明-VS-不透明：&quot;&gt;&lt;a href=&quot;#透明-VS-不透明：&quot; class=&quot;headerlink&quot; title=&quot;透明 VS 不透明：&quot;&gt;&lt;/a&gt;透明 VS 不透明：&lt;/h3&gt;&lt;p&gt;当纹理完全不透明时目标像素就是纹理的值， GPU 就只会从目标像素直接取出纹理显示 不会做相关的操作&lt;br&gt;在加载一张没有  alpha 的图片进行显示，会被默认为 opaque 的属性是 YES ； 加载一张图片 alpha = 100%， Core Animation 会认为是不为 100% 对其进行解析&lt;/p&gt;
+&lt;h3 id=&quot;像素对其-VS-不重合在一起：&quot;&gt;&lt;a href=&quot;#像素对其-VS-不重合在一起：&quot; class=&quot;headerlink&quot; title=&quot;像素对其 VS 不重合在一起：&quot;&gt;&lt;/a&gt;像素对其 VS 不重合在一起：&lt;/h3&gt;&lt;p&gt;当两个 layer 完全重合在一起，这时就需要我们对其进行相关的计算&lt;br&gt;layer 上所有的像素和屏幕上的像素完全对其，这就是 layer 像素对其； &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;像素对不齐主要原因：&lt;blockquote&gt;
 &lt;ul&gt;
@@ -863,7 +871,7 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&quot;离屏渲染：&quot;&gt;&lt;a href=&quot;#离屏渲染：&quot; class=&quot;headerlink&quot; title=&quot;离屏渲染：&quot;&gt;&lt;/a&gt;离屏渲染：&lt;/h4&gt;&lt;p&gt;离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上&lt;/p&gt;
+&lt;h3 id=&quot;离屏渲染：&quot;&gt;&lt;a href=&quot;#离屏渲染：&quot; class=&quot;headerlink&quot; title=&quot;离屏渲染：&quot;&gt;&lt;/a&gt;离屏渲染：&lt;/h3&gt;&lt;p&gt;离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;离屏渲染也可能产生副作用。如果你正在直接或者间接的将mask应用到一个图层上，Core Animation 为了应用这个 mask，会强制进行屏幕外渲染。这会对 GPU 产生重负。通常情况下 mask 只能被直接渲染到帧的缓冲区中(在屏幕内)&lt;/li&gt;
@@ -871,8 +879,8 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;rasterized layer 的缓冲区大小是有所限制的，大概是屏幕大小的两倍空间 屏幕外的缓冲区&lt;/p&gt;
-&lt;h4 id=&quot;CALayer：&quot;&gt;&lt;a href=&quot;#CALayer：&quot; class=&quot;headerlink&quot; title=&quot;CALayer：&quot;&gt;&lt;/a&gt;CALayer：&lt;/h4&gt;&lt;p&gt;GPU 测试的步骤：&lt;br&gt;要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。&lt;/p&gt;
-&lt;h4 id=&quot;Core-Graphics-amp-Quartz-2D：&quot;&gt;&lt;a href=&quot;#Core-Graphics-amp-Quartz-2D：&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics &amp;amp; Quartz 2D：&quot;&gt;&lt;/a&gt;Core Graphics &amp;amp; Quartz 2D：&lt;/h4&gt;&lt;p&gt;Core Graphics 是功能强大的绘图框架&lt;/p&gt;
+&lt;h3 id=&quot;CALayer：&quot;&gt;&lt;a href=&quot;#CALayer：&quot; class=&quot;headerlink&quot; title=&quot;CALayer：&quot;&gt;&lt;/a&gt;CALayer：&lt;/h3&gt;&lt;p&gt;GPU 测试的步骤：&lt;br&gt;要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。&lt;/p&gt;
+&lt;h3 id=&quot;Core-Graphics-amp-Quartz-2D：&quot;&gt;&lt;a href=&quot;#Core-Graphics-amp-Quartz-2D：&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics &amp;amp; Quartz 2D：&quot;&gt;&lt;/a&gt;Core Graphics &amp;amp; Quartz 2D：&lt;/h3&gt;&lt;p&gt;Core Graphics 是功能强大的绘图框架&lt;/p&gt;
 &lt;p&gt;GPU加速下的图像处理：&lt;br&gt;好的图像处理的开源第三方框架：&lt;/p&gt;
 &lt;p&gt;GPUImage ：&lt;a href=&quot;https://github.com/BradLarson/GPUImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/BradLarson/GPUImage&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;ShaderToy :  &lt;a href=&quot;https://www.shadertoy.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.shadertoy.com&lt;/a&gt;&lt;/p&gt;
@@ -882,7 +890,7 @@
 &lt;p&gt;&lt;a href=&quot;http://www.sunsetlakesoftware.com/2013/10/21/optimizing-gaussian-blurs-mobile-gpu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;测试大🐮的博客 ：&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://community.imgtec.com/developers/powervr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 的测试框架：&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;如果想要保持高的帧速  就要保证着色器比较低的周期数  （如果是 60帧每秒， 那么在完成一个周期就需要仅仅 16.67 毫秒）&lt;/p&gt;
-&lt;h3 id=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;a href=&quot;#降低着色器渲染周期方法：&quot; class=&quot;headerlink&quot; title=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;/a&gt;降低着色器渲染周期方法：&lt;/h3&gt;&lt;ul&gt;
+&lt;h2 id=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;a href=&quot;#降低着色器渲染周期方法：&quot; class=&quot;headerlink&quot; title=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;/a&gt;降低着色器渲染周期方法：&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;消除条件逻辑 ：条件逻辑有时是必须的，但有时可以做优化。着色器中使用 step（）函数变通避免逻辑的运用&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;减少依赖纹理的读取 ：在片段的着色器取样时，如果纹理坐标不是以 varying 的形式传入，而是在片段着色器中进行计算，就会发生纹理依赖。（👉🏿想从附近的像素取样，而不是计算和片段着色器中相邻像素的偏差，最好在顶点着色器中进行计算，然后把结果以 varying 的方式传入片段着色器👈）&lt;/p&gt;
@@ -892,18 +900,14 @@
 &lt;li&gt;&lt;p&gt;如果有可能的话，把相关计算使用到顶点着色器。    😁 😀😁 😀😁 😀 顶点着色器是每个顶点运行一次，片段着色器是每一个像素运行一次&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/中央处理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CPU 的参考资料&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/圖形處理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 的参考资料&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.ibireme.com/author/ibireme/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;资料参考1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://objccn.io/issue-21-7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://objccn.io/issue-21-8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料4&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;资料的参考5&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/中央处理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中央处理器&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/圖形處理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;圖形處理器&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.ibireme.com/author/ibireme/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;不再安全的 OSSpinLock&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-21-7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 加速下的图像处理&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-21-8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 加速下的图像视觉&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;objccn.io-issue-3-1&lt;/a&gt;  &lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;APP控件在屏幕上显示&quot;&gt;&lt;a href=&quot;#APP控件在屏幕上显示&quot; class=&quot;headerlink&quot; title=&quot;APP控件在屏幕上显示&quot;&gt;&lt;/a&gt;APP控件在屏幕上显示&lt;/h1&gt;&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+      &lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
+&lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 控件在屏幕上显示思维导图.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     

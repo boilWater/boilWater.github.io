@@ -6,25 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>APP控件在屏幕上显示 | JackJin&#39;s 博客</title>
+  <title>iOS 控件在屏幕上显示 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="APP控件在屏幕上显示在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。">
+  <meta name="description" content="在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
+使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APP控件在屏幕上显示">
+<meta property="og:title" content="iOS 控件在屏幕上显示">
 <meta property="og:url" content="http://yoursite.com/2017/01/13/APP控件在屏幕上显示/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="APP控件在屏幕上显示在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。">
-<meta property="og:image" content="http://yoursite.com/images/APP控件在屏幕上显示.png">
-<meta property="og:image" content="http://yoursite.com/images/CRT.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕错位.png">
-<meta property="og:image" content="http://yoursite.com/images/CPU.png">
-<meta property="og:image" content="http://yoursite.com/Images/GPU显示.png">
-<meta property="og:image" content="http://yoursite.com/images/GPU缓存.png">
-<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
+<meta property="og:description" content="在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
+使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-25T15:42:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APP控件在屏幕上显示">
-<meta name="twitter:description" content="APP控件在屏幕上显示在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。">
-<meta name="twitter:image" content="http://yoursite.com/images/APP控件在屏幕上显示.png">
+<meta name="twitter:title" content="iOS 控件在屏幕上显示">
+<meta name="twitter:description" content="在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
+使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -177,7 +180,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      APP控件在屏幕上显示
+      iOS 控件在屏幕上显示
     </h1>
   
 
@@ -190,44 +193,52 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="APP控件在屏幕上显示"><a href="#APP控件在屏幕上显示" class="headerlink" title="APP控件在屏幕上显示"></a>APP控件在屏幕上显示</h1><p>在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
+        <p>在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
+<p>使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 控件在屏幕上显示思维导图.png"></p>
 <a id="more"></a>
-<h1 id="文章知识点讲述的思路"><a href="#文章知识点讲述的思路" class="headerlink" title="文章知识点讲述的思路"></a>文章知识点讲述的思路</h1><p>使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：</p>
-<p><img src="/images/APP控件在屏幕上显示.png" alt="APP 控件在屏幕上显示"></p>
 <h2 id="屏幕显示图像的原理"><a href="#屏幕显示图像的原理" class="headerlink" title="屏幕显示图像的原理"></a>屏幕显示图像的原理</h2><p>记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。<br>上面那种老式的电视机画面的显示就是采用 CRT 显示，显示的原理如下图：</p>
-<p><img src="/images/CRT.png" alt="CRT 扫描过程模拟"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CRT.png"></p>
 <p>其原理：CRT 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：<strong>HSync</strong>，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：<strong>VSync</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化</span><br></pre></td></tr></table></figure>
-<p>👈👈👈👈👈👈目前我们一般是采取双缓冲的机制， GPU会预先缓冲好一帧存放在缓冲中，让视频控制器读取，当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题👉🏿👉🏿👉🏿👉🏿👉🏿👉🏿</p>
+<blockquote>
+<ul>
+<li>我们 APP 在屏幕上的刷新的频率就是 VSync 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 VSync 的基础上进行相关的完善和优化</li>
+</ul>
+</blockquote>
+<p>👈</p>
+<blockquote>
+<p>目前我们一般是采取双缓冲的机制， GPU会预先缓冲好一帧存放在缓冲中，让视频控制器读取，当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题</p>
+</blockquote>
+<p>👉🏿</p>
 <p>采用双缓存可能会引入一个问题就是屏幕内容显示一半， GPU 将新的内容提交到缓存区对其进行交换，视频控制器把新的下半段的显示在屏幕上<br>可能形成画面撕裂，<br>解决方式：GPU 引入垂直同步（V-Sync）当开启垂直同步后， GPU会等待 VSync 信号发出，才会对缓存的内容进行更新，这样就可以是画面更加流畅，减少延迟</p>
-<p>😀😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆</p>
+<blockquote>
 <p>iOS 设备采用双缓存 + 垂直同步； Android采用的三缓存 + 垂直同步</p>
-<p>😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😆😁</p>
+</blockquote>
 <p>在一些游戏中我们经常会见到一些场景如下：</p>
-<p><img src="/images/屏幕错位.png" alt="屏幕错位"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕错位.png"></p>
 <h2 id="CPU和GPU的工作原理"><a href="#CPU和GPU的工作原理" class="headerlink" title="CPU和GPU的工作原理"></a>CPU和GPU的工作原理</h2><h3 id="CPU工作原理"><a href="#CPU工作原理" class="headerlink" title="CPU工作原理"></a>CPU工作原理</h3><p>CPU（中央处理器，Central Processing Unit）主要是解释计算机中的指令，处理计算机软件中的数据。CPU、内部存储器和输入/输出设备是计算机的三大核心组件。</p>
 <p>CPU目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回</p>
 <p>提取：<br>解码：<br>执行：<br>调回：</p>
-<p><img src="/images/CPU.png" alt="CPU AMD Opteron六核心处理器"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CPU.png"></p>
 <h3 id="GPU工作原理"><a href="#GPU工作原理" class="headerlink" title="GPU工作原理"></a>GPU工作原理</h3><p>GPU（图形处理器，Graphics Processing Unit）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作<br>后面随着 OpenGL APL 和 DirectX 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作</p>
 <h2 id="iOS-绘制像素在屏幕上"><a href="#iOS-绘制像素在屏幕上" class="headerlink" title="iOS 绘制像素在屏幕上"></a>iOS 绘制像素在屏幕上</h2><h3 id="APP绘制像素过程分析"><a href="#APP绘制像素过程分析" class="headerlink" title="APP绘制像素过程分析"></a>APP绘制像素过程分析</h3><p>下面绘制像素在屏幕上的原理图：</p>
-<p><img src="/Images/GPU显示.png" alt="iOS 绘制像素在屏幕"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GPU显示.png"></p>
 <p>iOS 界面上的内容大多是通过 Core Animation 来完成绘制<br>在 Mac OS 大多是绕过 Core Animation 使用 Core Graphics 来进行绘制<br>手游行业中直接使用 OpenGL/OpenGL ES 来进行相关材质的内容绘制</p>
 <p>Core Animation 大多使用 Core Graphics 来进行内容的渲染</p>
 <p>GPU Driver 是直接和 GPU 进行相关交互的代码块，可以对对 GPU 直接操作</p>
 <p>GPU 是专门为图形高并发计算量身定制的处理单元，优点：短时间可以实现图像浮点运算，耗电少，高效</p>
-<h3 id="APP绘制像素硬件分析"><a href="#APP绘制像素硬件分析" class="headerlink" title="APP绘制像素硬件分析"></a>APP绘制像素硬件分析</h3><p><img src="/images/GPU缓存.png" alt="iOS 绘制像素需要的硬件"></p>
+<h3 id="APP绘制像素硬件分析"><a href="#APP绘制像素硬件分析" class="headerlink" title="APP绘制像素硬件分析"></a>APP绘制像素硬件分析</h3><p><img src="http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GPU缓存.png"></p>
 <p>在图片显示的过程中，我们需要相关的 GPU 对图片生成 frame 的纹理，<br>我们在生成纹理的过程中会使用 VRAM 的空间，所以在生成过程是有限制的<br>把相关的数据从 CPU 上传输到 GPU 上 ——&gt; 既是把内容从 RAM 上传到 VRAM 上， 如果上传的纹理太大就会对性能有所影响</p>
 <p>在文本显示的过程中，我们使用 GPU 进行文本的绘制比较复杂，这会促使 Core Text 和 Core Graphics 来合成生成一个文本，然后上传到 GPU。<br>但我们在界面滑动过程中， CPU 只需要把相关的文本坐标发送到 GPU 就行， GPU会根据相关的信息进行绘制</p>
-<h3 id="APP绘制过程方式和细节讲解"><a href="#APP绘制过程方式和细节讲解" class="headerlink" title="APP绘制过程方式和细节讲解"></a>APP绘制过程方式和细节讲解</h3><h4 id="合成："><a href="#合成：" class="headerlink" title="合成："></a>合成：</h4><p>在我们看到的所有的视图都是基于不同图片进行相关的合成而来<br>这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中</p>
+<h2 id="APP绘制过程方式和细节讲解"><a href="#APP绘制过程方式和细节讲解" class="headerlink" title="APP绘制过程方式和细节讲解"></a>APP绘制过程方式和细节讲解</h2><h3 id="合成："><a href="#合成：" class="headerlink" title="合成："></a>合成：</h3><p>在我们看到的所有的视图都是基于不同图片进行相关的合成而来<br>这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， GPU 就会把第二个纹理合成到第一个纹理中</p>
 <blockquote>
 <ul>
 <li>合成方法很多种：</li>
 <li>如果两个纹理对其时：采用公式    ——&gt;    R(最终显示的色彩的值) = S(上层纹理的相关的参数) +D(下层纹理相关参数) * (1 - Sa(上层纹理的透明度))</li>
 </ul>
 </blockquote>
-<h4 id="透明-VS-不透明："><a href="#透明-VS-不透明：" class="headerlink" title="透明 VS 不透明："></a>透明 VS 不透明：</h4><p>当纹理完全不透明时目标像素就是纹理的值， GPU 就只会从目标像素直接取出纹理显示 不会做相关的操作<br>在加载一张没有  alpha 的图片进行显示，会被默认为 opaque 的属性是 YES ； 加载一张图片 alpha = 100%， Core Animation 会认为是不为 100% 对其进行解析</p>
-<h4 id="像素对其-VS-不重合在一起："><a href="#像素对其-VS-不重合在一起：" class="headerlink" title="像素对其 VS 不重合在一起："></a>像素对其 VS 不重合在一起：</h4><p>当两个 layer 完全重合在一起，这时就需要我们对其进行相关的计算<br>layer 上所有的像素和屏幕上的像素完全对其，这就是 layer 像素对其； </p>
+<h3 id="透明-VS-不透明："><a href="#透明-VS-不透明：" class="headerlink" title="透明 VS 不透明："></a>透明 VS 不透明：</h3><p>当纹理完全不透明时目标像素就是纹理的值， GPU 就只会从目标像素直接取出纹理显示 不会做相关的操作<br>在加载一张没有  alpha 的图片进行显示，会被默认为 opaque 的属性是 YES ； 加载一张图片 alpha = 100%， Core Animation 会认为是不为 100% 对其进行解析</p>
+<h3 id="像素对其-VS-不重合在一起："><a href="#像素对其-VS-不重合在一起：" class="headerlink" title="像素对其 VS 不重合在一起："></a>像素对其 VS 不重合在一起：</h3><p>当两个 layer 完全重合在一起，这时就需要我们对其进行相关的计算<br>layer 上所有的像素和屏幕上的像素完全对其，这就是 layer 像素对其； </p>
 <ol>
 <li>像素对不齐主要原因：<blockquote>
 <ul>
@@ -238,7 +249,7 @@ var _hmt = _hmt || [];
 </blockquote>
 </li>
 </ol>
-<h4 id="离屏渲染："><a href="#离屏渲染：" class="headerlink" title="离屏渲染："></a>离屏渲染：</h4><p>离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上</p>
+<h3 id="离屏渲染："><a href="#离屏渲染：" class="headerlink" title="离屏渲染："></a>离屏渲染：</h3><p>离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上</p>
 <blockquote>
 <ul>
 <li>离屏渲染也可能产生副作用。如果你正在直接或者间接的将mask应用到一个图层上，Core Animation 为了应用这个 mask，会强制进行屏幕外渲染。这会对 GPU 产生重负。通常情况下 mask 只能被直接渲染到帧的缓冲区中(在屏幕内)</li>
@@ -246,8 +257,8 @@ var _hmt = _hmt || [];
 </ul>
 </blockquote>
 <p>rasterized layer 的缓冲区大小是有所限制的，大概是屏幕大小的两倍空间 屏幕外的缓冲区</p>
-<h4 id="CALayer："><a href="#CALayer：" class="headerlink" title="CALayer："></a>CALayer：</h4><p>GPU 测试的步骤：<br>要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。</p>
-<h4 id="Core-Graphics-amp-Quartz-2D："><a href="#Core-Graphics-amp-Quartz-2D：" class="headerlink" title="Core Graphics &amp; Quartz 2D："></a>Core Graphics &amp; Quartz 2D：</h4><p>Core Graphics 是功能强大的绘图框架</p>
+<h3 id="CALayer："><a href="#CALayer：" class="headerlink" title="CALayer："></a>CALayer：</h3><p>GPU 测试的步骤：<br>要告诉你，如果是 GPU 限制了你的性能，你可以使用 OpenGL ES Driver instrument。点击上面那个小的 i 按钮，配置一下，同时注意勾选 Device Utilization %。现在，当你运行你的 app 时，你可以看到你 GPU 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在GPU方面了。</p>
+<h3 id="Core-Graphics-amp-Quartz-2D："><a href="#Core-Graphics-amp-Quartz-2D：" class="headerlink" title="Core Graphics &amp; Quartz 2D："></a>Core Graphics &amp; Quartz 2D：</h3><p>Core Graphics 是功能强大的绘图框架</p>
 <p>GPU加速下的图像处理：<br>好的图像处理的开源第三方框架：</p>
 <p>GPUImage ：<a href="https://github.com/BradLarson/GPUImage" target="_blank" rel="external">https://github.com/BradLarson/GPUImage</a></p>
 <p>ShaderToy :  <a href="https://www.shadertoy.com" target="_blank" rel="external">https://www.shadertoy.com</a></p>
@@ -257,7 +268,7 @@ var _hmt = _hmt || [];
 <p><a href="http://www.sunsetlakesoftware.com/2013/10/21/optimizing-gaussian-blurs-mobile-gpu" target="_blank" rel="external">测试大🐮的博客 ：</a></p>
 <p><a href="https://community.imgtec.com/developers/powervr/" target="_blank" rel="external">GPU 的测试框架：</a></p>
 <p>如果想要保持高的帧速  就要保证着色器比较低的周期数  （如果是 60帧每秒， 那么在完成一个周期就需要仅仅 16.67 毫秒）</p>
-<h3 id="降低着色器渲染周期方法："><a href="#降低着色器渲染周期方法：" class="headerlink" title="降低着色器渲染周期方法："></a>降低着色器渲染周期方法：</h3><ul>
+<h2 id="降低着色器渲染周期方法："><a href="#降低着色器渲染周期方法：" class="headerlink" title="降低着色器渲染周期方法："></a>降低着色器渲染周期方法：</h2><ul>
 <li><p>消除条件逻辑 ：条件逻辑有时是必须的，但有时可以做优化。着色器中使用 step（）函数变通避免逻辑的运用</p>
 </li>
 <li><p>减少依赖纹理的读取 ：在片段的着色器取样时，如果纹理坐标不是以 varying 的形式传入，而是在片段着色器中进行计算，就会发生纹理依赖。（👉🏿想从附近的像素取样，而不是计算和片段着色器中相邻像素的偏差，最好在顶点着色器中进行计算，然后把结果以 varying 的方式传入片段着色器👈）</p>
@@ -267,13 +278,7 @@ var _hmt = _hmt || [];
 <li><p>如果有可能的话，把相关计算使用到顶点着色器。    😁 😀😁 😀😁 😀 顶点着色器是每个顶点运行一次，片段着色器是每一个像素运行一次</p>
 </li>
 </ul>
-<p><a href="https://zh.wikipedia.org/wiki/中央处理器" target="_blank" rel="external">CPU 的参考资料</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/圖形處理器" target="_blank" rel="external">GPU 的参考资料</a></p>
-<p><a href="http://blog.ibireme.com/author/ibireme/" target="_blank" rel="external">资料参考1</a></p>
-<p><a href="https://objccn.io/issue-21-7/" target="_blank" rel="external">参考资料2</a></p>
-<p><a href="https://objccn.io/issue-21-8/" target="_blank" rel="external">参考资料3</a></p>
-<p><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">参考资料4</a></p>
-<p><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">资料的参考5</a></p>
+<p>参考资料：<br><a href="https://zh.wikipedia.org/wiki/中央处理器" target="_blank" rel="external">中央处理器</a><br><a href="https://zh.wikipedia.org/wiki/圖形處理器" target="_blank" rel="external">圖形處理器</a><br><a href="http://blog.ibireme.com/author/ibireme/" target="_blank" rel="external">不再安全的 OSSpinLock</a><br><a href="https://objccn.io/issue-21-7/" target="_blank" rel="external">GPU 加速下的图像处理</a><br><a href="https://objccn.io/issue-21-8/" target="_blank" rel="external">GPU 加速下的图像视觉</a><br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">objccn.io-issue-3-1</a>  </p>
 
       
 
@@ -408,7 +413,7 @@ var _hmt = _hmt || [];
 <div id="toc-article" class="toc-article">
 <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#APP控件在屏幕上显示"><span class="toc-number">1.</span> <span class="toc-text">APP控件在屏幕上显示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文章知识点讲述的思路"><span class="toc-number">2.</span> <span class="toc-text">文章知识点讲述的思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕显示图像的原理"><span class="toc-number">2.1.</span> <span class="toc-text">屏幕显示图像的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU和GPU的工作原理"><span class="toc-number">2.2.</span> <span class="toc-text">CPU和GPU的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU工作原理"><span class="toc-number">2.2.1.</span> <span class="toc-text">CPU工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU工作原理"><span class="toc-number">2.2.2.</span> <span class="toc-text">GPU工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-绘制像素在屏幕上"><span class="toc-number">2.3.</span> <span class="toc-text">iOS 绘制像素在屏幕上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#APP绘制像素过程分析"><span class="toc-number">2.3.1.</span> <span class="toc-text">APP绘制像素过程分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APP绘制像素硬件分析"><span class="toc-number">2.3.2.</span> <span class="toc-text">APP绘制像素硬件分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APP绘制过程方式和细节讲解"><span class="toc-number">2.3.3.</span> <span class="toc-text">APP绘制过程方式和细节讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#合成："><span class="toc-number">2.3.3.1.</span> <span class="toc-text">合成：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#透明-VS-不透明："><span class="toc-number">2.3.3.2.</span> <span class="toc-text">透明 VS 不透明：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#像素对其-VS-不重合在一起："><span class="toc-number">2.3.3.3.</span> <span class="toc-text">像素对其 VS 不重合在一起：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#离屏渲染："><span class="toc-number">2.3.3.4.</span> <span class="toc-text">离屏渲染：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CALayer："><span class="toc-number">2.3.3.5.</span> <span class="toc-text">CALayer：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Core-Graphics-amp-Quartz-2D："><span class="toc-number">2.3.3.6.</span> <span class="toc-text">Core Graphics & Quartz 2D：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#降低着色器渲染周期方法："><span class="toc-number">2.3.4.</span> <span class="toc-text">降低着色器渲染周期方法：</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕显示图像的原理"><span class="toc-number">1.</span> <span class="toc-text">屏幕显示图像的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU和GPU的工作原理"><span class="toc-number">2.</span> <span class="toc-text">CPU和GPU的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU工作原理"><span class="toc-number">2.1.</span> <span class="toc-text">CPU工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU工作原理"><span class="toc-number">2.2.</span> <span class="toc-text">GPU工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-绘制像素在屏幕上"><span class="toc-number">3.</span> <span class="toc-text">iOS 绘制像素在屏幕上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#APP绘制像素过程分析"><span class="toc-number">3.1.</span> <span class="toc-text">APP绘制像素过程分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APP绘制像素硬件分析"><span class="toc-number">3.2.</span> <span class="toc-text">APP绘制像素硬件分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#APP绘制过程方式和细节讲解"><span class="toc-number">4.</span> <span class="toc-text">APP绘制过程方式和细节讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#合成："><span class="toc-number">4.1.</span> <span class="toc-text">合成：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#透明-VS-不透明："><span class="toc-number">4.2.</span> <span class="toc-text">透明 VS 不透明：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#像素对其-VS-不重合在一起："><span class="toc-number">4.3.</span> <span class="toc-text">像素对其 VS 不重合在一起：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离屏渲染："><span class="toc-number">4.4.</span> <span class="toc-text">离屏渲染：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CALayer："><span class="toc-number">4.5.</span> <span class="toc-text">CALayer：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-Graphics-amp-Quartz-2D："><span class="toc-number">4.6.</span> <span class="toc-text">Core Graphics & Quartz 2D：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#降低着色器渲染周期方法："><span class="toc-number">5.</span> <span class="toc-text">降低着色器渲染周期方法：</span></a></li></ol>
 </div>
 <script type="text/javascript">
 function showToc(){
