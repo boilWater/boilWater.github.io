@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JackJin&#39;s 博客</title>
+  <title>iOS Runtime-替换方法 &amp; 消息发送转发 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="总概在做公司项目过程中遇到一些需要进行替换原来方法情况。小编对 Objc 在消息发送和转发过程整理，针对在消息发送和转发在 runtime 层实现和提出的方法替换方案原理做出详细说明和记录。
+下面是小编本博文的写作思路：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS Runtime-替换方法 & 消息发送转发">
+<meta property="og:url" content="http://yoursite.com/2017/02/01/iOS Runtime-消息发送和转发/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="总概在做公司项目过程中遇到一些需要进行替换原来方法情况。小编对 Objc 在消息发送和转发过程整理，针对在消息发送和转发在 runtime 层实现和提出的方法替换方案原理做出详细说明和记录。
+下面是小编本博文的写作思路：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-20af8fc67c63ba32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1dbe544a1221fb36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-25T08:15:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS Runtime-替换方法 & 消息发送转发">
+<meta name="twitter:description" content="总概在做公司项目过程中遇到一些需要进行替换原来方法情况。小编对 Objc 在消息发送和转发过程整理，针对在消息发送和转发在 runtime 层实现和提出的方法替换方案原理做出详细说明和记录。
+下面是小编本博文的写作思路：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-20af8fc67c63ba32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -162,332 +169,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-iOS-Camera Capture (iOS 镜头采集)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-iOS Runtime-消息发送和转发" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/">iOS-视频大纲总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/" class="archive-article-date">
-  	<time datetime="2017-08-10T16:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp; 录制很有趣的视频。本章将详细讲解 <code>AVCaptureSession</code> ，并最后给出 <code>FYCameraKit</code> 项目Demo。<br>下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Camera Capture (iOS 镜头采集).png"></p>
-        
-          <a class="article-more-a" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS-视频大纲总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/iOS-视频大纲总结/">iOS-视频大纲总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/09/iOS-视频大纲总结/" class="archive-article-date">
-  	<time datetime="2017-06-08T16:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。</p>
-<p>下面是本博文的写作思路：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-视频大纲总结.png"></p>
-        
-          <a class="article-more-a" href="/2017/06/09/iOS-视频大纲总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/09/iOS-视频大纲总结/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-NSError(错误信息)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/NSError(错误信息)/">iOS-开发过程中的错误处理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/31/NSError(错误信息)/" class="archive-article-date">
-  	<time datetime="2017-05-31T06:35:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开发过过程中我们经常会遇到异常问题</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS异常.png"></p>
-<h1 id="iOS-开发过程中的错误处理"><a href="#iOS-开发过程中的错误处理" class="headerlink" title="iOS-开发过程中的错误处理"></a>iOS-开发过程中的错误处理</h1>
-        
-          <a class="article-more-a" href="/2017/05/31/NSError(错误信息)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/31/NSError(错误信息)/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS-Responder Chain" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/iOS-Responder Chain/">iOS-Responder Chain (响应链)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/15/iOS-Responder Chain/" class="archive-article-date">
-  	<time datetime="2017-05-14T16:12:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作接近一年，很久没有更新博客。工作中学到很多知识点后面将花时间整理，作为对一年知识学习的总结：</p>
-<p>下面是本篇博客的写作思路：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-56a34538a5ab0e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Responder Chain.png"></p>
-<h1 id="iOS-Responder-Chain-响应链"><a href="#iOS-Responder-Chain-响应链" class="headerlink" title="iOS-Responder Chain (响应链)"></a>iOS-Responder Chain (响应链)</h1>
-        
-          <a class="article-more-a" href="/2017/05/15/iOS-Responder Chain/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/iOS-Responder Chain/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS Runtime-消息发送和转发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/01/iOS Runtime-消息发送和转发/">iOS Runtime-替换方法 &amp; 消息发送转发</a>
+    <h1 class="article-title" itemprop="name">
+      iOS Runtime-替换方法 &amp; 消息发送转发
     </h1>
   
 
@@ -502,96 +191,70 @@ var _hmt = _hmt || [];
       
         <h2 id="总概"><a href="#总概" class="headerlink" title="总概"></a>总概</h2><p>在做公司项目过程中遇到一些需要进行替换原来方法情况。小编对 <code>Objc</code> 在消息发送和转发过程整理，针对在消息发送和转发在 <code>runtime</code> 层实现和提出的方法替换方案原理做出详细说明和记录。</p>
 <p>下面是小编本博文的写作思路：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-20af8fc67c63ba32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS Runtime-方法替换博客思维导图.png"></p>
-        
-          <a class="article-more-a" href="/2017/02/01/iOS Runtime-消息发送和转发/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/01/iOS Runtime-消息发送和转发/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS Categroy  &amp; Extension(类目和类拓展)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/">iOS Catergory &amp; Extension(类目和类拓展)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/" class="archive-article-date">
-  	<time datetime="2017-01-25T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>小编在做 iOS 开发过程中有时会遇到想要对现有的类添加新的方法，或者是覆盖替换原来方法情况。也在有的情况我们在类实现过程中想要隐藏一些方法和属性情况。<br>所以就对实现一些注意做下整理：</p>
-<p>Category : 运行期决议</p>
+<a id="more"></a>
+<h2 id="iOS-消息发送和转发过程"><a href="#iOS-消息发送和转发过程" class="headerlink" title="iOS 消息发送和转发过程"></a>iOS 消息发送和转发过程</h2><p>想要对现有的 <code>Method</code> 进行替换找到比较可行的方案，其一可以从方法在执行过程中考虑。下面小编将整理的消息发送和转发的详细步骤进行整理。</p>
+<h3 id="Objc-的动态特性"><a href="#Objc-的动态特性" class="headerlink" title="Objc 的动态特性"></a>Objc 的动态特性</h3><p><code>Objc</code> 是基于 <code>C</code> 和 <code>Smalltalk</code> 为基础实现面向对象开发的动态语言，<code>Objc</code>具有特色一点就是采纳了 <code>Smalltalk</code> 语言消息的特性，所以我们在 <code>Objc</code> 中经常使用 <code>[receiver message]</code> 来进行消息传递。<code>Objc</code> 的动态语言的特性可以根据 <code>NSObject</code>方式之一来实现交互，下面看相关 <code>API</code> （下面均可进行动态判断）：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSString</span> *)description;<span class="comment">//需要重载并为定义的类进行描述</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)isKindOfClass:(Class)aClass;<span class="comment">//判断是否是同种类型</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)isMemberOfClass:(Class)aClass;<span class="comment">//判断是否是一样成员</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)respondsToSelector:(SEL)aSelector;<span class="comment">//检查对象能否向相应指定的消息</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)conformsToProtocol:(Protocol *)aProtocol;<span class="comment">//检查对象是否实现了指定协议类的方发</span></span><br><span class="line">- (IMP)methodForSelector:(SEL)aSelector;<span class="comment">//返回指定方法实现的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//消息发送和转发过程调用的 API</span></span><br><span class="line">+ (<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel;</span><br><span class="line">+ (<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel;</span><br><span class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector;</span><br><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector;</span><br><span class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation;</span><br></pre></td></tr></table></figure>
+<h3 id="iOS-消息发送转发机制"><a href="#iOS-消息发送转发机制" class="headerlink" title="iOS 消息发送转发机制"></a>iOS 消息发送转发机制</h3><p>在 <code>Objc</code> 使用 Foundation 中 <code>NSObject</code> 中实现动态特性中，上述列出消息发送和转发过程的调用的 <code>API</code>。在整体消息从发送转发可以分为以下三个时段：</p>
 <ul>
-<li>可以把类实现分在不同类中实现。这样做有几个优点：1）可以减少单个类的体积 2）可以把不同的功能放在不同的 <code>Category</code> 进行实现 3）可以多人同时开发一个类 4）可以更具具体的需要实现 <code>Category</code> 加载等</li>
-<li>可以添加私有方法</li>
+<li>动态解析</li>
+<li>快速转发</li>
+<li>慢速转发</li>
 </ul>
-<p>Extension : 编译器决议</p>
+<p>下图是消息发送和转发过程三个时段流程，后面给出详细说明：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-1dbe544a1221fb36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 消息发送和转发过程流程图.png"></p>
+<p>下面是在 iOS 方法调用实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//未实现方法调用</span></span><br><span class="line">[<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(finishMessage)];</span><br><span class="line"></span><br><span class="line"><span class="comment">//消息发送和转发</span></span><br><span class="line">+ (<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> resolveClassMethod:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> resolveInstanceMethod:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">    <span class="built_in">NSMethodSignature</span> *methodSignature = [<span class="keyword">super</span> methodSignatureForSelector:aSelector];</span><br><span class="line">    <span class="keyword">return</span> methodSignature;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印结果：</span></span><br><span class="line"><span class="comment">//RuntimeDemo[13659:1331712] do method : resolveInstanceMethod:</span></span><br><span class="line"><span class="comment">//RuntimeDemo[13659:1331712] do method : resolveInstanceMethod:</span></span><br><span class="line"><span class="comment">//RuntimeDemo[13659:1331712] do method : forwardingTargetForSelector:</span></span><br><span class="line"><span class="comment">//RuntimeDemo[13659:1331712] do method : methodSignatureForSelector:</span></span><br></pre></td></tr></table></figure>
+<h4 id="动态解析"><a href="#动态解析" class="headerlink" title="动态解析"></a>动态解析</h4><p>如果要实现动态解析就要使用下面的方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel;<span class="comment">//解析类方法选择子</span></span><br><span class="line">+ (<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel;<span class="comment">//解析实例方法选择子</span></span><br></pre></td></tr></table></figure>
+<p>当我们在实现 <code>[receiver message]</code> 在没有相关实现的情况下，系统就会沿着 <code>resolveInstanceMethod:</code> 顺着继承向上查找相关 <code>message</code> 实现方法，如果没有找到相关实现就会返回 <code>NO</code> 进行下一步操作。在这个过程中我们可以通过动态加载的方式，实现我们预先实现的方法。</p>
+<p>动态加载实现代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel &#123;</span><br><span class="line">    <span class="keyword">if</span> (sel_isEqual(sel, <span class="keyword">@selector</span>(finishMessage))) &#123;</span><br><span class="line">        class_addMethod([<span class="keyword">self</span> class], <span class="keyword">@selector</span>(finishMessage), (IMP)secondMessage, <span class="string">"v@:"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> resolveInstanceMethod:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> secondMessage(<span class="keyword">id</span> <span class="keyword">self</span>, SEL _cmd) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印的结果</span></span><br><span class="line">RuntimeDemo[<span class="number">14426</span>:<span class="number">1422075</span>] <span class="keyword">do</span> method : finishMessage</span><br></pre></td></tr></table></figure>
+<p>从打印的结果来看：我们通过动态加载的方式实现预先方法的调用。但是在打印中 <code>SEL</code> 还是原来的选择子，后面会讲解。</p>
+<blockquote>
+<p>从上面的解决方式实现来看，严格意义上来说动态解析不是消息的转发。因为在指向过程中消息的接受的对象还是 <code>receiver</code>， 只是把指向 <code>message</code> 的 <code>IMP</code> 的指针加入到 <code>receiver</code> 的方法列表。</p>
+</blockquote>
+<h4 id="快速转发"><a href="#快速转发" class="headerlink" title="快速转发"></a>快速转发</h4><p>快速转发相当于我们在请求网页是重新定向。<code>receiver</code> 对象和其继承父类没有找到相应的实现方法，而把实现的转向其他的对象。</p>
+<p>快速转发实现代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重定向的实现类</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">FarwardTarget</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)finishMessage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FarwardTarget</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)finishMessage &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//快速转发</span></span><br><span class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line"><span class="comment">//    return [[FarwardTarget alloc] init];</span></span><br><span class="line">    Class class = <span class="built_in">NSClassFromString</span>(<span class="string">@"FarwardTarget"</span>);</span><br><span class="line">    <span class="built_in">NSObject</span> *object = class.new;</span><br><span class="line">    <span class="keyword">if</span> (sel_isEqual(aSelector, <span class="keyword">@selector</span>(finishMessage))) &#123;</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印结果</span></span><br><span class="line"><span class="comment">//RuntimeDemo[15791:1601823] do method : forwardingTargetForSelector:</span></span><br><span class="line"><span class="comment">//RuntimeDemo[15791:1601823] do method : finishMessage</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更具上面打印的结果：看出快速转发可以实现当前 <code>receiver</code> 方法列表找不到相关的 <code>message</code> 的 <code>IMP</code>，可以通过制定其他的对象来进行实现。</p>
+</blockquote>
+<h4 id="慢速转发"><a href="#慢速转发" class="headerlink" title="慢速转发"></a>慢速转发</h4><p>慢速转发过程中使用两个对象：<code>NSMethodSignature</code> 和 <code>NSInvocation</code></p>
 <ul>
-<li>可以添加不想要暴露的类私有方法</li>
-<li>可以添加类属性和类实例变量</li>
+<li><code>NSMethodSignature</code>: 对象定义了方法的签名，签名中包含：方法的参数和返回值。</li>
+<li><code>NSInvocation</code>: 保存了目标、选着子和参数等消息调用的必须的全部元素。</li>
 </ul>
-        
-          <a class="article-more-a" href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/#more">more >></a>
-        
+<p>在转发过程中要是到到下面 <code>API</code>:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector;<span class="comment">//在协议中实现，返回相关的方法签名</span></span><br><span class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation;<span class="comment">//进行消息的委派</span></span><br><span class="line">- (<span class="keyword">void</span>)invokeWithTarget:(<span class="keyword">id</span>)anObject;<span class="comment">//唤醒接受者的同名方法</span></span><br><span class="line">- (<span class="keyword">void</span>)doesNotRecognizeSelector:(SEL)aSelector;<span class="comment">//不能识别方法</span></span><br></pre></td></tr></table></figure>
+<p>下面先直接把慢速转发的代码列出来：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重定向的实现类</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">FarwardTarget</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)finishMessage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FarwardTarget</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)finishMessage &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//慢速转发实现</span></span><br><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</span><br><span class="line">    <span class="keyword">if</span> (sel_isEqual(aSelector, <span class="keyword">@selector</span>(finishMessage))) &#123;</span><br><span class="line">       <span class="comment">//创建新的方法签名</span></span><br><span class="line">        <span class="built_in">NSMethodSignature</span> *methodSignature = [<span class="built_in">NSMethodSignature</span> signatureWithObjCTypes:<span class="string">"v@:"</span>];</span><br><span class="line">        <span class="keyword">return</span> methodSignature;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> methodSignatureForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"do method : %@"</span>, <span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">    FarwardTarget *target = [[FarwardTarget alloc] init];</span><br><span class="line">    <span class="keyword">if</span> ([target respondsToSelector:anInvocation.selector]) &#123;</span><br><span class="line">        <span class="comment">//唤醒接受者的同名方法</span></span><br><span class="line">        [anInvocation invokeWithTarget:target];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span> doesNotRecognizeSelector:anInvocation.selector];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印结果：</span></span><br><span class="line"><span class="comment">//RuntimeDemo[16564:1706397] do method : forwardInvocation:</span></span><br><span class="line"><span class="comment">//RuntimeDemo[16564:1706397] do method : finishMessage</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>快速转发失败后，运行时系统先调用 <code>methodSignatureForSelector:</code> 返回一个方法签名用于创建 <code>NSInvocation</code> 对象，创建好后调用 <code>forwardInvocation:</code> 方法，在改方法中 <code>NSInvocation</code> 对象将调用 <code>invokeWithTarget:</code> 方法唤醒新接受者中的同名方法。</p>
+</blockquote>
+<h3 id="iOS-发送和转发小结"><a href="#iOS-发送和转发小结" class="headerlink" title="iOS 发送和转发小结"></a>iOS 发送和转发小结</h3><p>在消息发送和转发过程中没有发现实现 <code>message</code> 的 <code>IMP</code> 过程中三步骤中均可以实现相关的消息添加，也可以在三者中进行相关的方法替换。</p>
+<p>但是三者之间还是有各自的特点：</p>
+<blockquote>
+<ul>
+<li>动态解析 : 适用于将原来的类中的方法替换掉或者延迟加载。</li>
+<li>快速转发 : 可以将消息处理转发给其他对象，使用范围更广，不只是限于原来的对象。</li>
+<li>慢速转发 : 跟快转发一样可以消息转发，但它能通过NSInvocation对象获取更多消息发送的信息，例如：target、selector、arguments和返回值等信息。</li>
+</ul>
+</blockquote>
+<h2 id="iOS-消息-runtime-层实现过程"><a href="#iOS-消息-runtime-层实现过程" class="headerlink" title="iOS 消息 runtime 层实现过程"></a>iOS 消息 runtime 层实现过程</h2><p>小编在 iOS 消息发送和转发根据 <code>NSObject</code> 方面讲述 <code>[receiver message]</code> 消息调用处理，但是在 <code>runtime</code> 层在怎样情形呢？</p>
+<p><code>[receiver message]</code> 这句的含义是：向 <code>receiver</code> 发送名为 <code>message</code> 的消息。</p>
+<p>打开<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_msgSend" target="_blank" rel="external">开发文档</a>(在 <code>objc/message.h</code> 中)</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[receiver message];</span><br></pre></td></tr></table></figure>
+<p>是下面的表示方式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//objc_msgSend(self, Selector);//基本表示方法</span></span><br><span class="line">objc_msgSend(<span class="keyword">self</span>, message);</span><br></pre></td></tr></table></figure>
+<p>其中 <code>objc_msgSend</code> 的真正实现代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objc_msgSend(<span class="keyword">id</span> _Nullable <span class="keyword">self</span>, SEL _Nonnull op, ...);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>小编下面简单的介绍下 <code>objc_msgSend</code> 中的参数和如何使用 <code>runtime</code> 实现方法替换。</p>
+</blockquote>
+<h3 id="id"><a href="#id" class="headerlink" title="id"></a>id</h3><p>上面在 <code>objc_msgSend</code> 中的第一参数 <code>id</code>。 小编认为对于 <code>id</code> 用该不会陌生，<code>id</code> 是指向类实例一个指针。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object *<span class="keyword">id</span>;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">`Objc_object` 会是什么样类型呢？[文档](https:<span class="comment">//opensource.apple.com/source/objc4/objc4-709/runtime/objc-private.h.auto.html)</span></span><br><span class="line"></span><br><span class="line">```objc</span><br><span class="line"><span class="keyword">struct</span> objc_object &#123;</span><br><span class="line">private:</span><br><span class="line">    isa_t isa;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ISA() assumes this is NOT a tagged pointer object</span></span><br><span class="line">    Class ISA();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getIsa() allows this to be a tagged pointer object</span></span><br><span class="line">    Class getIsa();</span><br><span class="line">    <span class="comment">//省略 ...</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SEL"><a href="#SEL" class="headerlink" title="SEL"></a>SEL</h3><h2 id="提出替换方案"><a href="#提出替换方案" class="headerlink" title="提出替换方案"></a>提出替换方案</h2><p>参考资料：<br><a href="https://mikeash.com/pyblog/friday-qa-2009-03-27-objective-c-message-forwarding.html" target="_blank" rel="external">Message forwarding</a><br><a href="https://www.mikeash.com/pyblog/friday-qa-2009-03-20-objective-c-messaging.html" target="_blank" rel="external">Objective-c-messaging</a><br><a href="http://www.mulle-kybernetik.com/artikel/Optimization/opti-9.html" target="_blank" rel="external">The faster objc_msgSend</a><br><a href="http://cocoasamurai.blogspot.com/2010/01/understanding-objective-c-runtime.html" target="_blank" rel="external">Understanding objective-c runtime</a><br><a href="https://opensource.apple.com/source/objc4/objc4-709/" target="_blank" rel="external">objc4/objc4-709</a><br><a href="https://opensource.apple.com/source/objc4/objc4-709/runtime/objc-private.h.auto.html" target="_blank" rel="external">objc-private.h</a></p>
+
       
 
       
@@ -624,16 +287,84 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/">产看详细 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/01/iOS Runtime-消息发送和转发/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/15/iOS-Responder Chain/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS-Responder Chain (响应链)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS Catergory &amp; Extension(类目和类拓展)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -642,246 +373,31 @@ var _hmt = _hmt || [];
 
 <!-- 目录内容 -->
 
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 复制理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/iOS 复制理解/">iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/20/iOS 复制理解/" class="archive-article-date">
-  	<time datetime="2017-01-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。</p>
-<p>下面展示浅层 Copy 和 深层 Copy 展示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 深层复制和浅层复制.png"></p>
-        
-          <a class="article-more-a" href="/2017/01/20/iOS 复制理解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/20/iOS 复制理解/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总概"><span class="toc-number">1.</span> <span class="toc-text">总概</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-消息发送和转发过程"><span class="toc-number">2.</span> <span class="toc-text">iOS 消息发送和转发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Objc-的动态特性"><span class="toc-number">2.1.</span> <span class="toc-text">Objc 的动态特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-消息发送转发机制"><span class="toc-number">2.2.</span> <span class="toc-text">iOS 消息发送转发机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态解析"><span class="toc-number">2.2.1.</span> <span class="toc-text">动态解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速转发"><span class="toc-number">2.2.2.</span> <span class="toc-text">快速转发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#慢速转发"><span class="toc-number">2.2.3.</span> <span class="toc-text">慢速转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-发送和转发小结"><span class="toc-number">2.3.</span> <span class="toc-text">iOS 发送和转发小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-消息-runtime-层实现过程"><span class="toc-number">3.</span> <span class="toc-text">iOS 消息 runtime 层实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id"><span class="toc-number">3.1.</span> <span class="toc-text">id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SEL"><span class="toc-number">3.2.</span> <span class="toc-text">SEL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提出替换方案"><span class="toc-number">4.</span> <span class="toc-text">提出替换方案</span></a></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
-
-  
-    <article id="post-APP控件在屏幕上显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/13/APP控件在屏幕上显示/">APP控件在屏幕上显示</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/13/APP控件在屏幕上显示/" class="archive-article-date">
-  	<time datetime="2017-01-13T13:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="APP控件在屏幕上显示"><a href="#APP控件在屏幕上显示" class="headerlink" title="APP控件在屏幕上显示"></a>APP控件在屏幕上显示</h1><p>在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
-        
-          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-IOS响应者链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/09/IOS响应者链/">IOS整体框架</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/09/IOS响应者链/" class="archive-article-date">
-  	<time datetime="2016-09-09T06:01:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="">官方文档</a><br><a href="http://itangqi.me/2016/04/18/the-first-meet-with-event-delivery/" target="_blank" rel="external">初探 iOS 事件分发机制</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/09/IOS响应者链/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -902,8 +418,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
