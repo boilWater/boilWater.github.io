@@ -164,83 +164,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Fastlane讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/29/Fastlane讲解/">Fastlane讲解</a>
-    </h1>
-  
-
-        
-        <a href="/2016/05/29/Fastlane讲解/" class="archive-article-date">
-  	<time datetime="2016-05-29T04:13:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。<br>想知道fastlane了解点击<a href="https://fastlane.tools">这里<br></a>获取fastlan的github下载点击<a href ="https://github.com/fastlane/fastlane">这里</a></p>
-        
-          <a class="article-more-a" href="/2016/05/29/Fastlane讲解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/29/Fastlane讲解/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
     <article id="post-从叮叮CTO采访演讲随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -605,34 +528,9 @@ var _hmt = _hmt || [];
 <li>temp</li>
 </ul>
 <p>1) document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *path = <span class="built_in">NSHomeDirectory</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *docPath = [path stringByAppendingString:<span class="string">@"/saveMessage"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *docPath1 = [path stringByAppendingPathComponent:<span class="string">@"saveMessage"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *docPath2 = [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>)lastObject];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>对于数据相关的path 进行操作，判断其是否存在，如果存在就可以进行相关操作</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSFileManager</span> *fileManger = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSArray</span> *pathLists = [fileManger contentsOfDirectoryAtPath:path error:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">BOOL</span> flag = [fileManger fileExistsAtPath:docPath1];</span><br><span class="line"></span><br><span class="line">[fileManger removeItemAtPath:docPath1 error:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<p>2) temp：保存运行时需要的临时数据，当APP结束后就会清楚其中的数据。当APP没有运行时其中数据也可能被删除</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *temp =  <span class="built_in">NSTemporaryDirectory</span>();</span><br></pre></td></tr></table></figure>
-<p>3) library：其中有两个文件caches和preference。caches中存放临时程序运行时临时数据，就像我们在每个APP中的缓存可以进行清除。preference中存放我们自己设置是plist文件存放地址</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *library = [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSLibraryDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>)lastObject];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *chches = [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSCachesDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>)lastObject];</span><br></pre></td></tr></table></figure>
-<p>访问上面三个文件夹方法<a href="http://www.cnblogs.com/xiejw/p/5196798.html" target="_blank" rel="external">参考链接</a></p>
-<p>上述是关于在IOS储存数据是具体储存位置和其获取的方法，过程大同小异。但是在储存数据是我们要注意细节：比如是使用NSSarry是我们需要储存array数据，如果是其他数据例如NSdata需要将其转化</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *arr1 = [[<span class="built_in">NSArray</span> alloc]initWithObjects:<span class="string">@"0"</span>,<span class="string">@"5"</span>,<span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSData</span> *data = [<span class="built_in">NSKeyedArchiver</span> archivedDataWithRootObject:arr1];</span><br></pre></td></tr></table></figure>
-<p>除沙盒外IOS还向我们提供其他的储存方式：<code>Sqlite</code>，<code>Core data</code>, <code>NSKeyedArchiver(coding)</code>归档，<code>NSUserDefaults</code></p>
-<ul>
-<li><code>Sqlite</code>：<br>iOS自带数据库，可以保存数据</li>
-</ul>
-<p>使用的第三方的库 <a href="https://github.com/ccgus/fmdb" target="_blank" rel="external"><code>FMDB</code></a></p>
-<ul>
-<li><p><code>Core data</code>：<br>是苹果提出的基于 <code>sqlite</code> 储存数据的结构，实际是 <code>sqlite</code> 只不过对其进行简化</p>
-</li>
-<li><p><code>NSkeyedArchiver(coding)</code>：</p>
-</li>
-<li><p><code>NSUserDefaults</code> ：就是我们上述所说的放在 <code>library/preference</code> 中的偏好设置，实际是存放在 <code>plist</code> 文件中。存储数据类型是<code>NSString</code>,<code>NSData</code>,<code>NSInteger</code>,<code>NSDictionary</code>,<code>NSArray</code>,<code>NSNumber</code>,<code>bool</code>和其他的基本数据类型（但是<code>NSUserDefaults</code>有个缺点：在储存过程中可能由于时间问题结束存储，而且如果修改其中一项数据整个数据都要重新加载）</p>
-</li>
-</ul>
-<p>官方文档：The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData.</p>
-<p>文章是对于数据储存初次探究，后面会对文章进行修改有详细的使用方法和具体官方文档补充</p>
-
+        
+          <a class="article-more-a" href="/2016/04/24/IOS的永久话储存/#more">more >></a>
+        
       
 
       
@@ -693,7 +591,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/17/IOS整体框架/">iOS整体框架</a>
+      <a class="article-title" href="/2016/04/17/IOS整体框架/">iOS 整体框架</a>
     </h1>
   
 
@@ -708,29 +606,10 @@ var _hmt = _hmt || [];
       
         <p>感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架</p>
 <p>我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
-<p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">官网地址</a>）：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-layers_2x.png"></p>
-<p>官方文档的具体内容：</p>
-<p>The Cocoa (Application) layer（应用层） includes technologies for building an app’s user interface, for responding to user events, and for managing app behavior.</p>
-<p>The Media layer （媒体层）encompasses specialized technologies for playing, recording, and editing audiovisual media and for rendering and animating 2D and 3D graphics.</p>
-<p>The Core Services layer（核心服务层） contains many fundamental services and technologies that range from Automatic Reference Counting and low-level network communication to string manipulation and data formatting.</p>
-<p>The Core OS layer （核心系统操作层）defines programming interfaces that are related to hardware and networking, including interfaces for running high-performance computation tasks on a computer’s CPU and GPU.</p>
-<p>The Kernel and Device Drivers layer（内核和驱动层） consists of the Mach kernel environment, device drivers, BSD library functions (libSystem), and other low-level components. The layer includes support for file systems, networking, security, interprocess communication, programming languages, device drivers, and extensions to the kernel.</p>
-<p>下面对于每层的讲解：</p>
-<p>（1）应用层即可触摸层（cocoa touch layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1" target="_blank" rel="external">官方地址</a>:提供接口为应用，主要用于touch和管理应用的操作。其中我们最常用的UIKit的框架在Cocoa Touch层</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ed77042d637deed4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-cocoa_2x.png"></p>
-<p>（2）媒体层（media layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1" target="_blank" rel="external">官方地址</a>：包括多种多样的媒体文件，录音，播放，图像绘制，2D和3D图形基础动画</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-2388dbca231656e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-media_2x.png"></p>
-<p>主要包括以下：AV Foundation, Core Animation, Core Audio, Core Image, Core Text, OpenAl, OpenGL, Quartez</p>
-<p>（3）核心服务层（Core Service Layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ" target="_blank" rel="external">官方地址</a>：通过提供一些接口进行网络连接，包括一些在CPU和GPU更高计算性能，使用广泛的Foundation框架位于本层</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-237c7e26cf4e5d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-core_services_2x.png"></p>
-<p>只要包括以下：Address Book, Core Foundation, Foundation, Core Data, Quick Look</p>
-<p>, Social, WebKit, Security</p>
-<p>(4)核心系统操作层（Core OS Layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">官方地址</a>：内存管理、文件系统、电源管理以及一些其他的操作系统任务。它可以直接和硬件设备进行交互</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-26f0be3c3ff81a93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-core_os_2x.png"></p>
-<p>只要包括以下：Accelerate, Open CL, Directory Services, System Configuration, Disk Arbitration</p>
-<p>参考资料：<br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">About Developing for Mac</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1" target="_blank" rel="external">Cocoa Application Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1" target="_blank" rel="external">Media Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ" target="_blank" rel="external">Core Services Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">Core OS Layer</a>  </p>
-
+<p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101">官网地址</a>）：</p>
+        
+          <a class="article-more-a" href="/2016/04/17/IOS整体框架/#more">more >></a>
+        
       
 
       

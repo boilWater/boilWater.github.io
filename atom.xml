@@ -813,7 +813,7 @@
     <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
     <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-08-25T15:42:57.000Z</updated>
+    <updated>2017-08-25T17:21:55.000Z</updated>
     
     <content type="html">&lt;p&gt;在每个 APP 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
 &lt;p&gt;使用 Xmind 来展示博客讲述 APP 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
@@ -911,33 +911,10 @@
     
     </summary>
     
-      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
-      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IOS整体框架</title>
-    <link href="http://yoursite.com/2016/09/09/IOS%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE/"/>
-    <id>http://yoursite.com/2016/09/09/IOS响应者链/</id>
-    <published>2016-09-09T06:01:25.000Z</published>
-    <updated>2016-09-09T09:26:37.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;a href=&quot;&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://itangqi.me/2016/04/18/the-first-meet-with-event-delivery/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初探 iOS 事件分发机制&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://itangqi.me/2016/04/18/the-first-meet-with-event-delivery/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初探 iOS 事
-    
-    </summary>
-    
-      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
-    
-    
-      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
@@ -1406,11 +1383,11 @@
   </entry>
   
   <entry>
-    <title>Fastlane讲解</title>
+    <title>Fastlane 讲解</title>
     <link href="http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/"/>
     <id>http://yoursite.com/2016/05/29/Fastlane讲解/</id>
     <published>2016-05-29T04:13:46.000Z</published>
-    <updated>2017-06-01T07:48:51.000Z</updated>
+    <updated>2017-08-25T17:18:07.000Z</updated>
     
     <content type="html">&lt;p&gt;大概在一个月左右写过关于cocoaPods安装和使用方法，如果说cocoaPods是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么fastlane就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;br&gt;想知道fastlane了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -1432,10 +1409,10 @@
     
     </summary>
     
-      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
-      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
@@ -1476,6 +1453,47 @@
     
     
       <category term="视频心得" scheme="http://yoursite.com/tags/%E8%A7%86%E9%A2%91%E5%BF%83%E5%BE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客搬家感觉</title>
+    <link href="http://yoursite.com/2016/05/28/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%90%AF/"/>
+    <id>http://yoursite.com/2016/05/28/博客开启/</id>
+    <published>2016-05-28T13:44:27.000Z</published>
+    <updated>2017-06-01T07:48:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt; &lt;br&gt;&lt;br&gt; &lt;br&gt; &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;hr&gt;
+&lt;p&gt;昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;的。而且自己也将要离开生活四年头大开始新的征程，有的同学说自己上大学优劣，不过我是真心感&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;谢头大。在四年间自己做过很多事情，也收获很多。其实最大的收获是有一件事值得自己一直去等待&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这也需是自己在大学最大的收获，也是在大学最开心大三下半学期╮(╯▽╰)╭。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style=&quot;text-align:right;&quot;&gt;&lt;br&gt;    – &lt;a href=&quot;https://github.com/boilWater/boilWater.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 后面会附上自己简历独自介绍😘&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+
+
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; &lt;/br&gt;&lt;br&gt; &lt;/br&gt; &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="博客之初" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%88%9D/"/>
     
   </entry>
   

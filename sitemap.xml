@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/</loc>
+    
+    <lastmod>2017-08-25T17:21:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/</loc>
+    
+    <lastmod>2017-08-25T17:18:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/17/IOS%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6/</loc>
+    
+    <lastmod>2017-08-25T17:17:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/24/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/</loc>
+    
+    <lastmod>2017-08-25T17:15:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/08/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/</loc>
     
     <lastmod>2017-08-25T17:08:57.000Z</lastmod>
@@ -12,27 +40,6 @@
     <loc>http://yoursite.com/2016/05/01/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/</loc>
     
     <lastmod>2017-08-25T16:46:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/24/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/</loc>
-    
-    <lastmod>2017-08-25T16:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/17/IOS%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6/</loc>
-    
-    <lastmod>2017-08-25T16:27:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/</loc>
-    
-    <lastmod>2017-08-25T15:42:57.000Z</lastmod>
     
   </url>
   
@@ -93,6 +100,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2016/06/03/SDWebImage/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/06/16/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
@@ -100,7 +114,28 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/05/29/Fastlane%E8%AE%B2%E8%A7%A3/</loc>
+    <loc>http://yoursite.com/2016/06/04/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/07/16/%E4%B8%A4%E5%91%A8%E6%84%9F%E6%82%9F~%E5%B9%BF%E5%B7%9E/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/05/15/iOS-Responder%20Chain/</loc>
+    
+    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
     
@@ -115,41 +150,6 @@
   
   <url>
     <loc>http://yoursite.com/2016/06/15/IOS%2010/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/05/15/iOS-Responder%20Chain/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/06/03/SDWebImage/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/06/04/SDWebImage%E4%B9%8B%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98%E5%88%86%E6%9E%90/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/29/runtime%E7%90%86%E8%A7%A3/</loc>
-    
-    <lastmod>2017-06-01T07:48:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/07/16/%E4%B8%A4%E5%91%A8%E6%84%9F%E6%82%9F~%E5%B9%BF%E5%B7%9E/</loc>
     
     <lastmod>2017-06-01T07:48:51.000Z</lastmod>
     
@@ -173,13 +173,6 @@
     <loc>http://yoursite.com/2016/05/29/%E4%BB%8E%E5%8F%AE%E5%8F%AECTO%E9%87%87%E8%AE%BF%E6%BC%94%E8%AE%B2%E9%9A%8F%E7%AC%94/</loc>
     
     <lastmod>2017-06-01T07:43:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/09/IOS%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE/</loc>
-    
-    <lastmod>2016-09-09T09:26:37.000Z</lastmod>
     
   </url>
   
