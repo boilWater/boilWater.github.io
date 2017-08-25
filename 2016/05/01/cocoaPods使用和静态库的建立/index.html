@@ -6,18 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>博客搬家感觉 | JackJin&#39;s 博客</title>
+  <title>cocoaPods使用和静态库的建立 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。">
+  <meta name="description" content="cocoaPods个人介绍：
+是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化
+一般我们复制三方框架到项目有两种方式：  
+
+直接进行复制
+使用cocoaPods来进行管理
+
+本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题
+但是直接复制存在问题：
+1) 库更新存在问题，如果一个库引用另一个库，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客搬家感觉">
-<meta property="og:url" content="http://yoursite.com/2016/05/28/博客开启/index.html">
+<meta property="og:title" content="cocoaPods使用和静态库的建立">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/cocoaPods使用和静态库的建立/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="123博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。">
-<meta property="og:updated_time" content="2017-06-01T07:48:51.000Z">
+<meta property="og:description" content="cocoaPods个人介绍：
+是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化
+一般我们复制三方框架到项目有两种方式：  
+
+直接进行复制
+使用cocoaPods来进行管理
+
+本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题
+但是直接复制存在问题：
+1) 库更新存在问题，如果一个库引用另一个库，">
+<meta property="og:updated_time" content="2017-08-25T16:46:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客搬家感觉">
-<meta name="twitter:description" content="123博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。">
+<meta name="twitter:title" content="cocoaPods使用和静态库的建立">
+<meta name="twitter:description" content="cocoaPods个人介绍：
+是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化
+一般我们复制三方框架到项目有两种方式：  
+
+直接进行复制
+使用cocoaPods来进行管理
+
+本人建议可以学习使用cocoaPods这样更加方便，下面讲直接复制问题
+但是直接复制存在问题：
+1) 库更新存在问题，如果一个库引用另一个库，">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -163,43 +190,78 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-博客开启" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cocoaPods使用和静态库的建立" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      博客搬家感觉
+      cocoaPods使用和静态库的建立
     </h1>
   
 
         
-        <a href="/2016/05/28/博客开启/" class="archive-article-date">
-  	<time datetime="2016-05-28T13:44:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-28</time>
+        <a href="/2016/05/01/cocoaPods使用和静态库的建立/" class="archive-article-date">
+  	<time datetime="2016-05-01T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> <br><br> <br> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">博客地址有经常使p用的博客园搬至简书，从简书搬到Hexo建立的Github上面。从此开启自己在跟人博客学</span><br><span class="line"></span><br><span class="line">习和分享征程，要是说写这些对我最大驱动力是一条自己一直对技术喜爱和完成自己蜕变之路。 </span><br></pre></td></tr></table></figure>
-<p><br><br><br></p>
+        <p>cocoaPods个人介绍：</p>
+<p>是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化</p>
+<p>一般我们复制三方框架到项目有两种方式：  </p>
+<ul>
+<li>直接进行复制</li>
+<li>使用<code>cocoaPods</code>来进行管理</li>
+</ul>
+<p>本人建议可以学习使用<code>cocoaPods</code>这样更加方便，下面讲直接复制问题</p>
+<p>但是直接复制存在问题：</p>
+<p>1) 库更新存在问题，如果一个库引用另一个库，需要对于库全部更新</p>
+<p>2) 对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用 <code>SDWebImage</code> 时对图片进行截图得到圆形图片，如果进行更新就有问题</p>
 <a id="more"></a>
-<hr>
-<p>昨天把博客搬至自己的博客，虽说花费的时间有点多，但是看着自己花费的时间有所收获还是很开心</p>
-<hr>
-<p>的。而且自己也将要离开生活四年头大开始新的征程，有的同学说自己上大学优劣，不过我是真心感</p>
-<hr>
-<p>谢头大。在四年间自己做过很多事情，也收获很多。其实最大的收获是有一件事值得自己一直去等待</p>
-<hr>
-<p>这也需是自己在大学最大的收获，也是在大学最开心大三下半学期╮(╯▽╰)╭。</p>
-<hr>
-<p><br><br><br></p>
-<p style="text-align:right;"><br>    – <a href="https://github.com/boilWater/boilWater.github.io" target="_blank" rel="external"> 后面会附上自己简历独自介绍😘</a><br></p>
-
-
+<p>3) 比较难判断在APP引进库的具体版本，除非在以前APP中进行记录</p>
+<p>4) 没有中心管理，很难对于所有的第三方库进行统一管理<br><code>cocoaPods</code>（<code>cocoaPods</code>链接）对于上面问题有很好处理：可以解决库之间存在依赖关系，而且帮忙发现是新的库，以最简单方式为我们码农配置环境 </p>
+<p>废话不多说，下面开始在mac中配置安装<code>cocoaPods</code></p>
+<p>如果系统是<code>10.7</code>之后系统中带有配置<code>Ruby</code>环境，只需安装<code>cocoaPods</code>即可，如果不是可以搜索下Ruby环境安装</p>
+<p>方法一：</p>
+<p> 1)打开终端：<code>control</code>+空格键，然后搜索“终端”</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoaPods</span><br></pre></td></tr></table></figure>
+<p>(2)然后在终端中进行设置</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod setup --verbose</span><br></pre></td></tr></table></figure>
+<p>如果在执行一时比较慢我们就需要执行其他安装，通过只用淘宝的Ruby进行访问<code>cocoaPod</code>，</p>
+<p>方法二：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https:<span class="comment">//rubygems.org/</span></span><br></pre></td></tr></table></figure>
+<p>//等有反应之后再敲入以下命令</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources -a http:<span class="comment">//ruby.taobao.org/</span></span><br></pre></td></tr></table></figure>
+<p>如果要查看是否是<code>taobao</code>镜像</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem source -l</span><br></pre></td></tr></table></figure>
+<p>如果显示一下情况</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">http:<span class="comment">//ruby.taobao.org/</span></span><br></pre></td></tr></table></figure>
+<p>最后执行：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoaPods</span><br></pre></td></tr></table></figure>
+<p>经过上述爽过之后，我们就成功安装<code>cocosPods</code>，接下来我们来看下怎么使用</p>
+<p>（1）使用<code>cocoaPods</code>查看相关框架信息，查看<code>AFNetWorking</code>信息</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod search AFNetWorking</span><br></pre></td></tr></table></figure>
+<p>下面在项目中使用<code>cocoaPods</code>加入第三方框架</p>
+<p>（1）打开终端，进行项目文件的根目录然后使用vim创建<code>podFile</code>文件：例如我们项目放在 文档/项目名</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$cd /users/用户名/documents/项目名</span><br><span class="line"></span><br><span class="line">$vim podFile</span><br></pre></td></tr></table></figure>
+<p>（2）再输如框中输入加入平台和相关框架以及框架版本号（如果出现不能输入就要按键a后者是i，进行文本编辑）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">paltform : iOS, '7.0'</span><br><span class="line"></span><br><span class="line">pod "AFNetworking", "~&gt; 2.0"</span><br></pre></td></tr></table></figure>
+<p>（3）输入上述文本，后保存并退出编辑按键esc进行退出，输入下面文件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<p>（4）最后下载<code>AFNetWorking</code>文件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$pod install</span><br></pre></td></tr></table></figure>
+<p>大功告成，这样就可以在我们文件中生成一个<code>pods</code>文件，打开项目就可以看到下面除啦我们项目外还多余一个pods文件</p>
+<p>注：可以在文件中放置多个框架，只要在上面（2）中<code>pod</code>“框架名”, <code>&quot;~&gt;3.0&quot;</code><br><code>cocosPods</code>后续产生问题解析：</p>
+<p>如果我们从<code>github</code>上下载开源项目有的项目时需要我们重新更新配置开源框架；</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/desktop/项目名                  <span class="comment">//我的项目放在桌面</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<p>如果出现</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[!] The dependency `Masonry (~&gt; 0.6.2)` is not used in any concrete target.</span><br><span class="line"></span><br><span class="line">The dependency `SDWebImage (~&gt; 3.7)` is not used in any concrete target.</span><br><span class="line"></span><br><span class="line">The dependency `GPUImage` is not used in any concrete target.</span><br><span class="line">打开配置文件Podfile文件修改配置文件</span><br><span class="line"></span><br><span class="line">target 'BeautifyFaceDemo' do</span><br><span class="line"></span><br><span class="line">pod 'Masonry', '~&gt; 0.6.2'</span><br><span class="line"></span><br><span class="line">pod 'SDWebImage', '~&gt;3.7'</span><br><span class="line"></span><br><span class="line">pod 'GPUImage'</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>既可以解决生面的问题。</p>
 
       
 
@@ -213,7 +275,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客之初</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
         		</li>
       		
 		</ul>
@@ -225,7 +287,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
         		</li>
       		
 		</ul>
@@ -280,7 +342,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/05/28/博客开启/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/05/01/cocoaPods使用和静态库的建立/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +356,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/05/29/从叮叮CTO采访演讲随笔/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/08/block，注册监听，委托协议和KVO/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          从叮叮CTO采访演讲随笔
+          block，注册监听，委托协议和KVO
         
       </div>
     </a>
   
   
-    <a href="/2016/05/08/block，注册监听，委托协议和KVO/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">block，注册监听，委托协议和KVO</div>
+    <a href="/2016/04/24/IOS的永久话储存/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS的永久话储存</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -326,6 +388,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 
