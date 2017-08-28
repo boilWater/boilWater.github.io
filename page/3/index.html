@@ -666,6 +666,167 @@ var _hmt = _hmt || [];
 <!-- 目录内容结束 -->
 
   
+    <article id="post-iOS Fundation-NSArray &amp; NSMutableArray 基本使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/">iOS Fundation-NSArray &amp; NSMutableArray 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/" class="archive-article-date">
+  	<time datetime="2015-02-06T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天把 <code>NSString</code> 和 <code>NSMutableString</code> 相关使用知识进行整理，对 API 进行列举然后介绍相关的使用方法。</p>
+<p>但在开发过程中我们经常也会遇到多个字符串，多个不同类型数组。</p>
+<p>在 <code>iOS</code> 中数组可以使用 <code>NSArray</code> 或者 <code>NSMutableArray</code> 来进行管理和使用。</p>
+<h2 id="NSArray"><a href="#NSArray" class="headerlink" title="NSArray"></a><code>NSArray</code></h2>
+        
+          <a class="article-more-a" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS Fundation-NSString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/03/iOS Fundation-NSString/">iOS Fundation-NSString &amp; NSMutableString 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/03/iOS Fundation-NSString/" class="archive-article-date">
+  	<time datetime="2015-02-03T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>iOS</code> 使用过程中我们经常会使用到 Java 中类似字符串的函数和一些常量。在 <code>iOS</code> 中这些常量一般是以对象的形式存在。</p>
+<h2 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h2><p>（1）<code>NSString</code> 继承</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *name = <span class="string">@"bai liangliang"</span>;</span><br></pre></td></tr></table></figure>
+<p>在 Xcode 中按着 <code>command</code> + 鼠标左键，打开 <code>NSString.h</code> 的实现文档。可以看到下面代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSString</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCopying</span>, <span class="title">NSMutableCopying</span>, <span class="title">NSSecureCoding</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//省略...</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2015/02/03/iOS Fundation-NSString/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/03/iOS Fundation-NSString/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS 学习-Fundation-控件2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -686,6 +847,11 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>在 iOS 开发过程界面需要使用控件来做展示，而且师兄要求要学习相关的屏幕配置。</p>
+<p>后面就根据具体的操作完成在 <code>Storyboard</code> 中实现控件使用和空间自适应屏幕布局。</p>
+<p>下面是使用 <code>View</code>、<code>Label</code>、<code>TextView</code>、<code>UITextView</code>、<code>UIImgaeView</code>和 <code>UIButton</code>来进行相关自适应布局和空间初始化。</p>
+        
+          <a class="article-more-a" href="/2014/10/24/iOS 学习-Fundation-控件2/#more">more >></a>
         
       
 
@@ -721,199 +887,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/10/24/iOS 学习-Fundation-控件2/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 学习-Fundation-控件1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/23/iOS 学习-Fundation-控件1/">iOS 控件-按钮</a>
-    </h1>
-  
-
-        
-        <a href="/2014/10/23/iOS 学习-Fundation-控件1/" class="archive-article-date">
-  	<time datetime="2014-10-23T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在了解简单项目建立后，后面就找本基本的 Objective 相关教程。尝试开始使用基本控件使用，来进行基本的使用。</p>
-<p>(1)在 Stroyboard 上面添加控件，添加视频的位置。</p>
-<p>如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cb61a064aa59e6a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.18.03.png"></p>
-<p>上图中在控件中拉取空间到 Stroyboard 上面，下面的 查找栏可以定向查找控件。</p>
-<p>(2)控件基本的参数设置</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d5267b714e62a32c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.19.42.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d472f9239cd35576.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.20.48.png"></p>
-<p>上面是 UIButton 基本设置，可以设置 Button 相关具体参数：</p>
-<p>具体参数详细：</p>
-<p><code>Type</code> ：可以设置 按钮的类型</p>
-<p>Button : 可以设置按钮 title， 按钮显示字体大小，字体颜色，阴影色彩，图片和背景颜色；</p>
-<p>按钮阴影详细设置；</p>
-<p>相关一些控制设置；</p>
-<p>显示界面一些基本设置。</p>
-<p>（3）控件添加监听</p>
-<p>点击下面的按钮来调整 Xcode 来进行对 UIButton 添加事件监听，把鼠标放在需要添加空间，点击鼠标的左按钮拉去控件在 ViewController.h 上面。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-5d082cc2f0d5cffc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.37.41.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-4130cc772fa44c83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.22.05.png"></p>
-<p><code>Connection</code> ：可以设置 Outlet、Action 和 Outlet connection 三个选项。</p>
-<p>Outlet : 是控件展示，不需要进行控件点击相应。</p>
-<p>Action : 需要需要对事件进行是事件监听的相应需要选择这个选项。</p>
-<p>Outlet connection : 是控件展示联系</p>
-<p><code>name</code> : 是可以自主定义控件的显示名称</p>
-<p><code>Type</code> : 默认是当前控件类型</p>
-<p><code>Stroage</code> : 设置控件的属性类型</p>
-<p>（4）可以看到下面添加后 Button 上面的参数：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-59e47f5ac89c88cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.24.15.png"></p>
-<p>上图可以看出 UIButton 相关基本的设置。我们设置 UIButton 就是设置 Touch Up Inside 事件添加相应。</p>
-<p>（5）UIButton 添加监听后代码如下：</p>
-<p><code>ViewControol.h</code> 中<br><img src="http://upload-images.jianshu.io/upload_images/1877765-f402efd0c17e9e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.47.02.png"></p>
-<p><code>ViewControol.m</code> 中<br><img src="http://upload-images.jianshu.io/upload_images/1877765-7287ec811f66174b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 15.47.14.png"></p>
-<p>（6）UIButton 事件点击后事件调用</p>
-<p>对时间点击相应代码如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">IBAction</span>)button1:(<span class="keyword">id</span>)sender &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"点击 button"</span>); <span class="comment">//NSLog打印结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出的结果：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">57461</span>:<span class="number">4570650</span>] 点击 button</span><br></pre></td></tr></table></figure>
-<p>小结：</p>
-<p>上面完成控件 UIButton 从添加到事件点击相应基本相应完后，最后对点击后调用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/10/23/iOS 学习-Fundation-控件1/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 学习-Fundation-Hello world 实现讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/20/iOS 学习-Fundation-Hello world 实现讲解/">iOS Hello World 实现类讲解</a>
-    </h1>
-  
-
-        
-        <a href="/2014/10/20/iOS 学习-Fundation-Hello world 实现讲解/" class="archive-article-date">
-  	<time datetime="2014-10-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在学校里的师兄创业园中心帮忙做一些关于 iOS 项目，目前还在熟悉使用 Xcode 。还有师兄讲解 iOS 一些空间使用和相关知识。</p>
-<p>下面就把一些基本的学习来进行说明，下面展示最近师兄讲解吧。</p>
-<p>在 iOS 加载过程中的一些过程使用类相关功能，例如 <code>main.m</code>:</p>
-<p>(1)<code>mian.m</code> 代码：</p>
-        
-          <a class="article-more-a" href="/2014/10/20/iOS 学习-Fundation-Hello world 实现讲解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/10/20/iOS 学习-Fundation-Hello world 实现讲解/">产看详细 >></a>
         </p>
       
 

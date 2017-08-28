@@ -8,16 +8,28 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 控件-标签和视图 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="在 iOS 开发过程界面需要使用控件来做展示，而且师兄要求要学习相关的屏幕配置。
+后面就根据具体的操作完成在 Storyboard 中实现控件使用和空间自适应屏幕布局。
+下面是使用 View、Label、TextView、UITextView、UIImgaeView和 UIButton来进行相关自适应布局和空间初始化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 控件-标签和视图">
 <meta property="og:url" content="http://yoursite.com/2014/10/24/iOS 学习-Fundation-控件2/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-27T08:12:47.000Z">
+<meta property="og:description" content="在 iOS 开发过程界面需要使用控件来做展示，而且师兄要求要学习相关的屏幕配置。
+后面就根据具体的操作完成在 Storyboard 中实现控件使用和空间自适应屏幕布局。
+下面是使用 View、Label、TextView、UITextView、UIImgaeView和 UIButton来进行相关自适应布局和空间初始化。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d9a9f2a3218fd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-fdec5728c575c22a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0bb40a851a8b63ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7e37affd7f3f946d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-a2f73f60fde897f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-28T04:01:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 控件-标签和视图">
-<meta name="twitter:description">
+<meta name="twitter:description" content="在 iOS 开发过程界面需要使用控件来做展示，而且师兄要求要学习相关的屏幕配置。
+后面就根据具体的操作完成在 Storyboard 中实现控件使用和空间自适应屏幕布局。
+下面是使用 View、Label、TextView、UITextView、UIImgaeView和 UIButton来进行相关自适应布局和空间初始化。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d9a9f2a3218fd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +195,20 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在 iOS 开发过程界面需要使用控件来做展示，而且师兄要求要学习相关的屏幕配置。</p>
+<p>后面就根据具体的操作完成在 <code>Storyboard</code> 中实现控件使用和空间自适应屏幕布局。</p>
+<p>下面是使用 <code>View</code>、<code>Label</code>、<code>TextView</code>、<code>UITextView</code>、<code>UIImgaeView</code>和 <code>UIButton</code>来进行相关自适应布局和空间初始化。</p>
+<a id="more"></a>
+<p>（1）使用 <code>Stroyboard</code> 实现布局如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1d9a9f2a3218fd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 16.29.34.png"></p>
+<p>（2）下图对 <code>Stroyboard</code> 实现自适应布局：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-fdec5728c575c22a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 16.30.39.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0bb40a851a8b63ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 16.32.56.png"></p>
+<p>（3）实现布局后可以在当前侧栏中查看自适应布局的相关参数信息，这里也可以实现手动修改当前布局相关的参数信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7e37affd7f3f946d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 16.34.43.png"></p>
+<p>（4）最后在模拟器上运行运行程序实现布局集体情况。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-a2f73f60fde897f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-27 16.43.13.png"></p>
+
       
 
       
@@ -277,11 +302,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/04/17/IOS整体框架/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/02/03/iOS Fundation-NSString/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          iOS 整体框架
+          iOS Fundation-NSString &amp; NSMutableString 使用详解
         
       </div>
     </a>
