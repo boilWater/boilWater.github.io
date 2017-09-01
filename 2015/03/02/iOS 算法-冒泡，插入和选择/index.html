@@ -8,16 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 算法-冒泡，插入和选择排序 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="电子信息开设的数据结构开始学习，看的自己一头雾水不觉明历。没办法只能咬牙慢慢的看下去，谁让自己学习编程。
+好吧，小编不多说其他的内容下面使用 C++ 来实现数据结构中经常见到的基础算法：冒泡、插入和选择排序相关实现原理。
+冒泡排序(Bubble Sort)(1)冒泡排序实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 算法-冒泡，插入和选择排序">
 <meta property="og:url" content="http://yoursite.com/2015/03/02/iOS 算法-冒泡，插入和选择/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:02:27.000Z">
+<meta property="og:description" content="电子信息开设的数据结构开始学习，看的自己一头雾水不觉明历。没办法只能咬牙慢慢的看下去，谁让自己学习编程。
+好吧，小编不多说其他的内容下面使用 C++ 来实现数据结构中经常见到的基础算法：冒泡、插入和选择排序相关实现原理。
+冒泡排序(Bubble Sort)(1)冒泡排序实现">
+<meta property="og:updated_time" content="2017-09-01T04:15:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 算法-冒泡，插入和选择排序">
-<meta name="twitter:description">
+<meta name="twitter:description" content="电子信息开设的数据结构开始学习，看的自己一头雾水不觉明历。没办法只能咬牙慢慢的看下去，谁让自己学习编程。
+好吧，小编不多说其他的内容下面使用 C++ 来实现数据结构中经常见到的基础算法：冒泡、插入和选择排序相关实现原理。
+冒泡排序(Bubble Sort)(1)冒泡排序实现">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +189,23 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>电子信息开设的数据结构开始学习，看的自己一头雾水不觉明历。没办法只能咬牙慢慢的看下去，谁让自己学习编程。</p>
+<p>好吧，小编不多说其他的内容下面使用 <code>C++</code> 来实现数据结构中经常见到的基础算法：冒泡、插入和选择排序相关实现原理。</p>
+<h2 id="冒泡排序-Bubble-Sort"><a href="#冒泡排序-Bubble-Sort" class="headerlink" title="冒泡排序(Bubble Sort)"></a>冒泡排序(Bubble Sort)</h2><p>(1)冒泡排序实现</p>
+<a id="more"></a>
+<p>下面先写出其实现代码:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//交换两个数字</span></span><br><span class="line"><span class="keyword">void</span> swapNumber(<span class="keyword">int</span> &amp;min, <span class="keyword">int</span> &amp;max) &#123;</span><br><span class="line">    <span class="keyword">int</span> temp = min;</span><br><span class="line">    min = max;</span><br><span class="line">    max = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现冒泡排序</span></span><br><span class="line"><span class="keyword">void</span> bubbleSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[j] &gt; p[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                swapNumber(p[j], p[j+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面实现排序方式过程，但是这样的话每一次都要进行 N * （N-1）次比较来实现排序完成的结果。</p>
+<p>(2)冒泡排序优化</p>
+<p>对上面的排序方式可以机型相关优化。当在第一次循环中已经完成相关排序，下次就无需进行相关的交换可以直接结束。所以可以设置相关判断，具体代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> bubbleSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">false</span>;<span class="comment">//设置判断 flag</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        flag = <span class="literal">false</span>;<span class="comment">//把 flag 设置为 false</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[j] &gt; p[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                flag = <span class="literal">true</span>;<span class="comment">//如果当前需要进行交换 设置为 true</span></span><br><span class="line">                <span class="keyword">int</span> temp = p[j];</span><br><span class="line">                p[j] = p[j+<span class="number">1</span>];</span><br><span class="line">                p[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在内部遍历过程没有进行相关交换，说明此数组完成排序</span></span><br><span class="line">        <span class="keyword">if</span> (!flag) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序-Insert-Sort"><a href="#插入排序-Insert-Sort" class="headerlink" title="插入排序(Insert Sort)"></a>插入排序(Insert Sort)</h2><p>插入排序的实现通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
+<p>(1)插入排序实现代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> insertSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = p[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; p[j] &gt; temp; --j)</span><br><span class="line">            p[j+<span class="number">1</span>] = p[j];</span><br><span class="line">        p[j+<span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序-Select-Sort"><a href="#选择排序-Select-Sort" class="headerlink" title="选择排序(Select Sort)"></a>选择排序(Select Sort)</h2><p>选择排序(Select Sort) : 从未排好的部分的第一个作为最小（最大）的，然后依次和剩余的比较，如果有更小（更大）的，记下下标，以此作为新的最小（最大）值，继续比较，一趟结束后，然后和第一个进行交换。</p>
+<p>(1)选择排序代码实现</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> selectSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        k = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[k] &gt; p[j]) &#123;</span><br><span class="line">                k = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (k != i) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = p[k];</span><br><span class="line">            p[k] = p[i];</span><br><span class="line">            p[i] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -288,7 +310,7 @@ var _hmt = _hmt || [];
   
   
     <a href="/2015/02/16/iOS 视图跳转/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS 视图跳转 &amp; 值传递</div>
+      <div class="article-nav-title">iOS 视图跳转</div>
       <i class="icon-circle-right"></i>
     </a>
   

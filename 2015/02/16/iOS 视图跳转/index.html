@@ -6,18 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS 视图跳转 &amp; 值传递 | JackJin&#39;s 博客</title>
+  <title>iOS 视图跳转 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="在 APP 开发过程中经常会使用到 UIViewController 来展示视图，在应用展示过程中经常会使用到 UIViewController 视图控制器件进行跳转。
+下面小编将会介绍在视图控制间进行跳转和传递数据。
+跳转方式视图实现跳转方式：
+
+UIViewController 实现跳转
+UINavigationController 实现跳转
+UITabBarController 实现跳转
+S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 视图跳转 & 值传递">
+<meta property="og:title" content="iOS 视图跳转">
 <meta property="og:url" content="http://yoursite.com/2015/02/16/iOS 视图跳转/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T09:58:37.000Z">
+<meta property="og:description" content="在 APP 开发过程中经常会使用到 UIViewController 来展示视图，在应用展示过程中经常会使用到 UIViewController 视图控制器件进行跳转。
+下面小编将会介绍在视图控制间进行跳转和传递数据。
+跳转方式视图实现跳转方式：
+
+UIViewController 实现跳转
+UINavigationController 实现跳转
+UITabBarController 实现跳转
+S">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-e29a0687175c6458.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-31a5c4b5ec9192eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-600019b4b6a00944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-6f7eee909c9f9046.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4e669f8b3422a326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-30T14:40:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 视图跳转 & 值传递">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS 视图跳转">
+<meta name="twitter:description" content="在 APP 开发过程中经常会使用到 UIViewController 来展示视图，在应用展示过程中经常会使用到 UIViewController 视图控制器件进行跳转。
+下面小编将会介绍在视图控制间进行跳转和传递数据。
+跳转方式视图实现跳转方式：
+
+UIViewController 实现跳转
+UINavigationController 实现跳转
+UITabBarController 实现跳转
+S">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-e29a0687175c6458.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -170,7 +197,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      iOS 视图跳转 &amp; 值传递
+      iOS 视图跳转
     </h1>
   
 
@@ -183,7 +210,60 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在 APP 开发过程中经常会使用到 <code>UIViewController</code> 来展示视图，在应用展示过程中经常会使用到 <code>UIViewController</code> 视图控制器件进行跳转。</p>
+<p>下面小编将会介绍在视图控制间进行跳转和传递数据。</p>
+<h2 id="跳转方式"><a href="#跳转方式" class="headerlink" title="跳转方式"></a>跳转方式</h2><p>视图实现跳转方式：</p>
+<ul>
+<li><code>UIViewController</code> 实现跳转</li>
+<li><code>UINavigationController</code> 实现跳转</li>
+<li><code>UITabBarController</code> 实现跳转</li>
+<li><code>Segue</code> 实现跳转</li>
+</ul>
+<a id="more"></a>
+<h3 id="UIViewController-实现跳转"><a href="#UIViewController-实现跳转" class="headerlink" title="UIViewController 实现跳转"></a><code>UIViewController</code> 实现跳转</h3><p>(1)实现跳转到下一个界面</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)presentViewController:(<span class="built_in">UIViewController</span> *)viewControllerToPresent animated: (<span class="built_in">BOOL</span>)flag completion:(<span class="keyword">void</span> (^ __nullable)(<span class="keyword">void</span>))completion <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">5</span>_0);</span><br><span class="line">- (<span class="keyword">void</span>)presentModalViewController:(<span class="built_in">UIViewController</span> *)modalViewController animated:(<span class="built_in">BOOL</span>)animated <span class="built_in">NS_DEPRECATED_IOS</span>(<span class="number">2</span>_0, <span class="number">6</span>_0) __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+<p>跳转具体实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SecondViewController *secondVC = [[SecondViewController alloc] init];</span><br><span class="line">secondVC.timeLabel.text = <span class="string">@"30/8/2017"</span>;</span><br><span class="line">secondVC.previousButton.titleLabel.text = <span class="string">@"Previous Button"</span>;</span><br><span class="line">[<span class="keyword">self</span> presentViewController:secondVC animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
+<p>（2）返回上一个界面</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)dismissViewControllerAnimated: (<span class="built_in">BOOL</span>)flag completion: (<span class="keyword">void</span> (^ __nullable)(<span class="keyword">void</span>))completion <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">5</span>_0);</span><br><span class="line">- (<span class="keyword">void</span>)dismissModalViewControllerAnimated:(<span class="built_in">BOOL</span>)animated <span class="built_in">NS_DEPRECATED_IOS</span>(<span class="number">2</span>_0, <span class="number">6</span>_0) __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+<p>返回上一个界面具体实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)dismissViewControllerAnimated:(<span class="built_in">BOOL</span>)flag completion:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))completion &#123;</span><br><span class="line">    <span class="comment">//这里处理跳转后处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="UINavigationController-实现跳转"><a href="#UINavigationController-实现跳转" class="headerlink" title="UINavigationController 实现跳转"></a><code>UINavigationController</code> 实现跳转</h3><p>如果当前 <code>UIViewController</code> 在 <code>UINavigationController</code> 管理中，可以使用 <code>UINavigationController</code> 来进行相关的界面跳转。</p>
+<ul>
+<li><code>UINavigationController</code> 基本知识</li>
+</ul>
+<p><code>UINavigationController</code> 是一个 <code>navigation stack</code> 的堆栈，来进行管理其中 <code>UIViewController</code> 来进行展示。</p>
+<blockquote>
+<p>A navigation controller object manages the currently displayed screens using the navigation stack, which is represented by an array of view controllers. //来自官方文档</p>
+</blockquote>
+<p>下图是 <code>navigation stack</code> 来管理 <code>UIViewController</code> 视图控制器。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-e29a0687175c6458.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-30 22.13.50.png"></p>
+<p>下图是使用 <code>revel</code> 展示 <code>UINavigationController</code> 和 <code>UIViewController</code> 之间的视图关系。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-31a5c4b5ec9192eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-30 22.14.03.png"></p>
+<ul>
+<li><code>UINavigationController</code> 实现界面跳转</li>
+</ul>
+<p>（1）<code>UINavigationController</code>界面跳转 <code>API</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)pushViewController:(<span class="built_in">UIViewController</span> *)viewController animated:(<span class="built_in">BOOL</span>)animated;<span class="comment">//把当前 ViewController 压入 stack，跳转到下一个 试图控制器</span></span><br><span class="line">- (nullable <span class="built_in">UIViewController</span> *)popViewControllerAnimated:(<span class="built_in">BOOL</span>)animated;<span class="comment">//从 navigation stack 删除最上面一个视图控制器，退回上一个视图控制器</span></span><br><span class="line">- (nullable <span class="built_in">NSArray</span>&lt;__kindof <span class="built_in">UIViewController</span> *&gt; *)popToViewController:(<span class="built_in">UIViewController</span> *)viewController animated:(<span class="built_in">BOOL</span>)animated;<span class="comment">//跳转到给定的视图控制器，返回上面所有试图控制器的数组</span></span><br><span class="line">- (nullable <span class="built_in">NSArray</span>&lt;__kindof <span class="built_in">UIViewController</span> *&gt; *)popToRootViewControllerAnimated:(<span class="built_in">BOOL</span>)animated;<span class="comment">//保留第一个 视图控制器 返回上面所有视图控制器数组</span></span><br></pre></td></tr></table></figure>
+<p>（2）视图跳转代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.navigationController pushViewController:secondVC animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="UITabBarController-实现跳转"><a href="#UITabBarController-实现跳转" class="headerlink" title="UITabBarController 实现跳转"></a><code>UITabBarController</code> 实现跳转</h3><p>使用 <code>UITabBarController</code> 的 <code>tab</code> 来实现 <code>UIViewController</code> 视图控制器之间进行跳转。</p>
+<p>下图是关于 <code>UITabBarController</code> 在视图上面展示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-600019b4b6a00944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-30 22.28.36.png"></p>
+<p>下图列出<code>revel</code> 展示 <code>UIViewController</code> 和 <code>UITabBarController</code> 层次展示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-6f7eee909c9f9046.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-30 22.28.49.png"></p>
+<h3 id="Segue-实现跳转"><a href="#Segue-实现跳转" class="headerlink" title="Segue 实现跳转"></a><code>Segue</code> 实现跳转</h3><p>多出现于UIStoryboard中，是不同类之间跳转的一根线。换种说法就是：Storyboard上每一根用来界面跳转的线，都是一个UIStoryboardSegue对象（简称Segue）</p>
+<p>跳转具体如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-4e669f8b3422a326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="650167-4e7de21840359144.png"></p>
+<ul>
+<li>实现原理</li>
+</ul>
+<p>在 <code>- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender</code> 方法中在创建<code>segue</code>对象，并且设置<code>segue</code>对象里面的属性，来源，目的。具体步骤为：<br>(1)根据定义好的标识<code>（identifier）</code>去<code>storyboard</code>中查找，有木有这跟线。如果有，就创建<code>segue</code>对象；<br>(2)设置<code>segue</code>的来源控制器 :<code>segue. source = self</code>;<br>(3)创建<code>segue</code>的目的控制器对象，并且设置为<code>segue</code>的目的控制器；<br>(4)<code>- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender</code>方法中具体实现跳转功能。可以在这个方法中获取将要跳转到的控制器<code>（segue.destinationViewController）</code>，并进行值传递。</p>
+<ul>
+<li><code>Segue</code> 实现的 <code>API</code></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)segueWithIdentifier:(nullable <span class="built_in">NSString</span> *)identifier source:(<span class="built_in">UIViewController</span> *)source destination:(<span class="built_in">UIViewController</span> *)destination performHandler:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))performHandler <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">6</span>_0);</span><br><span class="line"> - (instancetype)initWithIdentifier:(nullable <span class="built_in">NSString</span> *)identifier source:(<span class="built_in">UIViewController</span> *)source destination:(<span class="built_in">UIViewController</span> *)destination <span class="built_in">NS_DESIGNATED_INITIALIZER</span>;</span><br></pre></td></tr></table></figure>
+
       
 
       
