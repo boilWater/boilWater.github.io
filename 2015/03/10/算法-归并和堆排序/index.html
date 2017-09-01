@@ -6,18 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS 算法-归并和堆排序 | JackJin&#39;s 博客</title>
+  <title>iOS 算法-归并排序 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="哈哈，最近后面下面还有一个基本的算法一一列出来进行讲述。
+下面将要讲述 归并排序 具体实现原理和代码编码。
+归并排序
+归并排序实现思路
+
+基本思路就是将数组分成二组A，B。如果这二组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。再将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。
+
+归并排序的代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 算法-归并和堆排序">
+<meta property="og:title" content="iOS 算法-归并排序">
 <meta property="og:url" content="http://yoursite.com/2015/03/10/算法-归并和堆排序/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:05:33.000Z">
+<meta property="og:description" content="哈哈，最近后面下面还有一个基本的算法一一列出来进行讲述。
+下面将要讲述 归并排序 具体实现原理和代码编码。
+归并排序
+归并排序实现思路
+
+基本思路就是将数组分成二组A，B。如果这二组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。再将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。
+
+归并排序的代码">
+<meta property="og:updated_time" content="2017-09-01T10:57:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 算法-归并和堆排序">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS 算法-归并排序">
+<meta name="twitter:description" content="哈哈，最近后面下面还有一个基本的算法一一列出来进行讲述。
+下面将要讲述 归并排序 具体实现原理和代码编码。
+归并排序
+归并排序实现思路
+
+基本思路就是将数组分成二组A，B。如果这二组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。再将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。
+
+归并排序的代码">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -170,7 +191,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      iOS 算法-归并和堆排序
+      iOS 算法-归并排序
     </h1>
   
 
@@ -183,7 +204,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>哈哈，最近后面下面还有一个基本的算法一一列出来进行讲述。</p>
+<p>下面将要讲述 归并排序 具体实现原理和代码编码。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><ul>
+<li>归并排序实现思路</li>
+</ul>
+<p>基本思路就是将数组分成二组A，B。如果这二组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。再将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。</p>
+<ul>
+<li>归并排序的代码实现</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> mergeArray(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> mid, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]) &#123;</span><br><span class="line">    <span class="keyword">int</span> i = first, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m = mid,   n = last;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (i &lt;= m &amp;&amp; j &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &lt;= a[j])</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (i &lt;= m)</span><br><span class="line">        temp[k++] = a[i++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (j &lt;= n)</span><br><span class="line">        temp[k++] = a[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        a[first + i] = temp[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> mergeLeftRightSort(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]) &#123;</span><br><span class="line">    <span class="keyword">if</span> (first &lt; last) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (first + last)/<span class="number">2</span>;</span><br><span class="line">        mergeLeftRightSort(a, first, mid, temp);<span class="comment">//左边有序</span></span><br><span class="line">        mergeLeftRightSort(a, mid + <span class="number">1</span>, last, temp);<span class="comment">//右边有序</span></span><br><span class="line">        mergeArray(a, first, mid, last, temp);<span class="comment">//对左右两边合并</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> mergeSort(<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">int</span> *temp = new <span class="keyword">int</span>[length];<span class="comment">//申请 length 空间</span></span><br><span class="line">    mergeLeftRightSort(p, <span class="number">0</span>, length<span class="number">-1</span>, temp);<span class="comment">//调用归并来进行整合</span></span><br><span class="line">    delete [] temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
