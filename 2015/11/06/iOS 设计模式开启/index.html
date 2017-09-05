@@ -8,16 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式开启 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="在公司跟着老大做项目，老大说如果想要很好的做 iOS 框架的开发就需要拥有一些设计模式方面的知识储备。对一些基本的原理的和相关实现就开始着手学习和做些比较来记录之所学的内容，毕竟好记性不如烂笔头。把刚刚学到的内容根据自己的理解记录下来，更加提高记忆和理解。
+设计模式之旅开始！！！
+设计模式之初设计模式简介学习某项技能需要需要这门技能所具备的属性，可以完成什么样的工作，然后针对那些问题该需要什么样知">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式开启">
 <meta property="og:url" content="http://yoursite.com/2015/11/06/iOS 设计模式开启/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:37:53.000Z">
+<meta property="og:description" content="在公司跟着老大做项目，老大说如果想要很好的做 iOS 框架的开发就需要拥有一些设计模式方面的知识储备。对一些基本的原理的和相关实现就开始着手学习和做些比较来记录之所学的内容，毕竟好记性不如烂笔头。把刚刚学到的内容根据自己的理解记录下来，更加提高记忆和理解。
+设计模式之旅开始！！！
+设计模式之初设计模式简介学习某项技能需要需要这门技能所具备的属性，可以完成什么样的工作，然后针对那些问题该需要什么样知">
+<meta property="og:updated_time" content="2017-09-04T02:39:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式开启">
-<meta name="twitter:description">
+<meta name="twitter:description" content="在公司跟着老大做项目，老大说如果想要很好的做 iOS 框架的开发就需要拥有一些设计模式方面的知识储备。对一些基本的原理的和相关实现就开始着手学习和做些比较来记录之所学的内容，毕竟好记性不如烂笔头。把刚刚学到的内容根据自己的理解记录下来，更加提高记忆和理解。
+设计模式之旅开始！！！
+设计模式之初设计模式简介学习某项技能需要需要这门技能所具备的属性，可以完成什么样的工作，然后针对那些问题该需要什么样知">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +189,30 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在公司跟着老大做项目，老大说如果想要很好的做 iOS 框架的开发就需要拥有一些设计模式方面的知识储备。对一些基本的原理的和相关实现就开始着手学习和做些比较来记录之所学的内容，毕竟好记性不如烂笔头。把刚刚学到的内容根据自己的理解记录下来，更加提高记忆和理解。</p>
+<p>设计模式之旅开始！！！</p>
+<h1 id="设计模式之初"><a href="#设计模式之初" class="headerlink" title="设计模式之初"></a>设计模式之初</h1><h2 id="设计模式简介"><a href="#设计模式简介" class="headerlink" title="设计模式简介"></a>设计模式简介</h2><p>学习某项技能需要需要这门技能所具备的属性，可以完成什么样的工作，然后针对那些问题该需要什么样知识。</p>
+<a id="more"></a>
+<h3 id="设计模式什么东东"><a href="#设计模式什么东东" class="headerlink" title="设计模式什么东东"></a>设计模式什么东东</h3><p>设计模式(Design Pattern) ： 一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。</p>
+<p>在 《设计模式：可复用面向对象软件的基础》一书中所介绍的23种经典设计模式，不过设计模式并不仅仅只有这23种。后面小编将对这常用的 23 + 单例，总共 24 种设计模式学习以及记录学习心得。</p>
+<h3 id="设计模式所具备技能"><a href="#设计模式所具备技能" class="headerlink" title="设计模式所具备技能"></a>设计模式所具备技能</h3><p>（1）提高开发和设计效率</p>
+<p>很多设计模式多数来自有经验和智慧的专家，是从很多优秀的软甲系统设计中总结出来成功的，可以实现维护复用的方案。可以提供一些解决方案来减少我们在编码中重复性工作。</p>
+<p>（2）通用的<code>世界语</code></p>
+<p>设计模式在编码方面就相当于我们使用开发的语言一样，不论国际或者开发者使用的语言是否一样。在后面大家对其的理解是不变，在项目交流过程中或者项目交接时可以很方便的进行对接。</p>
+<p>（3）复用和拓展性</p>
+<p>在很多数的设计模式很多兼顾可重用性和拓展性功能，这样可以使我们很好的重用细一些现有的代码和设计方案。可以避免经常做一些重复的设计或者编写代码。在项目开发过程中，刚开始时项目中的功能或者代码量比较少，但在功能日益增多和项目版本迭代过程中代码量会越来越多。这时设计模式的可拓展性和灵活性就会满足我们项目的需要。</p>
+<p>（4）对面向对象加深理解</p>
+<p>刚开始学习编码过程中，多数可能会学习面向过程入门。在学习设计模式过程中可以明白在面向对象开发的过程中怎么实现类分离，某个某个方法在类中出现依据。当然如果是做 <code>Java</code>  开发可以更好帮助查看 <code>SDK</code> 中方法的实现。</p>
+<h2 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h2><p>设计模式在功能实现上可以分为下面三种形式：</p>
+<ul>
+<li>创建型 </li>
+<li>结构型</li>
+<li>行为性</li>
+</ul>
+<p>其中下面我们讲述的：</p>
+<p>创建型有 5 种， 结构型有 7 中， 行为型 11 种。</p>
+<p>参考资料：<br><a href="https://gof.quanke.name/设计模式概述.html" target="_blank" rel="external">设计模式概述</a><br><a href=""></a></p>
+
       
 
       

@@ -8,16 +8,39 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式-设计模式原则 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。
+这些设计原则如下：
+
+单一职责原则 (Single Responsibility Principle, SRP)
+开闭原则 (Open-Closed Principle, OCP)
+里氏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式-设计模式原则">
 <meta property="og:url" content="http://yoursite.com/2015/11/08/iOS 设计模式-设计模式原则/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:38:02.000Z">
+<meta property="og:description" content="在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。
+这些设计原则如下：
+
+单一职责原则 (Single Responsibility Principle, SRP)
+开闭原则 (Open-Closed Principle, OCP)
+里氏">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-11b8b0153de86cc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-01227520b3f3e287.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-701c5adc43e65057.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-b34def8a160405a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-eb63647c1518cb4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4c870aa5d1cbccee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-ed6343c3c884ba92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-04T14:02:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-设计模式原则">
-<meta name="twitter:description">
+<meta name="twitter:description" content="在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。
+这些设计原则如下：
+
+单一职责原则 (Single Responsibility Principle, SRP)
+开闭原则 (Open-Closed Principle, OCP)
+里氏">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-11b8b0153de86cc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +206,85 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。</p>
+<p>这些设计原则如下：</p>
+<ul>
+<li>单一职责原则 (Single Responsibility Principle, SRP)</li>
+<li>开闭原则 (Open-Closed Principle, OCP)</li>
+<li>里氏代换原则 (Liskov Substitution Principle, LSP)</li>
+<li>依赖倒转原则 (Dependence Inversion Principle, DIP)</li>
+<li>接口隔离原则 (Interface Segregation Principle, ISP)</li>
+<li>合成复用原则 (Composite Reuse Principle, CRP)</li>
+<li>迪米特法则 (Law of Demeter, LoD)</li>
+</ul>
+<a id="more"></a>
+<h2 id="单一职责原则-Single-Responsibility-Principle-SRP"><a href="#单一职责原则-Single-Responsibility-Principle-SRP" class="headerlink" title="单一职责原则 (Single Responsibility Principle, SRP)"></a>单一职责原则 (Single Responsibility Principle, SRP)</h2><p>（1）单一职责的定义</p>
+<p>单一职责原则(Single Responsibility Principle, SRP)：一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。</p>
+<p>（2）单一职责的特点<br>单一职责原则是最简单的面向对象设计原则，它用于控制类的粒度大小。实现高内聚、低耦合的特性。</p>
+<p>下面我们将会结合具体使用情形，展示单一职责在编码中具体实现。如下图：</p>
+<p>（图一）是我们在最初设计类回去访问数据<br>（图二）是小编根据单一原则对实现过程分类</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-11b8b0153de86cc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-1.png.png"></p>
+<h2 id="开闭原则-Open-Closed-Principle-OCP"><a href="#开闭原则-Open-Closed-Principle-OCP" class="headerlink" title="开闭原则 (Open-Closed Principle, OCP)"></a>开闭原则 (Open-Closed Principle, OCP)</h2><p>（1）开闭原则的定义</p>
+<p>开闭原则(Open-Closed Principle, OCP)：一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。</p>
+<p>（2）开闭原则的特点</p>
+<p>开闭原则最主要的特点是：抽象化。在开发过程中小编认为大家都会面临一个问题，刚开始在项目功能比较少随着需求增多项目就会越来越大。</p>
+<p>在需要面对新的需求时，我们应该尽量保证项目设计框架是稳定的。如果设计符合开闭原则，那么可以非常方便地对项目进行扩展，而且在扩展时无须修改现有代码，使得项目在拥有适应性和灵活性的同时具备较好的稳定性和延续性。随着项目规模越来越大，项目寿命越来越长，项目维护成本越来越高，设计满足开闭原则的项目也变得越来越重要。</p>
+<p>下面在打印表格使用开闭原则的实现重构：</p>
+<p>1）（图一）是最初设置表格展示的设计<br>2）粉红色框中是最初打印代码实现<br>3）下面是根据开闭原则实现表格打印重构思路</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-01227520b3f3e287.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-2.png.png"></p>
+<h2 id="里氏代换原则-Liskov-Substitution-Principle-LSP"><a href="#里氏代换原则-Liskov-Substitution-Principle-LSP" class="headerlink" title="里氏代换原则 (Liskov Substitution Principle, LSP)"></a>里氏代换原则 (Liskov Substitution Principle, LSP)</h2><p>（1）里氏替换的定义</p>
+<p>里氏代换原则 (Liskov Substitution Principle, LSP)：一个基类对象替换成它的子类对象，程序将不会产生任何错误和异常，反过来则不成立，如果一个软件实体使用的是一个子类对象的话，那么它不一定能够使用基类对象。</p>
+<p>（2）里氏替换的特点</p>
+<p>里氏代换：是实现开闭原则的重要方式之一，由于使用基类对象的地方都可以使用子类对象，因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。</p>
+<p>在使用里氏代换原则时需要注意如下几个问题：<br>1）子类的所有方法必须在父类中声明，或子类必须实现父类中声明的所有方法。根据里氏代换原则，为了保证系统的扩展性，在程序中通常使用父类来进行定义，如果一个方法只存在子类中，在父类中不提供相应的声明，则无法在以父类定义的对象中使用该方法。</p>
+<p>2) 我们在运用里氏代换原则时，尽量把父类设计为抽象类或者接口，让子类继承父类或实现父接口，并实现在父类中声明的方法，运行时，子类实例替换父类实例，我们可以很方便地扩展系统的功能，同时无须修改原有子类的代码，增加新的功能可以通过增加一个新的子类来实现。</p>
+<p>下面使用发送 <code>E-mail</code> 的实例展示里氏代换：</p>
+<p>1）是对发送 <code>E-mail</code> 最初的设计，顾客分为 VIP 和普通<br>2）描述里氏代换原则和实现yuanli<br>3）使用里氏代换原则对方法进行重构方案设计  </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-701c5adc43e65057.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-原则.png.png"></p>
+<h3 id="依赖倒转原则-Dependence-Inversion-Principle-DIP"><a href="#依赖倒转原则-Dependence-Inversion-Principle-DIP" class="headerlink" title="依赖倒转原则 (Dependence Inversion Principle, DIP)"></a>依赖倒转原则 (Dependence Inversion Principle, DIP)</h3><p>（1）依赖倒转原则定义</p>
+<p>  依赖倒转原则(Dependency Inversion Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</p>
+<p>（2）依赖倒转原则的特点</p>
+<p> 依赖倒转原则时，我们需要针对抽象层编程，而将具体类的对象通过依赖注入(DependencyInjection, DI)的方式注入到其他对象中，依赖注入是指当一个对象要与其他对象发生依赖关系时，通过抽象来注入所依赖的对象。常用的注入方式有三种，分别是：构造注入，设值注入（Setter注入）和接口注入。构造注入是指通过构造函数来传入具体类的对象，设值注入是指通过Setter方法来传入具体类的对象，而接口注入是指通过在接口中声明的业务方法来传入具体类的对象。这些方法在定义时使用的是抽象类型，在运行时再传入具体类型的对象，由子类对象来覆盖父类对象。</p>
+<p> 下面实现将存储在TXT或Excel文件中的客户信息转存到数据库中，因此需要进行数据格式转换，如下图：</p>
+<p> 1）读取文件的最初的设计<br> 2）使用以来原则实现的具体方式<br> 3）更具以来倒转原则机型重构方案  </p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1877765-b34def8a160405a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-原则(1).png.png"></p>
+<h3 id="接口隔离原则-Interface-Segregation-Principle-ISP"><a href="#接口隔离原则-Interface-Segregation-Principle-ISP" class="headerlink" title="接口隔离原则 (Interface Segregation Principle, ISP)"></a>接口隔离原则 (Interface Segregation Principle, ISP)</h3><p>（1）接口隔离原则的定义</p>
+<p>接口隔离原则(Interface Segregation Principle, ISP)：使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</p>
+<p>（2）接口隔离原则的特点</p>
+<p>当一个接口太大时，我们需要将它分割成一些更细小的接口，使用该接口的客户端仅需知道与之相关的方法即可。每一个接口应该承担一种相对独立的角色，不干不该干的事，该干的事都要干。这里的“接口”往往有两种不同的含义：一种是指一个类型所具有的方法特征的集合，仅仅是一种逻辑上的抽象；另外一种是指某种语言具体的“接口”定义，有严格的定义和结构，比如Java语言中的interface。</p>
+<p>下面是对数据进行操作设计，如下图：</p>
+<p>1）数据从读取展示和相关操作最初设计方案<br>2）接口隔离原则总结<br>3）使用接口隔离原则对数据操作进行重构方案  </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-eb63647c1518cb4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-原则(1)-2.png.png"></p>
+<h3 id="合成复用原则-Composite-Reuse-Principle-CRP"><a href="#合成复用原则-Composite-Reuse-Principle-CRP" class="headerlink" title="合成复用原则 (Composite Reuse Principle, CRP)"></a>合成复用原则 (Composite Reuse Principle, CRP)</h3><p>（1）合成复用原则的定义</p>
+<p>合成复用原则(Composite Reuse Principle, CRP)：尽量使用对象组合，而不是继承来达到复用的目的。</p>
+<p>（2）合成复用原则的特点</p>
+<p>组合或聚合关系可以将已有的对象（也可称为成员对象）纳入到新对象中，使之成为新对象的一部分，因此新对象可以调用已有对象的功能，这样做可以使得成员对象的内部实现细节对于新对象不可见，所以这种复用又称为“黑箱”复用，相对继承关系而言，其耦合度相对较低，成员对象的变化对新对象的影响不大，可以在新对象中根据实际需要有选择性地调用成员对象的操作；合成复用可以在运行时动态进行，新对象可以动态地引用与成员对象类型相同的其他对象。</p>
+<p>在面向对象设计中，可以通过两种方法在不同的环境中复用已有的设计和实现，即通过组合/聚合关系或通过继承，但首先应该考虑使用组合/聚合，组合/聚合可以使系统更加灵活，降低类与类之间的耦合度，一个类的变化对其他类造成的影响相对较少；其次才考虑继承，在使用继承时，需要严格遵循里氏代换原则，有效使用继承会有助于对问题的理解，降低复杂度，而滥用继承反而会增加系统构建和维护的难度以及系统的复杂度，因此需要慎重使用继承复用。</p>
+<p>下图对数据库进行相关操作，后面对数据库修改提供解决方案：</p>
+<p>1）数据库操作最初实现方式<br>2）合成复用实现具体实现<br>3）更具合成复用原则来重构在开发过程中数据库修改  </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-4c870aa5d1cbccee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-原则(1)-2 2.png.png"></p>
+<h3 id="迪米特法则-Law-of-Demeter-LoD"><a href="#迪米特法则-Law-of-Demeter-LoD" class="headerlink" title="迪米特法则 (Law of Demeter, LoD)"></a>迪米特法则 (Law of Demeter, LoD)</h3><p>（1）迪米特法则的定义</p>
+<p>迪米特法则(Law of Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。</p>
+<p>（2）迪米特法则的特点</p>
+<p>迪米特法则要求我们在设计系统时，应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。</p>
+<p>在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及；在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限；在类的设计上，只要有可能，一个类型应当设计成不变类；在对其他类的引用上，一个对象对其他对象的引用应当降到最低。</p>
+<p>下面是在执行特定步骤是实现连续的修改：</p>
+<p>1）点击按钮会进行相关数据修改<br>2）更具迪米特法则对当前情况进行重构方案</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ed6343c3c884ba92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-原则(1)-2.png 2.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>慢慢看完设计模式相关的原则小编认为：面向对象的设计原则主要是为解决 ，可维护性复用诞生的，从很多种设计模式之中总结而来。</p>
+<p>下面是 7 中原则概括：</p>
+<blockquote>
+<ol>
+<li>单一职责原则 ：一个类只负责一个功能中的相应的职责</li>
+<li>开闭原则：        软件实对拓展开放，对修改关闭</li>
+<li>里氏代换原则：所有引用基类对象的地方可以透明的使用其子类的对象</li>
+<li>依赖倒转原则：抽象不依赖于细节，而细节依赖于抽象</li>
+<li>接口隔离原则：使用多个专门的接口，而不使用单一的总接口</li>
+<li>合成复用原则：尽量使用对象的组合，而不是使用继承来达成复用</li>
+<li>迪米特法原则：一个软件实体应该尽可能与其他实体发生相互作用</li>
+</ol>
+</blockquote>
+
       
 
       

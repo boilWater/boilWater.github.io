@@ -8,16 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式-创建型-工厂方法模式 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。
+工厂方法模式工厂方法模式介绍工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式-创建型-工厂方法模式">
 <meta property="og:url" content="http://yoursite.com/2015/11/24/iOS 设计模式-创建型-工厂方法模式/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:40:49.000Z">
+<meta property="og:description" content="小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。
+工厂方法模式工厂方法模式介绍工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1995ed7e85fea1cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-21156fe70f43bb14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-04T08:06:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-创建型-工厂方法模式">
-<meta name="twitter:description">
+<meta name="twitter:description" content="小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。
+工厂方法模式工厂方法模式介绍工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-1995ed7e85fea1cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +189,58 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。</p>
+<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="工厂方法模式介绍"><a href="#工厂方法模式介绍" class="headerlink" title="工厂方法模式介绍"></a>工厂方法模式介绍</h2><p>工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式(Virtual Constructor Pattern)或多态工厂模式(Polymorphic Factory Pattern)。</p>
+<blockquote>
+<p>工厂方法可以弥补在简单工厂方法在添加新的对象来对工厂类进行修改问题</p>
+</blockquote>
+<p>工厂方法模式中有四个角色：抽象产品(Product)、 具体产品(Concrete Product)、 抽象工厂(Factory) 和 具体工厂(Concrete Factory)。</p>
+<a id="more"></a>
+<h2 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h2><p>在工厂方法模式中有四个角色：抽象产品(Product)、 具体产品(Concrete Product)、 抽象工厂(Factory) 和 具体工厂(Concrete Factory)。下面小编将详细介绍：</p>
+<ul>
+<li>抽象产品(Product)：</li>
+</ul>
+<p>它是定义产品的接口，是工厂方法模式所创建对象的超类型，也就是产品对象的公共父类。</p>
+<ul>
+<li>具体产品(Concrete Product)：</li>
+</ul>
+<p>它实现了抽象产品接口，某种类型的具体产品由专门的具体工厂创建，具体工厂和具体产品之间一一对应。</p>
+<ul>
+<li>抽象工厂(Factory)：</li>
+</ul>
+<p>在抽象工厂类中，声明了工厂方法(Factory Method)，用于返回一个产品。抽象工厂是工厂方法模式的核心，所有创建对象的工厂类都必须实现该接口。</p>
+<ul>
+<li>具体工厂(Concrete Factory)：</li>
+</ul>
+<p>它是抽象工厂类的子类，实现了抽象工厂中定义的工厂方法，并可由客户端调用，返回一个具体产品类的实例。</p>
+<h2 id="实例应用"><a href="#实例应用" class="headerlink" title="实例应用"></a>实例应用</h2><p>小编在在本次文章中将使用获取公司人员匹配的来使用 工厂方法 实现获取公司人员实例，下面在工程方法中对其进一步的修改来实现重构：</p>
+<h3 id="重载和方法隐藏方案"><a href="#重载和方法隐藏方案" class="headerlink" title="重载和方法隐藏方案"></a>重载和方法隐藏方案</h3><p>（1）图一是在工厂方法中对方法进行重载操作  </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1995ed7e85fea1cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-创建型模式 3.png.png"></p>
+<p>（2）图二是在工厂方法中进行隐藏方法的操作</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-21156fe70f43bb14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DesignPattern-创建型模式 2.png.png"></p>
+<h3 id="工厂方法代码实现"><a href="#工厂方法代码实现" class="headerlink" title="工厂方法代码实现"></a>工厂方法代码实现</h3><p>下面是使用工厂方法来对公司职位员工进行获取对象，代码如下：</p>
+<h4 id="产品类"><a href="#产品类" class="headerlink" title="产品类"></a>产品类</h4><p><code>DepartmentProduct</code> 抽象产品：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//DepartmentProduct.h 文件</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">DepartmentProduct</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)nameDepartment;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)functionDepartment;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>ManagerProduct</code> 具体产品类：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"ManagerProduct.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ManagerProduct</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)nameDepartment &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Boss"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">@"Boss"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)functionDepartment &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"manager the company"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">@"manager the company"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>FinanceProduct</code> 具体产品类：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"FinanceProduct.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FinanceProduct</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)nameDepartment &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"finance"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">@"finance"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)functionDepartment &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"manager the capital of company"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">@"manager the capital of company"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h4 id="工厂类"><a href="#工厂类" class="headerlink" title="工厂类"></a>工厂类</h4><p><code>CompanyFactory</code> 抽象工厂类</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">DepartmentProduct</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CompanyFactory</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (instancetype)shareInstance;</span><br><span class="line"></span><br><span class="line">- (DepartmentProduct *)createDepartment;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CompanyFactory.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CompanyFactory</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> CompanyFactory *instance = <span class="literal">nil</span>;</span><br><span class="line"></span><br><span class="line">- (instancetype)shareInstance &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        instance = [[CompanyFactory alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (DepartmentProduct *)createDepartment &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>ManagerFactory</code> 具体工厂类：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"ManagerFactory.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ManagerProduct.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ManagerFactory</span></span></span><br><span class="line"></span><br><span class="line">- (DepartmentProduct *)createDepartment &#123;</span><br><span class="line">    DepartmentProduct *managerProduct;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nil</span> == managerProduct) &#123;</span><br><span class="line">        managerProduct = [[ManagerProduct alloc] init];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> managerProduct;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>FinanceFactory</code> 具体工厂类：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"FinanceFactory.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"FinanceProduct.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FinanceFactory</span></span></span><br><span class="line"></span><br><span class="line">- (DepartmentProduct *)createDepartment &#123;</span><br><span class="line">    DepartmentProduct *financeProduct;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nil</span> == financeProduct) &#123;</span><br><span class="line">        financeProduct = [[FinanceProduct alloc] init];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> financeProduct;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>工厂方法的优点</li>
+</ul>
+<p>1) 在工厂方法模式中，工厂方法用来创建客户所需要的产品，同时还向客户隐藏了哪种具体产品类将被实例化这一细节，用户只需要关心所需产品对应的工厂，无须关心创建细节，甚至无须知道具体产品类的类名。<br>2) 基于工厂角色和产品角色的多态性设计是工厂方法模式的关键。它能够让工厂可以自主确定创建何种产品对象，而如何创建这个对象的细节则完全封装在具体工厂内部。工厂方法模式之所以又被称为多态工厂模式，就正是因为所有的具体工厂类都具有同一抽象父类。<br>3) 使用工厂方法模式的另一个优点是在系统中加入新产品时，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而只要添加一个具体工厂和具体产品就可以了，这样，系统的可扩展性也就变得非常好，完全符合“开闭原则”。</p>
+<ul>
+<li>工厂方法的缺点</li>
+</ul>
+<p>1) 在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销。<br>2) 由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，增加了系统的抽象性和理解难度，且在实现时可能需要用到DOM、反射等技术，增加了系统的实现难度。   </p>
+<p>参考资料：<br><a href="https://gof.quanke.name/工厂方法模式-Factory%20Method%20Pattern.html" target="_blank" rel="external">工厂方法模式</a></p>
+
       
 
       

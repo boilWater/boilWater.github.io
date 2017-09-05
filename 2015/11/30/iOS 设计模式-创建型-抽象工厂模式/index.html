@@ -8,16 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式-创建型-抽象工厂模式 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="到今天为止目前已经完成 5 中创建型设计模式中两种（简单工厂模式和工厂模式），今天呢小编给大家讲述设计模式中最后一种设计模式：抽象工厂模式。
+在工厂模式中我们可以看出由于要解决在简单设计模式中工厂类过于集中来使用生产者-工厂一一对应的关系，从而导致在使用过程中有太多的工厂类，增多编码中类的数目。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式-创建型-抽象工厂模式">
 <meta property="og:url" content="http://yoursite.com/2015/11/30/iOS 设计模式-创建型-抽象工厂模式/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:41:25.000Z">
+<meta property="og:description" content="到今天为止目前已经完成 5 中创建型设计模式中两种（简单工厂模式和工厂模式），今天呢小编给大家讲述设计模式中最后一种设计模式：抽象工厂模式。
+在工厂模式中我们可以看出由于要解决在简单设计模式中工厂类过于集中来使用生产者-工厂一一对应的关系，从而导致在使用过程中有太多的工厂类，增多编码中类的数目。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-07d824eb39c097d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf1ecf74665202b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c6a602c4ec7b2f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d08e8a9dd2582f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-fb30fafc021dc95b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-04T13:59:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-创建型-抽象工厂模式">
-<meta name="twitter:description">
+<meta name="twitter:description" content="到今天为止目前已经完成 5 中创建型设计模式中两种（简单工厂模式和工厂模式），今天呢小编给大家讲述设计模式中最后一种设计模式：抽象工厂模式。
+在工厂模式中我们可以看出由于要解决在简单设计模式中工厂类过于集中来使用生产者-工厂一一对应的关系，从而导致在使用过程中有太多的工厂类，增多编码中类的数目。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-07d824eb39c097d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +192,57 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>到今天为止目前已经完成 5 中创建型设计模式中两种（简单工厂模式和工厂模式），今天呢小编给大家讲述设计模式中最后一种设计模式：抽象工厂模式。</p>
+<p>在工厂模式中我们可以看出由于要解决在简单设计模式中工厂类过于集中来使用生产者-工厂一一对应的关系，从而导致在使用过程中有太多的工厂类，增多编码中类的数目。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-07d824eb39c097d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-04 21.07.25.png"></p>
+<a id="more"></a>
+<p>如上图如果我们想要使用工厂模式实现上面按钮的实例，构建过程的方案是是下面的情况：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cf1ecf74665202b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-04 21.07.40.png"></p>
+<p>根据一个实例对象需要一个抽象产品类和一个实例产品类，一个抽象工厂类和实例工厂类总共 12 类来进行实现。这样就增大管理难度，和一如更多的类数目。</p>
+<h2 id="抽象工厂模式引入"><a href="#抽象工厂模式引入" class="headerlink" title="抽象工厂模式引入"></a>抽象工厂模式引入</h2><p>上面看出在工厂模式中我们每一种工厂只能生产一种产品，这样当对上述需要如果我们需要更多皮肤或者其他就要增加过多的类。这样后面就会造成在维护过程难度较大并且会一如过多的类，比较繁琐。</p>
+<p>有没有一个工厂可以生产多个产品？</p>
+<blockquote>
+<p>下面介绍产品等级和产品族概念。</p>
+</blockquote>
+<h3 id="产品等级结构和产品族"><a href="#产品等级结构和产品族" class="headerlink" title="产品等级结构和产品族"></a>产品等级结构和产品族</h3><ul>
+<li>产品等级结构：</li>
+</ul>
+<p>产品等级结构即产品的继承结构，如一个抽象类是电视机，其子类有海尔电视机、海信电视机、TCL电视机，则抽象电视机与具体品牌的电视机之间构成了一个产品等级结构，抽象电视机是父类，而具体品牌的电视机是其子类。</p>
+<ul>
+<li>产品族：</li>
+</ul>
+<p>在抽象工厂模式中，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品，如海尔电器工厂生产的海尔电视机、海尔电冰箱，海尔电视机位于电视机产品等级结构中，海尔电冰箱位于电冰箱产品等级结构中，海尔电视机、海尔电冰箱构成了一个产品族。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c6a602c4ec7b2f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-03-02 15.44.11.png.png"></p>
+<p>上图不同颜色的多个正方形、圆形和椭圆形分别构成了三个不同的产品等级结构，而相同颜色的正方形、圆形和椭圆形构成了一个产品族，每一个形状对象都位于某个产品族，并属于某个产品等级结构。上图中共有四个产品族，分属于三个不同的产品等级结构。我们只要指明一个产品所处的产品族以及它所属的等级结构，就可以唯一确定这个产品。</p>
+<p>当系统所提供的工厂生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构、属于不同类型的具体产品时就可以使用抽象工厂模式。抽象工厂模式是所有形式的工厂模式中最为抽象和最具一般性的一种形式。抽象工厂模式与工厂方法模式最大的区别在于，工厂方法模式针对的是一个产品等级结构，而抽象工厂模式需要面对多个产品等级结构，一个工厂等级结构可以负责多个不同产品等级结构中的产品对象的创建。当一个工厂等级结构可以创建出分属于不同产品等级结构的一个产品族中的所有对象时，抽象工厂模式比工厂方法模式更为简单、更有效率。</p>
+<p>如下图抽象工厂模式：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d08e8a9dd2582f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-03-02 16.02.46.png.png"></p>
+<p>每一个具体工厂可以生产属于一个产品族的所有产品，例如生产颜色相同的正方形、圆形和椭圆形，所生产的产品又位于不同的产品等级结构中。如果使用工厂方法模式，图4所示结构需要提供12个具体工厂，而使用抽象工厂模式只需要提供4个具体工厂，极大减少了系统中类的个数。</p>
+<h2 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h2><p>抽象工厂定义 ： 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式，它是一种对象创建型模式。</p>
+<h2 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h2><p>抽象工厂模式中也有四中角色：AbstractFactory（抽象工厂）、ConcreteFactory（具体工厂）、AbstractProduct（抽象产品）和ConcreteProduct（具体产品）。</p>
+<ul>
+<li><p>抽象工厂(AbstractFactory)：<br>声明了一组用于创建一族产品的方法，每一个方法对应一种产品。</p>
+</li>
+<li><p>具体工厂(ConcreteFactory)：<br>实现了在抽象工厂中声明的创建产品的方法，生成一组具体产品，这些产品构成了一个产品族，每一个产品都位于某个产品等级结构中。</p>
+</li>
+<li><p>抽象产品(AbstractProduct)：<br>为每种产品声明接口，在抽象产品中声明了产品所具有的业务方法。</p>
+</li>
+<li><p>具体产品(ConcreteProduct)：<br>定义具体工厂生产的具体产品对象，实现抽象产品接口中声明的业务方法。</p>
+</li>
+</ul>
+<h2 id="实例应用"><a href="#实例应用" class="headerlink" title="实例应用"></a>实例应用</h2><p>在上述的皮肤设计中小编根据抽象工厂设计来给出重构的方案，具体实现如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-fb30fafc021dc95b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-04 21.08.07.png"></p>
+<p>上面我们可以看出使用抽象工厂来对项目重构，减少实现过程中所用到的类的数目。后面更加利于我们维护项目和进行项目功能拓展。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>优点</li>
+</ul>
+<p>1) 抽象工厂模式隔离了具体类的生成，使得客户并不需要知道什么被创建。由于这种隔离，更换一个具体工厂就变得相对容易，所有的具体工厂都实现了抽象工厂中定义的那些公共接口，因此只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为。<br>2) 当一个产品族中的多个对象被设计成一起工作时，它能够保证客户端始终只使用同一个产品族中的对象。<br>3) 增加新的产品族很方便，无须修改已有系统，符合“开闭原则”。</p>
+<ul>
+<li>缺点</li>
+</ul>
+<p>增加新的产品等级结构麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，这显然会带来较大的不便，违背了“开闭原则”。</p>
+<p><br><br>参考资料：<br><a href="https://gof.quanke.name/抽象工厂模式-Abstract%20%20Factory%20Pattern.html" target="_blank" rel="external">抽象工厂模式</a></p>
+
       
 
       
