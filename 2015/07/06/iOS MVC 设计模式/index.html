@@ -8,16 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS MVC 设计模式 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="在师兄带领下给一个创业公司开发 APP，所以看下关于项目架构 MVC 。
+在网上找张图来展示 MVC 的架构模式，如下图：
+                      【图片来至于网络】">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS MVC 设计模式">
 <meta property="og:url" content="http://yoursite.com/2015/07/06/iOS MVC 设计模式/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:22:01.000Z">
+<meta property="og:description" content="在师兄带领下给一个创业公司开发 APP，所以看下关于项目架构 MVC 。
+在网上找张图来展示 MVC 的架构模式，如下图：
+                      【图片来至于网络】">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-90d98aa4459a676a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-06T16:03:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS MVC 设计模式">
-<meta name="twitter:description">
+<meta name="twitter:description" content="在师兄带领下给一个创业公司开发 APP，所以看下关于项目架构 MVC 。
+在网上找张图来展示 MVC 的架构模式，如下图：
+                      【图片来至于网络】">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-90d98aa4459a676a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +191,28 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在师兄带领下给一个创业公司开发 APP，所以看下关于项目架构 MVC 。</p>
+<p>在网上找张图来展示 MVC 的架构模式，如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-90d98aa4459a676a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="993906-20160814212709203-2004832279.png"><br>                      【图片来至于网络】</p>
+<a id="more"></a>
+<h2 id="MVC-简介"><a href="#MVC-简介" class="headerlink" title="MVC 简介"></a>MVC 简介</h2><p>从文字上来进行显示，<code>MVC(Modal View Controller)</code>模型、视图和控制器。使用 MVC 的方法目的是：实现数据和视图分离，来减少在创建过程中的耦合。</p>
+<p>由上图可以看出：</p>
+<p><code>View</code> 上面显示的数据来至于<code>Model</code><br><code>Model</code> 里面的数据如果有修改，就会带着 <code>View</code> 显示就会随之更改。<br><code>Controller</code> 初始化 <code>Model</code>， 并读取 <code>Model</code> 来传递给 <code>View</code> 来进行显示。  </p>
+<ul>
+<li><code>Modal</code> 模型对象：</li>
+</ul>
+<p><code>Model</code> 数据模型来封装应用的数据，在其中包含操作和处理数据的逻辑和相关运算。在我们队视图进行修改或者创建数据的操作，就会通过视图控制器对象传达出去，最终会创建和修改 <code>Model</code> 对象。模型对象更改时，它通知控制器对象，控制器对象更新相应的视图对象。</p>
+<ul>
+<li><code>View</code> 视图对象：</li>
+</ul>
+<p>在iOS应用程序开发中，所有的控件、窗口等都继承自 <code>UIView</code>，对应 <code>MVC</code> 中的 V。<code>UIView</code> 及其子类主要负责 UI 的实现，而 <code>UIView</code> 所产生的事件都可以采用委托的方式，交给 <code>UIViewController</code> 实现。</p>
+<ul>
+<li><code>Controller</code> 控制器对象：</li>
+</ul>
+<p>控制器对象解释在视图对象中进行的用户操作，并将新的或更改过的数据传达给模型对象。模型对象更改时，一个控制器对象会将新的模型数据传达给视图对象，以便视图对象可以显示它。</p>
+<p>在应用程序的一个或多个视图对象和一个或多个模型对象之间，控制器对象充当媒介。控制器对象因此是同步管道程序，通过它，视图对象了解模型对象的更改，反之亦然。控制器对象还可以为应用程序执行设置和协调任务，并管理其他对象的生命周期。</p>
+<p>对于不同的 <code>UIView</code>，有相应的 <code>UIViewController</code>，对应 <code>MVC</code> 中的 <code>C</code>。例如在 <code>iOS</code> 上常用的 <code>UITableView</code>，它所对应的 <code>Controller</code> 就是<code>UITableViewController</code>。</p>
+
       
 
       

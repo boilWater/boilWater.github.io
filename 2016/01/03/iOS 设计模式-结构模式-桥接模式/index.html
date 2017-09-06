@@ -8,16 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式-结构模式-桥接模式 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。
+桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。
+桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式-结构模式-桥接模式">
 <meta property="og:url" content="http://yoursite.com/2016/01/03/iOS 设计模式-结构模式-桥接模式/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-08-30T10:47:10.000Z">
+<meta property="og:description" content="有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。
+桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。
+桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-e5755e99f1703af4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-aff770b51f6fb79f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-06T08:55:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-结构模式-桥接模式">
-<meta name="twitter:description">
+<meta name="twitter:description" content="有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。
+桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。
+桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-e5755e99f1703af4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +192,43 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。</p>
+<p>桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。</p>
+<p>桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维度分离出来，使两者可以独立扩展，让系统更加符合“单一职责原则”。</p>
+<h2 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h2><a id="more"></a>
+<p>桥接模式里面角色有四个：抽象类(<code>Abstraction</code>)、扩充抽象(<code>RefinedAbstraction</code>)、实现类接口(<code>Implementor</code>) 和 具体实现类(<code>ConcreteImplementor</code>)。</p>
+<ul>
+<li>抽象类(<code>Abstraction</code>)：</li>
+</ul>
+<p>用于定义抽象类的接口，它一般是抽象类而不是接口，其中定义了一个 <code>Implementor</code>（实现类接口）类型的对象并可以维护该对象，它与 <code>Implementor</code> 之间具有关联关系，它既可以包含抽象业务方法，也可以包含具体业务方法。</p>
+<ul>
+<li>扩充抽象类(<code>Refined Abstraction</code>)：</li>
+</ul>
+<p>扩充由 <code>Abstraction</code> 定义的接口，通常情况下它不再是抽象类而是具体类，它实现了在<code>Abstraction</code> 中声明的抽象业务方法，在 <code>Refined Abstraction</code> 中可以调用在<code>Implementor</code> 中定义的业务方法。</p>
+<ul>
+<li>实现类接口(<code>Implementor</code>)：</li>
+</ul>
+<p>定义实现类的接口，这个接口不一定要与 <code>Abstraction</code> 的接口完全一致，事实上这两个接口可以完全不同，一般而言，<code>Implementor</code> 接口仅提供基本操作，而 <code>Abstraction</code> 定义的接口可能会做更多更复杂的操作。<code>Implementor</code> 接口对这些基本操作进行了声明，而具体实现交给其子类。通过关联关系，在 <code>Abstraction</code> 中不仅拥有自己的方法，还可以调用到 <code>Implementor</code> 中定义的方法，使用关联关系来替代继承关系。</p>
+<ul>
+<li>具体实现类(<code>Concrete Implementor</code>)：</li>
+</ul>
+<p>具体实现 <code>Implementor</code> 接口，在不同的 <code>Concrete Implementor</code> 中提供基本操作的不同实现，在程序运行时，<code>Concrete Implementor</code> 对象将替换其父类对象，提供给抽象类具体的业务操作方法。</p>
+<h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>下面列出桥接模式模式具体实现：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-e5755e99f1703af4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-06 16.12.14.png"></p>
+<p>这里举一个例子：我们身边如果需要使用蜡笔实现 3 中不同颜色并且 3 大中小三种不同的文字，这里就需要 9 = 3*3 只不同的比。而使用毛笔只需要 6 中。这里处理方式就是使用：桥接模式，实现抽取实现。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-aff770b51f6fb79f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-06 16.20.37.png"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>下面使用桥接的模式实现使用毛笔进行相关绘制代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>桥接模式优点</li>
+</ul>
+<p>1) 分离抽象接口及其实现部分。桥接模式使用“对象间的关联关系”解耦了抽象和实现之间固有的绑定关系，使得抽象和实现可以沿着各自的维度来变化。所谓抽象和实现沿着各自维度的变化，也就是说抽象和实现不再在同一个继承层次结构中，而是“子类化”它们，使它们各自都具有自己的子类，以便任何组合子类，从而获得多维度组合对象。<br>2) 在很多情况下，桥接模式可以取代多层继承方案，多层继承方案违背了“单一职责原则”，复用性较差，且类的个数非常多，桥接模式是比多层继承方案更好的解决方法，它极大减少了子类的个数。<br>3) 桥接模式提高了系统的可扩展性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统，符合“开闭原则”。</p>
+<ul>
+<li>桥接模式缺点</li>
+</ul>
+<p>1) 桥接模式的使用会增加系统的理解与设计难度，由于关联关系建立在抽象层，要求开发者一开始就针对抽象层进行设计与编程。<br>2) 桥接模式要求正确识别出系统中两个独立变化的维度，因此其使用范围具有一定的局限性，如何正确识别两个独立维度也需要一定的经验积累。</p>
+<p>参考资料：<br><a href="https://gof.quanke.name/桥接模式-Bridge%20Pattern.html" target="_blank" rel="external">桥接模式</a><br><a href="https://gof.quanke.name/处理多维度变化——桥接模式（一）.html" target="_blank" rel="external">处理多维度变化——桥接模式（一）</a><br><a href="https://gof.quanke.name/处理多维度变化——桥接模式（二）.html" target="_blank" rel="external">处理多维度变化——桥接模式（二）</a><br><a href="https://gof.quanke.name/处理多维度变化——桥接模式（三）.html" target="_blank" rel="external">处理多维度变化——桥接模式（三）</a><br><a href="https://gof.quanke.name/处理多维度变化——桥接模式（四）.html" target="_blank" rel="external">处理多维度变化——桥接模式（四）</a>  </p>
+
       
 
       
