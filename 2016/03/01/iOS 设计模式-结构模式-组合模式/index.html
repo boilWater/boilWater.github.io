@@ -8,16 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 设计模式-结构模式-组合模式 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料：组合模式-Composite Pattern">
+  <meta name="description" content="本篇小编将向大家讲述结构模式中的组合模式。当我们在编码的过程中经常会遇到一些使用树状结构的功能过程中，我们可以使用组合模式来对其进行实现代码重构。
+组合模式(Composite Pattern)：
+组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 设计模式-结构模式-组合模式">
 <meta property="og:url" content="http://yoursite.com/2016/03/01/iOS 设计模式-结构模式-组合模式/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="参考资料：组合模式-Composite Pattern">
-<meta property="og:updated_time" content="2017-09-07T11:22:23.000Z">
+<meta property="og:description" content="本篇小编将向大家讲述结构模式中的组合模式。当我们在编码的过程中经常会遇到一些使用树状结构的功能过程中，我们可以使用组合模式来对其进行实现代码重构。
+组合模式(Composite Pattern)：
+组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，改">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-76d2f1e4ec406b80.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-232436003d3c5abd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-092830eae1e79bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-11T07:43:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-结构模式-组合模式">
-<meta name="twitter:description" content="参考资料：组合模式-Composite Pattern">
+<meta name="twitter:description" content="本篇小编将向大家讲述结构模式中的组合模式。当我们在编码的过程中经常会遇到一些使用树状结构的功能过程中，我们可以使用组合模式来对其进行实现代码重构。
+组合模式(Composite Pattern)：
+组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，改">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-76d2f1e4ec406b80.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -183,7 +193,54 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考资料：<br><a href="https://gof.quanke.name/组合模式-Composite%20Pattern.html" target="_blank" rel="external">组合模式-Composite Pattern</a></p>
+        <p>本篇小编将向大家讲述结构模式中的组合模式。当我们在编码的过程中经常会遇到一些使用树状结构的功能过程中，我们可以使用组合模式来对其进行实现代码重构。</p>
+<p>组合模式(Composite Pattern)：</p>
+<p>组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，改模式中有三个角色：抽象构建(Component)、叶子构件(Leaf) 和 容器构件(Composite)。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在下面小编先介绍下组合模式中三个角色，简单概括下三个角色的主要功能和对三者之间的关系梳理。</p>
+<a id="more"></a>
+<ul>
+<li>抽象构建(Component)：</li>
+</ul>
+<p>接口或抽象类，为叶子构件和容器构件对象声明接口，在该角色中可以包含所有子类共有行为的声明和实现。在抽象构件中定义了访问及管理它的子构件的方法，如增加子构件、删除子构件、获取子构件等。</p>
+<ul>
+<li>叶子构件(Leaf)：</li>
+</ul>
+<p>组合结构中表示叶子节点对象，叶子节点没有子节点，它实现了在抽象构件中定义的行为。对于那些访问及管理子构件的方法，可以通过异常等方式进行处理。</p>
+<ul>
+<li>容器构件(Composite)：</li>
+</ul>
+<p>组合结构中表示容器节点对象，容器节点包含子节点，其子节点可以是叶子节点，也可以是容器节点，它提供一个集合用于存储子节点，实现了在抽象构件中定义的行为，包括那些访问及管理子构件的方法，在其业务方法中可以递归调用其子节点的业务方法。</p>
+<h3 id="组合结构图"><a href="#组合结构图" class="headerlink" title="组合结构图"></a>组合结构图</h3><p>下面给出组合模式的结构图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-76d2f1e4ec406b80.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1347029718_6268.jpg"></p>
+<p>【图片来至于网络】</p>
+<p>由上面的结构图可以看出：叶子构建和容器构建均继承与抽象构建，叶子构建实现其中部分或者全部的公共方法，容器构建实现其中的全部方法。</p>
+<h3 id="组合结构代码"><a href="#组合结构代码" class="headerlink" title="组合结构代码"></a>组合结构代码</h3><ul>
+<li>结构图代码</li>
+</ul>
+<p>根据上面抽象构建、叶子构建和容器构建三者之间关系，小编使用 <code>C++</code> 代码实现如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象构建类</span></span><br><span class="line">class Component &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="keyword">void</span> add();</span><br><span class="line">    <span class="keyword">void</span> remove();</span><br><span class="line">    Component getChild(<span class="keyword">int</span> i);</span><br><span class="line">    <span class="keyword">void</span> opation();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//叶子构建类</span></span><br><span class="line">class Leaf : Component &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="keyword">void</span> add()&#123;</span><br><span class="line">        <span class="comment">//叶子不支持该方法</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">void</span> remove()&#123;</span><br><span class="line">        <span class="comment">//不支持该方法</span></span><br><span class="line">    &#125;;</span><br><span class="line">    Component getChild(<span class="keyword">int</span> i)&#123;</span><br><span class="line">        <span class="comment">//不支持该方法</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">void</span> opation()&#123;</span><br><span class="line">        <span class="comment">//叶子的具体操作</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//容器构建实现</span></span><br><span class="line">class Composite : Component &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="keyword">void</span> add(Component component)&#123;</span><br><span class="line">        vector.push_back(component);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">void</span> remove(Component component)&#123;</span><br><span class="line">        vector.pop_back();</span><br><span class="line">    &#125;;</span><br><span class="line">    Component getChild(<span class="keyword">int</span> i)&#123;</span><br><span class="line">        <span class="keyword">return</span> vector.at(i);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">void</span> opation()&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector.size(); i++) &#123;</span><br><span class="line">            vector.at(i).opation();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    vector&lt;Component&gt; vector;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="模式分类"><a href="#模式分类" class="headerlink" title="模式分类"></a>模式分类</h3><p>在组合模式中有两种模式分类：透明组合模式和安全组合模式。</p>
+<ul>
+<li>透明组合模式</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-232436003d3c5abd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-11 15.18.13.png"><br>【图片来源于网络】</p>
+<p>透明组合模式中，抽象构件 <code>Component</code> 声明所有管理对象的方法，其中如小编在上文展示的 <code>add</code>、<code>remove</code>、<code>getChild</code> 等所有的方法。这样做的优点是我们可以保证构件中的方法都是一样的。</p>
+<p>作为组合模式的白装形式，透明组合模式在声明所有的方法的同时也有比较多的缺点存在。<br>上面根据小编的展示可以看出：叶子构建和容器构建中的功能可能有不同。叶子下一个层级不可能有相关的对象，所以根本不需要 <code>add</code>、<code>remove</code> 等方法。所有使用透明模式时在编译过程中可能不会出现错误，但是在运行期间可能抛出异常。</p>
+<ul>
+<li>安全组合模式</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-092830eae1e79bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="wwef"><br>【图片来源于网络】</p>
+<p>安全组合模式中，在抽象构件 <code>Component</code> 中没有声明任何用于管理成员对象的方法，而是在 <code>Composite</code> 类中声明并实现这些方法。这种做法是安全的，因为根本不向叶子对象提供这些管理成员对象的方法，对于叶子对象，客户端不可能调用到这些方法。</p>
+<p>但是安全模式也有相应的缺点存在：其缺点是不够透明，因为叶子构件和容器构件具有不同的方法，且容器构件中那些用于管理成员对象的方法没有在抽象构件类中定义，因此不能完全针对抽象编程，必须有区别地对待叶子构件和容器构件。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>优点</li>
+</ul>
+<p>1) 组合模式可以清楚地定义分层次的复杂对象，表示对象的全部或部分层次，它让客户端忽略了层次的差异，方便对整个层次结构进行控制。<br>2) 客户端可以一致地使用一个组合结构或其中单个对象，不必关心处理的是单个对象还是整个组合结构，简化了客户端代码。<br>3) 在组合模式中增加新的容器构件和叶子构件都很方便，无须对现有类库进行任何修改，符合“开闭原则”。<br>4) 组合模式为树形结构的面向对象实现提供了一种灵活的解决方案，通过叶子对象和容器对象的递归组合，可以形成复杂的树形结构，但对树形结构的控制却非常简单。  </p>
+<ul>
+<li>缺点</li>
+</ul>
+<p>在增加新构件时很难对容器中的构件类型进行限制。有时候我们希望一个容器中只能有某些特定类型的对象，例如在某个文件夹中只能包含文本文件，使用组合模式时，不能依赖类型系统来施加这些约束，因为它们都来自于相同的抽象层，在这种情况下，必须通过在运行时进行类型检查来实现，这个实现过程较为复杂。</p>
+<p>参考资料：<br><a href="https://gof.quanke.name/组合模式-Composite%20Pattern.html" target="_blank" rel="external">组合模式-Composite Pattern</a></p>
 
       
 

@@ -18,7 +18,7 @@
 ##样">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-61c0f84caf34296e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-df264cc26836ec85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-07T15:44:41.000Z">
+<meta property="og:updated_time" content="2017-09-11T03:23:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UITableView 使用详解">
 <meta name="twitter:description" content="概述在iOS开发中UITableView是使用的最广泛的控件，基本上每一个项目都会有多个地方会用到。它的作用是列表显示相关的内容。UITableView继承自UIScrollView,由于内部使用了缓存池机制，因此性能相当好。UITableView中每行数据都是一个UITableViewCell，为了方便开发者的使用，在UITableViewCell中内置了许多样式，在使用的时候非常方便。
@@ -190,7 +190,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在iOS开发中UITableView是使用的最广泛的控件，基本上每一个项目都会有多个地方会用到。它的作用是列表显示相关的内容。UITableView继承自UIScrollView,由于内部使用了缓存池机制，因此性能相当好。UITableView中每行数据都是一个UITableViewCell，为了方便开发者的使用，在UITableViewCell中内置了许多样式，在使用的时候非常方便。</p>
-<p>##样式<br>UITableView有两种风格：UITableViewStylePlain和UITableViewStyleGrouped。这两者操作起来其实并没有本质区别，只是后者按分组样式显示前者按照普通样式显示而已。</p>
+<p>##样式<br>UITableView有两种风格：UITableViewStylePlain 和 UITableViewStyleGrouped。这两者操作起来其实并没有本质区别，只是后者按分组样式显示前者按照普通样式显示而已。</p>
+<a id="more"></a>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-61c0f84caf34296e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="列表样式.png"><br>Plain样式</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-df264cc26836ec85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分组样式.png"><br>Group样式</p>
 <p>##数据源<br>UITableView需要设置一个数据源(DataSource)来显示数据，UITableView会向数据源查询一共有多少行数据以及每⼀行显示什么数据。没有设置数据源的UITableView会显示空的UITableView。在iOS中，如果一个OC对象遵守UITableViewDataSource协议,就可以作为UITableView的数据源。以下是UITableView数据源的相关方法。</p>
@@ -345,11 +346,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2015/08/23/iOS APP 上线/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/07/iOS 多线程应用/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          iOS APP 上线
+          iOS 多线程
         
       </div>
     </a>
