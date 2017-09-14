@@ -1573,27 +1573,36 @@
   </entry>
   
   <entry>
-    <title>iOS `MVC` 和 MVVM 比较</title>
+    <title>iOS `MVC`、`MVP` 和 `MVVM` 比较</title>
     <link href="http://yoursite.com/2016/05/12/iOS%20MVC%20%E5%92%8C%20MVVM%20%E6%AF%94%E8%BE%83/"/>
     <id>http://yoursite.com/2016/05/12/iOS MVC 和 MVVM 比较/</id>
     <published>2016-05-12T09:42:32.000Z</published>
-    <updated>2017-09-07T09:20:10.000Z</updated>
+    <updated>2017-09-14T13:00:54.000Z</updated>
     
-    <content type="html">&lt;p&gt;到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 &lt;code&gt;MVC&lt;/code&gt; 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，&lt;code&gt;MVC&lt;/code&gt;越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 MVVM 架构来对项目进行重构，下面小编就以 &lt;code&gt;MVC&lt;/code&gt; 和 MVVM 来进行讲解和对比两者之间的优劣。&lt;/p&gt;
+    <content type="html">&lt;p&gt;到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 &lt;code&gt;MVC&lt;/code&gt; 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，&lt;code&gt;MVC&lt;/code&gt; 越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 &lt;code&gt;MVVM&lt;/code&gt; 架构来对项目进行重构，下面小编就以 &lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 来进行讲解和对比两者之间的优劣。&lt;/p&gt;
 &lt;h2 id=&quot;MVC-和-MVVM-简述&quot;&gt;&lt;a href=&quot;#MVC-和-MVVM-简述&quot; class=&quot;headerlink&quot; title=&quot;MVC 和 MVVM 简述&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 简述&lt;/h2&gt;&lt;h3 id=&quot;MVC介绍&quot;&gt;&lt;a href=&quot;#MVC介绍&quot; class=&quot;headerlink&quot; title=&quot;MVC介绍&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt;介绍&lt;/h3&gt;&lt;p&gt;记得大概在一年前的时候曾经写过 &lt;code&gt;MVC&lt;/code&gt; 的使用和相关一些介绍，这里方便做对比再次对 &lt;code&gt;MVC&lt;/code&gt; 进行详解。参考资料 &lt;a href=&quot;http://boilwater.github.io/2015/07/06/iOS%20`MVC`%20设计模式/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS &lt;code&gt;MVC&lt;/code&gt; 设计模式&lt;/a&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;在 &lt;code&gt;GUI&lt;/code&gt; 编程领域，&lt;code&gt;MVC&lt;/code&gt; 已经拥有差不多 50 年的历史了。早在几十年前，&lt;code&gt;Smalltalk-76&lt;/code&gt; 就对 &lt;code&gt;MVC&lt;/code&gt; 架构模式进行了实现，在随后的几十年历史中，&lt;code&gt;MVC&lt;/code&gt; 产生了很多的变种，例如：&lt;code&gt;HMVC&lt;/code&gt;、&lt;code&gt;MVA&lt;/code&gt;、&lt;code&gt;MVP&lt;/code&gt;、&lt;code&gt;MVVM&lt;/code&gt; 和其它将 &lt;code&gt;MVC&lt;/code&gt; 运用于其它不同领域的模式。&lt;/p&gt;
-&lt;h3 id=&quot;传统的-MVC&quot;&gt;&lt;a href=&quot;#传统的-MVC&quot; class=&quot;headerlink&quot; title=&quot;传统的 MVC&quot;&gt;&lt;/a&gt;传统的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c235a626e5bec39a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;93c3aeab-92c0-4cc0-8344-969b668fe76b.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;传统的-MVC&quot;&gt;&lt;a href=&quot;#传统的-MVC&quot; class=&quot;headerlink&quot; title=&quot;传统的 MVC&quot;&gt;&lt;/a&gt;传统的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c235a626e5bec39a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;93c3aeab-92c0-4cc0-8344-969b668fe76b.png&quot;&gt;&lt;br&gt;&lt;strong&gt;【图片来源于网络】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;传统的 &lt;code&gt;MVC&lt;/code&gt; 的实现结构图可以看出：&lt;code&gt;Controller&lt;/code&gt; 可以直接与 &lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;Model&lt;/code&gt; 两者之间进行数据传递，&lt;code&gt;View&lt;/code&gt; 可直接从 &lt;code&gt;Model&lt;/code&gt; 读取数据进行更新。而且在 &lt;code&gt;Controller&lt;/code&gt; 更新 &lt;code&gt;View&lt;/code&gt; 模型时是采用直接替换方式，而不是跟新的方式。着移动端这是对界面的没有丝毫的复用，很明显在移动端使我们目前不会采取的。&lt;/p&gt;
-&lt;h3 id=&quot;Apple-的-MVC&quot;&gt;&lt;a href=&quot;#Apple-的-MVC&quot; class=&quot;headerlink&quot; title=&quot;Apple 的 MVC&quot;&gt;&lt;/a&gt;&lt;code&gt;Apple&lt;/code&gt; 的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1704d3e84a4863ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;8d779f6a-265b-43c3-90be-dc9997b9963d.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Apple-的-MVC&quot;&gt;&lt;a href=&quot;#Apple-的-MVC&quot; class=&quot;headerlink&quot; title=&quot;Apple 的 MVC&quot;&gt;&lt;/a&gt;&lt;code&gt;Apple&lt;/code&gt; 的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1704d3e84a4863ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;8d779f6a-265b-43c3-90be-dc9997b9963d.png&quot;&gt;&lt;br&gt; &lt;strong&gt;【图片来源于网络】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Apple&lt;/code&gt; 的 &lt;code&gt;MVC&lt;/code&gt; 是采用 &lt;code&gt;Controler&lt;/code&gt;、&lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;Model&lt;/code&gt; 三者完全解耦进行理想下数据操作模式。&lt;code&gt;Controler&lt;/code&gt; 与 &lt;code&gt;View&lt;/code&gt; 、&lt;code&gt;Model&lt;/code&gt; 直接更新显示视图界面以及对数据模型初始化和更新，然后通过得到数据更新来传递给界面进行显示。&lt;br&gt;&lt;code&gt;View&lt;/code&gt; 通过相关的点击或者手势来对控制器进行交互，传递数据或者是相关事件的传递。&lt;br&gt;&lt;code&gt;Model&lt;/code&gt; 更新数据或者是更新数据模型通过通知的方式传递给 &lt;code&gt;Controller&lt;/code&gt; 控制器。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;但是上面在 apple 官方建议中使用 &lt;code&gt;xib&lt;/code&gt; 或者是 &lt;code&gt;storyboard&lt;/code&gt; 来实现 &lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;Controller&lt;/code&gt; 两者的完全分离。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;开发见到的-MVC&quot;&gt;&lt;a href=&quot;#开发见到的-MVC&quot; class=&quot;headerlink&quot; title=&quot;开发见到的 MVC&quot;&gt;&lt;/a&gt;开发见到的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-33372c970676c78d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;ad9bafec-2e16-4725-abe5-4e7fde2e0877.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;开发见到的-MVC&quot;&gt;&lt;a href=&quot;#开发见到的-MVC&quot; class=&quot;headerlink&quot; title=&quot;开发见到的 MVC&quot;&gt;&lt;/a&gt;开发见到的 &lt;code&gt;MVC&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-33372c970676c78d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;ad9bafec-2e16-4725-abe5-4e7fde2e0877.png&quot;&gt;&lt;br&gt;&lt;strong&gt;【图片来源于网络】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在实际开发过程中小编所在项目组很多情况是使用代码来初始化 &lt;code&gt;View&lt;/code&gt; 模块。这样实际还是上 &lt;code&gt;Controller&lt;/code&gt; 和 &lt;code&gt;View&lt;/code&gt; 具体关系如上，两者之间有一定的交接和联系。而且&lt;code&gt;Controller&lt;/code&gt; 还控制着 &lt;code&gt;View&lt;/code&gt; 模块的生命周期，同样也对 &lt;code&gt;Model&lt;/code&gt; 是所属关系。而非在传统或者是 &lt;code&gt;Aplle&lt;/code&gt; 建议的那样是平行关系。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在前面的文章中有讲述 &lt;code&gt;MVC&lt;/code&gt; 中 &lt;code&gt;Controler&lt;/code&gt;、&lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;Model&lt;/code&gt; 三者里面具体实现和相关管理内容，详情参考：&lt;a href=&quot;http://boilwater.github.io/2015/07/06/iOS%20`MVC`%20设计模式/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS &lt;code&gt;MVC&lt;/code&gt; 设计模式&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;MVP介绍&quot;&gt;&lt;a href=&quot;#MVP介绍&quot; class=&quot;headerlink&quot; title=&quot;MVP介绍&quot;&gt;&lt;/a&gt;MVP介绍&lt;/h3&gt;&lt;p&gt;&lt;code&gt;MVP&lt;/code&gt; 是从经典的模式 &lt;code&gt;MVC&lt;/code&gt; 演变而来，它们的基本思想有相通的地方：&lt;code&gt;Controller/Presenter&lt;/code&gt; 负责逻辑的处理，&lt;code&gt;Model&lt;/code&gt; 提供数据，&lt;code&gt;View&lt;/code&gt;负责显示。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MVP&lt;/code&gt; 与 &lt;code&gt;MVC&lt;/code&gt; 有着一个重大的区别：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 &lt;code&gt;MVP&lt;/code&gt; 中 &lt;code&gt;View&lt;/code&gt; 并不直接使用 &lt;code&gt;Model&lt;/code&gt;，它们之间的通信是通过 &lt;code&gt;Presenter&lt;/code&gt; (&lt;code&gt;MVC&lt;/code&gt; 中的 &lt;code&gt;Controller&lt;/code&gt;)来进行的，所有的交互都发生在 &lt;code&gt;Presenter&lt;/code&gt;内部，而在&lt;code&gt;MVC&lt;/code&gt; 中 &lt;code&gt;View&lt;/code&gt; 会直接从 &lt;code&gt;Model&lt;/code&gt; 中读取数据而不是通过 &lt;code&gt;Controller&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-f358cef2bc5bc43f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;d8ad72b3-f150-4988-af6f-0db785c40793.png&quot;&gt;&lt;br&gt;&lt;strong&gt;【图片来源于网络】&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在上面的 &lt;code&gt;MVP&lt;/code&gt; 流程结构可以看出：在 &lt;code&gt;MVP&lt;/code&gt; 实现中 &lt;code&gt;Presenter&lt;/code&gt; 代替 &lt;code&gt;Controller&lt;/code&gt; 代替实现 &lt;code&gt;View&lt;/code&gt; he &lt;code&gt;Model&lt;/code&gt; 之间的沟通桥梁。只是&lt;code&gt;MVP&lt;/code&gt; 中 &lt;code&gt;View&lt;/code&gt; 并不直接使用 &lt;code&gt;Model&lt;/code&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;MVVM介绍&quot;&gt;&lt;a href=&quot;#MVVM介绍&quot; class=&quot;headerlink&quot; title=&quot;MVVM介绍&quot;&gt;&lt;/a&gt;MVVM介绍&lt;/h3&gt;&lt;p&gt;&lt;code&gt;MVVM&lt;/code&gt; 架构模式是微软在 2005 年诞生的，从 &lt;code&gt;Model-View-ViewModel&lt;/code&gt; 这个名字来看，它由三个部分组成，也就是 &lt;code&gt;Model&lt;/code&gt;、&lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;ViewModel&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;在 &lt;code&gt;MVC&lt;/code&gt; 的使用过程中小编给大家讲述过 &lt;code&gt;Model&lt;/code&gt; 和 &lt;code&gt;View&lt;/code&gt; 里面所有的形式，相应的功能。&lt;/p&gt;
@@ -1601,7 +1610,7 @@
 &lt;li&gt;&lt;code&gt;ViewModel&lt;/code&gt; 视图模型对象&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;代替原来 &lt;code&gt;MVC&lt;/code&gt; 中的 &lt;code&gt;Controller&lt;/code&gt; 视图控制器来和 &lt;code&gt;Model&lt;/code&gt; 进行相关的数据交互，在这里把原本在 &lt;code&gt;Controller&lt;/code&gt; 里面进行相关计算或者是操作的处理统一放在此类中进行完成。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-7736783533915b41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;1b8ff549-4fa4-489a-adf3-e8ba52e6bb96.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-7736783533915b41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;1b8ff549-4fa4-489a-adf3-e8ba52e6bb96.png&quot;&gt;&lt;br&gt;&lt;strong&gt;【图片来源于网络】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在程序实现 &lt;code&gt;MVVM&lt;/code&gt; 工程图中可以看出：&lt;code&gt;UIView&lt;/code&gt; 和 &lt;code&gt;UIViewController&lt;/code&gt; 被看做是一个整体来进行视图展示和生命周期的控制，原来我们需要对数据模型理数据在 &lt;code&gt;Controler&lt;/code&gt; 做出相关梳理操作放在 &lt;code&gt;ViewModel&lt;/code&gt; 里面进行相关操作。&lt;code&gt;ViewModel&lt;/code&gt; 取代 &lt;code&gt;Controler&lt;/code&gt; 来实现 &lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;Model&lt;/code&gt; 两者之间数据更新或者是数据模型更新工作。&lt;/p&gt;
 &lt;h3 id=&quot;MVC-和-MVVM-代码实现&quot;&gt;&lt;a href=&quot;#MVC-和-MVVM-代码实现&quot; class=&quot;headerlink&quot; title=&quot;MVC 和 MVVM 代码实现&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 代码实现&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;MVC&lt;/code&gt; 代码实现&lt;/li&gt;
@@ -1626,7 +1635,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 &lt;code&gt;MVC&lt;/code&gt; 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，&lt;code&gt;MVC&lt;/code&gt;越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 MVVM 架构来对项目进行重构，下面小编就以 &lt;code&gt;MVC&lt;/code&gt; 和 MVVM 来进行讲解和对比两者之间的优劣。&lt;/p&gt;
+      &lt;p&gt;到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 &lt;code&gt;MVC&lt;/code&gt; 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，&lt;code&gt;MVC&lt;/code&gt; 越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 &lt;code&gt;MVVM&lt;/code&gt; 架构来对项目进行重构，下面小编就以 &lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 来进行讲解和对比两者之间的优劣。&lt;/p&gt;
 &lt;h2 id=&quot;MVC-和-MVVM-简述&quot;&gt;&lt;a href=&quot;#MVC-和-MVVM-简述&quot; class=&quot;headerlink&quot; title=&quot;MVC 和 MVVM 简述&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 简述&lt;/h2&gt;&lt;h3 id=&quot;MVC介绍&quot;&gt;&lt;a href=&quot;#MVC介绍&quot; class=&quot;headerlink&quot; title=&quot;MVC介绍&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt;介绍&lt;/h3&gt;&lt;p&gt;记得大概在一年前的时候曾经写过 &lt;code&gt;MVC&lt;/code&gt; 的使用和相关一些介绍，这里方便做对比再次对 &lt;code&gt;MVC&lt;/code&gt; 进行详解。参考资料 &lt;a href=&quot;http://boilwater.github.io/2015/07/06/iOS%20`MVC`%20设计模式/&quot;&gt;iOS &lt;code&gt;MVC&lt;/code&gt; 设计模式&lt;/a&gt;&lt;/p&gt;
     
     </summary>
