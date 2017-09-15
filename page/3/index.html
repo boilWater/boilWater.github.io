@@ -430,23 +430,6 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这篇文章我将接着节讲述关于 <code>SDWebImage</code> 图片下载后处理方式，缓存进行讲解。<br></br><br>经过上面我们可以知道 <code>SDWebImage</code> 是可以从远程的服务器加载图片，然后在<code>UIImageView</code> 上进行显示。但是你有想过 <code>SDWebImage</code> 到底是什么呢？</p>
-<p>在使用时我们知道需要导入包：<code>UIImageView+WebCache.h</code> 我们可以根据这看出 <code>SDWebImage</code> 是一个 <code>UIImageView</code> 的分类，使用 <code>Category</code> 进行分装的类。下面列出 <code>SDWebImage</code> 可以实现的功能：</p>
-<ul>
-<li>提供 <code>UIImageView</code> 的一个分类，可以对图片进行异步加载和缓存管理</li>
-<li>一步内存 &amp; 磁盘管理 &amp; 自动对过期的缓存进行相关的处理</li>
-<li>一个一步图片的加载器</li>
-<li>支持 <code>GIF</code> 的图片加载</li>
-<li>后台对图片进行解压处理</li>
-<li>确保同意 <code>URL</code> 的图片不会被数次加载</li>
-<li>确保虚假的 <code>URL</code> 不会被反复加载</li>
-<li>确保下载和缓存时主线程不会被阻塞</li>
-<li>优良使用性能</li>
-<li>采用 <code>GCD</code> 可以采用并行处理，<code>iOS 5.0</code> 的 <code>ARC</code> 自动计数原则</li>
-<li>支持 <code>Arm64</code> (64位 <code>CPU</code> 处理)</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/03/23/SDWebImage图片缓存/#more">more >></a>
         
       
 
@@ -501,6 +484,98 @@ var _hmt = _hmt || [];
 <!-- 目录内容结束 -->
 
   
+    <article id="post-SDWebImage 图片缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/23/SDWebImage 图片缓存/">SDWebImage 图片缓存</a>
+    </h1>
+  
+
+        
+        <a href="/2016/03/23/SDWebImage 图片缓存/" class="archive-article-date">
+  	<time datetime="2016-03-23T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇文章我将接着节讲述关于 <code>SDWebImage</code> 图片下载后处理方式，缓存进行讲解。</p>
+<p>经过上面我们可以知道 <code>SDWebImage</code> 是可以从远程的服务器加载图片，然后在<code>UIImageView</code> 上进行显示。但是你有想过 <code>SDWebImage</code> 到底是什么呢？</p>
+<p>在使用时我们知道需要导入包：<code>UIImageView+WebCache.h</code> 我们可以根据这看出 <code>SDWebImage</code> 是一个 <code>UIImageView</code> 的分类，使用 <code>Category</code> 进行分装的类。下面列出 <code>SDWebImage</code> 可以实现的功能：</p>
+<ul>
+<li>提供 <code>UIImageView</code> 的一个分类，可以对图片进行异步加载和缓存管理</li>
+<li>一步内存 &amp; 磁盘管理 &amp; 自动对过期的缓存进行相关的处理</li>
+<li>一个一步图片的加载器</li>
+<li>支持 <code>GIF</code> 的图片加载</li>
+<li>后台对图片进行解压处理</li>
+<li>确保同意 <code>URL</code> 的图片不会被数次加载</li>
+<li>确保虚假的 <code>URL</code> 不会被反复加载</li>
+<li>确保下载和缓存时主线程不会被阻塞</li>
+<li>优良使用性能</li>
+<li>采用 <code>GCD</code> 可以采用并行处理，<code>iOS 5.0</code> 的 <code>ARC</code> 自动计数原则</li>
+<li>支持 <code>Arm64</code> (64位 <code>CPU</code> 处理)</li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/03/23/SDWebImage 图片缓存/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/三方框架解析/" class="article-tag-list-link color2">三方框架解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/03/23/SDWebImage 图片缓存/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-SDWebImage图片下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,16 +596,6 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前端时间完成云相册经常使用到 <code>SDWebImage</code> 来进行图片加载，但对于图片加载过程中怎么样实现不会深究。下面小编就对 <code>SDWebImage</code> 进行相应的分析：</p>
-<h2 id="SDWebImage-的下载器"><a href="#SDWebImage-的下载器" class="headerlink" title="SDWebImage 的下载器"></a><code>SDWebImage</code> 的下载器</h2><p> <code>SDWebImage</code> 的下载器是 <code>SDWebImageDownloader</code> 利用单例模式<code>sharedDownloader</code>，可以对下载的图片进行相关配置。<br> 可以配置的部分如下：</p>
-<ul>
-<li>下载选项</li></li>
-<li>HTTP的头部</li></li>
-<li>压缩、下载超时、下载顺序、最大并发数等</li></li>
-</ul>
-<h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项"></a>下载选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, SDWebImageDownloaderOptions) &#123;</span><br><span class="line">   <span class="comment">//下载的优先级低</span></span><br><span class="line">    SDWebImageDownloaderLowPriority = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">   <span class="comment">//下载进度</span></span><br><span class="line">    SDWebImageDownloaderProgressiveDownload = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">   <span class="comment">//下载路径缓存</span></span><br><span class="line">    SDWebImageDownloaderUseNSURLCache = <span class="number">1</span> &lt;&lt; <span class="number">2</span>,</span><br><span class="line">   <span class="comment">//下载过程的请求缓存</span></span><br><span class="line">    SDWebImageDownloaderIgnoreCachedResponse = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,</span><br><span class="line">   <span class="comment">//后台进行继续下载</span></span><br><span class="line">    SDWebImageDownloaderContinueInBackground = <span class="number">1</span> &lt;&lt; <span class="number">4</span>,    </span><br><span class="line">   <span class="comment">//处理 cookies</span></span><br><span class="line">    SDWebImageDownloaderHandleCookies = <span class="number">1</span> &lt;&lt; <span class="number">5</span>,</span><br><span class="line">   <span class="comment">//循序无效的 SSL 证书</span></span><br><span class="line">    SDWebImageDownloaderAllowInvalidSSLCertificates = <span class="number">1</span> &lt;&lt; <span class="number">6</span>,</span><br><span class="line">   <span class="comment">//下载优先级高</span></span><br><span class="line">    SDWebImageDownloaderHighPriority = <span class="number">1</span> &lt;&lt; <span class="number">7</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/03/20/SDWebImage图片下载/#more">more >></a>
         
       
 
@@ -566,6 +631,90 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/03/20/SDWebImage图片下载/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-SDWebImage 图片下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/20/SDWebImage 图片下载/">SDWebImage 图片下载</a>
+    </h1>
+  
+
+        
+        <a href="/2016/03/20/SDWebImage 图片下载/" class="archive-article-date">
+  	<time datetime="2016-03-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前端时间完成云相册经常使用到 <code>SDWebImage</code> 来进行图片加载，但对于图片加载过程中怎么样实现不会深究。下面小编就对 <code>SDWebImage</code> 进行相应的分析：</p>
+<h2 id="SDWebImage-的下载器"><a href="#SDWebImage-的下载器" class="headerlink" title="SDWebImage 的下载器"></a><code>SDWebImage</code> 的下载器</h2><p> <code>SDWebImage</code> 的下载器是 <code>SDWebImageDownloader</code> 利用单例模式<code>sharedDownloader</code>，可以对下载的图片进行相关配置。<br> 可以配置的部分如下：</p>
+<ul>
+<li>下载选项</li>
+<li>HTTP的头部</li>
+<li>压缩、下载超时、下载顺序、最大并发数等</li>
+</ul>
+<h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项"></a>下载选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, SDWebImageDownloaderOptions) &#123;</span><br><span class="line">   <span class="comment">//下载的优先级低</span></span><br><span class="line">    SDWebImageDownloaderLowPriority = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">   <span class="comment">//下载进度</span></span><br><span class="line">    SDWebImageDownloaderProgressiveDownload = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">   <span class="comment">//下载路径缓存</span></span><br><span class="line">    SDWebImageDownloaderUseNSURLCache = <span class="number">1</span> &lt;&lt; <span class="number">2</span>,</span><br><span class="line">   <span class="comment">//下载过程的请求缓存</span></span><br><span class="line">    SDWebImageDownloaderIgnoreCachedResponse = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,</span><br><span class="line">   <span class="comment">//后台进行继续下载</span></span><br><span class="line">    SDWebImageDownloaderContinueInBackground = <span class="number">1</span> &lt;&lt; <span class="number">4</span>,    </span><br><span class="line">   <span class="comment">//处理 cookies</span></span><br><span class="line">    SDWebImageDownloaderHandleCookies = <span class="number">1</span> &lt;&lt; <span class="number">5</span>,</span><br><span class="line">   <span class="comment">//循序无效的 SSL 证书</span></span><br><span class="line">    SDWebImageDownloaderAllowInvalidSSLCertificates = <span class="number">1</span> &lt;&lt; <span class="number">6</span>,</span><br><span class="line">   <span class="comment">//下载优先级高</span></span><br><span class="line">    SDWebImageDownloaderHighPriority = <span class="number">1</span> &lt;&lt; <span class="number">7</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2016/03/20/SDWebImage 图片下载/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/三方框架解析/" class="article-tag-list-link color2">三方框架解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/03/20/SDWebImage 图片下载/">产看详细 >></a>
         </p>
       
 
@@ -729,169 +878,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/03/01/iOS 设计模式-结构模式-组合模式/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-结构模式-桥接模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/">iOS 设计模式-结构模式-桥接模式</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/" class="archive-article-date">
-  	<time datetime="2016-01-03T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。</p>
-<p>桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。</p>
-<p>桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维度分离出来，使两者可以独立扩展，让系统更加符合“单一职责原则”。</p>
-<h2 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h2>
-        
-          <a class="article-more-a" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-结构模式-适配器模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/iOS 设计模式-结构模式-适配器模式/">iOS 设计模式-结构模式-适配器模式</a>
-    </h1>
-  
-
-        
-        <a href="/2015/12/23/iOS 设计模式-结构模式-适配器模式/" class="archive-article-date">
-  	<time datetime="2015-12-23T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经过一段时间的对设计模式学习完成对设计模式基本讲述，下面小编将向大家介绍关于设计模式中 – 结构模式讲述。</p>
-<p>本篇文章小编将对结构模式中适配器模式学习和简述学习后的心得体会。</p>
-<p>适配器模式(Adapter Pattern)：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。</p>
-<blockquote>
-<p>在适配器模式定义中所提及的接口是指广义的接口，它可以表示一个方法或者方法的集合。</p>
-</blockquote>
-<p>适配器模式中，我们通过增加一个新的适配器类来解决接口不兼容的问题，使得原本没有任何关系的类可以协同工作。</p>
-        
-          <a class="article-more-a" href="/2015/12/23/iOS 设计模式-结构模式-适配器模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/23/iOS 设计模式-结构模式-适配器模式/">产看详细 >></a>
         </p>
       
 
