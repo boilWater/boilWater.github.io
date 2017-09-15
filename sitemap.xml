@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/03/23/SDWebImage%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98/</loc>
-    
-    <lastmod>2017-09-15T09:16:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/03/23/SDWebImage%20%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98/</loc>
     
     <lastmod>2017-09-15T09:16:30.000Z</lastmod>
@@ -19,13 +12,6 @@
     <loc>http://yoursite.com/2016/03/20/SDWebImage%20%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/</loc>
     
     <lastmod>2017-09-15T09:15:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/03/20/SDWebImage%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/</loc>
-    
-    <lastmod>2017-09-15T09:14:21.000Z</lastmod>
     
   </url>
   
@@ -261,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/iOS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html</loc>
+    <loc>http://yoursite.com/2016/04/12/iOS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-08-30T10:50:20.000Z</lastmod>
     
@@ -275,7 +261,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/iOS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F.html</loc>
+    <loc>http://yoursite.com/2016/03/16/iOS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-08-30T10:48:38.000Z</lastmod>
     
