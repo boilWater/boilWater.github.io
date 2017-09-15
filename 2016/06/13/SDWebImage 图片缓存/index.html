@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SDWebImage 图片缓存 | JackJin&#39;s 博客</title>
+  <title>iOS SDWebImage 图片缓存 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这篇文章我将接着节讲述关于 SDWebImage 图片下载后处理方式，缓存进行讲解。经过上面我们可以知道 SDWebImage 是可以从远程的服务器加载图片，然后在UIImageView 上进行显示。但是你有想过 SDWebImage 到底是什么呢？
 在使用时我们知道需要导入包：UIImageView+WebCache.h 我们可以根据这看出 SDWebImage 是一个 UIImageView">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SDWebImage 图片缓存">
+<meta property="og:title" content="iOS SDWebImage 图片缓存">
 <meta property="og:url" content="http://yoursite.com/2016/06/13/SDWebImage 图片缓存/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="这篇文章我将接着节讲述关于 SDWebImage 图片下载后处理方式，缓存进行讲解。经过上面我们可以知道 SDWebImage 是可以从远程的服务器加载图片，然后在UIImageView 上进行显示。但是你有想过 SDWebImage 到底是什么呢？
 在使用时我们知道需要导入包：UIImageView+WebCache.h 我们可以根据这看出 SDWebImage 是一个 UIImageView">
-<meta property="og:updated_time" content="2017-09-15T08:44:10.000Z">
+<meta property="og:updated_time" content="2017-09-15T08:50:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SDWebImage 图片缓存">
+<meta name="twitter:title" content="iOS SDWebImage 图片缓存">
 <meta name="twitter:description" content="这篇文章我将接着节讲述关于 SDWebImage 图片下载后处理方式，缓存进行讲解。经过上面我们可以知道 SDWebImage 是可以从远程的服务器加载图片，然后在UIImageView 上进行显示。但是你有想过 SDWebImage 到底是什么呢？
 在使用时我们知道需要导入包：UIImageView+WebCache.h 我们可以根据这看出 SDWebImage 是一个 UIImageView">
   
@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      SDWebImage 图片缓存
+      iOS SDWebImage 图片缓存
     </h1>
   
 
@@ -267,7 +267,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">三方框架解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
@@ -279,7 +279,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/第三方框架/" class="article-tag-list-link color1">第三方框架</a>
+        			<a href="/categories/三方框架解析/" class="article-tag-list-link color2">三方框架解析</a>
         		</li>
       		
 		</ul>
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
   
   
     <a href="/2016/06/10/SDWebImage 图片下载/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SDWebImage 图片下载</div>
+      <div class="article-nav-title">iOS SDWebImage 图片下载</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -380,6 +380,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">1.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存缓存类"><span class="toc-number">2.</span> <span class="toc-text">内存缓存类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存在APP周期的设置"><span class="toc-number"></span> <span class="toc-text">缓存在APP周期的设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存警告"><span class="toc-number">1.</span> <span class="toc-text">内存警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序终止"><span class="toc-number">2.</span> <span class="toc-text">程序终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序进入后台"><span class="toc-number">3.</span> <span class="toc-text">程序进入后台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询图片"><span class="toc-number">4.</span> <span class="toc-text">查询图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面是MD5的加密方式"><span class="toc-number">5.</span> <span class="toc-text">下面是MD5的加密方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片的保存"><span class="toc-number">6.</span> <span class="toc-text">图片的保存</span></a></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

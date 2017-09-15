@@ -1550,11 +1550,11 @@
   </entry>
   
   <entry>
-    <title>SDWebImage 图片缓存</title>
+    <title>iOS SDWebImage 图片缓存</title>
     <link href="http://yoursite.com/2016/06/13/SDWebImage%20%E5%9B%BE%E7%89%87%E7%BC%93%E5%AD%98/"/>
     <id>http://yoursite.com/2016/06/13/SDWebImage 图片缓存/</id>
     <published>2016-06-13T09:42:32.000Z</published>
-    <updated>2017-09-15T08:44:10.000Z</updated>
+    <updated>2017-09-15T08:50:15.000Z</updated>
     
     <content type="html">&lt;p&gt;这篇文章我将接着节讲述关于 &lt;code&gt;SDWebImage&lt;/code&gt; 图片下载后处理方式，缓存进行讲解。&lt;br&gt;&lt;br&gt;&lt;br&gt;经过上面我们可以知道 &lt;code&gt;SDWebImage&lt;/code&gt; 是可以从远程的服务器加载图片，然后在&lt;code&gt;UIImageView&lt;/code&gt; 上进行显示。但是你有想过 &lt;code&gt;SDWebImage&lt;/code&gt; 到底是什么呢？&lt;/p&gt;
 &lt;p&gt;在使用时我们知道需要导入包：&lt;code&gt;UIImageView+WebCache.h&lt;/code&gt; 我们可以根据这看出 &lt;code&gt;SDWebImage&lt;/code&gt; 是一个 &lt;code&gt;UIImageView&lt;/code&gt; 的分类，使用 &lt;code&gt;Category&lt;/code&gt; 进行分装的类。下面列出 &lt;code&gt;SDWebImage&lt;/code&gt; 可以实现的功能：&lt;/p&gt;
@@ -1646,19 +1646,19 @@
     
     </summary>
     
-      <category term="第三方框架" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6/"/>
+      <category term="三方框架解析" scheme="http://yoursite.com/categories/%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/"/>
     
     
-      <category term="三方框架解析" scheme="http://yoursite.com/tags/%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/"/>
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
-    <title>SDWebImage 图片下载</title>
+    <title>iOS SDWebImage 图片下载</title>
     <link href="http://yoursite.com/2016/06/10/SDWebImage%20%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/"/>
     <id>http://yoursite.com/2016/06/10/SDWebImage 图片下载/</id>
     <published>2016-06-10T09:42:32.000Z</published>
-    <updated>2017-09-15T08:44:26.000Z</updated>
+    <updated>2017-09-15T08:49:31.000Z</updated>
     
     <content type="html">&lt;p&gt;前端时间完成云相册经常使用到 &lt;code&gt;SDWebImage&lt;/code&gt; 来进行图片加载，但对于图片加载过程中怎么样实现不会深究。下面小编就对 &lt;code&gt;SDWebImage&lt;/code&gt; 进行相应的分析：&lt;/p&gt;
 &lt;h2 id=&quot;SDWebImage-的下载器&quot;&gt;&lt;a href=&quot;#SDWebImage-的下载器&quot; class=&quot;headerlink&quot; title=&quot;SDWebImage 的下载器&quot;&gt;&lt;/a&gt;&lt;code&gt;SDWebImage&lt;/code&gt; 的下载器&lt;/h2&gt;&lt;p&gt; &lt;code&gt;SDWebImage&lt;/code&gt; 的下载器是 &lt;code&gt;SDWebImageDownloader&lt;/code&gt; 利用单例模式&lt;code&gt;sharedDownloader&lt;/code&gt;，可以对下载的图片进行相关配置。&lt;br&gt; 可以配置的部分如下：&lt;/p&gt;
@@ -1714,10 +1714,10 @@
     
     </summary>
     
-      <category term="第三方框架" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6/"/>
+      <category term="三方框架解析" scheme="http://yoursite.com/categories/%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/"/>
     
     
-      <category term="三方框架解析" scheme="http://yoursite.com/tags/%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/"/>
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
