@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>UIView &amp; CALayer&amp; Core Animation ~ （UIView 和 CALayer）（1） | JackJin&#39;s 博客</title>
+  <title>iOS UIView &amp; CALayer 对比及 UIImage 使用小技巧 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
 今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIView & CALayer& Core Animation ~ （UIView 和 CALayer）（1）">
+<meta property="og:title" content="iOS UIView & CALayer 对比及 UIImage 使用小技巧">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/UIView&CALayer&Core Animation~1/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
 今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
-<meta property="og:updated_time" content="2017-08-25T18:41:36.000Z">
+<meta property="og:updated_time" content="2017-09-15T03:08:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIView & CALayer& Core Animation ~ （UIView 和 CALayer）（1）">
+<meta name="twitter:title" content="iOS UIView & CALayer 对比及 UIImage 使用小技巧">
 <meta name="twitter:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
 今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
   
@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      UIView &amp; CALayer&amp; Core Animation ~ （UIView 和 CALayer）（1）
+      iOS UIView &amp; CALayer 对比及 UIImage 使用小技巧
     </h1>
   
 
@@ -190,27 +190,42 @@ var _hmt = _hmt || [];
 <div style="color:#008B8B"><br><p>今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。<br>下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。</p><br></div>
 
 <a id="more"></a>
-<h3 id="UIView和CALayer之间的关系"><a href="#UIView和CALayer之间的关系" class="headerlink" title="UIView和CALayer之间的关系"></a>UIView和CALayer之间的关系</h3><p>打开UIView和CALyer中实际实现的代码，下面是UIView实现源码</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NS_CLASS_AVAILABLE_IOS</span>(<span class="number">2</span>_0) <span class="class"><span class="keyword">@interface</span> <span class="title">UIView</span> : <span class="title">UIResponder</span> &lt;<span class="title">NSCoding</span>, <span class="title">UIAppearance</span>, <span class="title">UIAppearanceContainer</span>, <span class="title">UIDynamicItem</span>, <span class="title">UITraitEnvironment</span>, <span class="title">UICoordinateSpace</span>, <span class="title">UIFocusEnvironment</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">readonly</span>,<span class="keyword">strong</span>)                 <span class="built_in">CALayer</span>  *layer; </span><br><span class="line">&#123;%  endcodeblock %&#125;</span><br><span class="line"><span class="built_in">CALayer</span>实现源码：</span><br><span class="line">&#123;% codeblock lang:objc %&#125;</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CALayer</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCoding</span>, <span class="title">CAMediaTiming</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">@private</span></span><br><span class="line">  <span class="keyword">struct</span> _CALayerIvars &#123;</span><br><span class="line">    int32_t refcount;</span><br><span class="line">    uint32_t magic;</span><br><span class="line">    <span class="keyword">void</span> *layer;</span><br><span class="line"><span class="meta">#if TARGET_OS_MAC &amp;&amp; !TARGET_RT_64_BIT</span></span><br><span class="line">    <span class="keyword">void</span> *unused1[<span class="number">8</span>];</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">  &#125; _attr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以看出UIView是继承自UIResponder，而CALayer继承自NSObject。这也是UIView可以相应触摸事件，并实现响应链中最后一环所在后面我们会具体讲述。CALayer继承自NSObject，其中UIView中又包含自己所特有的layer。我们可以看做CALayer是UIView的具体内容细节的实现，两者具有平行关系。</p>
+<h3 id="UIView-和-CALayer之间的关系"><a href="#UIView-和-CALayer之间的关系" class="headerlink" title="UIView 和 CALayer之间的关系"></a>UIView 和 CALayer之间的关系</h3><p>打开 <code>UIView</code> 和 <code>CALyer</code> 中实际实现的代码，下面是<code>UIView</code>实现源码：</p>
+<ul>
+<li><code>UIView</code> 头文件：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NS_CLASS_AVAILABLE_IOS</span>(<span class="number">2</span>_0) <span class="class"><span class="keyword">@interface</span> <span class="title">UIView</span> : <span class="title">UIResponder</span> &lt;<span class="title">NSCoding</span>, <span class="title">UIAppearance</span>, <span class="title">UIAppearanceContainer</span>, <span class="title">UIDynamicItem</span>, <span class="title">UITraitEnvironment</span>, <span class="title">UICoordinateSpace</span>, <span class="title">UIFocusEnvironment</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">readonly</span>,<span class="keyword">strong</span>) <span class="built_in">CALayer</span>  *layer; </span><br><span class="line"></span><br><span class="line">...  <span class="comment">//省略</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>CALayer</code> 源文件：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CALayer实现源码：</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CALayer</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCoding</span>, <span class="title">CAMediaTiming</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">@private</span></span><br><span class="line">  <span class="keyword">struct</span> _CALayerIvars &#123;</span><br><span class="line">    int32_t refcount;</span><br><span class="line">    uint32_t magic;</span><br><span class="line">    <span class="keyword">void</span> *layer;</span><br><span class="line"><span class="meta">#if TARGET_OS_MAC &amp;&amp; !TARGET_RT_64_BIT</span></span><br><span class="line">    <span class="keyword">void</span> *unused1[<span class="number">8</span>];</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">  &#125; _attr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看出 <code>UIView</code> 是继承自 <code>UIResponder</code>，而 <code>CALayer</code> 继承自<code>NSObject</code>。这也是 <code>UIView</code> 可以相应触摸事件，并实现响应链中最后一环所在后面我们会具体讲述。<code>CALayer</code> 继承自 <code>NSObject</code>，其中 <code>UIView</code> 中又包含自己所特有的 <code>layer</code>。我们可以看做 <code>CALayer</code> 是 <code>UIView</code> 的具体内容细节的实现，两者具有平行关系。</p>
+<blockquote>
 <div style="color:#008B8B"><p>为什么不把两者何在一起进行实现呢，分开实现具体功能呢？<br>我想可能是为啦分层需要，把功能具体分隔开来。UIView实现触摸响应，CALayer实现具体的内容展示。<br></p><br></div>
 
-<p>参考资料：<br><br><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW12" target="_blank" rel="external">UIVie和CALayer关系源码</a>;</p>
-<p><br><br>下面我们将写关于UIView和CALayer的一些相关的知识：</p>
-<hr>
-<p>列出在UIView实现不了的CALayer的功能：</p>
+
+
+
+</blockquote>
+<p><br><br>下面我们将写关于 <code>UIView</code> 和 <code>CALayer</code> 的一些相关的知识：</p>
+<p>列出在 <code>UIView</code> 实现不了的 <code>CALayer</code> 的功能：</p>
 <ul><br><li>阴影，圆角，带颜色的边框</li><br><li>3D变换</li><br><li>非矩形范围</li><br><li>透明遮罩</li><br><li>多级非线性动画</li><br></ul>
 
 <hr>
-<p>我们也都知道在Iphone手机内存是固定不能进行拓展，所以我们手机内存是很宝贵的。如果我们想要加载大容量的图片，会占用很大的内存。<br><br><br>为此，Apple采用了一种比较巧妙的策略。在低内存的情况下，系统会强制清除UIImage对象所指向的图片数据，以释放部分内存。注意，这种清除行为影响到的只是图片数据，而不会影响到UIImage对象本身。当我们需要绘制那些图片数据已经被清除的UIImage对象时，对象会自动从源文件中重新加载数据。当然，这是以时间换空间的一种策略，会导致一定的性能损耗。下面给出一些图片处理小技巧</p>
-<h3 id="UIImage缓存"><a href="#UIImage缓存" class="headerlink" title="UIImage缓存"></a>UIImage缓存</h3><p>我们知道在使用imageNamed进行图片显示，图片会缓存。但具体缓存是怎么实现，其中解析和清除时间是什么时候呢？<div style="color:#008B8B"></div></p>
-<p></p><p>当我们使用imageNamed:时创建图片，系统会通过Bundle的文件中找到图片的文件名，然后把相关的名字放到UIImage返回，此时并没有解析图片。当图片在第一次显示时，图片才会调用内部解码方法，解码会放到一个全局变量中。图片在解码后，会在APP第一次进入后台或者内存警告时，该图片的缓存才会被清空，其他情况缓存会一直存在。<br></p><br><p></p>
-<h3 id="使用imageWithData可以避免缓存吗？"><a href="#使用imageWithData可以避免缓存吗？" class="headerlink" title="使用imageWithData可以避免缓存吗？"></a>使用imageWithData可以避免缓存吗？</h3><p>我们在创建UIImage时，UIImage的底层会调用ImageIO的CGImageSourceCreateWithData()，此方法有个参数 ShouldCache，在64位的处理器上是默认开启的。图片也会在第一次显示在屏幕上才会被解码，解码数据也会保存在CGimage的内部。</p>
-<div style="color:#008B8B"><br><p>但是与上面使用imageName的情况不同，在UIImage被释放是其缓存也会进行释放。</p></div>
+<p>我们也都知道在 <code>iPhone</code> 手机内存是固定不能进行拓展，所以我们手机内存是很宝贵的。如果我们想要加载大容量的图片，会占用很大的内存。<br><br><br>为此，<code>Apple</code> 采用了一种比较巧妙的策略。在低内存的情况下，系统会强制清除 <code>UIImage</code> 对象所指向的图片数据，以释放部分内存。注意，这种清除行为影响到的只是图片数据，而不会影响到 <code>UIImage</code> 对象本身。当我们需要绘制那些图片数据已经被清除的<code>UIImage</code> 对象时，对象会自动从源文件中重新加载数据。当然，这是以时间换空间的一种策略，会导致一定的性能损耗。下面给出一些图片处理小技巧</p>
+<h3 id="UIImage缓存"><a href="#UIImage缓存" class="headerlink" title="UIImage缓存"></a>UIImage缓存</h3><p>我们知道在使用 <code>imageNamed</code> 进行图片显示，图片会缓存。但具体缓存是怎么实现，其中解析和清除时间是什么时候呢？</p>
+<blockquote>
+<div style="color:#008B8B"> <p>当我们使用 <code>imageNamed:</code> 时创建图片，系统会通过 <code>Bundle</code> 的文件中找到图片的文件名，然后把相关的名字放到 <code>UIImage</code> 返回，此时并没有解析图片。当图片在第一次显示时，图片才会调用内部解码方法，解码会放到一个全局变量中。图片在解码后，会在<code>App</code> 第一次进入后台或者内存警告时，该图片的缓存才会被清空，其他情况缓存会一直存在。<br></p><br></div>
 
-<h3 id="怎样避免缓存"><a href="#怎样避免缓存" class="headerlink" title="怎样避免缓存"></a>怎样避免缓存</h3><ul><br><li>上面我们可以看到如果直接使用CGImageSourceCreateWithData()，并且关闭ShouldCache 和 ShouldCacheImmediately，但是这样的话每次图片需要显示的话，都会进行图片解码，这样会占用较大CPU</li><br><li>把图片用 CGContextDrawImage() 绘制到画布上，然后把画布的数据取出来当作图片。这也是常见的网络图片库的做法</li><br></ul>
+</blockquote>
+<h3 id="使用-imageWithData-可以避免缓存吗？"><a href="#使用-imageWithData-可以避免缓存吗？" class="headerlink" title="使用 imageWithData 可以避免缓存吗？"></a>使用 <code>imageWithData</code> 可以避免缓存吗？</h3><p>我们在创建 <code>UIImage</code> 时，<code>UIImage</code>的底层会调用 <code>ImageIO</code>的<code>CGImageSourceCreateWithData()</code>，此方法有个参数 <code>ShouldCache</code>，在 64 位的处理器上是默认开启的。图片也会在第一次显示在屏幕上才会被解码，解码数据也会保存在<code>CGimage</code> 的内部。</p>
+<div style="color:#008B8B"><br><p>但是与上面使用 <code>imageName</code> 的情况不同，在 <code>UIImage</code> 被释放是其缓存也会进行释放。</p></div>
 
-<p>参考资料：<br><a href="http://blog.ibireme.com/2015/11/02/ios_image_tips/" target="_blank" rel="external">参考资料~iOS 处理图片的一些小 Tip</a><br><a href="http://bihongbo.com/2016/01/03/memoryGhostdrawRect/" target="_blank" rel="external">内存恶鬼drawRect</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/1-图层树/图层树.md" target="_blank" rel="external">图层的树状结构</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/2-寄宿图/寄宿图.md#contents属性" target="_blank" rel="external">寄宿图</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">UIView和CALayer总的参考地址</a></p>
+<h3 id="怎样避免缓存"><a href="#怎样避免缓存" class="headerlink" title="怎样避免缓存"></a>怎样避免缓存</h3><ul>
+<li>上面我们可以看到如果直接使用 <code>CGImageSourceCreateWithData()</code>，并且关闭<code>ShouldCache</code> 和 <code>ShouldCacheImmediately</code>，但是这样的话每次图片需要显示的话，都会进行图片解码，这样会占用较大<code>CPU</code></li>
+<li>把图片用 <code>CGContextDrawImage()</code> 绘制到画布上，然后把画布的数据取出来当作图片。这也是常见的网络图片库的做法。</li>
+</ul>
+<p>参考资料：<br><a href="http://blog.ibireme.com/2015/11/02/ios_image_tips/" target="_blank" rel="external">处理图片的一些小 Tip</a><br><a href="http://bihongbo.com/2016/01/03/memoryGhostdrawRect/" target="_blank" rel="external">内存恶鬼drawRect</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/1-图层树/图层树.md" target="_blank" rel="external">图层的树状结构</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/2-寄宿图/寄宿图.md#contents属性" target="_blank" rel="external">寄宿图</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">UIView和CALayer总的参考地址</a><br><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW12" target="_blank" rel="external">UIVie和CALayer关系源码</a>;</p>
 
       
 
@@ -316,7 +331,7 @@ var _hmt = _hmt || [];
   
   
     <a href="/2016/07/11/UIView&CALayer&Core Animation-总体/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UIView&amp;CALayer&amp;Core Animation~开篇</div>
+      <div class="article-nav-title">iOS UIView Core Animation 动画实现</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -345,7 +360,7 @@ var _hmt = _hmt || [];
 <div id="toc-article" class="toc-article">
 <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#UIView和CALayer之间的关系"><span class="toc-number">1.</span> <span class="toc-text">UIView和CALayer之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIImage缓存"><span class="toc-number">2.</span> <span class="toc-text">UIImage缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用imageWithData可以避免缓存吗？"><span class="toc-number">3.</span> <span class="toc-text">使用imageWithData可以避免缓存吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样避免缓存"><span class="toc-number">4.</span> <span class="toc-text">怎样避免缓存</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#UIView-和-CALayer之间的关系"><span class="toc-number">1.</span> <span class="toc-text">UIView 和 CALayer之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIImage缓存"><span class="toc-number">2.</span> <span class="toc-text">UIImage缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-imageWithData-可以避免缓存吗？"><span class="toc-number">3.</span> <span class="toc-text">使用 imageWithData 可以避免缓存吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样避免缓存"><span class="toc-number">4.</span> <span class="toc-text">怎样避免缓存</span></a></li></ol>
 </div>
 <script type="text/javascript">
 function showToc(){
