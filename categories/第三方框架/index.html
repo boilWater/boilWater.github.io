@@ -6,47 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS 算法-快排和希尔排序 | JackJin&#39;s 博客</title>
+  <title>Category: 第三方框架 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前天写了关于 冒泡排序、插入排序和选择排序的实现，下面小编在本文中讲述下：快速排序和二分法排序的过程和具体实现吧。
-快速排序
-快排实现思路
-
-快排的基本实现思路和原则：
-（1）先从数列中取出一个数作为基准数。
-（2）分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
-（3）再对左右区间重复第二步，直到各区间只有一个数。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS 算法-快排和希尔排序">
-<meta property="og:url" content="http://yoursite.com/2015/03/05/iOS 算法-快排和二分法排序/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JackJin's 博客">
+<meta property="og:url" content="http://yoursite.com/categories/第三方框架/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="前天写了关于 冒泡排序、插入排序和选择排序的实现，下面小编在本文中讲述下：快速排序和二分法排序的过程和具体实现吧。
-快速排序
-快排实现思路
-
-快排的基本实现思路和原则：
-（1）先从数列中取出一个数作为基准数。
-（2）分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
-（3）再对左右区间重复第二步，直到各区间只有一个数。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-3f600962439d91e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-43f500cc1db46235.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-3f600962439d91e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1bb7745de71abc21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1b7afb3f8de4301a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1295dc77ca7752f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7376562826cea487.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-01T10:34:18.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 算法-快排和希尔排序">
-<meta name="twitter:description" content="前天写了关于 冒泡排序、插入排序和选择排序的实现，下面小编在本文中讲述下：快速排序和二分法排序的过程和具体实现吧。
-快速排序
-快排实现思路
-
-快排的基本实现思路和原则：
-（1）先从数列中取出一个数作为基准数。
-（2）分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
-（3）再对左右区间重复第二步，直到各区间只有一个数。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-3f600962439d91e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="JackJin's 博客">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -192,199 +162,121 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iOS 算法-快排和二分法排序" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      iOS 算法-快排和希尔排序
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/06/13/SDWebImage 图片缓存/" class="archive-article-date">
+  	<time datetime="2016-06-13T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/06/13/SDWebImage 图片缓存/">SDWebImage 图片缓存</a>
     </h1>
   
 
-        
-        <a href="/2015/03/05/iOS 算法-快排和二分法排序/" class="archive-article-date">
-  	<time datetime="2015-03-05T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前天写了关于 冒泡排序、插入排序和选择排序的实现，下面小编在本文中讲述下：快速排序和二分法排序的过程和具体实现吧。</p>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><ul>
-<li>快排实现思路</li>
-</ul>
-<p>快排的基本实现思路和原则：</p>
-<p>（1）先从数列中取出一个数作为基准数。</p>
-<p>（2）分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。</p>
-<p>（3）再对左右区间重复第二步，直到各区间只有一个数。</p>
-<a id="more"></a>
-<ul>
-<li>快排实例讲述</li>
-</ul>
-<p>下面以一个实例讲述：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-3f600962439d91e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 16.25.34.png"></p>
-<p>把第一个数字 4 看做是 <code>key</code> 来作为分隔区域来进行比较。</p>
-<p>（1）在 p[9] 和 4 比较后小于 4，就与 4 变换位置<br>（2）接着 p[1] 和 4 比较后大于 8，就和 4 变换位置<br>（3）一次类推下去，在第一次变换位置就实现下列的情况  </p>
-<p>如图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-43f500cc1db46235.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 16.25.43.png"></p>
-<ul>
-<li>快排实现代码</li>
-</ul>
-<p>根据上面讲解，代码实现如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> quickSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> l, <span class="keyword">int</span> r) &#123;</span><br><span class="line">    <span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">        <span class="comment">//设置最左边的第一数字作为 key 值</span></span><br><span class="line">        <span class="keyword">int</span> i = l, j = r, x = p[i];</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="comment">//循环从左边进行与 key 比较</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; p[j] &gt;= x)</span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">                p[i++] = p[j];</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//循环从右边进行与 key 比较</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; p[i] &lt; x)</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">                p[j--] = p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//进行 key 的设置，然后调用递归实现 quick sort 排序</span></span><br><span class="line">        p[i] = x;</span><br><span class="line">        quickSort(p, l, i<span class="number">-1</span>);</span><br><span class="line">        quickSort(p, i+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><ul>
-<li>希尔排序实现思路</li>
-</ul>
-<p>希尔排序基本思想是：先将整个待排元素序列分割成若干个子序列（由相隔某个“增量”的元素组成的）分别进行直接插入排序，然后依次缩减增量再进行排序，待整个序列中的元素基本有序（增量足够小）时，再对全体元素进行一次直接插入排序。</p>
-<p>因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的，因此希尔排序在时间效率上比前两种方法有较大提高。</p>
-<ul>
-<li>希尔排序实例讲述</li>
-</ul>
-<p>下面以 数组：<code>4, 8, 6, 65, 45, 988, 34, 12, 2, 3</code> 位置：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-3f600962439d91e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 16.25.34.png"></p>
-<p>第一次开始分组： 10/5 分为 5 组，如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1bb7745de71abc21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 18.01.37.png"></p>
-<p>经过再次分组实现： 5/2 分为 2 组，如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1b7afb3f8de4301a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 18.01.49.png"></p>
-<p>经过再次分组实现： 2/2 分为 1 组，如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1295dc77ca7752f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 18.02.00.png"></p>
-<p>经过再次分组实现： 1/2 分为 0 组，如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7376562826cea487.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-01 18.02.07.png"></p>
-<ul>
-<li>希尔排序代码实现如下：</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> shellSort (<span class="keyword">int</span> *p, <span class="keyword">int</span> length) &#123;</span><br><span class="line">    <span class="keyword">int</span> gap;</span><br><span class="line">    <span class="keyword">for</span> (gap = length/<span class="number">2</span>; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = gap; j &lt; length;  j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[j] &lt; p[j - gap]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = p[j];</span><br><span class="line">                <span class="keyword">int</span> k = j - gap;</span><br><span class="line">                <span class="keyword">while</span> (k &gt;= <span class="number">0</span> &amp;&amp; p[k] &gt; temp) &#123;</span><br><span class="line">                    p[k + gap] = p[k];</span><br><span class="line">                    k -= gap;</span><br><span class="line">                &#125;</span><br><span class="line">                p[k + gap] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">三方框架解析</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        			<a href="/categories/第三方框架/" class="article-tag-list-link color1">第三方框架</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/03/05/iOS 算法-快排和二分法排序/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/06/10/SDWebImage 图片下载/" class="archive-article-date">
+  	<time datetime="2016-06-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-10</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2015/03/10/算法-归并和堆排序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          iOS 算法-归并排序
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/03/02/iOS 算法-冒泡，插入和选择/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS 算法-冒泡，插入和选择排序</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/06/10/SDWebImage 图片下载/">SDWebImage 图片下载</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">三方框架解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/第三方框架/" class="article-tag-list-link color1">第三方框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
+    
 
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
 
           </div>
         </div>
@@ -406,10 +298,10 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		root: "/",
 		innerArchive: false,
