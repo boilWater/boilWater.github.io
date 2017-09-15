@@ -1078,12 +1078,12 @@
     <link href="http://yoursite.com/2016/07/11/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/"/>
     <id>http://yoursite.com/2016/07/11/UIView&CALayer&Core Animation-总体/</id>
     <published>2016-07-11T09:42:32.000Z</published>
-    <updated>2017-09-15T03:27:14.000Z</updated>
+    <updated>2017-09-15T09:39:39.000Z</updated>
     
     <content type="html">&lt;p&gt;一直想做个 &lt;code&gt;Dome&lt;/code&gt; 来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于 &lt;code&gt;UIView &amp;amp; CALayer &amp;amp; Core Animation&lt;/code&gt; 进行分装做出一个 &lt;code&gt;Dome&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;UIView-amp-CALayer-关系导图&quot;&gt;&lt;a href=&quot;#UIView-amp-CALayer-关系导图&quot; class=&quot;headerlink&quot; title=&quot;UIView &amp;amp; CALayer 关系导图&quot;&gt;&lt;/a&gt;UIView &amp;amp; CALayer 关系导图&lt;/h2&gt;&lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-397d8b3bedb95f0a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIView &amp;amp; CALayer动画.jpg&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-397d8b3bedb95f0a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIView &amp;amp; CALayer动画.jpg&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;UIView-动画实现&quot;&gt;&lt;a href=&quot;#UIView-动画实现&quot; class=&quot;headerlink&quot; title=&quot;UIView 动画实现&quot;&gt;&lt;/a&gt;UIView 动画实现&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;帧动画效果&lt;/li&gt;
 &lt;/ul&gt;
@@ -1107,7 +1107,6 @@
     
       &lt;p&gt;一直想做个 &lt;code&gt;Dome&lt;/code&gt; 来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于 &lt;code&gt;UIView &amp;amp; CALayer &amp;amp; Core Animation&lt;/code&gt; 进行分装做出一个 &lt;code&gt;Dome&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;UIView-amp-CALayer-关系导图&quot;&gt;&lt;a href=&quot;#UIView-amp-CALayer-关系导图&quot; class=&quot;headerlink&quot; title=&quot;UIView &amp;amp; CALayer 关系导图&quot;&gt;&lt;/a&gt;UIView &amp;amp; CALayer 关系导图&lt;/h2&gt;&lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-397d8b3bedb95f0a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIView &amp;amp; CALayer动画.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
