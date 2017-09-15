@@ -164,182 +164,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-block，注册监听，委托协议和KVO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/block，注册监听，委托协议和KVO/">block，注册监听，委托协议和KVO</a>
-    </h1>
-  
-
-        
-        <a href="/2015/10/29/block，注册监听，委托协议和KVO/" class="archive-article-date">
-  	<time datetime="2015-10-29T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>iOS</code> 中关于信息传递过程中经常会使用<code>block</code>，委托代理，<code>NSNotification</code>，<code>KVO</code> 进行调用，但是查找资料后有些资料不是很全。</p>
-<h2 id="四者总体比较然后进行一一详解进行讲解："><a href="#四者总体比较然后进行一一详解进行讲解：" class="headerlink" title="四者总体比较然后进行一一详解进行讲解："></a>四者总体比较然后进行一一详解进行讲解：</h2><ul>
-<li><code>block</code>：</li>
-</ul>
-<p>一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用<code>delegate</code>。</p>
-<ul>
-<li>委托代理：  </li>
-</ul>
-<p>和<code>block</code>一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。</p>
-<ul>
-<li><code>NSNotification</code>：</li>
-</ul>
-<p>在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。</p>
-<ul>
-<li><code>KVO</code>：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2015/10/29/block，注册监听，委托协议和KVO/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/10/29/block，注册监听，委托协议和KVO/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-IOS的永久话储存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/IOS的永久话储存/">iOS的永久话储存</a>
-    </h1>
-  
-
-        
-        <a href="/2015/10/24/IOS的永久话储存/" class="archive-article-date">
-  	<time datetime="2015-10-24T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。</p>
-<p>沙盒中有三个文件夹：</p>
-<ul>
-<li>document</li>
-<li>library</li>
-<li>temp</li>
-</ul>
-<p>1) document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）</p>
-        
-          <a class="article-more-a" href="/2015/10/24/IOS的永久话储存/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/10/24/IOS的永久话储存/">产看详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
     <article id="post-两周感悟~广州" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -877,6 +701,176 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/04/01/大三中期感悟/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS 算法-杂烩和总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/20/iOS 算法-杂烩和总结/">iOS 算法-杂烩和总结</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/20/iOS 算法-杂烩和总结/" class="archive-article-date">
+  	<time datetime="2015-03-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在前面小编总结常见算法 冒泡排序、插入排序、选着排序、快速排序、希尔排序和归并排序实现原理和实现的具体代码，下面将要对几排序时间复杂度和空间复杂度以及其他算法的基本信息。</p>
+<p>按照算法复杂度稳定来判断：</p>
+<ul>
+<li>稳定的时间复杂度</li>
+<li>不稳定的时间复杂度</li>
+</ul>
+<p>（1）稳定的时间复杂度</p>
+<p>时间复杂度稳定的算法：直接插入、冒泡排序、归并排序和基数排序。</p>
+<p>（2）不稳定的时间复杂度</p>
+        
+          <a class="article-more-a" href="/2015/03/20/iOS 算法-杂烩和总结/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/20/iOS 算法-杂烩和总结/">产看详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-算法-归并和堆排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/10/算法-归并和堆排序/">iOS 算法-归并排序</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/10/算法-归并和堆排序/" class="archive-article-date">
+  	<time datetime="2015-03-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>哈哈，最近后面下面还有一个基本的算法一一列出来进行讲述。</p>
+<p>下面将要讲述 归并排序 具体实现原理和代码编码。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><ul>
+<li>归并排序实现思路</li>
+</ul>
+<p>基本思路就是将数组分成二组A，B。如果这二组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。再将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。</p>
+<ul>
+<li>归并排序的代码实现</li>
+</ul>
+        
+          <a class="article-more-a" href="/2015/03/10/算法-归并和堆排序/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/10/算法-归并和堆排序/">产看详细 >></a>
         </p>
       
 
