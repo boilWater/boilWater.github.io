@@ -8,19 +8,27 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS UIView &amp; CALayer 对比及 UIImage 使用小技巧 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
+  <meta name="description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。
+下面给出界面优化知识思维导图
+
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UIView & CALayer 对比及 UIImage 使用小技巧">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/UIView&CALayer&Core Animation~1/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
-<meta property="og:updated_time" content="2017-09-15T03:08:41.000Z">
+<meta property="og:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。
+下面给出界面优化知识思维导图
+
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-917b3f75519f69fc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-17T03:58:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UIView & CALayer 对比及 UIImage 使用小技巧">
-<meta name="twitter:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。
-今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。">
+<meta name="twitter:description" content="目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。
+下面给出界面优化知识思维导图
+
+今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-917b3f75519f69fc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -186,7 +194,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间6/12/2016。</p>
+        <p>目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。</p>
+<p><strong>下面给出界面优化知识思维导图</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-917b3f75519f69fc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IOS界面优化.jpg"></p>
 <div style="color:#008B8B"><br><p>今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。<br>下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。</p><br></div>
 
 <a id="more"></a>
@@ -225,6 +235,9 @@ var _hmt = _hmt || [];
 <li>上面我们可以看到如果直接使用 <code>CGImageSourceCreateWithData()</code>，并且关闭<code>ShouldCache</code> 和 <code>ShouldCacheImmediately</code>，但是这样的话每次图片需要显示的话，都会进行图片解码，这样会占用较大<code>CPU</code></li>
 <li>把图片用 <code>CGContextDrawImage()</code> 绘制到画布上，然后把画布的数据取出来当作图片。这也是常见的网络图片库的做法。</li>
 </ul>
+<blockquote>
+<p>后面小编将分出一篇文章专门讲述空间绘制的博文。</p>
+</blockquote>
 <p>参考资料：<br><a href="http://blog.ibireme.com/2015/11/02/ios_image_tips/" target="_blank" rel="external">处理图片的一些小 Tip</a><br><a href="http://bihongbo.com/2016/01/03/memoryGhostdrawRect/" target="_blank" rel="external">内存恶鬼drawRect</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/1-图层树/图层树.md" target="_blank" rel="external">图层的树状结构</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/2-寄宿图/寄宿图.md#contents属性" target="_blank" rel="external">寄宿图</a><br><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">UIView和CALayer总的参考地址</a><br><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW12" target="_blank" rel="external">UIVie和CALayer关系源码</a>;</p>
 
       

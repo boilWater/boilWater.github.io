@@ -9,25 +9,26 @@
   <title>iOS 空间绘制原理 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在每个 App 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods 进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
-使用 Xmind 来展示博客讲述 App 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
+下面给出整理的图形绘制思维导图：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 空间绘制原理">
 <meta property="og:url" content="http://yoursite.com/2017/01/13/APP控件在屏幕上显示/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="在每个 App 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods 进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
-使用 Xmind 来展示博客讲述 App 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
+下面给出整理的图形绘制思维导图：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-15T01:38:13.000Z">
+<meta property="og:updated_time" content="2017-09-17T03:51:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 空间绘制原理">
 <meta name="twitter:description" content="在每个 App 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods 进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
-使用 Xmind 来展示博客讲述 App 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+下面给出整理的图形绘制思维导图：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -194,9 +195,11 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>在每个 <code>App</code> 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用<code>CocoaPods</code> 进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
+<p><strong>下面给出整理的图形绘制思维导图：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图形绘制到屏幕上.jpg"></p>
+<a id="more"></a>
 <p>使用 <code>Xmind</code> 来展示博客讲述 <code>App</code> 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 控件在屏幕上显示思维导图.png"></p>
-<a id="more"></a>
 <h2 id="屏幕显示图像的原理"><a href="#屏幕显示图像的原理" class="headerlink" title="屏幕显示图像的原理"></a>屏幕显示图像的原理</h2><p>记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。<br>上面那种老式的电视机画面的显示就是采用 <code>CRT</code> 显示，显示的原理如下图：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CRT.png"><br>【图片来至于网络】</p>
 <p>其原理：<code>CRT</code> 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：<strong>HSync</strong>，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：<strong>VSync</strong></p>

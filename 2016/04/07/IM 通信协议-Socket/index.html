@@ -9,27 +9,25 @@
   <title>IM 通信协议-Socket(TCP/IP抽象) | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 Socket 和 WebSocket 一些基本知识进行整理。
-Socket简介Socket起源Socket 是一种文件描述，起源于 Unix。所以 Socket 采用 Unix 一切皆文件核心，符合 打开 open –&amp;gt;读写 write/read –&amp;gt; 关闭 close 模式。
-Socket又被称为：套接字。">
+下面整理出 HTTP/IP 相关知识思维导图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IM 通信协议-Socket(TCP/IP抽象)">
 <meta property="og:url" content="http://yoursite.com/2016/04/07/IM 通信协议-Socket/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 Socket 和 WebSocket 一些基本知识进行整理。
-Socket简介Socket起源Socket 是一种文件描述，起源于 Unix。所以 Socket 采用 Unix 一切皆文件核心，符合 打开 open –&amp;gt;读写 write/read –&amp;gt; 关闭 close 模式。
-Socket又被称为：套接字。">
+下面整理出 HTTP/IP 相关知识思维导图">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-5dced9f6cd1ee0df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7020f073ff3df034.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cb0286b05f8d3f2f.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-816c1f7dc6fc6880.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d46230c3c67f1cc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4dc2bb09b6221a0b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-14T05:16:00.000Z">
+<meta property="og:updated_time" content="2017-09-17T04:04:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IM 通信协议-Socket(TCP/IP抽象)">
 <meta name="twitter:description" content="老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 Socket 和 WebSocket 一些基本知识进行整理。
-Socket简介Socket起源Socket 是一种文件描述，起源于 Unix。所以 Socket 采用 Unix 一切皆文件核心，符合 打开 open –&amp;gt;读写 write/read –&amp;gt; 关闭 close 模式。
-Socket又被称为：套接字。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-7020f073ff3df034.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+下面整理出 HTTP/IP 相关知识思维导图">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-5dced9f6cd1ee0df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -196,9 +194,11 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 <code>Socket</code> 和 <code>WebSocket</code> 一些基本知识进行整理。</p>
+<p><strong>下面整理出 <code>HTTP/IP</code> 相关知识思维导图</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-5dced9f6cd1ee0df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TCP IP和HTTP.jpg"></p>
+<a id="more"></a>
 <h2 id="Socket简介"><a href="#Socket简介" class="headerlink" title="Socket简介"></a><code>Socket</code>简介</h2><h3 id="Socket起源"><a href="#Socket起源" class="headerlink" title="Socket起源"></a><code>Socket</code>起源</h3><p><code>Socket</code> 是一种文件描述，起源于 <code>Unix</code>。所以 <code>Socket</code> 采用 <code>Unix</code> 一切皆文件核心，符合 <code>打开 open –&gt;读写 write/read –&gt; 关闭 close</code> 模式。</p>
 <p><code>Socket</code>又被称为：套接字。在网络中两个进行进行通信 <code>Socket</code> 是其基石，同时也是支持 <code>TCP/IP</code> 协议的网络通信的基本单元。<code>Socket</code>本质来说不是协议而是对于 <code>TCP/IP</code> 的抽象，包含网络通信的物种基本信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
-<a id="more"></a>
 <h3 id="TCP-IP-基础知识"><a href="#TCP-IP-基础知识" class="headerlink" title="TCP/IP 基础知识"></a><code>TCP/IP</code> 基础知识</h3><p>小编在此向大家简单的介绍一些关于 <code>TCP/IP</code> 基本知识。从字面上来说 <code>TCP/IP</code> 是两种协议，但是我们通常依次来代指整个 <code>TCP/IP</code> 协议族代称。我们在 <code>ISO</code> 模型分为七层，但是在 <code>TCP/IP</code> 协议分为四层：应用层、传输层、网络层和数据链路层。</p>
 <p>下面列举每层一些相关协议：</p>
 <ul>

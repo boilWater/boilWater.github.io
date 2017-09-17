@@ -8,26 +8,27 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS 整体框架 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
-我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
+  <meta name="description" content="感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。
+我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
 下面是关于OS X的结构图（官网地址）：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 整体框架">
 <meta property="og:url" content="http://yoursite.com/2015/09/07/IOS整体框架/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
-我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
+<meta property="og:description" content="感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。
+我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
 下面是关于OS X的结构图（官网地址）：">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-ed77042d637deed4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-2388dbca231656e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-237c7e26cf4e5d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-26f0be3c3ff81a93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-30T10:25:17.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-a154101abbd0091a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-16T02:42:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 整体框架">
-<meta name="twitter:description" content="感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架
-我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
+<meta name="twitter:description" content="感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。
+我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
 下面是关于OS X的结构图（官网地址）：">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
@@ -195,8 +196,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>感觉在博客上有大牛介绍IOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架</p>
-<p>我们在做IOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
+        <p>感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。</p>
+<p>我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
 <p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">官网地址</a>）：</p>
 <a id="more"></a>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-layers_2x.png"></p>
@@ -219,6 +220,7 @@ var _hmt = _hmt || [];
 <p>(4)核心系统操作层（Core OS Layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">官方地址</a>：内存管理、文件系统、电源管理以及一些其他的操作系统任务。它可以直接和硬件设备进行交互</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-26f0be3c3ff81a93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-core_os_2x.png"></p>
 <p>只要包括以下：Accelerate, Open CL, Directory Services, System Configuration, Disk Arbitration</p>
+<p><strong>下面给出 iOS 系统框架：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-a154101abbd0091a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IOS 系统结构.jpg"><br><strong>【后续对框架进行添加】</strong></p>
 <p>参考资料：<br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">About Developing for Mac</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1" target="_blank" rel="external">Cocoa Application Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1" target="_blank" rel="external">Media Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ" target="_blank" rel="external">Core Services Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">Core OS Layer</a>  </p>
 
       
