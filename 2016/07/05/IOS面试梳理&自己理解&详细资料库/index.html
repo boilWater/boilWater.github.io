@@ -16,7 +16,7 @@ OC理解和特性作为开发者我们都知道语言的特性包括：面对对
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="目前在公司做白领社交产品 “在一起”，工作也快一年下面对 iOS 相关面试做一份总结。说实话目前iOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。
 OC理解和特性作为开发者我们都知道语言的特性包括：面对对象，面向过程。Objc就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉">
-<meta property="og:updated_time" content="2017-09-15T04:12:16.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:08:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS面试 & 自己理解 & 详细资料库">
 <meta name="twitter:description" content="目前在公司做白领社交产品 “在一起”，工作也快一年下面对 iOS 相关面试做一份总结。说实话目前iOS开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。
@@ -497,6 +497,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OC理解和特性"><span class="toc-number">1.</span> <span class="toc-text">OC理解和特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存管理原则"><span class="toc-number">1.1.</span> <span class="toc-text">内存管理原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其他注意事项"><span class="toc-number">1.1.1.</span> <span class="toc-text">其他注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#拓展介绍"><span class="toc-number">1.1.2.</span> <span class="toc-text">拓展介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计模式"><span class="toc-number">1.2.</span> <span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MVC设计模式"><span class="toc-number">1.2.1.</span> <span class="toc-text">MVC设计模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVVM-设计模式"><span class="toc-number">1.2.2.</span> <span class="toc-text">MVVM 设计模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objc-中的协议"><span class="toc-number">1.3.</span> <span class="toc-text">Objc 中的协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Category-的优缺点"><span class="toc-number">1.4.</span> <span class="toc-text">Category 的优缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#键路径-keyPath-、键值编码（KVC）和键值观察（KVO）"><span class="toc-number">1.5.</span> <span class="toc-text">键路径(keyPath)、键值编码（KVC）和键值观察（KVO）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSNotification、Block、Delegate和-KVO-的区别"><span class="toc-number">1.6.</span> <span class="toc-text">NSNotification、Block、Delegate和 KVO 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective-C-中可修改和不可以修改类型"><span class="toc-number">1.7.</span> <span class="toc-text">Objective-C 中可修改和不可以修改类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当我们调用一个静态方法时-需要对对象进行-release-吗"><span class="toc-number">1.8.</span> <span class="toc-text">当我们调用一个静态方法时,需要对对象进行 release 吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当我们释放我们的对象时-为什么需要调用-super-dealloc-方法-它的位置又是如何的呢"><span class="toc-number">1.9.</span> <span class="toc-text">当我们释放我们的对象时,为什么需要调用[super dealloc]方法,它的位置又是如何的呢?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static、self、super关键字的作用"><span class="toc-number">1.10.</span> <span class="toc-text">static、self、super关键字的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#include与-import的区别，-import-与-class-的区别"><span class="toc-number">1.11.</span> <span class="toc-text">#include与#import的区别，#import 与 @class 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#public、-protected、-private-它们的含义与作用"><span class="toc-number">1.12.</span> <span class="toc-text">@public、@protected、@private 它们的含义与作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-id-类型"><span class="toc-number">1.13.</span> <span class="toc-text">解释 id 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch-语句-if-语句区别与联系"><span class="toc-number">1.14.</span> <span class="toc-text">switch 语句 if 语句区别与联系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isMemberOfClass-和-isKindOfClass-联系与区别"><span class="toc-number">1.15.</span> <span class="toc-text">isMemberOfClass 和 isKindOfClass 联系与区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-开发中数据持久性有哪几种"><span class="toc-number">1.16.</span> <span class="toc-text">iOS 开发中数据持久性有哪几种?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动释放池工作原理"><span class="toc-number">1.17.</span> <span class="toc-text">自动释放池工作原理</span></a></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

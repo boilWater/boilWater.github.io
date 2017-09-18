@@ -922,11 +922,11 @@
   </entry>
   
   <entry>
-    <title>iOS UIViewController 使用</title>
+    <title>iOS UIViewController 周期详解</title>
     <link href="http://yoursite.com/2016/08/01/iOS%20UIViewController%20%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2016/08/01/iOS UIViewController 使用/</id>
     <published>2016-08-01T09:42:32.000Z</published>
-    <updated>2017-08-30T09:52:45.000Z</updated>
+    <updated>2017-09-17T16:07:19.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;UIViewController&lt;/code&gt; 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。&lt;/p&gt;
 &lt;p&gt;在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。&lt;/p&gt;
@@ -1107,7 +1107,7 @@
     <link href="http://yoursite.com/2016/07/05/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
     <id>http://yoursite.com/2016/07/05/IOS面试梳理&自己理解&详细资料库/</id>
     <published>2016-07-05T09:42:32.000Z</published>
-    <updated>2017-09-15T04:12:16.000Z</updated>
+    <updated>2017-09-17T16:08:12.000Z</updated>
     
     <content type="html">&lt;p&gt;目前在公司做白领社交产品 “在一起”，工作也快一年下面对 &lt;code&gt;iOS&lt;/code&gt; 相关面试做一份总结。&lt;br&gt;说实话目前&lt;code&gt;iOS&lt;/code&gt;开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
 &lt;h2 id=&quot;OC理解和特性&quot;&gt;&lt;a href=&quot;#OC理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC理解和特性&quot;&gt;&lt;/a&gt;OC理解和特性&lt;/h2&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。&lt;code&gt;Objc&lt;/code&gt;就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
@@ -1315,7 +1315,7 @@
     <link href="http://yoursite.com/2016/07/01/IOS%2010/"/>
     <id>http://yoursite.com/2016/07/01/IOS 10/</id>
     <published>2016-07-01T09:42:32.000Z</published>
-    <updated>2017-09-15T04:22:26.000Z</updated>
+    <updated>2017-09-17T16:08:36.000Z</updated>
     
     <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码 &lt;code&gt;iOS 10.0&lt;/code&gt; 新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨 &lt;code&gt;iOS&lt;/code&gt; 举行 &lt;code&gt;WWDC&lt;/code&gt; 全球发布者大会，&lt;code&gt;watch OS&lt;/code&gt;、&lt;code&gt;tv OS&lt;/code&gt;、&lt;code&gt;OS X&lt;/code&gt;以及&lt;code&gt;iOS 10&lt;/code&gt;系统的新特性。&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;展示会第一个是 &lt;code&gt;Apple&lt;/code&gt; 的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在 &lt;code&gt;siri&lt;/code&gt; 操作程序和 &lt;code&gt;Apple Pay&lt;/code&gt;的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
@@ -1620,7 +1620,7 @@
     <link href="http://yoursite.com/2016/05/12/iOS%20MVC%20%E5%92%8C%20MVVM%20%E6%AF%94%E8%BE%83/"/>
     <id>http://yoursite.com/2016/05/12/iOS MVC 和 MVVM 比较/</id>
     <published>2016-05-12T09:42:32.000Z</published>
-    <updated>2017-09-14T13:00:54.000Z</updated>
+    <updated>2017-09-17T16:09:11.000Z</updated>
     
     <content type="html">&lt;p&gt;到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 &lt;code&gt;MVC&lt;/code&gt; 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，&lt;code&gt;MVC&lt;/code&gt; 越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 &lt;code&gt;MVVM&lt;/code&gt; 架构来对项目进行重构，下面小编就以 &lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 来进行讲解和对比两者之间的优劣。&lt;/p&gt;
 &lt;h2 id=&quot;MVC-和-MVVM-简述&quot;&gt;&lt;a href=&quot;#MVC-和-MVVM-简述&quot; class=&quot;headerlink&quot; title=&quot;MVC 和 MVVM 简述&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 简述&lt;/h2&gt;&lt;h3 id=&quot;MVC介绍&quot;&gt;&lt;a href=&quot;#MVC介绍&quot; class=&quot;headerlink&quot; title=&quot;MVC介绍&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt;介绍&lt;/h3&gt;&lt;p&gt;记得大概在一年前的时候曾经写过 &lt;code&gt;MVC&lt;/code&gt; 的使用和相关一些介绍，这里方便做对比再次对 &lt;code&gt;MVC&lt;/code&gt; 进行详解。参考资料 &lt;a href=&quot;http://boilwater.github.io/2015/07/06/iOS%20`MVC`%20设计模式/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS &lt;code&gt;MVC&lt;/code&gt; 设计模式&lt;/a&gt;&lt;/p&gt;
@@ -1779,7 +1779,7 @@
     <link href="http://yoursite.com/2016/04/13/IM%20%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-WebSocket/"/>
     <id>http://yoursite.com/2016/04/13/IM 通信协议-WebSocket/</id>
     <published>2016-04-13T09:42:32.000Z</published>
-    <updated>2017-09-14T11:38:46.000Z</updated>
+    <updated>2017-09-17T16:09:54.000Z</updated>
     
     <content type="html">&lt;p&gt;前几天讲解过 &lt;code&gt;Socket&lt;/code&gt; 的相关知识，但是在查找资料后看到 &lt;code&gt;IM&lt;/code&gt; zhong还有其他的相关协议。今天小编就讲解其他的协议：&lt;code&gt;WebSocket&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;之所以研究 &lt;code&gt;WebSocket&lt;/code&gt; 原因是相比较与 &lt;code&gt;Socket&lt;/code&gt;，&lt;code&gt;WebSocket&lt;/code&gt;可以是 &lt;code&gt;server&lt;/code&gt; 端向 &lt;code&gt;client&lt;/code&gt; 进行信息发送，不需要 &lt;code&gt;client&lt;/code&gt; 为获取信息而采用长期轮询方式来获取信息。&lt;/p&gt;

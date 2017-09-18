@@ -18,7 +18,7 @@
 工厂方法模式工厂方法模式介绍工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1995ed7e85fea1cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-21156fe70f43bb14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-04T08:06:19.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:12:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-创建型-工厂方法模式">
 <meta name="twitter:description" content="小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。
@@ -366,6 +366,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">1.</span> <span class="toc-text">工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式介绍"><span class="toc-number">1.1.</span> <span class="toc-text">工厂方法模式介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#角色介绍"><span class="toc-number">1.2.</span> <span class="toc-text">角色介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例应用"><span class="toc-number">1.3.</span> <span class="toc-text">实例应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重载和方法隐藏方案"><span class="toc-number">1.3.1.</span> <span class="toc-text">重载和方法隐藏方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂方法代码实现"><span class="toc-number">1.3.2.</span> <span class="toc-text">工厂方法代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#产品类"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">产品类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工厂类"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">工厂类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优缺点"><span class="toc-number">1.4.</span> <span class="toc-text">优缺点</span></a></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

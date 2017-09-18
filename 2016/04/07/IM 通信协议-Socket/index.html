@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-816c1f7dc6fc6880.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d46230c3c67f1cc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4dc2bb09b6221a0b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-17T04:04:52.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:09:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IM 通信协议-Socket(TCP/IP抽象)">
 <meta name="twitter:description" content="老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 Socket 和 WebSocket 一些基本知识进行整理。
@@ -413,6 +413,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket简介"><span class="toc-number">1.</span> <span class="toc-text">Socket简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket起源"><span class="toc-number">1.1.</span> <span class="toc-text">Socket起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP-基础知识"><span class="toc-number">1.2.</span> <span class="toc-text">TCP/IP 基础知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket使用"><span class="toc-number">2.</span> <span class="toc-text">Socket使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用流程"><span class="toc-number">2.1.</span> <span class="toc-text">使用流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket-API"><span class="toc-number">2.2.</span> <span class="toc-text">Socket API</span></a></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

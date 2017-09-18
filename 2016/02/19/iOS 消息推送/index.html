@@ -18,7 +18,11 @@
 下面给出整理消息推送的思维导图">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-048c77619a87b1ab.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-17T16:01:07.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7fadedcf7b509683.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-5f35a5357724e2bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-af6865423a7f7cce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c3b481e66671561c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-18T03:46:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 消息推送">
 <meta name="twitter:description" content="最近一直在看设计模式方面的内容，一直看同样的资料打算换下。所以就看下我们是 App 都会用到的消息推送。
@@ -212,18 +216,12 @@ var _hmt = _hmt || [];
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化本地通知对象</span></span><br><span class="line"><span class="built_in">UILocalNotification</span> *notification=[[<span class="built_in">UILocalNotification</span> alloc] init];</span><br><span class="line"><span class="comment">//通知触发的时间，10s以后</span></span><br><span class="line">notification.fireDate=[<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:<span class="number">10.0</span>];</span><br><span class="line"><span class="comment">//通知重复次数</span></span><br><span class="line">notification.repeatInterval=<span class="number">2</span>;</span><br><span class="line"><span class="comment">//当前日历，设置时区等信息以便能够自动同步时间</span></span><br><span class="line">notification.repeatCalendar=[<span class="built_in">NSCalendar</span> currentCalendar];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//设置通知主题</span></span><br><span class="line">notification.alertBody=<span class="string">@"这是 iOS 通知，请大家体验。"</span>; </span><br><span class="line"><span class="comment">//应用程序图标右上角显示的消息数</span></span><br><span class="line">notification.applicationIconBadgeNumber=<span class="number">1</span>;</span><br><span class="line"><span class="comment">//待机界面的滑动动作提示</span></span><br><span class="line">notification.alertAction=<span class="string">@"Open Client"</span>; </span><br><span class="line"><span class="comment">//通过点击通知打开应用时的启动图片,这里使用程序启动图片</span></span><br><span class="line">notification.alertLaunchImage=<span class="string">@"Default"</span>;</span><br><span class="line"><span class="comment">//收到通知时播放的声音，默认消息声音</span></span><br><span class="line">notification.soundName=<span class="built_in">UILocalNotificationDefaultSoundName</span>;</span><br><span class="line"><span class="comment">//通知声音（需要真机才能听到声音）</span></span><br><span class="line">notification.soundName=<span class="string">@"message.caf"</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//绑定通知上附加信息</span></span><br><span class="line">notification.userInfo=@&#123;<span class="string">@"id"</span>:@<span class="number">1</span>,<span class="string">@"user"</span>:<span class="string">@"JackJin Good Luck~"</span>&#125;;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//调用通知</span></span><br><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] scheduleLocalNotification:notification];</span><br></pre></td></tr></table></figure>
 <h3 id="远程推送"><a href="#远程推送" class="headerlink" title="远程推送"></a>远程推送</h3><p>远程推送实现一般是指我们把服务端的数据传递给客户端，但是在 <code>App</code> 没有开启情况下怎么实现信息推送呢？</p>
 <p>目前有三种方式：轮询方式、SMS(push)方式和持久链接方式。</p>
-<ul>
-<li>轮询方式：</li>
-</ul>
-<p>最初是一种实现实时 <code>Web</code> 应用的方案。<code>client</code> 以一定的时间间隔向服务端发出请求，以频繁请求的方式来保持客户端和服务器端的同步。<br>轮询(<code>Polling</code>)是指不管服务器端有没有更新，<code>client</code> 都定时的发送请求进行查询，轮询的结果可能是服务器端有新的更新过来，也可能什么也没有，只是返回个空的信息。不管结果如何，客户端处理完后到下一个定时时间点将继续下一轮的轮询。 </p>
+<h4 id="轮询方式："><a href="#轮询方式：" class="headerlink" title="轮询方式："></a><strong>轮询方式：</strong></h4><p>最初是一种实现实时 <code>Web</code> 应用的方案。<code>client</code> 以一定的时间间隔向服务端发出请求，以频繁请求的方式来保持客户端和服务器端的同步。<br>轮询(<code>Polling</code>)是指不管服务器端有没有更新，<code>client</code> 都定时的发送请求进行查询，轮询的结果可能是服务器端有新的更新过来，也可能什么也没有，只是返回个空的信息。不管结果如何，客户端处理完后到下一个定时时间点将继续下一轮的轮询。 </p>
 <blockquote>
 <p>这种同步方案的最大问题是，当客户端以固定频率向服务器发起请求的时候，服务器端的数据可能并没有更新，这样会带来很多无谓的网络传输，所以这是一种非常低效的实时方案。</p>
 </blockquote>
 <p><strong>长轮序方式实现流程图如下：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="轮询"><br><strong>【图片来至于网络】</strong></p>
-<ul>
-<li><code>SMS(push)</code>方式：</li>
-</ul>
-<p>服务器向注册手机或者说注册用户绑定的手机账号发送彩信，手机收到彩信后会 <code>client</code> 所创建的 <code>service</code> 截获，并解析得到信息。并产生任务栏通知，以及适当的提示。</p>
+<h4 id="SMS-push-方式："><a href="#SMS-push-方式：" class="headerlink" title="SMS(push)方式："></a><strong><code>SMS(push)</code>方式：</strong></h4><p>服务器向注册手机或者说注册用户绑定的手机账号发送彩信，手机收到彩信后会 <code>client</code> 所创建的 <code>service</code> 截获，并解析得到信息。并产生任务栏通知，以及适当的提示。</p>
 <p>（1）优点：   </p>
 <blockquote>
 <p>使用短信的形式实现消息传递，实时性很高。</p>
@@ -232,9 +230,102 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>每次信息都是采用短信形式，代价太高。</p>
 </blockquote>
-<ul>
-<li>持久链接方式：</li>
+<h4 id="持久链接方式："><a href="#持久链接方式：" class="headerlink" title="持久链接方式："></a><strong>持久链接方式：</strong></h4><p>小编模拟一下长连接的实现情况：<code>client</code> 向 <code>server</code> 发起连接，<code>server</code> 接受<code>client</code> 连接，双方建立连接。<code>client</code> 与 <code>server</code> 完成一次读写之后，它们之间的连接并不会主动关闭，后续的读写操作会继续使用这个连接。</p>
+<p>这里说一下 <code>TCP/IP</code> 详解上讲到的 <code>TCP</code> 保活功能，保活功能目的是为服务器应用提供，<code>server</code> 应用希望知道 <code>client</code> 是否崩溃，从而可以代表 <code>client</code> 使用资源。</p>
+<blockquote>
+<p>已经消失，使得<code>server</code>上保留一个半开放的连接，而<code>server</code>又在等待来自<code>client</code> 的数据，则<code>server</code>将应远等待 <code>client</code> 的数据，保活功能就是试图在<code>server</code>端检测到这种半开放的连接。</p>
+</blockquote>
+<p>下面👇讲述一种情况：一个给定的连接在两小时内没有任何的动作，则服务器就向客户发一个探测报文段，客户主机必须处于以下4个状态之一：</p>
+<blockquote>
+<p>(1)客户主机依然正常运行，并从服务器可达。客户的 <code>TCP</code> 响应正常，而服务器也知道对方是正常的，服务器在两小时后将保活定时器复位。<br>(2)客户主机已经崩溃，并且关闭或者正在重新启动。在任何一种情况下，客户的 <code>TCP</code> 都没有响应。服务端将不能收到对探测的响应，并在 <code>75</code> 秒后超时。服务器总共发送 <code>10</code> 个这样的探测 ，每个间隔 <code>75</code> 秒。如果服务器没有收到一个响应，它就认为客户主机已经关闭并终止连接。<br>(3)客户主机崩溃并已经重新启动。服务器将收到一个对其保活探测的响应，这个响应是一个复位，使得服务器终止这个连接。<br>(4)客户机正常运行，但是服务器不可达，这种情况与 <code>2</code> 类似，<code>TCP</code> 能发现的就是没有收到探查的响应。</p>
+</blockquote>
+<h2 id="APNs-Apple-push-notification-server"><a href="#APNs-Apple-push-notification-server" class="headerlink" title="APNs(Apple push notification server)"></a>APNs(Apple push notification server)</h2><h3 id="版本发展"><a href="#版本发展" class="headerlink" title="版本发展"></a>版本发展</h3><ul>
+<li><p><code>iOS 3</code> : 引入推送通知 <code>UIApplication</code> 的 <code>registerForRemoteNotificationTypes</code> 与 <code>UIApplicationDelegate</code> 的 <code>application</code>(<code>didRegisterForRemoteNotificationsWithDeviceToken:</code>)，<code>application</code>(<code>didReceiveRemoteNotification:</code>)。</p>
+</li>
+<li><p><code>iOS 4</code> : 引入本地通知 <code>scheduleLocalNotification</code>，<code>presentLocalNotificationNow:</code>， <code>application</code>(<code>didReceive:</code>)。</p>
+</li>
+<li><p><code>iOS 5</code> : 加入通知中心页面。</p>
+</li>
+<li><p><code>iOS 6</code> : 通知中心页面与 <code>iCloud</code> 同步。</p>
+</li>
+<li><p><code>iOS 7</code> : 后台静默推送。 <code>application</code>(<code>didReceiveRemoteNotification:fetchCompletionHandle:</code>)</p>
+</li>
+<li><p><code>iOS 8</code> : 重新设计 <code>notification</code> 权限请求，<code>Actionable</code> 通知 <code>registerUserNotificationSettings</code>，<code>UIUserNotificationAction</code> 与 <code>UIUserNotificationCategory</code>，<code>application</code>(<code>handleActionWithIdentifier:forRemoteNotification:completionHandler:</code>) 等。</p>
+</li>
+<li><p><code>iOS 9</code> : <code>Text Input action</code>，基于 <code>HTTP/2</code> 的推送请求 <code>UIUserNotificationActionBehavior</code>，全新的 <code>Provider API</code> 等。</p>
+</li>
+<li><p>iOS 10 : 支持 <code>Images</code>, <code>GIFs</code>, <code>Audio and Video</code>类型, 并且有 <code>Notification Service Extension</code> 与 <code>Notification Content Extension</code>，可以实现推送数据在展示前进行下载更新、定制通知 <code>UI</code>, 并且统一了通知类型，具有时间间隔通知、地理位置通知和日历通知。</p>
+</li>
 </ul>
+<h3 id="实现流程图和原理"><a href="#实现流程图和原理" class="headerlink" title="实现流程图和原理"></a>实现流程图和原理</h3><p>下面给出 <code>APNs</code> 推送实现流程图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7fadedcf7b509683.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="remote_notif_simple_2x.png"><br><strong>【图片来至于网络】</strong></p>
+<ul>
+<li><code>Provider</code>：指定 <code>iOS</code> 设备应用程序提供 <code>Push</code> 的服务器，（<code>iOS</code> 设备的应用程序是客户端的话，那么 <code>Provider</code> 可以理解为服务端 <strong>–&gt;</strong> 消息的发起者）；  </li>
+<li><code>APNS</code>：<code>Apple Push Notification Service</code> 苹果消息推送服务器；</li>
+<li><code>iPhone 和 MAC</code>：用来接收 <code>APNS</code> 下发下来的消息；  </li>
+<li><p><code>Client App</code>：<code>iOS</code> 设备上的应用程序，用来接收 <code>iphone</code> 传递 <code>APNS</code> 下发的消息到制定的一个客户端 <code>app</code> 消息的最终响应者；</p>
+</li>
+<li><p><strong>消息推送流程过程</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>（1）<code>iOS</code> 设备启动后连接网络, 会与苹果服务器建立一个安全的长连接；<br>（2）这个是系统维护的, 这也是推送的关键；<br>（3）用户打开 <code>App</code>, 授权了推送通知的权限；<br>（4）授权成功后, <code>APNs</code> 会将 <code>deviceToken</code> 返回给 <code>iOS</code> 终端；<br>（5）终端将该 <code>deviceToken</code> 返回给指定的 <code>App</code>；<br>（6）<code>App</code> 拿到 <code>deviceToken</code> 上传给我们自己的业务服务器；<br>（7）业务服务器向 <code>APNs</code> 发送推送请求, 带上 <code>deviceToken</code>；<br>（8）<code>APNs</code> 推送内容到指定的 <code>iOS</code> 终端；<br>（9）<code>iOS</code> 终端将内容推送给用户；   </p>
+</blockquote>
+<ul>
+<li><strong>上面消息推送过程中要注意两个要点：</strong></li>
+</ul>
+<p>（1）<code>App</code> 的推送证书<br>如果要接受到推送信息就要在 <code>App ID</code> 中打开 <code>Push Notifications</code>，需要我们准备好 <code>Provisioning Profile</code> 和 <code>SSL</code> 证书，并且一定要注意 <code>Development</code> 和 <code>Distribution</code> 环境是需要分开的。最后，把 <code>SSL</code> 证书导入到公司自有的服务平台，就可以尝试远程消息推送了。<br>（2）设备标识 <code>DeviceToken</code><br><code>APNs</code> 需要知道推到哪台设备上，这就是设备标识的作用。   <strong>获取设备标识的流程如下：</strong>        </p>
+<ul>
+<li>应用打开推送开关，用户要确认 <code>client</code> 希望获得该应用的推送消息；</li>
+<li>应用获得一个 <code>DeviceToken</code>；</li>
+<li>应用将 <code>DeviceToken</code> 保存起来，这里就是通过 <code>[AVInstallation saveInBackground]</code> 将 <code>DeviceToken</code> 保存到推送 <code>server</code>；<br>当某些特定事件发生，开发者委托 推送 <code>server</code> 来发送推送消息，这时候 推送 <code>server</code> 的推送服务器就会给 <code>APNs</code> 发送一则推送消息，<code>APNs</code> 最后消息送到用户设备。</li>
+</ul>
+<p><strong>下面给出获取 <code>DeviceToken</code> 的流程图：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-5f35a5357724e2bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="registration_sequence_2x.png"><br><strong>【图片来至于网络】</strong></p>
+<h3 id="客户端获取-DeviceToken"><a href="#客户端获取-DeviceToken" class="headerlink" title="客户端获取 DeviceToken"></a>客户端获取 <code>DeviceToken</code></h3><ul>
+<li><strong>注册 <code>Push</code> 服务</strong></li>
+</ul>
+<p><code>client</code> 想要给指定设备发送消息，需要知道这个设备的 <code>DeviceToken</code>，然后上传到服务器。下面就来说明如何获得<code>DeviceToken</code>。<br>想要能够接收到苹果返回的 <code>DeviceToken</code>，需要先注册 <code>Push</code> 功能：(<code>iOS8</code> 和之前注册方式不同，请注意判断)。</p>
+<p>代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (iOS8) &#123;</span><br><span class="line">    [[<span class="built_in">UIApplication</span> sharedApplication] registerForRemoteNotifications];</span><br><span class="line">    [[<span class="built_in">UIApplication</span> sharedApplication] registerUserNotificationSettings:[<span class="built_in">UIUserNotificationSettings</span> settingsForTypes:<span class="built_in">UIUserNotificationTypeBadge</span>|<span class="built_in">UIUserNotificationTypeSound</span>|<span class="built_in">UIUserNotificationTypeAlert</span> categories:<span class="literal">nil</span>]];</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    [[<span class="built_in">UIApplication</span> sharedApplication] registerForRemoteNotificationTypes:(<span class="built_in">UIRemoteNotificationTypeAlert</span> | <span class="built_in">UIRemoteNotificationTypeSound</span> | <span class="built_in">UIRemoteNotificationTypeBadge</span>)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>接受 <code>Token</code></strong></li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didRegisterForRemoteNotificationsWithDeviceToken:(<span class="built_in">NSData</span> *)deviceToken</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取token</span></span><br><span class="line">    <span class="built_in">NSString</span> *token = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@"</span>,deviceToken];</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didFailToRegisterForRemoteNotificationsWithError:(<span class="built_in">NSError</span> *)error</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"获取asseccToken失败%@"</span>,error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>拿到了这个DeviceToken，就可以上传到服务器了，服务器就可以用这个DeviceToken给设备发消息了。</p>
+</blockquote>
+<h3 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h3><p><code>Apple</code> 对于所发的消息也有严格的要求，必须要按照苹果的格式，且内容不能超过256字节<strong>（最新的 HTTP/2 最大的推送 4096 字节）</strong>，如果超过，APNs则不会推送给设备。</p>
+<p>格式如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"aps"</span> : &#123;</span><br><span class="line">    <span class="string">"alert"</span> : &#123;</span><br><span class="line">      <span class="string">"title"</span> : <span class="string">"标题"</span>,</span><br><span class="line">      <span class="string">"body"</span> : <span class="string">"内容"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"sound"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"badge"</span> : <span class="number">9</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要添加自定义数据，可以在 <code>aps</code> 外添加：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"aps"</span> : &#123;</span><br><span class="line">    <span class="string">"alert"</span> : &#123;</span><br><span class="line">      <span class="string">"title"</span> : <span class="string">"标题"</span>,</span><br><span class="line">      <span class="string">"body"</span> : <span class="string">"内容"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"sound"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"badge"</span> : <span class="number">9</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="string">"page"</span>:<span class="string">"home"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为了减小消息体积，可以把 <code>page</code> 写成 <code>p</code>，<code>home</code> 写成 <code>1、2、3</code> 之类的，和服务器人员统一好结构。比如”p” : “1”。</p>
+</blockquote>
+<h3 id="客户端接受信息"><a href="#客户端接受信息" class="headerlink" title="客户端接受信息"></a>客户端接受信息</h3><p><code>client</code> 发送消息后，经过 <code>APNs</code> 的处理，就可以送达我们的 <code>App</code> 了。<br>代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="built_in">NSDictionary</span> *)userInfo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"userInfo : %@"</span>,userInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果应用还没启动，则可以在下面的方法中获取消息：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">//获取推送信息</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *userInfo = [launchOptions objectForKey:<span class="built_in">UIApplicationLaunchOptionsRemoteNotificationKey</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果服务器给badge设置了值的话，应用图标会一直显示数字，可以用下面的函数清空：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setApplicationIconBadgeNumber:<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="APNs-缺陷"><a href="#APNs-缺陷" class="headerlink" title="APNs 缺陷"></a><code>APNs</code> 缺陷</h3><p><img src="http://upload-images.jianshu.io/upload_images/1877765-af6865423a7f7cce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="172605tawq9p4k49zkpaiq.png"><br><strong>【图片来至于网络】</strong></p>
+<p><strong>基于二进制的旧 APNs 协议</strong></p>
+<p>推送分发的服务器要打开一个同 <code>APNs</code> 网关服务器的连接，并保持这个连接。但在旧的协议下，<code>APNs</code> 服务却不保证 <code>socket</code> 能维持这个连接。如果通道上没有消息往来，空闲下来到话，<code>socket</code> 将被路由掐断。也就是说：APNs 连接说断就断，那就无能为力。   </p>
+<blockquote>
+<p>（1）在旧的协议下，如果服务器响应成功的话，你将不会收到任何回应；<br>（2）服务器响应失败（例如，使用了一个非法的 <code>Push token</code>），服务器将返回了一个错误编码，并关闭这个<code>socket</code>；<br>（3）重新发送使用这个无效 <code>token</code> 以后发送的所有推送，可能一直不能确定你的推送是否成功的被 <code>APNs</code> 服务器接收。</p>
+</blockquote>
+<p><strong>成功了不响应，失败了才响应，这个是最大的反人类。</strong> 开发者想一个很 <code>tricky</code> 的办法：利用这个“漏洞”，比如在每发送 <code>10</code> 条后故意发送一个错误的 <code>token</code>，如果<code>APNs</code>有响应了，就可以确认 <code>APNs</code> 是处在可用状态的，进而确认这 <code>10</code> 条消息是发送成功的。如果没有响应就说明可能连接已经中断，那么这 <code>10</code> 条消息很可能是丢失的，然后做进一步的处理。</p>
+<blockquote>
+<p>代价：将导致你们的推送系统性能低下。苹果有一个名为” <code>feedback</code> “的服务，我们可以定时调用这个服务来获取 <code>invalid tokens</code> 的列表。这个服务你只要调用一次就可以获得所有的 <code>invalid tokens</code> 列表。所以，如果一个应用使用了很多不同公司的推送<code>SDK</code>，他们将会争夺资源去轮询查找 <code>invalid tokens</code> 列表。<code>invalid token</code> 越多，你们的推送系统性能将越低。而且 <code>APNs</code> 只要一发生错误就关闭这个连接，然后重新连接。也就是“重启” <code>socket</code> 连接。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c3b481e66671561c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="172611ih8xt1w7sz2hxlf5.png"><br><strong>【图片来至于网络】</strong></p>
+<p><strong>基于 <code>HTTP/2</code> 新的 <code>APNs</code> 协议</strong>   </p>
+<p>上图中的 <code>PN2</code> 被放到了 <code>feedback</code> 列表里，等待下次你调用 <code>feedback</code> 服务，然后重发。快速的失败然后重启比去处理错误要快。像这样的错误处理看起来跟直觉相反 —— 当错误发生的时候通过放弃处理来获得可靠性。但是重启的确是解决暂时性错误的灵丹妙药。</p>
+<p>上面👆的新版的 <code>APNs</code> 的新特性优点如下：</p>
+<blockquote>
+<p>（1）<code>Request</code> 和 <code>Response</code> 支持 <code>JSON</code> 网络协议；<br>（2）<code>APNs</code> 支持状态码和返回 <code>error</code> 信息：<br>（3）<code>APNs</code>推送成功时 <code>Response</code> 将返回状态码 <code>200</code>，远程通知是否发送成功再也不用靠猜了！<br>（4）<code>APNs</code> 推送失败时，<code>Response</code> 将返回 <code>JSON</code> 格式的 <code>Error</code> 信息。<br>最大推送长度提升到 <code>4096</code> 字节（<code>4Kb</code>）可以通过 <code>“HTTP/2 PING ”</code> 心跳包功能检测当前 <code>APNs</code> 连接是否可用，并能维持当前长连接；<br>（5）支持为不同的推送类型定义 <code>“topic”</code> 主题；<br>（6）不同推送类型，只需要一种推送证书 <code>Universal Push Notification Client SSL</code> 证书。</p>
+</blockquote>
 
       
 
@@ -361,6 +452,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#消息推送"><span class="toc-number">1.</span> <span class="toc-text">消息推送</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#消息推送介绍"><span class="toc-number">1.1.</span> <span class="toc-text">消息推送介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现方式"><span class="toc-number">1.2.</span> <span class="toc-text">实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地推送"><span class="toc-number">1.2.1.</span> <span class="toc-text">本地推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程推送"><span class="toc-number">1.2.2.</span> <span class="toc-text">远程推送</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轮询方式："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">轮询方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMS-push-方式："><span class="toc-number">1.2.2.2.</span> <span class="toc-text">SMS(push)方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持久链接方式："><span class="toc-number">1.2.2.3.</span> <span class="toc-text">持久链接方式：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#APNs-Apple-push-notification-server"><span class="toc-number">1.3.</span> <span class="toc-text">APNs(Apple push notification server)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#版本发展"><span class="toc-number">1.3.1.</span> <span class="toc-text">版本发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现流程图和原理"><span class="toc-number">1.3.2.</span> <span class="toc-text">实现流程图和原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端获取-DeviceToken"><span class="toc-number">1.3.3.</span> <span class="toc-text">客户端获取 DeviceToken</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器推送"><span class="toc-number">1.3.4.</span> <span class="toc-text">服务器推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端接受信息"><span class="toc-number">1.3.5.</span> <span class="toc-text">客户端接受信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APNs-缺陷"><span class="toc-number">1.3.6.</span> <span class="toc-text">APNs 缺陷</span></a></li></ol></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

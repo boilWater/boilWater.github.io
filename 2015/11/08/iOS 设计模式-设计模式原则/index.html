@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-eb63647c1518cb4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4c870aa5d1cbccee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-ed6343c3c884ba92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-04T14:02:15.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:12:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 设计模式-设计模式原则">
 <meta name="twitter:description" content="在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。
@@ -410,6 +410,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单一职责原则-Single-Responsibility-Principle-SRP"><span class="toc-number">1.</span> <span class="toc-text">单一职责原则 (Single Responsibility Principle, SRP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开闭原则-Open-Closed-Principle-OCP"><span class="toc-number">2.</span> <span class="toc-text">开闭原则 (Open-Closed Principle, OCP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#里氏代换原则-Liskov-Substitution-Principle-LSP"><span class="toc-number">3.</span> <span class="toc-text">里氏代换原则 (Liskov Substitution Principle, LSP)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖倒转原则-Dependence-Inversion-Principle-DIP"><span class="toc-number">3.1.</span> <span class="toc-text">依赖倒转原则 (Dependence Inversion Principle, DIP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口隔离原则-Interface-Segregation-Principle-ISP"><span class="toc-number">3.2.</span> <span class="toc-text">接口隔离原则 (Interface Segregation Principle, ISP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合成复用原则-Composite-Reuse-Principle-CRP"><span class="toc-number">3.3.</span> <span class="toc-text">合成复用原则 (Composite Reuse Principle, CRP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迪米特法则-Law-of-Demeter-LoD"><span class="toc-number">3.4.</span> <span class="toc-text">迪米特法则 (Law of Demeter, LoD)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

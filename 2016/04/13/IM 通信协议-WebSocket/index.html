@@ -21,7 +21,7 @@ WebSocket 简介起源WebSocket 是一种">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1173f15eb0573348.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4eb84e40e71ae02b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-14T11:38:46.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IM 通信协议-WebSocket">
 <meta name="twitter:description" content="前几天讲解过 Socket 的相关知识，但是在查找资料后看到 IM zhong还有其他的相关协议。今天小编就讲解其他的协议：WebSocket。
@@ -398,6 +398,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket-简介"><span class="toc-number">1.</span> <span class="toc-text">WebSocket 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#起源"><span class="toc-number">1.1.</span> <span class="toc-text">起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮询和WebSocket查询"><span class="toc-number">1.2.</span> <span class="toc-text">轮询和WebSocket查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket协议原理"><span class="toc-number">2.</span> <span class="toc-text">WebSocket协议原理</span></a></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 

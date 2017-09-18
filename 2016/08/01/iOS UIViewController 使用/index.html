@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>iOS UIViewController 使用 | JackJin&#39;s 博客</title>
+  <title>iOS UIViewController 周期详解 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="UIViewController 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。
 在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。
 UIViewController 周期下图是 UIViewController 周期过程：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS UIViewController 使用">
+<meta property="og:title" content="iOS UIViewController 周期详解">
 <meta property="og:url" content="http://yoursite.com/2016/08/01/iOS UIViewController 使用/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="UIViewController 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。
 在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。
 UIViewController 周期下图是 UIViewController 周期过程：">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-e78453877cfb719c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-30T09:52:45.000Z">
+<meta property="og:updated_time" content="2017-09-17T16:07:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS UIViewController 使用">
+<meta name="twitter:title" content="iOS UIViewController 周期详解">
 <meta name="twitter:description" content="UIViewController 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。
 在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。
 UIViewController 周期下图是 UIViewController 周期过程：">
@@ -178,7 +178,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      iOS UIViewController 使用
+      iOS UIViewController 周期详解
     </h1>
   
 
@@ -359,6 +359,30 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UIViewController-周期"><span class="toc-number">1.</span> <span class="toc-text">UIViewController 周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loadView、viewDidLoad-和-viewDidUnload-关系"><span class="toc-number">2.</span> <span class="toc-text">loadView、viewDidLoad 和 viewDidUnload 关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#界面构造"><span class="toc-number">2.1.</span> <span class="toc-text">界面构造</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XIB-来构建界面"><span class="toc-number">2.1.1.</span> <span class="toc-text">XIB 来构建界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Storyboard-来构建界面"><span class="toc-number">2.1.2.</span> <span class="toc-text">Storyboard 来构建界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码来构建界面"><span class="toc-number">2.1.3.</span> <span class="toc-text">代码来构建界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#界面构建中-loadView、viewDidLoad-和-viewDidUnload-调用"><span class="toc-number">2.2.</span> <span class="toc-text">界面构建中 loadView、viewDidLoad 和 viewDidUnload 调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#loadView"><span class="toc-number">2.2.1.</span> <span class="toc-text">loadView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#viewDidLoad"><span class="toc-number">2.2.2.</span> <span class="toc-text">viewDidLoad</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#viewDidUnload"><span class="toc-number">2.2.3.</span> <span class="toc-text">viewDidUnload</span></a></li></ol></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
 
 <!-- 目录内容结束 -->
 
