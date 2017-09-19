@@ -6,17 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | JackJin&#39;s 博客</title>
+  <title>云相册-缓存知识简介 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
+
+云相册来源
+
+
+公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。
+
+为什么采用缓存？下面小编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云相册-缓存知识简介">
+<meta property="og:url" content="http://yoursite.com/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
+
+云相册来源
+
+
+公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。
+
+为什么采用缓存？下面小编">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-19T16:48:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="云相册-缓存知识简介">
+<meta name="twitter:description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
+
+云相册来源
+
+
+公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。
+
+为什么采用缓存？下面小编">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -162,468 +186,297 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iOS 内存缓存 磁盘缓存和文件储存" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      云相册-缓存知识简介
+    </h1>
+  
+
+        
+        <a href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/" class="archive-article-date">
+  	<time datetime="2016-03-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   </p>
+<ul>
+<li>云相册来源</li>
+</ul>
+<blockquote>
+<p>公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。</p>
+</blockquote>
+<h2 id="为什么采用缓存？"><a href="#为什么采用缓存？" class="headerlink" title="为什么采用缓存？"></a>为什么采用缓存？</h2><p>下面小编就把与相册图片展示的下载过程列出来：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-19 20.43.55.png"></p>
+<a id="more"></a>
+<p><strong>上图我们看到图片在下载过程的流程图</strong></p>
+<blockquote>
+<p>简拼的用户有近千万级，每天访问量都比较大。而且在下载过程中服务器和数据库服务器所做的计算也越来越多。但是目前公司都是托管在阿里云服务器，而且公司要节省费用带宽有一定的限制。所以就引入缓存，打破标准流程，每个环节中请求可以从缓存中直接获取目标数据并返回，从而减少计算量，有效提升响应速度，让有限的资源服务更多的用户。</p>
+</blockquote>
+<h3 id="缓存方式"><a href="#缓存方式" class="headerlink" title="缓存方式"></a>缓存方式</h3><p>查找下资料目前我们实现缓存的方式有：内存缓存，磁盘缓存和数据库。</p>
+<ul>
+<li>内存缓存：</li>
+</ul>
+<blockquote>
+<p>将缓存储存在内存中可以很快的读取，而且在读取的过程中不需要额外的 <code>I/0</code> 开销。但是内存缓存哟一个致命的缺陷：在程序关闭后就会完全清除，数据很难或者根本不会恢复。</p>
+</blockquote>
+<ul>
+<li>磁盘缓存：</li>
+</ul>
+<blockquote>
+<p>一般情况下很多的缓存框架都是内存缓存和磁盘缓存结合使用。在内存缓存空间充满或者是异常关闭的情况下，可以将内存中的数据储存到数据持久化的硬盘中。<br>这样就可以达到释放空间或者是数据备份的目的。</p>
+</blockquote>
+<ul>
+<li>数据库：</li>
+</ul>
+<blockquote>
+<p>增加缓存的原因之一：减少数据库的 <code>I/0</code> 的压力。使用数据库做缓存介质是不是又回到了这个问题上了？其实，数据库也有很多种类型，像那些不支持 <code>SQL</code>，只是简单的 <code>key-value</code> 存储结构的特殊数据库（如<code>BerkeleyDB</code>和<code>Redis</code>），响应速度和吞吐量都远远高于我们常用的关系型数据库等。</p>
+</blockquote>
+<h3 id="缓存特征"><a href="#缓存特征" class="headerlink" title="缓存特征"></a>缓存特征</h3><p><strong>缓存是一种数据模型对象，其中也有一些特征。例如：命中率、最大元素空间和清空策略。</strong></p>
+<h4 id="命中率"><a href="#命中率" class="headerlink" title="命中率"></a>命中率</h4><blockquote>
+<p>命中率 = 返回正确结果数/请求缓存次数。   </p>
+</blockquote>
+<p>命中率问题是缓存中的一个非常重要的问题，它是衡量缓存有效性的重要指标。<strong>命中率越高，表明缓存的使用率越高。</strong></p>
+<h4 id="最大元素"><a href="#最大元素" class="headerlink" title="最大元素"></a>最大元素</h4><p>缓存中可以存放的最大元素的数量，一旦缓存中元素数量超过这个值（或者缓存数据所占空间超过其最大支持空间），那么将会触发缓存启动清空策略根据。</p>
+<blockquote>
+<p>（1）不同的场景合理的设置最大元素值往往可以一定程度上提高缓存的命中率，从而更有效的时候缓存。<br>（2）<code>NSCache</code> 在内存发出警告时会启动清楚，其限制大小 <code>&lt;</code> 为 <code>500M</code>。</p>
+</blockquote>
+<h4 id="清空策略"><a href="#清空策略" class="headerlink" title="清空策略"></a>清空策略</h4><p>上面👆小编提到内存缓存有一定的空间限制。当缓存空间被用满时，系统怎么样保证在稳定服务的同时有效提升命中率？</p>
+<blockquote>
+<p>这就由缓存清空策略来处理，设计适合自身数据特征的清空策略能有效提升命中率。   </p>
+</blockquote>
+<p><strong>常见的一般策略有：</strong></p>
+<ul>
+<li><strong><code>FIFO(first in first out)</code></strong></li>
+</ul>
+<blockquote>
+<p><strong>先进先出策略</strong>，最先进入缓存的数据在缓存空间不够的情况下（超出最大元素限制）会被优先被清除掉，以腾出新的空间接受新的数据。<br><strong>策略算法主要比较缓存元素的创建时间。</strong><br>在数据实效性要求场景下可选择该类策略，优先保障最新数据可用。</p>
+</blockquote>
+<ul>
+<li><strong><code>LFU(less frequently used)</code></strong></li>
+</ul>
+<blockquote>
+<p><strong>最少使用策略</strong>，无论是否过期，根据元素的被使用次数判断，清除使用次数较少的元素释放空间。<br>策略算法主要比较元素的 <code>hitCount</code>（命中次数）。<br>在保证高频数据有效性场景下，可选择这类策略。</p>
+</blockquote>
+<ul>
+<li><strong><code>LRU(least recently used)</code></strong></li>
+</ul>
+<blockquote>
+<p><strong>最近最少使用策略</strong>，无论是否过期，根据元素最后一次被使用的时间戳，清除最远使用时间戳的元素释放空间。<br>策略算法主要比较元素最近一次被 <code>get</code> 使用时间。<br>在热点数据场景下较适用，优先保证热点数据的有效性。</p>
+</blockquote>
+<p><strong>还有一些简单策略比如：</strong></p>
+<blockquote>
+<p>（1）根据过期时间判断，清理过期时间最长的元素；<br>（2）根据过期时间判断，清理最近要过期的元素；<br>（3）随机清理；<br>（4）根据关键字（或元素内容）长短清理等。</p>
+</blockquote>
+<h2 id="缓存和-Sqlite架构探索"><a href="#缓存和-Sqlite架构探索" class="headerlink" title="缓存和 Sqlite架构探索"></a>缓存和 <code>Sqlite</code>架构探索</h2><p>小编在上面👆讲述缓存方式和缓存特征中讲到目前很多多数缓存框架是基于：缓存和 <code>Sqlite</code> 结合。</p>
+<p>使用缓存多数是可以使用与一种情况：<strong>多频率的读取，少数写入</strong>。</p>
+<ul>
+<li><p><strong>实例</strong></p>
+</li>
+<li><p>用户的余额信息表 <code>account(uid, money)</code>，业务上的需求是：</p>
+<blockquote>
+<p>（1）查询用户的余额，<code>SELECT money FROM account WHERE uid=XXX</code>，占 <code>99%</code> 的请求；<br>（2）更改用户余额，<code>UPDATE account SET money=XXX WHERE uid=XXX</code>，占 <code>1%</code> 的请求。</p>
+</blockquote>
+</li>
+</ul>
+<p>上面的请求数据的方式中：读取数据频率远大于修改数据的频率，所以可以采用缓存方式来减轻数据库的压力。</p>
+<p><strong>上面👆我们把数据储存在缓存和数据库中，在每次单独去数据操作流程如下：</strong></p>
+<blockquote>
+<p>（1）读取缓存中是否有相关数据，<code>uid-&gt;money</code>;<br>（2）如果缓存中有相关数据 <code>money</code>，则返回 <strong>[这就是所谓的数据命中 <code>“hit”</code>]</strong>;<br>（3）如果缓存中没有相关数据 <code>money</code>，则从数据库读取相关数据 <code>money</code><strong>【这就是所谓的数据未命中 <code>“miss”</code>】</strong>，放入缓存中 <code>uid-&gt;money</code>，再返回。</p>
+</blockquote>
+<p><strong>缓存的命中率 = 命中缓存请求个数/总缓存访问请求个数 = <code>hit/(hit+miss)</code><br>上面举例的余额场景，<code>99%</code> 的读，<code>1%</code> 的写，这个缓存的命中率是非常高的，会在 <code>95%</code> 以上。</strong></p>
+<h3 id="数据修改探索"><a href="#数据修改探索" class="headerlink" title="数据修改探索"></a>数据修改探索</h3><p>在数据 <code>money</code> 发生变化的时候： </p>
+<ul>
+<li><p>（1）是更新缓存中的数据，还是淘汰缓存中的数据呢？   </p>
+</li>
+<li><p>（2）是先操纵数据库中的数据再操纵缓存中的数据，还是先操纵缓存中的数据再操纵数据库中的数据呢？ </p>
+</li>
+<li>（3）缓存与数据库的操作，在架构上是否有优化的空间呢？</li>
+</ul>
+<h4 id="缓存更新-VS-淘汰"><a href="#缓存更新-VS-淘汰" class="headerlink" title="缓存更新 VS 淘汰"></a>缓存更新 VS 淘汰</h4><ul>
+<li><p>更新：</p>
+<blockquote>
+<p>数据既要写入数据库也会写入缓存之中，这样缓存不会增加一次miss，命中率高。</p>
+</blockquote>
+</li>
+<li><p>淘汰：</p>
+<blockquote>
+<p>数据只会写入数据库不会写入缓存，数据只会淘汰掉数据。</p>
+</blockquote>
+</li>
+</ul>
+<p>#####（1）<strong>情景A（更新缓存的复杂化）</strong></p>
+<p>如果仅仅只是更改当前一个值的话小编认为可以采用<strong>更新缓存</strong>的方式。</p>
+<p>#####（2）<strong>情景B（更新缓存需要进行计算）</strong></p>
+<ul>
+<li><p>实例</p>
+</li>
+<li><p>例如业务上除了账户表 <code>account</code>，还有商品表 <code>product</code>，折扣表 <code>discount</code><br><code>account(uid, money)</code><br><code>product(pid, type, price, pinfo)</code><br><code>discount(type, zhekou)</code></p>
+</li>
+</ul>
+<p><strong>业务场景</strong>是用户买了一个商品 <code>product</code>，这个商品的价格是<code>price</code>，这个商品从属于<code>type</code>类商品，<code>type</code>类商品在做促销活动要打折扣<code>zhekou</code>，购买了商品过后，这个余额的计算就复杂了，需要：</p>
+<blockquote>
+<p>（1）先把商品的品类，价格取出来：<code>SELECT type, price FROM product WHERE pid=XXX</code>;<br>（2）再把这个品类的折扣取出来：<code>SELECT zhekou FROM discount WHERE type=XXX</code>;<br>（3）再把原有余额从缓存中查询出来<code>money = getCache(uid)</code>;<br>（4）再把新的余额写入到缓存中去<code>setCache(uid, money-price*zhekou)</code><br>更新缓存的代价很大，此时我们应该更倾向于淘汰缓存。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/20/iOS 算法-杂烩和总结/" class="archive-article-date">
-  	<time datetime="2015-03-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/20/iOS 算法-杂烩和总结/">iOS 算法-杂烩和总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        			<a href="/categories/缓存/" class="article-tag-list-link color3">缓存</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/10/算法-归并和堆排序/" class="archive-article-date">
-  	<time datetime="2015-03-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/10/算法-归并和堆排序/">iOS 算法-归并排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/05/iOS 算法-快排和二分法排序/" class="archive-article-date">
-  	<time datetime="2015-03-05T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/05/iOS 算法-快排和二分法排序/">iOS 算法-快排和希尔排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/02/iOS 界面中 UIView 和 CALayer 详解/" class="archive-article-date">
-  	<time datetime="2015-03-02T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/02/iOS 界面中 UIView 和 CALayer 详解/">iOS UIView 和 CALayer 详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/02/iOS 算法-冒泡，插入和选择/" class="archive-article-date">
-  	<time datetime="2015-03-02T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/02/iOS 算法-冒泡，插入和选择/">iOS 算法-冒泡，插入和选择排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/16/iOS 视图跳转/" class="archive-article-date">
-  	<time datetime="2015-02-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/16/iOS 视图跳转/">iOS 视图跳转</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/" class="archive-article-date">
-  	<time datetime="2015-02-08T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/">iOS Fundation-NSDictionary &amp; NSMutableDictionary 使用详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/" class="archive-article-date">
-  	<time datetime="2015-02-06T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/">iOS Fundation-NSArray &amp; NSMutableArray 使用详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/03/iOS Fundation-NSString/" class="archive-article-date">
-  	<time datetime="2015-02-03T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/03/iOS Fundation-NSString/">iOS Fundation-NSString &amp; NSMutableString 使用详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2016/03/16/iOS 设计模式-结构模式-外观模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS 设计模式-结构模式-外观模式
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/03/01/iOS 设计模式-结构模式-组合模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS 设计模式-结构模式-组合模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/7/">Next &raquo;</a>
-    </nav>
   
 
+  
+
+
+
+<!-- 目录内容 -->
+
+<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+<span class="btn-bg"></span>
+<span class="btn-text">文章导航</span>
+</p>
+<div id="toc-article" class="toc-article">
+<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用缓存？"><span class="toc-number">1.</span> <span class="toc-text">为什么采用缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存方式"><span class="toc-number">1.1.</span> <span class="toc-text">缓存方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.2.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命中率"><span class="toc-number">1.2.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空策略"><span class="toc-number">1.2.3.</span> <span class="toc-text">清空策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存和-Sqlite架构探索"><span class="toc-number">2.</span> <span class="toc-text">缓存和 Sqlite架构探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据修改探索"><span class="toc-number">2.1.</span> <span class="toc-text">数据修改探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存更新-VS-淘汰"><span class="toc-number">2.1.1.</span> <span class="toc-text">缓存更新 VS 淘汰</span></a></li></ol></li></ol></li></ol>
+</div>
+<script type="text/javascript">
+function showToc(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:block");
+show_toc_btn.setAttribute("style","display:none");
+};
+function showBtn(){
+var toc_article = document.getElementById("toc-article");
+var show_toc_btn = document.getElementById("show-toc-btn");
+toc_article.setAttribute("style","display:none");
+show_toc_btn.setAttribute("style","display:block");
+};
+</script>
+
+<!-- 目录内容结束 -->
 
           </div>
         </div>
@@ -645,8 +498,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
