@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f40f518bc2bd964e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cf2e8e5f0b6a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-20T03:05:27.000Z">
+<meta property="og:updated_time" content="2017-09-20T03:09:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云相册-缓存知识简介">
 <meta name="twitter:description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
@@ -223,22 +223,13 @@ var _hmt = _hmt || [];
 <p>简拼的用户有近千万级，每天访问量都比较大。而且在下载过程中服务器和数据库服务器所做的计算也越来越多。但是目前公司都是托管在阿里云服务器，而且公司要节省费用带宽有一定的限制。所以就引入缓存，打破标准流程，每个环节中请求可以从缓存中直接获取目标数据并返回，从而减少计算量，有效提升响应速度，让有限的资源服务更多的用户。</p>
 </blockquote>
 <h3 id="缓存方式"><a href="#缓存方式" class="headerlink" title="缓存方式"></a>缓存方式</h3><p>查找下资料目前我们实现缓存的方式有：内存缓存，磁盘缓存和数据库。</p>
-<ul>
-<li>内存缓存：</li>
-</ul>
-<blockquote>
+<h4 id="内存缓存："><a href="#内存缓存：" class="headerlink" title="内存缓存："></a>内存缓存：</h4><blockquote>
 <p>将缓存储存在内存中可以很快的读取，而且在读取的过程中不需要额外的 <code>I/0</code> 开销。但是内存缓存哟一个致命的缺陷：在程序关闭后就会完全清除，数据很难或者根本不会恢复。</p>
 </blockquote>
-<ul>
-<li>磁盘缓存：</li>
-</ul>
-<blockquote>
+<h4 id="磁盘缓存："><a href="#磁盘缓存：" class="headerlink" title="磁盘缓存："></a>磁盘缓存：</h4><blockquote>
 <p>一般情况下很多的缓存框架都是内存缓存和磁盘缓存结合使用。在内存缓存空间充满或者是异常关闭的情况下，可以将内存中的数据储存到数据持久化的硬盘中。<br>这样就可以达到释放空间或者是数据备份的目的。</p>
 </blockquote>
-<ul>
-<li>数据库：</li>
-</ul>
-<blockquote>
+<h4 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h4><blockquote>
 <p>增加缓存的原因之一：减少数据库的 <code>I/0</code> 的压力。使用数据库做缓存介质是不是又回到了这个问题上了？其实，数据库也有很多种类型，像那些不支持 <code>SQL</code>，只是简单的 <code>key-value</code> 存储结构的特殊数据库（如<code>BerkeleyDB</code>和<code>Redis</code>），响应速度和吞吐量都远远高于我们常用的关系型数据库等。</p>
 </blockquote>
 <h3 id="缓存特征"><a href="#缓存特征" class="headerlink" title="缓存特征"></a>缓存特征</h3><p><strong>缓存是一种数据模型对象，其中也有一些特征。例如：命中率、最大元素空间和清空策略。</strong></p>
@@ -517,7 +508,7 @@ var _hmt = _hmt || [];
 <div id="toc-article" class="toc-article">
 <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用缓存？"><span class="toc-number">1.</span> <span class="toc-text">为什么采用缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存方式"><span class="toc-number">1.1.</span> <span class="toc-text">缓存方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.2.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命中率"><span class="toc-number">1.2.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空策略"><span class="toc-number">1.2.3.</span> <span class="toc-text">清空策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存和-Sqlite架构探索"><span class="toc-number">2.</span> <span class="toc-text">缓存和 Sqlite架构探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据修改探索"><span class="toc-number">2.1.</span> <span class="toc-text">数据修改探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存更新-VS-淘汰"><span class="toc-number">2.1.1.</span> <span class="toc-text">缓存更新 VS 淘汰</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）情景A（更新缓存的复杂化）"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">（1）情景A（更新缓存的复杂化）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）情景B（更新缓存需要进行计算）"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">（2）情景B（更新缓存需要进行计算）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先操作缓存数据-VS-先操作数据库数据"><span class="toc-number">2.1.2.</span> <span class="toc-text">先操作缓存数据 VS 先操作数据库数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）先写数据库，再淘汰缓存"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">（1）先写数据库，再淘汰缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）先淘汰缓存在写数据库"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">（2）先淘汰缓存在写数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据不一致"><span class="toc-number">2.2.</span> <span class="toc-text">数据不一致</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的产生"><span class="toc-number">2.2.1.</span> <span class="toc-text">数据不一致的产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的优化"><span class="toc-number">2.2.2.</span> <span class="toc-text">数据不一致的优化</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用缓存？"><span class="toc-number">1.</span> <span class="toc-text">为什么采用缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存方式"><span class="toc-number">1.1.</span> <span class="toc-text">缓存方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存缓存："><span class="toc-number">1.1.1.</span> <span class="toc-text">内存缓存：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘缓存："><span class="toc-number">1.1.2.</span> <span class="toc-text">磁盘缓存：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库："><span class="toc-number">1.1.3.</span> <span class="toc-text">数据库：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.2.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命中率"><span class="toc-number">1.2.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空策略"><span class="toc-number">1.2.3.</span> <span class="toc-text">清空策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存和-Sqlite架构探索"><span class="toc-number">2.</span> <span class="toc-text">缓存和 Sqlite架构探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据修改探索"><span class="toc-number">2.1.</span> <span class="toc-text">数据修改探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存更新-VS-淘汰"><span class="toc-number">2.1.1.</span> <span class="toc-text">缓存更新 VS 淘汰</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）情景A（更新缓存的复杂化）"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">（1）情景A（更新缓存的复杂化）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）情景B（更新缓存需要进行计算）"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">（2）情景B（更新缓存需要进行计算）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先操作缓存数据-VS-先操作数据库数据"><span class="toc-number">2.1.2.</span> <span class="toc-text">先操作缓存数据 VS 先操作数据库数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）先写数据库，再淘汰缓存"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">（1）先写数据库，再淘汰缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）先淘汰缓存在写数据库"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">（2）先淘汰缓存在写数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据不一致"><span class="toc-number">2.2.</span> <span class="toc-text">数据不一致</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的产生"><span class="toc-number">2.2.1.</span> <span class="toc-text">数据不一致的产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的优化"><span class="toc-number">2.2.2.</span> <span class="toc-text">数据不一致的优化</span></a></li></ol></li></ol></li></ol>
 </div>
 <script type="text/javascript">
 function showToc(){
