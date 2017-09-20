@@ -29,7 +29,9 @@
 
 为什么采用缓存？下面小编">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-19T16:48:04.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f40f518bc2bd964e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cf2e8e5f0b6a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-20T03:05:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云相册-缓存知识简介">
 <meta name="twitter:description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
@@ -312,10 +314,8 @@ var _hmt = _hmt || [];
 </blockquote>
 </li>
 </ul>
-<p>#####（1）<strong>情景A（更新缓存的复杂化）</strong></p>
-<p>如果仅仅只是更改当前一个值的话小编认为可以采用<strong>更新缓存</strong>的方式。</p>
-<p>#####（2）<strong>情景B（更新缓存需要进行计算）</strong></p>
-<ul>
+<h5 id="（1）情景A（更新缓存的复杂化）"><a href="#（1）情景A（更新缓存的复杂化）" class="headerlink" title="（1）情景A（更新缓存的复杂化）"></a>（1）<strong>情景A（更新缓存的复杂化）</strong></h5><p>如果仅仅只是更改当前一个值的话小编认为可以采用<strong>更新缓存</strong>的方式。</p>
+<h5 id="（2）情景B（更新缓存需要进行计算）"><a href="#（2）情景B（更新缓存需要进行计算）" class="headerlink" title="（2）情景B（更新缓存需要进行计算）"></a>（2）<strong>情景B（更新缓存需要进行计算）</strong></h5><ul>
 <li><p>实例</p>
 </li>
 <li><p>例如业务上除了账户表 <code>account</code>，还有商品表 <code>product</code>，折扣表 <code>discount</code><br><code>account(uid, money)</code><br><code>product(pid, type, price, pinfo)</code><br><code>discount(type, zhekou)</code></p>
@@ -323,7 +323,65 @@ var _hmt = _hmt || [];
 </ul>
 <p><strong>业务场景</strong>是用户买了一个商品 <code>product</code>，这个商品的价格是<code>price</code>，这个商品从属于<code>type</code>类商品，<code>type</code>类商品在做促销活动要打折扣<code>zhekou</code>，购买了商品过后，这个余额的计算就复杂了，需要：</p>
 <blockquote>
-<p>（1）先把商品的品类，价格取出来：<code>SELECT type, price FROM product WHERE pid=XXX</code>;<br>（2）再把这个品类的折扣取出来：<code>SELECT zhekou FROM discount WHERE type=XXX</code>;<br>（3）再把原有余额从缓存中查询出来<code>money = getCache(uid)</code>;<br>（4）再把新的余额写入到缓存中去<code>setCache(uid, money-price*zhekou)</code><br>更新缓存的代价很大，此时我们应该更倾向于淘汰缓存。</p>
+<p>（1）先把商品的品类，价格取出来：<code>SELECT type, price FROM product WHERE pid=XXX</code>;<br>（2）再把这个品类的折扣取出来：<code>SELECT zhekou FROM discount WHERE type=XXX</code>;<br>（3）再把原有余额从缓存中查询出来<code>money = getCache(uid)</code>;<br>（4）再把新的余额写入到缓存中去<code>setCache(uid, money-price*zhekou)</code></p>
+</blockquote>
+<p><strong>更新缓存的代价很大，此时小编认为应该更倾向于淘汰缓存。</strong></p>
+<blockquote>
+<ul>
+<li><strong>淘汰缓存的实用率比较高，其副作用只是在过程中会产生数据的一次 <code>miss</code>。在开发过程中可以普遍采用淘汰缓存的策略。</strong></li>
+</ul>
+</blockquote>
+<h4 id="先操作缓存数据-VS-先操作数据库数据"><a href="#先操作缓存数据-VS-先操作数据库数据" class="headerlink" title="先操作缓存数据 VS 先操作数据库数据"></a>先操作缓存数据 VS 先操作数据库数据</h4><p>在数据修改过程中小编认为会面临一个问题：缓存的操作和数据库的操作先后顺序。</p>
+<ul>
+<li>（1）先写数据库，再淘汰缓存；</li>
+<li>（2）先淘汰缓存在写数据库。</li>
+</ul>
+<h5 id="（1）先写数据库，再淘汰缓存"><a href="#（1）先写数据库，再淘汰缓存" class="headerlink" title="（1）先写数据库，再淘汰缓存"></a><strong>（1）先写数据库，再淘汰缓存</strong></h5><p>采用此种方式如果在写数据库成功后，对缓存内容进行修改失败。这样我们获取的数据就是 <strong>旧数据</strong>，最后结果是获取的数据不一致。</p>
+<h5 id="（2）先淘汰缓存在写数据库"><a href="#（2）先淘汰缓存在写数据库" class="headerlink" title="（2）先淘汰缓存在写数据库"></a><strong>（2）先淘汰缓存在写数据库</strong></h5><p>采用这个方法，如果淘汰缓存成功后再去操作数据库失败的情况下，我们获取数据的结果就是 <code>miss</code>。<br>这样只是引发我们在获取数据失败的情况，相比于（1）获取的数据不一致的错误而言。方法（2）更好。</p>
+<blockquote>
+<p>注：在数据操作的过程中我们采用，<strong>先淘汰缓存在写数据库的做法</strong>。</p>
+</blockquote>
+<h3 id="数据不一致"><a href="#数据不一致" class="headerlink" title="数据不一致"></a>数据不一致</h3><h4 id="数据不一致的产生"><a href="#数据不一致的产生" class="headerlink" title="数据不一致的产生"></a>数据不一致的产生</h4><p>上面👆我们总结数据修改方案和数据操作在缓存和数据库之间的操作顺序，下面罗列出数据操作写和读取的大致流程：</p>
+<ul>
+<li><p>写数据</p>
+<blockquote>
+<p>（1）先淘汰缓存；<br>（2）在更新数据库。</p>
+</blockquote>
+</li>
+<li><p>读取数据</p>
+<blockquote>
+<p>（1）先读取缓存中的数据，如果数据读取 <code>hit</code> 返回；<br>（2）如果数据没有获取 <code>miss</code> 就去读取 数据库的数据；<br>（3）将数据库中的数据读取放入缓存。  </p>
+</blockquote>
+</li>
+</ul>
+<p>但是上面操作在分布式开发过程中会出现数据不一致的情况：</p>
+<p>有多个应用，通过一个服务的多个部署（为了保证可用性，一定是部署多份的），对同一个数据进行读写，在数据库层面并发的读写并不能保证完成顺序，也就是说后发出的读请求很可能先完成（<strong>读出脏数据</strong>）：</p>
+<blockquote>
+<p>（1）发生了写请求 <code>A</code>，<code>A</code> 的第一步淘汰了 <code>cache</code>；<br>（2）<code>A</code> 的第二步写数据库，发出修改请求；<br>（3）发生了读请求 <code>B</code>，<code>B</code> 的第一步读取 <code>cache</code>，发现 <code>cache</code> 中是空的；<br>（4）<code>B</code> 的第二步读取数据库，发出读取请求，此时 <code>A</code> 的第二步写数据还没完成，读出了一个脏数据放入 <code>cache</code>；<br><strong>即在数据库层面，后发出的请求 <code>4</code> 比先发出的请求 <code>2</code> 先完成了，读出了脏数据，脏数据又入了缓存，缓存与数据库中的数据不一致出现了。</strong></p>
+</blockquote>
+<h4 id="数据不一致的优化"><a href="#数据不一致的优化" class="headerlink" title="数据不一致的优化"></a>数据不一致的优化</h4><p>能否做到先发出的请求一定先执行完成呢？常见的思路是“串行化”，今天小编将和大家一起探讨“串行化”这个点。</p>
+<ul>
+<li><code>service</code> 服务实现实现串行访问</li>
+</ul>
+<p><strong>先一起细看一下，在一个服务中，并发的多个读写SQL一般是怎么执行的？</strong><br>如右图：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-f40f518bc2bd964e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png.jpeg"></p>
+<p>有上图可以看出 <code>service</code> 服务的上下游及服务内部详细展开，细节如下：   </p>
+<blockquote>
+<p>（1）<code>service</code> 的上游是多个业务应用，上游发起请求对同一个数据并发的进行读写操作，上例中并发进行了一个 <code>uid=1</code> 的余额修改（写）操作与 <code>uid=1</code> 的余额查询（读）操作；<br>（2）<code>service</code> 的下游是数据库 <code>DB</code>，假设只读写一个 <code>DB</code>;<br>（3）中间是服务层 <code>service</code>，它又分为了这么几个部分;<br>    （3.1）最上层是任务队列;<br>    （3.2）中间是工作线程，每个工作线程完成实际的工作任务，典型的工作任务是通过数据库连接池读写数据库;<br>    （3.3）最下层是数据库连接池，所有的SQL语句都是通过数据库连接池发往数据库去执行的。 </p>
+</blockquote>
+<p><strong>工作线程的实现方式：</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> work_thread_routine()&#123;</span><br><span class="line"><span class="comment">// 获取任务</span></span><br><span class="line">Task t = TaskQueue.pop(); </span><br><span class="line"><span class="comment">// 任务逻辑处理，生成sql语句</span></span><br><span class="line"><span class="comment">// 从DB连接池中选择一条连接，实现一个数据的访问串行化</span></span><br><span class="line">DBConnection c = CPool.GetDBConnection(longID);</span><br><span class="line"><span class="comment">// 通过DB连接执行sql语句 </span></span><br><span class="line">c.execSQL(sql); </span><br><span class="line"><span class="comment">// 将DB连接放回DB连接池</span></span><br><span class="line">CPool.PutDBConnection(c); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>客户端（<code>client</code>）实现串行访问 </li>
+</ul>
+<p><strong>下图是应用层上下游及内部结构：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-0cf2e8e5f0b6a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p>业务应用的上下游及服务内部详细展开，细节如下：</p>
+<blockquote>
+<p>（1）业务应用的上游不确定，可能是直接是 <code>http</code> 请求，可能也是一个服务的上游调用;<br>（2）业务应用的下游是多个服务 <code>service</code>;<br>（3）中间是业务应用，它分为了几个部分;<br>（3.1）最上层是任务队列，或许 <code>web-server</code> 例如: <code>tomcat</code> 帮我们干了这个事情了;<br>（3.2）中间是工作线程，或许 <code>web-server</code> 的工作线程或者 <code>cgi</code> 工作线程帮你干了线程分派这个事情。每个工作线程完成实际的业务任务，典型的工作任务是通过服务连接池进行 <code>RPC</code> 调用;<br>（3.3）最下层是服务连接池，所有的 <code>RPC</code> 调用都是通过服务连接池往下游服务去发包执行的。  </p>
+</blockquote>
+<p><strong>工作线程的实现方式：</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">voidwork_thread_routine()&#123;</span><br><span class="line"><span class="comment">// 获取任务</span></span><br><span class="line">Task t = TaskQueue.pop(); </span><br><span class="line"><span class="comment">// 任务逻辑处理，组成一个网络包packet，调用下游RPC接口</span></span><br><span class="line"><span class="comment">// 从Service连接池获取一个Service连接，并且保持此链接执行串行化</span></span><br><span class="line">ServiceConnection c = CPool.GetServiceConnection(longID); </span><br><span class="line"><span class="comment">// 通过Service连接发送报文执行RPC请求</span></span><br><span class="line">c.Send(packet); </span><br><span class="line"><span class="comment">// 将Service连接放回Service连接池</span></span><br><span class="line">CPool.PutServiceConnection(c); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>小编zai 上面会给出 <code>service</code> 和 <code>client</code> 两个情况访问数据实现串行化解决方式来解决在访问或者修改数据多应用的情况下实现缓存和数据的一致性。<br>（1）<code>service</code> 在读取数据时采用：<strong>同一个数据的访问能串行化</strong>；<br>（2）<code>client</code> 在读写数据his采用：<strong>同一个数据的读写都落在同一个后端服务上</strong>。</p>
 </blockquote>
 
       
@@ -459,7 +517,7 @@ var _hmt = _hmt || [];
 <div id="toc-article" class="toc-article">
 <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用缓存？"><span class="toc-number">1.</span> <span class="toc-text">为什么采用缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存方式"><span class="toc-number">1.1.</span> <span class="toc-text">缓存方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.2.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命中率"><span class="toc-number">1.2.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空策略"><span class="toc-number">1.2.3.</span> <span class="toc-text">清空策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存和-Sqlite架构探索"><span class="toc-number">2.</span> <span class="toc-text">缓存和 Sqlite架构探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据修改探索"><span class="toc-number">2.1.</span> <span class="toc-text">数据修改探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存更新-VS-淘汰"><span class="toc-number">2.1.1.</span> <span class="toc-text">缓存更新 VS 淘汰</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用缓存？"><span class="toc-number">1.</span> <span class="toc-text">为什么采用缓存？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存方式"><span class="toc-number">1.1.</span> <span class="toc-text">缓存方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.2.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命中率"><span class="toc-number">1.2.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空策略"><span class="toc-number">1.2.3.</span> <span class="toc-text">清空策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存和-Sqlite架构探索"><span class="toc-number">2.</span> <span class="toc-text">缓存和 Sqlite架构探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据修改探索"><span class="toc-number">2.1.</span> <span class="toc-text">数据修改探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存更新-VS-淘汰"><span class="toc-number">2.1.1.</span> <span class="toc-text">缓存更新 VS 淘汰</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）情景A（更新缓存的复杂化）"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">（1）情景A（更新缓存的复杂化）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）情景B（更新缓存需要进行计算）"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">（2）情景B（更新缓存需要进行计算）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先操作缓存数据-VS-先操作数据库数据"><span class="toc-number">2.1.2.</span> <span class="toc-text">先操作缓存数据 VS 先操作数据库数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）先写数据库，再淘汰缓存"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">（1）先写数据库，再淘汰缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）先淘汰缓存在写数据库"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">（2）先淘汰缓存在写数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据不一致"><span class="toc-number">2.2.</span> <span class="toc-text">数据不一致</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的产生"><span class="toc-number">2.2.1.</span> <span class="toc-text">数据不一致的产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据不一致的优化"><span class="toc-number">2.2.2.</span> <span class="toc-text">数据不一致的优化</span></a></li></ol></li></ol></li></ol>
 </div>
 <script type="text/javascript">
 function showToc(){
