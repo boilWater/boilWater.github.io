@@ -1500,64 +1500,6 @@
   </entry>
   
   <entry>
-    <title>Fastlane 使用说明</title>
-    <link href="http://yoursite.com/2016/06/18/Fastlane%E8%AE%B2%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/06/18/Fastlane讲解/</id>
-    <published>2016-06-18T09:42:32.000Z</published>
-    <updated>2017-08-25T18:37:45.000Z</updated>
-    
-    <content type="html">&lt;p&gt;大概在一个月左右写过关于&lt;code&gt;cocoaPods&lt;/code&gt;安装和使用方法，如果说&lt;code&gt;cocoaPods&lt;/code&gt;是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
-&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;fastlane-安装&quot;&gt;&lt;a href=&quot;#fastlane-安装&quot; class=&quot;headerlink&quot; title=&quot;fastlane 安装&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt; 安装&lt;/h3&gt;&lt;p&gt;&lt;code&gt;fastlane&lt;/code&gt; 是基于&lt;code&gt;Ruby&lt;/code&gt;的开发脚本集合有助于我们在&lt;code&gt;iOS&lt;/code&gt;开发过程中达到简便的开发。如果你在自己&lt;code&gt;MAC&lt;/code&gt;上已经安装&lt;code&gt;Ruby&lt;/code&gt;及其环境，只需要执行下列安装就可以实现&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo gem install fastlane --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;确定自己安装的是最新版本的&lt;code&gt;Xcode&lt;/code&gt;:&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Xcode-select --install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果在启动&lt;code&gt;fastlane&lt;/code&gt;比较慢的情况可以执行:&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gem cleanup&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;a href=&quot;#fastlane使用具体方法和具体功能&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用具体方法和具体功能&lt;/h3&gt;&lt;p&gt;了解具体使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;deliver&lt;/code&gt;：上传屏幕截图、二进制程序数据和应用程序到&lt;code&gt;AppStore&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;snapshot&lt;/code&gt;：自动截取你的程序在每个设备上的图片&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;frameit&lt;/code&gt;：应用截屏外添加设备框架&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pem&lt;/code&gt;：可以自动化地生成和更新应用推送通知描述文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sigh&lt;/code&gt;：生成下载开发商店的配置文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pilot&lt;/code&gt;：最好的在终端管理测试和建立的文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boarding&lt;/code&gt;：很容易的方式邀请你测试beta测试&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gyp&lt;/code&gt;：建立新的发布的版本&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;match&lt;/code&gt;：使用&lt;code&gt;git&lt;/code&gt;同步你成员间的开发者证书和文件配置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;fastlane举例：&quot;&gt;&lt;a href=&quot;#fastlane举例：&quot; class=&quot;headerlink&quot; title=&quot;fastlane举例：&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;举例：&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;deliver&lt;/code&gt;自动打包我们&lt;code&gt;App&lt;/code&gt;提交到&lt;code&gt;AppStore&lt;/code&gt;，官方使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;br&gt;打开终端进行我们项目所在的&lt;code&gt;floder&lt;/code&gt;，我的项目是在桌面上名称是&lt;code&gt;hello&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/desktop/hello&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后输入：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deliver init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后输入我们的&lt;code&gt;Apple ID Username&lt;/code&gt;:&lt;br&gt;再输入我们的&lt;code&gt;Password&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;fastlane使用场景&quot;&gt;&lt;a href=&quot;#fastlane使用场景&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用场景&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用场景&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;在我们开发后每次提交时执行的测试（有&lt;code&gt;team&lt;/code&gt;的单元测试和团队开发的集成测试）&lt;code&gt;pilot&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;构建我们使用的Bate版本时&lt;code&gt;boarding&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;开发好项目需要提给界面截图时&lt;code&gt;snapshot&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;构建并分发至应用商店（这包括更新配置文件，创建新的屏幕截图，上传应用至应用商店并提交应用）&lt;code&gt;deliver&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;fastlane典型的开发流程&quot;&gt;&lt;a href=&quot;#fastlane典型的开发流程&quot; class=&quot;headerlink&quot; title=&quot;fastlane典型的开发流程&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;典型的开发流程&lt;/h3&gt;&lt;p&gt;此开发流程也是我们团队开发过程中基本开发顺序&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lane :appstore &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  increment_build_number&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  cocoapods&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  xctool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  snapshot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sigh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  deliver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  frameit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sh &lt;span class=&quot;string&quot;&gt;&quot;./customScript.sh&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  slack&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;code&gt;cocoaPods&lt;/code&gt;帮助我们管理三方开源库，&lt;code&gt;fastlane&lt;/code&gt;可以在我们开发过程中简化我们开发过程以及简化我们发布流程。如果要提高自己&lt;code&gt;iOS&lt;/code&gt;方面能力需要我们进一步深入研究。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大概在一个月左右写过关于&lt;code&gt;cocoaPods&lt;/code&gt;安装和使用方法，如果说&lt;code&gt;cocoaPods&lt;/code&gt;是我们盾牌（可以让我们在开发过程中专注实现代码部分），那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
-&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href =&quot;https://github.com/fastlane/fastlane&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>从叮叮CTO采访演讲随笔</title>
     <link href="http://yoursite.com/2016/06/03/%E4%BB%8E%E5%8F%AE%E5%8F%AECTO%E9%87%87%E8%AE%BF%E6%BC%94%E8%AE%B2%E9%9A%8F%E7%AC%94/"/>
     <id>http://yoursite.com/2016/06/03/从叮叮CTO采访演讲随笔/</id>
@@ -1771,6 +1713,64 @@
     
     
       <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fastlane 使用说明</title>
+    <link href="http://yoursite.com/2016/04/28/Fastlane%E8%AE%B2%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/04/28/Fastlane讲解/</id>
+    <published>2016-04-28T09:42:32.000Z</published>
+    <updated>2017-09-29T03:19:25.000Z</updated>
+    
+    <content type="html">&lt;p&gt;那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
+&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;fastlane-安装&quot;&gt;&lt;a href=&quot;#fastlane-安装&quot; class=&quot;headerlink&quot; title=&quot;fastlane 安装&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt; 安装&lt;/h3&gt;&lt;p&gt;&lt;code&gt;fastlane&lt;/code&gt; 是基于&lt;code&gt;Ruby&lt;/code&gt;的开发脚本集合有助于我们在&lt;code&gt;iOS&lt;/code&gt;开发过程中达到简便的开发。如果你在自己&lt;code&gt;MAC&lt;/code&gt;上已经安装&lt;code&gt;Ruby&lt;/code&gt;及其环境，只需要执行下列安装就可以实现&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo gem install fastlane --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;确定自己安装的是最新版本的&lt;code&gt;Xcode&lt;/code&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Xcode-select --install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果在启动&lt;code&gt;fastlane&lt;/code&gt;比较慢的情况可以执行:&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gem cleanup&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;a href=&quot;#fastlane使用具体方法和具体功能&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用具体方法和具体功能&lt;/h3&gt;&lt;p&gt;了解具体使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;deliver&lt;/code&gt;：上传屏幕截图、二进制程序数据和应用程序到&lt;code&gt;AppStore&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;snapshot&lt;/code&gt;：自动截取你的程序在每个设备上的图片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frameit&lt;/code&gt;：应用截屏外添加设备框架&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pem&lt;/code&gt;：可以自动化地生成和更新应用推送通知描述文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sigh&lt;/code&gt;：生成下载开发商店的配置文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pilot&lt;/code&gt;：最好的在终端管理测试和建立的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boarding&lt;/code&gt;：很容易的方式邀请你测试beta测试&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gyp&lt;/code&gt;：建立新的发布的版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;match&lt;/code&gt;：使用&lt;code&gt;git&lt;/code&gt;同步你成员间的开发者证书和文件配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;fastlane举例：&quot;&gt;&lt;a href=&quot;#fastlane举例：&quot; class=&quot;headerlink&quot; title=&quot;fastlane举例：&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;举例：&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;deliver&lt;/code&gt;自动打包我们&lt;code&gt;App&lt;/code&gt;提交到&lt;code&gt;AppStore&lt;/code&gt;，官方使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;br&gt;打开终端进行我们项目所在的&lt;code&gt;floder&lt;/code&gt;，我的项目是在桌面上名称是&lt;code&gt;hello&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/desktop/hello&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后输入：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deliver init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后输入我们的&lt;code&gt;Apple ID Username&lt;/code&gt;:&lt;br&gt;再输入我们的&lt;code&gt;Password&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;fastlane使用场景&quot;&gt;&lt;a href=&quot;#fastlane使用场景&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用场景&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用场景&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在我们开发后每次提交时执行的测试（有&lt;code&gt;team&lt;/code&gt;的单元测试和团队开发的集成测试）&lt;code&gt;pilot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;构建我们使用的Bate版本时&lt;code&gt;boarding&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;开发好项目需要提给界面截图时&lt;code&gt;snapshot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;构建并分发至应用商店（这包括更新配置文件，创建新的屏幕截图，上传应用至应用商店并提交应用）&lt;code&gt;deliver&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;fastlane典型的开发流程&quot;&gt;&lt;a href=&quot;#fastlane典型的开发流程&quot; class=&quot;headerlink&quot; title=&quot;fastlane典型的开发流程&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;典型的开发流程&lt;/h3&gt;&lt;p&gt;此开发流程也是我们团队开发过程中基本开发顺序&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lane :appstore &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  increment_build_number&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  cocoapods&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  xctool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  snapshot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sigh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  deliver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  frameit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sh &lt;span class=&quot;string&quot;&gt;&quot;./customScript.sh&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  slack&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;cocoaPods&lt;/code&gt;帮助我们管理三方开源库，&lt;code&gt;fastlane&lt;/code&gt;可以在我们开发过程中简化我们开发过程以及简化我们发布流程。如果要提高自己&lt;code&gt;iOS&lt;/code&gt;方面能力需要我们进一步深入研究。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
+&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href =&quot;https://github.com/fastlane/fastlane&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   
