@@ -168,6 +168,103 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SQLite 基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/07/SQLite 基本操作/">SQLite 数据库基本操作</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/07/SQLite 基本操作/" class="archive-article-date">
+  	<time datetime="2017-11-06T16:49:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sqlite 周一学习总结<br>SQLite 的安装</p>
+<p>一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。</p>
+<p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：</p>
+<p>sqlite3<br>小编的 MAC 上输出的内容是：</p>
+<p>SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间</p>
+<p>Enter “.help” for usage hints.</p>
+<p>Connected to a transient in-memory database.</p>
+<p>Use “.open FILENAME” to reopen on a persistent database.<br>SQLite 语法基本操作</p>
+<p>（1）创建表格<br>创建数据表格基本操作语法是：</p>
+<p>CREATE TABLE datebase_name(</p>
+<p>column_1 datetype PRIMARY-KEY, //可以有多个KEY（主）键</p>
+<p>column_2 datetype,</p>
+<p>column_3 datetype,</p>
+<p>… …</p>
+<p>);<br>例如创建班级的 Table 表格，以 ID 为主键。实例如下：</p>
+<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>查询数据库创建是否成功：</p>
+<p>sqlite&gt; .table //终端输入语句</p>
+<p>ClassRoom<br>如果查询数据库细节：</p>
+<p>sqlite&gt; .schema //查询数据内容具体细节</p>
+<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>（2）数据插入<br>（3）数据增加<br>（4）数据修改<br>（5）数据查找<br>SQLite 索引的实现</p>
+<p>版本提交时间：</p>
+<p>第一次提交：11/7/2017 00:45:30</p>
+<p><a href="http://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="external">http://www.runoob.com/sqlite/sqlite-tutorial.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/07/SQLite 基本操作/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS-镜头采集(AVCaptureDevice)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -788,85 +885,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/01/20/iOS 复制理解/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-APP控件在屏幕上显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/13/APP控件在屏幕上显示/">iOS 空间绘制原理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/13/APP控件在屏幕上显示/" class="archive-article-date">
-  	<time datetime="2017-01-13T13:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在每个 <code>App</code> 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用<code>CocoaPods</code> 进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
-<p><strong>下面给出整理的图形绘制思维导图：</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图形绘制到屏幕上.jpg"></p>
-        
-          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/13/APP控件在屏幕上显示/">详细 >></a>
         </p>
       
 

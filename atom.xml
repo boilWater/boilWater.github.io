@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T09:29:18.000Z</updated>
+  <updated>2017-11-06T17:03:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQLite 数据库基本操作</title>
+    <link href="http://yoursite.com/2017/11/07/SQLite%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2017/11/07/SQLite 基本操作/</id>
+    <published>2017-11-06T16:49:29.000Z</published>
+    <updated>2017-11-06T17:03:40.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Sqlite 周一学习总结&lt;br&gt;SQLite 的安装&lt;/p&gt;
+&lt;p&gt;一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。&lt;/p&gt;
+&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：&lt;/p&gt;
+&lt;p&gt;sqlite3&lt;br&gt;小编的 MAC 上输出的内容是：&lt;/p&gt;
+&lt;p&gt;SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间&lt;/p&gt;
+&lt;p&gt;Enter “.help” for usage hints.&lt;/p&gt;
+&lt;p&gt;Connected to a transient in-memory database.&lt;/p&gt;
+&lt;p&gt;Use “.open FILENAME” to reopen on a persistent database.&lt;br&gt;SQLite 语法基本操作&lt;/p&gt;
+&lt;p&gt;（1）创建表格&lt;br&gt;创建数据表格基本操作语法是：&lt;/p&gt;
+&lt;p&gt;CREATE TABLE datebase_name(&lt;/p&gt;
+&lt;p&gt;column_1 datetype PRIMARY-KEY, //可以有多个KEY（主）键&lt;/p&gt;
+&lt;p&gt;column_2 datetype,&lt;/p&gt;
+&lt;p&gt;column_3 datetype,&lt;/p&gt;
+&lt;p&gt;… …&lt;/p&gt;
+&lt;p&gt;);&lt;br&gt;例如创建班级的 Table 表格，以 ID 为主键。实例如下：&lt;/p&gt;
+&lt;p&gt;CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);&lt;br&gt;查询数据库创建是否成功：&lt;/p&gt;
+&lt;p&gt;sqlite&amp;gt; .table //终端输入语句&lt;/p&gt;
+&lt;p&gt;ClassRoom&lt;br&gt;如果查询数据库细节：&lt;/p&gt;
+&lt;p&gt;sqlite&amp;gt; .schema //查询数据内容具体细节&lt;/p&gt;
+&lt;p&gt;CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);&lt;br&gt;（2）数据插入&lt;br&gt;（3）数据增加&lt;br&gt;（4）数据修改&lt;br&gt;（5）数据查找&lt;br&gt;SQLite 索引的实现&lt;/p&gt;
+&lt;p&gt;版本提交时间：&lt;/p&gt;
+&lt;p&gt;第一次提交：11/7/2017 00:45:30&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/sqlite/sqlite-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/sqlite/sqlite-tutorial.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sqlite 周一学习总结&lt;br&gt;SQLite 的安装&lt;/p&gt;
+&lt;p&gt;一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。&lt;/p&gt;
+&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：&lt;/p&gt;
+&lt;p&gt;sqlite3&lt;br&gt;小编的 MAC 
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="SQLite" scheme="http://yoursite.com/tags/SQLite/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS-镜头采集(AVCaptureDevice)</title>
@@ -1771,33 +1819,6 @@
     
     
       <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git 使用详解</title>
-    <link href="http://yoursite.com/2016/04/25/Git%20%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/04/25/Git 使用详解/</id>
-    <published>2016-04-25T09:42:32.000Z</published>
-    <updated>2017-09-20T16:03:04.000Z</updated>
-    
-    <content type="html">&lt;p&gt;以前工作的项目都是基于 &lt;code&gt;SVN&lt;/code&gt; 来对项目进行管理，小编今天在这里向大家讲述另外一种管理方式 &lt;code&gt;git&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;下面👇小编先对 &lt;code&gt;git&lt;/code&gt; 展示使用思维导图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-183573606b779b06.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Git.jpg&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以前工作的项目都是基于 &lt;code&gt;SVN&lt;/code&gt; 来对项目进行管理，小编今天在这里向大家讲述另外一种管理方式 &lt;code&gt;git&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;下面👇小编先对 &lt;code&gt;git&lt;/code&gt; 展示使用思维导图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

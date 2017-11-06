@@ -168,6 +168,84 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS UITableView 使用详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/26/iOS UITableView 使用详解/">iOS UITableView 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/26/iOS UITableView 使用详解/" class="archive-article-date">
+  	<time datetime="2015-07-26T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在iOS开发中UITableView是使用的最广泛的控件，基本上每一个项目都会有多个地方会用到。它的作用是列表显示相关的内容。UITableView继承自UIScrollView,由于内部使用了缓存池机制，因此性能相当好。UITableView中每行数据都是一个UITableViewCell，为了方便开发者的使用，在UITableViewCell中内置了许多样式，在使用的时候非常方便。</p>
+<p>##样式<br>UITableView有两种风格：UITableViewStylePlain 和 UITableViewStyleGrouped。这两者操作起来其实并没有本质区别，只是后者按分组样式显示前者按照普通样式显示而已。</p>
+        
+          <a class="article-more-a" href="/2015/07/26/iOS UITableView 使用详解/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/26/iOS UITableView 使用详解/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS MVC 设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -814,88 +892,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/02/16/iOS 视图跳转/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS Fundation-NSDictionary 使用详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/">iOS Fundation-NSDictionary &amp; NSMutableDictionary 使用详解</a>
-    </h1>
-  
-
-        
-        <a href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/" class="archive-article-date">
-  	<time datetime="2015-02-08T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目前我们经常使用的 <code>NSString</code>、<code>NSArray</code>和<code>NSMutableArray</code>，下面小编将向大家展示 <code>NSDictionary</code> 和 <code>NSMutableDictionary</code> 相关 <code>API</code> 和一些使用方法。</p>
-<p>翻看开发文档可以看到下面这段话：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Neither a key nor a value can be <span class="literal">nil</span>; <span class="keyword">if</span> you need to represent a null value <span class="keyword">in</span> a dictionary, you should use <span class="built_in">NSNull</span>.</span><br><span class="line"><span class="comment">//在 NSDictionary 不可以使用 nil 值，如果要使用可以使用 NSNull 来进行设置值</span></span><br></pre></td></tr></table></figure>
-<h2 id="NSDictionary"><a href="#NSDictionary" class="headerlink" title="NSDictionary"></a><code>NSDictionary</code></h2><p><code>NSDictionary</code> 是使用 <code>Key-Value</code> 的形式来进行对值查找和管理，继承自 <code>NSObject</code>：</p>
-<p><code>NSDictionary</code> 的继承代码如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSDictionary</span>&lt;<span class="title">__covariant</span> <span class="title">KeyType</span>, <span class="title">__covariant</span> <span class="title">ObjectType</span>&gt; : <span class="title">NSObject</span></span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/">详细 >></a>
         </p>
       
 

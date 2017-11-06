@@ -168,6 +168,93 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cocoaPods使用和静态库的建立" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/01/cocoaPods使用和静态库的建立/">cocoaPods使用和静态库的建立</a>
+    </h1>
+  
+
+        
+        <a href="/2016/05/01/cocoaPods使用和静态库的建立/" class="archive-article-date">
+  	<time datetime="2016-05-01T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cocoaPods个人介绍：</p>
+<p>是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化</p>
+<p>一般我们复制三方框架到项目有两种方式：  </p>
+<ul>
+<li>直接进行复制</li>
+<li>使用<code>cocoaPods</code>来进行管理</li>
+</ul>
+<p>本人建议可以学习使用<code>cocoaPods</code>这样更加方便，下面讲直接复制问题</p>
+<p>但是直接复制存在问题：</p>
+<p>1) 库更新存在问题，如果一个库引用另一个库，需要对于库全部更新</p>
+<p>2) 对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用 <code>SDWebImage</code> 时对图片进行截图得到圆形图片，如果进行更新就有问题</p>
+        
+          <a class="article-more-a" href="/2016/05/01/cocoaPods使用和静态库的建立/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IOS/" class="article-tag-list-link color4">IOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/05/01/cocoaPods使用和静态库的建立/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-Fastlane讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -800,91 +887,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 内存缓存 磁盘缓存和文件储存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/">云相册-缓存知识简介</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/" class="archive-article-date">
-  	<time datetime="2016-03-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   </p>
-<ul>
-<li>云相册来源</li>
-</ul>
-<blockquote>
-<p>公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。</p>
-</blockquote>
-<h2 id="为什么采用缓存？"><a href="#为什么采用缓存？" class="headerlink" title="为什么采用缓存？"></a>为什么采用缓存？</h2><p>下面小编就把与相册图片展示的下载过程列出来：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-19 20.43.55.png"></p>
-        
-          <a class="article-more-a" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/缓存/" class="article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/">详细 >></a>
         </p>
       
 
