@@ -10,29 +10,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Sqlite 周一学习总结SQLite 的安装
 一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
-查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：
-sqlite3小编的 MAC 上输出的内容是：
-SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间
-Enter “.help” fo">
+查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
+sqlite3
+小编的 MAC 上输出的内容是：
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLite 数据库基本操作">
 <meta property="og:url" content="http://yoursite.com/2017/11/07/SQLite 基本操作/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="Sqlite 周一学习总结SQLite 的安装
 一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
-查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：
-sqlite3小编的 MAC 上输出的内容是：
-SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间
-Enter “.help” fo">
-<meta property="og:updated_time" content="2017-11-06T17:03:40.000Z">
+查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
+sqlite3
+小编的 MAC 上输出的内容是：
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-08T16:49:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 数据库基本操作">
 <meta name="twitter:description" content="Sqlite 周一学习总结SQLite 的安装
 一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
-查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：
-sqlite3小编的 MAC 上输出的内容是：
-SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间
-Enter “.help” fo">
+查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
+sqlite3
+小编的 MAC 上输出的内容是：
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -202,26 +205,27 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Sqlite 周一学习总结<br>SQLite 的安装</p>
-<p>一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。</p>
-<p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：</p>
-<p>sqlite3<br>小编的 MAC 上输出的内容是：</p>
-<p>SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间</p>
-<p>Enter “.help” for usage hints.</p>
-<p>Connected to a transient in-memory database.</p>
-<p>Use “.open FILENAME” to reopen on a persistent database.<br>SQLite 语法基本操作</p>
+        <p><code>Sqlite</code> 周一学习总结<br><code>SQLite</code> 的安装</p>
+<p>一般在 <code>MAC</code> 上面系统会自带 <code>Sqlite</code> 的数据库版本的。</p>
+<p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 <code>mac</code> 为例）：</p>
+<p><code>sqlite3</code></p>
+<p>小编的 <code>MAC</code> 上输出的内容是：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQLite version <span class="number">3.16</span><span class="number">.0</span> <span class="number">2016</span><span class="number">-11</span><span class="number">-04</span> <span class="number">19</span>:<span class="number">09</span>:<span class="number">39</span> <span class="comment">//可以看到 SQLite 的版本信息和安装时间</span></span><br><span class="line"></span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> usage hints.</span><br><span class="line"></span><br><span class="line">Connected to a transient <span class="keyword">in</span>-memory database.</span><br><span class="line"></span><br><span class="line">Use <span class="string">".open FILENAME"</span> to reopen on a persistent database.</span><br></pre></td></tr></table></figure>
+<h3 id="SQLite-语法基本操作"><a href="#SQLite-语法基本操作" class="headerlink" title="SQLite 语法基本操作"></a>SQLite 语法基本操作</h3><a id="more"></a>
 <p>（1）创建表格<br>创建数据表格基本操作语法是：</p>
-<p>CREATE TABLE datebase_name(</p>
-<p>column_1 datetype PRIMARY-KEY, //可以有多个KEY（主）键</p>
-<p>column_2 datetype,</p>
-<p>column_3 datetype,</p>
-<p>… …</p>
-<p>);<br>例如创建班级的 Table 表格，以 ID 为主键。实例如下：</p>
-<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>查询数据库创建是否成功：</p>
-<p>sqlite&gt; .table //终端输入语句</p>
-<p>ClassRoom<br>如果查询数据库细节：</p>
-<p>sqlite&gt; .schema //查询数据内容具体细节</p>
-<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>（2）数据插入<br>（3）数据增加<br>（4）数据修改<br>（5）数据查找<br>SQLite 索引的实现</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE datebase_name(</span><br><span class="line"></span><br><span class="line">column_1 datetype PRIMARY-KEY, <span class="comment">//可以有多个KEY（主）键</span></span><br><span class="line"></span><br><span class="line">column_2 datetype,</span><br><span class="line"></span><br><span class="line">column_3 datetype,</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>例如创建班级的 <code>Table</code> 表格，以 <code>ID</code> 为主键。实例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE ClassRoom(RoomID <span class="keyword">int</span> perimary key, StudentNumber <span class="keyword">int</span>, Grade <span class="keyword">int</span>);</span><br><span class="line">查询数据库创建是否成功：</span><br><span class="line"></span><br><span class="line">sqlite&gt; .table <span class="comment">//终端输入语句</span></span><br><span class="line"></span><br><span class="line">ClassRoom</span><br></pre></td></tr></table></figure>
+<p>如果查询数据库细节：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; .schema <span class="comment">//查询数据内容具体细节</span></span><br><span class="line"></span><br><span class="line">sqlite&gt; .schema</span><br><span class="line">CREATE TABLE ClassRoom(RoomID <span class="keyword">int</span> perimary key, StudentNumber <span class="keyword">int</span>, Grade <span class="keyword">int</span>);</span><br><span class="line">CREATE TABLE Person(StudentID <span class="keyword">int</span>, name <span class="keyword">char</span>, age <span class="keyword">int</span>, address <span class="keyword">char</span>, sex <span class="keyword">char</span>);</span><br><span class="line">sqlite&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 00.47.12.png"></p>
+<p>（2）表格删除</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在开始时对数据表格进行删除，得到下面的结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 00.47.24.png"></p>
+<p>经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 <code>Table</code> 所放的数据库。</p>
+<p>（3）数据插入<br>（4）数据增加<br>（5）数据修改<br>（6）数据查找</p>
+<p><code>SQLite</code> 索引的实现</p>
 <p>版本提交时间：</p>
 <p>第一次提交：11/7/2017 00:45:30</p>
 <p><a href="http://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="external">http://www.runoob.com/sqlite/sqlite-tutorial.html</a></p>

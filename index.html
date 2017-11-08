@@ -188,30 +188,16 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Sqlite 周一学习总结<br>SQLite 的安装</p>
-<p>一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。</p>
-<p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：</p>
-<p>sqlite3<br>小编的 MAC 上输出的内容是：</p>
-<p>SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间</p>
-<p>Enter “.help” for usage hints.</p>
-<p>Connected to a transient in-memory database.</p>
-<p>Use “.open FILENAME” to reopen on a persistent database.<br>SQLite 语法基本操作</p>
-<p>（1）创建表格<br>创建数据表格基本操作语法是：</p>
-<p>CREATE TABLE datebase_name(</p>
-<p>column_1 datetype PRIMARY-KEY, //可以有多个KEY（主）键</p>
-<p>column_2 datetype,</p>
-<p>column_3 datetype,</p>
-<p>… …</p>
-<p>);<br>例如创建班级的 Table 表格，以 ID 为主键。实例如下：</p>
-<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>查询数据库创建是否成功：</p>
-<p>sqlite&gt; .table //终端输入语句</p>
-<p>ClassRoom<br>如果查询数据库细节：</p>
-<p>sqlite&gt; .schema //查询数据内容具体细节</p>
-<p>CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);<br>（2）数据插入<br>（3）数据增加<br>（4）数据修改<br>（5）数据查找<br>SQLite 索引的实现</p>
-<p>版本提交时间：</p>
-<p>第一次提交：11/7/2017 00:45:30</p>
-<p><a href="http://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="external">http://www.runoob.com/sqlite/sqlite-tutorial.html</a></p>
-
+        <p><code>Sqlite</code> 周一学习总结<br><code>SQLite</code> 的安装</p>
+<p>一般在 <code>MAC</code> 上面系统会自带 <code>Sqlite</code> 的数据库版本的。</p>
+<p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 <code>mac</code> 为例）：</p>
+<p><code>sqlite3</code></p>
+<p>小编的 <code>MAC</code> 上输出的内容是：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQLite version <span class="number">3.16</span><span class="number">.0</span> <span class="number">2016</span><span class="number">-11</span><span class="number">-04</span> <span class="number">19</span>:<span class="number">09</span>:<span class="number">39</span> <span class="comment">//可以看到 SQLite 的版本信息和安装时间</span></span><br><span class="line"></span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> usage hints.</span><br><span class="line"></span><br><span class="line">Connected to a transient <span class="keyword">in</span>-memory database.</span><br><span class="line"></span><br><span class="line">Use <span class="string">".open FILENAME"</span> to reopen on a persistent database.</span><br></pre></td></tr></table></figure>
+<h3 id="SQLite-语法基本操作"><a href="#SQLite-语法基本操作" class="headerlink" title="SQLite 语法基本操作"></a>SQLite 语法基本操作</h3>
+        
+          <a class="article-more-a" href="/2017/11/07/SQLite 基本操作/#more">more >></a>
+        
       
 
       

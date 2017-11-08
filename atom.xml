@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-06T17:03:40.000Z</updated>
+  <updated>2017-11-08T16:49:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,28 +20,29 @@
     <link href="http://yoursite.com/2017/11/07/SQLite%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2017/11/07/SQLite 基本操作/</id>
     <published>2017-11-06T16:49:29.000Z</published>
-    <updated>2017-11-06T17:03:40.000Z</updated>
+    <updated>2017-11-08T16:49:26.000Z</updated>
     
-    <content type="html">&lt;p&gt;Sqlite 周一学习总结&lt;br&gt;SQLite 的安装&lt;/p&gt;
-&lt;p&gt;一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。&lt;/p&gt;
-&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：&lt;/p&gt;
-&lt;p&gt;sqlite3&lt;br&gt;小编的 MAC 上输出的内容是：&lt;/p&gt;
-&lt;p&gt;SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间&lt;/p&gt;
-&lt;p&gt;Enter “.help” for usage hints.&lt;/p&gt;
-&lt;p&gt;Connected to a transient in-memory database.&lt;/p&gt;
-&lt;p&gt;Use “.open FILENAME” to reopen on a persistent database.&lt;br&gt;SQLite 语法基本操作&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 周一学习总结&lt;br&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/p&gt;
+&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
+&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 &lt;code&gt;mac&lt;/code&gt; 为例）：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;小编的 &lt;code&gt;MAC&lt;/code&gt; 上输出的内容是：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SQLite version &lt;span class=&quot;number&quot;&gt;3.16&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-11&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-04&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;09&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//可以看到 SQLite 的版本信息和安装时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Enter &lt;span class=&quot;string&quot;&gt;&quot;.help&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; usage hints.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Connected to a transient &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;-memory database.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Use &lt;span class=&quot;string&quot;&gt;&quot;.open FILENAME&quot;&lt;/span&gt; to reopen on a persistent database.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;SQLite-语法基本操作&quot;&gt;&lt;a href=&quot;#SQLite-语法基本操作&quot; class=&quot;headerlink&quot; title=&quot;SQLite 语法基本操作&quot;&gt;&lt;/a&gt;SQLite 语法基本操作&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;（1）创建表格&lt;br&gt;创建数据表格基本操作语法是：&lt;/p&gt;
-&lt;p&gt;CREATE TABLE datebase_name(&lt;/p&gt;
-&lt;p&gt;column_1 datetype PRIMARY-KEY, //可以有多个KEY（主）键&lt;/p&gt;
-&lt;p&gt;column_2 datetype,&lt;/p&gt;
-&lt;p&gt;column_3 datetype,&lt;/p&gt;
-&lt;p&gt;… …&lt;/p&gt;
-&lt;p&gt;);&lt;br&gt;例如创建班级的 Table 表格，以 ID 为主键。实例如下：&lt;/p&gt;
-&lt;p&gt;CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);&lt;br&gt;查询数据库创建是否成功：&lt;/p&gt;
-&lt;p&gt;sqlite&amp;gt; .table //终端输入语句&lt;/p&gt;
-&lt;p&gt;ClassRoom&lt;br&gt;如果查询数据库细节：&lt;/p&gt;
-&lt;p&gt;sqlite&amp;gt; .schema //查询数据内容具体细节&lt;/p&gt;
-&lt;p&gt;CREATE TABLE ClassRoom(ID int PRIMARY KEY, name char, age int, address char, sex char);&lt;br&gt;（2）数据插入&lt;br&gt;（3）数据增加&lt;br&gt;（4）数据修改&lt;br&gt;（5）数据查找&lt;br&gt;SQLite 索引的实现&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE datebase_name(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;column_1 datetype PRIMARY-KEY, &lt;span class=&quot;comment&quot;&gt;//可以有多个KEY（主）键&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;column_2 datetype,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;column_3 datetype,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;... ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;例如创建班级的 &lt;code&gt;Table&lt;/code&gt; 表格，以 &lt;code&gt;ID&lt;/code&gt; 为主键。实例如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE ClassRoom(RoomID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; perimary key, StudentNumber &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, Grade &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查询数据库创建是否成功：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .table &lt;span class=&quot;comment&quot;&gt;//终端输入语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ClassRoom&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果查询数据库细节：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema &lt;span class=&quot;comment&quot;&gt;//查询数据内容具体细节&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE ClassRoom(RoomID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; perimary key, StudentNumber &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, Grade &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE Person(StudentID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, name &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, age &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, address &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, sex &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.12.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;（2）表格删除&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在开始时对数据表格进行删除，得到下面的结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.24.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 &lt;code&gt;Table&lt;/code&gt; 所放的数据库。&lt;/p&gt;
+&lt;p&gt;（3）数据插入&lt;br&gt;（4）数据增加&lt;br&gt;（5）数据修改&lt;br&gt;（6）数据查找&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SQLite&lt;/code&gt; 索引的实现&lt;/p&gt;
 &lt;p&gt;版本提交时间：&lt;/p&gt;
 &lt;p&gt;第一次提交：11/7/2017 00:45:30&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.runoob.com/sqlite/sqlite-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/sqlite/sqlite-tutorial.html&lt;/a&gt;&lt;/p&gt;
@@ -49,10 +50,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;Sqlite 周一学习总结&lt;br&gt;SQLite 的安装&lt;/p&gt;
-&lt;p&gt;一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。&lt;/p&gt;
-&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以mac为例）：&lt;/p&gt;
-&lt;p&gt;sqlite3&lt;br&gt;小编的 MAC 
+      &lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 周一学习总结&lt;br&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/p&gt;
+&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
+&lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 &lt;code&gt;mac&lt;/code&gt; 为例）：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;小编的 &lt;code&gt;MAC&lt;/code&gt; 上输出的内容是：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SQLite version &lt;span class=&quot;number&quot;&gt;3.16&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-11&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-04&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;09&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//可以看到 SQLite 的版本信息和安装时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Enter &lt;span class=&quot;string&quot;&gt;&quot;.help&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; usage hints.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Connected to a transient &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;-memory database.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Use &lt;span class=&quot;string&quot;&gt;&quot;.open FILENAME&quot;&lt;/span&gt; to reopen on a persistent database.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;SQLite-语法基本操作&quot;&gt;&lt;a href=&quot;#SQLite-语法基本操作&quot; class=&quot;headerlink&quot; title=&quot;SQLite 语法基本操作&quot;&gt;&lt;/a&gt;SQLite 语法基本操作&lt;/h3&gt;
     
     </summary>
     
