@@ -8,33 +8,39 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SQLite 数据库基本操作 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sqlite 周一学习总结SQLite 的安装
-一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
+  <meta name="description" content="Sqlite 学习总结
+SQLite 的安装一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
 查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
 sqlite3
 小编的 MAC 上输出的内容是：
-1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;.h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLite 数据库基本操作">
 <meta property="og:url" content="http://yoursite.com/2017/11/07/SQLite 基本操作/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="Sqlite 周一学习总结SQLite 的安装
-一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
+<meta property="og:description" content="Sqlite 学习总结
+SQLite 的安装一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
 查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
 sqlite3
 小编的 MAC 上输出的内容是：
-1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;.h">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-08T16:49:26.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d49a8edb2ff9f6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0ee21d54775d5afa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-a8d6824986b306b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-82d28393caab51f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-e896caf5ebdd870a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-b9d54e53707bdc24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-09T16:19:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 数据库基本操作">
-<meta name="twitter:description" content="Sqlite 周一学习总结SQLite 的安装
-一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
+<meta name="twitter:description" content="Sqlite 学习总结
+SQLite 的安装一般在 MAC 上面系统会自带 Sqlite 的数据库版本的。
 查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 mac 为例）：
 sqlite3
 小编的 MAC 上输出的内容是：
-1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;">
+1234567SQLite version 3.16.0 2016-11-04 19:09:39 //可以看到 SQLite 的版本信息和安装时间Enter &quot;.h">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
@@ -205,8 +211,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>Sqlite</code> 周一学习总结<br><code>SQLite</code> 的安装</p>
-<p>一般在 <code>MAC</code> 上面系统会自带 <code>Sqlite</code> 的数据库版本的。</p>
+        <p><code>Sqlite</code> 学习总结</p>
+<h3 id="SQLite-的安装"><a href="#SQLite-的安装" class="headerlink" title="SQLite 的安装"></a><code>SQLite</code> 的安装</h3><p>一般在 <code>MAC</code> 上面系统会自带 <code>Sqlite</code> 的数据库版本的。</p>
 <p>查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 <code>mac</code> 为例）：</p>
 <p><code>sqlite3</code></p>
 <p>小编的 <code>MAC</code> 上输出的内容是：</p>
@@ -220,14 +226,39 @@ var _hmt = _hmt || [];
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; .schema <span class="comment">//查询数据内容具体细节</span></span><br><span class="line"></span><br><span class="line">sqlite&gt; .schema</span><br><span class="line">CREATE TABLE ClassRoom(RoomID <span class="keyword">int</span> perimary key, StudentNumber <span class="keyword">int</span>, Grade <span class="keyword">int</span>);</span><br><span class="line">CREATE TABLE Person(StudentID <span class="keyword">int</span>, name <span class="keyword">char</span>, age <span class="keyword">int</span>, address <span class="keyword">char</span>, sex <span class="keyword">char</span>);</span><br><span class="line">sqlite&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 00.47.12.png"></p>
 <p>（2）表格删除</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table <span class="keyword">if</span> exist Person;</span><br></pre></td></tr></table></figure>
 <p>在开始时对数据表格进行删除，得到下面的结果：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 00.47.24.png"></p>
-<p>经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 <code>Table</code> 所放的数据库。</p>
-<p>（3）数据插入<br>（4）数据增加<br>（5）数据修改<br>（6）数据查找</p>
+<blockquote>
+<p>经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 <code>Table</code> 所放的数据库。而且在 <code>sqlite3</code> 使用过程中每个语句后面的结尾需要添加 <strong><code>;</code></strong> 来结尾。</p>
+</blockquote>
+<p>下面👇是使用终端对表格进行删除的正确操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d49a8edb2ff9f6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 09.38.41.png"></p>
+<p>（3）数据插入  </p>
+<p>对创建好的数据库 <code>Table</code>进行数据库的插入操作实现有两种：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一</span></span><br><span class="line">insert into table_name(colum1, colum2, ...) values (param1, param2, ...);</span><br><span class="line"><span class="comment">//方式二</span></span><br><span class="line">insert into table_name values(param1, param2, ...);</span><br></pre></td></tr></table></figure>
+<p><strong>具体实例如下：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0ee21d54775d5afa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 09.53.00.png"></p>
+<p>（4）数据增加<br>（5）数据修改<br>（6）数据查找  </p>
+<p>在数据查找过程中我们比较常用的查找方式是：</p>
+<ul>
+<li>查询所有数据</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取数据库中所有的数据</span></span><br><span class="line">select * from table_name;</span><br></pre></td></tr></table></figure>
+<p><strong>具体实例如下：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-a8d6824986b306b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 09.52.36.png"></p>
+<p>在数据显示的过程中可以使数据清楚的罗列出来，具体实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.header on </span><br><span class="line">.mode colum</span><br></pre></td></tr></table></figure>
+<p><strong>具体实例如下：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-82d28393caab51f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 09.56.02.png"></p>
+<ul>
+<li>按条件查询数据</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-e896caf5ebdd870a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 10.06.09.png"></p>
+<h3 id="SQLite-表达式"><a href="#SQLite-表达式" class="headerlink" title="SQLite 表达式"></a>SQLite 表达式</h3><p><img src="http://upload-images.jianshu.io/upload_images/1877765-b9d54e53707bdc24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-09 10.05.51.png"></p>
 <p><code>SQLite</code> 索引的实现</p>
 <p>版本提交时间：</p>
-<p>第一次提交：11/7/2017 00:45:30</p>
+<p>第一次提交：11/7/2017 00:45:30<br>第二次提交：11/10/2017 00:19:35</p>
 <p><a href="http://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="external">http://www.runoob.com/sqlite/sqlite-tutorial.html</a></p>
 
       

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-08T16:49:26.000Z</updated>
+  <updated>2017-11-09T16:19:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2017/11/07/SQLite%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2017/11/07/SQLite 基本操作/</id>
     <published>2017-11-06T16:49:29.000Z</published>
-    <updated>2017-11-08T16:49:26.000Z</updated>
+    <updated>2017-11-09T16:19:50.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 周一学习总结&lt;br&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/p&gt;
-&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 学习总结&lt;/p&gt;
+&lt;h3 id=&quot;SQLite-的安装&quot;&gt;&lt;a href=&quot;#SQLite-的安装&quot; class=&quot;headerlink&quot; title=&quot;SQLite 的安装&quot;&gt;&lt;/a&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/h3&gt;&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
 &lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 &lt;code&gt;mac&lt;/code&gt; 为例）：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;小编的 &lt;code&gt;MAC&lt;/code&gt; 上输出的内容是：&lt;/p&gt;
@@ -37,21 +37,46 @@
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema &lt;span class=&quot;comment&quot;&gt;//查询数据内容具体细节&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE ClassRoom(RoomID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; perimary key, StudentNumber &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, Grade &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE Person(StudentID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, name &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, age &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, address &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, sex &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.12.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;（2）表格删除&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;drop table &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; exist Person;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在开始时对数据表格进行删除，得到下面的结果：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.24.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 &lt;code&gt;Table&lt;/code&gt; 所放的数据库。&lt;/p&gt;
-&lt;p&gt;（3）数据插入&lt;br&gt;（4）数据增加&lt;br&gt;（5）数据修改&lt;br&gt;（6）数据查找&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 &lt;code&gt;Table&lt;/code&gt; 所放的数据库。而且在 &lt;code&gt;sqlite3&lt;/code&gt; 使用过程中每个语句后面的结尾需要添加 &lt;strong&gt;&lt;code&gt;;&lt;/code&gt;&lt;/strong&gt; 来结尾。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面👇是使用终端对表格进行删除的正确操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d49a8edb2ff9f6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.38.41.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;（3）数据插入  &lt;/p&gt;
+&lt;p&gt;对创建好的数据库 &lt;code&gt;Table&lt;/code&gt;进行数据库的插入操作实现有两种：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//方式一&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;insert into table_name(colum1, colum2, ...) values (param1, param2, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//方式二&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;insert into table_name values(param1, param2, ...);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0ee21d54775d5afa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.53.00.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;（4）数据增加&lt;br&gt;（5）数据修改&lt;br&gt;（6）数据查找  &lt;/p&gt;
+&lt;p&gt;在数据查找过程中我们比较常用的查找方式是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查询所有数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取数据库中所有的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;select * from table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-a8d6824986b306b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.52.36.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在数据显示的过程中可以使数据清楚的罗列出来，具体实现：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.header on &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.mode colum&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-82d28393caab51f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.56.02.png&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按条件查询数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-e896caf5ebdd870a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 10.06.09.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SQLite-表达式&quot;&gt;&lt;a href=&quot;#SQLite-表达式&quot; class=&quot;headerlink&quot; title=&quot;SQLite 表达式&quot;&gt;&lt;/a&gt;SQLite 表达式&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b9d54e53707bdc24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 10.05.51.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;SQLite&lt;/code&gt; 索引的实现&lt;/p&gt;
 &lt;p&gt;版本提交时间：&lt;/p&gt;
-&lt;p&gt;第一次提交：11/7/2017 00:45:30&lt;/p&gt;
+&lt;p&gt;第一次提交：11/7/2017 00:45:30&lt;br&gt;第二次提交：11/10/2017 00:19:35&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.runoob.com/sqlite/sqlite-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/sqlite/sqlite-tutorial.html&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 周一学习总结&lt;br&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/p&gt;
-&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
+      &lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 学习总结&lt;/p&gt;
+&lt;h3 id=&quot;SQLite-的安装&quot;&gt;&lt;a href=&quot;#SQLite-的安装&quot; class=&quot;headerlink&quot; title=&quot;SQLite 的安装&quot;&gt;&lt;/a&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/h3&gt;&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
 &lt;p&gt;查看本地的数据库版本号呢，可以在终端输入执行下面的语句（以 &lt;code&gt;mac&lt;/code&gt; 为例）：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;小编的 &lt;code&gt;MAC&lt;/code&gt; 上输出的内容是：&lt;/p&gt;
