@@ -168,6 +168,89 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS 设计模式-结构模式-外观模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/">iOS 设计模式-结构模式-外观模式</a>
+    </h1>
+  
+
+        
+        <a href="/2016/03/16/iOS 设计模式-结构模式-外观模式/" class="archive-article-date">
+  	<time datetime="2016-03-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本篇文章小编向大家讲述外观模式相关知识和实现方式，以及在我们开发过程中使用情况。</p>
+<p>外观模式：为子系统中的一组接口提供一个统一的入口。外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
+<p>在外观模式中有三个角色：外观角色(Facade) 和 子系统角色(SubSystem)。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>外观角色(Facade)</li>
+</ul>
+<p>客户端可以调用外观角色的方法，在外观角色中可以知道相关的一个或者多个子系统的功能和责任。在正常时，将所有从客户端发来的请求委派到相应的子系统去，传递给相应的子系统对象处理。</p>
+        
+          <a class="article-more-a" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS 内存缓存 磁盘缓存和文件储存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -795,88 +878,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/11/30/iOS 设计模式-创建型-抽象工厂模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-创建型-工厂方法模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/">iOS 设计模式-创建型-工厂方法模式</a>
-    </h1>
-  
-
-        
-        <a href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/" class="archive-article-date">
-  	<time datetime="2015-11-24T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。</p>
-<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="工厂方法模式介绍"><a href="#工厂方法模式介绍" class="headerlink" title="工厂方法模式介绍"></a>工厂方法模式介绍</h2><p>工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式(Virtual Constructor Pattern)或多态工厂模式(Polymorphic Factory Pattern)。</p>
-<blockquote>
-<p>工厂方法可以弥补在简单工厂方法在添加新的对象来对工厂类进行修改问题</p>
-</blockquote>
-<p>工厂方法模式中有四个角色：抽象产品(Product)、 具体产品(Concrete Product)、 抽象工厂(Factory) 和 具体工厂(Concrete Factory)。</p>
-        
-          <a class="article-more-a" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/">详细 >></a>
         </p>
       
 

@@ -6,17 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JackJin&#39;s 博客</title>
+  <title>SQLite 学习-基础知识 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+  <meta name="description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+数据库小编在这里提出一个问题：为什么要使用数据库？
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLite 学习-基础知识">
+<meta property="og:url" content="http://yoursite.com/2017/11/14/SQLite 学习-基本知识/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+数据库小编在这里提出一个问题：为什么要使用数据库？
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-14T15:44:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="SQLite 学习-基础知识">
+<meta name="twitter:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+数据库小编在这里提出一个问题：为什么要使用数据库？
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -166,282 +183,112 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-iOS 设计模式-创建型-工厂方法模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SQLite 学习-基本知识" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/">iOS 设计模式-创建型-工厂方法模式</a>
+    <h1 class="article-title" itemprop="name">
+      SQLite 学习-基础知识
     </h1>
   
 
         
-        <a href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/" class="archive-article-date">
-  	<time datetime="2015-11-24T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-24</time>
+        <a href="/2017/11/14/SQLite 学习-基本知识/" class="archive-article-date">
+  	<time datetime="2017-11-14T12:24:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>小编在简单工厂模式中提到过，我们在说工厂模式如果没有一些特质说明一般都是在说工厂方法模式。在本文小编将向大家讲述工厂方法模式特点和使用。</p>
-<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="工厂方法模式介绍"><a href="#工厂方法模式介绍" class="headerlink" title="工厂方法模式介绍"></a>工厂方法模式介绍</h2><p>工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式(Virtual Constructor Pattern)或多态工厂模式(Polymorphic Factory Pattern)。</p>
+        <p>几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>小编在这里提出一个问题：为什么要使用数据库？</p>
+<p>在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 <code>KILL</code> 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。</p>
+<p>小编这里就以 <code>SQLite</code> 来讲解相关数据基本原理和操作。</p>
+<h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2><p>首先要明白 <code>SQLite</code> 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 <code>API</code> 的调用就可以实现基本的操作。</p>
+<p>在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。</p>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>首先是数据库表创建、插入新的一行和删除：<code>CREATE</code>、<code>ALTER</code> 和 <code>DROP</code>。</p>
+<p>具体每一行的增删改查：<code>INSERT</code>、<code>DELETE</code>、<code>SELECT</code> 和 <code>UPDATE</code>。</p>
+<a id="more"></a>
+<h3 id="操作实例"><a href="#操作实例" class="headerlink" title="操作实例"></a>操作实例</h3><h4 id="1）数据表中列的相关操作和实例"><a href="#1）数据表中列的相关操作和实例" class="headerlink" title="1）数据表中列的相关操作和实例"></a>1）数据表中列的相关操作和实例</h4><p><strong>小编一下操作是在 <code>MAC</code> 上操作</strong></p>
+<p>在终端数据的创建：</p>
+<p><strong>(1)</strong>数据库创建</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建数据库 JackJin.db </span></span><br><span class="line">Sqlite3 JackJin.db</span><br></pre></td></tr></table></figure>
+<p><strong>(2)</strong>创建数据库表</p>
+<p>创建数据库的基本的语法是：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库表格创建的基本的语法</span></span><br><span class="line">CREATE TABLE table_name(column_one type, column_two type, ...);</span><br><span class="line"></span><br><span class="line"><span class="comment">//create table 表名(行名 当前行数据类型, ...);</span></span><br></pre></td></tr></table></figure>
+<p>小编以公司为例在终端操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 20.16.10.png"></p>
+<p><strong>小插曲</strong></p>
+<p><strong>(2.1)</strong>数据库表格查询</p>
+<p>数据库相关操作的语法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单表格查询 -- 只列出表格名称</span></span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line"><span class="comment">//详细表格查询 -- 列出表格名称和相关创建执行语句</span></span><br><span class="line">.schme</span><br></pre></td></tr></table></figure>
+<p>在终端的基本操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.27.54.png"></p>
+<p><strong>(3)</strong>对表现有的列操作</p>
+<p>现有表格中的列操作分为三种情况：新增列、删除已有的列和修改现有列的属性。</p>
+<p>操作的基本语法结构：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新增 基本的语法结构</span></span><br><span class="line">ALTER TABLE table_name ADD column <span class="keyword">char</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除 基本的语法结构</span></span><br><span class="line">ALTER TABLE table_name DROP COLUMN column;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改列字段的属性</span></span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name ALTER COLUMN column <span class="keyword">char</span>;</span><br></pre></td></tr></table></figure>
+<p>在终端的基本操作：</p>
+<p><strong>3.1</strong> 对数据表新增列</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.41.07.png"></p>
+<p><strong>3.2</strong> 对数据表删除列</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.51.55.png"></p>
+<p><strong>3.3</strong> 对数据修改相关列属性</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.55.28.png"></p>
 <blockquote>
-<p>工厂方法可以弥补在简单工厂方法在添加新的对象来对工厂类进行修改问题</p>
+<p>在上面的表格中可以看出在操作过程中 <strong>新增加的列成功</strong>， 但在实现数据表删除和修改列的相关信息中失败。 小编找了下资料：<code>Sqlite3</code> 值支持相关增加和重名民操作。 </p>
 </blockquote>
-<p>工厂方法模式中有四个角色：抽象产品(Product)、 具体产品(Concrete Product)、 抽象工厂(Factory) 和 具体工厂(Concrete Factory)。</p>
-        
-          <a class="article-more-a" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/24/iOS 设计模式-创建型-工厂方法模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-创建型-简单工厂模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/16/iOS 设计模式-创建型-简单工厂模式/">iOS 设计模式-创建型-简单工厂模式</a>
-    </h1>
-  
-
-        
-        <a href="/2015/11/16/iOS 设计模式-创建型-简单工厂模式/" class="archive-article-date">
-  	<time datetime="2015-11-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>小编在前面介绍过设计模式基本知识和设计模式基本准守原则，下面小编开始讲述在设计模式中创建型中最简单的一种模式：简单工厂模式。</p>
-<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="简单工厂模式介绍"><a href="#简单工厂模式介绍" class="headerlink" title="简单工厂模式介绍"></a>简单工厂模式介绍</h2><p>工厂模式是最常见的一类创建型设计模式。通常我们说工厂模式就是指工厂方法模式，此创建模式也是我们使用频率最高工厂模式。</p>
-<p>小编在此篇文章将要讲解时简单工厂模式，是工厂模式简单版本，在编码开发过程中使用频率相对来说比较高。而且其还有另外一种高级版本工厂模式 – 抽象工厂模式。简单工厂中有三个角色：工厂(Factory)、抽象产品类(Product)和具体产品类(Concert Product)。</p>
-        
-          <a class="article-more-a" href="/2015/11/16/iOS 设计模式-创建型-简单工厂模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/16/iOS 设计模式-创建型-简单工厂模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-设计模式原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/08/iOS 设计模式-设计模式原则/">iOS 设计模式-设计模式原则</a>
-    </h1>
-  
-
-        
-        <a href="/2015/11/08/iOS 设计模式-设计模式原则/" class="archive-article-date">
-  	<time datetime="2015-11-08T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在面向对象中我们在实现代码可维护性之余，还要考虑怎么提高整个代码可复用性。在面向对象设计中，可维护性的复用是以设计原则为基础的。每一个原则都蕴含一些面向对象设计的思想，可以从不同的角度提升一个软件结构的设计水平。</p>
-<p>这些设计原则如下：</p>
+<h4 id="2）数据表中行的相关操作和实例"><a href="#2）数据表中行的相关操作和实例" class="headerlink" title="2）数据表中行的相关操作和实例"></a>2）数据表中行的相关操作和实例</h4><p>在数据库中行的操作有增、删、改和查，四中基本操作的方式：</p>
+<p><strong>(1)</strong>插入数据</p>
+<p>在数据表插入数据两种方式:</p>
+<p><strong>1.1 数据表</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对现有表格插入数据</span></span><br><span class="line">INSERT INTO table_name VALUES (param_one, param_two, ...);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>这种方式是要对所有的参数进行数据表的插入！！！</strong></p>
+</blockquote>
+<p><strong>1.2 局部的参数选择插入</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现数据表数据的局部数据插入</span></span><br><span class="line">INSERT INTO table_name(column_one, column_two, ...) VALUES (param_one, param_two, ...);</span><br></pre></td></tr></table></figure>
+<p>终端的实例操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 22.29.39.png"></p>
+<p><strong>小插曲</strong></p>
+<p>由上面看出小编在查看数据输出进行相关格式化操作：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在输出时包括行头</span></span><br><span class="line">sqlite&gt; .header on</span><br><span class="line">sqlite&gt; .mode colum</span><br></pre></td></tr></table></figure>
+<p><strong>(2)</strong>删除数据</p>
+<p>删除数据也有两种操作方法：</p>
+<p><strong>2.1 删除数据按照条件</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库操作的基本语法 condition 是删除的条件</span></span><br><span class="line">DELETE FROM table_name WHERE condition;</span><br></pre></td></tr></table></figure>
+<p><strong>2.1 删除全部数据</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除数据库中的全部数据内容</span></span><br><span class="line">DELETE FROM table_name;</span><br></pre></td></tr></table></figure>
+<p>删除数据的实力操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.06.16.png"></p>
+<blockquote>
+<p>上面可以看出小编为了更好的展示数据 <code>DELETE</code> 效果就在原来的基础又增加一条数据，更好展示删除过程中效果。</p>
+</blockquote>
+<p><strong>(3)</strong>修改数据</p>
+<p>数据修改基本语法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据修改的基本语法类型 condation 是数据修改条件</span></span><br><span class="line">UPDATE table_name SET column_one = value1, column_two = value2, ... WHERE condation;</span><br></pre></td></tr></table></figure>
+<p>数据修改的实例操作：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.16.47.png"></p>
+<p><strong>(4)</strong>查询数据</p>
+<p>数据查询的基本操作基本分为两种：</p>
 <ul>
-<li>单一职责原则 (Single Responsibility Principle, SRP)</li>
-<li>开闭原则 (Open-Closed Principle, OCP)</li>
-<li>里氏代换原则 (Liskov Substitution Principle, LSP)</li>
-<li>依赖倒转原则 (Dependence Inversion Principle, DIP)</li>
-<li>接口隔离原则 (Interface Segregation Principle, ISP)</li>
-<li>合成复用原则 (Composite Reuse Principle, CRP)</li>
-<li>迪米特法则 (Law of Demeter, LoD)</li>
+<li>单个表格数据查询</li>
+<li>多个表格数据查询</li>
 </ul>
-        
-          <a class="article-more-a" href="/2015/11/08/iOS 设计模式-设计模式原则/#more">more >></a>
-        
-      
+<p><strong>4.1 单标数据查询</strong></p>
+<p>单标的数据查询过程中一般分为两种情况：<br>查询所有的数据和按条件数据查询。</p>
+<p><strong>a.</strong>查询所有的数据  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//**a.**查询所有的数据</span></span><br><span class="line"></span><br><span class="line">SELECT * FROM table_name;</span><br></pre></td></tr></table></figure>
+<p><strong>b.</strong>按条件查询数据  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//**b.**按条件查询数据 column1 是要查询列名 &amp;condation 是要查询的条件</span></span><br><span class="line"></span><br><span class="line">SELECT column1, column2, ... FROM table_name WHERE condation;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.31.54.png"></p>
+<p>目前小编对 <code>SQLite</code> 的基本操作博文到这里的，可以看出在多条件查询过程中操作失败的小案例。</p>
+<p>后面会整理数据之间比较复杂的关系操作。</p>
+<p>发布于：2017/11/14 23:34:40<br>地点：讯美科技广场 1 座 10 楼</p>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/08/iOS 设计模式-设计模式原则/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式开启" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/iOS 设计模式开启/">iOS 设计模式开启</a>
-    </h1>
-  
-
-        
-        <a href="/2015/11/06/iOS 设计模式开启/" class="archive-article-date">
-  	<time datetime="2015-11-06T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在公司跟着老大做项目，老大说如果想要很好的做 iOS 框架的开发就需要拥有一些设计模式方面的知识储备。对一些基本的原理的和相关实现就开始着手学习和做些比较来记录之所学的内容，毕竟好记性不如烂笔头。把刚刚学到的内容根据自己的理解记录下来，更加提高记忆和理解。</p>
-<p>设计模式之旅开始！！！</p>
-<h1 id="设计模式之初"><a href="#设计模式之初" class="headerlink" title="设计模式之初"></a>设计模式之初</h1><h2 id="设计模式简介"><a href="#设计模式简介" class="headerlink" title="设计模式简介"></a>设计模式简介</h2><p>学习某项技能需要需要这门技能所具备的属性，可以完成什么样的工作，然后针对那些问题该需要什么样知识。</p>
-        
-          <a class="article-more-a" href="/2015/11/06/iOS 设计模式开启/#more">more >></a>
-        
       
 
       
@@ -454,7 +301,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
         		</li>
       		
 		</ul>
@@ -466,7 +313,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -474,446 +321,92 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/06/iOS 设计模式开启/">详细 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/14/SQLite 学习-基本知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/07/SQLite 基本操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQLite 数据库基本操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
+
+
+
+  
+  
+  
+
+  
+
+  
 
 
 
 <!-- 目录内容 -->
 
 <!-- 目录内容结束 -->
-
-  
-    <article id="post-block，注册监听，委托协议和KVO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/block，注册监听，委托协议和KVO/">block，注册监听，委托协议和KVO</a>
-    </h1>
-  
-
-        
-        <a href="/2015/10/29/block，注册监听，委托协议和KVO/" class="archive-article-date">
-  	<time datetime="2015-10-29T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>iOS</code> 中关于信息传递过程中经常会使用<code>block</code>，委托代理，<code>NSNotification</code>，<code>KVO</code> 进行调用，但是查找资料后有些资料不是很全。</p>
-<h2 id="四者总体比较然后进行一一详解进行讲解："><a href="#四者总体比较然后进行一一详解进行讲解：" class="headerlink" title="四者总体比较然后进行一一详解进行讲解："></a>四者总体比较然后进行一一详解进行讲解：</h2><ul>
-<li><code>block</code>：</li>
-</ul>
-<p>一对一进行通信，比起其他三者更加简洁，但是事件比较多时可以使用<code>delegate</code>。</p>
-<ul>
-<li>委托代理：  </li>
-</ul>
-<p>和<code>block</code>一样是一对一，我们使用时要先进行协议方法然后实现协议代理，如果需要通信就需要实现代理。</p>
-<ul>
-<li><code>NSNotification</code>：</li>
-</ul>
-<p>在进行注册监听时，可以进行一对多的情况，一个进行注册可以多种情况下进行监听。</p>
-<ul>
-<li><code>KVO</code>：就是我们所说的键值监听模式，其主要是在KVC基础上完后才能。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2015/10/29/block，注册监听，委托协议和KVO/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/10/29/block，注册监听，委托协议和KVO/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-IOS的永久话储存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/IOS的永久话储存/">iOS的永久话储存</a>
-    </h1>
-  
-
-        
-        <a href="/2015/10/24/IOS的永久话储存/" class="archive-article-date">
-  	<time datetime="2015-10-24T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>沙盒：IOS应用中每个应用均有自己沙盒，用来储存APP自己的数据，每个应用的沙盒均是应用特有的不能交叉访问。</p>
-<p>沙盒中有三个文件夹：</p>
-<ul>
-<li>document</li>
-<li>library</li>
-<li>temp</li>
-</ul>
-<p>1) document：保存应用运行时生成重要的数据，Itunes也会同步到进行备份数据。一般储存比较重要数据（数据使用手机连接mac可以在itunes中进行查看）</p>
-        
-          <a class="article-more-a" href="/2015/10/24/IOS的永久话储存/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/10/24/IOS的永久话储存/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-两周感悟~广州" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/15/两周感悟~广州/">广州~两周感悟</a>
-    </h1>
-  
-
-        
-        <a href="/2015/10/15/两周感悟~广州/" class="archive-article-date">
-  	<time datetime="2015-10-15T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从汕大来到广州，目前住在棠下村和一个师兄一起住，打算过段时间出去找房子~搬家😉</p>
-<hr>
-<p>离开汕大本来有些感伤，但是来到这个自己心中有所期望的城市又倍感高兴，因为可以随时去看想看的</p>
-        
-          <a class="article-more-a" href="/2015/10/15/两周感悟~广州/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/10/15/两周感悟~广州/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-IOS整体框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/07/IOS整体框架/">iOS 整体框架</a>
-    </h1>
-  
-
-        
-        <a href="/2015/09/07/IOS整体框架/" class="archive-article-date">
-  	<time datetime="2015-09-07T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。</p>
-<p>我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
-<p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101">官网地址</a>）：</p>
-        
-          <a class="article-more-a" href="/2015/09/07/IOS整体框架/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/07/IOS整体框架/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS APP 上线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/23/iOS APP 上线/">iOS APP 上线</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/23/iOS APP 上线/" class="archive-article-date">
-  	<time datetime="2015-08-23T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在应用开发完之后，开发者需要将自己应用上传到应用商店供其他用户下载使用。在应用上传之前，你需要有一个开发者账号，开发者账号每年需要99美刀。在拥有了开发者账号之后，还需要制作相关证书给应用签名。签完名之后就可以在itunes connect后台创建自己的应用并上传自己应用。审核完之后，便可以自动或手动发布。</p>
-<h2 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h2><ul>
-<li><p>1、创建证书请求文件。<br>  首先打开应用程序-&gt;实用工具-&gt;钥匙串访问，左上角钥匙串访问-&gt;证书助理中，选择”从证书颁发机构求证书”，如下图：</p>
-        
-          <a class="article-more-a" href="/2015/08/23/iOS APP 上线/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/23/iOS APP 上线/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -934,8 +427,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

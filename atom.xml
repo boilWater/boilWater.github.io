@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-12T16:41:44.000Z</updated>
+  <updated>2017-11-14T15:44:17.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,120 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQLite 学习-基础知识</title>
+    <link href="http://yoursite.com/2017/11/14/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2017/11/14/SQLite 学习-基本知识/</id>
+    <published>2017-11-14T12:24:13.000Z</published>
+    <updated>2017-11-14T15:44:17.000Z</updated>
+    
+    <content type="html">&lt;p&gt;几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。&lt;/p&gt;
+&lt;h1 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;数据库&lt;/h1&gt;&lt;p&gt;小编在这里提出一个问题：为什么要使用数据库？&lt;/p&gt;
+&lt;p&gt;在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 &lt;code&gt;KILL&lt;/code&gt; 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。&lt;/p&gt;
+&lt;p&gt;小编这里就以 &lt;code&gt;SQLite&lt;/code&gt; 来讲解相关数据基本原理和操作。&lt;/p&gt;
+&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;&lt;p&gt;首先要明白 &lt;code&gt;SQLite&lt;/code&gt; 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 &lt;code&gt;API&lt;/code&gt; 的调用就可以实现基本的操作。&lt;/p&gt;
+&lt;p&gt;在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。&lt;/p&gt;
+&lt;h3 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h3&gt;&lt;p&gt;首先是数据库表创建、插入新的一行和删除：&lt;code&gt;CREATE&lt;/code&gt;、&lt;code&gt;ALTER&lt;/code&gt; 和 &lt;code&gt;DROP&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;具体每一行的增删改查：&lt;code&gt;INSERT&lt;/code&gt;、&lt;code&gt;DELETE&lt;/code&gt;、&lt;code&gt;SELECT&lt;/code&gt; 和 &lt;code&gt;UPDATE&lt;/code&gt;。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;操作实例&quot;&gt;&lt;a href=&quot;#操作实例&quot; class=&quot;headerlink&quot; title=&quot;操作实例&quot;&gt;&lt;/a&gt;操作实例&lt;/h3&gt;&lt;h4 id=&quot;1）数据表中列的相关操作和实例&quot;&gt;&lt;a href=&quot;#1）数据表中列的相关操作和实例&quot; class=&quot;headerlink&quot; title=&quot;1）数据表中列的相关操作和实例&quot;&gt;&lt;/a&gt;1）数据表中列的相关操作和实例&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;小编一下操作是在 &lt;code&gt;MAC&lt;/code&gt; 上操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在终端数据的创建：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt;数据库创建&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建数据库 JackJin.db &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Sqlite3 JackJin.db&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt;创建数据库表&lt;/p&gt;
+&lt;p&gt;创建数据库的基本的语法是：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//数据库表格创建的基本的语法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE table_name(column_one type, column_two type, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//create table 表名(行名 当前行数据类型, ...);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;小编以公司为例在终端操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 20.16.10.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小插曲&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2.1)&lt;/strong&gt;数据库表格查询&lt;/p&gt;
+&lt;p&gt;数据库相关操作的语法：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//简单表格查询 -- 只列出表格名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.tables&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//详细表格查询 -- 列出表格名称和相关创建执行语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.schme&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在终端的基本操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.27.54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(3)&lt;/strong&gt;对表现有的列操作&lt;/p&gt;
+&lt;p&gt;现有表格中的列操作分为三种情况：新增列、删除已有的列和修改现有列的属性。&lt;/p&gt;
+&lt;p&gt;操作的基本语法结构：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//新增 基本的语法结构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name ADD column &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//删除 基本的语法结构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name DROP COLUMN column;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//修改列字段的属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name ALTER COLUMN column &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在终端的基本操作：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.1&lt;/strong&gt; 对数据表新增列&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.41.07.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.2&lt;/strong&gt; 对数据表删除列&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.51.55.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.3&lt;/strong&gt; 对数据修改相关列属性&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.55.28.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在上面的表格中可以看出在操作过程中 &lt;strong&gt;新增加的列成功&lt;/strong&gt;， 但在实现数据表删除和修改列的相关信息中失败。 小编找了下资料：&lt;code&gt;Sqlite3&lt;/code&gt; 值支持相关增加和重名民操作。 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;2）数据表中行的相关操作和实例&quot;&gt;&lt;a href=&quot;#2）数据表中行的相关操作和实例&quot; class=&quot;headerlink&quot; title=&quot;2）数据表中行的相关操作和实例&quot;&gt;&lt;/a&gt;2）数据表中行的相关操作和实例&lt;/h4&gt;&lt;p&gt;在数据库中行的操作有增、删、改和查，四中基本操作的方式：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt;插入数据&lt;/p&gt;
+&lt;p&gt;在数据表插入数据两种方式:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.1 数据表&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//对现有表格插入数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INSERT INTO table_name VALUES (param_one, param_two, ...);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;这种方式是要对所有的参数进行数据表的插入！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1.2 局部的参数选择插入&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//实现数据表数据的局部数据插入&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INSERT INTO table_name(column_one, column_two, ...) VALUES (param_one, param_two, ...);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;终端的实例操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 22.29.39.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小插曲&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由上面看出小编在查看数据输出进行相关格式化操作：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//在输出时包括行头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .header on&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .mode colum&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt;删除数据&lt;/p&gt;
+&lt;p&gt;删除数据也有两种操作方法：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.1 删除数据按照条件&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//数据库操作的基本语法 condition 是删除的条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DELETE FROM table_name WHERE condition;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;2.1 删除全部数据&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//删除数据库中的全部数据内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DELETE FROM table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;删除数据的实力操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.06.16.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面可以看出小编为了更好的展示数据 &lt;code&gt;DELETE&lt;/code&gt; 效果就在原来的基础又增加一条数据，更好展示删除过程中效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;(3)&lt;/strong&gt;修改数据&lt;/p&gt;
+&lt;p&gt;数据修改基本语法：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//数据修改的基本语法类型 condation 是数据修改条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UPDATE table_name SET column_one = value1, column_two = value2, ... WHERE condation;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;数据修改的实例操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.16.47.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(4)&lt;/strong&gt;查询数据&lt;/p&gt;
+&lt;p&gt;数据查询的基本操作基本分为两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单个表格数据查询&lt;/li&gt;
+&lt;li&gt;多个表格数据查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;4.1 单标数据查询&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;单标的数据查询过程中一般分为两种情况：&lt;br&gt;查询所有的数据和按条件数据查询。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;a.&lt;/strong&gt;查询所有的数据  &lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//**a.**查询所有的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;b.&lt;/strong&gt;按条件查询数据  &lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//**b.**按条件查询数据 column1 是要查询列名 &amp;amp;condation 是要查询的条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column1, column2, ... FROM table_name WHERE condation;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.31.54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;目前小编对 &lt;code&gt;SQLite&lt;/code&gt; 的基本操作博文到这里的，可以看出在多条件查询过程中操作失败的小案例。&lt;/p&gt;
+&lt;p&gt;后面会整理数据之间比较复杂的关系操作。&lt;/p&gt;
+&lt;p&gt;发布于：2017/11/14 23:34:40&lt;br&gt;地点：讯美科技广场 1 座 10 楼&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。&lt;/p&gt;
+&lt;h1 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;数据库&lt;/h1&gt;&lt;p&gt;小编在这里提出一个问题：为什么要使用数据库？&lt;/p&gt;
+&lt;p&gt;在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 &lt;code&gt;KILL&lt;/code&gt; 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。&lt;/p&gt;
+&lt;p&gt;小编这里就以 &lt;code&gt;SQLite&lt;/code&gt; 来讲解相关数据基本原理和操作。&lt;/p&gt;
+&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;&lt;p&gt;首先要明白 &lt;code&gt;SQLite&lt;/code&gt; 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 &lt;code&gt;API&lt;/code&gt; 的调用就可以实现基本的操作。&lt;/p&gt;
+&lt;p&gt;在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。&lt;/p&gt;
+&lt;h3 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h3&gt;&lt;p&gt;首先是数据库表创建、插入新的一行和删除：&lt;code&gt;CREATE&lt;/code&gt;、&lt;code&gt;ALTER&lt;/code&gt; 和 &lt;code&gt;DROP&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;具体每一行的增删改查：&lt;code&gt;INSERT&lt;/code&gt;、&lt;code&gt;DELETE&lt;/code&gt;、&lt;code&gt;SELECT&lt;/code&gt; 和 &lt;code&gt;UPDATE&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="SQLite" scheme="http://yoursite.com/tags/SQLite/"/>
+    
+  </entry>
   
   <entry>
     <title>SQLite 数据库基本操作</title>
@@ -1791,64 +1905,6 @@
     
     
       <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fastlane 使用说明</title>
-    <link href="http://yoursite.com/2016/04/28/Fastlane%E8%AE%B2%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/04/28/Fastlane讲解/</id>
-    <published>2016-04-28T09:42:32.000Z</published>
-    <updated>2017-09-29T03:19:25.000Z</updated>
-    
-    <content type="html">&lt;p&gt;那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
-&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href=&quot;https://github.com/fastlane/fastlane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;fastlane-安装&quot;&gt;&lt;a href=&quot;#fastlane-安装&quot; class=&quot;headerlink&quot; title=&quot;fastlane 安装&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt; 安装&lt;/h3&gt;&lt;p&gt;&lt;code&gt;fastlane&lt;/code&gt; 是基于&lt;code&gt;Ruby&lt;/code&gt;的开发脚本集合有助于我们在&lt;code&gt;iOS&lt;/code&gt;开发过程中达到简便的开发。如果你在自己&lt;code&gt;MAC&lt;/code&gt;上已经安装&lt;code&gt;Ruby&lt;/code&gt;及其环境，只需要执行下列安装就可以实现&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo gem install fastlane --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;确定自己安装的是最新版本的&lt;code&gt;Xcode&lt;/code&gt;:&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Xcode-select --install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果在启动&lt;code&gt;fastlane&lt;/code&gt;比较慢的情况可以执行:&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gem cleanup&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;a href=&quot;#fastlane使用具体方法和具体功能&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用具体方法和具体功能&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用具体方法和具体功能&lt;/h3&gt;&lt;p&gt;了解具体使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;deliver&lt;/code&gt;：上传屏幕截图、二进制程序数据和应用程序到&lt;code&gt;AppStore&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;snapshot&lt;/code&gt;：自动截取你的程序在每个设备上的图片&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;frameit&lt;/code&gt;：应用截屏外添加设备框架&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pem&lt;/code&gt;：可以自动化地生成和更新应用推送通知描述文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sigh&lt;/code&gt;：生成下载开发商店的配置文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pilot&lt;/code&gt;：最好的在终端管理测试和建立的文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boarding&lt;/code&gt;：很容易的方式邀请你测试beta测试&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gyp&lt;/code&gt;：建立新的发布的版本&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;match&lt;/code&gt;：使用&lt;code&gt;git&lt;/code&gt;同步你成员间的开发者证书和文件配置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;fastlane举例：&quot;&gt;&lt;a href=&quot;#fastlane举例：&quot; class=&quot;headerlink&quot; title=&quot;fastlane举例：&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;举例：&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;deliver&lt;/code&gt;自动打包我们&lt;code&gt;App&lt;/code&gt;提交到&lt;code&gt;AppStore&lt;/code&gt;，官方使用点击&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/deliver&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;br&gt;打开终端进行我们项目所在的&lt;code&gt;floder&lt;/code&gt;，我的项目是在桌面上名称是&lt;code&gt;hello&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/desktop/hello&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后输入：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deliver init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后输入我们的&lt;code&gt;Apple ID Username&lt;/code&gt;:&lt;br&gt;再输入我们的&lt;code&gt;Password&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;fastlane使用场景&quot;&gt;&lt;a href=&quot;#fastlane使用场景&quot; class=&quot;headerlink&quot; title=&quot;fastlane使用场景&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;使用场景&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;在我们开发后每次提交时执行的测试（有&lt;code&gt;team&lt;/code&gt;的单元测试和团队开发的集成测试）&lt;code&gt;pilot&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;构建我们使用的Bate版本时&lt;code&gt;boarding&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;开发好项目需要提给界面截图时&lt;code&gt;snapshot&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;构建并分发至应用商店（这包括更新配置文件，创建新的屏幕截图，上传应用至应用商店并提交应用）&lt;code&gt;deliver&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;fastlane典型的开发流程&quot;&gt;&lt;a href=&quot;#fastlane典型的开发流程&quot; class=&quot;headerlink&quot; title=&quot;fastlane典型的开发流程&quot;&gt;&lt;/a&gt;&lt;code&gt;fastlane&lt;/code&gt;典型的开发流程&lt;/h3&gt;&lt;p&gt;此开发流程也是我们团队开发过程中基本开发顺序&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lane :appstore &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  increment_build_number&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  cocoapods&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  xctool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  snapshot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sigh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  deliver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  frameit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sh &lt;span class=&quot;string&quot;&gt;&quot;./customScript.sh&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  slack&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;code&gt;cocoaPods&lt;/code&gt;帮助我们管理三方开源库，&lt;code&gt;fastlane&lt;/code&gt;可以在我们开发过程中简化我们开发过程以及简化我们发布流程。如果要提高自己&lt;code&gt;iOS&lt;/code&gt;方面能力需要我们进一步深入研究。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;那么&lt;code&gt;fastlane&lt;/code&gt;就会是我们开发过程中的长矛（帮助我们在开发过程中提交测试、快速发布）。&lt;/p&gt;
-&lt;p&gt;想知道&lt;code&gt;fastlane&lt;/code&gt;了解点击&lt;a href=&quot;https://fastlane.tools&quot;&gt;这里&lt;br&gt;&lt;/a&gt;获取fastlan的github下载点击&lt;a href =&quot;https://github.com/fastlane/fastlane&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
   </entry>
   

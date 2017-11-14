@@ -168,6 +168,90 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SQLite 学习-基本知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/SQLite 学习-基本知识/">SQLite 学习-基础知识</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/14/SQLite 学习-基本知识/" class="archive-article-date">
+  	<time datetime="2017-11-14T12:24:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>小编在这里提出一个问题：为什么要使用数据库？</p>
+<p>在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 <code>KILL</code> 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。</p>
+<p>小编这里就以 <code>SQLite</code> 来讲解相关数据基本原理和操作。</p>
+<h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2><p>首先要明白 <code>SQLite</code> 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 <code>API</code> 的调用就可以实现基本的操作。</p>
+<p>在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。</p>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>首先是数据库表创建、插入新的一行和删除：<code>CREATE</code>、<code>ALTER</code> 和 <code>DROP</code>。</p>
+<p>具体每一行的增删改查：<code>INSERT</code>、<code>DELETE</code>、<code>SELECT</code> 和 <code>UPDATE</code>。</p>
+        
+          <a class="article-more-a" href="/2017/11/14/SQLite 学习-基本知识/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/14/SQLite 学习-基本知识/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-SQLite 基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -792,85 +876,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/01/25/iOS Categroy  & Extension(类目和类拓展)/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 复制理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/iOS 复制理解/">iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/20/iOS 复制理解/" class="archive-article-date">
-  	<time datetime="2017-01-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。</p>
-<p>下面展示浅层 Copy 和 深层 Copy 展示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 深层复制和浅层复制.png"></p>
-        
-          <a class="article-more-a" href="/2017/01/20/iOS 复制理解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/20/iOS 复制理解/">详细 >></a>
         </p>
       
 
