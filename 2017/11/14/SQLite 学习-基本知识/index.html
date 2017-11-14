@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SQLite 学习-基础知识 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+  <meta name="description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
 数据库小编在这里提出一个问题：为什么要使用数据库？
-在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLite 学习-基础知识">
 <meta property="og:url" content="http://yoursite.com/2017/11/14/SQLite 学习-基本知识/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+<meta property="og:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
 数据库小编在这里提出一个问题：为什么要使用数据库？
-在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -27,12 +27,12 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-14T15:44:17.000Z">
+<meta property="og:updated_time" content="2017-11-14T17:29:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 学习-基础知识">
-<meta name="twitter:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
+<meta name="twitter:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
 数据库小编在这里提出一个问题：为什么要使用数据库？
-在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相">
+在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>几天得闲，上周一想把数据库相关知识整理一份当做在看到某人面试的数据库的说后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。</p>
+        <p>几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。</p>
 <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>小编在这里提出一个问题：为什么要使用数据库？</p>
 <p>在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 <code>KILL</code> 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。</p>
 <p>小编这里就以 <code>SQLite</code> 来讲解相关数据基本原理和操作。</p>
