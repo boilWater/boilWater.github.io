@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-14T17:29:48.000Z</updated>
+  <updated>2017-11-18T16:12:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQLite 学习-多表查询、运算和表达式</title>
+    <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
+    <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
+    <published>2017-11-18T15:57:40.000Z</published>
+    <updated>2017-11-18T16:12:35.000Z</updated>
+    
+    <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
+&lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多表查询&lt;/li&gt;
+&lt;li&gt;运算符&lt;/li&gt;
+&lt;li&gt;表达式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;多表查询&quot;&gt;&lt;a href=&quot;#多表查询&quot; class=&quot;headerlink&quot; title=&quot;多表查询&quot;&gt;&lt;/a&gt;多表查询&lt;/h2&gt;&lt;p&gt;接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。&lt;/p&gt;
+&lt;p&gt;发布时间：11/19/2016 00:12:12&lt;br&gt;不行扛不住了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
+&lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多表查询&lt;/
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="SQLite" scheme="http://yoursite.com/tags/SQLite/"/>
+    
+  </entry>
   
   <entry>
     <title>SQLite 学习-基础知识</title>
@@ -1821,90 +1855,6 @@
     
     
       <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cocoaPods使用和静态库的建立</title>
-    <link href="http://yoursite.com/2016/05/01/cocoaPods%E4%BD%BF%E7%94%A8%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%BB%BA%E7%AB%8B/"/>
-    <id>http://yoursite.com/2016/05/01/cocoaPods使用和静态库的建立/</id>
-    <published>2016-05-01T09:42:32.000Z</published>
-    <updated>2017-08-25T16:46:12.000Z</updated>
-    
-    <content type="html">&lt;p&gt;cocoaPods个人介绍：&lt;/p&gt;
-&lt;p&gt;是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
-&lt;p&gt;一般我们复制三方框架到项目有两种方式：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;直接进行复制&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;cocoaPods&lt;/code&gt;来进行管理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;本人建议可以学习使用&lt;code&gt;cocoaPods&lt;/code&gt;这样更加方便，下面讲直接复制问题&lt;/p&gt;
-&lt;p&gt;但是直接复制存在问题：&lt;/p&gt;
-&lt;p&gt;1) 库更新存在问题，如果一个库引用另一个库，需要对于库全部更新&lt;/p&gt;
-&lt;p&gt;2) 对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用 &lt;code&gt;SDWebImage&lt;/code&gt; 时对图片进行截图得到圆形图片，如果进行更新就有问题&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;3) 比较难判断在APP引进库的具体版本，除非在以前APP中进行记录&lt;/p&gt;
-&lt;p&gt;4) 没有中心管理，很难对于所有的第三方库进行统一管理&lt;br&gt;&lt;code&gt;cocoaPods&lt;/code&gt;（&lt;code&gt;cocoaPods&lt;/code&gt;链接）对于上面问题有很好处理：可以解决库之间存在依赖关系，而且帮忙发现是新的库，以最简单方式为我们码农配置环境 &lt;/p&gt;
-&lt;p&gt;废话不多说，下面开始在mac中配置安装&lt;code&gt;cocoaPods&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;如果系统是&lt;code&gt;10.7&lt;/code&gt;之后系统中带有配置&lt;code&gt;Ruby&lt;/code&gt;环境，只需安装&lt;code&gt;cocoaPods&lt;/code&gt;即可，如果不是可以搜索下Ruby环境安装&lt;/p&gt;
-&lt;p&gt;方法一：&lt;/p&gt;
-&lt;p&gt; 1)打开终端：&lt;code&gt;control&lt;/code&gt;+空格键，然后搜索“终端”&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo gem install cocoaPods&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;(2)然后在终端中进行设置&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ pod setup --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果在执行一时比较慢我们就需要执行其他安装，通过只用淘宝的Ruby进行访问&lt;code&gt;cocoaPod&lt;/code&gt;，&lt;/p&gt;
-&lt;p&gt;方法二：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem sources --remove https:&lt;span class=&quot;comment&quot;&gt;//rubygems.org/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;//等有反应之后再敲入以下命令&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem sources -a http:&lt;span class=&quot;comment&quot;&gt;//ruby.taobao.org/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果要查看是否是&lt;code&gt;taobao&lt;/code&gt;镜像&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem source -l&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果显示一下情况&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;*** CURRENT SOURCES ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http:&lt;span class=&quot;comment&quot;&gt;//ruby.taobao.org/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;最后执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo gem install cocoaPods&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;经过上述爽过之后，我们就成功安装&lt;code&gt;cocosPods&lt;/code&gt;，接下来我们来看下怎么使用&lt;/p&gt;
-&lt;p&gt;（1）使用&lt;code&gt;cocoaPods&lt;/code&gt;查看相关框架信息，查看&lt;code&gt;AFNetWorking&lt;/code&gt;信息&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ pod search AFNetWorking&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;下面在项目中使用&lt;code&gt;cocoaPods&lt;/code&gt;加入第三方框架&lt;/p&gt;
-&lt;p&gt;（1）打开终端，进行项目文件的根目录然后使用vim创建&lt;code&gt;podFile&lt;/code&gt;文件：例如我们项目放在 文档/项目名&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$cd /users/用户名/documents/项目名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$vim podFile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;（2）再输如框中输入加入平台和相关框架以及框架版本号（如果出现不能输入就要按键a后者是i，进行文本编辑）&lt;/p&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;paltform : iOS, &#39;7.0&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &quot;AFNetworking&quot;, &quot;~&amp;gt; 2.0&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;（3）输入上述文本，后保存并退出编辑按键esc进行退出，输入下面文件&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;:wq&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;（4）最后下载&lt;code&gt;AFNetWorking&lt;/code&gt;文件&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$pod install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;大功告成，这样就可以在我们文件中生成一个&lt;code&gt;pods&lt;/code&gt;文件，打开项目就可以看到下面除啦我们项目外还多余一个pods文件&lt;/p&gt;
-&lt;p&gt;注：可以在文件中放置多个框架，只要在上面（2）中&lt;code&gt;pod&lt;/code&gt;“框架名”, &lt;code&gt;&amp;quot;~&amp;gt;3.0&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;cocosPods&lt;/code&gt;后续产生问题解析：&lt;/p&gt;
-&lt;p&gt;如果我们从&lt;code&gt;github&lt;/code&gt;上下载开源项目有的项目时需要我们重新更新配置开源框架；&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/desktop/项目名                  &lt;span class=&quot;comment&quot;&gt;//我的项目放在桌面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果出现&lt;/p&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[!] The dependency `Masonry (~&amp;gt; 0.6.2)` is not used in any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The dependency `SDWebImage (~&amp;gt; 3.7)` is not used in any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The dependency `GPUImage` is not used in any concrete target.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;打开配置文件Podfile文件修改配置文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;target &#39;BeautifyFaceDemo&#39; do&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &#39;Masonry&#39;, &#39;~&amp;gt; 0.6.2&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &#39;SDWebImage&#39;, &#39;~&amp;gt;3.7&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pod &#39;GPUImage&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;既可以解决生面的问题。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;cocoaPods个人介绍：&lt;/p&gt;
-&lt;p&gt;是基于Ruby的基础之上的，cocoaPods个人作用是可以帮助苦逼的码农对第三方库和框架进行管理，让码农专注于自己APP方面优化&lt;/p&gt;
-&lt;p&gt;一般我们复制三方框架到项目有两种方式：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;直接进行复制&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;cocoaPods&lt;/code&gt;来进行管理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;本人建议可以学习使用&lt;code&gt;cocoaPods&lt;/code&gt;这样更加方便，下面讲直接复制问题&lt;/p&gt;
-&lt;p&gt;但是直接复制存在问题：&lt;/p&gt;
-&lt;p&gt;1) 库更新存在问题，如果一个库引用另一个库，需要对于库全部更新&lt;/p&gt;
-&lt;p&gt;2) 对于我们引用的第三方库进行修改，在做更新比较困难。例如：我在使用 &lt;code&gt;SDWebImage&lt;/code&gt; 时对图片进行截图得到圆形图片，如果进行更新就有问题&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="IOS" scheme="http://yoursite.com/categories/IOS/"/>
-    
-    
-      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
     
   </entry>
   
