@@ -16,7 +16,8 @@
 表达式
 
 多表查询接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。
-发布时间：11/19/2016 00:12:12不行扛不住了。">
+在多表查询过程中需要用到的关键词是: join，而且在多表连接查询过程中有三种情况。
+分别是：交叉连接、内">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLite 学习-多表查询、运算和表达式">
 <meta property="og:url" content="http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/index.html">
@@ -29,8 +30,13 @@
 表达式
 
 多表查询接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。
-发布时间：11/19/2016 00:12:12不行扛不住了。">
-<meta property="og:updated_time" content="2017-11-18T16:12:35.000Z">
+在多表查询过程中需要用到的关键词是: join，而且在多表连接查询过程中有三种情况。
+分别是：交叉连接、内">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-977b3c3a4f9bd195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-19T16:35:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 学习-多表查询、运算和表达式">
 <meta name="twitter:description" content="前篇博文小编写了基本的 SQLite 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。
@@ -41,7 +47,9 @@
 表达式
 
 多表查询接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。
-发布时间：11/19/2016 00:12:12不行扛不住了。">
+在多表查询过程中需要用到的关键词是: join，而且在多表连接查询过程中有三种情况。
+分别是：交叉连接、内">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-977b3c3a4f9bd195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -219,7 +227,49 @@ var _hmt = _hmt || [];
 <li>表达式</li>
 </ul>
 <h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><p>接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。</p>
-<p>发布时间：11/19/2016 00:12:12<br>不行扛不住了。</p>
+<p>在多表查询过程中需要用到的关键词是: <code>join</code>，而且在多表连接查询过程中有三种情况。</p>
+<p>分别是：交叉连接、内连接和外连接。</p>
+<p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-977b3c3a4f9bd195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-19 23.10.12.png"></p>
+<h3 id="交叉连接-CROSS-JION"><a href="#交叉连接-CROSS-JION" class="headerlink" title="交叉连接(CROSS JION)"></a>交叉连接(CROSS JION)</h3><p><strong>（1）</strong>交叉连接特点：</p>
+<blockquote>
+<p>在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 <strong>a * b</strong> 行内容。</p>
+</blockquote>
+<p><strong>（2）</strong>使用格式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;</span><br></pre></td></tr></table></figure>
+<p><strong>（3）</strong>操作实例：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-19 23.43.21.png"></p>
+<h3 id="内连接-INNER-JION"><a href="#内连接-INNER-JION" class="headerlink" title="内连接(INNER JION)"></a>内连接(INNER JION)</h3><p><strong>（1）</strong>内连接特点：</p>
+<blockquote>
+<p>在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。<strong>也是数据库多表查询的默认实现方式。</strong></p>
+</blockquote>
+<p><strong>（2）</strong>使用格式：</p>
+<p>在多表查询中有三种情况：</p>
+<ul>
+<li>INNER JION : 默认链接方式， <code>INNER</code> 可以省略</li>
+<li>JION … USING : 解决较长条件，保持节俭来声明内连接方式</li>
+<li>NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等</li>
+</ul>
+<p><strong>2.1</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName ON Condition_Expression;</span><br></pre></td></tr></table></figure>
+<p><strong>（3）</strong>操作实例：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 00.10.57.png"></p>
+<h3 id="外连接-OUTER-JOIN"><a href="#外连接-OUTER-JOIN" class="headerlink" title="外连接(OUTER JOIN)"></a>外连接(OUTER JOIN)</h3><p>在外连接多表查询中有三种情况：</p>
+<p><strong>（1）</strong>外连接特点：</p>
+<blockquote>
+<p> 外连接可以说是内连接的衍生，在此基础上可以实现在条件没有符合的基础上也会把数据列举出来。而且外连接分为：LEFT、RIGHT 和 FULL 连接三种情况，<strong><code>SQLite</code>仅仅支持 <code>LEFT</code> 链接方式</strong>。</p>
+</blockquote>
+<p><strong>（2）</strong>使用格式：</p>
+<ul>
+<li>INNER JION : 默认链接方式， <code>INNER</code> 可以省略</li>
+<li>JION … USING : 解决较长条件，保持节俭来声明内连接方式</li>
+<li>NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等</li>
+</ul>
+<p><strong>2.1</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one LEFT OUTER JION tableName ON Condition_Expression;</span><br></pre></td></tr></table></figure>
+<p><strong>（3）</strong>操作实例：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 00.23.21.png"></p>
+<p>发布时间：11/19/2017 00:12:12<br>版本第一次修改：11/20/2017 00:33:37<br>不行扛不住了。</p>
 
       
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-18T16:12:35.000Z</updated>
+  <updated>2017-11-19T16:35:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2017-11-18T16:12:35.000Z</updated>
+    <updated>2017-11-19T16:35:04.000Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
@@ -30,7 +30,49 @@
 &lt;li&gt;表达式&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;多表查询&quot;&gt;&lt;a href=&quot;#多表查询&quot; class=&quot;headerlink&quot; title=&quot;多表查询&quot;&gt;&lt;/a&gt;多表查询&lt;/h2&gt;&lt;p&gt;接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。&lt;/p&gt;
-&lt;p&gt;发布时间：11/19/2016 00:12:12&lt;br&gt;不行扛不住了。&lt;/p&gt;
+&lt;p&gt;在多表查询过程中需要用到的关键词是: &lt;code&gt;join&lt;/code&gt;，而且在多表连接查询过程中有三种情况。&lt;/p&gt;
+&lt;p&gt;分别是：交叉连接、内连接和外连接。&lt;/p&gt;
+&lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-977b3c3a4f9bd195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-19 23.10.12.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 &lt;strong&gt;a * b&lt;/strong&gt; 行内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-19 23.43.21.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;内连接-INNER-JION&quot;&gt;&lt;a href=&quot;#内连接-INNER-JION&quot; class=&quot;headerlink&quot; title=&quot;内连接(INNER JION)&quot;&gt;&lt;/a&gt;内连接(INNER JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;内连接特点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。&lt;strong&gt;也是数据库多表查询的默认实现方式。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
+&lt;p&gt;在多表查询中有三种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;INNER JION : 默认链接方式， &lt;code&gt;INNER&lt;/code&gt; 可以省略&lt;/li&gt;
+&lt;li&gt;JION … USING : 解决较长条件，保持节俭来声明内连接方式&lt;/li&gt;
+&lt;li&gt;NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2.1&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName ON Condition_Expression;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 00.10.57.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;外连接-OUTER-JOIN&quot;&gt;&lt;a href=&quot;#外连接-OUTER-JOIN&quot; class=&quot;headerlink&quot; title=&quot;外连接(OUTER JOIN)&quot;&gt;&lt;/a&gt;外连接(OUTER JOIN)&lt;/h3&gt;&lt;p&gt;在外连接多表查询中有三种情况：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;外连接特点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; 外连接可以说是内连接的衍生，在此基础上可以实现在条件没有符合的基础上也会把数据列举出来。而且外连接分为：LEFT、RIGHT 和 FULL 连接三种情况，&lt;strong&gt;&lt;code&gt;SQLite&lt;/code&gt;仅仅支持 &lt;code&gt;LEFT&lt;/code&gt; 链接方式&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;INNER JION : 默认链接方式， &lt;code&gt;INNER&lt;/code&gt; 可以省略&lt;/li&gt;
+&lt;li&gt;JION … USING : 解决较长条件，保持节俭来声明内连接方式&lt;/li&gt;
+&lt;li&gt;NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2.1&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one LEFT OUTER JION tableName ON Condition_Expression;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 00.23.21.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;发布时间：11/19/2017 00:12:12&lt;br&gt;版本第一次修改：11/20/2017 00:33:37&lt;br&gt;不行扛不住了。&lt;/p&gt;
 </content>
     
     <summary type="html">
