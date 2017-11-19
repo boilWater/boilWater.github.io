@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-19T16:35:04.000Z</updated>
+  <updated>2017-11-19T16:37:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2017-11-19T16:35:04.000Z</updated>
+    <updated>2017-11-19T16:37:55.000Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
