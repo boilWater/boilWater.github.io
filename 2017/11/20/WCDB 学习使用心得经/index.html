@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/11 | JackJin&#39;s 博客</title>
+  <title>WCDB | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
+  <meta name="description" content="之所以在关注到 WCDB 是因为在新的一家公司重构数据库来解决胶水代码问题，换而言之在使用 SQLite 数据中尽量减少 SQL 中增、删、改和查语句的使用。
+WCDB 是腾讯微信开源在 2017/06/09 号开源的一种变种数据库，本质也是基于 SQLite 。
+WCDB 简介WCDB 本质上对 SQLite 数据库 OC++ 的组件，采用的方式是：（1）使用 ORM 映射来完成自定义数据表和相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WCDB">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/WCDB 学习使用心得经/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
+<meta property="og:description" content="之所以在关注到 WCDB 是因为在新的一家公司重构数据库来解决胶水代码问题，换而言之在使用 SQLite 数据中尽量减少 SQL 中增、删、改和查语句的使用。
+WCDB 是腾讯微信开源在 2017/06/09 号开源的一种变种数据库，本质也是基于 SQLite 。
+WCDB 简介WCDB 本质上对 SQLite 数据库 OC++ 的组件，采用的方式是：（1）使用 ORM 映射来完成自定义数据表和相">
+<meta property="og:updated_time" content="2017-11-20T10:17:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackJin's 博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="WCDB">
+<meta name="twitter:description" content="之所以在关注到 WCDB 是因为在新的一家公司重构数据库来解决胶水代码问题，换而言之在使用 SQLite 数据中尽量减少 SQL 中增、删、改和查语句的使用。
+WCDB 是腾讯微信开源在 2017/06/09 号开源的一种变种数据库，本质也是基于 SQLite 。
+WCDB 简介WCDB 本质上对 SQLite 数据库 OC++ 的组件，采用的方式是：（1）使用 ORM 映射来完成自定义数据表和相">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -166,36 +173,39 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-WCDB 学习使用心得经" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/20/WCDB 学习使用心得经/" class="archive-article-date">
-  	<time datetime="2017-11-20T09:11:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/20/WCDB 学习使用心得经/">WCDB</a>
+    <h1 class="article-title" itemprop="name">
+      WCDB
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/20/WCDB 学习使用心得经/" class="archive-article-date">
+  	<time datetime="2017-11-20T09:11:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之所以在关注到 <code>WCDB</code> 是因为在新的一家公司重构数据库来解决胶水代码问题，换而言之在使用 <code>SQLite</code> 数据中尽量减少 <code>SQL</code> 中增、删、改和查语句的使用。</p>
+<p><code>WCDB</code> 是腾讯微信开源在 2017/06/09 号开源的一种变种数据库，本质也是基于 <code>SQLite</code> 。</p>
+<h2 id="WCDB-简介"><a href="#WCDB-简介" class="headerlink" title="WCDB 简介"></a><code>WCDB</code> 简介</h2><p>WCDB 本质上对 <code>SQLite</code> 数据库 OC++ 的组件，采用的方式是：<br>（1）使用 <code>ORM</code> 映射来完成自定义数据表和相关的索引，这里就解决公司胶水代码问题<br>（2）使用 <code>WING</code> 来解决 <code>SQL</code> 查询过程中经常使用查询过程中字符串的拼装问题<br>（3）多线程实现读取数据时的并发操作，在修改或者插入数据时执行串行操作<br>（4）在数据库发生顺怀时实现修复功能<br>（5）可以实现在执行 <code>SQL</code> 消耗的时间，可以帮助性能的监控<br>（6）采用防注入的 <code>SQL</code> 语句，避免恶意输入损坏数据。</p>
+<p>下面简单的介绍上面在 <code>WCDB</code> 具体实现</p>
+<h3 id="ORM-实现原理"><a href="#ORM-实现原理" class="headerlink" title="ORM 实现原理"></a><code>ORM</code> 实现原理</h3><p>于数据库表和索引采用的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -207,7 +217,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -220,214 +230,93 @@ var _hmt = _hmt || [];
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/20/WCDB 学习使用心得经/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/20/开发架构设计/" class="archive-article-date">
-  	<time datetime="2017-11-20T08:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/20/开发架构设计/">开发架构设计</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">移动开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/架构/" class="article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/18/SQLite 学习-多表查询&运算&表达/" class="archive-article-date">
-  	<time datetime="2017-11-18T15:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/">SQLite 学习-多表查询、运算和表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/14/SQLite 学习-基本知识/" class="archive-article-date">
-  	<time datetime="2017-11-14T12:24:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/14/SQLite 学习-基本知识/">SQLite 学习-基础知识</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/SQLite 基本操作/" class="archive-article-date">
-  	<time datetime="2017-11-06T16:49:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/SQLite 基本操作/">SQLite 数据库基本操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/11/20/开发架构设计/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开发架构设计</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
 
           </div>
         </div>
@@ -449,8 +338,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
