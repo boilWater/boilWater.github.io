@@ -354,57 +354,9 @@ var _hmt = _hmt || [];
 <p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
 <p><strong>内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！</strong></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
-<h3 id="交叉连接-CROSS-JION"><a href="#交叉连接-CROSS-JION" class="headerlink" title="交叉连接(CROSS JION)"></a>交叉连接(CROSS JION)</h3><p><strong>（1）</strong>交叉连接特点：</p>
-<blockquote>
-<p>在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 <strong>a * b</strong> 行内容。</p>
-</blockquote>
-<p><strong>（2）</strong>使用格式：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;</span><br></pre></td></tr></table></figure>
-<p><strong>（3）</strong>操作实例：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-19 23.43.21.png"></p>
-<h3 id="内连接-INNER-JION"><a href="#内连接-INNER-JION" class="headerlink" title="内连接(INNER JION)"></a>内连接(INNER JION)</h3><p><strong>（1）</strong>内连接特点：</p>
-<blockquote>
-<p>在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。<strong>也是数据库多表查询的默认实现方式。</strong></p>
-</blockquote>
-<p><strong>（2）</strong>使用格式：</p>
-<p><strong>2.1</strong> 连表查询过程三种情况：</p>
-<ul>
-<li>INNER JION : 默认链接方式， <code>INNER</code> 可以省略</li>
-<li>JION … USING : 解决较长条件，保持节俭来声明内连接方式</li>
-<li>NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等</li>
-</ul>
-<p><strong>2.2</strong> 连表查询标准格式</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//采用 INNER JION 方式查询</span></span><br><span class="line"><span class="comment">//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName_two ON Condition_Expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">//采用 JION...USING 相等连接查询方式</span></span><br><span class="line">SELECT * FROM tableName_one JION tableName_two USING(column_one, ...);</span><br><span class="line"></span><br><span class="line"><span class="comment">//采用 NATURAL JION 自然连接查询方式</span></span><br><span class="line">SELECT * FROM tableName_one NATURAL JION tableName_two;</span><br></pre></td></tr></table></figure>
-<p><strong>（3）</strong>操作实例：</p>
-<p><strong>3.1</strong>采用 <code>INNER JION</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 00.10.57.png"></p>
-<p><strong>3.2</strong> 采用 <code>JION...USING()</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7685938dc35e7563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-22 22.05.44.png"></p>
-<p><strong>3.3</strong> 采用 <code>NATURE</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1d1d594962201b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-22 22.12.18.png"></p>
-<blockquote>
-</blockquote>
-<p><strong>三种查询方式特点小结</strong></p>
-<blockquote>
-<p>有上面连表查询实例可以看出：<br><strong><code>INNER JION</code> </strong> 在实现多条件查询过程中需要使用多个 Condations 情况，使用更加灵活可以有 <code>&gt;</code>、<code>&lt;</code>、等<br><strong><code>JION...USING()</code></strong> 在实现完全的等于的基础上可以实用，这样不需要写具体的 <code>=</code> 语句<br><strong><code>NATURE</code></strong>可以实现列的相等，但是使用场景是在表格中<strong>仅有一列是相等的</strong>。</p>
-</blockquote>
-<h3 id="外连接-OUTER-JOIN"><a href="#外连接-OUTER-JOIN" class="headerlink" title="外连接(OUTER JOIN)"></a>外连接(OUTER JOIN)</h3><p>在外连接多表查询中有三种情况：</p>
-<p><strong>（1）</strong>外连接特点：</p>
-<blockquote>
-<p> 外连接可以说是内连接的衍生，在此基础上可以实现在条件没有符合的基础上也会把数据列举出来。而且外连接分为：LEFT、RIGHT 和 FULL 连接三种情况，<strong><code>SQLite</code>仅仅支持 <code>LEFT</code> 链接方式</strong>。</p>
-</blockquote>
-<p><strong>（2）</strong>使用格式：</p>
-<ul>
-<li>INNER JION : 默认链接方式， <code>INNER</code> 可以省略</li>
-<li>JION … USING : 解决较长条件，保持节俭来声明内连接方式</li>
-<li>NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等</li>
-</ul>
-<p><strong>2.1</strong></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one LEFT OUTER JION tableName ON Condition_Expression;</span><br></pre></td></tr></table></figure>
-<p><strong>（3）</strong>操作实例：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 00.23.21.png"></p>
-<p>发布时间：11/19/2017 00:12:12<br>版本第一次修改：11/20/2017 00:33:37<br>不行扛不住了。</p>
-
+        
+          <a class="article-more-a" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/#more">more >></a>
+        
       
 
       
@@ -482,10 +434,7 @@ var _hmt = _hmt || [];
 <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>小编在这里提出一个问题：为什么要使用数据库？</p>
 <p>在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 <code>KILL</code> 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。</p>
 <p>小编这里就以 <code>SQLite</code> 来讲解相关数据基本原理和操作。</p>
-<h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2><p>首先要明白 <code>SQLite</code> 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 <code>API</code> 的调用就可以实现基本的操作。</p>
-<p>在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。</p>
-<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>首先是数据库表创建、插入新的一行和删除：<code>CREATE</code>、<code>ALTER</code> 和 <code>DROP</code>。</p>
-<p>具体每一行的增删改查：<code>INSERT</code>、<code>DELETE</code>、<code>SELECT</code> 和 <code>UPDATE</code>。</p>
+<h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2>
         
           <a class="article-more-a" href="/2017/11/14/SQLite 学习-基本知识/#more">more >></a>
         

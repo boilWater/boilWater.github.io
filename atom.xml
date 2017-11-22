@@ -68,7 +68,7 @@
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2017-11-22T16:13:12.000Z</updated>
+    <updated>2017-11-22T16:15:24.000Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
@@ -83,6 +83,7 @@
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 &lt;strong&gt;a * b&lt;/strong&gt; 行内容。&lt;/p&gt;
@@ -140,7 +141,16 @@
       &lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;多表查询&lt;/
+&lt;li&gt;多表查询&lt;/li&gt;
+&lt;li&gt;运算符&lt;/li&gt;
+&lt;li&gt;表达式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;多表查询&quot;&gt;&lt;a href=&quot;#多表查询&quot; class=&quot;headerlink&quot; title=&quot;多表查询&quot;&gt;&lt;/a&gt;多表查询&lt;/h2&gt;&lt;p&gt;接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。&lt;/p&gt;
+&lt;p&gt;在多表查询过程中需要用到的关键词是: &lt;code&gt;join&lt;/code&gt;，而且在多表连接查询过程中有三种情况。&lt;/p&gt;
+&lt;p&gt;分别是：交叉连接、内连接和外连接。&lt;/p&gt;
+&lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -156,17 +166,18 @@
     <link href="http://yoursite.com/2017/11/14/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     <id>http://yoursite.com/2017/11/14/SQLite 学习-基本知识/</id>
     <published>2017-11-14T12:24:13.000Z</published>
-    <updated>2017-11-14T17:29:48.000Z</updated>
+    <updated>2017-11-22T16:15:20.000Z</updated>
     
     <content type="html">&lt;p&gt;几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。&lt;/p&gt;
 &lt;h1 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;数据库&lt;/h1&gt;&lt;p&gt;小编在这里提出一个问题：为什么要使用数据库？&lt;/p&gt;
 &lt;p&gt;在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 &lt;code&gt;KILL&lt;/code&gt; 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。&lt;/p&gt;
 &lt;p&gt;小编这里就以 &lt;code&gt;SQLite&lt;/code&gt; 来讲解相关数据基本原理和操作。&lt;/p&gt;
-&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;&lt;p&gt;首先要明白 &lt;code&gt;SQLite&lt;/code&gt; 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 &lt;code&gt;API&lt;/code&gt; 的调用就可以实现基本的操作。&lt;/p&gt;
+&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;首先要明白 &lt;code&gt;SQLite&lt;/code&gt; 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 &lt;code&gt;API&lt;/code&gt; 的调用就可以实现基本的操作。&lt;/p&gt;
 &lt;p&gt;在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。&lt;/p&gt;
 &lt;h3 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h3&gt;&lt;p&gt;首先是数据库表创建、插入新的一行和删除：&lt;code&gt;CREATE&lt;/code&gt;、&lt;code&gt;ALTER&lt;/code&gt; 和 &lt;code&gt;DROP&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;具体每一行的增删改查：&lt;code&gt;INSERT&lt;/code&gt;、&lt;code&gt;DELETE&lt;/code&gt;、&lt;code&gt;SELECT&lt;/code&gt; 和 &lt;code&gt;UPDATE&lt;/code&gt;。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!-- more --&gt;
 &lt;h3 id=&quot;操作实例&quot;&gt;&lt;a href=&quot;#操作实例&quot; class=&quot;headerlink&quot; title=&quot;操作实例&quot;&gt;&lt;/a&gt;操作实例&lt;/h3&gt;&lt;h4 id=&quot;1）数据表中列的相关操作和实例&quot;&gt;&lt;a href=&quot;#1）数据表中列的相关操作和实例&quot; class=&quot;headerlink&quot; title=&quot;1）数据表中列的相关操作和实例&quot;&gt;&lt;/a&gt;1）数据表中列的相关操作和实例&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;小编一下操作是在 &lt;code&gt;MAC&lt;/code&gt; 上操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在终端数据的创建：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt;数据库创建&lt;/p&gt;
@@ -251,10 +262,7 @@
 &lt;h1 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;数据库&lt;/h1&gt;&lt;p&gt;小编在这里提出一个问题：为什么要使用数据库？&lt;/p&gt;
 &lt;p&gt;在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 &lt;code&gt;KILL&lt;/code&gt; 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永久性的储存的，就是考虑磁盘的储存能力。这时文件储存和数据库储存就会是我们选择的对象。&lt;/p&gt;
 &lt;p&gt;小编这里就以 &lt;code&gt;SQLite&lt;/code&gt; 来讲解相关数据基本原理和操作。&lt;/p&gt;
-&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;&lt;p&gt;首先要明白 &lt;code&gt;SQLite&lt;/code&gt; 数据库的使用不需要进行相关的配置，也不需要相关的以来关系就是通过 &lt;code&gt;API&lt;/code&gt; 的调用就可以实现基本的操作。&lt;/p&gt;
-&lt;p&gt;在数据操作过程中经常使用的就是：增、删、改和查四中基本的操作。&lt;/p&gt;
-&lt;h3 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h3&gt;&lt;p&gt;首先是数据库表创建、插入新的一行和删除：&lt;code&gt;CREATE&lt;/code&gt;、&lt;code&gt;ALTER&lt;/code&gt; 和 &lt;code&gt;DROP&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;具体每一行的增删改查：&lt;code&gt;INSERT&lt;/code&gt;、&lt;code&gt;DELETE&lt;/code&gt;、&lt;code&gt;SELECT&lt;/code&gt; 和 &lt;code&gt;UPDATE&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;SQLite&quot;&gt;&lt;a href=&quot;#SQLite&quot; class=&quot;headerlink&quot; title=&quot;SQLite&quot;&gt;&lt;/a&gt;SQLite&lt;/h2&gt;
     
     </summary>
     
