@@ -64,11 +64,11 @@
   </entry>
   
   <entry>
-    <title>SQLite 学习-多表查询、运算和表达式</title>
+    <title>SQLite 学习-多表查询</title>
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2017-11-19T17:16:59.000Z</updated>
+    <updated>2017-11-22T16:13:12.000Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
@@ -81,7 +81,7 @@
 &lt;p&gt;在多表查询过程中需要用到的关键词是: &lt;code&gt;join&lt;/code&gt;，而且在多表连接查询过程中有三种情况。&lt;/p&gt;
 &lt;p&gt;分别是：交叉连接、内连接和外连接。&lt;/p&gt;
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;内容是乱取的，一位上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -96,16 +96,27 @@
 &lt;p&gt;在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。&lt;strong&gt;也是数据库多表查询的默认实现方式。&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
-&lt;p&gt;在多表查询中有三种情况：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.1&lt;/strong&gt; 连表查询过程三种情况：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;INNER JION : 默认链接方式， &lt;code&gt;INNER&lt;/code&gt; 可以省略&lt;/li&gt;
 &lt;li&gt;JION … USING : 解决较长条件，保持节俭来声明内连接方式&lt;/li&gt;
 &lt;li&gt;NATURAL JOIN : 类似于 USING 方法，但是会自动检测一列值是否相等&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;2.1&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName ON Condition_Expression;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;2.2&lt;/strong&gt; 连表查询标准格式&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 INNER JION 方式查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName_two ON Condition_Expression;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 JION...USING 相等连接查询方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM tableName_one JION tableName_two USING(column_one, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 NATURAL JION 自然连接查询方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM tableName_one NATURAL JION tableName_two;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.1&lt;/strong&gt;采用 &lt;code&gt;INNER JION&lt;/code&gt; 连表查询&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 00.10.57.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.2&lt;/strong&gt; 采用 &lt;code&gt;JION...USING()&lt;/code&gt; 连表查询&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-7685938dc35e7563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-22 22.05.44.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.3&lt;/strong&gt; 采用 &lt;code&gt;NATURE&lt;/code&gt; 连表查询&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1d1d594962201b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-22 22.12.18.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;三种查询方式特点小结&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有上面连表查询实例可以看出：&lt;br&gt;&lt;strong&gt;&lt;code&gt;INNER JION&lt;/code&gt; &lt;/strong&gt; 在实现多条件查询过程中需要使用多个 Condations 情况，使用更加灵活可以有 &lt;code&gt;&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;&lt;/code&gt;、等&lt;br&gt;&lt;strong&gt;&lt;code&gt;JION...USING()&lt;/code&gt;&lt;/strong&gt; 在实现完全的等于的基础上可以实用，这样不需要写具体的 &lt;code&gt;=&lt;/code&gt; 语句&lt;br&gt;&lt;strong&gt;&lt;code&gt;NATURE&lt;/code&gt;&lt;/strong&gt;可以实现列的相等，但是使用场景是在表格中&lt;strong&gt;仅有一列是相等的&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&quot;外连接-OUTER-JOIN&quot;&gt;&lt;a href=&quot;#外连接-OUTER-JOIN&quot; class=&quot;headerlink&quot; title=&quot;外连接(OUTER JOIN)&quot;&gt;&lt;/a&gt;外连接(OUTER JOIN)&lt;/h3&gt;&lt;p&gt;在外连接多表查询中有三种情况：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;外连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
