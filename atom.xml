@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-15T08:58:27.000Z</updated>
+  <updated>2018-03-27T16:17:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 学习总结</title>
+    <link href="http://yoursite.com/2018/03/28/JavaScript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/03/28/JavaScript学习总结/</id>
+    <published>2018-03-27T16:14:28.000Z</published>
+    <updated>2018-03-27T16:17:25.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端开发" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS 11 新特性</title>
@@ -1722,67 +1742,6 @@
     
     
       <category term="iOS基础知识" scheme="http://yoursite.com/tags/iOS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS 10.0</title>
-    <link href="http://yoursite.com/2016/07/01/IOS%2010/"/>
-    <id>http://yoursite.com/2016/07/01/IOS 10/</id>
-    <published>2016-07-01T09:42:32.000Z</published>
-    <updated>2017-09-17T16:08:36.000Z</updated>
-    
-    <content type="html">&lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码 &lt;code&gt;iOS 10.0&lt;/code&gt; 新的改变。&lt;br&gt;&lt;br&gt;昨天凌晨 &lt;code&gt;iOS&lt;/code&gt; 举行 &lt;code&gt;WWDC&lt;/code&gt; 全球发布者大会，&lt;code&gt;watch OS&lt;/code&gt;、&lt;code&gt;tv OS&lt;/code&gt;、&lt;code&gt;OS X&lt;/code&gt;以及&lt;code&gt;iOS 10&lt;/code&gt;系统的新特性。&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;展示会第一个是 &lt;code&gt;Apple&lt;/code&gt; 的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在 &lt;code&gt;siri&lt;/code&gt; 操作程序和 &lt;code&gt;Apple Pay&lt;/code&gt;的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
-&lt;p&gt;下面我们列表 &lt;code&gt;iOS 10&lt;/code&gt; 的新功能的体现，下面将给出相关知识的思维导图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-01d41dbb1ed9ed64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;WWDC（2016）的副本.png&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Watch-OS&quot;&gt;&lt;a href=&quot;#Watch-OS&quot; class=&quot;headerlink&quot; title=&quot;Watch OS&quot;&gt;&lt;/a&gt;&lt;code&gt;Watch OS&lt;/code&gt;&lt;/h2&gt;&lt;h3 id=&quot;寻找-APPS&quot;&gt;&lt;a href=&quot;#寻找-APPS&quot; class=&quot;headerlink&quot; title=&quot;寻找 APPS&quot;&gt;&lt;/a&gt;寻找 &lt;code&gt;APPS&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;我们通过 &lt;code&gt;Apple Watch&lt;/code&gt; 傍边的旋转手柄可以快速寻找我们装在的 &lt;code&gt;App&lt;/code&gt; 以及设定首界面显示的具体内容&lt;/p&gt;
-&lt;h3 id=&quot;表盘界面&quot;&gt;&lt;a href=&quot;#表盘界面&quot; class=&quot;headerlink&quot; title=&quot;表盘界面&quot;&gt;&lt;/a&gt;表盘界面&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Apple Watch&lt;/code&gt; 提供多个表盘界面，其中一个竟然是米老鼠的显示时间真心醉啦，没有保持乔帮主时 &lt;code&gt;double&lt;/code&gt; 做法&lt;/p&gt;
-&lt;h3 id=&quot;活动&quot;&gt;&lt;a href=&quot;#活动&quot; class=&quot;headerlink&quot; title=&quot;活动&quot;&gt;&lt;/a&gt;活动&lt;/h3&gt;&lt;p&gt;活动方面 &lt;code&gt;Apple Watch&lt;/code&gt; 为我们添加一些使用的功能。我们可以对活动任务进行分享、查看活动完成进度和与朋友活动进度进行比较&lt;/p&gt;
-&lt;h3 id=&quot;Wheelchair-Use&quot;&gt;&lt;a href=&quot;#Wheelchair-Use&quot; class=&quot;headerlink&quot; title=&quot;Wheelchair Use&quot;&gt;&lt;/a&gt;&lt;code&gt;Wheelchair Use&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;为做轮椅的人提供可以帮助，可以提醒使用者休息、工作和显示旋转速度&lt;/p&gt;
-&lt;h3 id=&quot;Workout&quot;&gt;&lt;a href=&quot;#Workout&quot; class=&quot;headerlink&quot; title=&quot;Workout&quot;&gt;&lt;/a&gt;&lt;code&gt;Workout&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;在工作之余我们可以使用 &lt;code&gt;Apple Watch&lt;/code&gt; 来查看我们走的距离、&lt;code&gt;watch&lt;/code&gt; 的活跃内存空间、消耗卡路里、心率和运动时间，可以选择重要的运动项目，进行特别标注，在跑步过程会自动停止&lt;/p&gt;
-&lt;h3 id=&quot;Breathe-App&quot;&gt;&lt;a href=&quot;#Breathe-App&quot; class=&quot;headerlink&quot; title=&quot;Breathe App&quot;&gt;&lt;/a&gt;&lt;code&gt;Breathe App&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;帮助你可以进行冥想，释放自己的压力，把语音信心转换为文字，进行回复&lt;/p&gt;
-&lt;h3 id=&quot;Messages&quot;&gt;&lt;a href=&quot;#Messages&quot; class=&quot;headerlink&quot; title=&quot;Messages&quot;&gt;&lt;/a&gt;&lt;code&gt;Messages&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;把语音信心转换为文字，进行回复，重要的是支持汉字手写&lt;/p&gt;
-&lt;h3 id=&quot;保留功能&quot;&gt;&lt;a href=&quot;#保留功能&quot; class=&quot;headerlink&quot; title=&quot;保留功能&quot;&gt;&lt;/a&gt;保留功能&lt;/h3&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;code&gt;Home&lt;/code&gt;：可以通过 &lt;code&gt;Apple Watch&lt;/code&gt; 链接控制家中使用 &lt;code&gt;Home&lt;/code&gt;的所有硬件设备&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;code&gt;SOS&lt;/code&gt;：试下紧急呼叫的功能&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;code&gt;Apple Pay&lt;/code&gt;：可以在 &lt;code&gt;Mac&lt;/code&gt; 上购买然后通过 &lt;code&gt;iPhone&lt;/code&gt; 直接指纹识别进行付款&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;code&gt;Unlock Mac&lt;/code&gt; ：解锁我们使用的 &lt;code&gt;Mac&lt;/code&gt; 电脑&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
-
-
-&lt;h2 id=&quot;IOS-10&quot;&gt;&lt;a href=&quot;#IOS-10&quot; class=&quot;headerlink&quot; title=&quot;IOS 10&quot;&gt;&lt;/a&gt;&lt;code&gt;IOS 10&lt;/code&gt;&lt;/h2&gt;&lt;h3 id=&quot;全新界面功能设计&quot;&gt;&lt;a href=&quot;#全新界面功能设计&quot; class=&quot;headerlink&quot; title=&quot;全新界面功能设计&quot;&gt;&lt;/a&gt;全新界面功能设计&lt;/h3&gt;&lt;p&gt;首先是新的锁屏界面，互动性大幅增强，支持新的通知显示方式和手势功能，可以直接使用 &lt;code&gt;3D Touch&lt;/code&gt; 进行预览与信息回复，或者重按全部清除通知，更快速的进入拍照界面等，界面看起来更加清晰直观。&lt;/p&gt;
-&lt;p&gt;值得一提的是，&lt;code&gt;iPhone&lt;/code&gt; 支持抬手唤醒屏幕功能了， 当你抬起 &lt;code&gt;iPhone&lt;/code&gt; 的时候锁屏界面就会亮起，直接显示通知信息和相关内容，而不触碰任何按键和所动操作，有点类似于竞争对手的平台设计理念。&lt;/p&gt;
-&lt;p&gt;通知中心和控制中心界面进行了新的设计，包括桌面亦是如此，很多操作操作利用 &lt;code&gt;3D Touch&lt;/code&gt; 更加便捷，比如在 &lt;code&gt;App&lt;/code&gt; 图标上预览更多相关信息，甚至是视频预览。&lt;/p&gt;
-&lt;h3 id=&quot;Siri&quot;&gt;&lt;a href=&quot;#Siri&quot; class=&quot;headerlink&quot; title=&quot;Siri&quot;&gt;&lt;/a&gt;&lt;code&gt;Siri&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Siri&lt;/code&gt; 果然每一年都会努力提升 &lt;code&gt;Siri&lt;/code&gt; 的水平，苹果表示每周有 200 万个用户使用 &lt;code&gt;Siri&lt;/code&gt;。新升级之后 &lt;code&gt;Siri&lt;/code&gt; 可以搜索的内容更多了，比如图片搜索、应用搜索，同时 &lt;code&gt;Siri&lt;/code&gt; 还能够查看日期、打开 &lt;code&gt;App&lt;/code&gt;、发送短息。&lt;/p&gt;
-&lt;p&gt;苹果宣布 &lt;code&gt;Siri SDK&lt;/code&gt; 开放，之后开发者可以将第三方应用程序和服务与 &lt;code&gt;Siri&lt;/code&gt; 集成，从而在自家的应用中利用 &lt;code&gt;Siri&lt;/code&gt; 实现语音交互、人工智能等功能。苹果称 &lt;code&gt;Whatsapp&lt;/code&gt;、微信和滴滴打车都会集成，用户可以通过 &lt;code&gt;Siri&lt;/code&gt; 语音命令“&lt;code&gt;WeChat xxx to&lt;/code&gt; 谁谁谁”，就能够完成微信的发送了，也可以用 &lt;code&gt;Siri&lt;/code&gt; 来使用滴滴打车。&lt;/p&gt;
-&lt;p&gt;另一为 &lt;code&gt;iOS 10 上 Siri&lt;/code&gt; 增加的功能是 &lt;code&gt;iCloud Voicemail&lt;/code&gt;，可以将语音信箱中的内容转换成文字，让用户能够快速浏览和阅读。&lt;/p&gt;
-&lt;h3 id=&quot;Quick-type&quot;&gt;&lt;a href=&quot;#Quick-type&quot; class=&quot;headerlink&quot; title=&quot;Quick type&quot;&gt;&lt;/a&gt;&lt;code&gt;Quick type&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Quick type&lt;/code&gt; 这部分更行重在 &lt;code&gt;Siri&lt;/code&gt; 的全新升级的人工智能特征所带来的便利性，因为 &lt;code&gt;Siri&lt;/code&gt; 支持深度学习你的一切信息，包括监测你的日程安排，所以不仅可以帮助更快速的组织语言一边快速回复，还能够根据信息提供相关建议，帮助自动填充地址信息等等。基本上，新升级之后能够为用户省去更多手动输入麻烦。&lt;/p&gt;
-&lt;h3 id=&quot;照片应用&quot;&gt;&lt;a href=&quot;#照片应用&quot; class=&quot;headerlink&quot; title=&quot;照片应用&quot;&gt;&lt;/a&gt;照片应用&lt;/h3&gt;&lt;p&gt;&lt;code&gt;iOS 10&lt;/code&gt; 中的照片应用拥有了更加强大的管理功能，苹果多次提到的就是支持“识别分类”功能，可以进行脸部、对象和场景的识别。比如通过任务的脸部头像进行分类，当智能搜索分类完成之后，用户还可以直接搜索图片上的事件内容，搜索骑马也能找到照片。&lt;/p&gt;
-&lt;p&gt;总之，利用 &lt;code&gt;iCloud&lt;/code&gt; 照片库就可以轻松根据地理位置信息、时间、任务、话题等等进行分类，每一个用户都可以很方便更满意的创建智能相册，并且这些新功能在&lt;code&gt;Mac&lt;/code&gt;上的 &lt;code&gt;Photos&lt;/code&gt; 也将同样得到支持。&lt;/p&gt;
-&lt;h3 id=&quot;地图应用&quot;&gt;&lt;a href=&quot;#地图应用&quot; class=&quot;headerlink&quot; title=&quot;地图应用&quot;&gt;&lt;/a&gt;地图应用&lt;/h3&gt;&lt;p&gt;苹果自家的地图应用在 &lt;code&gt;iOS 10&lt;/code&gt; 中得到了较大改进，重新设计之后更简单、更直观也更人性化，无论是导航界面还是路线信息、交通信息等都与以往有所不同。周边智能化建议进一步增强，所在位置打开地图“好去处”的建议更加丰富，附件的加油站、餐馆和咖啡厅等一览无遗，用苹果的话来说简直就是“情报中心”。&lt;/p&gt;
-&lt;p&gt;苹果地图也将开发 &lt;code&gt;SDK&lt;/code&gt; 给开发者，苹果表示中国的大众点评和滴滴打车将全面整合苹果地图，达到与原生无缝斜街的体验，比如说直接在苹果地图上使用滴滴打车进行叫车。另外，苹果地图现在也支持 &lt;code&gt;Carplay&lt;/code&gt; 了。&lt;/p&gt;
-&lt;h3 id=&quot;Apple-Music&quot;&gt;&lt;a href=&quot;#Apple-Music&quot; class=&quot;headerlink&quot; title=&quot;Apple Music&quot;&gt;&lt;/a&gt;&lt;code&gt;Apple Music&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;对于 &lt;code&gt;Apple Music&lt;/code&gt; 苹果表示，该服务推出至今已经获得了巨大的成功，目前付费订阅用户已经超过 1500 万。&lt;/p&gt;
-&lt;p&gt;全新的 &lt;code&gt;Apple Music&lt;/code&gt; 界面进行了重新设计，新的界面更加简洁、更加漂亮了，如传闻所述去掉了很多丰富的颜色元素，变得更加直观，突出黑白背景和文字。演示来看，新 &lt;code&gt;Apple Music&lt;/code&gt;  进一步整合苹果公司自主开发的旧金山字体，菜单和标签的字体会是加粗的、更大的黑色的版本。&lt;/p&gt;
-&lt;p&gt;另外，&lt;code&gt;Apple Music&lt;/code&gt; 可以按照艺术家专辑等进行分类，还支持歌词自动加载显示。电台广播服务得到了改进，不只是分类更直观，用户可以很方便地寻找自己想听的电台，而且苹果表示将会有更多的主播参与当中。&lt;/p&gt;
-&lt;h3 id=&quot;Apple-News&quot;&gt;&lt;a href=&quot;#Apple-News&quot; class=&quot;headerlink&quot; title=&quot;Apple News&quot;&gt;&lt;/a&gt;&lt;code&gt;Apple News&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;苹果表示，&lt;code&gt;Apple News&lt;/code&gt; 有超过 600 万的读者，新的更新将拥有全新设计的界面，并可订阅更多频道。推荐功能变得更强大更智能，支持基于用户阅读习惯进行推荐，为每一位用户选择性的推送最需要的新闻信息。&lt;/p&gt;
-&lt;h3 id=&quot;HomeKit&quot;&gt;&lt;a href=&quot;#HomeKit&quot; class=&quot;headerlink&quot; title=&quot;HomeKit&quot;&gt;&lt;/a&gt;&lt;code&gt;HomeKit&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;物联网是大势所趋，苹果为 &lt;code&gt;iOS 10&lt;/code&gt; 带来了 &lt;code&gt;HomeKit&lt;/code&gt; 的全新进展。首先，&lt;code&gt;HomeKit&lt;/code&gt; 将以独立应用的形式出现在&lt;code&gt;iOS 10&lt;/code&gt;上，命名为&lt;code&gt;Home&lt;/code&gt;，之前苹果可申请过“&lt;code&gt;Home&lt;/code&gt;”的商标，并不意外。&lt;/p&gt;
-&lt;p&gt;当 &lt;code&gt;HomeKit&lt;/code&gt; 独立成一个应用之后，它将有能力将平台上所有的兼容设备置于同一个管理中心中。只需要打开 &lt;code&gt;iOS 10&lt;/code&gt;上的&lt;code&gt;Home&lt;/code&gt;  应用，就可以对所有兼容 &lt;code&gt;HomeKit&lt;/code&gt; 的设备进行统一的匹配和控制管理，&lt;code&gt;Home&lt;/code&gt;  应用中包含了非常全面的家电控制面板选项，支持 &lt;code&gt;3D Touch&lt;/code&gt; 也支持&lt;code&gt;Siri&lt;/code&gt;进行控制，&lt;code&gt;iPad&lt;/code&gt;、&lt;code&gt;Apple Watch&lt;/code&gt; 也会提供 &lt;code&gt;Home&lt;/code&gt; 应用。&lt;/p&gt;
-&lt;p&gt;苹果表示，今天有好多开发商都参与到了 &lt;code&gt;HomeKit&lt;/code&gt; 开发其中，通过 &lt;code&gt;HomeKit&lt;/code&gt; 用户可以控制家里所有智能电器，包括控制门锁、风扇、灯，打开房门和车空门等等，不仅可以查看门锁摄像头的实时视频，而且还能控制让浴缸的热水在没回家之前就给用户放好。&lt;/p&gt;
-&lt;h3 id=&quot;电话&quot;&gt;&lt;a href=&quot;#电话&quot; class=&quot;headerlink&quot; title=&quot;电话&quot;&gt;&lt;/a&gt;电话&lt;/h3&gt;&lt;p&gt;默认电话 &lt;code&gt;app&lt;/code&gt;  这部分的内容讲得比较少，一些比较突出的更新包括支持显示垃圾电话，支持 &lt;code&gt;VoIP&lt;/code&gt;，支持语音信箱转文本显示等等。从现场图来看，联系人界面进行了全新的设计。&lt;/p&gt;
-&lt;h3 id=&quot;信息&quot;&gt;&lt;a href=&quot;#信息&quot; class=&quot;headerlink&quot; title=&quot;信息&quot;&gt;&lt;/a&gt;信息&lt;/h3&gt;&lt;p&gt;苹果表示，信息是 &lt;code&gt;iOS&lt;/code&gt; 中使用最为频繁的应用之一。所以，这一次信息应用苹果花了大量时间进行演示，不过很多功能都与国内的即时聊天应用类似。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.apple.com/apple-events/june-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WWDC-13/6/2016~视频地址&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码 &lt;code&gt;iOS 10.0&lt;/code&gt; 新的改变。&lt;/br&gt;&lt;br&gt;昨天凌晨 &lt;code&gt;iOS&lt;/code&gt; 举行 &lt;code&gt;WWDC&lt;/code&gt; 全球发布者大会，&lt;code&gt;watch OS&lt;/code&gt;、&lt;code&gt;tv OS&lt;/code&gt;、&lt;code&gt;OS X&lt;/code&gt;以及&lt;code&gt;iOS 10&lt;/code&gt;系统的新特性。&lt;/br&gt;&lt;/p&gt;
-&lt;p&gt;展示会第一个是 &lt;code&gt;Apple&lt;/code&gt; 的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在 &lt;code&gt;siri&lt;/code&gt; 操作程序和 &lt;code&gt;Apple Pay&lt;/code&gt;的使用过程，付款使用起来感觉比支付宝更加便捷。&lt;/p&gt;
-&lt;p&gt;下面我们列表 &lt;code&gt;iOS 10&lt;/code&gt; 的新功能的体现，下面将给出相关知识的思维导图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-01d41dbb1ed9ed64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;WWDC（2016）的副本.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="IOS" scheme="http://yoursite.com/tags/IOS/"/>
     
   </entry>
   
