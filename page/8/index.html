@@ -172,6 +172,337 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS 视图跳转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/16/iOS 视图跳转/">iOS 视图跳转</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/16/iOS 视图跳转/" class="archive-article-date">
+  	<time datetime="2015-02-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 APP 开发过程中经常会使用到 <code>UIViewController</code> 来展示视图，在应用展示过程中经常会使用到 <code>UIViewController</code> 视图控制器件进行跳转。</p>
+<p>下面小编将会介绍在视图控制间进行跳转和传递数据。</p>
+<h2 id="跳转方式"><a href="#跳转方式" class="headerlink" title="跳转方式"></a>跳转方式</h2><p>视图实现跳转方式：</p>
+<ul>
+<li><code>UIViewController</code> 实现跳转</li>
+<li><code>UINavigationController</code> 实现跳转</li>
+<li><code>UITabBarController</code> 实现跳转</li>
+<li><code>Segue</code> 实现跳转</li>
+</ul>
+        
+          <a class="article-more-a" href="/2015/02/16/iOS 视图跳转/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/16/iOS 视图跳转/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS Fundation-NSDictionary 使用详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/">iOS Fundation-NSDictionary &amp; NSMutableDictionary 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/" class="archive-article-date">
+  	<time datetime="2015-02-08T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目前我们经常使用的 <code>NSString</code>、<code>NSArray</code>和<code>NSMutableArray</code>，下面小编将向大家展示 <code>NSDictionary</code> 和 <code>NSMutableDictionary</code> 相关 <code>API</code> 和一些使用方法。</p>
+<p>翻看开发文档可以看到下面这段话：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Neither a key nor a value can be <span class="literal">nil</span>; <span class="keyword">if</span> you need to represent a null value <span class="keyword">in</span> a dictionary, you should use <span class="built_in">NSNull</span>.</span><br><span class="line"><span class="comment">//在 NSDictionary 不可以使用 nil 值，如果要使用可以使用 NSNull 来进行设置值</span></span><br></pre></td></tr></table></figure>
+<h2 id="NSDictionary"><a href="#NSDictionary" class="headerlink" title="NSDictionary"></a><code>NSDictionary</code></h2><p><code>NSDictionary</code> 是使用 <code>Key-Value</code> 的形式来进行对值查找和管理，继承自 <code>NSObject</code>：</p>
+<p><code>NSDictionary</code> 的继承代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSDictionary</span>&lt;<span class="title">__covariant</span> <span class="title">KeyType</span>, <span class="title">__covariant</span> <span class="title">ObjectType</span>&gt; : <span class="title">NSObject</span></span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/08/iOS Fundation-NSDictionary 使用详解/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS Fundation-NSArray &amp; NSMutableArray 基本使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/">iOS Fundation-NSArray &amp; NSMutableArray 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/" class="archive-article-date">
+  	<time datetime="2015-02-06T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天把 <code>NSString</code> 和 <code>NSMutableString</code> 相关使用知识进行整理，对 API 进行列举然后介绍相关的使用方法。</p>
+<p>但在开发过程中我们经常也会遇到多个字符串，多个不同类型数组。</p>
+<p>在 <code>iOS</code> 中数组可以使用 <code>NSArray</code> 或者 <code>NSMutableArray</code> 来进行管理和使用。</p>
+<p><code>NSArray</code> 在 iOS 中储存的方式是连续的储存，而非链式存储。代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *array = [[<span class="built_in">NSArray</span> alloc] initWithObjects:<span class="string">@"First name"</span>, <span class="string">@"last name"</span>, <span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
+<p>进行断点打印 <code>First name</code> 和 <code>last name</code> 的位置，打印结果如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Printing description of ((__NSCFConstantString *)<span class="number">0x000000010cdba0c8</span>):</span><br><span class="line">First name</span><br><span class="line">Printing description of ((__NSCFConstantString *)<span class="number">0x000000010cdba0e8</span>):</span><br><span class="line">last name</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/06/iOS Fundation-NSArray & NSMutableArray 基本使用方法/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS Fundation-NSString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/03/iOS Fundation-NSString/">iOS Fundation-NSString &amp; NSMutableString 使用详解</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/03/iOS Fundation-NSString/" class="archive-article-date">
+  	<time datetime="2015-02-03T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>iOS</code> 使用过程中我们经常会使用到 Java 中类似字符串的函数和一些常量。在 <code>iOS</code> 中这些常量一般是以对象的形式存在。</p>
+<h2 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h2><p>（1）<code>NSString</code> 继承</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *name = <span class="string">@"bai liangliang"</span>;</span><br></pre></td></tr></table></figure>
+<p>在 Xcode 中按着 <code>command</code> + 鼠标左键，打开 <code>NSString.h</code> 的实现文档。可以看到下面代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSString</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCopying</span>, <span class="title">NSMutableCopying</span>, <span class="title">NSSecureCoding</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//省略...</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2015/02/03/iOS Fundation-NSString/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/03/iOS Fundation-NSString/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS 学习-Fundation-控件2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -584,7 +915,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 JackJin
+    		&copy; 2019 JackJin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

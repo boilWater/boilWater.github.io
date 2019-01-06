@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-27T16:17:25.000Z</updated>
+  <updated>2019-01-06T12:42:15.346Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,164 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS UI 优化 - Core Animation</title>
+    <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
+    <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
+    <published>2019-01-06T12:39:52.865Z</published>
+    <updated>2019-01-06T12:42:15.346Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、ModelLayer 和 PresentationLayer 分别是指什么？&lt;br&gt;2、隐式动画和显示动画实现原理是什么？&lt;br&gt;3、UIView 和 CALayer 两者之间如何实现事件传递和交互？&lt;br&gt;4、贝塞尔曲线在是如何实现绘制？  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解决在实现中第 3 个问题：&lt;br&gt;UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 View 的 Frame、 Center 和 Size， OS 系统都会间接的设置 CALayer 中 position、bounds、position 和 bounds 对应的几个属性去做设置当前 View 显示具体详细内容和属性。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;换言之：我们对 View 初始化时在设置布局过程中采用 Frame 均是委托给当前 View 拥有的 Layer 层进行设置边界布局，在对属性进行读取操作实际上也是通过调用 Layer 相关属性来实现当前位置调用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;UIKit 框架特性是：我们在当前界面控件元素进行初始化，修改以及当前布局计算，渲染绘制和动画执行均在 main queue 来实现。而且在响应链反馈，手势识别等均切换在主线程中。当 Page 界面控件较多，布局较为复杂就可能会出现掉帧情况，出现界面展示出卡顿现象。&lt;/p&gt;
+&lt;p&gt;发散思维：&lt;br&gt;UIKit 是我们在实现 APP 界面中所有控件的基础库，里面有我们在组建 APP 界面中所有的元素。&lt;/p&gt;
+&lt;p&gt;在组建的控件布局采用 AutoLayout，然后控件做一些复杂的动画实现内容。&lt;br&gt;实际在控件绘制绘制生成我们可视化的每一帧图片时是使用 Core Animation、Core Graphics 和 Core Image 来使用 OpenGL ES 处理连接 GPU Driver 使用 GPU 来生成我们可以看到每一帧的图片内容。&lt;br&gt;在此过程中我们可以考虑想要提高当前页面帧数可以从上面控件初始化，布局计算，渲染以及相关素材解码显示原生图片渲染生成纹理图显示在 UI 屏幕上。&lt;/p&gt;
+&lt;h2 id=&quot;隐式动画实现：&quot;&gt;&lt;a href=&quot;#隐式动画实现：&quot; class=&quot;headerlink&quot; title=&quot;隐式动画实现：&quot;&gt;&lt;/a&gt;隐式动画实现：&lt;/h2&gt;&lt;p&gt;在我们采用 UIView 初始化后进行修改其初始化 View 实例执行：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//没有相关的动画操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;view.center = &lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; animationWithDuration:&lt;span class=&quot;number&quot;&gt;1.20&lt;/span&gt; animations:^&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//在实际情况中出现相关动画效果&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  view.center = &lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果要测试这个方式流程来验证我们在 animationWithDuration 的 block 之外设置 View 相关属性不产生动画，在 block 里面设置 View 的属性产生相关动画。&lt;/p&gt;
+&lt;p&gt;可以采用下面方式来进行实现：&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%@&quot;&lt;/span&gt;, [view.layer.delegate actionForLayer:view.layer forKey:&lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; animationWithDuration:&lt;span class=&quot;number&quot;&gt;1.20&lt;/span&gt; animations:^&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%@&quot;&lt;/span&gt;, [view.layer.delegate actionForLayer:view.layer forKey:&lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里可以通过打印的数据结果证明当前在 Block 之外实现回调当前返回的 Action 为 nil，在 Block 里面调用上面的方法就会返回当前设置位置的实际回调。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所谓的隐私动画就是我们在实际 UI 界面无法看到效果的动画效果，隐式就是看不到任何动画效果。在返回 NSNull 就不会产生任何的动画。在返回当前 View 实例类型 Action 就会生成动画效果。&lt;br&gt;或许就是我们在描述中展示的，View 在一个位置进行初始化显示。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当前在展示中我们如果采用 &lt;code&gt;animationWithDuration:forKey:&lt;/code&gt; 就是产生动画效果。&lt;/p&gt;
+&lt;p&gt;解决在实现中第 1 个问题：&lt;/p&gt;
+&lt;p&gt;ModelLayer 和 PresentationLayer 在实现过程中上面我们知道在实现过程中采用  &lt;code&gt;animationWithDuration:forKey:&lt;/code&gt;  采用 UIView 来实现这种操作，在动画实现过程中也可以采用 Layer 层 CAAnimation 动画操作。&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CaBasicAnimation *animation = [CaBaseicAnimation animation];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.keyPath = &lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.duration = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.formValue = [&lt;span class=&quot;built_in&quot;&gt;NSValue&lt;/span&gt; valueWithCGPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.toValue = [&lt;span class=&quot;built_in&quot;&gt;NSValue&lt;/span&gt; valueWithCGPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[view.layer addAnimation:animation forKey:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在上面展示效果中我们可以看到在 View 的实例变量 Layer 层在进行动画的过程中，ModelLayer 是来保存当前 View 的实例 Layer 的初始值 Frame 值。 PresentationLayer 主要的作用是在 CAAnimation 运动过程中运动指示标识。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作者： JackJin Bai&lt;br&gt;第一次修改时间： 2019/1/6 20:37: 26&lt;br&gt;写于：广州市天河公园家里 &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、ModelLayer 和 PresentationLayer 分别是指什么？&lt;br&gt;2、隐式动画和显示动画实现原理是什么？&lt;br&gt;3、UIView 和 CALayer 两者之间如何实现事件传递和交互？&lt;br&gt;4、贝塞尔曲线在是如何实现绘制？  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解决在实现中第 3 个问题：&lt;br&gt;UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 View 的 Frame、 Center 和 Size， OS 系统都会间接的设置 CALayer 中 position、bounds、position 和 bounds 对应的几个属性去做设置当前 View 显示具体详细内容和属性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS UI 界面" scheme="http://yoursite.com/tags/iOS-UI-%E7%95%8C%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS UI 优化 - 总纲</title>
+    <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20%E4%B8%80/"/>
+    <id>http://yoursite.com/2019/01/06/iOS UI 优化 一/</id>
+    <published>2019-01-06T12:23:44.435Z</published>
+    <updated>2019-01-06T12:43:21.496Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;iOS-UI-优化-总纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化 - 总纲&quot;&gt;&lt;/a&gt;iOS UI 优化 - 总纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
+&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
+&lt;p&gt;最后分析 &lt;code&gt;FB&lt;/code&gt; 开源的框架 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 实现 &lt;code&gt;UI&lt;/code&gt; 优化方式，对 &lt;code&gt;Core Text&lt;/code&gt; 进行最后封装来结束 &lt;code&gt;UI&lt;/code&gt; 专题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作者： JackJin Bai&lt;br&gt;第一次修改时间： 2019/1/6 20:37: 26&lt;br&gt;写于：广州市天河公园家里  &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;iOS-UI-优化-总纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化 - 总纲&quot;&gt;&lt;/a&gt;iOS UI 优化 - 总纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
+&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
+&lt;p&gt;最后分析 &lt;code&gt;FB&lt;/code&gt; 开源的框架 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 实现 &lt;code&gt;UI&lt;/code&gt; 优化方式，对 &lt;code&gt;Core Text&lt;/code&gt; 进行最后封装来结束 &lt;code&gt;UI&lt;/code&gt; 专题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS UI 界面" scheme="http://yoursite.com/tags/iOS-UI-%E7%95%8C%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 内购注意事项</title>
+    <link href="http://yoursite.com/2018/06/29/iOS%20%E5%86%85%E8%B4%AD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>http://yoursite.com/2018/06/29/iOS 内购注意事项/</id>
+    <published>2018-06-29T03:42:23.494Z</published>
+    <updated>2018-06-29T03:45:27.191Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;iOS-内购注意事项&quot;&gt;&lt;a href=&quot;#iOS-内购注意事项&quot; class=&quot;headerlink&quot; title=&quot;iOS 内购注意事项&quot;&gt;&lt;/a&gt;iOS 内购注意事项&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;What do users obtain when purchasing the auto-renewable subscription?&lt;/li&gt;
+&lt;li&gt;Is the content obtained through the auto-renewable In-App Purchase static or dynamically updated?&lt;/li&gt;
+&lt;li&gt;If updated, how often is the content modified?&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;iOS-内购注意事项&quot;&gt;&lt;a href=&quot;#iOS-内购注意事项&quot; class=&quot;headerlink&quot; title=&quot;iOS 内购注意事项&quot;&gt;&lt;/a&gt;iOS 内购注意事项&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;What do users obtain when purcha
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS 内购" scheme="http://yoursite.com/tags/iOS-%E5%86%85%E8%B4%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>StoreKit 框架使用和分析</title>
+    <link href="http://yoursite.com/2018/06/25/StoreKit%20%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E5%92%8C%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2018/06/25/StoreKit 框架使用和分析/</id>
+    <published>2018-06-25T06:46:08.670Z</published>
+    <updated>2018-06-29T03:41:26.136Z</updated>
+    
+    <content type="html">&lt;p&gt;最近在公司做关于 &lt;code&gt;iOS&lt;/code&gt; 内购方面相关内容，所以本着如果使用到那块具体内容就要实现完全了解心态把 &lt;code&gt;StoreKit&lt;/code&gt; 框架相关接口了解和实现具体封装。&lt;/p&gt;
+&lt;h2 id=&quot;StoreKit-接口分析&quot;&gt;&lt;a href=&quot;#StoreKit-接口分析&quot; class=&quot;headerlink&quot; title=&quot;StoreKit 接口分析&quot;&gt;&lt;/a&gt;&lt;code&gt;StoreKit&lt;/code&gt; 接口分析&lt;/h2&gt;&lt;h3 id=&quot;SKAdNetwork&quot;&gt;&lt;a href=&quot;#SKAdNetwork&quot; class=&quot;headerlink&quot; title=&quot;SKAdNetwork&quot;&gt;&lt;/a&gt;&lt;code&gt;SKAdNetwork&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;翻译不是非常准确，目前是定义为在广告展示和点击时来做为依据标准。&lt;/p&gt;
+&lt;h3 id=&quot;SKCloudServiceController&quot;&gt;&lt;a href=&quot;#SKCloudServiceController&quot; class=&quot;headerlink&quot; title=&quot;SKCloudServiceController&quot;&gt;&lt;/a&gt;&lt;code&gt;SKCloudServiceController&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;来获取用户音乐文件管理的相关权限。&lt;/p&gt;
+&lt;h3 id=&quot;SKCloudServiceSetupViewController&quot;&gt;&lt;a href=&quot;#SKCloudServiceSetupViewController&quot; class=&quot;headerlink&quot; title=&quot;SKCloudServiceSetupViewController&quot;&gt;&lt;/a&gt;&lt;code&gt;SKCloudServiceSetupViewController&lt;/code&gt;&lt;/h3&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在公司做关于 &lt;code&gt;iOS&lt;/code&gt; 内购方面相关内容，所以本着如果使用到那块具体内容就要实现完全了解心态把 &lt;code&gt;StoreKit&lt;/code&gt; 框架相关接口了解和实现具体封装。&lt;/p&gt;
+&lt;h2 id=&quot;StoreKit-接口分析&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS 内购" scheme="http://yoursite.com/tags/iOS-%E5%86%85%E8%B4%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript 学习总结</title>
     <link href="http://yoursite.com/2018/03/28/JavaScript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2018/03/28/JavaScript学习总结/</id>
     <published>2018-03-27T16:14:28.000Z</published>
-    <updated>2018-03-27T16:17:25.000Z</updated>
+    <updated>2018-03-28T01:56:37.000Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习资源地址&lt;/a&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习资源地址&lt;/a&gt;&lt;/
     
     </summary>
     
@@ -1353,395 +1502,6 @@
     
     
       <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS UIViewController 周期详解</title>
-    <link href="http://yoursite.com/2016/08/01/iOS%20UIViewController%20%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2016/08/01/iOS UIViewController 使用/</id>
-    <published>2016-08-01T09:42:32.000Z</published>
-    <updated>2017-09-17T16:07:19.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;UIViewController&lt;/code&gt; 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。&lt;/p&gt;
-&lt;p&gt;在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。&lt;/p&gt;
-&lt;h2 id=&quot;UIViewController-周期&quot;&gt;&lt;a href=&quot;#UIViewController-周期&quot; class=&quot;headerlink&quot; title=&quot;UIViewController 周期&quot;&gt;&lt;/a&gt;&lt;code&gt;UIViewController&lt;/code&gt; 周期&lt;/h2&gt;&lt;p&gt;下图是 &lt;code&gt;UIViewController&lt;/code&gt; 周期过程：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-e78453877cfb719c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIViewController生命周期.png&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;下面小编依次在 &lt;code&gt;UIViewController&lt;/code&gt; 视图控制器中列出上面视图周期，然后进行跳转下一个界面看下操作的后 &lt;code&gt;UIViewController&lt;/code&gt; 具体周期打印结果。&lt;/p&gt;
-&lt;p&gt;实现代码如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidLoad &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidLoad];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; initHierarchy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)loadView &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; loadView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillAppear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewWillAppear:animated];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidAppear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidAppear:animated];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillDisappear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewWillDisappear:animated];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidDisappear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidDisappear:animated];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)didReceiveMemoryWarning &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; didReceiveMemoryWarning];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillUnload &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewWillUnload];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidUnload &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;load Method: %@&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(_cmd));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidUnload];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;执行上面的操作，然后点击按钮跳转下一个 &lt;code&gt;UIViewController&lt;/code&gt; 视图控制器。打印出的结果如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: loadView&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: viewDidLoad&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: viewWillAppear:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: viewDidAppear:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: viewWillDisappear:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;58066&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;17044982&lt;/span&gt;] load Method: viewDidDisappear:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上面并没有执行 &lt;code&gt;viewWillUnload&lt;/code&gt; 和 &lt;code&gt;viewDidUnload&lt;/code&gt;，点开文档我们可以看到下面一段文字。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Called after the view controller’s view is released and set to nil. For example, a memory warning which causes the view to be purged. Not invoked as a result of -dealloc.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;因为当前只有两个控制器，所以并没有调用 &lt;code&gt;didReceiveMemoryWarning&lt;/code&gt;。也就说当前视图控制器并没有销毁，还在内存中。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;上面打印的结果很好验证小编所整理 &lt;code&gt;UIViewController&lt;/code&gt; 在加载、展示和销毁过后过程执行。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;loadView、viewDidLoad-和-viewDidUnload-关系&quot;&gt;&lt;a href=&quot;#loadView、viewDidLoad-和-viewDidUnload-关系&quot; class=&quot;headerlink&quot; title=&quot;loadView、viewDidLoad 和 viewDidUnload 关系&quot;&gt;&lt;/a&gt;&lt;code&gt;loadView&lt;/code&gt;、&lt;code&gt;viewDidLoad&lt;/code&gt; 和 &lt;code&gt;viewDidUnload&lt;/code&gt; 关系&lt;/h2&gt;&lt;p&gt;在网上搜索一下关于 &lt;code&gt;UIViewController&lt;/code&gt; 的周期问题，看到很多情况下问及 &lt;code&gt;loadView&lt;/code&gt;、&lt;code&gt;viewDidLoad&lt;/code&gt; 和 &lt;code&gt;viewDidUnload&lt;/code&gt; 三者之间的关系。&lt;/p&gt;
-&lt;p&gt;这里我们先了解下关于 &lt;code&gt;App&lt;/code&gt; 展示的界面有哪些方式。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用 &lt;code&gt;XIB&lt;/code&gt; 来构建界面&lt;/li&gt;
-&lt;li&gt;使用 &lt;code&gt;Storyboard&lt;/code&gt; 来构建界面&lt;/li&gt;
-&lt;li&gt;使用 代码来构建界面&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;界面构造&quot;&gt;&lt;a href=&quot;#界面构造&quot; class=&quot;headerlink&quot; title=&quot;界面构造&quot;&gt;&lt;/a&gt;界面构造&lt;/h3&gt;&lt;p&gt;在构建界面过程中基本的流程是：&lt;/p&gt;
-&lt;p&gt;（1）系统会首先会加载 &lt;code&gt;XIB&lt;/code&gt; 或者是 &lt;code&gt;Storyboard&lt;/code&gt; 来初始化界面&lt;br&gt;（2）在没有 &lt;code&gt;XIB&lt;/code&gt; 或者是 &lt;code&gt;Storyboard&lt;/code&gt; 情况下加载手写代码实现界面&lt;br&gt; (3)在有 &lt;code&gt;XIB&lt;/code&gt; 或者是 &lt;code&gt;Storyboard&lt;/code&gt; 系统也会加载手写代码&lt;/p&gt;
-&lt;h4 id=&quot;XIB-来构建界面&quot;&gt;&lt;a href=&quot;#XIB-来构建界面&quot; class=&quot;headerlink&quot; title=&quot;XIB 来构建界面&quot;&gt;&lt;/a&gt;&lt;code&gt;XIB&lt;/code&gt; 来构建界面&lt;/h4&gt;&lt;p&gt;下面来看下使用方式：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; *viewController = [[&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; alloc] initWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt; bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上面使用 &lt;code&gt;XIB&lt;/code&gt; 进行初始化过程需要指定 &lt;code&gt;XIB&lt;/code&gt; 的名字和 &lt;code&gt;bundle&lt;/code&gt; 的值。&lt;/p&gt;
-&lt;h4 id=&quot;Storyboard-来构建界面&quot;&gt;&lt;a href=&quot;#Storyboard-来构建界面&quot; class=&quot;headerlink&quot; title=&quot;Storyboard 来构建界面&quot;&gt;&lt;/a&gt;&lt;code&gt;Storyboard&lt;/code&gt; 来构建界面&lt;/h4&gt;&lt;p&gt;下面来看下使用方式：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIStoryboard&lt;/span&gt; *storyBoard = [&lt;span class=&quot;built_in&quot;&gt;UIStoryboard&lt;/span&gt; storyboardWithName:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt; bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; *viewController = [storyBoard instantiateInitialViewController];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;代码来构建界面&quot;&gt;&lt;a href=&quot;#代码来构建界面&quot; class=&quot;headerlink&quot; title=&quot;代码来构建界面&quot;&gt;&lt;/a&gt;代码来构建界面&lt;/h4&gt;&lt;p&gt;在上面我们所列举的 &lt;code&gt;viewDidLoad&lt;/code&gt; 里面实现手写代码。&lt;/p&gt;
-&lt;h3 id=&quot;界面构建中-loadView、viewDidLoad-和-viewDidUnload-调用&quot;&gt;&lt;a href=&quot;#界面构建中-loadView、viewDidLoad-和-viewDidUnload-调用&quot; class=&quot;headerlink&quot; title=&quot;界面构建中 loadView、viewDidLoad 和 viewDidUnload 调用&quot;&gt;&lt;/a&gt;界面构建中 &lt;code&gt;loadView&lt;/code&gt;、&lt;code&gt;viewDidLoad&lt;/code&gt; 和 &lt;code&gt;viewDidUnload&lt;/code&gt; 调用&lt;/h3&gt;&lt;h4 id=&quot;loadView&quot;&gt;&lt;a href=&quot;#loadView&quot; class=&quot;headerlink&quot; title=&quot;loadView&quot;&gt;&lt;/a&gt;&lt;code&gt;loadView&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;loadView&lt;/code&gt; 的使用时期一般是第一次加载界面(也即是：View不存在时)调用来对 view 进行加载，如果在函数中没有进行相关的调用系统会默认调用 &lt;code&gt;[super loadView]&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;基本的内容是负责创建 &lt;code&gt;UIViewController&lt;/code&gt; 中的 &lt;code&gt;View&lt;/code&gt; 值。&lt;/p&gt;
-&lt;p&gt;其中 &lt;code&gt;loadView&lt;/code&gt; 中大概执行加载情况如下：&lt;/p&gt;
-&lt;p&gt;(1)根据 &lt;code&gt;XIB&lt;/code&gt; 或者是 &lt;code&gt;Storyboard&lt;/code&gt; 来加载视图&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// XIB 加载视图&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; alloc] initWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt; bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//或者 Storyboard&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;built_in&quot;&gt;UIStoryboard&lt;/span&gt; storyboardWithName:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt; bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[storyBoard instantiateInitialViewController];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;(2)如过没有相关的 &lt;code&gt;XIB&lt;/code&gt; 或者 &lt;code&gt;Storyboard&lt;/code&gt;，使用 &lt;code&gt;ViewController&lt;/code&gt; 初始化视图&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[[ViewController alloc] init];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;(3)在没有 没有相关的 &lt;code&gt;XIB&lt;/code&gt; 或者 &lt;code&gt;Storyboard&lt;/code&gt;时，最后初始化视图的View&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view = [[&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; alloc] initWithFrame:[&lt;span class=&quot;built_in&quot;&gt;UIScreen&lt;/span&gt; mainScreen].bounds];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;viewDidLoad&quot;&gt;&lt;a href=&quot;#viewDidLoad&quot; class=&quot;headerlink&quot; title=&quot;viewDidLoad&quot;&gt;&lt;/a&gt;&lt;code&gt;viewDidLoad&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;上面三种创建 View 后均会提调用 &lt;code&gt;viewDidLoad&lt;/code&gt;，而且在其中我们可以实现对子控件的初始化。&lt;/p&gt;
-&lt;h4 id=&quot;viewDidUnload&quot;&gt;&lt;a href=&quot;#viewDidUnload&quot; class=&quot;headerlink&quot; title=&quot;viewDidUnload&quot;&gt;&lt;/a&gt;&lt;code&gt;viewDidUnload&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;如果当前的 &lt;code&gt;App&lt;/code&gt; 占用过多的内存就会调用在函数周期的 &lt;code&gt;didReceiveMemoryWarning&lt;/code&gt; 继而调用 &lt;code&gt;viewDidUnload&lt;/code&gt; 释放当前的 &lt;code&gt;UIViewControler&lt;/code&gt; 视图控制器。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;UIViewController&lt;/code&gt; 视图控制器是我们在做开发过程进行视图和控件主要实现管理类，很多情况下我们都会与之打交道。&lt;/p&gt;
-&lt;p&gt;在整个 APP 运行期间也是每一个视图进行加载、展示和消除的过程。&lt;/p&gt;
-&lt;h2 id=&quot;UIViewController-周期&quot;&gt;&lt;a href=&quot;#UIViewController-周期&quot; class=&quot;headerlink&quot; title=&quot;UIViewController 周期&quot;&gt;&lt;/a&gt;&lt;code&gt;UIViewController&lt;/code&gt; 周期&lt;/h2&gt;&lt;p&gt;下图是 &lt;code&gt;UIViewController&lt;/code&gt; 周期过程：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-e78453877cfb719c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIViewController生命周期.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS 学习" scheme="http://yoursite.com/tags/iOS-%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS UIView &amp; CALayer 对比及 UIImage 使用小技巧</title>
-    <link href="http://yoursite.com/2016/07/16/UIView&CALayer&Core%20Animation~1/"/>
-    <id>http://yoursite.com/2016/07/16/UIView&CALayer&Core Animation~1/</id>
-    <published>2016-07-16T09:42:32.000Z</published>
-    <updated>2017-09-17T03:58:10.000Z</updated>
-    
-    <content type="html">&lt;p&gt;目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;下面给出界面优化知识思维导图&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-917b3f75519f69fc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;IOS界面优化.jpg&quot;&gt;&lt;/p&gt;
-&lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。&lt;br&gt;下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;UIView-和-CALayer之间的关系&quot;&gt;&lt;a href=&quot;#UIView-和-CALayer之间的关系&quot; class=&quot;headerlink&quot; title=&quot;UIView 和 CALayer之间的关系&quot;&gt;&lt;/a&gt;UIView 和 CALayer之间的关系&lt;/h3&gt;&lt;p&gt;打开 &lt;code&gt;UIView&lt;/code&gt; 和 &lt;code&gt;CALyer&lt;/code&gt; 中实际实现的代码，下面是&lt;code&gt;UIView&lt;/code&gt;实现源码：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;UIView&lt;/code&gt; 头文件：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NS_CLASS_AVAILABLE_IOS&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;_0) &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIView&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;UIResponder&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCoding&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIAppearance&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIAppearanceContainer&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIDynamicItem&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UITraitEnvironment&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UICoordinateSpace&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIFocusEnvironment&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@property&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;nonatomic&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;readonly&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;strong&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;CALayer&lt;/span&gt;  *layer; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...  &lt;span class=&quot;comment&quot;&gt;//省略&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CALayer&lt;/code&gt; 源文件：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//CALayer实现源码：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CALayer&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCoding&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;CAMediaTiming&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; _CALayerIvars &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    int32_t refcount;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    uint32_t magic;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *layer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#if TARGET_OS_MAC &amp;amp;&amp;amp; !TARGET_RT_64_BIT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *unused1[&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#endif&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125; _attr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;我们可以看出 &lt;code&gt;UIView&lt;/code&gt; 是继承自 &lt;code&gt;UIResponder&lt;/code&gt;，而 &lt;code&gt;CALayer&lt;/code&gt; 继承自&lt;code&gt;NSObject&lt;/code&gt;。这也是 &lt;code&gt;UIView&lt;/code&gt; 可以相应触摸事件，并实现响应链中最后一环所在后面我们会具体讲述。&lt;code&gt;CALayer&lt;/code&gt; 继承自 &lt;code&gt;NSObject&lt;/code&gt;，其中 &lt;code&gt;UIView&lt;/code&gt; 中又包含自己所特有的 &lt;code&gt;layer&lt;/code&gt;。我们可以看做 &lt;code&gt;CALayer&lt;/code&gt; 是 &lt;code&gt;UIView&lt;/code&gt; 的具体内容细节的实现，两者具有平行关系。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;div style=&quot;color:#008B8B&quot;&gt;&lt;p&gt;为什么不把两者何在一起进行实现呢，分开实现具体功能呢？&lt;br&gt;我想可能是为啦分层需要，把功能具体分隔开来。UIView实现触摸响应，CALayer实现具体的内容展示。&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-
-
-
-
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;下面我们将写关于 &lt;code&gt;UIView&lt;/code&gt; 和 &lt;code&gt;CALayer&lt;/code&gt; 的一些相关的知识：&lt;/p&gt;
-&lt;p&gt;列出在 &lt;code&gt;UIView&lt;/code&gt; 实现不了的 &lt;code&gt;CALayer&lt;/code&gt; 的功能：&lt;/p&gt;
-&lt;ul&gt;&lt;br&gt;&lt;li&gt;阴影，圆角，带颜色的边框&lt;/li&gt;&lt;br&gt;&lt;li&gt;3D变换&lt;/li&gt;&lt;br&gt;&lt;li&gt;非矩形范围&lt;/li&gt;&lt;br&gt;&lt;li&gt;透明遮罩&lt;/li&gt;&lt;br&gt;&lt;li&gt;多级非线性动画&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;
-
-&lt;hr&gt;
-&lt;p&gt;我们也都知道在 &lt;code&gt;iPhone&lt;/code&gt; 手机内存是固定不能进行拓展，所以我们手机内存是很宝贵的。如果我们想要加载大容量的图片，会占用很大的内存。&lt;br&gt;&lt;br&gt;&lt;br&gt;为此，&lt;code&gt;Apple&lt;/code&gt; 采用了一种比较巧妙的策略。在低内存的情况下，系统会强制清除 &lt;code&gt;UIImage&lt;/code&gt; 对象所指向的图片数据，以释放部分内存。注意，这种清除行为影响到的只是图片数据，而不会影响到 &lt;code&gt;UIImage&lt;/code&gt; 对象本身。当我们需要绘制那些图片数据已经被清除的&lt;code&gt;UIImage&lt;/code&gt; 对象时，对象会自动从源文件中重新加载数据。当然，这是以时间换空间的一种策略，会导致一定的性能损耗。下面给出一些图片处理小技巧&lt;/p&gt;
-&lt;h3 id=&quot;UIImage缓存&quot;&gt;&lt;a href=&quot;#UIImage缓存&quot; class=&quot;headerlink&quot; title=&quot;UIImage缓存&quot;&gt;&lt;/a&gt;UIImage缓存&lt;/h3&gt;&lt;p&gt;我们知道在使用 &lt;code&gt;imageNamed&lt;/code&gt; 进行图片显示，图片会缓存。但具体缓存是怎么实现，其中解析和清除时间是什么时候呢？&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;div style=&quot;color:#008B8B&quot;&gt; &lt;p&gt;当我们使用 &lt;code&gt;imageNamed:&lt;/code&gt; 时创建图片，系统会通过 &lt;code&gt;Bundle&lt;/code&gt; 的文件中找到图片的文件名，然后把相关的名字放到 &lt;code&gt;UIImage&lt;/code&gt; 返回，此时并没有解析图片。当图片在第一次显示时，图片才会调用内部解码方法，解码会放到一个全局变量中。图片在解码后，会在&lt;code&gt;App&lt;/code&gt; 第一次进入后台或者内存警告时，该图片的缓存才会被清空，其他情况缓存会一直存在。&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;使用-imageWithData-可以避免缓存吗？&quot;&gt;&lt;a href=&quot;#使用-imageWithData-可以避免缓存吗？&quot; class=&quot;headerlink&quot; title=&quot;使用 imageWithData 可以避免缓存吗？&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;imageWithData&lt;/code&gt; 可以避免缓存吗？&lt;/h3&gt;&lt;p&gt;我们在创建 &lt;code&gt;UIImage&lt;/code&gt; 时，&lt;code&gt;UIImage&lt;/code&gt;的底层会调用 &lt;code&gt;ImageIO&lt;/code&gt;的&lt;code&gt;CGImageSourceCreateWithData()&lt;/code&gt;，此方法有个参数 &lt;code&gt;ShouldCache&lt;/code&gt;，在 64 位的处理器上是默认开启的。图片也会在第一次显示在屏幕上才会被解码，解码数据也会保存在&lt;code&gt;CGimage&lt;/code&gt; 的内部。&lt;/p&gt;
-&lt;div style=&quot;color:#008B8B&quot;&gt;&lt;br&gt;&lt;p&gt;但是与上面使用 &lt;code&gt;imageName&lt;/code&gt; 的情况不同，在 &lt;code&gt;UIImage&lt;/code&gt; 被释放是其缓存也会进行释放。&lt;/p&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;怎样避免缓存&quot;&gt;&lt;a href=&quot;#怎样避免缓存&quot; class=&quot;headerlink&quot; title=&quot;怎样避免缓存&quot;&gt;&lt;/a&gt;怎样避免缓存&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;上面我们可以看到如果直接使用 &lt;code&gt;CGImageSourceCreateWithData()&lt;/code&gt;，并且关闭&lt;code&gt;ShouldCache&lt;/code&gt; 和 &lt;code&gt;ShouldCacheImmediately&lt;/code&gt;，但是这样的话每次图片需要显示的话，都会进行图片解码，这样会占用较大&lt;code&gt;CPU&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;把图片用 &lt;code&gt;CGContextDrawImage()&lt;/code&gt; 绘制到画布上，然后把画布的数据取出来当作图片。这也是常见的网络图片库的做法。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;后面小编将分出一篇文章专门讲述空间绘制的博文。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://blog.ibireme.com/2015/11/02/ios_image_tips/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;处理图片的一些小 Tip&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://bihongbo.com/2016/01/03/memoryGhostdrawRect/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;内存恶鬼drawRect&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/1-图层树/图层树.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;图层的树状结构&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/2-寄宿图/寄宿图.md#contents属性&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;寄宿图&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UIView和CALayer总的参考地址&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW12&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UIVie和CALayer关系源码&lt;/a&gt;;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;下面给出界面优化知识思维导图&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-917b3f75519f69fc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;IOS界面优化.jpg&quot;&gt;&lt;/p&gt;
-&lt;div style=&quot;color:#008B8B&quot; &gt;&lt;br&gt;&lt;p&gt;今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。&lt;br&gt;下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="视图&图层&动画" scheme="http://yoursite.com/categories/%E8%A7%86%E5%9B%BE-%E5%9B%BE%E5%B1%82-%E5%8A%A8%E7%94%BB/"/>
-    
-    
-      <category term="图片视频" scheme="http://yoursite.com/tags/%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS UIView Core Animation 动画实现</title>
-    <link href="http://yoursite.com/2016/07/11/UIView&CALayer&Core%20Animation-%E6%80%BB%E4%BD%93/"/>
-    <id>http://yoursite.com/2016/07/11/UIView&CALayer&Core Animation-总体/</id>
-    <published>2016-07-11T09:42:32.000Z</published>
-    <updated>2017-09-15T09:39:39.000Z</updated>
-    
-    <content type="html">&lt;p&gt;一直想做个 &lt;code&gt;Dome&lt;/code&gt; 来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于 &lt;code&gt;UIView &amp;amp; CALayer &amp;amp; Core Animation&lt;/code&gt; 进行分装做出一个 &lt;code&gt;Dome&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;UIView-amp-CALayer-关系导图&quot;&gt;&lt;a href=&quot;#UIView-amp-CALayer-关系导图&quot; class=&quot;headerlink&quot; title=&quot;UIView &amp;amp; CALayer 关系导图&quot;&gt;&lt;/a&gt;UIView &amp;amp; CALayer 关系导图&lt;/h2&gt;&lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-397d8b3bedb95f0a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;UIView &amp;amp; CALayer动画.jpg&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;UIView-动画实现&quot;&gt;&lt;a href=&quot;#UIView-动画实现&quot; class=&quot;headerlink&quot; title=&quot;UIView 动画实现&quot;&gt;&lt;/a&gt;UIView 动画实现&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;帧动画效果&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-3fae0a803c160fef.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;帧动画.gif&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;仿射动画&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d6a7f3ada5c400a7.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;UIView 仿射动画.gif&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;组合动画&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-dafd4f53723a1302.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;组合动画.gif&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Popping&lt;/code&gt; 动画&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-91a7df2b78ff4b59.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;popping动画.gif&quot;&gt;&lt;/p&gt;
-&lt;p&gt;动画 &lt;code&gt;Demo&lt;/code&gt; 的 &lt;code&gt;GitHub&lt;/code&gt; 下载地址：&lt;br&gt;&lt;a href=&quot;https://github.com/boilWater/AnimationDome&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;Demo&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一直想做个 &lt;code&gt;Dome&lt;/code&gt; 来实践自己所学的知识，看到网上有很多资料感觉压力比较大，所以决定站在巨人肩膀上对于 &lt;code&gt;UIView &amp;amp; CALayer &amp;amp; Core Animation&lt;/code&gt; 进行分装做出一个 &lt;code&gt;Dome&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;UIView-amp-CALayer-关系导图&quot;&gt;&lt;a href=&quot;#UIView-amp-CALayer-关系导图&quot; class=&quot;headerlink&quot; title=&quot;UIView &amp;amp; CALayer 关系导图&quot;&gt;&lt;/a&gt;UIView &amp;amp; CALayer 关系导图&lt;/h2&gt;&lt;p&gt;下面给出整理的思维导图片：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS面试 &amp; 自己理解 &amp; 详细资料库</title>
-    <link href="http://yoursite.com/2016/07/05/IOS%E9%9D%A2%E8%AF%95%E6%A2%B3%E7%90%86&%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3&%E8%AF%A6%E7%BB%86%E8%B5%84%E6%96%99%E5%BA%93/"/>
-    <id>http://yoursite.com/2016/07/05/IOS面试梳理&自己理解&详细资料库/</id>
-    <published>2016-07-05T09:42:32.000Z</published>
-    <updated>2017-09-17T16:08:12.000Z</updated>
-    
-    <content type="html">&lt;p&gt;目前在公司做白领社交产品 “在一起”，工作也快一年下面对 &lt;code&gt;iOS&lt;/code&gt; 相关面试做一份总结。&lt;br&gt;说实话目前&lt;code&gt;iOS&lt;/code&gt;开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
-&lt;h2 id=&quot;OC理解和特性&quot;&gt;&lt;a href=&quot;#OC理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC理解和特性&quot;&gt;&lt;/a&gt;OC理解和特性&lt;/h2&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。&lt;code&gt;Objc&lt;/code&gt;就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;封装：对于要处理的问题进行模块开发，好处有利于我们对于功能的拓展&lt;/li&gt;
-&lt;li&gt;继承：通过继承实现对父类方法的实现，也可以在子类中重写父类方法&lt;/li&gt;
-&lt;li&gt;多态：通过同名函数但是输入形式参数的种类，数目，类型不同实现具体函数功能不同（具体实现可以参照&lt;code&gt;C &amp;amp; C++&lt;/code&gt;在编译后形式~想了解的可以自己查找）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;Objc&lt;/code&gt;的动态特性：动态类型、动态加载、动态绑定。其实前面我们在&lt;code&gt;runtime&lt;/code&gt;的理解过程中有所讲解。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;(1)&lt;strong&gt;动态类型&lt;/strong&gt;：在&lt;code&gt;iOS&lt;/code&gt;中我们经常见到&lt;code&gt;id&lt;/code&gt;类型，&lt;code&gt;id&lt;/code&gt;类型指在&lt;code&gt;Objc&lt;/code&gt;中动态类型。在实际应用中我们一般使用静态类型，静态类型：固定和可预知性。静态类型是强类型，动态类型是弱类型。例如：我们经常见到的&lt;code&gt;protrcol&lt;/code&gt;委托协议就是采取&lt;code&gt;@proerty(nonatomic, weak) id&amp;lt;protrcol&amp;gt; delegate&lt;/code&gt;&lt;br&gt;(2)&lt;strong&gt;动态加载&lt;/strong&gt;：基于动态类型，在某个实例对象被确定后，其类型便被确定了，该对象对应的属性和响应消息也被完全确定。&lt;br&gt;(3)&lt;strong&gt;动态绑定&lt;/strong&gt;：是我们在适配机型加载过程中，动态实现图片的实现。例如，在&lt;code&gt;Retina&lt;/code&gt;设备上加载&lt;code&gt;@2x&lt;/code&gt;的图片。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;内存管理原则&quot;&gt;&lt;a href=&quot;#内存管理原则&quot; class=&quot;headerlink&quot; title=&quot;内存管理原则&quot;&gt;&lt;/a&gt;内存管理原则&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;iOS5.0&lt;/code&gt;之前：在&lt;code&gt;iOS 5.0&lt;/code&gt;之前&lt;code&gt;Objc&lt;/code&gt;内存管理试行谁创建，谁释放的原则。如果要对是初始化的类型进行&lt;code&gt;alloc&lt;/code&gt;,&lt;code&gt;retain&lt;/code&gt;,&lt;code&gt;copy&lt;/code&gt;，就需要手动进行&lt;code&gt;release&lt;/code&gt;进行释放。当计数为0时才会释放对应的初始化内存空间和指针，我们称为&lt;code&gt;MRC&lt;/code&gt;时代。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;iOS 5.0&lt;/code&gt;之后：使用戏言&lt;code&gt;iOS&lt;/code&gt;开发那就是一个字：爽。在&lt;code&gt;ARC&lt;/code&gt;：自动计数模式开发程序，我们不用再手动释放申请的对象，程序开发过程终于见不到&lt;code&gt;release&lt;/code&gt;,&lt;code&gt;autorelease&lt;/code&gt;,&lt;code&gt;retain&lt;/code&gt;语句。不过我们这是就该注意到&lt;code&gt;strong&lt;/code&gt;和&lt;code&gt;weak&lt;/code&gt;的细微区别。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;strong&lt;/code&gt; &amp;amp;&lt;code&gt;weak&lt;/code&gt;区别&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;strong&lt;/code&gt;:用来修饰强引用属性&lt;br&gt;&lt;code&gt;weak&lt;/code&gt;:用来修饰弱引用属性&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;strong&lt;/code&gt; &amp;amp; &lt;code&gt;weak&lt;/code&gt;实现具体情况&lt;/p&gt;
-&lt;p&gt;我们知道&lt;code&gt;strong&lt;/code&gt;的使用时强引用，使用强引用使我们在赋值时会使计数器 &lt;code&gt;+1&lt;/code&gt;；&lt;/p&gt;
-&lt;p&gt;释放时间：当指针指向新值或者指针不存在，指针不存在一般是在自动计数为0时指针会自动释放。&lt;br&gt;&lt;code&gt;weak&lt;/code&gt;是弱引用，悲剧的是弱引用是不会再计数 &lt;code&gt;+1&lt;/code&gt; 的。不过这也使我们在使用时很方便，因为我们如果要防止 &lt;code&gt;block&lt;/code&gt; 中发生循环引用的时候，可以在 &lt;code&gt;block&lt;/code&gt; 外使用&lt;code&gt;_weak&lt;/code&gt; 进行修饰。&lt;/p&gt;
-&lt;p&gt;释放时间：对象的拥有者指向新值或者不存在时 &lt;code&gt;weak&lt;/code&gt; 修饰的指针会自动置为 &lt;code&gt;nil&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;weak&lt;/code&gt; 的实现原理：在每一个类中都有一个弱引用的列表，在释放时都会对列表进行访问。如果找到相应的对象就执行释放。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;strong&lt;/code&gt;：是通过 &lt;code&gt;ARC&lt;/code&gt; 的自动计数来实现对于对象的释放。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;在想一个对象发送 &lt;code&gt;autorelease&lt;/code&gt; 消息时，其实目标不会立即释放，会有一个具体的时间值。在 &lt;code&gt;autorelease&lt;/code&gt; 调用的时候，会对其中的对象挨个发送 &lt;code&gt;release&lt;/code&gt; 语句对于每个对象进行相应的释放。后面会对于 &lt;code&gt;autorelease&lt;/code&gt; 进行专项讲解，不过这里可以给大牛资料，下文&lt;br&gt;在 &lt;code&gt;ARC&lt;/code&gt; 中我们不用手动向实例化对象发送 &lt;code&gt;release&lt;/code&gt; 进行释放，但是在 &lt;code&gt;MRC&lt;/code&gt; 中就需要我们对申请的对象进行手动释放对象。那么问题来啦，对象会立即释放吗？&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;记住一点在&lt;code&gt;MRC&lt;/code&gt;也是对象有时也不会立即释放，需要当前对象的计数为0时才会使用&lt;code&gt;dealloc&lt;/code&gt;进行对象中所有的内容。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;其他注意事项&quot;&gt;&lt;a href=&quot;#其他注意事项&quot; class=&quot;headerlink&quot; title=&quot;其他注意事项&quot;&gt;&lt;/a&gt;其他注意事项&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;当一个对象被 &lt;code&gt;_strong&lt;/code&gt; 指向时，该对象是不会被释放的。但是当对象在超出其作用区域时（在 &lt;code&gt;C++&lt;/code&gt; 中局部变量在超出作用区域就会 &lt;code&gt;nil&lt;/code&gt; ），此时指针也会被置为 &lt;code&gt;nil&lt;/code&gt; 于此同时指针所指的内存空间也会被释放。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;还有就是当试图控制器（&lt;code&gt;View&lt;/code&gt;Controller&lt;code&gt;`）进行释放，其中的全局变量和局部变量都会被释放。也有意外就是实现循环引用，恭喜你好好修改下吧，因为这是个&lt;/code&gt;BUG`。&lt;/p&gt;
-&lt;p&gt;局部变量：上面讲到的局部变量如果超出其范围就会置为&lt;code&gt;nil&lt;/code&gt;&lt;br&gt;在方法中对象创建，为啦使内存能够尽可能的减少可以使用&lt;code&gt;autoreleasepool&lt;/code&gt;。使用方法：&lt;code&gt;@autoreleasepool{}&lt;/code&gt;;&lt;br&gt;&lt;code&gt;block&lt;/code&gt;中为了避免循环引用就会使用&lt;code&gt;_weak&lt;/code&gt;进行修饰&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;ARC&lt;/code&gt;不是万能的🔑：&lt;code&gt;ARC&lt;/code&gt; 是基于在&lt;code&gt;Foundation&lt;/code&gt;之上进行的变量的管理，如果是&lt;code&gt;CGtypeRef&lt;/code&gt;类型就无法进行管理。例如：&lt;code&gt;CGImageRef&lt;/code&gt;的图片的信息&lt;br&gt;同样我们可以实现&lt;code&gt;ARC&lt;/code&gt;和非&lt;code&gt;ARC&lt;/code&gt;之间的进行混合编译，具体操作如下：&lt;/p&gt;
-&lt;p&gt;在&lt;code&gt;ARC&lt;/code&gt;中进行非&lt;code&gt;ARC&lt;/code&gt;程序的混合编译：&lt;code&gt;-fno-fobjc-arc&lt;/code&gt;;&lt;/p&gt;
-&lt;p&gt;在非&lt;code&gt;ARC&lt;/code&gt;中进行&lt;code&gt;ARC&lt;/code&gt;的混合编译：&lt;code&gt;-fobjc-arc&lt;/code&gt;;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;不过目前我们使用&lt;code&gt;ARC&lt;/code&gt;较多，所以使用第一种的情形较多。&lt;code&gt;swift&lt;/code&gt;毕竟也发布两年之久，很多创业公司已经开始使用&lt;code&gt;swift&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;拓展介绍&quot;&gt;&lt;a href=&quot;#拓展介绍&quot; class=&quot;headerlink&quot; title=&quot;拓展介绍&quot;&gt;&lt;/a&gt;拓展介绍&lt;/h4&gt;&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;nonatomic&lt;/code&gt;:原子操作，禁止多线程进行操作&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;atomic&lt;/code&gt;:原子操作，多线程安全是&lt;code&gt;property&lt;/code&gt;的默认操作基本类型&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;assign&lt;/code&gt;:表示设置器可以直接进行复制，基本用于基本数据类型（&lt;code&gt;NSInteger&lt;/code&gt;,&lt;code&gt;CGFloat&lt;/code&gt;）和C语言的基本数据类型（&lt;code&gt;int&lt;/code&gt;,&lt;code&gt;float&lt;/code&gt;,&lt;code&gt;double&lt;/code&gt;,&lt;code&gt;char&lt;/code&gt;）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;readwrite&lt;/code&gt;:可以进行读写&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;readonly&lt;/code&gt;:进行只读&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;copy&lt;/code&gt;:在赋值过程中传入一份值得&lt;code&gt;copy&lt;/code&gt;，地址和内容都会重新赋值&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;retain&lt;/code&gt;:在赋值过程中会使用&lt;code&gt;retain&lt;/code&gt;对象，指向内容的指针会&lt;code&gt;copy&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;设计模式&quot;&gt;&lt;a href=&quot;#设计模式&quot; class=&quot;headerlink&quot; title=&quot;设计模式&quot;&gt;&lt;/a&gt;设计模式&lt;/h3&gt;&lt;p&gt;开发过程中我们都会使用到设计模式，这里就以两种设计模式进行举例：&lt;/p&gt;
-&lt;h4 id=&quot;MVC设计模式&quot;&gt;&lt;a href=&quot;#MVC设计模式&quot; class=&quot;headerlink&quot; title=&quot;MVC设计模式&quot;&gt;&lt;/a&gt;&lt;code&gt;MVC&lt;/code&gt;设计模式&lt;/h4&gt;&lt;p&gt;&lt;code&gt;MVC&lt;/code&gt;是一种架构模式，&lt;code&gt;M&lt;/code&gt;表示&lt;code&gt;Model&lt;/code&gt;，&lt;code&gt;V&lt;/code&gt;表示视图&lt;code&gt;View&lt;/code&gt;，&lt;code&gt;C&lt;/code&gt;表示控制器&lt;code&gt;Controller&lt;/code&gt;：&lt;br&gt;其实重要的还是需要自己动手亲自实现，这样可以锻炼自己的编码能力。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Model&lt;/code&gt;负责存储、定义、操作数据；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;View&lt;/code&gt;用来展示书给用户，和用户进行操作交互；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Controller&lt;/code&gt;是&lt;code&gt;Model&lt;/code&gt;和&lt;code&gt;View&lt;/code&gt;的协调者，&lt;code&gt;Controller&lt;/code&gt;把&lt;code&gt;Model&lt;/code&gt;中的数据拿过来给&lt;code&gt;View&lt;/code&gt;用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;Controller&lt;/code&gt;可以直接与&lt;code&gt;Model&lt;/code&gt;和&lt;code&gt;View&lt;/code&gt;进行通信，而&lt;code&gt;View&lt;/code&gt;不能和&lt;code&gt;Controller&lt;/code&gt;直接通信。&lt;code&gt;View&lt;/code&gt;与&lt;code&gt;Controller&lt;/code&gt;通信需要利用代理协议的方式，当有数据更新时，&lt;code&gt;Model&lt;/code&gt;也要与&lt;code&gt;Controller&lt;/code&gt;进行通信，这个时候就要用&lt;code&gt;Notification&lt;/code&gt;和&lt;code&gt;KVO&lt;/code&gt;，这个方式就像一个广播一样，&lt;code&gt;Model&lt;/code&gt;发信号，&lt;code&gt;Controller&lt;/code&gt;设置监听接受信号，当有数据更新时就发信号给&lt;code&gt;Controller&lt;/code&gt;，&lt;code&gt;Model&lt;/code&gt;和&lt;code&gt;View&lt;/code&gt;不能直接进行通信，这样会违背&lt;code&gt;MVC&lt;/code&gt;设计模式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;MVVM-设计模式&quot;&gt;&lt;a href=&quot;#MVVM-设计模式&quot; class=&quot;headerlink&quot; title=&quot;MVVM 设计模式&quot;&gt;&lt;/a&gt;&lt;code&gt;MVVM&lt;/code&gt; 设计模式&lt;/h4&gt;&lt;p&gt;这里关于 &lt;code&gt;MVVM&lt;/code&gt; 的设计模式就不多说，因为目前还没有使用过。&lt;/p&gt;
-&lt;h3 id=&quot;Objc-中的协议&quot;&gt;&lt;a href=&quot;#Objc-中的协议&quot; class=&quot;headerlink&quot; title=&quot;Objc 中的协议&quot;&gt;&lt;/a&gt;&lt;code&gt;Objc&lt;/code&gt; 中的协议&lt;/h3&gt;&lt;p&gt;我们在 &lt;code&gt;iOS&lt;/code&gt; 开发过程中我们经常会使用协议和代理模式来进行消息传递，协议一般是伴随着代理产生而产生。我们在实现协议的同时一般都会有代理形式进行完成。&lt;br&gt;协议中有两个属性：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;@required&lt;/code&gt;:是表明此中的方法一定要实现，在我们使用&lt;code&gt;UITableViewDataSourceDelete&lt;/code&gt;就有两个必须实现的方法&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;@optional&lt;/code&gt;:方法可以根据自己选着实现方法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在博客中有关于&lt;code&gt;protrcol&lt;/code&gt;的相关使用&lt;/p&gt;
-&lt;h3 id=&quot;Category-的优缺点&quot;&gt;&lt;a href=&quot;#Category-的优缺点&quot; class=&quot;headerlink&quot; title=&quot;Category 的优缺点&quot;&gt;&lt;/a&gt;&lt;code&gt;Category&lt;/code&gt; 的优缺点&lt;/h3&gt;&lt;p&gt;我们使用 &lt;code&gt;Category&lt;/code&gt; 一般是在一个现有类中定向添加方法，其实我们使用常见的&lt;code&gt;SDWebImage&lt;/code&gt; 本质就是一个类的类目：&lt;code&gt;UIImageView&lt;/code&gt;。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;优点：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我们在一个现有类中可以增加方法，于此同时我们又不需要改变原来对象的属性。增加方法和原来方法使用是一样的&lt;br&gt;在多方法的使用过程中我们可以通过使用Category实现对类进行区分，达到方便管理类种方法的原则&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;缺点：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;Category&lt;/code&gt;允许我们对类进行添加特定方法，但是我们不能向类中添加成员变量。但是我们可以继承类在子类中进行相关成员属性添加&lt;br&gt;在增加方法的过程中，我们增加方法的优先级别比较高因此会覆盖父类中的方法。&lt;br&gt;例如：在界面我们相应手指触摸时有响应链，如果在子类中调用 &lt;code&gt;touch&lt;/code&gt; 方法没有调用父类就会使响应者连中断&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;键路径-keyPath-、键值编码（KVC）和键值观察（KVO）&quot;&gt;&lt;a href=&quot;#键路径-keyPath-、键值编码（KVC）和键值观察（KVO）&quot; class=&quot;headerlink&quot; title=&quot;键路径(keyPath)、键值编码（KVC）和键值观察（KVO）&quot;&gt;&lt;/a&gt;键路径(&lt;code&gt;keyPath&lt;/code&gt;)、键值编码（&lt;code&gt;KVC&lt;/code&gt;）和键值观察（&lt;code&gt;KVO&lt;/code&gt;）&lt;/h3&gt;&lt;p&gt;在我的博客中有所讲述，在这里就不赘述啦。不过这里给大家留一个问题？为什么使用&lt;code&gt;KVC（Key-value-coding）&lt;/code&gt; 在效率不是很高？&lt;/p&gt;
-&lt;h3 id=&quot;NSNotification、Block、Delegate和-KVO-的区别&quot;&gt;&lt;a href=&quot;#NSNotification、Block、Delegate和-KVO-的区别&quot; class=&quot;headerlink&quot; title=&quot;NSNotification、Block、Delegate和 KVO 的区别&quot;&gt;&lt;/a&gt;&lt;code&gt;NSNotification&lt;/code&gt;、&lt;code&gt;Block&lt;/code&gt;、&lt;code&gt;Delegate&lt;/code&gt;和 &lt;code&gt;KVO&lt;/code&gt; 的区别&lt;/h3&gt;&lt;p&gt;博客中有详细介绍&lt;/p&gt;
-&lt;h3 id=&quot;Objective-C-中可修改和不可以修改类型&quot;&gt;&lt;a href=&quot;#Objective-C-中可修改和不可以修改类型&quot; class=&quot;headerlink&quot; title=&quot;Objective-C 中可修改和不可以修改类型&quot;&gt;&lt;/a&gt;&lt;code&gt;Objective-C&lt;/code&gt; 中可修改和不可以修改类型&lt;/h3&gt;&lt;p&gt;可修改和不可修改的集合类，我们在 &lt;code&gt;iOS&lt;/code&gt; 开发过程中经常会遇到 &lt;code&gt;NSArray&lt;/code&gt; 和 &lt;code&gt;NSMutableArray&lt;/code&gt; 两种，两者的区别：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;一个是可以动态添加，一个不可以动态添加&lt;br&gt;前者初始化后内存是固定不边的，后者经过初始化内存是可以发生改变的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;这里我就引出一个概念：&lt;strong&gt;非容器对象和容器对象&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;非容器对象：&lt;code&gt;NSNumber&lt;/code&gt;，&lt;code&gt;NSSting&lt;/code&gt; 等只能放单个字符或者数字&lt;br&gt;容器对象：&lt;code&gt;NSArray&lt;/code&gt;，&lt;code&gt;NSDictionary&lt;/code&gt; 等可以放置多个数据类型&lt;/p&gt;
-&lt;p&gt;但是在我们熟悉的 &lt;code&gt;copy&lt;/code&gt; 过程中会发生哪些情况呢？&lt;br&gt;这里又提出另外的 &lt;code&gt;copy&lt;/code&gt; 的新概念：&lt;code&gt;copy&lt;/code&gt;, &lt;code&gt;mutableCopy&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;copy&lt;/code&gt;：复制了一个&lt;code&gt;imutable&lt;/code&gt; 的对象&lt;code&gt;+ copyWithZone:&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;mutableCopy&lt;/code&gt;：复制的是一个&lt;code&gt;mutable&lt;/code&gt;的对象，使用的方法 &lt;code&gt;+ mutableCopyWithZone:&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下面我们给出在非容器对象复制后的具体情况&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;非容器对象&lt;/th&gt;
-&lt;th&gt;不变类（NSString）&lt;/th&gt;
-&lt;th&gt;可变类（NSMustbleString）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;copy&lt;/td&gt;
-&lt;td&gt;浅Copy&lt;/td&gt;
-&lt;td&gt;深Copy~返回的对象是不可变的对象&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;mutableCopy&lt;/td&gt;
-&lt;td&gt;深Copy&lt;/td&gt;
-&lt;td&gt;深Copy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;下面我们给出容器对象中复制的具体情况&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;容器类型&lt;/th&gt;
-&lt;th&gt;不变类型（NSArray）&lt;/th&gt;
-&lt;th&gt;可变类型（NSMutableArray）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;copy&lt;/td&gt;
-&lt;td&gt;浅copy&lt;/td&gt;
-&lt;td&gt;深copy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;mutableCopy&lt;/td&gt;
-&lt;td&gt;深copy&lt;/td&gt;
-&lt;td&gt;深copy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;div style=&quot;color:#008B8B&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;&lt;p&gt;但是在容器对象复制过程中我们需要记住一点，我们对于NSArray和NSMutable的copy是对于整体指针和内存来说。但是在容器内部每一个元素我们进行的都是指针copy,也就是我们所说的浅copy。&lt;/p&gt;&lt;br&gt;&lt;br&gt;从上面列举的例子我们可以得出一个结论：&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;无论是非容器类型还是容器类型只有在不可变时（&lt;code&gt;NSArray&lt;/code&gt;，&lt;code&gt;NSString&lt;/code&gt;）使用&lt;code&gt;copy&lt;/code&gt;才是浅复制，也就是说只是复制指针而不复制内存。&lt;br&gt;在可变的类型（&lt;code&gt;NSMutableString&lt;/code&gt;, &lt;code&gt;NSMutableArray&lt;/code&gt;）在使用 &lt;code&gt;copy&lt;/code&gt; 时会生成不可变类型。&lt;/p&gt;
-&lt;p&gt;具体为什么实现这种原理可以看下在 &lt;code&gt;NSArray&lt;/code&gt; 和 &lt;code&gt;NSMutable&lt;/code&gt; 实现接口，以及参照&lt;code&gt;C++&lt;/code&gt; 的原理进行解释。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;下面是参考资料：&lt;/p&gt;
-&lt;h3 id=&quot;当我们调用一个静态方法时-需要对对象进行-release-吗&quot;&gt;&lt;a href=&quot;#当我们调用一个静态方法时-需要对对象进行-release-吗&quot; class=&quot;headerlink&quot; title=&quot;当我们调用一个静态方法时,需要对对象进行 release 吗?&quot;&gt;&lt;/a&gt;当我们调用一个静态方法时,需要对对象进行 &lt;code&gt;release&lt;/code&gt; 吗?&lt;/h3&gt;&lt;p&gt;不要对静态方法进行释放，因为静态方法会放到自动释放池中，后面会自动释放。&lt;br&gt;我在博客中写过关于 &lt;code&gt;Runtime&lt;/code&gt; 的解析，在那里我们可以看出一个类在解析过程中其中类中调用方法是Method形式，放在&lt;code&gt;Struct&lt;/code&gt;的&lt;code&gt;Class&lt;/code&gt;中的。执行过程&lt;code&gt;AutoReleasePool&lt;/code&gt;会进行管理。&lt;br&gt;大神文章写得很详细&lt;/p&gt;
-&lt;h3 id=&quot;当我们释放我们的对象时-为什么需要调用-super-dealloc-方法-它的位置又是如何的呢&quot;&gt;&lt;a href=&quot;#当我们释放我们的对象时-为什么需要调用-super-dealloc-方法-它的位置又是如何的呢&quot; class=&quot;headerlink&quot; title=&quot;当我们释放我们的对象时,为什么需要调用[super dealloc]方法,它的位置又是如何的呢?&quot;&gt;&lt;/a&gt;当我们释放我们的对象时,为什么需要调用&lt;code&gt;[super dealloc]&lt;/code&gt;方法,它的位置又是如何的呢?&lt;/h3&gt;&lt;p&gt;因为子类的某些实例是继承自父类的,因此需要调用&lt;code&gt;[super dealloc]&lt;/code&gt;方法, 来释放父类拥有的实例,其实也就是子类本身的。一般来说我们优先释放子类拥 有的实例,最后释放父类所拥有的实例。&lt;/p&gt;
-&lt;h3 id=&quot;static、self、super关键字的作用&quot;&gt;&lt;a href=&quot;#static、self、super关键字的作用&quot; class=&quot;headerlink&quot; title=&quot;static、self、super关键字的作用&quot;&gt;&lt;/a&gt;&lt;code&gt;static&lt;/code&gt;、&lt;code&gt;self&lt;/code&gt;、&lt;code&gt;super&lt;/code&gt;关键字的作用&lt;/h3&gt;&lt;p&gt;&lt;code&gt;static&lt;/code&gt; 是在 &lt;code&gt;C&lt;/code&gt; 和 &lt;code&gt;C++&lt;/code&gt; 中经常使用的，在 &lt;code&gt;Objc&lt;/code&gt; 中我们也是常常使用 &lt;code&gt;static&lt;/code&gt; 来定义 &lt;code&gt;cell&lt;/code&gt; 的 &lt;code&gt;identifer&lt;/code&gt; 目前就想到这些。下面给出 &lt;code&gt;static&lt;/code&gt; 的具体作用：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;(1)&lt;code&gt;static&lt;/code&gt;修饰的变量只是在第一次调用过程进行初始化，所以在第二次调用时会维持上一次的值&lt;br&gt;(2)在模块内我们使用的&lt;code&gt;static&lt;/code&gt;变量可以在模块中所有函数使用，但是在模块外就不可以进行访问&lt;br&gt;(3)在模块内的&lt;code&gt;static&lt;/code&gt;的函数只能被模块内的函数进行调用，不能被模块外的其他函数声明&lt;br&gt;(4)在类中的&lt;code&gt;satic&lt;/code&gt;的全局变量，在整个类中有且仅仅只有一份的&lt;code&gt;copy&lt;/code&gt;  &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;self&lt;/code&gt;: 是我们在当前类消息的接受者&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;super&lt;/code&gt;: 是我们调用父类的方法，消息链过程中我们在&lt;code&gt;touch&lt;/code&gt;调用&lt;code&gt;super&lt;/code&gt;就是调用父类方法，防止消息链中断。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;include与-import的区别，-import-与-class-的区别&quot;&gt;&lt;a href=&quot;#include与-import的区别，-import-与-class-的区别&quot; class=&quot;headerlink&quot; title=&quot;#include与#import的区别，#import 与 @class 的区别&quot;&gt;&lt;/a&gt;&lt;code&gt;#include&lt;/code&gt;与&lt;code&gt;#import&lt;/code&gt;的区别，&lt;code&gt;#import&lt;/code&gt; 与 &lt;code&gt;@class&lt;/code&gt; 的区别&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;#include&lt;/code&gt;是我们在&lt;code&gt;C/C++&lt;/code&gt;经常使用到的引入到文件的方式&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;#import&lt;/code&gt;是我们在&lt;code&gt;Objc&lt;/code&gt;中使用引入头文件的方式，可以防止头文件被多次引用（如果头文件被多次应用，程序在编译过程中会把库函数编译到类中这样就占用较多内存）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;#import&lt;/code&gt;和&lt;code&gt;@class&lt;/code&gt;两者之间的区别&lt;/strong&gt;  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@class&lt;/code&gt;是只是定义类名，对其中的行为并不知道，我们经常可以再很多类的 &lt;code&gt;.h&lt;/code&gt; 文件可以看到&lt;br&gt;&lt;code&gt;@class&lt;/code&gt;由于仅仅是定义类的名字，所以在编译过程要比&lt;code&gt;import&lt;/code&gt;的效率高&lt;br&gt;&lt;strong&gt;此外&lt;code&gt;@class&lt;/code&gt; 和&lt;code&gt;#import&lt;/code&gt;的主要区别在于解决引用死锁的问题&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;public、-protected、-private-它们的含义与作用&quot;&gt;&lt;a href=&quot;#public、-protected、-private-它们的含义与作用&quot; class=&quot;headerlink&quot; title=&quot;@public、@protected、@private 它们的含义与作用&quot;&gt;&lt;/a&gt;&lt;code&gt;@public&lt;/code&gt;、&lt;code&gt;@protected&lt;/code&gt;、&lt;code&gt;@private&lt;/code&gt; 它们的含义与作用&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;@public&lt;/code&gt;:对象的实例变量的作用域在任意地方都可以被访问&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;@protected&lt;/code&gt;:对象的实例变量作用域在本类和子类都可以被访问&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;@private&lt;/code&gt;:实例变量的作用域只能在本类(自身)中访问 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;解释-id-类型&quot;&gt;&lt;a href=&quot;#解释-id-类型&quot; class=&quot;headerlink&quot; title=&quot;解释 id 类型&quot;&gt;&lt;/a&gt;解释 &lt;code&gt;id&lt;/code&gt; 类型&lt;/h3&gt;&lt;p&gt;任意类型对象，程序运行时才决定对象的类型。 这也是我们在上面解释的动态类型。&lt;/p&gt;
-&lt;h3 id=&quot;switch-语句-if-语句区别与联系&quot;&gt;&lt;a href=&quot;#switch-语句-if-语句区别与联系&quot; class=&quot;headerlink&quot; title=&quot;switch 语句 if 语句区别与联系&quot;&gt;&lt;/a&gt;&lt;code&gt;switch&lt;/code&gt; 语句 &lt;code&gt;if&lt;/code&gt; 语句区别与联系&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;两者均是判断语句。但是&lt;code&gt;switch&lt;/code&gt;只可以判断 &lt;strong&gt;整形，字符型，枚举类型&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;但是if并没有类型限制。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;isMemberOfClass-和-isKindOfClass-联系与区别&quot;&gt;&lt;a href=&quot;#isMemberOfClass-和-isKindOfClass-联系与区别&quot; class=&quot;headerlink&quot; title=&quot;isMemberOfClass 和 isKindOfClass 联系与区别&quot;&gt;&lt;/a&gt;&lt;code&gt;isMemberOfClass&lt;/code&gt; 和 &lt;code&gt;isKindOfClass&lt;/code&gt; 联系与区别&lt;/h3&gt;&lt;p&gt;两者都可以判断一个对象是否是某个类的成员&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;isKindOfClesss&lt;/code&gt; 不紧可以判断对象是否是一个类的成员，也可以判断一个对象是否派生于类的类成员&lt;br&gt;举例：如 &lt;code&gt;ClassA&lt;/code&gt; 派 生 自 &lt;code&gt;NSObject&lt;/code&gt; 类 , &lt;code&gt;ClassA *a = [ClassA alloc] init];&lt;/code&gt;,&lt;code&gt;[a isKindOfClass:[NSObject class]]&lt;/code&gt; 可以检查出 &lt;code&gt;a&lt;/code&gt; 是否是 &lt;code&gt;NSObject&lt;/code&gt; 派生类 的成员,但 &lt;code&gt;isMemberOfClass&lt;/code&gt; 做不到&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;iOS-开发中数据持久性有哪几种&quot;&gt;&lt;a href=&quot;#iOS-开发中数据持久性有哪几种&quot; class=&quot;headerlink&quot; title=&quot;iOS 开发中数据持久性有哪几种?&quot;&gt;&lt;/a&gt;iOS 开发中数据持久性有哪几种?&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://boilwater.github.io/2016/05/29/IOS%E7%9A%84%E6%B0%B8%E4%B9%85%E8%AF%9D%E5%82%A8%E5%AD%98/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料~IOS的永久话储存&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;自动释放池工作原理&quot;&gt;&lt;a href=&quot;#自动释放池工作原理&quot; class=&quot;headerlink&quot; title=&quot;自动释放池工作原理&quot;&gt;&lt;/a&gt;自动释放池工作原理&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20160602/16569.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自动释放池的前世今生&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20150610/12093.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Objective-C Autorelease Pool 的实现原理&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20150610/12093.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AutoreleasePool大牛的资料&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/leikezhu1981/article/details/42697977&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/Mars2639/article/details/7352540&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详细内容参考地址&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20160301/15425.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVVM参考资料地址&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20160517/16309.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVVM升级到MVVMM&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20160330/15823.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVVM With ReactiveCocoa&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20120614/4361.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Objective-C Category初体验&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20140212/7808.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Objective-C相关Category的收集&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2016/05/29/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考路径&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20160408/15868.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;谈KVC、KVO（重点观察者模式）机制编程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20140224/7866.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS KVC &amp;amp; KVO&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/stevenschen/p/3825044.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料点击&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.fanliugen.com/?p=278&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;copy与mutableCopy&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/-Eric-Liu/p/5564030.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NSArray与NSMutableArray的区别&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20150601/11970.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解RunLoop&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2016/05/29/block%EF%BC%8C%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%EF%BC%8C%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E5%92%8CKVO/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详细参看&lt;/a&gt;   &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;目前在公司做白领社交产品 “在一起”，工作也快一年下面对 &lt;code&gt;iOS&lt;/code&gt; 相关面试做一份总结。&lt;br&gt;说实话目前&lt;code&gt;iOS&lt;/code&gt;开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。&lt;/p&gt;
-&lt;h2 id=&quot;OC理解和特性&quot;&gt;&lt;a href=&quot;#OC理解和特性&quot; class=&quot;headerlink&quot; title=&quot;OC理解和特性&quot;&gt;&lt;/a&gt;OC理解和特性&lt;/h2&gt;&lt;p&gt;作为开发者我们都知道语言的特性包括：面对对象，面向过程。&lt;code&gt;Objc&lt;/code&gt;就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS基础知识" scheme="http://yoursite.com/tags/iOS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
