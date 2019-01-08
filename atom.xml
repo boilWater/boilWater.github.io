@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-06T12:42:15.346Z</updated>
+  <updated>2019-01-08T14:26:19.199Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2019-01-06T12:42:15.346Z</updated>
+    <updated>2019-01-08T14:26:19.199Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -48,6 +48,9 @@
 &lt;p&gt;ModelLayer 和 PresentationLayer 在实现过程中上面我们知道在实现过程中采用  &lt;code&gt;animationWithDuration:forKey:&lt;/code&gt;  采用 UIView 来实现这种操作，在动画实现过程中也可以采用 Layer 层 CAAnimation 动画操作。&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CaBasicAnimation *animation = [CaBaseicAnimation animation];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.keyPath = &lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.duration = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.formValue = [&lt;span class=&quot;built_in&quot;&gt;NSValue&lt;/span&gt; valueWithCGPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;animation.toValue = [&lt;span class=&quot;built_in&quot;&gt;NSValue&lt;/span&gt; valueWithCGPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[view.layer addAnimation:animation forKey:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在上面展示效果中我们可以看到在 View 的实例变量 Layer 层在进行动画的过程中，ModelLayer 是来保存当前 View 的实例 Layer 的初始值 Frame 值。 PresentationLayer 主要的作用是在 CAAnimation 运动过程中运动指示标识。&lt;/p&gt;
+&lt;h3 id=&quot;参考资料：&quot;&gt;&lt;a href=&quot;#参考资料：&quot; class=&quot;headerlink&quot; title=&quot;参考资料：&quot;&gt;&lt;/a&gt;参考资料：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.htmls&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Animation Programming Guide&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;苹果的官方视频：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/217/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layer-Backed Views: AppKit + Core Animation&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2015/803/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Designing with Animation&lt;/a&gt; &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;作者： JackJin Bai&lt;br&gt;第一次修改时间： 2019/1/6 20:37: 26&lt;br&gt;写于：广州市天河公园家里 &lt;/p&gt;
 &lt;/blockquote&gt;

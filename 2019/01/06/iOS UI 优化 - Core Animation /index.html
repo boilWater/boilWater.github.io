@@ -22,7 +22,7 @@
 1、ModelLayer 和 PresentationLayer 分别是指什么？2、隐式动画和显示动画实现原理是什么？3、UIView 和 CALayer 两者之间如何实现事件传递和交互？4、贝塞尔曲线在是如何实现绘制？  
 
 解决在实现中第 3 个问题：UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 Vie">
-<meta property="og:updated_time" content="2019-01-06T12:42:15.346Z">
+<meta property="og:updated_time" content="2019-01-08T14:26:19.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
 <meta name="twitter:description" content="Core Animation 实现探索看资料需要了解的内容：
@@ -229,6 +229,9 @@ var _hmt = _hmt || [];
 <p>ModelLayer 和 PresentationLayer 在实现过程中上面我们知道在实现过程中采用  <code>animationWithDuration:forKey:</code>  采用 UIView 来实现这种操作，在动画实现过程中也可以采用 Layer 层 CAAnimation 动画操作。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CaBasicAnimation *animation = [CaBaseicAnimation animation];</span><br><span class="line">animation.keyPath = <span class="string">@"position"</span>;</span><br><span class="line">animation.duration = <span class="number">2</span>;</span><br><span class="line">animation.formValue = [<span class="built_in">NSValue</span> valueWithCGPoint:<span class="built_in">CGPointMake</span>(<span class="number">80</span>, <span class="number">80</span>)];</span><br><span class="line">animation.toValue = [<span class="built_in">NSValue</span> valueWithCGPoint:<span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">150</span>)];</span><br><span class="line">[view.layer addAnimation:animation forKey:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
 <p>在上面展示效果中我们可以看到在 View 的实例变量 Layer 层在进行动画的过程中，ModelLayer 是来保存当前 View 的实例 Layer 的初始值 Frame 值。 PresentationLayer 主要的作用是在 CAAnimation 运动过程中运动指示标识。</p>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.htmls" target="_blank" rel="external">Core Animation Programming Guide</a></p>
+<p>苹果的官方视频：</p>
+<p><a href="https://developer.apple.com/videos/play/wwdc2012/217/" target="_blank" rel="external">Layer-Backed Views: AppKit + Core Animation</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2015/803/" target="_blank" rel="external">Designing with Animation</a> </p>
 <blockquote>
 <p>作者： JackJin Bai<br>第一次修改时间： 2019/1/6 20:37: 26<br>写于：广州市天河公园家里 </p>
 </blockquote>
