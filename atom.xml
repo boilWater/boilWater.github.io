@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-08T14:26:19.199Z</updated>
+  <updated>2019-01-08T15:15:26.113Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2019-01-08T14:26:19.199Z</updated>
+    <updated>2019-01-08T15:15:26.113Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-a87a049792c9c05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation Structure.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1、ModelLayer 和 PresentationLayer 分别是指什么？&lt;br&gt;2、隐式动画和显示动画实现原理是什么？&lt;br&gt;3、UIView 和 CALayer 两者之间如何实现事件传递和交互？&lt;br&gt;4、贝塞尔曲线在是如何实现绘制？  &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -58,7 +59,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
+      &lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-a87a049792c9c05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation Structure.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看资料需要了解的内容：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1、ModelLayer 和 PresentationLayer 分别是指什么？&lt;br&gt;2、隐式动画和显示动画实现原理是什么？&lt;br&gt;3、UIView 和 CALayer 两者之间如何实现事件传递和交互？&lt;br&gt;4、贝塞尔曲线在是如何实现绘制？  &lt;/p&gt;
 &lt;/blockquote&gt;
