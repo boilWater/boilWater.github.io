@@ -9,31 +9,28 @@
   <title>iOS UI 优化 - Core Animation | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Core Animation 实现探索
-看资料需要了解的内容：
-
-1、ModelLayer 和 PresentationLayer 分别是指什么？2、隐式动画和显示动画实现原理是什么？3、UIView 和 CALayer 两者之间如何实现事件传递和交互？4、贝塞尔曲线在是如何实现绘制？  
-
-解决在实现中第 3 个问题：UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 Vi">
+在 LJView 和 LJLayer 重写：_ljView = [[LJView alloc ] init]; 打印的日志如下：
+12345678910LJCAStructure[39931:4249519] &amp;lt;LJView:0x10ca54190&amp;gt;(+[LJView layerClass])LJCAStructure[39931:4249519">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - Core Animation">
 <meta property="og:url" content="http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="Core Animation 实现探索
-看资料需要了解的内容：
-
-1、ModelLayer 和 PresentationLayer 分别是指什么？2、隐式动画和显示动画实现原理是什么？3、UIView 和 CALayer 两者之间如何实现事件传递和交互？4、贝塞尔曲线在是如何实现绘制？  
-
-解决在实现中第 3 个问题：UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 Vi">
+在 LJView 和 LJLayer 重写：_ljView = [[LJView alloc ] init]; 打印的日志如下：
+12345678910LJCAStructure[39931:4249519] &amp;lt;LJView:0x10ca54190&amp;gt;(+[LJView layerClass])LJCAStructure[39931:4249519">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-a87a049792c9c05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-08T15:15:26.113Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-72b6e4441cdfc6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-7cfbfd7f385a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-95fecab822652a87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-d5f74735e057f75e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-668245dfe18320aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-5b498afa8f20f996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-08T17:18:38.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
 <meta name="twitter:description" content="Core Animation 实现探索
-看资料需要了解的内容：
-
-1、ModelLayer 和 PresentationLayer 分别是指什么？2、隐式动画和显示动画实现原理是什么？3、UIView 和 CALayer 两者之间如何实现事件传递和交互？4、贝塞尔曲线在是如何实现绘制？  
-
-解决在实现中第 3 个问题：UIView 和 CALayer 在具体实现中相关属性在初始化设置时设置 Vi">
+在 LJView 和 LJLayer 重写：_ljView = [[LJView alloc ] init]; 打印的日志如下：
+12345678910LJCAStructure[39931:4249519] &amp;lt;LJView:0x10ca54190&amp;gt;(+[LJView layerClass])LJCAStructure[39931:4249519">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-a87a049792c9c05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
@@ -209,6 +206,16 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p><img src="https://upload-images.jianshu.io/upload_images/1877765-a87a049792c9c05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation Structure.png"></p>
+<p>在 <code>LJView</code> 和 <code>LJLayer</code> 重写：<br><code>_ljView = [[LJView alloc ] init];</code> 打印的日志如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x10ca54190</span>&gt;(+[LJView layerClass])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setPosition:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br></pre></td></tr></table></figure>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setBounds:])</code>调用栈：<br><img src="https://upload-images.jianshu.io/upload_images/1877765-72b6e4441cdfc6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation-setbounds.png"></p>
+<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView setFrame:])</code><br><img src="https://upload-images.jianshu.io/upload_images/1877765-7cfbfd7f385a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJView setFrame.png"></p>
+<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView center])</code><br><img src="https://upload-images.jianshu.io/upload_images/1877765-95fecab822652a87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJView center.png"></p>
+<p><ljlayer:0x6040002212a0>(-[LJLayer position])<br><img src="https://upload-images.jianshu.io/upload_images/1877765-d5f74735e057f75e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJLayer position.png"></ljlayer:0x6040002212a0></p>
+<p><ljlayer:0x6040002212a0>(-[LJLayer setFrame:])<br><img src="https://upload-images.jianshu.io/upload_images/1877765-668245dfe18320aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJlayer setFrame.png"></ljlayer:0x6040002212a0></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-5b498afa8f20f996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJLayer position1.png"></p>
+<p><code>_ljView.frame = CGRectMake(0, 0, LJScreenWidth(), 200);</code> 打印的日志如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setPosition:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br></pre></td></tr></table></figure>
 <p>看资料需要了解的内容：</p>
 <blockquote>
 <p>1、ModelLayer 和 PresentationLayer 分别是指什么？<br>2、隐式动画和显示动画实现原理是什么？<br>3、UIView 和 CALayer 两者之间如何实现事件传递和交互？<br>4、贝塞尔曲线在是如何实现绘制？  </p>
