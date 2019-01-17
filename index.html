@@ -192,9 +192,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p><img src="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
-<p>从上面的数据表格可以看出 <code>Core Animation</code> 在 <code>iOS</code> 架构中负责 <code>Layer</code> 的内容绘制和动画的执行。执行绘制实现的类：<code>CATypeLayer</code> 和 <code>CATypeAnimation</code> 及其在实现动画实现参数例如：<code>Animation Group</code> 和 <code>Animation Timing</code>。</p>
-<h2 id="Core-Animation-绘制"><a href="#Core-Animation-绘制" class="headerlink" title="Core Animation 绘制"></a>Core Animation 绘制</h2><p>在 <code>APP</code> 界面绘制中我们经常使用 <code>UIKit</code> 中控件来对界面实现布局，界面上的控件事件的点击参考:<a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/">iOS-Responder Chain (响应链)</a>。在 <code>APP</code> 中所有的控件均是以 <code>UIView</code> 为父类来实现内容显示，但是在实际内容是在 <code>CALayer</code> 基础之上进行绘制。</p>
+        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行对比。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
+<blockquote>
+<p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>
+</blockquote>
+<p>由上面显示具体信息我们可以得出下面结论：   </p>
+<blockquote>
+<p>1、<code>Core Animation</code> 作为主要内容载体承接对 <code>iOS</code> 和 <code>OS</code> 具体显示的绘制；<br>2、<code>UIKit</code> 框架从初始化到通过 <code>GPU</code> 生成纹理显示在屏幕上是依靠 <code>Core Animation</code>、 <code>Core Graphics</code>、 <code>OpenGL ES</code>(<code>iOS</code> 11) 和 <code>Matel</code>(<code>iOS</code> 12)   来实现;<br>3、在 <code>iOS 8.0</code> 中苹果官方尝试使用 <code>Metal</code> 来替代 <code>OpenGL ES</code> 在目前最新的官方文档中实现在绘制生成纹理底层架构依据 <code>Metal</code> 进行。</p>
+</blockquote>
+<p>想要深入了解一个架构我们就从最基本的系统 <code>API</code> 着手，下面是小编对系统 <code>API</code> 根据分类来对具体类的 <code>API</code> 进行整理。 </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
         
           <a class="article-more-a" href="/2019/01/06/iOS UI 优化 - Core Animation /#more">more >></a>
         

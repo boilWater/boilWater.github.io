@@ -8,30 +8,37 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS UI 优化 - Core Animation | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Core Animation 实现探索
-从上面的数据表格可以看出 Core Animation 在 iOS 架构中负责 Layer 的内容绘制和动画的执行。执行绘制实现的类：CATypeLayer 和 CATypeAnimation 及其在实现动画实现参数例如：Animation Group 和 Animation Timing。
-Core Animation 绘制在 APP 界面绘制中我们经常使">
+  <meta name="description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+
+
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - Core Animation">
 <meta property="og:url" content="http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="Core Animation 实现探索
-从上面的数据表格可以看出 Core Animation 在 iOS 架构中负责 Layer 的内容绘制和动画的执行。执行绘制实现的类：CATypeLayer 和 CATypeAnimation 及其在实现动画实现参数例如：Animation Group 和 Animation Timing。
-Core Animation 绘制在 APP 界面绘制中我们经常使">
+<meta property="og:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+
+
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-72b6e4441cdfc6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-7cfbfd7f385a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-95fecab822652a87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-d5f74735e057f75e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-668245dfe18320aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-5b498afa8f20f996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-14T17:27:21.487Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-742707ecc08ad320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-0dbfaf7c8ca0d82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-20c3b7df71a0ba52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-fd919e1a0ded16b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-a3d63440b2af10ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-17fcb682fb15a931.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-b1166a30687d952b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-591e5663da92e76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-8161cf64cdd86cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-17T18:06:13.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
-<meta name="twitter:description" content="Core Animation 实现探索
-从上面的数据表格可以看出 Core Animation 在 iOS 架构中负责 Layer 的内容绘制和动画的执行。执行绘制实现的类：CATypeLayer 和 CATypeAnimation 及其在实现动画实现参数例如：Animation Group 和 Animation Timing。
-Core Animation 绘制在 APP 界面绘制中我们经常使">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+
+
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -205,18 +212,103 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p><img src="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
-<p>从上面的数据表格可以看出 <code>Core Animation</code> 在 <code>iOS</code> 架构中负责 <code>Layer</code> 的内容绘制和动画的执行。执行绘制实现的类：<code>CATypeLayer</code> 和 <code>CATypeAnimation</code> 及其在实现动画实现参数例如：<code>Animation Group</code> 和 <code>Animation Timing</code>。</p>
-<h2 id="Core-Animation-绘制"><a href="#Core-Animation-绘制" class="headerlink" title="Core Animation 绘制"></a>Core Animation 绘制</h2><p>在 <code>APP</code> 界面绘制中我们经常使用 <code>UIKit</code> 中控件来对界面实现布局，界面上的控件事件的点击参考:<a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/" target="_blank" rel="external">iOS-Responder Chain (响应链)</a>。在 <code>APP</code> 中所有的控件均是以 <code>UIView</code> 为父类来实现内容显示，但是在实际内容是在 <code>CALayer</code> 基础之上进行绘制。</p>
+        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行对比。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
+<blockquote>
+<p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>
+</blockquote>
+<p>由上面显示具体信息我们可以得出下面结论：   </p>
+<blockquote>
+<p>1、<code>Core Animation</code> 作为主要内容载体承接对 <code>iOS</code> 和 <code>OS</code> 具体显示的绘制；<br>2、<code>UIKit</code> 框架从初始化到通过 <code>GPU</code> 生成纹理显示在屏幕上是依靠 <code>Core Animation</code>、 <code>Core Graphics</code>、 <code>OpenGL ES</code>(<code>iOS</code> 11) 和 <code>Matel</code>(<code>iOS</code> 12)   来实现;<br>3、在 <code>iOS 8.0</code> 中苹果官方尝试使用 <code>Metal</code> 来替代 <code>OpenGL ES</code> 在目前最新的官方文档中实现在绘制生成纹理底层架构依据 <code>Metal</code> 进行。</p>
+</blockquote>
+<p>想要深入了解一个架构我们就从最基本的系统 <code>API</code> 着手，下面是小编对系统 <code>API</code> 根据分类来对具体类的 <code>API</code> 进行整理。 </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
 <a id="more"></a>
-<h3 id="UIView-VS-CALyer"><a href="#UIView-VS-CALyer" class="headerlink" title="UIView VS CALyer"></a><code>UIView</code> VS <code>CALyer</code></h3><p>在 <code>LJView</code> 和 <code>LJLayer</code> 重写：<br><code>_ljView = [[LJView alloc ] init];</code> 打印的日志如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x10ca54190</span>&gt;(+[LJView layerClass])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setPosition:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br></pre></td></tr></table></figure>
-<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setBounds:])</code>调用栈：<br><img src="https://upload-images.jianshu.io/upload_images/1877765-72b6e4441cdfc6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation-setbounds.png"></p>
-<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView setFrame:])</code><br><img src="https://upload-images.jianshu.io/upload_images/1877765-7cfbfd7f385a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJView setFrame.png"></p>
-<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView center])</code><br><img src="https://upload-images.jianshu.io/upload_images/1877765-95fecab822652a87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJView center.png"></p>
-<p><ljlayer:0x6040002212a0>(-[LJLayer position])<br><img src="https://upload-images.jianshu.io/upload_images/1877765-d5f74735e057f75e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJLayer position.png"></ljlayer:0x6040002212a0></p>
-<p><ljlayer:0x6040002212a0>(-[LJLayer setFrame:])<br><img src="https://upload-images.jianshu.io/upload_images/1877765-668245dfe18320aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJlayer setFrame.png"></ljlayer:0x6040002212a0></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-5b498afa8f20f996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LJLayer position1.png"></p>
+<p>看过上图我们首先要明白在 <code>Core Animation</code> 不仅仅满足我们 <code>UIKit</code> 移动端 <code>iOS</code> 使用，而且在 <code>OS</code> 中的 <code>AppKit</code> 同样也是对其进行再次封装。但是这里我们仅仅讨论在 <code>iOS</code> 平台具体实现情况。</p>
+<p>数据表格可以看出 <code>Core Animation</code> 在 <code>iOS</code> 架构中负责 <code>Layer</code> 的内容绘制和动画的执行。执行绘制实现的类：<code>CATypeLayer</code> 和 <code>CATypeAnimation</code> 及其在实现动画实现参数例如：<code>Animation Group</code> 和 <code>Animation Timing</code>。</p>
+<h2 id="Core-Animation-绘制"><a href="#Core-Animation-绘制" class="headerlink" title="Core Animation 绘制"></a>Core Animation 绘制</h2><p>细细想来我们在做应用实际上展示给用户内容，而在展示内容基础上我们多数是采用 <code>UIKit</code> 中的继承于 <code>UIView</code> 非线程安全的控件来做内容展示。这里我们从 <code>Core Animation</code> 绘制开始剖析怎么实现？</p>
+<h3 id="UIView-VS-Core-Animation"><a href="#UIView-VS-Core-Animation" class="headerlink" title="UIView VS Core Animation"></a><code>UIView</code> VS <code>Core Animation</code></h3><p>在 <code>Core Aimation</code> 的 <code>API</code> 的数据表中我们可以看到 <code>Layer Basics</code> 中有三个类分别是：<code>CALyer</code>、<code>CALayerDelegate</code> 和 <code>CAAction</code>。既然 <code>iOS</code> 中界面的初始化均是以父类 <code>UIView</code>来实现，那么 <code>UIView</code> 和三者有什么关系呢？</p>
+<h4 id="UIView-和-CALayer"><a href="#UIView-和-CALayer" class="headerlink" title="UIView 和 CALayer"></a><code>UIView</code> 和 <code>CALayer</code></h4><p><code>Layer</code> 层作为 <code>Core Animation</code> 主要绘制基类为 <code>UIKit</code> 中 <code>View</code> 提供内容绘制的容器，动画实现基础。下面通过实际例子来进行解答：</p>
+<blockquote>
+<p>通过实现 <code>LJView</code> 继承 <code>View</code> 和 <code>LJLayer</code> 继承 <code>Layer</code>，并且重写 <code>LJView</code> 中的方法 <code>+ (Class)layerClass;</code> 如下：</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (Class)layerClass &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"&lt;%@:%p&gt;(%s)"</span>, <span class="keyword">self</span>.class, <span class="keyword">self</span>, __func__);</span><br><span class="line">    <span class="keyword">return</span> [LJLayer class];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后重写下面的方法：</p>
+<blockquote>
+<p>1、<code>LJView</code> 的方法：<code>- (CGPoint)center;</code>、<code>- (void)setBounds:(CGRect)bounds;</code>、<code>- (void)setCenter:(CGPoint)center</code> 和 <code>- (void)setFrame:(CGRect)frame;</code><br>2、<code>LJLayer</code> 的方法：<code>- (CGPoint)position;</code>、<code>- (void)setBounds:(CGRect)bounds;</code>、<code>- (void)setPosition:(CGPoint)position;</code>、 和 <code>- (void)setFrame:(CGRect)frame</code>。</p>
+</blockquote>
+<p>初始化 <code>_ljView = [[LJView alloc ] init];</code> 我们可以看到打印的日志如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把 LJView 的 layer 加载 LJLayer</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x10ca54190</span>&gt;(+[LJView layerClass])</span><br><span class="line"></span><br><span class="line"><span class="comment">//1、调用 View 中给定的 Frame 来创建 Layer</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line"></span><br><span class="line"><span class="comment">//2、创建 Layer 后通过调用栈创建 View</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView setFrame:])</span><br><span class="line"></span><br><span class="line"><span class="comment">//3、View 回调中心点 center 实际委托给 Layer 的 position 返回当前的中心点</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br><span class="line"></span><br><span class="line"><span class="comment">//4、通过上面 LJView 设置 Frame 和 Center 后，Layer 层再次重新对其 Frame、position 和 bounds 进行设置，</span></span><br><span class="line"><span class="comment">//这里也可以看到 Frame 其实是有 position 和 bounds 来决定</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setPosition:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line"></span><br><span class="line"><span class="comment">//5、View 在实现布局后，再次获取其 center 再次委托与 Layer position 来获取中心点</span></span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br></pre></td></tr></table></figure>
+<p>上面我们可以看出在实现 <code>LJView</code> 在实现初始化的过程时，实际会委托给 <code>Layer</code> 层的 <code>Frame</code> | <code>Bounds</code> 和 <code>Position</code> 来进行具体实例化的过程。在实例化过程有下面几个步骤：  </p>
+<blockquote>
+<p>1、<code>View</code> 通过 <code>Layer</code> 中的 <code>bounds</code> 和 <code>position</code> 来确定其的 <code>frame</code>；<br>2、然后 <code>Layer</code> 根据上面的值再次对其 <code>frame</code>、<code>position</code> 和 <code>bounds</code> 进行再次设置；<br>3、最后 <code>View</code> 再次委托 <code>Layer</code> 获取当前的中心点。</p>
+</blockquote>
+<h4 id="下面我们在根据每部具体操作在看下操作具体的调用栈"><a href="#下面我们在根据每部具体操作在看下操作具体的调用栈" class="headerlink" title="下面我们在根据每部具体操作在看下操作具体的调用栈"></a>下面我们在根据每部具体操作在看下操作具体的调用栈</h4><blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setBounds:])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-742707ecc08ad320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.27.56.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始<br>d、[UIView _createLayerWithFrame] 根据 frame 创建 Layer</p>
+</blockquote>
+<p>1、<code>UIView</code> 初始化时创建 <code>Layer</code> 然后调用其方法 <code>setBounds:</code>。</p>
+<blockquote>
+<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView setFrame:])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-0dbfaf7c8ca0d82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.28.16.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始   </p>
+</blockquote>
+<p>2、<code>UIView</code> 在初始创建 <code>Layer</code> 后对其 <code>Frame</code> 进行初始化调用 <code>setFrame:</code> 方法。</p>
+<blockquote>
+<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView center])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-20c3b7df71a0ba52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.28.30.png"></p>
+<blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer position])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-fd919e1a0ded16b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.28.52.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始<br>d、[LJView setFrame] 调用具体 View 设置 Parent frame 布局<br>e、[UIView(Geometry) setFrame]<br>f、[LJView center] 调用 View 中 Center 委托给 Layer 的 position<br>g、[LJLayer position]  </p>
+</blockquote>
+<p>3、这里可以看出在 2 基础上接着调用 <code>View</code> 的 <code>Center</code> 中心点实际是委托与 <code>Layer</code> 的 <code>position</code> 继续调用</p>
+<blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setFrame:])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-a3d63440b2af10ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.29.11.png"></p>
+<blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setPosition:])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-17fcb682fb15a931.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.29.27.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始<br>d、[LJView setFrame] 调用具体 View 设置 Parent frame 布局<br>e、[UIView(Geometry) setFrame] 调用系统 View 的 Frame 设置<br>f、[LJLayer setFrame] 调用拥有 Layer 的 Frame<br>g、[CALayer setFrame] 调用系统 Layer 的 Frame 设置<br>h、[LJLayer setPosition] 设置 Layer 的中心点</p>
+</blockquote>
+<p>4、在第 2 的基础上通过设置 <code>Layer</code> 的 <code>Frame</code> 实际设置当前的 <code>position</code> 中心点。</p>
+<blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer setBounds:])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-b1166a30687d952b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.29.41.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始<br>d、[LJView setFrame] 调用具体 View 设置 Parent frame 布局<br>e、[UIView(Geometry) setFrame]<br>f、[LJLayer setFrame]<br>g、[CALayer setFrame]<br>h、[LJLayer setBounds] 设置 Layer 的 bounds 实际布局  </p>
+</blockquote>
+<p>5、在第 2 的基础上通过设置 <code>Layer</code> 的 <code>Frame</code> 实际设置当前的 <code>bounds</code> 中心点，也就可以看出 <code>Layer</code> 的 <code>Frame</code> 在设置情况实际是根据 <code>Layer</code> 的 <code>bounds</code> 和 <code>position</code> 来实际决定其 <code>Frame</code>。</p>
+<blockquote>
+<p><code>&lt;LJView:0x7f9ae840c220&gt;(-[LJView center])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-591e5663da92e76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.29.55.png"></p>
+<blockquote>
+<p><code>&lt;LJLayer:0x6040002212a0&gt;(-[LJLayer position])</code>调用栈：</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-8161cf64cdd86cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-18 00.30.09.png"></p>
+<p>上面我们可以看出在实际中的调用栈是：</p>
+<blockquote>
+<p>a、[UIView init] 初始化<br>b、[UIView initWithFrame] 调用 initWithFrame 方法<br>c、UIViewCommonInitWithFrame 采用 Common frame 初始<br>d、[LJView setFrame] 调用具体 View 设置 Parent frame 布局<br>e、[UIView(Geometry) setFrame]<br>f、[LJView center] 调用 View 中 Center 委托给 Layer 的 position<br>g、[LJLayer position]   </p>
+</blockquote>
+<p>6、在第 2 基础上设置完相关通过 <code>View</code> 中心点委托给 <code>Layer</code> 的 <code>position</code> 来获取。</p>
 <p><code>_ljView.frame = CGRectMake(0, 0, LJScreenWidth(), 200);</code> 打印的日志如下：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setFrame:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setPosition:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer setBounds:])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJView:<span class="number">0x7f9ae840c220</span>&gt;(-[LJView center])</span><br><span class="line">LJCAStructure[<span class="number">39931</span>:<span class="number">4249519</span>] &lt;LJLayer:<span class="number">0x6040002212a0</span>&gt;(-[LJLayer position])</span><br></pre></td></tr></table></figure>
 <p>看资料需要了解的内容：</p>
@@ -230,6 +322,7 @@ var _hmt = _hmt || [];
 <p>UIKit 框架特性是：我们在当前界面控件元素进行初始化，修改以及当前布局计算，渲染绘制和动画执行均在 main queue 来实现。而且在响应链反馈，手势识别等均切换在主线程中。当 Page 界面控件较多，布局较为复杂就可能会出现掉帧情况，出现界面展示出卡顿现象。</p>
 <p>发散思维：<br>UIKit 是我们在实现 APP 界面中所有控件的基础库，里面有我们在组建 APP 界面中所有的元素。</p>
 <p>在组建的控件布局采用 AutoLayout，然后控件做一些复杂的动画实现内容。<br>实际在控件绘制绘制生成我们可视化的每一帧图片时是使用 Core Animation、Core Graphics 和 Core Image 来使用 OpenGL ES 处理连接 GPU Driver 使用 GPU 来生成我们可以看到每一帧的图片内容。<br>在此过程中我们可以考虑想要提高当前页面帧数可以从上面控件初始化，布局计算，渲染以及相关素材解码显示原生图片渲染生成纹理图显示在 UI 屏幕上。</p>
+<p>在 <code>APP</code> 界面绘制中我们经常使用 <code>UIKit</code> 中控件来对界面实现布局，界面上的控件事件的点击参考:<a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/" target="_blank" rel="external">iOS-Responder Chain (响应链)</a>。在 <code>APP</code> 中所有的控件均是以 <code>UIView</code> 为父类来实现内容显示，但是在实际内容是在 <code>CALayer</code> 基础之上进行绘制。</p>
 <h2 id="隐式动画实现："><a href="#隐式动画实现：" class="headerlink" title="隐式动画实现："></a>隐式动画实现：</h2><p>在我们采用 UIView 初始化后进行修改其初始化 View 实例执行：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有相关的动画操作</span></span><br><span class="line">view.center = <span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">[<span class="built_in">UIView</span> animationWithDuration:<span class="number">1.20</span> animations:^&#123;</span><br><span class="line">  <span class="comment">//在实际情况中出现相关动画效果</span></span><br><span class="line">  view.center = <span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">200</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
 <p>如果要测试这个方式流程来验证我们在 animationWithDuration 的 block 之外设置 View 相关属性不产生动画，在 block 里面设置 View 的属性产生相关动画。</p>
@@ -244,10 +337,12 @@ var _hmt = _hmt || [];
 <p>ModelLayer 和 PresentationLayer 在实现过程中上面我们知道在实现过程中采用  <code>animationWithDuration:forKey:</code>  采用 UIView 来实现这种操作，在动画实现过程中也可以采用 Layer 层 CAAnimation 动画操作。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CaBasicAnimation *animation = [CaBaseicAnimation animation];</span><br><span class="line">animation.keyPath = <span class="string">@"position"</span>;</span><br><span class="line">animation.duration = <span class="number">2</span>;</span><br><span class="line">animation.formValue = [<span class="built_in">NSValue</span> valueWithCGPoint:<span class="built_in">CGPointMake</span>(<span class="number">80</span>, <span class="number">80</span>)];</span><br><span class="line">animation.toValue = [<span class="built_in">NSValue</span> valueWithCGPoint:<span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">150</span>)];</span><br><span class="line">[view.layer addAnimation:animation forKey:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
 <p>在上面展示效果中我们可以看到在 View 的实例变量 Layer 层在进行动画的过程中，ModelLayer 是来保存当前 View 的实例 Layer 的初始值 Frame 值。 PresentationLayer 主要的作用是在 CAAnimation 运动过程中运动指示标识。</p>
-<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3" target="_blank" rel="external">Advanced Animation Tricks</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1" target="_blank" rel="external">Changing a Layer’s Default Behavior</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1" target="_blank" rel="external">Improving Animation Performance</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18" target="_blank" rel="external">Layer Style Property Animations</a></p>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3" target="_blank" rel="external">Advanced Animation Tricks</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1" target="_blank" rel="external">Changing a Layer’s Default Behavior</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1" target="_blank" rel="external">Improving Animation Performance</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18" target="_blank" rel="external">Layer Style Property Animations</a></p>
 <p>苹果的官方视频：<br><a href="https://developer.apple.com/videos/play/wwdc2012/217/" target="_blank" rel="external">Layer-Backed Views: AppKit + Core Animation</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2015/803/" target="_blank" rel="external">Designing with Animation</a> </p>
+<p>作者： JackJin Bai  </p>
 <blockquote>
-<p>作者： JackJin Bai<br>第一次修改时间： 2019/1/6 20:37: 26<br>写于：广州市天河公园家里 </p>
+<p>第一次修改时间： 2019/1/6 20：37：26<br>写于：广州市天河公园家里 </p>
+<p>第二次修改时间： 2019/1/18 02：02：44<br>写于：广州市天河公园家里 </p>
 </blockquote>
 
       
