@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-b1166a30687d952b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-591e5663da92e76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-8161cf64cdd86cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-22T17:45:17.341Z">
+<meta property="og:updated_time" content="2019-01-23T16:31:36.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
 <meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
@@ -341,45 +341,45 @@ var _hmt = _hmt || [];
 <thead>
 <tr>
 <th>特有 Layer</th>
-<th>a</th>
+<th>Advantages VS Disadvantages</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/CATextLayer.html" target="_blank" rel="external">CATextLayer</a></td>
-<td>a</td>
+<td>纯文本带有文本或者是是文本字符串在 <code>UIKit</code> 框架中 <code>UILabel</code> 代替，采用是的 <code>Core Text</code> 直接进行绘制。但是在使用过程中会发现在设置 居中显示默认是 <code>x</code> 方向居中 <code>y</code> 轴显示距离 <code>top</code> 但是可以使用 <code>NSMutableAttributeString</code> 来进行设置</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/cashapelayer.html" target="_blank" rel="external">CAShaperLayer</a></td>
-<td>a</td>
+<td><code>CAShaperLayer</code> 通过矢量图形来进行绘制在使用绘制时不用像使用 <code>CALayer</code> 生成相应的寄宿图片不消耗内存，可以结合 <code>Path</code> 来进行各种内容的绘制工作。使用最广的场景就是我们在 APP 实现画笔或者是内容的绘制工作。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/cagradientLayer.html" target="_blank" rel="external">CAGradientLayer</a></td>
-<td>a</td>
+<td>一个使用硬件加速可以绘制出很炫的 <code>API</code> 接口可以实现多种色彩平滑的过渡，多种颜色的间隔。如果作为 <code>mask</code> 可以做出在一个 <code>UILabel</code> 或者是 <code>CATextLayer</code> 上面做出平滑过的颜色效果。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/caemitterlayer.html" target="_blank" rel="external">CAEmitterLayer</a></td>
-<td>a</td>
+<td>是一个基于核心动画粒子发射的系统。这里可以控制粒子生成以及粒子的开始位置实现很好粒子展示效果。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/cascrollLayer.html" target="_blank" rel="external">CAScrollLayer</a></td>
-<td>a</td>
+<td>管理着多个子层的使用，类似于在 <code>UIKit</code> 中可滑动的控件 <code>UIScrollView</code>。可以说是在没有对点击相应的情况下 <code>UIScrollView</code> 很好的图层替代。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/catiledLayer.html" target="_blank" rel="external">CATiledLayer</a></td>
-<td>a</td>
+<td>对图片实现分割显示，在 <code>UI</code> 界面上我们可以操作和看到的图片都会通过 <code>OpenGL ES</code> 生成纹理最后绘制在屏幕上。当显示的图片过大或者超出需要绘制的显示内容上，会在显示时对图片进行加压生成原生数据显示这时可能会出现卡顿现象。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/catransformlayer.html" target="_blank" rel="external">CATransformLayer</a></td>
-<td>a</td>
+<td>实现 3D 层次展示，多使用在地图类。</td>
 </tr>
 <tr>
 <td><a href="https://zsisme.gitbooks.io/ios-/content/chapter6/careplicatorLayer.html" target="_blank" rel="external">CAReplicatorLayer</a></td>
-<td>a</td>
+<td>要自动复制一个或多个子层时使用。replicator为您创建副本，并使用您指定的属性来更改副本的外观或属性。</td>
 </tr>
 <tr>
 <td><a href="">CAMetalLayer</a></td>
-<td>a</td>
+<td>未完待续。。。</td>
 </tr>
 </tbody>
 </table>

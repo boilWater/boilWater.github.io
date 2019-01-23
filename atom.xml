@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-22T17:45:17.341Z</updated>
+  <updated>2019-01-23T16:31:36.302Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2019-01-22T17:45:17.341Z</updated>
+    <updated>2019-01-23T16:31:36.302Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;小编回顾粗略的写完 19 年 想要写的系列博文中 &lt;code&gt;iOS UI&lt;/code&gt; 优化总纲中第一篇博文 &lt;code&gt;Core Animation&lt;/code&gt; 一直在想怎么样展示自己的理解，就先从我们熟知的 &lt;code&gt;Core Animation&lt;/code&gt; 在整个 &lt;code&gt;APP&lt;/code&gt; 提供架构方面来进行对比。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2019-01-15 23.12.22.png&quot;&gt;&lt;/p&gt;
@@ -151,45 +151,45 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;特有 Layer&lt;/th&gt;
-&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;Advantages VS Disadvantages&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/CATextLayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CATextLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;纯文本带有文本或者是是文本字符串在 &lt;code&gt;UIKit&lt;/code&gt; 框架中 &lt;code&gt;UILabel&lt;/code&gt; 代替，采用是的 &lt;code&gt;Core Text&lt;/code&gt; 直接进行绘制。但是在使用过程中会发现在设置 居中显示默认是 &lt;code&gt;x&lt;/code&gt; 方向居中 &lt;code&gt;y&lt;/code&gt; 轴显示距离 &lt;code&gt;top&lt;/code&gt; 但是可以使用 &lt;code&gt;NSMutableAttributeString&lt;/code&gt; 来进行设置&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/cashapelayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CAShaperLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CAShaperLayer&lt;/code&gt; 通过矢量图形来进行绘制在使用绘制时不用像使用 &lt;code&gt;CALayer&lt;/code&gt; 生成相应的寄宿图片不消耗内存，可以结合 &lt;code&gt;Path&lt;/code&gt; 来进行各种内容的绘制工作。使用最广的场景就是我们在 APP 实现画笔或者是内容的绘制工作。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/cagradientLayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CAGradientLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;一个使用硬件加速可以绘制出很炫的 &lt;code&gt;API&lt;/code&gt; 接口可以实现多种色彩平滑的过渡，多种颜色的间隔。如果作为 &lt;code&gt;mask&lt;/code&gt; 可以做出在一个 &lt;code&gt;UILabel&lt;/code&gt; 或者是 &lt;code&gt;CATextLayer&lt;/code&gt; 上面做出平滑过的颜色效果。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/caemitterlayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CAEmitterLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;是一个基于核心动画粒子发射的系统。这里可以控制粒子生成以及粒子的开始位置实现很好粒子展示效果。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/cascrollLayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CAScrollLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;管理着多个子层的使用，类似于在 &lt;code&gt;UIKit&lt;/code&gt; 中可滑动的控件 &lt;code&gt;UIScrollView&lt;/code&gt;。可以说是在没有对点击相应的情况下 &lt;code&gt;UIScrollView&lt;/code&gt; 很好的图层替代。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/catiledLayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CATiledLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;对图片实现分割显示，在 &lt;code&gt;UI&lt;/code&gt; 界面上我们可以操作和看到的图片都会通过 &lt;code&gt;OpenGL ES&lt;/code&gt; 生成纹理最后绘制在屏幕上。当显示的图片过大或者超出需要绘制的显示内容上，会在显示时对图片进行加压生成原生数据显示这时可能会出现卡顿现象。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/catransformlayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CATransformLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;实现 3D 层次展示，多使用在地图类。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/chapter6/careplicatorLayer.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CAReplicatorLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;要自动复制一个或多个子层时使用。replicator为您创建副本，并使用您指定的属性来更改副本的外观或属性。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;&quot;&gt;CAMetalLayer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;未完待续。。。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
