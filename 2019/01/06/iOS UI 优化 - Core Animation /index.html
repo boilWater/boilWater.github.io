@@ -31,7 +31,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-b1166a30687d952b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-591e5663da92e76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-8161cf64cdd86cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-23T16:31:36.302Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-cceb63f3c0a04111.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-c171b2f31898d656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-27T09:47:26.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
 <meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
@@ -378,12 +381,63 @@ var _hmt = _hmt || [];
 <td>要自动复制一个或多个子层时使用。replicator为您创建副本，并使用您指定的属性来更改副本的外观或属性。</td>
 </tr>
 <tr>
-<td><a href="">CAMetalLayer</a></td>
-<td>未完待续。。。</td>
+<td><a href="https://www.objc.io/issues/18-games/metal/" target="_blank" rel="external">CAMetalLayer</a></td>
+<td>主要是管理 <code>Metal Texture Pool</code> 渲染 <code>MTL Texture</code> 到显示窗口。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Core-Animation-动画-探索"><a href="#Core-Animation-动画-探索" class="headerlink" title="Core Animation 动画 - 探索"></a>Core Animation 动画 - 探索</h2><h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3" target="_blank" rel="external">Advanced Animation Tricks</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1" target="_blank" rel="external">Changing a Layer’s Default Behavior</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1" target="_blank" rel="external">Improving Animation Performance</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18" target="_blank" rel="external">Layer Style Property Animations</a><br><a href="https://zsisme.gitbooks.io/ios-/content/index.html" target="_blank" rel="external">iOS Core Animation: Advanced Techniques</a></p>
+<h2 id="Core-Animation-动画-探索"><a href="#Core-Animation-动画-探索" class="headerlink" title="Core Animation 动画 - 探索"></a>Core Animation 动画 - 探索</h2><table>
+<thead>
+<tr>
+<th>CAAnimation API</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/tree/master/AnimationDome/View/ComplexAnimation" target="_blank" rel="external">CAAnimation</a></td>
+<td>作为 <code>QuartzCore</code> 其他动画的父类，实现动画的基本接口。可以通过系统 <code>CAMediaTimingFunction</code> 动画或者二次本塞尔曲线设置动画。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/tree/master/AnimationDome/View/AffineAnimationView" target="_blank" rel="external">CAPropertyAnimation</a></td>
+<td>作为 <code>CAAnimation</code> 的子类，提供属性设置来实现显示动画。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/blob/master/AnimationDome/View/BaseAnimationViw" target="_blank" rel="external">CABasicAnimation</a></td>
+<td>作为 <code>CAPropertyAnimation</code> 默认执行动画的 <code>View</code> 的 <code>Center</code> 即实际 <code>Layer</code> 层的 <code>Position</code> 中心点位置指定开始位置到终点中心位置的动画。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/blob/master/AnimationDome/View/CALayerView" target="_blank" rel="external">CAKeyframeAnimation</a></td>
+<td>作为 <code>CAPropertyAnimation</code> 的子类。同样是把 <code>Center</code> 作为默认动画标点，通过 <code>keyTimes</code> 和 <code>timingFunctions</code> 来对动画设置在总动画时间，时间间隔对应的动画执行方式。或者是直接使用 <code>values</code> 然后通过计算时间间隔来分隔动画实现多种动画效果叠加。通过 <code>path</code> 来生成路径动画。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/tree/master/AnimationDome/View/ComplexAnimation" target="_blank" rel="external">CASpringAnimation</a></td>
+<td>作为 <code>CABasicAnimation</code> 子类。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/tree/master/AnimationDome/View/FadeAnimationView" target="_blank" rel="external">CATransition</a></td>
+<td>作为 <code>CAAnimation</code> 的子类，实例简单的动画效果。例如：<code>fade</code>，<code>moveIn</code>，<code>push</code> 和 <code>reveal</code> 设置进入方向类型。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/boilWater/AnimationDome/tree/master/AnimationDome/View/GroupAnimationView" target="_blank" rel="external">CAAnimationGroup</a></td>
+<td>作为 <code>CAAnimation</code> 子类。对 <code>CAAnimation</code> 进行栈整合，实现动画实现栈动画组的栈执行。</td>
+</tr>
+</tbody>
+</table>
+<p>在好久之前就实现根据写过简单的动画实现在动画的介绍中链接实现基础实现类，具体实现项目<a href="https://github.com/boilWater/AnimationDome" target="_blank" rel="external">AnimationDome</a>。</p>
+<p>下面👇这里主要针对 <code>CAKeyFrameAnimation</code> 系统缓冲和自定义函数缓冲实现，及在实现缓冲过程中我们通过定义 <code>timingFundations</code>，<code>values</code> 和 <code>path</code> 三者之间对应的关系。</p>
+<h3 id="CAMediaTimingFundation-和-Path-关系"><a href="#CAMediaTimingFundation-和-Path-关系" class="headerlink" title="CAMediaTimingFundation 和 Path 关系"></a>CAMediaTimingFundation 和 Path 关系</h3><p>上面我们可以看出采用系统定义的 <code>kCAMediaTimingFunctionEaseIn</code>，<code>kCAMediaTimingFunctionEaseInEaseOut</code> 和 <code>kCAMediaTimingFunctionDefault</code> 生成对应的效果图。</p>
+<p><strong><code>Gif</code> 视频文件</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-cceb63f3c0a04111.gif?imageMogr2/auto-orient/strip" alt="CAMediaTimingFuncation-System-Interface.gif"></p>
+<p><strong>三者直接对用 CADeiaTimingFundation 对应的 Path 路径绘制</strong></p>
+<p>注：黄色是出发点，亮青是终点，蓝色是控制点。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-c171b2f31898d656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-27 16.59.10.png"></p>
+<p>下面我们参考系统的 <code>CAMediaTimingFundation</code> 来自定义缓冲，<a href="http://robertpenner.com/easing/" target="_blank" rel="external">参考资料</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-27 17.22.59.png"></p>
+<p>上面自定义缓冲类型对应的代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">easeInQuint = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.6</span>, <span class="number">0.04</span>, <span class="number">0.98</span>, <span class="number">0.335</span>)           </span><br><span class="line">easeInOutQuint = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.86</span>, <span class="number">0</span>, <span class="number">0.07</span>, <span class="number">1</span>)     </span><br><span class="line">easeInOutBack = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.68</span>, <span class="number">-0.55</span>, <span class="number">0.265</span>, <span class="number">1.55</span>)</span><br></pre></td></tr></table></figure>
+<p>未完待续…</p>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="http://robertpenner.com/easing/penner_chapter7_tweening.pdf" target="_blank" rel="external">Dynamic Visuals</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3" target="_blank" rel="external">Advanced Animation Tricks</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1" target="_blank" rel="external">Changing a Layer’s Default Behavior</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1" target="_blank" rel="external">Improving Animation Performance</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18" target="_blank" rel="external">Layer Style Property Animations</a><br><a href="https://zsisme.gitbooks.io/ios-/content/index.html" target="_blank" rel="external">iOS Core Animation: Advanced Techniques</a></p>
 <p>苹果的官方视频：<br><a href="https://developer.apple.com/videos/play/wwdc2012/217/" target="_blank" rel="external">Layer-Backed Views: AppKit + Core Animation</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2015/803/" target="_blank" rel="external">Designing with Animation</a> </p>
 <p>作者： JackJin Bai  </p>
 <blockquote>
