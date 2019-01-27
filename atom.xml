@@ -281,11 +281,29 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20%E4%B8%80/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 一/</id>
     <published>2019-01-06T12:23:44.435Z</published>
-    <updated>2019-01-06T12:43:21.496Z</updated>
+    <updated>2019-01-27T16:11:08.640Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-UI-优化-总纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化 - 总纲&quot;&gt;&lt;/a&gt;iOS UI 优化 - 总纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
-&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
+&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; | &lt;code&gt;Metal&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
 &lt;p&gt;最后分析 &lt;code&gt;FB&lt;/code&gt; 开源的框架 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 实现 &lt;code&gt;UI&lt;/code&gt; 优化方式，对 &lt;code&gt;Core Text&lt;/code&gt; 进行最后封装来结束 &lt;code&gt;UI&lt;/code&gt; 专题。&lt;/p&gt;
+&lt;h2 id=&quot;Core-Animation-大纲&quot;&gt;&lt;a href=&quot;#Core-Animation-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 大纲&quot;&gt;&lt;/a&gt;Core Animation 大纲&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;Core Animation API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Animation&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为 &lt;code&gt;UIKit&lt;/code&gt; 和 &lt;code&gt;AppKit&lt;/code&gt; 内容实际绘制主要承担的载体，为具体在屏幕上控件内容绘制，布局以及提供隐式和显示动画提供优雅的 &lt;code&gt;API&lt;/code&gt; 接口。&lt;strong&gt;b、&lt;/strong&gt; 作为硬件绘制输入把需要显示具体内容传入 &lt;code&gt;GPU&lt;/code&gt; 生成纹理在屏幕上进行渲染。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2、作用&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Animation&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过 &lt;code&gt;CATypeLayer&lt;/code&gt; 类族显示效果，位置布局为 &lt;code&gt;UIKit&lt;/code&gt; 层提供底层绘制实现。&lt;strong&gt;b、&lt;/strong&gt;屏幕上直接与渲染硬件直接进行内容绘制，实现各种酷炫的效果以及更加高效绘制。&lt;strong&gt;c、&lt;/strong&gt; 通过 &lt;code&gt;CATypeAnimation&lt;/code&gt; 及其属性 &lt;code&gt;CATypeTiming&lt;/code&gt; 实现各种动画效果类型。&lt;strong&gt;d、&lt;/strong&gt;为 &lt;code&gt;UIKit&lt;/code&gt; 和 &lt;code&gt;AppKit&lt;/code&gt; 代码块动画代理对象，提供具体实现支持。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -298,8 +316,26 @@
     <summary type="html">
     
       &lt;h1 id=&quot;iOS-UI-优化-总纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化 - 总纲&quot;&gt;&lt;/a&gt;iOS UI 优化 - 总纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
-&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
+&lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; | &lt;code&gt;Metal&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
 &lt;p&gt;最后分析 &lt;code&gt;FB&lt;/code&gt; 开源的框架 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 实现 &lt;code&gt;UI&lt;/code&gt; 优化方式，对 &lt;code&gt;Core Text&lt;/code&gt; 进行最后封装来结束 &lt;code&gt;UI&lt;/code&gt; 专题。&lt;/p&gt;
+&lt;h2 id=&quot;Core-Animation-大纲&quot;&gt;&lt;a href=&quot;#Core-Animation-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 大纲&quot;&gt;&lt;/a&gt;Core Animation 大纲&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;&lt;code&gt;Core Animation API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Animation&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为 &lt;code&gt;UIKit&lt;/code&gt; 和 &lt;code&gt;AppKit&lt;/code&gt; 内容实际绘制主要承担的载体，为具体在屏幕上控件内容绘制，布局以及提供隐式和显示动画提供优雅的 &lt;code&gt;API&lt;/code&gt; 接口。&lt;strong&gt;b、&lt;/strong&gt; 作为硬件绘制输入把需要显示具体内容传入 &lt;code&gt;GPU&lt;/code&gt; 生成纹理在屏幕上进行渲染。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot;&gt;2、作用&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Animation&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过 &lt;code&gt;CATypeLayer&lt;/code&gt; 类族显示效果，位置布局为 &lt;code&gt;UIKit&lt;/code&gt; 层提供底层绘制实现。&lt;strong&gt;b、&lt;/strong&gt;屏幕上直接与渲染硬件直接进行内容绘制，实现各种酷炫的效果以及更加高效绘制。&lt;strong&gt;c、&lt;/strong&gt; 通过 &lt;code&gt;CATypeAnimation&lt;/code&gt; 及其属性 &lt;code&gt;CATypeTiming&lt;/code&gt; 实现各种动画效果类型。&lt;strong&gt;d、&lt;/strong&gt;为 &lt;code&gt;UIKit&lt;/code&gt; 和 &lt;code&gt;AppKit&lt;/code&gt; 代码块动画代理对象，提供具体实现支持。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
