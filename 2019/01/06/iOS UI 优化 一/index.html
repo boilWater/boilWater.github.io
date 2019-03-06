@@ -8,22 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS UI 优化 - 总纲 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS UI 优化 - 总纲2019 年开年第一篇博文，今天先起个头。
+  <meta name="description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
-最后">
+最后分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - 总纲">
 <meta property="og:url" content="http://yoursite.com/2019/01/06/iOS UI 优化 一/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="iOS UI 优化 - 总纲2019 年开年第一篇博文，今天先起个头。
+<meta property="og:description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
-最后">
-<meta property="og:updated_time" content="2019-01-27T16:11:08.640Z">
+最后分">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-06T17:19:09.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - 总纲">
-<meta name="twitter:description" content="iOS UI 优化 - 总纲2019 年开年第一篇博文，今天先起个头。
+<meta name="twitter:description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
-最后">
+最后分">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -197,7 +199,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="iOS-UI-优化-总纲"><a href="#iOS-UI-优化-总纲" class="headerlink" title="iOS UI 优化 - 总纲"></a>iOS UI 优化 - 总纲</h1><p>2019 年开年第一篇博文，今天先起个头。</p>
+        <h1 id="iOS-UI-优化博文大纲"><a href="#iOS-UI-优化博文大纲" class="headerlink" title="iOS UI 优化博文大纲"></a>iOS UI 优化博文大纲</h1><p>2019 年开年第一篇博文，今天先起个头。</p>
 <p>今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 <code>Core Animation</code> 框架总结以及实现方式上讲解，然后从 <code>Core Graphics</code> 和 <code>Core Iamge</code> 在绘制层面三者如何把 <code>UIKit</code> 控件如何实现绘制交由 <code>OpenGL ES</code> | <code>Metal</code> 来实现每一帧绘制。</p>
 <p>最后分析 <code>FB</code> 开源的框架 <code>ASDK</code> 和 <code>YYKit</code> 实现 <code>UI</code> 优化方式，对 <code>Core Text</code> 进行最后封装来结束 <code>UI</code> 专题。</p>
 <h2 id="Core-Animation-大纲"><a href="#Core-Animation-大纲" class="headerlink" title="Core Animation 大纲"></a>Core Animation 大纲</h2><table>
@@ -214,10 +216,12 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td><a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/" target="_blank" rel="external">2、作用</a></td>
-<td><code>Core Animation</code> <strong>a、</strong> 通过 <code>CATypeLayer</code> 类族显示效果，位置布局为 <code>UIKit</code> 层提供底层绘制实现。<strong>b、</strong>屏幕上直接与渲染硬件直接进行内容绘制，实现各种酷炫的效果以及更加高效绘制。<strong>c、</strong> 通过 <code>CATypeAnimation</code> 及其属性 <code>CATypeTiming</code> 实现各种动画效果类型。<strong>d、</strong>为 <code>UIKit</code> 和 <code>AppKit</code> 代码块动画代理对象，提供具体实现支持。</td>
+<td><code>Core Animation</code> <strong>a、</strong> 通过 <code>CATypeLayer</code> 类族显示效果，位置布局为 <code>UIKit</code> 层提供底层绘制实现。<strong>b、</strong>屏幕上直接与渲染硬件直接进行内容绘制，实现各种酷炫的效果以及更加高效绘制。<strong>c、</strong> 通过 <code>CATypeAnimation</code> 及其属性 <code>CATypeTiming</code> 实现各种动画效果类型。<strong>d、</strong>为 <code>UIKit</code> 和 <code>AppKit</code> 代码块动画代理对象，提供具体实现支持。<strong>在 iOS 的主要职能是为 UIKit 框架在 APP UI 控件实现基础上的绘制。</strong></td>
 </tr>
 </tbody>
 </table>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation.png"></p>
+<p>注参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/" target="_blank" rel="external">iOS UI 优化 - Core Animation</a> 最后给出：<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/" target="_blank" rel="external">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/" target="_blank" rel="external">iOS 空间绘制原理</a></p>
 <blockquote>
 <p>同时也会对本文进行在每一博文更新！！！</p>
 </blockquote>
