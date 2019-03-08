@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-27T16:37:59.160Z</updated>
+  <updated>2019-03-08T14:17:03.034Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS UI 优化 - Core Graphics</title>
+    <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
+    <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
+    <published>2019-03-08T14:07:07.579Z</published>
+    <updated>2019-03-08T14:17:03.034Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS UI 界面" scheme="http://yoursite.com/tags/iOS-UI-%E7%95%8C%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS UI 优化 - Core Animation</title>
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2019-01-27T16:37:59.160Z</updated>
+    <updated>2019-03-08T14:09:53.464Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;小编回顾粗略的写完 19 年 想要写的系列博文中 &lt;code&gt;iOS UI&lt;/code&gt; 优化总纲中第一篇博文 &lt;code&gt;Core Animation&lt;/code&gt; 一直在想怎么样展示自己的理解，就先从我们熟知的 &lt;code&gt;Core Animation&lt;/code&gt; 在整个 &lt;code&gt;APP&lt;/code&gt; 提供架构方面来进行对比。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2019-01-15 23.12.22.png&quot;&gt;&lt;/p&gt;
@@ -243,7 +266,8 @@
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2019-01-27 17.22.59.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;上面自定义缓冲类型对应的代码实现：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;easeInQuint = &lt;span class=&quot;built_in&quot;&gt;CAMediaTimingFunction&lt;/span&gt;(controlPoints: &lt;span class=&quot;number&quot;&gt;0.6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.04&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.98&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.335&lt;/span&gt;)           &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;easeInOutQuint = &lt;span class=&quot;built_in&quot;&gt;CAMediaTimingFunction&lt;/span&gt;(controlPoints: &lt;span class=&quot;number&quot;&gt;0.86&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.07&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;easeInOutBack = &lt;span class=&quot;built_in&quot;&gt;CAMediaTimingFunction&lt;/span&gt;(controlPoints: &lt;span class=&quot;number&quot;&gt;0.68&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-0.55&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.265&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1.55&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;未完待续…&lt;/p&gt;
+&lt;p&gt;在上面的博文中小编根据一些博文和 &lt;code&gt;WWDC&lt;/code&gt; 介绍。来对 &lt;code&gt;UIKit&lt;/code&gt; 中 &lt;code&gt;UIView&lt;/code&gt; 和 &lt;code&gt;QuartzCore&lt;/code&gt; 中的 &lt;code&gt;Layer&lt;/code&gt; 两者之间细节做探讨，来&lt;strong&gt;验证 &lt;code&gt;Core Animation&lt;/code&gt; 在实际应用中为 &lt;code&gt;UI&lt;/code&gt; 控件提供绘制的依据。&lt;/strong&gt;可以看出在实际绘制的过程中系统会通过 &lt;code&gt;GPU&lt;/code&gt; 来计算布局也就是在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20一/#&amp;amp;gid=1&amp;amp;pid=1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS UI 优化博文大纲-Core Animation 作用域&lt;/a&gt; &lt;code&gt;Layout&lt;/code&gt; 中布局的计算。这个也是 &lt;code&gt;ASDK&lt;/code&gt; 作者认为可以优化的地方。&lt;/p&gt;
+&lt;p&gt;来自定义缓冲函数实现帧动画的效果。&lt;/p&gt;
 &lt;h3 id=&quot;参考资料：&quot;&gt;&lt;a href=&quot;#参考资料：&quot; class=&quot;headerlink&quot; title=&quot;参考资料：&quot;&gt;&lt;/a&gt;参考资料：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://robertpenner.com/easing/penner_chapter7_tweening.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dynamic Visuals&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;About Core Animation&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Animation Tricks&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Changing a Layer’s Default Behavior&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Improving Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layer Style Property Animations&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zsisme.gitbooks.io/ios-/content/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS Core Animation: Advanced Techniques&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;苹果的官方视频：&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/217/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layer-Backed Views: AppKit + Core Animation&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2015/803/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Designing with Animation&lt;/a&gt; &lt;/p&gt;
 &lt;p&gt;作者： JackJin Bai  &lt;/p&gt;
@@ -281,7 +305,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20%E4%B8%80/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 一/</id>
     <published>2019-01-06T12:23:44.435Z</published>
-    <updated>2019-03-06T17:19:09.116Z</updated>
+    <updated>2019-03-08T14:09:56.132Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-UI-优化博文大纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化博文大纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化博文大纲&quot;&gt;&lt;/a&gt;iOS UI 优化博文大纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
 &lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; | &lt;code&gt;Metal&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
@@ -305,7 +329,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -339,7 +363,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1628,119 +1652,6 @@
       &lt;p&gt;总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。&lt;/p&gt;
 &lt;p&gt;下面展示浅层 Copy 和 深层 Copy 展示：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 深层复制和浅层复制.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS 空间绘制原理</title>
-    <link href="http://yoursite.com/2017/01/13/APP%E6%8E%A7%E4%BB%B6%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA/"/>
-    <id>http://yoursite.com/2017/01/13/APP控件在屏幕上显示/</id>
-    <published>2017-01-13T13:57:36.000Z</published>
-    <updated>2017-09-17T03:51:46.000Z</updated>
-    
-    <content type="html">&lt;p&gt;在每个 &lt;code&gt;App&lt;/code&gt; 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用&lt;code&gt;CocoaPods&lt;/code&gt; 进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;下面给出整理的图形绘制思维导图：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;图形绘制到屏幕上.jpg&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;使用 &lt;code&gt;Xmind&lt;/code&gt; 来展示博客讲述 &lt;code&gt;App&lt;/code&gt; 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 控件在屏幕上显示思维导图.png&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;屏幕显示图像的原理&quot;&gt;&lt;a href=&quot;#屏幕显示图像的原理&quot; class=&quot;headerlink&quot; title=&quot;屏幕显示图像的原理&quot;&gt;&lt;/a&gt;屏幕显示图像的原理&lt;/h2&gt;&lt;p&gt;记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。&lt;br&gt;上面那种老式的电视机画面的显示就是采用 &lt;code&gt;CRT&lt;/code&gt; 显示，显示的原理如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;CRT.png&quot;&gt;&lt;br&gt;【图片来至于网络】&lt;/p&gt;
-&lt;p&gt;其原理：&lt;code&gt;CRT&lt;/code&gt; 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：&lt;strong&gt;HSync&lt;/strong&gt;，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：&lt;strong&gt;VSync&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我们 &lt;code&gt;App&lt;/code&gt; 在屏幕上的刷新的频率就是 &lt;code&gt;VSync&lt;/code&gt; 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 &lt;code&gt;VSync&lt;/code&gt; 的基础上进行相关的完善和优化。&lt;/p&gt;
-&lt;p&gt;目前我们一般是采取双缓冲的机制， &lt;code&gt;GPU&lt;/code&gt; 会预先缓冲好一帧存放在缓冲中，让视频控制器读取。当下一阵渲染好，就直接把视频控制器的指针指向第二个缓冲器 ： 这样做的好处就是可以大大提高缓冲的效率问题。&lt;br&gt;👉🏿&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;采用双缓存可能会引入一个问题就是屏幕内容显示一半， &lt;code&gt;GPU&lt;/code&gt; 将新的内容提交到缓存区对其进行交换，视频控制器把新的下半段的显示在屏幕上&lt;br&gt;可能形成画面撕裂。&lt;/p&gt;
-&lt;p&gt;解决方式：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;GPU&lt;/code&gt; 引入垂直同步&lt;code&gt;（V-Sync）&lt;/code&gt;当开启垂直同步后， &lt;code&gt;GPU&lt;/code&gt; 会等待 &lt;code&gt;VSync&lt;/code&gt; 信号发出，才会对缓存的内容进行更新，这样就可以是画面更加流畅，减少延迟&lt;/p&gt;
-&lt;p&gt;iOS 设备采用双缓存 + 垂直同步； Android采用的三缓存 + 垂直同步&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;在一些游戏中我们经常会见到一些场景如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕错位.png&quot;&gt;&lt;br&gt;【图片来至于网络】&lt;/p&gt;
-&lt;h2 id=&quot;CPU-和-GPU-的工作原理&quot;&gt;&lt;a href=&quot;#CPU-和-GPU-的工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU 和 GPU 的工作原理&quot;&gt;&lt;/a&gt;CPU 和 GPU 的工作原理&lt;/h2&gt;&lt;h3 id=&quot;CPU-工作原理&quot;&gt;&lt;a href=&quot;#CPU-工作原理&quot; class=&quot;headerlink&quot; title=&quot;CPU 工作原理&quot;&gt;&lt;/a&gt;CPU 工作原理&lt;/h3&gt;&lt;p&gt;&lt;code&gt;CPU&lt;/code&gt;（中央处理器，&lt;code&gt;Central Processing Unit&lt;/code&gt;）主要是解释计算机中的指令，处理计算机软件中的数据。&lt;code&gt;CPU&lt;/code&gt; 内部存储器和输入/输出设备是计算机的三大核心组件。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;CPU&lt;/code&gt; 目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提取：&lt;/li&gt;
-&lt;li&gt;解码：&lt;/li&gt;
-&lt;li&gt;执行：&lt;/li&gt;
-&lt;li&gt;调回：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;CPU.png&quot;&gt;&lt;br&gt;【图片来至于网络】&lt;/p&gt;
-&lt;h3 id=&quot;GPU-工作原理&quot;&gt;&lt;a href=&quot;#GPU-工作原理&quot; class=&quot;headerlink&quot; title=&quot;GPU 工作原理&quot;&gt;&lt;/a&gt;GPU 工作原理&lt;/h3&gt;&lt;p&gt;&lt;code&gt;GPU&lt;/code&gt;（图形处理器，&lt;code&gt;Graphics Processing Unit&lt;/code&gt;）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作&lt;br&gt;后面随着 &lt;code&gt;OpenGL APL&lt;/code&gt; 和 &lt;code&gt;DirectX&lt;/code&gt; 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作&lt;/p&gt;
-&lt;h2 id=&quot;iOS-绘制像素在屏幕上&quot;&gt;&lt;a href=&quot;#iOS-绘制像素在屏幕上&quot; class=&quot;headerlink&quot; title=&quot;iOS 绘制像素在屏幕上&quot;&gt;&lt;/a&gt;iOS 绘制像素在屏幕上&lt;/h2&gt;&lt;h3 id=&quot;App绘制像素过程分析&quot;&gt;&lt;a href=&quot;#App绘制像素过程分析&quot; class=&quot;headerlink&quot; title=&quot;App绘制像素过程分析&quot;&gt;&lt;/a&gt;App绘制像素过程分析&lt;/h3&gt;&lt;p&gt;下面绘制像素在屏幕上的原理图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;GPU显示.png&quot;&gt;&lt;br&gt;【图片来至于网络】&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;iOS&lt;/code&gt; 界面上的内容大多是通过 &lt;code&gt;Core Animation&lt;/code&gt; 来完成绘制&lt;br&gt;在 &lt;code&gt;Mac OS&lt;/code&gt; 大多是绕过 &lt;code&gt;Core Animation&lt;/code&gt; 使用 &lt;code&gt;Core Graphics&lt;/code&gt; 来进行绘制&lt;br&gt;手游行业中直接使用 &lt;code&gt;OpenGL/OpenGL ES&lt;/code&gt; 来进行相关材质的内容绘制&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Core Animation&lt;/code&gt; 大多使用 &lt;code&gt;Core Graphics&lt;/code&gt; 来进行内容的渲染&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;GPU Driver&lt;/code&gt; 是直接和 &lt;code&gt;GPU&lt;/code&gt; 进行相关交互的代码块，可以对对 &lt;code&gt;GPU&lt;/code&gt; 直接操作&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;GPU&lt;/code&gt; 是专门为图形高并发计算量身定制的处理单元，优点：短时间可以实现图像浮点运算，耗电少，高效&lt;/p&gt;
-&lt;h3 id=&quot;App-绘制像素硬件分析&quot;&gt;&lt;a href=&quot;#App-绘制像素硬件分析&quot; class=&quot;headerlink&quot; title=&quot;App 绘制像素硬件分析&quot;&gt;&lt;/a&gt;App 绘制像素硬件分析&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;GPU缓存.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在图片显示的过程中，我们需要相关的 &lt;code&gt;GPU&lt;/code&gt; 对图片生成 &lt;code&gt;frame&lt;/code&gt; 的纹理，&lt;br&gt;我们在生成纹理的过程中会使用 &lt;code&gt;VRAM&lt;/code&gt; 的空间，所以在生成过程是有限制的&lt;br&gt;把相关的数据从 &lt;code&gt;CPU&lt;/code&gt; 上传输到 &lt;code&gt;GPU&lt;/code&gt; 上 ——&amp;gt; 既是把内容从 &lt;code&gt;RAM&lt;/code&gt; 上传到 &lt;code&gt;VRAM&lt;/code&gt; 上， 如果上传的纹理太大就会对性能有所影响。&lt;/p&gt;
-&lt;p&gt;在文本显示的过程中，我们使用 &lt;code&gt;GPU&lt;/code&gt; 进行文本的绘制比较复杂，这会促使 &lt;code&gt;Core Text&lt;/code&gt; 和 &lt;code&gt;Core Graphics&lt;/code&gt; 来合成生成一个文本，然后上传到 &lt;code&gt;GPU&lt;/code&gt;。&lt;br&gt;但我们在界面滑动过程中， &lt;code&gt;CPU&lt;/code&gt; 只需要把相关的文本坐标发送到 &lt;code&gt;GPU&lt;/code&gt; 就行， &lt;code&gt;GPU&lt;/code&gt;会根据相关的信息进行绘制。&lt;/p&gt;
-&lt;h2 id=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;a href=&quot;#APP绘制过程方式和细节讲解&quot; class=&quot;headerlink&quot; title=&quot;APP绘制过程方式和细节讲解&quot;&gt;&lt;/a&gt;APP绘制过程方式和细节讲解&lt;/h2&gt;&lt;h3 id=&quot;合成：&quot;&gt;&lt;a href=&quot;#合成：&quot; class=&quot;headerlink&quot; title=&quot;合成：&quot;&gt;&lt;/a&gt;合成：&lt;/h3&gt;&lt;p&gt;在我们看到的所有的视图都是基于不同图片进行相关的合成而来&lt;br&gt;这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， &lt;code&gt;GPU&lt;/code&gt; 就会把第二个纹理合成到第一个纹理中&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;合成方法很多种：&lt;/li&gt;
-&lt;li&gt;如果两个纹理对其时：采用公式    ——&amp;gt;    &lt;code&gt;R&lt;/code&gt;(最终显示的色彩的值) = &lt;code&gt;S&lt;/code&gt;(上层纹理的相关的参数) +&lt;code&gt;D&lt;/code&gt;(下层纹理相关参数) * (1 - &lt;code&gt;Sa&lt;/code&gt;(上层纹理的透明度))&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;透明-VS-不透明：&quot;&gt;&lt;a href=&quot;#透明-VS-不透明：&quot; class=&quot;headerlink&quot; title=&quot;透明 VS 不透明：&quot;&gt;&lt;/a&gt;透明 VS 不透明：&lt;/h3&gt;&lt;p&gt;当纹理完全不透明时目标像素就是纹理的值， &lt;code&gt;GPU&lt;/code&gt; 就只会从目标像素直接取出纹理显示 不会做相关的操作&lt;br&gt;在加载一张没有  &lt;code&gt;alpha&lt;/code&gt; 的图片进行显示，会被默认为 &lt;code&gt;opaque&lt;/code&gt; 的属性是 &lt;code&gt;YES&lt;/code&gt; ； 加载一张图片 &lt;code&gt;alpha&lt;/code&gt; = 100%， &lt;code&gt;Core Animation&lt;/code&gt; 会认为是不为 100% 对其进行解析。&lt;/p&gt;
-&lt;h3 id=&quot;像素对其-VS-不重合在一起：&quot;&gt;&lt;a href=&quot;#像素对其-VS-不重合在一起：&quot; class=&quot;headerlink&quot; title=&quot;像素对其 VS 不重合在一起：&quot;&gt;&lt;/a&gt;像素对其 VS 不重合在一起：&lt;/h3&gt;&lt;p&gt;当两个 &lt;code&gt;layer&lt;/code&gt; 完全重合在一起，这时就需要我们对其进行相关的计算&lt;br&gt;&lt;code&gt;layer&lt;/code&gt; 上所有的像素和屏幕上的像素完全对其，这就是 &lt;code&gt;layer&lt;/code&gt; 像素对其； &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;像素对不齐主要原因：&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;缩放，在图像进行缩方时，&lt;code&gt;layer&lt;/code&gt; 和屏幕的像素很难对其&lt;/li&gt;
-&lt;li&gt;纹理的起点在在一个像素的边界 &lt;/li&gt;
-&lt;li&gt;在像素不对其的情况下可能会要经过过多的运算， 在 &lt;code&gt;Core Animation&lt;/code&gt; 和 模拟器中 &lt;code&gt;color misaligned images&lt;/code&gt; 的选项可以进行相关的调节&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;离屏渲染：&quot;&gt;&lt;a href=&quot;#离屏渲染：&quot; class=&quot;headerlink&quot; title=&quot;离屏渲染：&quot;&gt;&lt;/a&gt;离屏渲染：&lt;/h3&gt;&lt;p&gt;离屏渲染会  合并/渲染 图层树一部分到一个新的缓存区，然后该缓冲区被渲染到屏幕上&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;离屏渲染也可能产生副作用。如果你正在直接或者间接的将mask应用到一个图层上，&lt;code&gt;Core Animation&lt;/code&gt; 为了应用这个 &lt;code&gt;mask&lt;/code&gt;，会强制进行屏幕外渲染。这会对 &lt;code&gt;GPU&lt;/code&gt; 产生重负。通常情况下 &lt;code&gt;mask&lt;/code&gt; 只能被直接渲染到帧的缓冲区中(在屏幕内)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Instrument&lt;/code&gt; 的 &lt;code&gt;Core Animation&lt;/code&gt; 工具有一个叫做 &lt;code&gt;Color Offscreen-Rendered Yellow&lt;/code&gt; 的选项，它会将已经被渲染到屏幕外缓冲区的区域标注为黄色(这个选项在模拟器中也可以用)。同时记得检查 &lt;code&gt;Color Hits Green and Misses Red&lt;/code&gt; 选项。绿色代表无论何时一个屏幕外缓冲区被复用，而红色代表当缓冲区被重新创建&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;code&gt;rasterized layer&lt;/code&gt; 的缓冲区大小是有所限制的，大概是屏幕大小的两倍空间 屏幕外的缓冲区&lt;/p&gt;
-&lt;h3 id=&quot;CALayer：&quot;&gt;&lt;a href=&quot;#CALayer：&quot; class=&quot;headerlink&quot; title=&quot;CALayer：&quot;&gt;&lt;/a&gt;CALayer：&lt;/h3&gt;&lt;p&gt;GPU 测试的步骤：&lt;br&gt;要告诉你，如果是 &lt;code&gt;GPU&lt;/code&gt; 限制了你的性能，你可以使用 &lt;code&gt;OpenGL ES Driver instrument&lt;/code&gt;。点击上面那个小的 i 按钮，配置一下，同时注意勾选 &lt;code&gt;Device Utilization%&lt;/code&gt;。现在，当你运行你的 &lt;code&gt;app&lt;/code&gt; 时，你可以看到你 &lt;code&gt;GPU&lt;/code&gt; 的负荷。如果这个值靠近 100%，那么你就需要把你工作的重心放在&lt;code&gt;GPU&lt;/code&gt;方面了。&lt;/p&gt;
-&lt;h3 id=&quot;Core-Graphics-amp-Quartz-2D：&quot;&gt;&lt;a href=&quot;#Core-Graphics-amp-Quartz-2D：&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics &amp;amp; Quartz 2D：&quot;&gt;&lt;/a&gt;Core Graphics &amp;amp; Quartz 2D：&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 是功能强大的绘图框架&lt;/p&gt;
-&lt;p&gt;GPU加速下的图像处理：好的图像处理的开源第三方框架。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/BradLarson/GPUImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPUImage:&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.shadertoy.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ShaderToy:&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.shaderific.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Shaderific:&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;着色器的调试 ：是测算帧渲染的时间，不是 1s 渲染多少帧&lt;br&gt;FPS是帧时间的倒数，帧渲染的时间：是帧开始处理到完全结束并且渲染到屏幕或者一张图片所花费的时间。&lt;/p&gt;
-&lt;p&gt;👉🏿 在移动端的 &lt;code&gt;GPU&lt;/code&gt; 中有很多是 把指令集中起来，最后统一做一次渲染  ——&amp;gt; 在测试时需要测试整个过程，而不是一个中间过程&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.sunsetlakesoftware.com/2013/10/21/optimizing-gaussian-blurs-mobile-gpu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;测试大🐮的博客 ：&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://community.imgtec.com/developers/powervr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 的测试框架：&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;想要保持高的帧速  就要保证着色器比较低的周期数  （如果是 60帧每秒， 那么在完成一个周期就需要仅仅 16.67 毫秒）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;a href=&quot;#降低着色器渲染周期方法：&quot; class=&quot;headerlink&quot; title=&quot;降低着色器渲染周期方法：&quot;&gt;&lt;/a&gt;降低着色器渲染周期方法：&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;消除条件逻辑 ：条件逻辑有时是必须的，但有时可以做优化。着色器中使用 &lt;code&gt;step()&lt;/code&gt;函数变通避免逻辑的运用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;减少依赖纹理的读取 ：在片段的着色器取样时，如果纹理坐标不是以 varying 的形式传入，而是在片段着色器中进行计算，就会发生纹理依赖。（👉🏿想从附近的像素取样，而不是计算和片段着色器中相邻像素的偏差，最好在顶点着色器中进行计算，然后把结果以 &lt;code&gt;varying&lt;/code&gt; 的方式传入片段着色器👈）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;让计算更加简单 ： 在计算过程中如果使用简单的计算可以得到一个足够近似的值，就需要避免昂贵的计算方式（例如：&lt;code&gt;sin()&lt;/code&gt;，&lt;code&gt;cos()&lt;/code&gt;，&lt;code&gt;tan()&lt;/code&gt; ）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果有可能的话，把相关计算使用到顶点着色器。😁 😀😁😀😁 😀 顶点着色器是每个顶点运行一次，片段着色器是每一个像素运行一次&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/中央处理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中央处理器&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/圖形處理器&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;圖形處理器&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.ibireme.com/author/ibireme/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;不再安全的 OSSpinLock&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-21-7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 加速下的图像处理&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-21-8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPU 加速下的图像视觉&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;objccn.io-issue-3-1&lt;/a&gt;  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在每个 &lt;code&gt;App&lt;/code&gt; 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用&lt;code&gt;CocoaPods&lt;/code&gt; 进行插件化管理。&lt;br&gt;但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;下面给出整理的图形绘制思维导图：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;图形绘制到屏幕上.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     

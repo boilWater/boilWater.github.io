@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-cceb63f3c0a04111.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-c171b2f31898d656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-27T16:37:59.160Z">
+<meta property="og:updated_time" content="2019-03-08T14:09:53.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
 <meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
@@ -436,7 +436,8 @@ var _hmt = _hmt || [];
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-27 17.22.59.png"></p>
 <p>上面自定义缓冲类型对应的代码实现：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">easeInQuint = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.6</span>, <span class="number">0.04</span>, <span class="number">0.98</span>, <span class="number">0.335</span>)           </span><br><span class="line">easeInOutQuint = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.86</span>, <span class="number">0</span>, <span class="number">0.07</span>, <span class="number">1</span>)     </span><br><span class="line">easeInOutBack = <span class="built_in">CAMediaTimingFunction</span>(controlPoints: <span class="number">0.68</span>, <span class="number">-0.55</span>, <span class="number">0.265</span>, <span class="number">1.55</span>)</span><br></pre></td></tr></table></figure>
-<p>未完待续…</p>
+<p>在上面的博文中小编根据一些博文和 <code>WWDC</code> 介绍。来对 <code>UIKit</code> 中 <code>UIView</code> 和 <code>QuartzCore</code> 中的 <code>Layer</code> 两者之间细节做探讨，来<strong>验证 <code>Core Animation</code> 在实际应用中为 <code>UI</code> 控件提供绘制的依据。</strong>可以看出在实际绘制的过程中系统会通过 <code>GPU</code> 来计算布局也就是在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20一/#&amp;gid=1&amp;pid=1" target="_blank" rel="external">iOS UI 优化博文大纲-Core Animation 作用域</a> <code>Layout</code> 中布局的计算。这个也是 <code>ASDK</code> 作者认为可以优化的地方。</p>
+<p>来自定义缓冲函数实现帧动画的效果。</p>
 <h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="http://robertpenner.com/easing/penner_chapter7_tweening.pdf" target="_blank" rel="external">Dynamic Visuals</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW3" target="_blank" rel="external">Advanced Animation Tricks</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ReactingtoLayerChanges/ReactingtoLayerChanges.html#//apple_ref/doc/uid/TP40004514-CH7-SW1" target="_blank" rel="external">Changing a Layer’s Default Behavior</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/ImprovingAnimationPerformance/ImprovingAnimationPerformance.html#//apple_ref/doc/uid/TP40004514-CH9-SW1" target="_blank" rel="external">Improving Animation Performance</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/LayerStyleProperties/LayerStyleProperties.html#//apple_ref/doc/uid/TP40004514-CH10-SW18" target="_blank" rel="external">Layer Style Property Animations</a><br><a href="https://zsisme.gitbooks.io/ios-/content/index.html" target="_blank" rel="external">iOS Core Animation: Advanced Techniques</a></p>
 <p>苹果的官方视频：<br><a href="https://developer.apple.com/videos/play/wwdc2012/217/" target="_blank" rel="external">Layer-Backed Views: AppKit + Core Animation</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2015/803/" target="_blank" rel="external">Designing with Animation</a> </p>
 <p>作者： JackJin Bai  </p>
@@ -537,6 +538,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/03/08/IOS UI 优化 - Core Graphics/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS UI 优化 - Core Graphics
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/06/iOS UI 优化 一/" id="article-nav-older" class="article-nav-link-wrap">

@@ -19,7 +19,7 @@
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
 最后分">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-06T17:19:09.116Z">
+<meta property="og:updated_time" content="2019-03-08T14:09:56.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - 总纲">
 <meta name="twitter:description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
@@ -221,7 +221,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation.png"></p>
-<p>注参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/" target="_blank" rel="external">iOS UI 优化 - Core Animation</a> 最后给出：<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/" target="_blank" rel="external">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/" target="_blank" rel="external">iOS 空间绘制原理</a></p>
+<p>注：参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/" target="_blank" rel="external">iOS UI 优化 - Core Animation</a> 最后给出：<br>在 <code>Core Animation</code> 中可以看到在 <code>Application</code> 中 <code>Handle Events</code> 处理手势原理实际就是我们响应链处理过程。<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/" target="_blank" rel="external">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/" target="_blank" rel="external">iOS 空间绘制原理</a></p>
 <blockquote>
 <p>同时也会对本文进行在每一博文更新！！！</p>
 </blockquote>
