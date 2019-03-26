@@ -8,16 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS UI 优化 - Core Graphics | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔">
+  <meta name="description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
+Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - Core Graphics">
 <meta property="og:url" content="http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔">
-<meta property="og:updated_time" content="2019-03-08T14:17:03.034Z">
+<meta property="og:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
+Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-16T13:53:41.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
-<meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔">
+<meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
+Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -192,6 +200,14 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Graphics-实现探索"><a href="#Core-Graphics-实现探索" class="headerlink" title="Core Graphics 实现探索"></a>Core Graphics 实现探索</h1><p>又是一个常用但是不知怎么开篇博文。🤔🤔🤔</p>
+<p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以参考上篇 <code>Core Animation</code> 实现探索中的 <a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">Core Animation 在 APP 结构作用</a> 图片。</p>
+<p>在讲解 <code>Core Graphics</code> 之前还是按照小编的🍉惯，对该框架 <code>API</code> 的接口进行整理。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
+<a id="more"></a>
+<blockquote>
+<p>作为基于 <a href="https://zh.wikipedia.org/wiki/Quartz" target="_blank" rel="external">Quartz</a> 的框架，上面 👆 的 <code>API</code> 类型 <code>CGType</code> 在 <code>C</code> 层面的绘图引擎。主要在上面 <code>Core Animation 探索</code> 中验证过程中位置参数、颜色值、路径以及图像等等方面……<br>而且此</p>
+</blockquote>
+<p>参考资料：<br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">绘制像素到屏幕上</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1" target="_blank" rel="external">Quartz 2D Programming Guide</a><br><a href="https://developer.apple.com/documentation/coregraphics" target="_blank" rel="external">Core Graphics</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/" target="_blank" rel="external">Core Graphics, Part 1: In the Beginning</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/" target="_blank" rel="external">Core Graphics, Part 2: Contextually Speaking</a><br><a href="https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns" target="_blank" rel="external">Core Graphics Tutorial: Patterns</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2017/235/" target="_blank" rel="external">Building Visually Rich User Experiences</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="external">Image and Graphics Best Practices</a>     </p>
 
       
 
