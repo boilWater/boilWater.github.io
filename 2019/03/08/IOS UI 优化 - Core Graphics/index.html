@@ -19,7 +19,7 @@ Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animati
 Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-16T13:53:41.900Z">
+<meta property="og:updated_time" content="2019-04-02T16:45:27.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
 <meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
@@ -205,9 +205,45 @@ var _hmt = _hmt || [];
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
 <a id="more"></a>
 <blockquote>
-<p>作为基于 <a href="https://zh.wikipedia.org/wiki/Quartz" target="_blank" rel="external">Quartz</a> 的框架，上面 👆 的 <code>API</code> 类型 <code>CGType</code> 在 <code>C</code> 层面的绘图引擎。主要在上面 <code>Core Animation 探索</code> 中验证过程中位置参数、颜色值、路径以及图像等等方面……<br>而且此</p>
+<p>作为基于 <a href="https://zh.wikipedia.org/wiki/Quartz" target="_blank" rel="external">Quartz</a> 的框架，上面 👆 的 <code>API</code> 类型 <code>CGType</code> 在 <code>C</code> 层面的绘图引擎。主要在上面 <code>Core Animation 探索</code> 中验证过程中位置参数、颜色值、路径以及图像等等方面……<br>讲真这个框架不知道怎么开笔，就按照上面 <code>API</code> 来各个阐述自己理解吧。</p>
 </blockquote>
-<p>参考资料：<br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">绘制像素到屏幕上</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1" target="_blank" rel="external">Quartz 2D Programming Guide</a><br><a href="https://developer.apple.com/documentation/coregraphics" target="_blank" rel="external">Core Graphics</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/" target="_blank" rel="external">Core Graphics, Part 1: In the Beginning</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/" target="_blank" rel="external">Core Graphics, Part 2: Contextually Speaking</a><br><a href="https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns" target="_blank" rel="external">Core Graphics Tutorial: Patterns</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2017/235/" target="_blank" rel="external">Building Visually Rich User Experiences</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="external">Image and Graphics Best Practices</a>     </p>
+<h2 id="Geometric-Data-Type"><a href="#Geometric-Data-Type" class="headerlink" title="Geometric Data Type"></a>Geometric Data Type</h2><table>
+<thead>
+<tr>
+<th>集合数据类型</th>
+<th>表示 &amp; 使用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CGFloat</code>（单精度浮点型）</td>
+<td><strong>1、</strong> 表示值类型的数据。<code>iOS</code> 中采用宏来进行定义，<code>Swift</code> 采用最长用的 <code>Struct</code> 来实现。 32 位 <code>CPU</code> 占 4 个字节，64 位 <code>CPU</code> 占 8 个字节。<strong>2、</strong> 在 <code>iOS</code> 开发过程中关于位置，宽高的参数均是采用此值类型。</td>
+</tr>
+<tr>
+<td><code>CGPoint</code>（二维坐标位置）</td>
+<td><strong>1、</strong> 表示值类型的点。点的基本参数 x, y 均是 <code>CGFloat</code> 值类型参数。<strong>2、</strong> 二维坐标中来确定控件位置布局中中心点、锚点等。</td>
+</tr>
+<tr>
+<td><code>CGSize</code>（控件大小）</td>
+<td><strong>1、</strong> 表示值类型的尺寸。尺寸同样是基本值类型参数 <code>width</code> &amp; <code>height</code>。<strong>2、</strong> 坐标中来基于当前控件在基于右上角、右下角或者是中心点控制点三者来确定控件的位置。可以根据在 <code>Layer</code> 确定布局时验证中心点然后确定 <code>Size</code> 的参数可知。<strong>可以参考上一篇文章 Core Animation</strong></td>
+</tr>
+<tr>
+<td><code>CGRect</code>（控件位置）</td>
+<td><strong>1、</strong> 表示值类型的区域。区域的基本值类型参数 <code>Point</code> &amp; <code>Size</code>。<strong>2、</strong> 是根据 <code>iOS</code> 中右上角为坐标系根据初始化控件右上角参数类确定控件位置。</td>
+</tr>
+<tr>
+<td><code>CGVector</code>（二维向量坐标）</td>
+<td><strong>1、</strong> 表示值类型向量中偏移。偏移的参数 dx, dy 也均是 <code>CGFloat</code> 值类型参数。<strong>2、</strong> 基于 <code>SceneKit</code> 的 <code>iOS</code> 开发引擎来做刚体位置偏转。</td>
+</tr>
+<tr>
+<td><code>CGAffineTransform</code>（二维仿射变换）</td>
+<td><strong>1、</strong> 表示值类型仿射变换矩阵。矩阵参数 a, b, c, d, tx 和 ty 均为 <code>Float</code> 值类型。<strong>2、</strong> <code>UIKit</code> 中基于 <code>UIView</code> 控件均有此参数，可以实现控件偏移，旋转，缩放或者倾斜。<strong>微信读书控件斜向动画？？？</strong></td>
+</tr>
+</tbody>
+</table>
+<p>注：上述没有详细讲述其均为 <code>Struct</code> 值类型结构</p>
+<h3 id="CGAffineTransform-使用"><a href="#CGAffineTransform-使用" class="headerlink" title="CGAffineTransform 使用"></a>CGAffineTransform 使用</h3><p>未完待续。。。</p>
+<p>参考资料：<br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">绘制像素到屏幕上</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1" target="_blank" rel="external">Quartz 2D Programming Guide</a><br><a href="https://developer.apple.com/documentation/coregraphics" target="_blank" rel="external">Core Graphics</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/" target="_blank" rel="external">Core Graphics, Part 1: In the Beginning</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/" target="_blank" rel="external">Core Graphics, Part 2: Contextually Speaking</a><br><a href="https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns" target="_blank" rel="external">Core Graphics Tutorial: Patterns</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2017/235/" target="_blank" rel="external">Building Visually Rich User Experiences</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="external">Image and Graphics Best Practices</a><br><a href="https://developer.apple.com/videos/play/wwdc2011/129/" target="_blank" rel="external">Practical Drawing for iOS Developers</a><br><a href=""></a></p>
 
       
 
