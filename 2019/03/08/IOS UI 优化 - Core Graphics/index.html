@@ -19,7 +19,8 @@ Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animati
 Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-02T16:45:27.123Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-03T17:47:01.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
 <meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
@@ -237,12 +238,59 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td><code>CGAffineTransform</code>（二维仿射变换）</td>
-<td><strong>1、</strong> 表示值类型仿射变换矩阵。矩阵参数 a, b, c, d, tx 和 ty 均为 <code>Float</code> 值类型。<strong>2、</strong> <code>UIKit</code> 中基于 <code>UIView</code> 控件均有此参数，可以实现控件偏移，旋转，缩放或者倾斜。<strong>微信读书控件斜向动画？？？</strong></td>
+<td><strong>1、</strong> 表示值类型仿射变换矩阵。矩阵参数 a, b, c, d, tx 和 ty 均为 <code>Float</code> 值类型。<strong>2、</strong> <code>UIKit</code> 中基于 <code>UIView</code> 控件均有此参数，可以实现控件偏移，旋转，缩放或者倾斜。<strong>微信读书控件斜向动画</strong></td>
 </tr>
 </tbody>
 </table>
 <p>注：上述没有详细讲述其均为 <code>Struct</code> 值类型结构</p>
-<h3 id="CGAffineTransform-使用"><a href="#CGAffineTransform-使用" class="headerlink" title="CGAffineTransform 使用"></a>CGAffineTransform 使用</h3><p>未完待续。。。</p>
+<h3 id="CGAffineTransform-使用"><a href="#CGAffineTransform-使用" class="headerlink" title="CGAffineTransform 使用"></a>CGAffineTransform 使用</h3><p>在 <code>CGAffineTransform</code> 初始化仿射变换初始化中显示 <code>CGAffineTransform.init(a: , b: , c: , d: , tx: , ty: )</code> 来作为 <strong>3*3</strong> 的矩阵。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-04-03 23.22.54.png"></p>
+<blockquote>
+<p>上面根据在仿射变换后坐标:<br>X 轴上的坐标 <strong>X`= ax + cy + tx</strong>, a 表示在 x 轴的缩放比例系数，c 表示在 y 轴偏移系数在旋转时使用， tx 是在当前坐标系的平移距离。     </p>
+<p>Y 轴上的坐标 <strong>Y`= bx + dy + ty</strong>, b 表示在 y 轴的缩放比例系数，d 表示在 x 轴偏移系数在旋转时使用， ty 是在当前坐标系的平移距离。</p>
+</blockquote>
+<p>所以下面的方式实现是 <code>==</code></p>
+<pre><code class="swift"><span class="keyword">let</span> transFormTenPixel1 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(a: <span class="number">0</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: <span class="number">0</span>, d: <span class="number">0</span>, tx: <span class="number">10</span>, ty: <span class="number">10</span>)
+<span class="keyword">let</span> transFormTenPiexl2 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(translationX: <span class="number">10</span>, y: <span class="number">10</span>)
+
+<span class="keyword">let</span> transFormScaleTimes1 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(a: <span class="number">2</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: <span class="number">0</span>, d: <span class="number">2</span>, tx: <span class="number">0</span>, ty: <span class="number">0</span>)
+<span class="keyword">let</span> transFormScaleTimes2 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(scaleX: <span class="number">2</span>, y: <span class="number">2</span>)
+
+<span class="keyword">let</span> angle = <span class="type">Double</span>.pi * <span class="number">0.3</span>
+<span class="keyword">let</span> transFormRotationAngle1 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(a: cos(angle), b: sin(angle), <span class="built_in">c</span>: -sin(angle), d: cos(angle), tx: <span class="number">0</span>, ty: <span class="number">0</span>)
+<span class="keyword">let</span> transFormRotationAngle1 = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(rotationAngle: angle)
+</code></pre>
+<h2 id="2D-Drawing"><a href="#2D-Drawing" class="headerlink" title="2D Drawing"></a>2D Drawing</h2><table>
+<thead>
+<tr>
+<th>二维绘制</th>
+<th>表示 &amp; 使用的优劣</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CGContext</code>（绘制渲染上下文）</td>
+<td><strong>1、</strong>。<strong>2、</strong>。</td>
+</tr>
+<tr>
+<td><code>CGImage</code>（绘制渲染上下文）</td>
+<td><strong>1、</strong>。<strong>2、</strong>。</td>
+</tr>
+<tr>
+<td><code>CGPath</code>（绘制渲染上下文）</td>
+<td><strong>1、</strong>。<strong>2、</strong>。</td>
+</tr>
+<tr>
+<td><code>CGMutablePath</code>（绘制渲染上下文）</td>
+<td><strong>1、</strong>。<strong>2、</strong>。</td>
+</tr>
+<tr>
+<td><code>CGLayer</code>（绘制渲染上下文）</td>
+<td><strong>1、</strong>。<strong>2、</strong>。</td>
+</tr>
+</tbody>
+</table>
+<p>未完待续。。。</p>
 <p>参考资料：<br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">绘制像素到屏幕上</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1" target="_blank" rel="external">Quartz 2D Programming Guide</a><br><a href="https://developer.apple.com/documentation/coregraphics" target="_blank" rel="external">Core Graphics</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/" target="_blank" rel="external">Core Graphics, Part 1: In the Beginning</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/" target="_blank" rel="external">Core Graphics, Part 2: Contextually Speaking</a><br><a href="https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns" target="_blank" rel="external">Core Graphics Tutorial: Patterns</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2017/235/" target="_blank" rel="external">Building Visually Rich User Experiences</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="external">Image and Graphics Best Practices</a><br><a href="https://developer.apple.com/videos/play/wwdc2011/129/" target="_blank" rel="external">Practical Drawing for iOS Developers</a><br><a href=""></a></p>
 
       

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-02T16:45:27.123Z</updated>
+  <updated>2019-04-03T17:47:01.570Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2019-04-02T16:45:27.123Z</updated>
+    <updated>2019-04-03T17:47:01.570Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以参考上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现探索中的 &lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Animation 在 APP 结构作用&lt;/a&gt; 图片。&lt;/p&gt;
@@ -60,12 +60,59 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGAffineTransform&lt;/code&gt;（二维仿射变换）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示值类型仿射变换矩阵。矩阵参数 a, b, c, d, tx 和 ty 均为 &lt;code&gt;Float&lt;/code&gt; 值类型。&lt;strong&gt;2、&lt;/strong&gt; &lt;code&gt;UIKit&lt;/code&gt; 中基于 &lt;code&gt;UIView&lt;/code&gt; 控件均有此参数，可以实现控件偏移，旋转，缩放或者倾斜。&lt;strong&gt;微信读书控件斜向动画？？？&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示值类型仿射变换矩阵。矩阵参数 a, b, c, d, tx 和 ty 均为 &lt;code&gt;Float&lt;/code&gt; 值类型。&lt;strong&gt;2、&lt;/strong&gt; &lt;code&gt;UIKit&lt;/code&gt; 中基于 &lt;code&gt;UIView&lt;/code&gt; 控件均有此参数，可以实现控件偏移，旋转，缩放或者倾斜。&lt;strong&gt;微信读书控件斜向动画&lt;/strong&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;注：上述没有详细讲述其均为 &lt;code&gt;Struct&lt;/code&gt; 值类型结构&lt;/p&gt;
-&lt;h3 id=&quot;CGAffineTransform-使用&quot;&gt;&lt;a href=&quot;#CGAffineTransform-使用&quot; class=&quot;headerlink&quot; title=&quot;CGAffineTransform 使用&quot;&gt;&lt;/a&gt;CGAffineTransform 使用&lt;/h3&gt;&lt;p&gt;未完待续。。。&lt;/p&gt;
+&lt;h3 id=&quot;CGAffineTransform-使用&quot;&gt;&lt;a href=&quot;#CGAffineTransform-使用&quot; class=&quot;headerlink&quot; title=&quot;CGAffineTransform 使用&quot;&gt;&lt;/a&gt;CGAffineTransform 使用&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;CGAffineTransform&lt;/code&gt; 初始化仿射变换初始化中显示 &lt;code&gt;CGAffineTransform.init(a: , b: , c: , d: , tx: , ty: )&lt;/code&gt; 来作为 &lt;strong&gt;3*3&lt;/strong&gt; 的矩阵。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2019-04-03 23.22.54.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面根据在仿射变换后坐标:&lt;br&gt;X 轴上的坐标 &lt;strong&gt;X`= ax + cy + tx&lt;/strong&gt;, a 表示在 x 轴的缩放比例系数，c 表示在 y 轴偏移系数在旋转时使用， tx 是在当前坐标系的平移距离。     &lt;/p&gt;
+&lt;p&gt;Y 轴上的坐标 &lt;strong&gt;Y`= bx + dy + ty&lt;/strong&gt;, b 表示在 y 轴的缩放比例系数，d 表示在 x 轴偏移系数在旋转时使用， ty 是在当前坐标系的平移距离。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以下面的方式实现是 &lt;code&gt;==&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormTenPixel1 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(a: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, b: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;c&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, d: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, tx: &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, ty: &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormTenPiexl2 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(translationX: &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)
+
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormScaleTimes1 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(a: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, b: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;c&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, d: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, tx: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, ty: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormScaleTimes2 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(scaleX: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)
+
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; angle = &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi * &lt;span class=&quot;number&quot;&gt;0.3&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormRotationAngle1 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(a: cos(angle), b: sin(angle), &lt;span class=&quot;built_in&quot;&gt;c&lt;/span&gt;: -sin(angle), d: cos(angle), tx: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, ty: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; transFormRotationAngle1 = &lt;span class=&quot;type&quot;&gt;CGAffineTransform&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(rotationAngle: angle)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;2D-Drawing&quot;&gt;&lt;a href=&quot;#2D-Drawing&quot; class=&quot;headerlink&quot; title=&quot;2D Drawing&quot;&gt;&lt;/a&gt;2D Drawing&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;二维绘制&lt;/th&gt;
+&lt;th&gt;表示 &amp;amp; 使用的优劣&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGContext&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGImage&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGPath&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGMutablePath&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGLayer&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;未完待续。。。&lt;/p&gt;
 &lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;绘制像素到屏幕上&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quartz 2D Programming Guide&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/documentation/coregraphics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 1: In the Beginning&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 2: Contextually Speaking&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics Tutorial: Patterns&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2017/235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Building Visually Rich User Experiences&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2018/219/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Image and Graphics Best Practices&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/129/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practical Drawing for iOS Developers&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     
