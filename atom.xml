@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-03T17:47:01.570Z</updated>
+  <updated>2019-04-18T17:06:48.183Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2019-04-03T17:47:01.570Z</updated>
+    <updated>2019-04-18T17:06:48.183Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以参考上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现探索中的 &lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Animation 在 APP 结构作用&lt;/a&gt; 图片。&lt;/p&gt;
@@ -92,28 +92,56 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGContext&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示绘制上下文。&lt;strong&gt;2、&lt;/strong&gt; 在同样实现 &lt;code&gt;UI&lt;/code&gt; 界面绘制过程中，获取当前 &lt;code&gt;Thread&lt;/code&gt; 的上下文，加入到当前的堆栈中。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;CGImage&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CGImage&lt;/code&gt;（位图）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示位图或者是位图的 &lt;code&gt;Mask&lt;/code&gt;。&lt;strong&gt;2、&lt;/strong&gt; 在 &lt;code&gt;UIKit&lt;/code&gt; 中 &lt;code&gt;UIImage&lt;/code&gt; 对应的 &lt;code&gt;CGType&lt;/code&gt; 类型，当前我们绘制或者对图片进行截取后便是此类型。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;CGPath&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CGPath&lt;/code&gt;（路径）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示绘制过程中绘制 &lt;code&gt;Path&lt;/code&gt;。&lt;strong&gt;2、&lt;/strong&gt; 同样是对应在 &lt;code&gt;UIKit&lt;/code&gt; 中对应 &lt;code&gt;UIBerizerPath&lt;/code&gt; 的 &lt;code&gt;CGType&lt;/code&gt; 对应类型。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;CGMutablePath&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CGMutablePath&lt;/code&gt;（可变路径）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示路径的可变类型。&lt;strong&gt;2、&lt;/strong&gt; &lt;code&gt;CGPath&lt;/code&gt; 的可变类型结构。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;CGLayer&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。&lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CGLayer&lt;/code&gt;（绘制渲染屏幕外图形绘制画布内容）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示在绘制渲染中依托的实际绘制画布。&lt;strong&gt;2、&lt;/strong&gt; 类似于在 &lt;code&gt;Core Aniation&lt;/code&gt; 中 &lt;code&gt;CALayer&lt;/code&gt; 作用效果，是绘制渲染上下文实际绘制载体。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;注：上述没有详细讲述其均为 &lt;code&gt;Struct&lt;/code&gt; 值类型结构&lt;/p&gt;
+&lt;h2 id=&quot;Colors-Font&quot;&gt;&lt;a href=&quot;#Colors-Font&quot; class=&quot;headerlink&quot; title=&quot;Colors | Font&quot;&gt;&lt;/a&gt;Colors | Font&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;色彩字体&lt;/th&gt;
+&lt;th&gt;表示 &amp;amp; 使用范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGColor&lt;/code&gt;（颜色值）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示颜色值。 &lt;strong&gt;2、&lt;/strong&gt; 对应在 &lt;code&gt;UIKit&lt;/code&gt; 中 &lt;code&gt;UIColor&lt;/code&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGColorConversionInfo&lt;/code&gt;（色彩转换）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示色彩多空间转换。 &lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGColorSpace&lt;/code&gt;（显示颜色值概要文件）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。 &lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGFont&lt;/code&gt;（绘制文本信息）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示绘制文本详细信息。 &lt;strong&gt;2、&lt;/strong&gt; 在文本绘制过程中对应当前字体格式值，对用在 &lt;code&gt;Core Animation&lt;/code&gt; 中 &lt;code&gt;UIFont&lt;/code&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注：上述没有详细讲述其均为 &lt;code&gt;Struct&lt;/code&gt; 值类型结构&lt;/p&gt;
 &lt;p&gt;未完待续。。。&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;绘制像素到屏幕上&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quartz 2D Programming Guide&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/documentation/coregraphics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 1: In the Beginning&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 2: Contextually Speaking&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics Tutorial: Patterns&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2017/235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Building Visually Rich User Experiences&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2018/219/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Image and Graphics Best Practices&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/129/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practical Drawing for iOS Developers&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;绘制像素到屏幕上&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quartz 2D Programming Guide&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_overview/dq_overview.html#//apple_ref/doc/uid/TP30001066-CH202-TPXREF101&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Overview of Quartz 2D&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/documentation/coregraphics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 1: In the Beginning&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 2: Contextually Speaking&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics Tutorial: Patterns&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2017/235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Building Visually Rich User Experiences&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2018/219/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Image and Graphics Best Practices&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/129/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practical Drawing for iOS Developers&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
