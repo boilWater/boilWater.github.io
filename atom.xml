@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-18T17:06:48.183Z</updated>
+  <updated>2019-04-28T16:57:36.271Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2019-04-18T17:06:48.183Z</updated>
+    <updated>2019-04-28T16:57:36.271Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以参考上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现探索中的 &lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Animation 在 APP 结构作用&lt;/a&gt; 图片。&lt;/p&gt;
@@ -92,7 +92,7 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGContext&lt;/code&gt;（绘制渲染上下文）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示绘制上下文。&lt;strong&gt;2、&lt;/strong&gt; 在同样实现 &lt;code&gt;UI&lt;/code&gt; 界面绘制过程中，获取当前 &lt;code&gt;Thread&lt;/code&gt; 的上下文，加入到当前的堆栈中。&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示调用 &lt;code&gt;Core Graphics&lt;/code&gt; 绘制上下文。&lt;strong&gt;2、&lt;/strong&gt; 在绘制过程中获取上下文 &lt;code&gt;Context&lt;/code&gt; 在 &lt;code&gt;Main Thread&lt;/code&gt; 中总是会回去 &lt;code&gt;UIKit&lt;/code&gt; 堆栈的最上面，在后台线程可以获取当前上下文。根据获取上下文的绘制目的可以实现：&lt;code&gt;PDF&lt;/code&gt;、&lt;code&gt;Bitmap&lt;/code&gt;、&lt;code&gt;Window&lt;/code&gt;、&lt;code&gt;Layer&lt;/code&gt;、和 &lt;code&gt;Printer&lt;/code&gt;。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGImage&lt;/code&gt;（位图）&lt;/td&gt;
@@ -127,11 +127,11 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGColorConversionInfo&lt;/code&gt;（色彩转换）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示色彩多空间转换。 &lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示色彩多空间转换。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;CGColorSpace&lt;/code&gt;（显示颜色值概要文件）&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt;。 &lt;strong&gt;2、&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;CGColorSpace&lt;/code&gt;（显示颜色值表达格式）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示颜色值在储存中表达格式。 &lt;strong&gt;2、&lt;/strong&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 可以采用的格式有：&lt;code&gt;HSB&lt;/code&gt;: &lt;code&gt;Hue, saturation, brightness&lt;/code&gt;、&lt;code&gt;RGB&lt;/code&gt;： &lt;code&gt;Red, green, blue&lt;/code&gt;、&lt;code&gt;CMYK&lt;/code&gt;： &lt;code&gt;Cyan, magenta, yellow, black&lt;/code&gt;和&lt;code&gt;BGR&lt;/code&gt;： &lt;code&gt;Blue, green, red&lt;/code&gt;。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;CGFont&lt;/code&gt;（绘制文本信息）&lt;/td&gt;
@@ -140,6 +140,58 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;注：上述没有详细讲述其均为 &lt;code&gt;Struct&lt;/code&gt; 值类型结构&lt;/p&gt;
+&lt;h2 id=&quot;Working-with-PDF-Decument&quot;&gt;&lt;a href=&quot;#Working-with-PDF-Decument&quot; class=&quot;headerlink&quot; title=&quot;Working with PDF Decument&quot;&gt;&lt;/a&gt;Working with PDF Decument&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;色彩字体&lt;/th&gt;
+&lt;th&gt;表示 &amp;amp; 使用范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGPDFDocument&lt;/code&gt;（）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 。 &lt;strong&gt;2、&lt;/strong&gt; 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CATransaction&lt;/code&gt;（）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;Utility-Support-Classes&quot;&gt;&lt;a href=&quot;#Utility-Support-Classes&quot; class=&quot;headerlink&quot; title=&quot;Utility | Support Classes&quot;&gt;&lt;/a&gt;Utility | Support Classes&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;多用途以及支持类&lt;/th&gt;
+&lt;th&gt;表示 &amp;amp; 使用范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGDataConsumer&lt;/code&gt;（）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 。 &lt;strong&gt;2、&lt;/strong&gt; 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGDataProvider&lt;/code&gt;（）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 。 &lt;strong&gt;2、&lt;/strong&gt; 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGShading&lt;/code&gt;（阴影）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示设置阴影详细信息。 &lt;strong&gt;2、&lt;/strong&gt; 对应 &lt;code&gt;UIKit&lt;/code&gt; 中 &lt;code&gt;Layer&lt;/code&gt; 层中 &lt;code&gt;Shadow&lt;/code&gt; 属性来设置控件的阴影值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGGradient&lt;/code&gt;（颜色渐变）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示设置过渡色彩接口。 &lt;strong&gt;2、&lt;/strong&gt; 对应在 &lt;code&gt;CAGradientLayer&lt;/code&gt; 来实现颜色的效果过渡。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGFunction&lt;/code&gt;（协助工具）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示在 &lt;code&gt;CGType&lt;/code&gt; 方法中基础事件回调。 &lt;strong&gt;2、&lt;/strong&gt; 提供事件的基础回调类似与我们在方法定义的 &lt;code&gt;Block&lt;/code&gt; 实现。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CGPattern&lt;/code&gt;（模式）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1、&lt;/strong&gt; 表示绘制 &lt;code&gt;2D&lt;/code&gt; 模型的一种模式。 &lt;strong&gt;2、&lt;/strong&gt; 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;未完待续。。。&lt;/p&gt;
 &lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;绘制像素到屏幕上&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quartz 2D Programming Guide&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_overview/dq_overview.html#//apple_ref/doc/uid/TP30001066-CH202-TPXREF101&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Overview of Quartz 2D&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/documentation/coregraphics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 1: In the Beginning&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 2: Contextually Speaking&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics Tutorial: Patterns&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2017/235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Building Visually Rich User Experiences&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2018/219/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Image and Graphics Best Practices&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/129/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practical Drawing for iOS Developers&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>

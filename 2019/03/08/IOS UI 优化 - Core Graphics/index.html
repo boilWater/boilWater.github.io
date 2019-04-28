@@ -20,7 +20,7 @@ Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animati
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-18T17:06:48.183Z">
+<meta property="og:updated_time" content="2019-04-28T16:57:36.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
 <meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
@@ -270,7 +270,7 @@ var _hmt = _hmt || [];
 <tbody>
 <tr>
 <td><code>CGContext</code>（绘制渲染上下文）</td>
-<td><strong>1、</strong> 表示绘制上下文。<strong>2、</strong> 在同样实现 <code>UI</code> 界面绘制过程中，获取当前 <code>Thread</code> 的上下文，加入到当前的堆栈中。</td>
+<td><strong>1、</strong> 表示调用 <code>Core Graphics</code> 绘制上下文。<strong>2、</strong> 在绘制过程中获取上下文 <code>Context</code> 在 <code>Main Thread</code> 中总是会回去 <code>UIKit</code> 堆栈的最上面，在后台线程可以获取当前上下文。根据获取上下文的绘制目的可以实现：<code>PDF</code>、<code>Bitmap</code>、<code>Window</code>、<code>Layer</code>、和 <code>Printer</code>。</td>
 </tr>
 <tr>
 <td><code>CGImage</code>（位图）</td>
@@ -305,11 +305,11 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td><code>CGColorConversionInfo</code>（色彩转换）</td>
-<td><strong>1、</strong> 表示色彩多空间转换。 <strong>2、</strong>。</td>
+<td><strong>1、</strong> 表示色彩多空间转换。</td>
 </tr>
 <tr>
-<td><code>CGColorSpace</code>（显示颜色值概要文件）</td>
-<td><strong>1、</strong>。 <strong>2、</strong>。</td>
+<td><code>CGColorSpace</code>（显示颜色值表达格式）</td>
+<td><strong>1、</strong> 表示颜色值在储存中表达格式。 <strong>2、</strong> 在 <code>iOS</code> 可以采用的格式有：<code>HSB</code>: <code>Hue, saturation, brightness</code>、<code>RGB</code>： <code>Red, green, blue</code>、<code>CMYK</code>： <code>Cyan, magenta, yellow, black</code>和<code>BGR</code>： <code>Blue, green, red</code>。</td>
 </tr>
 <tr>
 <td><code>CGFont</code>（绘制文本信息）</td>
@@ -318,6 +318,58 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>注：上述没有详细讲述其均为 <code>Struct</code> 值类型结构</p>
+<h2 id="Working-with-PDF-Decument"><a href="#Working-with-PDF-Decument" class="headerlink" title="Working with PDF Decument"></a>Working with PDF Decument</h2><table>
+<thead>
+<tr>
+<th>色彩字体</th>
+<th>表示 &amp; 使用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CGPDFDocument</code>（）</td>
+<td><strong>1、</strong> 。 <strong>2、</strong> 。</td>
+</tr>
+<tr>
+<td><code>CATransaction</code>（）</td>
+<td><strong>1、</strong> 。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Utility-Support-Classes"><a href="#Utility-Support-Classes" class="headerlink" title="Utility | Support Classes"></a>Utility | Support Classes</h2><table>
+<thead>
+<tr>
+<th>多用途以及支持类</th>
+<th>表示 &amp; 使用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CGDataConsumer</code>（）</td>
+<td><strong>1、</strong> 。 <strong>2、</strong> 。</td>
+</tr>
+<tr>
+<td><code>CGDataProvider</code>（）</td>
+<td><strong>1、</strong> 。 <strong>2、</strong> 。</td>
+</tr>
+<tr>
+<td><code>CGShading</code>（阴影）</td>
+<td><strong>1、</strong> 表示设置阴影详细信息。 <strong>2、</strong> 对应 <code>UIKit</code> 中 <code>Layer</code> 层中 <code>Shadow</code> 属性来设置控件的阴影值。</td>
+</tr>
+<tr>
+<td><code>CGGradient</code>（颜色渐变）</td>
+<td><strong>1、</strong> 表示设置过渡色彩接口。 <strong>2、</strong> 对应在 <code>CAGradientLayer</code> 来实现颜色的效果过渡。</td>
+</tr>
+<tr>
+<td><code>CGFunction</code>（协助工具）</td>
+<td><strong>1、</strong> 表示在 <code>CGType</code> 方法中基础事件回调。 <strong>2、</strong> 提供事件的基础回调类似与我们在方法定义的 <code>Block</code> 实现。</td>
+</tr>
+<tr>
+<td><code>CGPattern</code>（模式）</td>
+<td><strong>1、</strong> 表示绘制 <code>2D</code> 模型的一种模式。 <strong>2、</strong> 。</td>
+</tr>
+</tbody>
+</table>
 <p>未完待续。。。</p>
 <p>参考资料：<br><a href="https://objccn.io/issue-3-1/" target="_blank" rel="external">绘制像素到屏幕上</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1" target="_blank" rel="external">Quartz 2D Programming Guide</a><br><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_overview/dq_overview.html#//apple_ref/doc/uid/TP30001066-CH202-TPXREF101" target="_blank" rel="external">Overview of Quartz 2D</a><br><a href="https://developer.apple.com/documentation/coregraphics" target="_blank" rel="external">Core Graphics</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/" target="_blank" rel="external">Core Graphics, Part 1: In the Beginning</a><br><a href="https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/" target="_blank" rel="external">Core Graphics, Part 2: Contextually Speaking</a><br><a href="https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns" target="_blank" rel="external">Core Graphics Tutorial: Patterns</a><br><a href="https://developer.apple.com/videos/play/wwdc2012/506/" target="_blank" rel="external">Optimizing 2D Graphics and Animation Performance</a><br><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a><br><a href="https://developer.apple.com/videos/play/wwdc2017/235/" target="_blank" rel="external">Building Visually Rich User Experiences</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="external">Image and Graphics Best Practices</a><br><a href="https://developer.apple.com/videos/play/wwdc2011/129/" target="_blank" rel="external">Practical Drawing for iOS Developers</a><br><a href=""></a></p>
 
