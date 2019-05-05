@@ -172,6 +172,83 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS UI 优化 - ASDK VS YYKit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/05/iOS UI 优化 - ASDK VS YYKit/">iOS UI 优化 - Core Text</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/05/iOS UI 优化 - ASDK VS YYKit/" class="archive-article-date">
+  	<time datetime="2019-05-05T11:46:11.570Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Core-Text-富文本编辑"><a href="#Core-Text-富文本编辑" class="headerlink" title="Core Text 富文本编辑"></a>Core Text 富文本编辑</h1><p>在 <code>Core Graphics</code> 后面一篇文章本该对 <code>Core Image</code> 框架进行整理，但是基于 <code>Core Graphics</code> 的富文本编辑 <code>Core Text</code> 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 <code>Texture</code> 即 <code>ASDK</code> 和 <code>YYKit</code> 详细描述。</p>
+<p>参考资料：<br><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/CoreText_Programming/Introduction/Introduction.html" target="_blank" rel="external">About Core Text</a><br><a href="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009459" target="_blank" rel="external">About the Cocoa Text System</a><br><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Introduction/Introduction.html" target="_blank" rel="external">About Text Handling in iOS</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/Concepts/LayoutManager.html#//apple_ref/doc/uid/20001805-BBCFEBHA" target="_blank" rel="external">The Layout Manager</a><br><a href="https://developer.apple.com/videos/play/wwdc2011/128/" target="_blank" rel="external">Advanced Text Processing</a></p>
+<p><a href="https://juejin.im/entry/5922b0ef8d6d810058e760c4" target="_blank" rel="external">新大陆：AsyncDisplayKit</a><br><a href="http://pilky.me/36/" target="_blank" rel="external">Optimising Autolayout</a><br><a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/#more-41893" target="_blank" rel="external">iOS 保持界面流畅的技巧</a><br><a href="http://blog.devtang.com/2015/06/27/using-coretext-1/" target="_blank" rel="external">基于 CoreText 的排版引擎：基础</a><br><a href="http://blog.devtang.com/2015/06/27/using-coretext-2/" target="_blank" rel="external">基于 CoreText 的排版引擎：进阶</a><br><a href="https://tech.meituan.com/2017/06/09/webviewperf.html" target="_blank" rel="external">WebView性能、体验分析与优化</a><br><a href="http://imtangqi.com/2016/02/18/the-notes-of-learning-text-kit/" target="_blank" rel="external">Text Kit 学习笔记</a><br><a href="https://objccn.io/issue-5-1/" target="_blank" rel="external">初识 TextKit</a>  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/05/iOS UI 优化 - ASDK VS YYKit/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-IOS UI 优化 - Core Graphics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -382,7 +459,25 @@ var _hmt = _hmt || [];
 </table>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation.png"></p>
 <p>注：参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/">iOS UI 优化 - Core Animation</a> 最后给出：<br>在 <code>Core Animation</code> 中可以看到在 <code>Application</code> 中 <code>Handle Events</code> 处理手势原理实际就是我们响应链处理过程。<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/">iOS 空间绘制原理</a></p>
-<blockquote>
+<h2 id="Core-Graphics-大纲"><a href="#Core-Graphics-大纲" class="headerlink" title="Core Graphics 大纲"></a>Core Graphics 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Graphics API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
+<td><code>Core Graphics</code> <strong>a、</strong> 作为基于 <code>Quartz</code> 绘图引擎来实现在 <code>iOS</code> 和 <code>OS X</code> 2D 图形绘制功能，接口实现是基于 <code>C</code> 不符合 <code>iOS</code> 中 <code>ARC</code> 内存管理方式需要进行手动管理其内存。 <strong>b、</strong> 作为 <code>CA</code> 层具体显示内容 <code>CATypeLayer</code> 层实际绘制执行者和 <code>OpenGL</code>或者<code>Metal</code> 一起承担起界面具体的绘制工作。</td>
+</tr>
+<tr>
+<td><a href="http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/">2、APP 作用</a></td>
+<td><code>Core Graphics</code> <strong>a、</strong> 通过提供基础的 <code>API</code> 接口来实现控件在 <code>UI</code> 层面布局，色彩填充，画布绘制等具体的绘制实现。<strong>b、</strong> 通过针对不同的绘制对象：<code>Window</code>、<code>CALayer</code>、<code>Bitmap</code>、<code>PDF</code> 和 <code>Printer</code> 来生成对应的 <code>Context</code> 实现具体内容的绘制生成可视化的效果展示在屏幕上。 <strong>c、</strong> 在文本绘制的过程中我猜测使用 <code>PDF</code> 文档解析的功能，为 <code>Core Text</code> 提供实际的计算，<strong>依据 <code>Quartz</code> 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-Text"><a href="#Core-Text" class="headerlink" title="Core Text"></a>Core Text</h2><blockquote>
 <p>同时也会对本文进行在每一博文更新！！！</p>
 </blockquote>
         
@@ -813,95 +908,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/11/20/WCDB 学习使用心得经/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-SQLite 学习-多表查询&amp;运算&amp;表达" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/">SQLite 学习-多表查询</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/18/SQLite 学习-多表查询&运算&表达/" class="archive-article-date">
-  	<time datetime="2017-11-18T15:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前篇博文小编写了基本的 <code>SQLite</code> 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。</p>
-<p>本篇将会列出下面的数据库相关知识：</p>
-<ul>
-<li>多表查询</li>
-<li>运算符</li>
-<li>表达式</li>
-</ul>
-<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><p>接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。</p>
-<p>在多表查询过程中需要用到的关键词是: <code>join</code>，而且在多表连接查询过程中有三种情况。</p>
-<p>分别是：交叉连接、内连接和外连接。</p>
-<p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
-<p><strong>内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
-        
-          <a class="article-more-a" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQLite</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/">详细 >></a>
         </p>
       
 

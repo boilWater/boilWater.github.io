@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-28T16:57:36.271Z</updated>
+  <updated>2019-05-05T17:25:21.918Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS UI 优化 - Core Text</title>
+    <link href="http://yoursite.com/2019/05/05/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20ASDK%20VS%20YYKit/"/>
+    <id>http://yoursite.com/2019/05/05/iOS UI 优化 - ASDK VS YYKit/</id>
+    <published>2019-05-05T11:46:11.570Z</published>
+    <updated>2019-05-05T17:25:21.918Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Core-Text-富文本编辑&quot;&gt;&lt;a href=&quot;#Core-Text-富文本编辑&quot; class=&quot;headerlink&quot; title=&quot;Core Text 富文本编辑&quot;&gt;&lt;/a&gt;Core Text 富文本编辑&lt;/h1&gt;&lt;p&gt;在 &lt;code&gt;Core Graphics&lt;/code&gt; 后面一篇文章本该对 &lt;code&gt;Core Image&lt;/code&gt; 框架进行整理，但是基于 &lt;code&gt;Core Graphics&lt;/code&gt; 的富文本编辑 &lt;code&gt;Core Text&lt;/code&gt; 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 &lt;code&gt;Texture&lt;/code&gt; 即 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 详细描述。&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/CoreText_Programming/Introduction/Introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;About Core Text&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009459&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;About the Cocoa Text System&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Introduction/Introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;About Text Handling in iOS&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/Concepts/LayoutManager.html#//apple_ref/doc/uid/20001805-BBCFEBHA&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Layout Manager&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/128/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Text Processing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/entry/5922b0ef8d6d810058e760c4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;新大陆：AsyncDisplayKit&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://pilky.me/36/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimising Autolayout&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/#more-41893&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS 保持界面流畅的技巧&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.devtang.com/2015/06/27/using-coretext-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;基于 CoreText 的排版引擎：基础&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.devtang.com/2015/06/27/using-coretext-2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;基于 CoreText 的排版引擎：进阶&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://tech.meituan.com/2017/06/09/webviewperf.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WebView性能、体验分析与优化&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://imtangqi.com/2016/02/18/the-notes-of-learning-text-kit/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Text Kit 学习笔记&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-5-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初识 TextKit&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Core-Text-富文本编辑&quot;&gt;&lt;a href=&quot;#Core-Text-富文本编辑&quot; class=&quot;headerlink&quot; title=&quot;Core Text 富文本编辑&quot;&gt;&lt;/a&gt;Core Text 富文本编辑&lt;/h1&gt;&lt;p&gt;在 &lt;code&gt;Core Graph
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS UI 界面" scheme="http://yoursite.com/tags/iOS-UI-%E7%95%8C%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS UI 优化 - Core Graphics</title>
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2019-04-28T16:57:36.271Z</updated>
+    <updated>2019-05-05T10:14:38.586Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以参考上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现探索中的 &lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Animation 在 APP 结构作用&lt;/a&gt; 图片。&lt;/p&gt;
@@ -192,6 +217,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;此篇博文先停停…. 讲真真心没有思路。。。。&lt;/p&gt;
 &lt;p&gt;未完待续。。。&lt;/p&gt;
 &lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;https://objccn.io/issue-3-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;绘制像素到屏幕上&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007533-SW1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quartz 2D Programming Guide&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_overview/dq_overview.html#//apple_ref/doc/uid/TP30001066-CH202-TPXREF101&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Overview of Quartz 2D&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/documentation/coregraphics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-1-in-the-beginning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 1: In the Beginning&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.bignerdranch.com/blog/core-graphics-part-2-contextually-speaking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics, Part 2: Contextually Speaking&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.raywenderlich.com/232990-core-graphics-tutorial-patterns&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Core Graphics Tutorial: Patterns&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2012/506/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimizing 2D Graphics and Animation Performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2014/419/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Advanced Graphics and Animations for iOS Apps&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2017/235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Building Visually Rich User Experiences&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2018/219/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Image and Graphics Best Practices&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2011/129/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practical Drawing for iOS Developers&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -479,7 +505,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20%E4%B8%80/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 一/</id>
     <published>2019-01-06T12:23:44.435Z</published>
-    <updated>2019-03-08T14:09:56.132Z</updated>
+    <updated>2019-05-05T17:03:59.701Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-UI-优化博文大纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化博文大纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化博文大纲&quot;&gt;&lt;/a&gt;iOS UI 优化博文大纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
 &lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; | &lt;code&gt;Metal&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
@@ -504,7 +530,25 @@
 &lt;/table&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&quot;Core-Graphics-大纲&quot;&gt;&lt;a href=&quot;#Core-Graphics-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 大纲&quot;&gt;&lt;/a&gt;Core Graphics 大纲&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;Core Graphics API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为基于 &lt;code&gt;Quartz&lt;/code&gt; 绘图引擎来实现在 &lt;code&gt;iOS&lt;/code&gt; 和 &lt;code&gt;OS X&lt;/code&gt; 2D 图形绘制功能，接口实现是基于 &lt;code&gt;C&lt;/code&gt; 不符合 &lt;code&gt;iOS&lt;/code&gt; 中 &lt;code&gt;ARC&lt;/code&gt; 内存管理方式需要进行手动管理其内存。 &lt;strong&gt;b、&lt;/strong&gt; 作为 &lt;code&gt;CA&lt;/code&gt; 层具体显示内容 &lt;code&gt;CATypeLayer&lt;/code&gt; 层实际绘制执行者和 &lt;code&gt;OpenGL&lt;/code&gt;或者&lt;code&gt;Metal&lt;/code&gt; 一起承担起界面具体的绘制工作。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2、APP 作用&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过提供基础的 &lt;code&gt;API&lt;/code&gt; 接口来实现控件在 &lt;code&gt;UI&lt;/code&gt; 层面布局，色彩填充，画布绘制等具体的绘制实现。&lt;strong&gt;b、&lt;/strong&gt; 通过针对不同的绘制对象：&lt;code&gt;Window&lt;/code&gt;、&lt;code&gt;CALayer&lt;/code&gt;、&lt;code&gt;Bitmap&lt;/code&gt;、&lt;code&gt;PDF&lt;/code&gt; 和 &lt;code&gt;Printer&lt;/code&gt; 来生成对应的 &lt;code&gt;Context&lt;/code&gt; 实现具体内容的绘制生成可视化的效果展示在屏幕上。 &lt;strong&gt;c、&lt;/strong&gt; 在文本绘制的过程中我猜测使用 &lt;code&gt;PDF&lt;/code&gt; 文档解析的功能，为 &lt;code&gt;Core Text&lt;/code&gt; 提供实际的计算，&lt;strong&gt;依据 &lt;code&gt;Quartz&lt;/code&gt; 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;Core-Text&quot;&gt;&lt;a href=&quot;#Core-Text&quot; class=&quot;headerlink&quot; title=&quot;Core Text&quot;&gt;&lt;/a&gt;Core Text&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -538,7 +582,25 @@
 &lt;/table&gt;
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&quot;Core-Graphics-大纲&quot;&gt;&lt;a href=&quot;#Core-Graphics-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 大纲&quot;&gt;&lt;/a&gt;Core Graphics 大纲&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;&lt;code&gt;Core Graphics API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为基于 &lt;code&gt;Quartz&lt;/code&gt; 绘图引擎来实现在 &lt;code&gt;iOS&lt;/code&gt; 和 &lt;code&gt;OS X&lt;/code&gt; 2D 图形绘制功能，接口实现是基于 &lt;code&gt;C&lt;/code&gt; 不符合 &lt;code&gt;iOS&lt;/code&gt; 中 &lt;code&gt;ARC&lt;/code&gt; 内存管理方式需要进行手动管理其内存。 &lt;strong&gt;b、&lt;/strong&gt; 作为 &lt;code&gt;CA&lt;/code&gt; 层具体显示内容 &lt;code&gt;CATypeLayer&lt;/code&gt; 层实际绘制执行者和 &lt;code&gt;OpenGL&lt;/code&gt;或者&lt;code&gt;Metal&lt;/code&gt; 一起承担起界面具体的绘制工作。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/&quot;&gt;2、APP 作用&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过提供基础的 &lt;code&gt;API&lt;/code&gt; 接口来实现控件在 &lt;code&gt;UI&lt;/code&gt; 层面布局，色彩填充，画布绘制等具体的绘制实现。&lt;strong&gt;b、&lt;/strong&gt; 通过针对不同的绘制对象：&lt;code&gt;Window&lt;/code&gt;、&lt;code&gt;CALayer&lt;/code&gt;、&lt;code&gt;Bitmap&lt;/code&gt;、&lt;code&gt;PDF&lt;/code&gt; 和 &lt;code&gt;Printer&lt;/code&gt; 来生成对应的 &lt;code&gt;Context&lt;/code&gt; 实现具体内容的绘制生成可视化的效果展示在屏幕上。 &lt;strong&gt;c、&lt;/strong&gt; 在文本绘制的过程中我猜测使用 &lt;code&gt;PDF&lt;/code&gt; 文档解析的功能，为 &lt;code&gt;Core Text&lt;/code&gt; 提供实际的计算，&lt;strong&gt;依据 &lt;code&gt;Quartz&lt;/code&gt; 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;Core-Text&quot;&gt;&lt;a href=&quot;#Core-Text&quot; class=&quot;headerlink&quot; title=&quot;Core Text&quot;&gt;&lt;/a&gt;Core Text&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
 &lt;/blockquote&gt;
     
@@ -1750,82 +1812,6 @@
 &lt;li&gt;可以添加不想要暴露的类私有方法&lt;/li&gt;
 &lt;li&gt;可以添加类属性和类实例变量&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS Deep Copy &amp; Shallow Copy(深层和浅层复制)</title>
-    <link href="http://yoursite.com/2017/01/20/iOS%20%E5%A4%8D%E5%88%B6%E7%90%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2017/01/20/iOS 复制理解/</id>
-    <published>2017-01-20T09:42:32.000Z</published>
-    <updated>2017-08-23T16:10:06.000Z</updated>
-    
-    <content type="html">&lt;p&gt;总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。&lt;/p&gt;
-&lt;p&gt;下面展示浅层 Copy 和 深层 Copy 展示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 深层复制和浅层复制.png&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;blockquote&gt;
-&lt;p&gt;简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp;amp; 内存地址发生改变。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;更具复制的对象不同可以分为两种情况：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;集合类对象复制&lt;/li&gt;
-&lt;li&gt;非集合类对象&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;集合类复制&quot;&gt;&lt;a href=&quot;#集合类复制&quot; class=&quot;headerlink&quot; title=&quot;集合类复制&quot;&gt;&lt;/a&gt;集合类复制&lt;/h2&gt;&lt;h3 id=&quot;集合类的浅复制-Shallow-Copy&quot;&gt;&lt;a href=&quot;#集合类的浅复制-Shallow-Copy&quot; class=&quot;headerlink&quot; title=&quot;集合类的浅复制(Shallow Copy)&quot;&gt;&lt;/a&gt;集合类的浅复制(Shallow Copy)&lt;/h3&gt;&lt;p&gt;集合类在浅层复制即时 retain 计数进行 + 1，而且指向内存对象复制添加到新的集合之中。&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *person = [&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; arrayWithObjects:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;age&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;school&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;company&quot;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *personShallowCopy = [person copyWithZone:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;person : %p, personCopy : %p&quot;&lt;/span&gt;, person, personShallowCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[31046:7675704] person : 0x604000443d20, personCopy : 0x604000443d20&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;集合类的深复制-Deep-Copy&quot;&gt;&lt;a href=&quot;#集合类的深复制-Deep-Copy&quot; class=&quot;headerlink&quot; title=&quot;集合类的深复制(Deep Copy)&quot;&gt;&lt;/a&gt;集合类的深复制(Deep Copy)&lt;/h3&gt;&lt;p&gt;集合类深层复制有两种方法可以实现：&lt;/p&gt;
-&lt;p&gt;1）使用 iOS 提供的 API 的接口&lt;/p&gt;
-&lt;p&gt;2）使用归档(archive)和解档(unarchive)形式进行&lt;/p&gt;
-&lt;p&gt;3) 使用系统的 &lt;code&gt;Copy&lt;/code&gt; 和 &lt;code&gt;MutableCopy&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;iOS-给定-API&quot;&gt;&lt;a href=&quot;#iOS-给定-API&quot; class=&quot;headerlink&quot; title=&quot;iOS 给定 API&quot;&gt;&lt;/a&gt;iOS 给定 API&lt;/h4&gt;&lt;p&gt;集合类的深层复制，只需要把 &lt;code&gt;initWithArray:copyItems:&lt;/code&gt; 的函数值设置为 &lt;code&gt;YES&lt;/code&gt; 就可以实现当前集合类实现深层复制。&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *person = [&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; arrayWithObjects:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;age&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;school&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;company&quot;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *personDeepCopy = [[&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; alloc] initWithArray:person copyItems:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;person : %p, personCopy : %p&quot;&lt;/span&gt;, person, personDeepCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[31046:7675704] person : 0x604000443d20, personCopy : 0x604000444080&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;归档-archive-和解档-unarchive&quot;&gt;&lt;a href=&quot;#归档-archive-和解档-unarchive&quot; class=&quot;headerlink&quot; title=&quot;归档(archive)和解档(unarchive)&quot;&gt;&lt;/a&gt;归档(archive)和解档(unarchive)&lt;/h4&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *person = [&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; arrayWithObjects:&lt;span class=&quot;string&quot;&gt;@&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;age&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;school&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;company&quot;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *persionArchiveCopy = [&lt;span class=&quot;built_in&quot;&gt;NSKeyedUnarchiver&lt;/span&gt; unarchiveObjectWithData:[&lt;span class=&quot;built_in&quot;&gt;NSKeyedArchiver&lt;/span&gt; archivedDataWithRootObject:person]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;person : %p, personCopy : %p&quot;&lt;/span&gt;, person, persionArchiveCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[31900:7726351] person : 0x6000004529f0, personCopy : 0x604000255a50&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;注意：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;（1）在集合类的深层复制过程中，需要满足一个前提条件：当前集合类需要实现 &lt;code&gt;NSCoping&lt;/code&gt; 或者 &lt;code&gt;NSMutableCopying&lt;/code&gt; 协议。否则会抛出异常。&lt;br&gt;（2）在使用 iOS 提供的 API 中完成的 &lt;code&gt;Copy&lt;/code&gt; 是 &lt;code&gt;one-level-deep copy&lt;/code&gt;，使用 &lt;code&gt;归档(archive)和解档(unarchive)&lt;/code&gt; 完成是真正的深层 &lt;code&gt;Copy&lt;/code&gt;。&lt;a href=&quot;https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html#//apple_ref/doc/uid/TP40010162-SW3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;苹果开发文档&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;使用系统的-Copy-和-MutableCopy&quot;&gt;&lt;a href=&quot;#使用系统的-Copy-和-MutableCopy&quot; class=&quot;headerlink&quot; title=&quot;使用系统的 Copy 和 MutableCopy&quot;&gt;&lt;/a&gt;使用系统的 &lt;code&gt;Copy&lt;/code&gt; 和 &lt;code&gt;MutableCopy&lt;/code&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;不可变对象的复制&lt;/li&gt;
-&lt;li&gt;可变对象的复制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;1)不可变对象的复制&lt;/p&gt;
-&lt;p&gt;下面👇代码实现不可变对象：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *personCopy = [person &lt;span class=&quot;keyword&quot;&gt;copy&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; *personMutableCopy = [person mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;person:%p, personCopy:%p, personMutableCopy:%p&quot;&lt;/span&gt;, person, personCopy, personMutableCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[33871:7842173] person:0x60000025a760, personCopy:0x60000025a760, personMutableCopy:0x60000025ab80&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;2)可变对象复制&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; *family = [&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; arrayWithObjects:&lt;span class=&quot;string&quot;&gt;@&quot;father&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;mother&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;sister&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;brother&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;son&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;@&quot;daughter&quot;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *familyCopy = [family &lt;span class=&quot;keyword&quot;&gt;copy&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; *familyMutableCopy = [family mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;family:%p, familyCopy:%p, familyMutableCopy:%p&quot;&lt;/span&gt;, family, familyCopy, familyMutableCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[33871:7842173] family:0x60000025a9d0, familyCopy:0x60000025aca0, familyMutableCopy:0x60000025abe0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;根据上面：&lt;br&gt;(1)不可变 copy 浅复制&lt;br&gt;(2)可变 copy 单层深复制&lt;br&gt;(3)不可变 mutableCopy 单层深复制&lt;br&gt;(4)可变 mutableCopy 单层深复制 &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;非集合类复制&quot;&gt;&lt;a href=&quot;#非集合类复制&quot; class=&quot;headerlink&quot; title=&quot;非集合类复制&quot;&gt;&lt;/a&gt;非集合类复制&lt;/h2&gt;&lt;p&gt;在非集合类实现复制通常使用系统提供的方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不可变对象的复制&lt;/li&gt;
-&lt;li&gt;可变对象的复制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;不可变对象复制&quot;&gt;&lt;a href=&quot;#不可变对象复制&quot; class=&quot;headerlink&quot; title=&quot;不可变对象复制&quot;&gt;&lt;/a&gt;不可变对象复制&lt;/h3&gt;&lt;p&gt;下面👇代码实现不可变对象：&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *nameCopy = [name &lt;span class=&quot;keyword&quot;&gt;copy&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableString&lt;/span&gt; *nameMutableCopy = [name mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;name:%p, nameCopy:%p, nameMutableCopy:%p&quot;&lt;/span&gt;, name, nameCopy, nameMutableCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[32820:7780776] name:0x107356108, nameCopy:0x107356108, nameMutableCopy:0x604000247620&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;可变对象复制&quot;&gt;&lt;a href=&quot;#可变对象复制&quot; class=&quot;headerlink&quot; title=&quot;可变对象复制&quot;&gt;&lt;/a&gt;可变对象复制&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableString&lt;/span&gt; *mutableName = [&lt;span class=&quot;built_in&quot;&gt;NSMutableString&lt;/span&gt; stringWithString:&lt;span class=&quot;string&quot;&gt;@&quot;Jack Jin&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *mutableNameCopy = [mutableName &lt;span class=&quot;keyword&quot;&gt;copy&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableString&lt;/span&gt; *mutableNameMutableCopy = [mutableName mutableCopy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[mutableNameCopy stringByAppendingString:&lt;span class=&quot;string&quot;&gt;@&quot;Bai&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[mutableNameMutableCopy appendString:&lt;span class=&quot;string&quot;&gt;@&quot;Bai&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;mutableName:%p, mutableNameCopy:%p, mutableNameMutableCopy:%p&quot;&lt;/span&gt;, mutableName, mutableNameCopy, mutableNameMutableCopy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印的结果：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//DeepShallowCopyDemo[33102:7797073] mutableName:0x600000445dc0, mutableNameCopy:0xa00ec83923fb04b8, mutableNameMutableCopy:0x600000445fa0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;根据上面：&lt;br&gt;(1)不可变 copy 浅复制&lt;br&gt;(2)可变 copy 深复制&lt;br&gt;(3)不可变 mutableCopy 深复制&lt;br&gt;(4)可变 mutableCopy 深复制&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;参考资料：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html#//apple_ref/doc/uid/TP40010162-SW3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Copying Collections&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/f84803356cbb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NSCopying和NSMutableCopying协议&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Object_copying&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Object copying&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://stackoverflow.com/questions/184710/what-is-the-difference-between-a-deep-copy-and-a-shallow-copy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;What is the difference between a deep copy and a shallow copy?
-&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。&lt;/p&gt;
-&lt;p&gt;下面展示浅层 Copy 和 深层 Copy 展示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 深层复制和浅层复制.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
