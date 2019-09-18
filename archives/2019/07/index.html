@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JackJin&#39;s 博客</title>
+  <title>Archives: 2019/7 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JackJin's 博客">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -172,390 +172,46 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-IM 通信协议-WebSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/22/Core Text 富文本编辑/" class="archive-article-date">
+  	<time datetime="2019-07-22T14:51:09.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/13/IM 通信协议-WebSocket/">IM 通信协议-WebSocket</a>
+      <a class="archive-article-title" href="/2019/07/22/Core Text 富文本编辑/">iOS UI 优化 - Core Text</a>
     </h1>
   
 
-        
-        <a href="/2016/04/13/IM 通信协议-WebSocket/" class="archive-article-date">
-  	<time datetime="2016-04-13T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天讲解过 <code>Socket</code> 的相关知识，但是在查找资料后看到 <code>IM</code> zhong还有其他的相关协议。今天小编就讲解其他的协议：<code>WebSocket</code>。</p>
-<p>之所以研究 <code>WebSocket</code> 原因是相比较与 <code>Socket</code>，<code>WebSocket</code>可以是 <code>server</code> 端向 <code>client</code> 进行信息发送，不需要 <code>client</code> 为获取信息而采用长期轮询方式来获取信息。</p>
-<h2 id="WebSocket-简介"><a href="#WebSocket-简介" class="headerlink" title="WebSocket 简介"></a><code>WebSocket</code> 简介</h2><h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><p><code>WebSocket</code> 是一种在单个TCP连接上进行全双工通讯的协议。通信协议于 2011 年被 <code>IETF</code> 定为标准 <code>RFC 6455</code>，并由 <code>RFC7936</code> 补充规范。</p>
-<p>目前浏览器对服务器的访问发送 <code>HTTP</code> 请求，然后由服务器返回最新的数据给客户端的浏览器。但是网站如果要实现推送技术，就需要采用轮询。但是这种传统的模式带来很明显的缺点，即浏览器需要不断的向服务器发出请求，然而 <code>HTTP</code> 请求可能包含较长的头部，其中真正有效的数据可能只是很小的一部分，显然这样会浪费很多的带宽等资源。</p>
-        
-          <a class="article-more-a" href="/2016/04/13/IM 通信协议-WebSocket/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IM/" class="article-tag-list-link color3">IM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/13/IM 通信协议-WebSocket/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-IM 通信协议-Socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/07/IM 通信协议-Socket/">IM 通信协议-Socket(TCP/IP抽象)</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/07/IM 通信协议-Socket/" class="archive-article-date">
-  	<time datetime="2016-04-07T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>老大最近说公司要开始做新的项目，给一些相关 IM 通信方面的资料。目前仅仅对 <code>Socket</code> 和 <code>WebSocket</code> 一些基本知识进行整理。</p>
-<p><strong>下面整理出 <code>HTTP/IP</code> 相关知识思维导图</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-5dced9f6cd1ee0df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TCP IP和HTTP.jpg"></p>
-        
-          <a class="article-more-a" href="/2016/04/07/IM 通信协议-Socket/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IM/" class="article-tag-list-link color3">IM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/07/IM 通信协议-Socket/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-SDWebImage 图片缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/23/SDWebImage 图片缓存/">SDWebImage 图片缓存</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/23/SDWebImage 图片缓存/" class="archive-article-date">
-  	<time datetime="2016-03-23T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇文章我将接着节讲述关于 <code>SDWebImage</code> 图片下载后处理方式，缓存进行讲解。</p>
-<p>经过上面我们可以知道 <code>SDWebImage</code> 是可以从远程的服务器加载图片，然后在<code>UIImageView</code> 上进行显示。但是你有想过 <code>SDWebImage</code> 到底是什么呢？</p>
-<p>在使用时我们知道需要导入包：<code>UIImageView+WebCache.h</code> 我们可以根据这看出 <code>SDWebImage</code> 是一个 <code>UIImageView</code> 的分类，使用 <code>Category</code> 进行分装的类。下面列出 <code>SDWebImage</code> 可以实现的功能：</p>
-<ul>
-<li>提供 <code>UIImageView</code> 的一个分类，可以对图片进行异步加载和缓存管理</li>
-<li>一步内存 &amp; 磁盘管理 &amp; 自动对过期的缓存进行相关的处理</li>
-<li>一个一步图片的加载器</li>
-<li>支持 <code>GIF</code> 的图片加载</li>
-<li>后台对图片进行解压处理</li>
-<li>确保同意 <code>URL</code> 的图片不会被数次加载</li>
-<li>确保虚假的 <code>URL</code> 不会被反复加载</li>
-<li>确保下载和缓存时主线程不会被阻塞</li>
-<li>优良使用性能</li>
-<li>采用 <code>GCD</code> 可以采用并行处理，<code>iOS 5.0</code> 的 <code>ARC</code> 自动计数原则</li>
-<li>支持 <code>Arm64</code> (64位 <code>CPU</code> 处理)</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/03/23/SDWebImage 图片缓存/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/三方框架解析/" class="article-tag-list-link color2">三方框架解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/23/SDWebImage 图片缓存/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-SDWebImage 图片下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/20/SDWebImage 图片下载/">SDWebImage 图片下载</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/20/SDWebImage 图片下载/" class="archive-article-date">
-  	<time datetime="2016-03-20T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前端时间完成云相册经常使用到 <code>SDWebImage</code> 来进行图片加载，但对于图片加载过程中怎么样实现不会深究。下面小编就对 <code>SDWebImage</code> 进行相应的分析：</p>
-<h2 id="SDWebImage-的下载器"><a href="#SDWebImage-的下载器" class="headerlink" title="SDWebImage 的下载器"></a><code>SDWebImage</code> 的下载器</h2><p> <code>SDWebImage</code> 的下载器是 <code>SDWebImageDownloader</code> 利用单例模式<code>sharedDownloader</code>，可以对下载的图片进行相关配置。<br> 可以配置的部分如下：</p>
-<ul>
-<li>下载选项</li>
-<li>HTTP的头部</li>
-<li>压缩、下载超时、下载顺序、最大并发数等</li>
-</ul>
-<h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项"></a>下载选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, SDWebImageDownloaderOptions) &#123;</span><br><span class="line">   <span class="comment">//下载的优先级低</span></span><br><span class="line">    SDWebImageDownloaderLowPriority = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">   <span class="comment">//下载进度</span></span><br><span class="line">    SDWebImageDownloaderProgressiveDownload = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">   <span class="comment">//下载路径缓存</span></span><br><span class="line">    SDWebImageDownloaderUseNSURLCache = <span class="number">1</span> &lt;&lt; <span class="number">2</span>,</span><br><span class="line">   <span class="comment">//下载过程的请求缓存</span></span><br><span class="line">    SDWebImageDownloaderIgnoreCachedResponse = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,</span><br><span class="line">   <span class="comment">//后台进行继续下载</span></span><br><span class="line">    SDWebImageDownloaderContinueInBackground = <span class="number">1</span> &lt;&lt; <span class="number">4</span>,    </span><br><span class="line">   <span class="comment">//处理 cookies</span></span><br><span class="line">    SDWebImageDownloaderHandleCookies = <span class="number">1</span> &lt;&lt; <span class="number">5</span>,</span><br><span class="line">   <span class="comment">//循序无效的 SSL 证书</span></span><br><span class="line">    SDWebImageDownloaderAllowInvalidSSLCertificates = <span class="number">1</span> &lt;&lt; <span class="number">6</span>,</span><br><span class="line">   <span class="comment">//下载优先级高</span></span><br><span class="line">    SDWebImageDownloaderHighPriority = <span class="number">1</span> &lt;&lt; <span class="number">7</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/03/20/SDWebImage 图片下载/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/三方框架解析/" class="article-tag-list-link color2">三方框架解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/20/SDWebImage 图片下载/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-结构模式-外观模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/">iOS 设计模式-结构模式-外观模式</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/16/iOS 设计模式-结构模式-外观模式/" class="archive-article-date">
-  	<time datetime="2016-03-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇文章小编向大家讲述外观模式相关知识和实现方式，以及在我们开发过程中使用情况。</p>
-<p>外观模式：为子系统中的一组接口提供一个统一的入口。外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
-<p>在外观模式中有三个角色：外观角色(Facade) 和 子系统角色(SubSystem)。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>外观角色(Facade)</li>
-</ul>
-<p>客户端可以调用外观角色的方法，在外观角色中可以知道相关的一个或者多个子系统的功能和责任。在正常时，将所有从客户端发来的请求委派到相应的子系统去，传递给相应的子系统对象处理。</p>
-        
-          <a class="article-more-a" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -568,357 +224,17 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/16/iOS 设计模式-结构模式-外观模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
   
-    <article id="post-iOS 内存缓存 磁盘缓存和文件储存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/">云相册-缓存知识简介</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/" class="archive-article-date">
-  	<time datetime="2016-03-10T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   </p>
-<ul>
-<li>云相册来源</li>
-</ul>
-<blockquote>
-<p>公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。</p>
-</blockquote>
-<h2 id="为什么采用缓存？"><a href="#为什么采用缓存？" class="headerlink" title="为什么采用缓存？"></a>为什么采用缓存？</h2><p>下面小编就把与相册图片展示的下载过程列出来：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-19 20.43.55.png"></p>
-        
-          <a class="article-more-a" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/缓存/" class="article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/10/iOS 内存缓存 磁盘缓存和文件储存/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-结构模式-组合模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/iOS 设计模式-结构模式-组合模式/">iOS 设计模式-结构模式-组合模式</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/01/iOS 设计模式-结构模式-组合模式/" class="archive-article-date">
-  	<time datetime="2016-03-01T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇小编将向大家讲述结构模式中的组合模式。当我们在编码的过程中经常会遇到一些使用树状结构的功能过程中，我们可以使用组合模式来对其进行实现代码重构。</p>
-<p>组合模式(Composite Pattern)：</p>
-<p>组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，改模式中有三个角色：抽象构建(Component)、叶子构件(Leaf) 和 容器构件(Composite)。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在下面小编先介绍下组合模式中三个角色，简单概括下三个角色的主要功能和对三者之间的关系梳理。</p>
-        
-          <a class="article-more-a" href="/2016/03/01/iOS 设计模式-结构模式-组合模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/01/iOS 设计模式-结构模式-组合模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 消息推送" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/19/iOS 消息推送/">iOS 消息推送</a>
-    </h1>
-  
-
-        
-        <a href="/2016/02/19/iOS 消息推送/" class="archive-article-date">
-  	<time datetime="2016-02-19T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近一直在看设计模式方面的内容，一直看同样的资料打算换下。所以就看下我们是 <code>App</code> 都会用到的消息推送。</p>
-<p><strong>下面给出整理消息推送的思维导图</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-048c77619a87b1ab.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="信息推送.jpg"></p>
-        
-          <a class="article-more-a" href="/2016/02/19/iOS 消息推送/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/02/19/iOS 消息推送/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 设计模式-结构模式-桥接模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/">iOS 设计模式-结构模式-桥接模式</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/" class="archive-article-date">
-  	<time datetime="2016-01-03T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有的时候在类处理问题上有多层继承，在拓展的过程上在修改添加一个新的类过程中可能要添加类增加多数。这里我们可以考虑结构模式中 – 桥接模式。</p>
-<p>桥接模式可以用抽象关联取代了传统的多层继承，将类之间的静态继承关系转换为动态的对象组合关系，使得系统更加灵活，并易于扩展，同时有效控制了系统中类的个数。</p>
-<p>桥接模式是一种很实用的结构型设计模式，如果软件系统中某个类存在两个独立变化的维度，通过该模式可以将这两个维度分离出来，使两者可以独立扩展，让系统更加符合“单一职责原则”。</p>
-<h2 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h2>
-        
-          <a class="article-more-a" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS 设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/03/iOS 设计模式-结构模式-桥接模式/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -940,9 +256,9 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

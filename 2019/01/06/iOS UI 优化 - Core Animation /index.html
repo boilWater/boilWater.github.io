@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS UI 优化 - Core Animation | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+  <meta name="description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行O对比。
 
 
-注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations fo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - Core Animation">
 <meta property="og:url" content="http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+<meta property="og:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行O对比。
 
 
-注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations fo">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-742707ecc08ad320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -34,13 +34,13 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-cceb63f3c0a04111.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-c171b2f31898d656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-6ea8515e574f2f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-08T14:09:53.464Z">
+<meta property="og:updated_time" content="2019-07-04T17:25:35.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Animation">
-<meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行对比。
+<meta name="twitter:description" content="Core Animation 实现探索小编回顾粗略的写完 19 年 想要写的系列博文中 iOS UI 优化总纲中第一篇博文 Core Animation 一直在想怎么样展示自己的理解，就先从我们熟知的 Core Animation 在整个 APP 提供架构方面来进行O对比。
 
 
-注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations for">
+注：上图分别是从 2014 年的 WWDC 讲述 Advanced Graphics and Animations fo">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
@@ -215,7 +215,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行对比。</p>
+        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行O对比。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
 <blockquote>
 <p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank" rel="external">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1" target="_blank" rel="external">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>

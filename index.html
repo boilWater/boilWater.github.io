@@ -172,6 +172,88 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Core Text 富文本编辑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/22/Core Text 富文本编辑/">iOS UI 优化 - Core Text</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/22/Core Text 富文本编辑/" class="archive-article-date">
+  	<time datetime="2019-07-22T14:51:09.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Core-Text-富文本编辑"><a href="#Core-Text-富文本编辑" class="headerlink" title="Core Text 富文本编辑"></a>Core Text 富文本编辑</h1><p>在 <code>Core Graphics</code> 后面一篇文章本该对 <code>Core Image</code> 框架进行整理，但是基于 <code>Core Graphics</code> 的富文本编辑 <code>Core Text</code> 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 <code>Texture</code> 即 <code>ASDK</code> 和 <code>YYKit</code> 详细描述。</p>
+<h2 id="Core-Text-结构层级"><a href="#Core-Text-结构层级" class="headerlink" title="Core Text 结构层级"></a>Core Text 结构层级</h2><p>这里小编对 <code>Core Text</code> 在实现的层次结构上所处位置，以及在对 <code>UIKit</code> 框架我们常见控件 <code>UITextFiled</code>、<code>UITextView</code> 和 <code>UILabel</code> 具体实现基础。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-d9fa387d512dd42d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Text.png"></p>
+<blockquote>
+<p>上图是小编根据 <strong>2018 WWDC</strong> 中 <a href="https://developer.apple.com/videos/play/wwdc2018/221/">TextKit Best Practices</a> 和 <a href="https://developer.apple.com/videos/play/wwdc2013/210">Introducing Text Kit</a> 得出 <code>Core Graphics</code>、<code>Core Text</code> 和 <code>UIKit</code> 中能够实现文本绘制的控件实现结构图。<br>根据上面结构可以看出：<br>（1）基于 <code>Quartz</code> 封装的 <code>Core Graphics</code> 为 <code>Core Text</code> 的实现基础。而且 <code>Quartz</code> 可以直接处理字体和字形将文字渲染到界面，也是在 Apple 基础库中唯一一个处理字体模块。<br>（2）基于 <code>Core Text</code> 封装实现的 <code>Text Kit</code> 为在 <code>UIKit</code> 和 <code>AppKit</code> 中文本显示控件 <code>TypeTextFiled</code>、<code>TypeTextView</code> 等提供最直接的接口。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/07/22/Core Text 富文本编辑/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/22/Core Text 富文本编辑/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS UI 优化 - 番外篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -268,8 +350,14 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Text-富文本编辑"><a href="#Core-Text-富文本编辑" class="headerlink" title="Core Text 富文本编辑"></a>Core Text 富文本编辑</h1><p>在 <code>Core Graphics</code> 后面一篇文章本该对 <code>Core Image</code> 框架进行整理，但是基于 <code>Core Graphics</code> 的富文本编辑 <code>Core Text</code> 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 <code>Texture</code> 即 <code>ASDK</code> 和 <code>YYKit</code> 详细描述。</p>
-<p>参考资料：<br><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/CoreText_Programming/Introduction/Introduction.html" target="_blank" rel="external">About Core Text</a><br><a href="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009459" target="_blank" rel="external">About the Cocoa Text System</a><br><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Introduction/Introduction.html" target="_blank" rel="external">About Text Handling in iOS</a><br><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/Concepts/LayoutManager.html#//apple_ref/doc/uid/20001805-BBCFEBHA" target="_blank" rel="external">The Layout Manager</a><br><a href="https://developer.apple.com/videos/play/wwdc2011/128/" target="_blank" rel="external">Advanced Text Processing</a><br><a href="https://cocoapods.org/pods/Graver" target="_blank" rel="external">Graver</a><br><a href="https://juejin.im/entry/5922b0ef8d6d810058e760c4" target="_blank" rel="external">新大陆：AsyncDisplayKit</a><br><a href="http://pilky.me/36/" target="_blank" rel="external">Optimising Autolayout</a><br><a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/#more-41893" target="_blank" rel="external">iOS 保持界面流畅的技巧</a><br><a href="http://blog.devtang.com/2015/06/27/using-coretext-1/" target="_blank" rel="external">基于 CoreText 的排版引擎：基础</a><br><a href="http://blog.devtang.com/2015/06/27/using-coretext-2/" target="_blank" rel="external">基于 CoreText 的排版引擎：进阶</a><br><a href="https://tech.meituan.com/2017/06/09/webviewperf.html" target="_blank" rel="external">WebView性能、体验分析与优化</a><br><a href="http://imtangqi.com/2016/02/18/the-notes-of-learning-text-kit/" target="_blank" rel="external">Text Kit 学习笔记</a><br><a href="https://objccn.io/issue-5-1/" target="_blank" rel="external">初识 TextKit</a>  </p>
-
+<h2 id="Core-Text-结构层级"><a href="#Core-Text-结构层级" class="headerlink" title="Core Text 结构层级"></a>Core Text 结构层级</h2><p>这里小编对 <code>Core Text</code> 在实现的层次结构上所处位置，以及在对 <code>UIKit</code> 框架我们常见控件 <code>UITextFiled</code>、<code>UITextView</code> 和 <code>UILabel</code> 具体实现基础。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-d9fa387d512dd42d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Text.png"></p>
+<blockquote>
+<p>上图是小编根据 <strong>2018 WWDC</strong> 中 <a href="https://developer.apple.com/videos/play/wwdc2018/221/">TextKit Best Practices</a> 和 <a href="https://developer.apple.com/videos/play/wwdc2013/210">Introducing Text Kit</a> 得出 <code>Core Graphics</code>、<code>Core Text</code> 和 <code>UIKit</code> 中能够实现文本绘制的控件实现结构图。<br>根据上面结构可以看出：<br>（1）基于 <code>Quartz</code> 封装的 <code>Core Graphics</code> 为 <code>Core Text</code> 的实现基础。而且 <code>Quartz</code> 可以直接处理字体和字形将文字渲染到界面，也是在 Apple 基础库中唯一一个处理字体模块。<br>（2）基于 <code>Core Text</code> 封装实现的 <code>Text Kit</code> 为在 <code>UIKit</code> 和 <code>AppKit</code> 中文本显示控件 <code>TypeTextFiled</code>、<code>TypeTextView</code> 等提供最直接的接口。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/05/05/iOS UI 优化 - ASDK VS YYKit/#more">more >></a>
+        
       
 
       
@@ -344,7 +432,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Graphics-实现探索"><a href="#Core-Graphics-实现探索" class="headerlink" title="Core Graphics 实现探索"></a>Core Graphics 实现探索</h1><p>又是一个常用但是不知怎么开篇博文。🤔🤔🤔</p>
-<p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以参考上篇 <code>Core Animation</code> 实现探索中的 <a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">Core Animation 在 APP 结构作用</a> 图片。</p>
+<p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以和上篇 <code>Core Animation</code> 实现，这里仅仅展示 <code>Core Graphics</code> 实现的基础实现架构。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Graphics.png"></p>
 <p>在讲解 <code>Core Graphics</code> 之前还是按照小编的🍉惯，对该框架 <code>API</code> 的接口进行整理。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
         
@@ -423,7 +512,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行对比。</p>
+        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行O对比。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
 <blockquote>
 <p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>
@@ -513,6 +602,7 @@ var _hmt = _hmt || [];
         <h1 id="iOS-UI-优化博文大纲"><a href="#iOS-UI-优化博文大纲" class="headerlink" title="iOS UI 优化博文大纲"></a>iOS UI 优化博文大纲</h1><p>2019 年开年第一篇博文，今天先起个头。</p>
 <p>今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 <code>Core Animation</code> 框架总结以及实现方式上讲解，然后从 <code>Core Graphics</code> 和 <code>Core Iamge</code> 在绘制层面三者如何把 <code>UIKit</code> 控件如何实现绘制交由 <code>OpenGL ES</code> | <code>Metal</code> 来实现每一帧绘制。</p>
 <p>最后分析 <code>FB</code> 开源的框架 <code>ASDK</code> 和 <code>YYKit</code> 实现 <code>UI</code> 优化方式，对 <code>Core Text</code> 进行最后封装来结束 <code>UI</code> 专题。</p>
+<h2 id="iOS-UI-架构图"><a href="#iOS-UI-架构图" class="headerlink" title="iOS UI 架构图"></a>iOS UI 架构图</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-c39a990fda4aa0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS UI Strcture.png"></p>
 <h2 id="Core-Animation-大纲"><a href="#Core-Animation-大纲" class="headerlink" title="Core Animation 大纲"></a>Core Animation 大纲</h2><table>
 <thead>
 <tr>
@@ -551,7 +641,27 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h2 id="Core-Text"><a href="#Core-Text" class="headerlink" title="Core Text"></a>Core Text</h2><blockquote>
+<h2 id="Core-Text-大纲"><a href="#Core-Text-大纲" class="headerlink" title="Core Text 大纲"></a>Core Text 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-4ace47c5dff6e0f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Text API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-9f0af182b0f5d5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 作为基于 <code>Core Graphics</code> 封装实现，是 <code>Apple</code> 基础库中唯一一个处理字体绘制模块。<strong>b、</strong>  在 <code>iOS 7</code> 之后在此基础之上实现的 <code>Text Kit</code> 实现跨 <code>UIKit</code> 和 <code>AppKit</code> 来作为文本绘制。</td>
+</tr>
+<tr>
+<td><a href="https://www.jianshu.com/p/684e2a323620">2、作用</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 通过以 <code>Core Text</code> 为基础实现文字绘制 <code>Text Kit</code> 来实现富文本绘制，展示丰富多彩的文字效果。<strong>b、</strong> 提供后台绘制能力，在实际绘制过程中可以放在 <code>Background Thread</code> 来实现绘制工作。<strong>c、</strong> 在实现中可以通过 <code>CTRunDelegate</code> 来设置 <code>CTRun</code> 来实现图文混排来时更加丰富的效果。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Text Kit 实现逻辑</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-df9bbf81678c6a58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Text Kit.png"></p>
+<blockquote>
 <p>同时也会对本文进行在每一博文更新！！！</p>
 </blockquote>
         
@@ -822,87 +932,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/28/JavaScript学习总结/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS 11 新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/iOS 11 新特性/">iOS 11 新特性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/21/iOS 11 新特性/" class="archive-article-date">
-  	<time datetime="2017-12-20T16:04:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>iOS 11</code> 的最新技术发布在 <strong>6月6号</strong>，由于小编在工作上的原因只能在今天把 <code>iOS 11</code>的相关信息整理出来对后面的开发便利以及在实际开发过程中可以更好的避免踩过的坑。</p>
-<h1 id="新增的框架"><a href="#新增的框架" class="headerlink" title="新增的框架"></a>新增的框架</h1><p>对于上一个版本总体来说新增加两个主要大的框架 <code>Core ML</code> 和 <code>ARKit</code></p>
-<h2 id="Core-ML-框架"><a href="#Core-ML-框架" class="headerlink" title="Core ML 框架"></a><code>Core ML</code> 框架</h2><p>只从去年的时候 <code>AlphaGo</code> 打败李世石，今年的升级版的 <code>AlphaGo</code> 也战胜中国的柯洁，到最近前端时间升级版的 <code>AlphaZero</code> 也战胜了前代的 <code>AlphaGo</code>。感觉后面 <code>AI</code> 只能是最近最火的科技，而且目前也可以看出来后面科技更新替代可能是对<strong>依据重复性训练获取技能重复单样工作的人员</strong>优化（这是后话）。</p>
-<p>不过 <code>Core ML</code> 是 <code>Apple</code> 提供的已经训练好的模型，也就是说是根据数据进行相关训练好可以直接使用的一个数据匣子。小编讲的直白一点，就是你往匣子中输入数据然后获取相应的结果数据。</p>
-<p><code>Core ML</code> 背后是对 <code>iOS</code> 的视觉识别 <code>Vision</code> 框架和 <code>Foundation</code> 中语义相关分析的 <code>API</code>。一般移动端的开发者可以使用相关的接口来获取相关人脸识别或者是文字的识别结果。</p>
-        
-          <a class="article-more-a" href="/2017/12/21/iOS 11 新特性/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/21/iOS 11 新特性/">详细 >></a>
         </p>
       
 

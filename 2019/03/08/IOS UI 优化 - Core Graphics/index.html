@@ -9,24 +9,28 @@
   <title>iOS UI 优化 - Core Graphics | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
-Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 实现，这里仅仅展示 Core Graphics 实现的基础实现架构。
+
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UI 优化 - Core Graphics">
 <meta property="og:url" content="http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
-Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 实现，这里仅仅展示 Core Graphics 实现的基础实现架构。
+
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-05T10:14:38.586Z">
+<meta property="og:updated_time" content="2019-07-08T18:14:50.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
 <meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
-Core Graphics 在 iOS 整个架构的层次结构可以参考上篇 Core Animation 实现探索中的 Core Animation 在 APP 结构作用 图片。
+Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 实现，这里仅仅展示 Core Graphics 实现的基础实现架构。
+
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -201,7 +205,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Graphics-实现探索"><a href="#Core-Graphics-实现探索" class="headerlink" title="Core Graphics 实现探索"></a>Core Graphics 实现探索</h1><p>又是一个常用但是不知怎么开篇博文。🤔🤔🤔</p>
-<p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以参考上篇 <code>Core Animation</code> 实现探索中的 <a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">Core Animation 在 APP 结构作用</a> 图片。</p>
+<p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以和上篇 <code>Core Animation</code> 实现，这里仅仅展示 <code>Core Graphics</code> 实现的基础实现架构。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Graphics.png"></p>
 <p>在讲解 <code>Core Graphics</code> 之前还是按照小编的🍉惯，对该框架 <code>API</code> 的接口进行整理。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
 <a id="more"></a>

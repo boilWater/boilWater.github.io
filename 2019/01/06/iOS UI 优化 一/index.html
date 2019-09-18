@@ -18,14 +18,16 @@
 <meta property="og:description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
 最后分">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-c39a990fda4aa0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-05T17:03:59.701Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-df9bbf81678c6a58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-08T17:48:14.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - 总纲">
 <meta name="twitter:description" content="iOS UI 优化博文大纲2019 年开年第一篇博文，今天先起个头。
 今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 Core Animation 框架总结以及实现方式上讲解，然后从 Core Graphics 和 Core Iamge 在绘制层面三者如何把 UIKit 控件如何实现绘制交由 OpenGL ES | Metal 来实现每一帧绘制。
 最后分">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-c39a990fda4aa0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -202,6 +204,7 @@ var _hmt = _hmt || [];
         <h1 id="iOS-UI-优化博文大纲"><a href="#iOS-UI-优化博文大纲" class="headerlink" title="iOS UI 优化博文大纲"></a>iOS UI 优化博文大纲</h1><p>2019 年开年第一篇博文，今天先起个头。</p>
 <p>今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 <code>Core Animation</code> 框架总结以及实现方式上讲解，然后从 <code>Core Graphics</code> 和 <code>Core Iamge</code> 在绘制层面三者如何把 <code>UIKit</code> 控件如何实现绘制交由 <code>OpenGL ES</code> | <code>Metal</code> 来实现每一帧绘制。</p>
 <p>最后分析 <code>FB</code> 开源的框架 <code>ASDK</code> 和 <code>YYKit</code> 实现 <code>UI</code> 优化方式，对 <code>Core Text</code> 进行最后封装来结束 <code>UI</code> 专题。</p>
+<h2 id="iOS-UI-架构图"><a href="#iOS-UI-架构图" class="headerlink" title="iOS UI 架构图"></a>iOS UI 架构图</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-c39a990fda4aa0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS UI Strcture.png"></p>
 <h2 id="Core-Animation-大纲"><a href="#Core-Animation-大纲" class="headerlink" title="Core Animation 大纲"></a>Core Animation 大纲</h2><table>
 <thead>
 <tr>
@@ -240,7 +243,27 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h2 id="Core-Text"><a href="#Core-Text" class="headerlink" title="Core Text"></a>Core Text</h2><blockquote>
+<h2 id="Core-Text-大纲"><a href="#Core-Text-大纲" class="headerlink" title="Core Text 大纲"></a>Core Text 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-4ace47c5dff6e0f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external"><code>Core Text API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-9f0af182b0f5d5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">1、APP 结构层次</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 作为基于 <code>Core Graphics</code> 封装实现，是 <code>Apple</code> 基础库中唯一一个处理字体绘制模块。<strong>b、</strong>  在 <code>iOS 7</code> 之后在此基础之上实现的 <code>Text Kit</code> 实现跨 <code>UIKit</code> 和 <code>AppKit</code> 来作为文本绘制。</td>
+</tr>
+<tr>
+<td><a href="https://www.jianshu.com/p/684e2a323620" target="_blank" rel="external">2、作用</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 通过以 <code>Core Text</code> 为基础实现文字绘制 <code>Text Kit</code> 来实现富文本绘制，展示丰富多彩的文字效果。<strong>b、</strong> 提供后台绘制能力，在实际绘制过程中可以放在 <code>Background Thread</code> 来实现绘制工作。<strong>c、</strong> 在实现中可以通过 <code>CTRunDelegate</code> 来设置 <code>CTRun</code> 来实现图文混排来时更加丰富的效果。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Text Kit 实现逻辑</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-df9bbf81678c6a58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Text Kit.png"></p>
+<blockquote>
 <p>同时也会对本文进行在每一博文更新！！！</p>
 </blockquote>
 <a id="more"></a>
