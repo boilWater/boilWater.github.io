@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-20T13:20:29.079Z</updated>
+  <updated>2020-05-20T14:41:54.007Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://yoursite.com/2019/10/09/iOS%20XNU%20-%20%E8%BF%9B%E7%A8%8B%E5%8F%8A%20Mach-O%20%E6%A0%BC%E5%BC%8F/"/>
     <id>http://yoursite.com/2019/10/09/iOS XNU - 进程及 Mach-O 格式/</id>
     <published>2019-10-08T17:09:02.404Z</published>
-    <updated>2020-05-20T13:20:29.079Z</updated>
+    <updated>2020-05-20T14:41:54.007Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
 &lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;amp;token=82c790db-352a-4266-aee2-60679c3d81d7&quot; alt=&quot;process-lifecycle.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;创建（SIDL）&quot;&gt;&lt;a href=&quot;#创建（SIDL）&quot; class=&quot;headerlink&quot; title=&quot;创建（SIDL）&quot;&gt;&lt;/a&gt;创建（SIDL）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 这个状态是被父进程刚刚 &lt;code&gt;Fork&lt;/code&gt; 创建生成一个唯一的 &lt;code&gt;PID&lt;/code&gt;，处于一个临时空闲状态。此时让然被称为：&lt;strong&gt;“正在初始化”&lt;/strong&gt;，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。&lt;br&gt;实现处理完成只有进程可以执行，同时不会返回 &lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 状态。&lt;strong&gt;相当与用户在手机屏幕点击 &lt;code&gt;ICON&lt;/code&gt; 按钮后执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;运行（SRUN）&quot;&gt;&lt;a href=&quot;#运行（SRUN）&quot; class=&quot;headerlink&quot; title=&quot;运行（SRUN）&quot;&gt;&lt;/a&gt;运行（SRUN）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SRUN&lt;/code&gt;&lt;/strong&gt; 如果在进一步来进行细分可以分为两种：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;(1)可运行状态：当一个进程被添加到运行队列在等待时期，但是因为 &lt;code&gt;CPU&lt;/code&gt; 忙于运行其他的 &lt;code&gt;App&lt;/code&gt; 此时还没有加载改进程的寄存器时 &lt;strong&gt;既短暂状态&lt;/strong&gt;。&lt;br&gt;(2)运行状态：当 &lt;code&gt;CPU&lt;/code&gt; 从运行队列中开始执行进程的寄存器，改 &lt;code&gt;App&lt;/code&gt; 也就处于运行转台。&lt;/p&gt;
@@ -185,7 +186,10 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 
+      &lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
+&lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;amp;token=82c790db-352a-4266-aee2-60679c3d81d7&quot; alt=&quot;process-lifecycle.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建（SIDL）&quot;&gt;&lt;a href=&quot;#创建（SIDL）&quot; class=&quot;headerlink&quot; title=&quot;创建（SIDL）&quot;&gt;&lt;/a&gt;创建（SIDL）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 这个状态是被父进程刚刚 &lt;code&gt;Fork&lt;/code&gt; 创建生成一个唯一的 &lt;code&gt;PID&lt;/code&gt;，处于一个临时空闲状态。此时让然被称为：&lt;strong&gt;“正在初始化”&lt;/strong&gt;，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。&lt;br&gt;实现处理完成只有进程可以执行，同时不会返回 &lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 状态。&lt;strong&gt;相当与用户在手机屏幕点击 &lt;code&gt;ICON&lt;/code&gt; 按钮后执行。&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -201,12 +205,13 @@
     <link href="http://yoursite.com/2019/10/05/iOS%20XNU%20-%20Mach-O%20%E6%A0%BC%E5%BC%8F/"/>
     <id>http://yoursite.com/2019/10/05/iOS XNU - Mach-O 格式/</id>
     <published>2019-10-05T06:14:46.750Z</published>
-    <updated>2020-05-20T13:18:18.663Z</updated>
+    <updated>2020-05-20T14:43:07.166Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
 &lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;amp;token=82c790db-352a-4266-aee2-60679c3d81d7&quot; alt=&quot;process-lifecycle.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;创建（SIDL）&quot;&gt;&lt;a href=&quot;#创建（SIDL）&quot; class=&quot;headerlink&quot; title=&quot;创建（SIDL）&quot;&gt;&lt;/a&gt;创建（SIDL）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 这个状态是被父进程刚刚 &lt;code&gt;Fork&lt;/code&gt; 创建生成一个唯一的 &lt;code&gt;PID&lt;/code&gt;，处于一个临时空闲状态。此时让然被称为：&lt;strong&gt;“正在初始化”&lt;/strong&gt;，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。&lt;br&gt;实现处理完成只有进程可以执行，同时不会返回 &lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 状态。&lt;strong&gt;相当与用户在手机屏幕点击 &lt;code&gt;ICON&lt;/code&gt; 按钮后执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;运行（SRUN）&quot;&gt;&lt;a href=&quot;#运行（SRUN）&quot; class=&quot;headerlink&quot; title=&quot;运行（SRUN）&quot;&gt;&lt;/a&gt;运行（SRUN）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SRUN&lt;/code&gt;&lt;/strong&gt; 如果在进一步来进行细分可以分为两种：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;(1)可运行状态：当一个进程被添加到运行队列在等待时期，但是因为 &lt;code&gt;CPU&lt;/code&gt; 忙于运行其他的 &lt;code&gt;App&lt;/code&gt; 此时还没有加载改进程的寄存器时 &lt;strong&gt;既短暂状态&lt;/strong&gt;。&lt;br&gt;(2)运行状态：当 &lt;code&gt;CPU&lt;/code&gt; 从运行队列中开始执行进程的寄存器，改 &lt;code&gt;App&lt;/code&gt; 也就处于运行转台。&lt;/p&gt;
@@ -290,7 +295,10 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 
+      &lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
+&lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;amp;token=82c790db-352a-4266-aee2-60679c3d81d7&quot; alt=&quot;process-lifecycle.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建（SIDL）&quot;&gt;&lt;a href=&quot;#创建（SIDL）&quot; class=&quot;headerlink&quot; title=&quot;创建（SIDL）&quot;&gt;&lt;/a&gt;创建（SIDL）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 这个状态是被父进程刚刚 &lt;code&gt;Fork&lt;/code&gt; 创建生成一个唯一的 &lt;code&gt;PID&lt;/code&gt;，处于一个临时空闲状态。此时让然被称为：&lt;strong&gt;“正在初始化”&lt;/strong&gt;，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。&lt;br&gt;实现处理完成只有进程可以执行，同时不会返回 &lt;strong&gt;&lt;code&gt;SIDL&lt;/code&gt;&lt;/strong&gt; 状态。&lt;strong&gt;相当与用户在手机屏幕点击 &lt;code&gt;ICON&lt;/code&gt; 按钮后执行。&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -306,14 +314,14 @@
     <link href="http://yoursite.com/2019/10/04/iOS%20XNU%20-%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9E%8B/"/>
     <id>http://yoursite.com/2019/10/04/iOS XNU - 内存管理模型/</id>
     <published>2019-10-04T13:01:44.090Z</published>
-    <updated>2020-05-20T13:19:40.502Z</updated>
+    <updated>2020-05-20T14:41:47.859Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-内存管理模型&quot;&gt;&lt;a href=&quot;#iOS-XNU-内存管理模型&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 内存管理模型&quot;&gt;&lt;/a&gt;iOS XNU - 内存管理模型&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1DyEEUYr7kV6hskf%2F-M7k1_ydxPinnfXXdwkG%2F1877765-8da36eff2f60a243.png?alt=media&amp;amp;token=c4b48b2c-771b-4997-8e05-de0a27fa2a00&quot; alt=&quot;memory.png&quot;&gt;&lt;/p&gt;
-</content>
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;iOS-XNU-内存管理模型&quot;&gt;&lt;a href=&quot;#iOS-XNU-内存管理模型&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 内存管理模型&quot;&gt;&lt;/a&gt;iOS XNU - 内存管理模型&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://
+      &lt;h1 id=&quot;iOS-XNU-内存管理模型&quot;&gt;&lt;a href=&quot;#iOS-XNU-内存管理模型&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 内存管理模型&quot;&gt;&lt;/a&gt;iOS XNU - 内存管理模型&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1DyEEUYr7kV6hskf%2F-M7k1_ydxPinnfXXdwkG%2F1877765-8da36eff2f60a243.png?alt=media&amp;amp;token=c4b48b2c-771b-4997-8e05-de0a27fa2a00&quot; alt=&quot;memory.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -329,7 +337,7 @@
     <link href="http://yoursite.com/2019/10/04/iOS%20XNU%20%E5%86%85%E6%A0%B8/"/>
     <id>http://yoursite.com/2019/10/04/iOS XNU 内核/</id>
     <published>2019-10-04T11:47:23.226Z</published>
-    <updated>2020-05-20T13:17:19.793Z</updated>
+    <updated>2020-05-20T14:43:12.357Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-内核-XNU-总纲&quot;&gt;&lt;a href=&quot;#iOS-内核-XNU-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS 内核 XNU -总纲&quot;&gt;&lt;/a&gt;iOS 内核 XNU -总纲&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k3UdMuP01BQXu8CMh%2F-M7k4KoDhvrgVYdwi0Ko%2F1877765-08e5a7043383d728.png?alt=media&amp;amp;token=f2d71aea-77d8-439e-a82c-1a510e91c258&quot; alt=&quot;mach-structature.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;上面是 &lt;code&gt;XNU&lt;/code&gt; 内核在架构图，由上图我们可以看出 &lt;code&gt;XNU&lt;/code&gt; 包含：&lt;strong&gt;&lt;code&gt;Mach&lt;/code&gt; 微内核、&lt;code&gt;BSD&lt;/code&gt; 层、&lt;code&gt;libKern&lt;/code&gt; 和 &lt;code&gt;I/O Kit&lt;/code&gt;&lt;/strong&gt;。&lt;/p&gt;
@@ -789,7 +797,7 @@
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2020-05-20T13:13:45.244Z</updated>
+    <updated>2020-05-20T14:42:10.475Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以和上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现，这里仅仅展示 &lt;code&gt;Core Graphics&lt;/code&gt; 实现的基础实现架构。&lt;/p&gt;
@@ -989,7 +997,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2020-05-20T13:10:00.822Z</updated>
+    <updated>2020-05-20T14:42:45.774Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;小编回顾粗略的写完 19 年 想要写的系列博文中 &lt;code&gt;iOS UI&lt;/code&gt; 优化总纲中第一篇博文 &lt;code&gt;Core Animation&lt;/code&gt; 一直在想怎么样展示自己的理解，就先从我们熟知的 &lt;code&gt;Core Animation&lt;/code&gt; 在整个 &lt;code&gt;APP&lt;/code&gt; 提供架构方面来进行O对比。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k6-E548XUtcpJOExw%2F1877765-f0cb74a53c9ba8dc.png?alt=media&amp;amp;token=85da9e64-1e31-4e59-a392-e6346b786a2d&quot; alt=&quot;屏幕快照 2019-01-15 23.12.22.png&quot;&gt;&lt;/p&gt;
@@ -1251,7 +1259,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20%E4%B8%80/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 一/</id>
     <published>2019-01-06T12:23:44.435Z</published>
-    <updated>2020-05-20T13:10:56.397Z</updated>
+    <updated>2020-05-20T14:42:33.380Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-UI-优化博文大纲&quot;&gt;&lt;a href=&quot;#iOS-UI-优化博文大纲&quot; class=&quot;headerlink&quot; title=&quot;iOS UI 优化博文大纲&quot;&gt;&lt;/a&gt;iOS UI 优化博文大纲&lt;/h1&gt;&lt;p&gt;2019 年开年第一篇博文，今天先起个头。&lt;/p&gt;
 &lt;p&gt;今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 &lt;code&gt;Core Animation&lt;/code&gt; 框架总结以及实现方式上讲解，然后从 &lt;code&gt;Core Graphics&lt;/code&gt; 和 &lt;code&gt;Core Iamge&lt;/code&gt; 在绘制层面三者如何把 &lt;code&gt;UIKit&lt;/code&gt; 控件如何实现绘制交由 &lt;code&gt;OpenGL ES&lt;/code&gt; | &lt;code&gt;Metal&lt;/code&gt; 来实现每一帧绘制。&lt;/p&gt;
@@ -1275,6 +1283,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5GsNlbg6znTObpcw%2F1877765-5a0f1f734a47cb5d.png?alt=media&amp;amp;token=317a772c-48d6-4bc5-82a2-11e20bf16275&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Core-Graphics-大纲&quot;&gt;&lt;a href=&quot;#Core-Graphics-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 大纲&quot;&gt;&lt;/a&gt;Core Graphics 大纲&lt;/h2&gt;&lt;table&gt;
@@ -1317,9 +1326,6 @@
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5evvrWy4lYF4OTVl%2F1877765-df9bbf81678c6a58.png?alt=media&amp;amp;token=88f672d0-d2b2-47a9-84e7-30ea30f20bc0&quot; alt=&quot;Text Kit.png&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;blockquote&gt;
 &lt;p&gt;作者： JackJin Bai&lt;br&gt;第一次修改时间： 2019/1/6 20:37: 26&lt;br&gt;写于：广州市天河公园家里  &lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
@@ -1348,49 +1354,6 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5GsNlbg6znTObpcw%2F1877765-5a0f1f734a47cb5d.png?alt=media&amp;amp;token=317a772c-48d6-4bc5-82a2-11e20bf16275&quot; alt=&quot;Core Animation.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注：参考资料会在 &lt;a href=&quot;http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/&quot;&gt;iOS UI 优化 - Core Animation&lt;/a&gt; 最后给出：&lt;br&gt;在 &lt;code&gt;Core Animation&lt;/code&gt; 中可以看到在 &lt;code&gt;Application&lt;/code&gt; 中 &lt;code&gt;Handle Events&lt;/code&gt; 处理手势原理实际就是我们响应链处理过程。&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/&quot;&gt;响应链&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/&quot;&gt;iOS 空间绘制原理&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Core-Graphics-大纲&quot;&gt;&lt;a href=&quot;#Core-Graphics-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 大纲&quot;&gt;&lt;/a&gt;Core Graphics 大纲&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;&lt;code&gt;Core Graphics API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
-&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为基于 &lt;code&gt;Quartz&lt;/code&gt; 绘图引擎来实现在 &lt;code&gt;iOS&lt;/code&gt; 和 &lt;code&gt;OS X&lt;/code&gt; 2D 图形绘制功能，接口实现是基于 &lt;code&gt;C&lt;/code&gt; 不符合 &lt;code&gt;iOS&lt;/code&gt; 中 &lt;code&gt;ARC&lt;/code&gt; 内存管理方式需要进行手动管理其内存。 &lt;strong&gt;b、&lt;/strong&gt; 作为 &lt;code&gt;CA&lt;/code&gt; 层具体显示内容 &lt;code&gt;CATypeLayer&lt;/code&gt; 层实际绘制执行者和 &lt;code&gt;OpenGL&lt;/code&gt;或者&lt;code&gt;Metal&lt;/code&gt; 一起承担起界面具体的绘制工作。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&quot;http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/&quot;&gt;2、APP 作用&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Core Graphics&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过提供基础的 &lt;code&gt;API&lt;/code&gt; 接口来实现控件在 &lt;code&gt;UI&lt;/code&gt; 层面布局，色彩填充，画布绘制等具体的绘制实现。&lt;strong&gt;b、&lt;/strong&gt; 通过针对不同的绘制对象：&lt;code&gt;Window&lt;/code&gt;、&lt;code&gt;CALayer&lt;/code&gt;、&lt;code&gt;Bitmap&lt;/code&gt;、&lt;code&gt;PDF&lt;/code&gt; 和 &lt;code&gt;Printer&lt;/code&gt; 来生成对应的 &lt;code&gt;Context&lt;/code&gt; 实现具体内容的绘制生成可视化的效果展示在屏幕上。 &lt;strong&gt;c、&lt;/strong&gt; 在文本绘制的过程中我猜测使用 &lt;code&gt;PDF&lt;/code&gt; 文档解析的功能，为 &lt;code&gt;Core Text&lt;/code&gt; 提供实际的计算，&lt;strong&gt;依据 &lt;code&gt;Quartz&lt;/code&gt; 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&quot;Core-Text-大纲&quot;&gt;&lt;a href=&quot;#Core-Text-大纲&quot; class=&quot;headerlink&quot; title=&quot;Core Text 大纲&quot;&gt;&lt;/a&gt;Core Text 大纲&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-4ace47c5dff6e0f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;&lt;code&gt;Core Text API&lt;/code&gt;&lt;/a&gt;&lt;/th&gt;
-&lt;th&gt;层次 &amp;amp; 作用&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&quot;https://upload-images.jianshu.io/upload_images/1877765-9f0af182b0f5d5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;&gt;1、APP 结构层次&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Core Text&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 作为基于 &lt;code&gt;Core Graphics&lt;/code&gt; 封装实现，是 &lt;code&gt;Apple&lt;/code&gt; 基础库中唯一一个处理字体绘制模块。&lt;strong&gt;b、&lt;/strong&gt;  在 &lt;code&gt;iOS 7&lt;/code&gt; 之后在此基础之上实现的 &lt;code&gt;Text Kit&lt;/code&gt; 实现跨 &lt;code&gt;UIKit&lt;/code&gt; 和 &lt;code&gt;AppKit&lt;/code&gt; 来作为文本绘制。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&quot;https://www.jianshu.com/p/684e2a323620&quot;&gt;2、作用&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Core Text&lt;/code&gt; &lt;strong&gt;a、&lt;/strong&gt; 通过以 &lt;code&gt;Core Text&lt;/code&gt; 为基础实现文字绘制 &lt;code&gt;Text Kit&lt;/code&gt; 来实现富文本绘制，展示丰富多彩的文字效果。&lt;strong&gt;b、&lt;/strong&gt; 提供后台绘制能力，在实际绘制过程中可以放在 &lt;code&gt;Background Thread&lt;/code&gt; 来实现绘制工作。&lt;strong&gt;c、&lt;/strong&gt; 在实现中可以通过 &lt;code&gt;CTRunDelegate&lt;/code&gt; 来设置 &lt;code&gt;CTRun&lt;/code&gt; 来实现图文混排来时更加丰富的效果。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;Text Kit 实现逻辑&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5evvrWy4lYF4OTVl%2F1877765-df9bbf81678c6a58.png?alt=media&amp;amp;token=88f672d0-d2b2-47a9-84e7-30ea30f20bc0&quot; alt=&quot;Text Kit.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;同时也会对本文进行在每一博文更新！！！&lt;/p&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
@@ -1406,7 +1369,7 @@
     <link href="http://yoursite.com/2017/12/21/iOS%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     <id>http://yoursite.com/2017/12/21/iOS 11 新特性/</id>
     <published>2017-12-20T16:04:50.000Z</published>
-    <updated>2018-01-15T08:58:27.000Z</updated>
+    <updated>2020-05-20T14:13:10.931Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;iOS 11&lt;/code&gt; 的最新技术发布在 &lt;strong&gt;6月6号&lt;/strong&gt;，由于小编在工作上的原因只能在今天把 &lt;code&gt;iOS 11&lt;/code&gt;的相关信息整理出来对后面的开发便利以及在实际开发过程中可以更好的避免踩过的坑。&lt;/p&gt;
 &lt;h1 id=&quot;新增的框架&quot;&gt;&lt;a href=&quot;#新增的框架&quot; class=&quot;headerlink&quot; title=&quot;新增的框架&quot;&gt;&lt;/a&gt;新增的框架&lt;/h1&gt;&lt;p&gt;对于上一个版本总体来说新增加两个主要大的框架 &lt;code&gt;Core ML&lt;/code&gt; 和 &lt;code&gt;ARKit&lt;/code&gt;&lt;/p&gt;
@@ -1418,10 +1381,10 @@
 &lt;h1 id=&quot;新增的功能&quot;&gt;&lt;a href=&quot;#新增的功能&quot; class=&quot;headerlink&quot; title=&quot;新增的功能&quot;&gt;&lt;/a&gt;新增的功能&lt;/h1&gt;&lt;p&gt;&lt;code&gt;iOS 11&lt;/code&gt;除在框架外有所更新相关的内容，在功能的方面也做了些相关升级和更改。比如在网络方面、&lt;code&gt;Xcode 9&lt;/code&gt;、32 位处理器支持和 &lt;code&gt;WebKit&lt;/code&gt; 的特性等。&lt;/p&gt;
 &lt;h2 id=&quot;网络部分&quot;&gt;&lt;a href=&quot;#网络部分&quot; class=&quot;headerlink&quot; title=&quot;网络部分&quot;&gt;&lt;/a&gt;网络部分&lt;/h2&gt;&lt;h3 id=&quot;ECN-显示拥堵通知&quot;&gt;&lt;a href=&quot;#ECN-显示拥堵通知&quot; class=&quot;headerlink&quot; title=&quot;ECN (显示拥堵通知)&quot;&gt;&lt;/a&gt;ECN (显示拥堵通知)&lt;/h3&gt;&lt;p&gt;网络拥堵发生时因为发送方无法及时知晓网络情况，在发现丢包时就会不断的重新重发，间接导致网络会更加拥堵使网络情况更加糟糕。目前 &lt;code&gt;ECN&lt;/code&gt; 的出现就解决此问题， &lt;code&gt;ECN&lt;/code&gt; 作为 &lt;code&gt;TCP&lt;/code&gt; 和 &lt;code&gt;IP&lt;/code&gt; 的协议扩展，存在于 &lt;code&gt;IP&lt;/code&gt; 的头文件中 &lt;code&gt;1 bit&lt;/code&gt; 的拥塞值的状态值，是由接收方回复给发送方，发送方接受到此消息的请求后停止继续发送数据包，直到拥塞的状态停止才开始继续发送数据。&lt;/p&gt;
 &lt;p&gt;不过是实际情况中使用时 &lt;code&gt;ECN&lt;/code&gt; 需要结合客户端、服务端和网络端三个方面的支持，目前 &lt;code&gt;ECN&lt;/code&gt; 属于 &lt;code&gt;Linux&lt;/code&gt; 内核，只需要升级 &lt;code&gt;Linux&lt;/code&gt; 就可以获取支持，&lt;code&gt;Apple&lt;/code&gt; 给出了 &lt;code&gt;Server&lt;/code&gt; 对 &lt;code&gt;ECN&lt;/code&gt; 的支持率：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-f28899d2fc311282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2018-01-15 11.58.23.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mOO63qX6FEY0A5hoc%2F-M7mQD99k5UQeXBLWjBY%2F1877765-f28899d2fc311282.png?alt=media&amp;amp;token=01e3e1e8-1079-405e-9eef-037395176f58&quot; alt=&quot;屏幕快照 2018-01-15 11.58.23.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;客户端方面， &lt;code&gt;iOS 10.3&lt;/code&gt; 开始，有过半的通过 &lt;code&gt;wifi&lt;/code&gt; 和少量通过移动网络进行的 &lt;code&gt;TCP&lt;/code&gt; 连接已经打开了 &lt;code&gt;ECN&lt;/code&gt;，没有收到相关的问题报告。&lt;/p&gt;
 &lt;p&gt;下面是搜集的一些国家网络拥堵的数据：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b4f2f7bde92d7e13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2018-01-15 12.02.25.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mOO63qX6FEY0A5hoc%2F-M7mQA8Xr1CpcCnhc0Ny%2F1877765-b4f2f7bde92d7e13.png?alt=media&amp;amp;token=8036235c-f6c3-4d14-9bdf-21f1e88f134c&quot; alt=&quot;屏幕快照 2018-01-15 12.02.25.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;客户端从 &lt;code&gt;iOS 11&lt;/code&gt; 开始，所有 &lt;code&gt;TCP&lt;/code&gt; 请求都会支持 &lt;code&gt;EC&lt;/code&gt;N（全部 &lt;code&gt;Wifi&lt;/code&gt; 和部分白名单移动运营商）；服务端有 &lt;code&gt;74%&lt;/code&gt; 的网站支持了 &lt;code&gt;ECN&lt;/code&gt;，也会有越来越多的网络服务商开始支持 &lt;code&gt;ECN&lt;/code&gt; 来进一步提升用户体验；（服务商只需要在你的网络接入点支持 &lt;code&gt;ECN&lt;/code&gt; 即可）。&lt;/p&gt;
 &lt;p&gt;使用 &lt;code&gt;ECN&lt;/code&gt; 实现标记连接拥塞，可以更加高效：&lt;/p&gt;
 &lt;ul&gt;
@@ -1441,13 +1404,13 @@
 &lt;p&gt;&lt;strong&gt;参考资料：&lt;/strong&gt;   &lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ChenYilong/WebRTC/tree/master/WebRTC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《WebRTC在iOS端的实现》&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://geek.csdn.net/news/detail/201894?spm=5176.100239.blogcont221561.55.4cb1f06dZvDWv3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《苹果终于入伙 WebRTC，新一代移动 Web 应用爆发路上还有哪些坑？》&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;iOS-11-开发新特性-Xcode9-新特性&quot;&gt;&lt;a href=&quot;#iOS-11-开发新特性-Xcode9-新特性&quot; class=&quot;headerlink&quot; title=&quot;iOS 11 开发新特性 Xcode9 新特性&quot;&gt;&lt;/a&gt;&lt;code&gt;iOS 11&lt;/code&gt; 开发新特性 &lt;code&gt;Xcode9&lt;/code&gt; 新特性&lt;/h2&gt;&lt;h3 id=&quot;添加-GitHub-功能&quot;&gt;&lt;a href=&quot;#添加-GitHub-功能&quot; class=&quot;headerlink&quot; title=&quot;添加 GitHub 功能&quot;&gt;&lt;/a&gt;添加 &lt;code&gt;GitHub&lt;/code&gt; 功能&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;Xcode 9&lt;/code&gt; 引入了 &lt;code&gt;Github&lt;/code&gt; 源代码的管理，可以展示在开发过程中 &lt;code&gt;Branch&lt;/code&gt; 和 &lt;code&gt;Tag&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-86d87d764dc4bef1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2018-01-15 15.06.20.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mOO63qX6FEY0A5hoc%2F-M7mQ3gfbPo3Twa0ljBU%2F1877765-86d87d764dc4bef1.png?alt=media&amp;amp;token=f4373d11-7ca5-4281-91f2-56b20ff3b320&quot; alt=&quot;屏幕快照 2018-01-15 15.06.20.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;双击可以看出 &lt;code&gt;Commit&lt;/code&gt; 的具体内容：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-585e13685c4e651e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2018-01-15 15.12.03.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mOO63qX6FEY0A5hoc%2F-M7mQ6cz0sI4nZYPI7Ee%2F1877765-585e13685c4e651e.png?alt=media&amp;amp;token=67053f06-656c-4348-870f-ef0dd04db58d&quot; alt=&quot;屏幕快照 2018-01-15 15.12.03.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;可以直接查看本次具体提交的内容：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-00bf3028c1d92fc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2018-01-15 15.12.49.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;创建新的颜色-Asset-Catalog&quot;&gt;&lt;a href=&quot;#创建新的颜色-Asset-Catalog&quot; class=&quot;headerlink&quot; title=&quot;创建新的颜色 Asset Catalog&quot;&gt;&lt;/a&gt;创建新的颜色 &lt;code&gt;Asset Catalog&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;可以 zai &lt;code&gt;Asset Catalog&lt;/code&gt; 中使用颜色来创建图片，然后根据颜色填充来实现图片展示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws3.sinaimg.cn/large/006tKfTcgy1fjolad575yj30z50fe74h.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mOO63qX6FEY0A5hoc%2F-M7mPzCcsPcFEr1Jl-ef%2F1877765-00bf3028c1d92fc5.png?alt=media&amp;amp;token=4627a16f-8b34-468c-aa2d-959aec64390b&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;iOS-开发新特性-Tips&quot;&gt;&lt;a href=&quot;#iOS-开发新特性-Tips&quot; class=&quot;headerlink&quot; title=&quot;iOS 开发新特性 Tips&quot;&gt;&lt;/a&gt;&lt;code&gt;iOS 开发新特性 Tips&lt;/code&gt;&lt;/h2&gt;&lt;h3 id=&quot;DeviceCheck&quot;&gt;&lt;a href=&quot;#DeviceCheck&quot; class=&quot;headerlink&quot; title=&quot;DeviceCheck&quot;&gt;&lt;/a&gt;&lt;code&gt;DeviceCheck&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;DeviceCheck&lt;/code&gt; 允许开发者可以通过公司自己的服务器和 &lt;code&gt;Apple&lt;/code&gt; 服务器通讯，并为两个设备设置两个 &lt;code&gt;Bit&lt;/code&gt; 数据。&lt;/p&gt;
 &lt;p&gt;在设备上使用 &lt;code&gt;DeviceCheck API&lt;/code&gt; 来生成 &lt;code&gt;token&lt;/code&gt;，然后把此 &lt;code&gt;token&lt;/code&gt; 发送给公司的服务器，在由公司的服务器发送到 &lt;code&gt;Apple&lt;/code&gt; 的 &lt;code&gt;API&lt;/code&gt; 进行通讯，可以来做更新或者是查询该设备的值。根据这两个字节的数据可以用来追踪用户。&lt;/p&gt;
 &lt;p&gt;根据此功能，可以用在发欺诈的领域：&lt;/p&gt;
@@ -1485,7 +1448,7 @@
     <link href="http://yoursite.com/2017/11/20/WCDB%20%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E7%BB%8F/"/>
     <id>http://yoursite.com/2017/11/20/WCDB 学习使用心得经/</id>
     <published>2017-11-20T09:11:10.000Z</published>
-    <updated>2017-11-20T10:17:44.000Z</updated>
+    <updated>2020-05-20T13:50:02.357Z</updated>
     
     <content type="html">&lt;p&gt;之所以在关注到 &lt;code&gt;WCDB&lt;/code&gt; 是因为在新的一家公司重构数据库来解决胶水代码问题，换而言之在使用 &lt;code&gt;SQLite&lt;/code&gt; 数据中尽量减少 &lt;code&gt;SQL&lt;/code&gt; 中增、删、改和查语句的使用。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;WCDB&lt;/code&gt; 是腾讯微信开源在 2017/06/09 号开源的一种变种数据库，本质也是基于 &lt;code&gt;SQLite&lt;/code&gt; 。&lt;/p&gt;
@@ -1513,7 +1476,7 @@
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2017-11-22T16:15:24.000Z</updated>
+    <updated>2020-05-20T14:02:36.698Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
@@ -1527,7 +1490,7 @@
 &lt;p&gt;分别是：交叉连接、内连接和外连接。&lt;/p&gt;
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;amp;token=8e9c945c-71b6-49ef-93a8-351680080648&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1536,7 +1499,7 @@
 &lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-19 23.43.21.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mKD4HF6NUxNZWc0NQ%2F1877765-f591c5239159984c.png?alt=media&amp;amp;token=854901ef-8a68-44b9-9ed9-a0b73f7f8408&quot; alt=&quot;屏幕快照 2017-11-19 23.43.21.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;内连接-INNER-JION&quot;&gt;&lt;a href=&quot;#内连接-INNER-JION&quot; class=&quot;headerlink&quot; title=&quot;内连接(INNER JION)&quot;&gt;&lt;/a&gt;内连接(INNER JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;内连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。&lt;strong&gt;也是数据库多表查询的默认实现方式。&lt;/strong&gt;&lt;/p&gt;
@@ -1552,13 +1515,11 @@
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 INNER JION 方式查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName_two ON Condition_Expression;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 JION...USING 相等连接查询方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM tableName_one JION tableName_two USING(column_one, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//采用 NATURAL JION 自然连接查询方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM tableName_one NATURAL JION tableName_two;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.1&lt;/strong&gt;采用 &lt;code&gt;INNER JION&lt;/code&gt; 连表查询&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 00.10.57.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIEdRuPPmgF0yxQaS%2F1877765-0a55fba6da7b1789.png?alt=media&amp;amp;token=6bed4cf9-8530-4b61-8527-db4937878e92&quot; alt=&quot;屏幕快照 2017-11-20 00.10.57.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.2&lt;/strong&gt; 采用 &lt;code&gt;JION...USING()&lt;/code&gt; 连表查询&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-7685938dc35e7563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-22 22.05.44.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ0vBRyw0XILFvA9U%2F1877765-7685938dc35e7563.png?alt=media&amp;amp;token=515d3d32-de16-4443-99e8-bc277772f763&quot; alt=&quot;屏幕快照 2017-11-22 22.05.44.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.3&lt;/strong&gt; 采用 &lt;code&gt;NATURE&lt;/code&gt; 连表查询&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1d1d594962201b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-22 22.12.18.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIRU2U4mPo4Y54SWZ%2F1877765-1d1d594962201b69.png?alt=media&amp;amp;token=6d105abe-a2c5-4242-92e2-b5ac511b1d5b&quot; alt=&quot;屏幕快照 2017-11-22 22.12.18.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;三种查询方式特点小结&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;有上面连表查询实例可以看出：&lt;br&gt;&lt;strong&gt;&lt;code&gt;INNER JION&lt;/code&gt; &lt;/strong&gt; 在实现多条件查询过程中需要使用多个 Condations 情况，使用更加灵活可以有 &lt;code&gt;&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;&lt;/code&gt;、等&lt;br&gt;&lt;strong&gt;&lt;code&gt;JION...USING()&lt;/code&gt;&lt;/strong&gt; 在实现完全的等于的基础上可以实用，这样不需要写具体的 &lt;code&gt;=&lt;/code&gt; 语句&lt;br&gt;&lt;strong&gt;&lt;code&gt;NATURE&lt;/code&gt;&lt;/strong&gt;可以实现列的相等，但是使用场景是在表格中&lt;strong&gt;仅有一列是相等的&lt;/strong&gt;。&lt;/p&gt;
@@ -1595,7 +1556,7 @@
 &lt;p&gt;分别是：交叉连接、内连接和外连接。&lt;/p&gt;
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;amp;token=8e9c945c-71b6-49ef-93a8-351680080648&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1611,7 +1572,7 @@
     <link href="http://yoursite.com/2017/11/14/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     <id>http://yoursite.com/2017/11/14/SQLite 学习-基本知识/</id>
     <published>2017-11-14T12:24:13.000Z</published>
-    <updated>2017-11-22T16:15:20.000Z</updated>
+    <updated>2020-05-20T13:57:51.781Z</updated>
     
     <content type="html">&lt;p&gt;几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。&lt;/p&gt;
 &lt;h1 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;数据库&lt;/h1&gt;&lt;p&gt;小编在这里提出一个问题：为什么要使用数据库？&lt;/p&gt;
@@ -1631,24 +1592,24 @@
 &lt;p&gt;创建数据库的基本的语法是：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//数据库表格创建的基本的语法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE table_name(column_one type, column_two type, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//create table 表名(行名 当前行数据类型, ...);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;小编以公司为例在终端操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 20.16.10.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJpzXv-PL_T2Wv985%2F1877765-cf01782ef4981d1f.png?alt=media&amp;amp;token=d73ff224-f1f8-426a-a116-453c0bfbe63a&quot; alt=&quot;屏幕快照 2017-11-14 20.16.10.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小插曲&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(2.1)&lt;/strong&gt;数据库表格查询&lt;/p&gt;
 &lt;p&gt;数据库相关操作的语法：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//简单表格查询 -- 只列出表格名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.tables&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//详细表格查询 -- 列出表格名称和相关创建执行语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.schme&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在终端的基本操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.27.54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mInJqabmybB_QXhLx%2F1877765-547fdedc07179652.png?alt=media&amp;amp;token=32e2ebde-0ddf-48a5-9043-ff030f1e9800&quot; alt=&quot;屏幕快照 2017-11-14 21.27.54.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(3)&lt;/strong&gt;对表现有的列操作&lt;/p&gt;
 &lt;p&gt;现有表格中的列操作分为三种情况：新增列、删除已有的列和修改现有列的属性。&lt;/p&gt;
 &lt;p&gt;操作的基本语法结构：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//新增 基本的语法结构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name ADD column &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//删除 基本的语法结构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name DROP COLUMN column;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//修改列字段的属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ALTER TABLE table_name ALTER COLUMN column &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在终端的基本操作：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.1&lt;/strong&gt; 对数据表新增列&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.41.07.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ_c971YEoJBrtZN5%2F1877765-bc3c0b6014f5352e.png?alt=media&amp;amp;token=7beab7bf-3660-43e3-a8be-abd52eb43823&quot; alt=&quot;屏幕快照 2017-11-14 21.41.07.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.2&lt;/strong&gt; 对数据表删除列&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.51.55.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ5pOQbN8Nq1j7Eq3%2F1877765-20278094efeb67e7.png?alt=media&amp;amp;token=a7b532d7-6e66-4b0f-845f-3ab1e88c1503&quot; alt=&quot;屏幕快照 2017-11-14 21.51.55.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.3&lt;/strong&gt; 对数据修改相关列属性&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 21.55.28.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJtjru16g_3AVhanp%2F1877765-d9a5593f194d23af.png?alt=media&amp;amp;token=69e44cd1-2706-45cf-83f6-dd7f9538515e&quot; alt=&quot;屏幕快照 2017-11-14 21.55.28.png&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在上面的表格中可以看出在操作过程中 &lt;strong&gt;新增加的列成功&lt;/strong&gt;， 但在实现数据表删除和修改列的相关信息中失败。 小编找了下资料：&lt;code&gt;Sqlite3&lt;/code&gt; 值支持相关增加和重名民操作。 &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1663,7 +1624,7 @@
 &lt;p&gt;&lt;strong&gt;1.2 局部的参数选择插入&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//实现数据表数据的局部数据插入&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INSERT INTO table_name(column_one, column_two, ...) VALUES (param_one, param_two, ...);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;终端的实例操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 22.29.39.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJddKkB94vj73lav1%2F1877765-c274918e872d9441.png?alt=media&amp;amp;token=1ee98896-4a23-48ac-aa61-83cab13aac9a&quot; alt=&quot;屏幕快照 2017-11-14 22.29.39.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小插曲&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;由上面看出小编在查看数据输出进行相关格式化操作：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//在输出时包括行头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .header on&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .mode colum&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1674,7 +1635,7 @@
 &lt;p&gt;&lt;strong&gt;2.1 删除全部数据&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//删除数据库中的全部数据内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DELETE FROM table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;删除数据的实力操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.06.16.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&amp;amp;token=adf17ace-1004-4c36-8bbd-1153ecadbaf9&quot; alt=&quot;屏幕快照 2017-11-14 23.06.16.png&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;上面可以看出小编为了更好的展示数据 &lt;code&gt;DELETE&lt;/code&gt; 效果就在原来的基础又增加一条数据，更好展示删除过程中效果。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1682,7 +1643,7 @@
 &lt;p&gt;数据修改基本语法：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//数据修改的基本语法类型 condation 是数据修改条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UPDATE table_name SET column_one = value1, column_two = value2, ... WHERE condation;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;数据修改的实例操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.16.47.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&amp;amp;token=adf17ace-1004-4c36-8bbd-1153ecadbaf9&quot; alt=&quot;屏幕快照 2017-11-14 23.16.47.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(4)&lt;/strong&gt;查询数据&lt;/p&gt;
 &lt;p&gt;数据查询的基本操作基本分为两种：&lt;/p&gt;
 &lt;ul&gt;
@@ -1695,7 +1656,7 @@
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//**a.**查询所有的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT * FROM table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;b.&lt;/strong&gt;按条件查询数据  &lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//**b.**按条件查询数据 column1 是要查询列名 &amp;amp;condation 是要查询的条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column1, column2, ... FROM table_name WHERE condation;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-14 23.31.54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJkOlgheN_e6XJQWv%2F1877765-cdd0cd24fa746483.png?alt=media&amp;amp;token=e9ce7f74-4f92-4c91-8fee-e4918c0e335c&quot; alt=&quot;屏幕快照 2017-11-14 23.31.54.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;目前小编对 &lt;code&gt;SQLite&lt;/code&gt; 的基本操作博文到这里的，可以看出在多条件查询过程中操作失败的小案例。&lt;/p&gt;
 &lt;p&gt;后面会整理数据之间比较复杂的关系操作。&lt;/p&gt;
 &lt;p&gt;发布于：2017/11/14 23:34:40&lt;br&gt;地点：讯美科技广场 1 座 10 楼&lt;/p&gt;
@@ -1723,7 +1684,7 @@
     <link href="http://yoursite.com/2017/11/07/SQLite%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2017/11/07/SQLite 基本操作/</id>
     <published>2017-11-06T16:49:29.000Z</published>
-    <updated>2017-11-12T16:41:44.000Z</updated>
+    <updated>2020-05-20T13:49:56.210Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 学习总结&lt;/p&gt;
 &lt;h3 id=&quot;SQLite-的安装&quot;&gt;&lt;a href=&quot;#SQLite-的安装&quot; class=&quot;headerlink&quot; title=&quot;SQLite 的安装&quot;&gt;&lt;/a&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/h3&gt;&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
@@ -1738,21 +1699,21 @@
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE ClassRoom(RoomID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; perimary key, StudentNumber &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, Grade &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查询数据库创建是否成功：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .table &lt;span class=&quot;comment&quot;&gt;//终端输入语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ClassRoom&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果查询数据库细节：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema &lt;span class=&quot;comment&quot;&gt;//查询数据内容具体细节&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt; .schema&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE ClassRoom(RoomID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; perimary key, StudentNumber &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, Grade &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CREATE TABLE Person(StudentID &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, name &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, age &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, address &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;, sex &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sqlite&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0cbae91e21960869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.12.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mII5IdqyrlOFYjOMU%2F1877765-0cbae91e21960869.png?alt=media&amp;amp;token=083eb22e-2eda-4140-b6fd-a9b0f7a6d5db&quot; alt=&quot;屏幕快照 2017-11-09 00.47.12.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;（2）表格删除&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;drop table &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; exist Person;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在开始时对数据表格进行删除，得到下面的结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-823005bd8316d1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 00.47.24.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIvBnOwCP2NC4Mlfn%2F1877765-823005bd8316d1a9.png?alt=media&amp;amp;token=12dccc76-e91b-41e2-bef4-298189c24df0&quot; alt=&quot;屏幕快照 2017-11-09 00.47.24.png&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;经过小编翻看资料，原来是在创建数据库时只是创建表格。并没有创建数据 &lt;code&gt;Table&lt;/code&gt; 所放的数据库。而且在 &lt;code&gt;sqlite3&lt;/code&gt; 使用过程中每个语句后面的结尾需要添加 &lt;strong&gt;&lt;code&gt;;&lt;/code&gt;&lt;/strong&gt; 来结尾。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;下面👇是使用终端对表格进行删除的正确操作：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-d49a8edb2ff9f6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.38.41.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJxTOnlssvGkx8fL1%2F1877765-d49a8edb2ff9f6ec.png?alt=media&amp;amp;token=6c4ed0d0-2d77-4cca-ad92-f60d9e42cf77&quot; alt=&quot;屏幕快照 2017-11-09 09.38.41.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;（3）数据插入  &lt;/p&gt;
 &lt;p&gt;对创建好的数据库 &lt;code&gt;Table&lt;/code&gt;进行数据库的插入操作实现有两种：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//方式一&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;insert into table_name(colum1, colum2, ...) values (param1, param2, ...);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//方式二&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;insert into table_name values(param1, param2, ...);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-592676815750a18a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;1877765-0ee21d54775d5afa.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJC9PidgXM05Y8J6m%2F1877765-592676815750a18a.png?alt=media&amp;amp;token=bcd4b6e6-aacb-438d-9803-ef5a2d681c70&quot; alt=&quot;1877765-0ee21d54775d5afa.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;（4）数据增加&lt;br&gt;（5）数据修改&lt;br&gt;（6）数据查找  &lt;/p&gt;
 &lt;p&gt;在数据查找过程中我们比较常用的查找方式是：&lt;/p&gt;
 &lt;ul&gt;
@@ -1760,17 +1721,17 @@
 &lt;/ul&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取数据库中所有的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;select * from table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-a8d6824986b306b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.52.36.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJQws5Obv0rWd0K6q%2F1877765-a8d6824986b306b8.png?alt=media&amp;amp;token=989714c6-37ea-436e-b2c8-f418d6e57d9c&quot; alt=&quot;屏幕快照 2017-11-09 09.52.36.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在数据显示的过程中可以使数据清楚的罗列出来，具体实现：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.header on &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.mode colum&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;具体实例如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-82d28393caab51f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 09.56.02.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIj2ycA2aP2T-Uwog%2F1877765-82d28393caab51f8.png?alt=media&amp;amp;token=9404a492-5381-4052-b67a-0f12ad6b998b&quot; alt=&quot;屏幕快照 2017-11-09 09.56.02.png&quot;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;按条件查询数据&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-a5f1beaa1ce3c512.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;1877765-e896caf5ebdd870a.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-dac9d62e5bc97abf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;1877765-a6b05887d4902804.png&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;SQLite-表达式&quot;&gt;&lt;a href=&quot;#SQLite-表达式&quot; class=&quot;headerlink&quot; title=&quot;SQLite 表达式&quot;&gt;&lt;/a&gt;SQLite 表达式&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b9d54e53707bdc24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;屏幕快照 2017-11-09 10.05.51.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;amp;token=8e9c945c-71b6-49ef-93a8-351680080648&quot; alt=&quot;1877765-e896caf5ebdd870a.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mK25ZmQ_3G-dN8jv-%2F1877765-dac9d62e5bc97abf.png?alt=media&amp;amp;token=59d222d4-ced7-4a9f-8c60-4a8f927a3331&quot; alt=&quot;1877765-a6b05887d4902804.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SQLite-表达式&quot;&gt;&lt;a href=&quot;#SQLite-表达式&quot; class=&quot;headerlink&quot; title=&quot;SQLite 表达式&quot;&gt;&lt;/a&gt;SQLite 表达式&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJUzv9rblVWqIk-Gi%2F1877765-b9d54e53707bdc24.png?alt=media&amp;amp;token=e9a70c4a-d1bf-4f9d-9f45-bf977c594572&quot; alt=&quot;屏幕快照 2017-11-09 10.05.51.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;SQLite&lt;/code&gt; 索引的实现&lt;/p&gt;
 &lt;p&gt;版本提交时间：&lt;/p&gt;
 &lt;p&gt;第一次提交：11/7/2017 00:45:30&lt;br&gt;第二次提交：11/10/2017 00:19:35&lt;/p&gt;

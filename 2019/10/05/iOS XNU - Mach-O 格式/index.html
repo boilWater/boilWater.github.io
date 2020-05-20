@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&token=82c790db-352a-4266-aee2-60679c3d81d7">
 <meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&token=ed90d759-c48e-4306-9a3c-ced32ff741cb">
 <meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3">
-<meta property="og:updated_time" content="2020-05-20T13:18:18.663Z">
+<meta property="og:updated_time" content="2020-05-20T14:43:07.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS XNU - 内存管理模型">
 <meta name="twitter:description" content="iOS XNU - 进程及 Mach-O 格式本来小编想先把内存这块梳理下，但是联系到内存在 iOS 平台中也是 app 编译后的 Mach-O 可执行文件，所以就先把 OS 编译启动过程来讲述。
@@ -202,6 +202,7 @@ var _hmt = _hmt || [];
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
 <p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
+<a id="more"></a>
 <h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
 <blockquote>
 <p>(1)可运行状态：当一个进程被添加到运行队列在等待时期，但是因为 <code>CPU</code> 忙于运行其他的 <code>App</code> 此时还没有加载改进程的寄存器时 <strong>既短暂状态</strong>。<br>(2)运行状态：当 <code>CPU</code> 从运行队列中开始执行进程的寄存器，改 <code>App</code> 也就处于运行转台。</p>

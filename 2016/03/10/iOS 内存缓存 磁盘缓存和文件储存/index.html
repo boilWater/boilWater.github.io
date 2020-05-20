@@ -28,10 +28,10 @@
 公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。
 
 为什么采用缓存？下面小编">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f40f518bc2bd964e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0cf2e8e5f0b6a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-20T03:09:32.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV4E01C31yrFjld6B%2F1877765-c63b61b42ba635e6.png?alt=media&token=c6873f3f-981c-4f2e-abc1-8658b48a4aae">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV-BkHjtHnCLKiU7o%2F1877765-0cf2e8e5f0b6a871.png?alt=media&token=d5fbd688-4800-4ed2-b35b-8163ecba9f02">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV4E01C31yrFjld6B%2F1877765-c63b61b42ba635e6.png?alt=media&token=c6873f3f-981c-4f2e-abc1-8658b48a4aae">
+<meta property="og:updated_time" content="2020-05-20T14:38:42.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云相册-缓存知识简介">
 <meta name="twitter:description" content="刚进进入公司差不多一个月左右就被老大安排跟着老大做简拼中一个相册的模块：云相册。到目前为止历时近 5 个月时间模块的开发经过相关的测试也上线。   
@@ -42,7 +42,7 @@
 公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。
 
 为什么采用缓存？下面小编">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV4E01C31yrFjld6B%2F1877765-c63b61b42ba635e6.png?alt=media&token=c6873f3f-981c-4f2e-abc1-8658b48a4aae">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
 <p>公司原来把用户相册上传到自己的服务器上面。但是经过后台和我们老大民哥商量打算把相册保存在阿里云上。目前相册的基本功能都已经实现也经过相关的测试，但考虑到用户体验和节省流量情况下打算对上传照片进行缓存处理。</p>
 </blockquote>
 <h2 id="为什么采用缓存？"><a href="#为什么采用缓存？" class="headerlink" title="为什么采用缓存？"></a>为什么采用缓存？</h2><p>下面小编就把与相册图片展示的下载过程列出来：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c63b61b42ba635e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-19 20.43.55.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV4E01C31yrFjld6B%2F1877765-c63b61b42ba635e6.png?alt=media&amp;token=c6873f3f-981c-4f2e-abc1-8658b48a4aae" alt="屏幕快照 2017-09-19 20.43.55.png"></p>
 <a id="more"></a>
 <p><strong>上图我们看到图片在下载过程的流程图</strong></p>
 <blockquote>
@@ -362,7 +362,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><code>service</code> 服务实现实现串行访问</li>
 </ul>
-<p><strong>先一起细看一下，在一个服务中，并发的多个读写SQL一般是怎么执行的？</strong><br>如右图：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-f40f518bc2bd964e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png.jpeg"></p>
+<p><strong>先一起细看一下，在一个服务中，并发的多个读写SQL一般是怎么执行的？</strong><br>如右图：<br><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV-BkHjtHnCLKiU7o%2F1877765-0cf2e8e5f0b6a871.png?alt=media&amp;token=d5fbd688-4800-4ed2-b35b-8163ecba9f02" alt="3.png.jpeg"></p>
 <p>有上图可以看出 <code>service</code> 服务的上下游及服务内部详细展开，细节如下：   </p>
 <blockquote>
 <p>（1）<code>service</code> 的上游是多个业务应用，上游发起请求对同一个数据并发的进行读写操作，上例中并发进行了一个 <code>uid=1</code> 的余额修改（写）操作与 <code>uid=1</code> 的余额查询（读）操作；<br>（2）<code>service</code> 的下游是数据库 <code>DB</code>，假设只读写一个 <code>DB</code>;<br>（3）中间是服务层 <code>service</code>，它又分为了这么几个部分;<br>    （3.1）最上层是任务队列;<br>    （3.2）中间是工作线程，每个工作线程完成实际的工作任务，典型的工作任务是通过数据库连接池读写数据库;<br>    （3.3）最下层是数据库连接池，所有的SQL语句都是通过数据库连接池发往数据库去执行的。 </p>
@@ -372,7 +372,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>客户端（<code>client</code>）实现串行访问 </li>
 </ul>
-<p><strong>下图是应用层上下游及内部结构：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-0cf2e8e5f0b6a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p><strong>下图是应用层上下游及内部结构：</strong><br><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mTIVZCWINGzRD9t_R%2F-M7mV4E01C31yrFjld6B%2F1877765-c63b61b42ba635e6.png?alt=media&amp;token=c6873f3f-981c-4f2e-abc1-8658b48a4aae" alt="4.png"></p>
 <p>业务应用的上下游及服务内部详细展开，细节如下：</p>
 <blockquote>
 <p>（1）业务应用的上游不确定，可能是直接是 <code>http</code> 请求，可能也是一个服务的上游调用;<br>（2）业务应用的下游是多个服务 <code>service</code>;<br>（3）中间是业务应用，它分为了几个部分;<br>（3.1）最上层是任务队列，或许 <code>web-server</code> 例如: <code>tomcat</code> 帮我们干了这个事情了;<br>（3.2）中间是工作线程，或许 <code>web-server</code> 的工作线程或者 <code>cgi</code> 工作线程帮你干了线程分派这个事情。每个工作线程完成实际的业务任务，典型的工作任务是通过服务连接池进行 <code>RPC</code> 调用;<br>（3.3）最下层是服务连接池，所有的 <code>RPC</code> 调用都是通过服务连接池往下游服务去发包执行的。  </p>

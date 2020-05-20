@@ -32,13 +32,13 @@
 多表查询接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。
 在多表查询过程中需要用到的关键词是: join，而且在多表连接查询过程中有三种情况。
 分别是：交叉连接、内">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7685938dc35e7563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d1d594962201b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&token=8e9c945c-71b6-49ef-93a8-351680080648">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mKD4HF6NUxNZWc0NQ%2F1877765-f591c5239159984c.png?alt=media&token=854901ef-8a68-44b9-9ed9-a0b73f7f8408">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIEdRuPPmgF0yxQaS%2F1877765-0a55fba6da7b1789.png?alt=media&token=6bed4cf9-8530-4b61-8527-db4937878e92">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ0vBRyw0XILFvA9U%2F1877765-7685938dc35e7563.png?alt=media&token=515d3d32-de16-4443-99e8-bc277772f763">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIRU2U4mPo4Y54SWZ%2F1877765-1d1d594962201b69.png?alt=media&token=6d105abe-a2c5-4242-92e2-b5ac511b1d5b">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-22T16:15:24.000Z">
+<meta property="og:updated_time" content="2020-05-20T14:02:36.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 学习-多表查询">
 <meta name="twitter:description" content="前篇博文小编写了基本的 SQLite 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。
@@ -51,7 +51,7 @@
 多表查询接着上篇文章小编把数据库中查询使用的多表查询给大家做讲解。
 在多表查询过程中需要用到的关键词是: join，而且在多表连接查询过程中有三种情况。
 分别是：交叉连接、内">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&token=8e9c945c-71b6-49ef-93a8-351680080648">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
 <p>分别是：交叉连接、内连接和外连接。</p>
 <p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
 <p><strong>内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;token=8e9c945c-71b6-49ef-93a8-351680080648" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
 <a id="more"></a>
 <h3 id="交叉连接-CROSS-JION"><a href="#交叉连接-CROSS-JION" class="headerlink" title="交叉连接(CROSS JION)"></a>交叉连接(CROSS JION)</h3><p><strong>（1）</strong>交叉连接特点：</p>
 <blockquote>
@@ -246,7 +246,7 @@ var _hmt = _hmt || [];
 <p><strong>（2）</strong>使用格式：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;</span><br></pre></td></tr></table></figure>
 <p><strong>（3）</strong>操作实例：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d2f9875f3f82c169.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-19 23.43.21.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mKD4HF6NUxNZWc0NQ%2F1877765-f591c5239159984c.png?alt=media&amp;token=854901ef-8a68-44b9-9ed9-a0b73f7f8408" alt="屏幕快照 2017-11-19 23.43.21.png"></p>
 <h3 id="内连接-INNER-JION"><a href="#内连接-INNER-JION" class="headerlink" title="内连接(INNER JION)"></a>内连接(INNER JION)</h3><p><strong>（1）</strong>内连接特点：</p>
 <blockquote>
 <p>在内连接中可以实现根据相关的条件实现表中符合条件的数据两行进行匹配形成一个结果行。显示的数据内容没有交叉连接大。<strong>也是数据库多表查询的默认实现方式。</strong></p>
@@ -262,13 +262,11 @@ var _hmt = _hmt || [];
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//采用 INNER JION 方式查询</span></span><br><span class="line"><span class="comment">//SELECT 具体行 FROM 数据库1 INNER（可以省略）JOIN 数据库2 ON 数据行描述;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one INNER JION tableName_two ON Condition_Expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">//采用 JION...USING 相等连接查询方式</span></span><br><span class="line">SELECT * FROM tableName_one JION tableName_two USING(column_one, ...);</span><br><span class="line"></span><br><span class="line"><span class="comment">//采用 NATURAL JION 自然连接查询方式</span></span><br><span class="line">SELECT * FROM tableName_one NATURAL JION tableName_two;</span><br></pre></td></tr></table></figure>
 <p><strong>（3）</strong>操作实例：</p>
 <p><strong>3.1</strong>采用 <code>INNER JION</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0a55fba6da7b1789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 00.10.57.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIEdRuPPmgF0yxQaS%2F1877765-0a55fba6da7b1789.png?alt=media&amp;token=6bed4cf9-8530-4b61-8527-db4937878e92" alt="屏幕快照 2017-11-20 00.10.57.png"></p>
 <p><strong>3.2</strong> 采用 <code>JION...USING()</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7685938dc35e7563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-22 22.05.44.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ0vBRyw0XILFvA9U%2F1877765-7685938dc35e7563.png?alt=media&amp;token=515d3d32-de16-4443-99e8-bc277772f763" alt="屏幕快照 2017-11-22 22.05.44.png"></p>
 <p><strong>3.3</strong> 采用 <code>NATURE</code> 连表查询</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1d1d594962201b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-22 22.12.18.png"></p>
-<blockquote>
-</blockquote>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIRU2U4mPo4Y54SWZ%2F1877765-1d1d594962201b69.png?alt=media&amp;token=6d105abe-a2c5-4242-92e2-b5ac511b1d5b" alt="屏幕快照 2017-11-22 22.12.18.png"></p>
 <p><strong>三种查询方式特点小结</strong></p>
 <blockquote>
 <p>有上面连表查询实例可以看出：<br><strong><code>INNER JION</code> </strong> 在实现多条件查询过程中需要使用多个 Condations 情况，使用更加灵活可以有 <code>&gt;</code>、<code>&lt;</code>、等<br><strong><code>JION...USING()</code></strong> 在实现完全的等于的基础上可以实用，这样不需要写具体的 <code>=</code> 语句<br><strong><code>NATURE</code></strong>可以实现列的相等，但是使用场景是在表格中<strong>仅有一列是相等的</strong>。</p>

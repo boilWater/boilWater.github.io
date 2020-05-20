@@ -214,49 +214,6 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5GsNlbg6znTObpcw%2F1877765-5a0f1f734a47cb5d.png?alt=media&amp;token=317a772c-48d6-4bc5-82a2-11e20bf16275" alt="Core Animation.png"></p>
-<p>注：参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/">iOS UI 优化 - Core Animation</a> 最后给出：<br>在 <code>Core Animation</code> 中可以看到在 <code>Application</code> 中 <code>Handle Events</code> 处理手势原理实际就是我们响应链处理过程。<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/">iOS 空间绘制原理</a></p>
-<h2 id="Core-Graphics-大纲"><a href="#Core-Graphics-大纲" class="headerlink" title="Core Graphics 大纲"></a>Core Graphics 大纲</h2><table>
-<thead>
-<tr>
-<th><a href="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Graphics API</code></a></th>
-<th>层次 &amp; 作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
-<td><code>Core Graphics</code> <strong>a、</strong> 作为基于 <code>Quartz</code> 绘图引擎来实现在 <code>iOS</code> 和 <code>OS X</code> 2D 图形绘制功能，接口实现是基于 <code>C</code> 不符合 <code>iOS</code> 中 <code>ARC</code> 内存管理方式需要进行手动管理其内存。 <strong>b、</strong> 作为 <code>CA</code> 层具体显示内容 <code>CATypeLayer</code> 层实际绘制执行者和 <code>OpenGL</code>或者<code>Metal</code> 一起承担起界面具体的绘制工作。</td>
-</tr>
-<tr>
-<td><a href="http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/">2、APP 作用</a></td>
-<td><code>Core Graphics</code> <strong>a、</strong> 通过提供基础的 <code>API</code> 接口来实现控件在 <code>UI</code> 层面布局，色彩填充，画布绘制等具体的绘制实现。<strong>b、</strong> 通过针对不同的绘制对象：<code>Window</code>、<code>CALayer</code>、<code>Bitmap</code>、<code>PDF</code> 和 <code>Printer</code> 来生成对应的 <code>Context</code> 实现具体内容的绘制生成可视化的效果展示在屏幕上。 <strong>c、</strong> 在文本绘制的过程中我猜测使用 <code>PDF</code> 文档解析的功能，为 <code>Core Text</code> 提供实际的计算，<strong>依据 <code>Quartz</code> 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。</strong></td>
-</tr>
-</tbody>
-</table>
-<h2 id="Core-Text-大纲"><a href="#Core-Text-大纲" class="headerlink" title="Core Text 大纲"></a>Core Text 大纲</h2><table>
-<thead>
-<tr>
-<th><a href="https://upload-images.jianshu.io/upload_images/1877765-4ace47c5dff6e0f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Text API</code></a></th>
-<th>层次 &amp; 作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://upload-images.jianshu.io/upload_images/1877765-9f0af182b0f5d5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
-<td><code>Core Text</code> <strong>a、</strong> 作为基于 <code>Core Graphics</code> 封装实现，是 <code>Apple</code> 基础库中唯一一个处理字体绘制模块。<strong>b、</strong>  在 <code>iOS 7</code> 之后在此基础之上实现的 <code>Text Kit</code> 实现跨 <code>UIKit</code> 和 <code>AppKit</code> 来作为文本绘制。</td>
-</tr>
-<tr>
-<td><a href="https://www.jianshu.com/p/684e2a323620">2、作用</a></td>
-<td><code>Core Text</code> <strong>a、</strong> 通过以 <code>Core Text</code> 为基础实现文字绘制 <code>Text Kit</code> 来实现富文本绘制，展示丰富多彩的文字效果。<strong>b、</strong> 提供后台绘制能力，在实际绘制过程中可以放在 <code>Background Thread</code> 来实现绘制工作。<strong>c、</strong> 在实现中可以通过 <code>CTRunDelegate</code> 来设置 <code>CTRun</code> 来实现图文混排来时更加丰富的效果。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Text Kit 实现逻辑</strong></p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k5evvrWy4lYF4OTVl%2F1877765-df9bbf81678c6a58.png?alt=media&amp;token=88f672d0-d2b2-47a9-84e7-30ea30f20bc0" alt="Text Kit.png"></p>
-<blockquote>
-<p>同时也会对本文进行在每一博文更新！！！</p>
-</blockquote>
         
           <a class="article-more-a" href="/2019/01/06/iOS UI 优化 一/#more">more >></a>
         
@@ -505,7 +462,7 @@ var _hmt = _hmt || [];
 <p>分别是：交叉连接、内连接和外连接。</p>
 <p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
 <p><strong>内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-2dfc0cb76093a392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;token=8e9c945c-71b6-49ef-93a8-351680080648" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
         
           <a class="article-more-a" href="/2017/11/18/SQLite 学习-多表查询&运算&表达/#more">more >></a>
         

@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="上一篇博客关于云相册实现对上传图片后结合（内存缓存，SQLite3 和 文件储存结合的形式），本篇博客讲述多线程并发上传和下载图片的实现原理。
 【云相册实现架构图】">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-7398c27544a09b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-29T14:46:43.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mV9dAp4T_F8weqBQ3%2F-M7mWanQej3K_1casdyC%2F1877765-7398c27544a09b8e.png?alt=media&token=f16637c5-59b8-47a9-a70c-8afd99d9d0af">
+<meta property="og:updated_time" content="2020-05-20T14:39:56.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 云相册-图片上传下载处理">
 <meta name="twitter:description" content="上一篇博客关于云相册实现对上传图片后结合（内存缓存，SQLite3 和 文件储存结合的形式），本篇博客讲述多线程并发上传和下载图片的实现原理。
 【云相册实现架构图】">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-7398c27544a09b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mV9dAp4T_F8weqBQ3%2F-M7mWanQej3K_1casdyC%2F1877765-7398c27544a09b8e.png?alt=media&token=f16637c5-59b8-47a9-a70c-8afd99d9d0af">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -197,7 +197,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>上一篇博客关于云相册实现对上传图片后结合（内存缓存，<code>SQLite3</code> 和 文件储存结合的形式），本篇博客讲述多线程并发上传和下载图片的实现原理。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-7398c27544a09b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-09-29 12.35.48.png"><br>【云相册实现架构图】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mV9dAp4T_F8weqBQ3%2F-M7mWanQej3K_1casdyC%2F1877765-7398c27544a09b8e.png?alt=media&amp;token=f16637c5-59b8-47a9-a70c-8afd99d9d0af" alt="屏幕快照 2017-09-29 12.35.48.png"><br>【云相册实现架构图】</p>
 <a id="more"></a>
 <p>在图片上传下载图片过程中主要的实现函数有：<code>SLALiyunImageManager</code>、<code>SLALiYunUpDownLoader</code> 和 <code>SLALiYunUpDownOperation</code> 及对上传图片状态储存和下载图片的状态储存以及实现缓存。</p>
 <blockquote>

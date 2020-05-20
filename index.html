@@ -196,162 +196,9 @@ var _hmt = _hmt || [];
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
 <p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
-<h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
-<blockquote>
-<p>(1)可运行状态：当一个进程被添加到运行队列在等待时期，但是因为 <code>CPU</code> 忙于运行其他的 <code>App</code> 此时还没有加载改进程的寄存器时 <strong>既短暂状态</strong>。<br>(2)运行状态：当 <code>CPU</code> 从运行队列中开始执行进程的寄存器，改 <code>App</code> 也就处于运行转台。</p>
-</blockquote>
-<p><strong>在 <code>App</code>(进程) 在执行过程中时间片用完或者是被更高优先级的进程占用时，此时会由 运行转态加入到可以运行队列中变为可运行状态。</strong></p>
-<blockquote>
-<p><strong>在 <code>iOS</code> 中 <code>App</code> 启动的标志如下 == <code>SRUN</code> ：</strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面执行是在系统加载完 `Mach-O` 和 `dyld` 链接库之后执行 </span></span><br><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line"></span><br><span class="line">      func application(_ applicatxion: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">UIApplication</span>.LaunchOptionsKey: Any]?) -&gt; Bool &#123; &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//每次 `App` 第一次加载或者从后台 --&gt; 前台均会执行</span></span><br><span class="line">      func applicationDidBecomeActive(_ application: <span class="built_in">UIApplication</span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="睡眠（SSLEEP）"><a href="#睡眠（SSLEEP）" class="headerlink" title="睡眠（SSLEEP）"></a>睡眠（SSLEEP）</h3><p><strong><code>SSLEEP</code></strong> 在 <code>App</code> 执行过程中可能出现等待某一个资源或者是进行后台工作，这时进程就不要使用 <code>CPU</code> 甚至不用进入 <strong>可运行队列</strong> 而是进行睡眠。当再次获取改资源或者进行前台 <strong>通常会重新加入到可运行队列，并且当在当前运行队列之后。</strong></p>
-<p>这里睡眠状态也可以在结束信号时间来处理：</p>
-<blockquote>
-<p><strong><code>pid_suspend</code></strong> 和 <strong><code>pid_resume</code></strong> 可以实现 <code>App</code> 进行休眠和唤醒之间的切换。这个睡眠我们可以成为<strong>深度睡眠</strong>，这个操作是在我们说的 <code>Mach</code> 层面来实现的，可以玩限次来进行切换操作。<br><strong>在手机中我们采用按 <code>HOME</code> 键就是基础此来实现，App 睡眠状态。</strong></p>
-</blockquote>
-<p><strong>在应用程序从 <code>SRUN</code> 状态到我们所说的 <code>SSLEEP</code> 休眠状态过程中在 <code>iOS</code> 会执行如下操作：</strong></p>
-<blockquote>
-<p><strong>可以文件 <code>xxxx.plist</code> 设置 <code>UIApplicationExitsOnSuspend</code> || <code>Application does not run in background</code> 设置对应的属性 <code>true</code> || <code>false</code> 来设置进入后台设置，在 <code>App</code> 中按下 <code>Home</code> 键 == <code>SSLEEP</code>。</strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line">      <span class="comment">//下面是在运行期间点击 `Home` 键，`App` 进行后台</span></span><br><span class="line">      func applicationWillResignActive(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">      func applicationDidEnterBackground(_ application: <span class="built_in">UIApplication</span>) &#123; </span><br><span class="line">      <span class="comment">//此位置如果有需求可以实现延迟进入后台</span></span><br><span class="line">       &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//从后台进入运行状态 </span></span><br><span class="line">      func applicationWillEnterForeground(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">      func applicationDidBecomeActive(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&gt;</p>
-<h3 id="停止（SSTOP）"><a href="#停止（SSTOP）" class="headerlink" title="停止（SSTOP）"></a>停止（SSTOP）</h3><p><strong><code>SSTOP</code></strong> 这个状态是通过一个特殊的信号<strong><code>TSTOP</code> || <code>TOSTOP</code></strong>来时正在进行的 <code>App</code> 停止运行，使程序来处在 <strong>深度睡眠状态</strong>。可以通过信号 <strong><code>CONT</code></strong> 来切为可运行状态来重新被调度。 </p>
-<h3 id="退出ing（SZONE）"><a href="#退出ing（SZONE）" class="headerlink" title="退出ing（SZONE）"></a>退出ing（SZONE）</h3><p>在程序执行完之后运行 <code>exit()</code> 来对程序进行退出。</p>
-<blockquote>
-<p><strong><code>iOS</code> 中程序的关闭 == <code>SZONE</code></strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序在关闭时 `iOS` 的函数调用 </span></span><br><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line">      func applicationWillTerminate(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="终止（Dead）"><a href="#终止（Dead）" class="headerlink" title="终止（Dead）"></a>终止（Dead）</h3><p>在程序退出之后，也就是会终止该进程所有线程。在此之前会极端的时间出现一个僵尸状态。</p>
-<blockquote>
-<p><strong>僵尸状态：</strong> 进程的空壳，占用的资源全部释放，只是对应的 <code>PID</code> 还在占用。如果父类进行没预释放就交由父类线程，如果释放就交给其祖先进程（<code>PID</code> = 1） 可以理解为操作系统来进行收养。</p>
-</blockquote>
-<h2 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h2><p>特殊文件在内存中加载执行就是我们所见到的进程，执行过程中文件中会有一个签名来表明当前文件是否有效：“魔数”。<br>下面给出 <code>OS X</code> 中对应的魔数和可执行文件类型：</p>
-<table>
-<thead>
-<tr>
-<th><strong>执行格式</strong></th>
-<th>魔数</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>通用二进制格式</strong></td>
-<td><code>0xcafebabess</code>（小尾顺序）   <code>0xbebafeca</code>（大尾顺序）</td>
-<td>包含多种架构的二进制格式，目前只在 <code>OS X</code> 使用。 目前我们见过一些 <code>Framework</code> 的库可以在 <code>Mac</code> 的虚拟机上运行及支持 <code>Intel</code> 的 <code>i386</code>等，同时也支持移动端的 <code>ARM</code> 的 32 位和 64 位高通处理器。<strong>包体偏大。</strong></td>
-</tr>
-<tr>
-<td><strong><code>Mach-O</code></strong></td>
-<td><code>0xfeedface</code>（32位） <code>0xfeedfacf</code>（64位）</td>
-<td><code>OS X</code> 原生二进制。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>下面给出在 <code>Fat</code>（通用二进制格式） VS <code>Mach</code> 格式头文件：</strong></p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&amp;token=ed90d759-c48e-4306-9a3c-ced32ff741cb" alt="fat-mach-header-info.png"></p>
-<h3 id="胖二进制（Fat）"><a href="#胖二进制（Fat）" class="headerlink" title="胖二进制（Fat）"></a>胖二进制（Fat）</h3><p><strong><code>fat_headers</code></strong></p>
-<blockquote>
-<p><code>magic</code>：固定值在上面给出 <code>0xcafebabe</code>，来表示通用二进制文件；<br><code>nfa_arch</code>：当前通用二进制包含的架构数目。 </p>
-</blockquote>
-<p><strong><code>fat_arch</code></strong></p>
-<blockquote>
-<p><code>cputype</code>：定义的 <code>CPU</code> 类型；<br><code>cpusubtype</code>：定义的机器标识符；<br><code>offset</code>：架构的二进制代码在整个通用二进制文件中的偏移量；<br><code>magic</code>：内层二进制代码大小；<br><code>magic</code>：对其页边界（4k），表示 2 幂函数。</p>
-</blockquote>
-<p>在通用二进制代码加载执行时，<code>Mach</code> 加载器会根据自己的架构加载适合架构代码。所以不相关的架构代码不用占用相关的内存，但是加载整个 <code>IPA</code> 包体会比较大。这里可以采用 <code>lipo</code> 来对二进制文件进行阉割，<a href=""><code>lipo</code>阉割文件</a><br><strong>通用二进制的镜像文件做了优化，对其页边界，内核只需加载第一页就可以读取文件。用这个文件当做目录加载合适的镜像。</strong></p>
-<h3 id="Mach-O-二进制格式"><a href="#Mach-O-二进制格式" class="headerlink" title="Mach-O 二进制格式"></a><code>Mach-O</code> 二进制格式</h3><p><strong><code>mach_header</code></strong></p>
-<blockquote>
-<p><code>magic</code>：<code>0xfeedface</code> 表示 32 位二进制，<code>0xfeedfacf</code> 表示 64 位二进制文件；<br><code>cputype</code> &amp; <code>cpusubtype</code>：<code>CPU</code> 类型和子类型；<br><code>filetype</code>：文件类型（可执行文件、库文件、核心转储文件、内核拓展等）；<br><code>ncmds</code> &amp; <code>sizeofncmds</code>：用于加载器的 “加载命令” 的条目和大小；<br><code>flags</code>：动态连接器的标志（<strong><code>dyld</code></strong>）；<br><code>Reserved</code>： 64 位预留。。。</p>
-</blockquote>
-<p><strong>我们在目前编译过程总采用 <code>Bitcode</code> 来进行编码实际就是生成 <code>Mach-O</code> 文件，然后在由 <code>Apple Server</code> 根据应用端的处理架构来在实现安装时生成对应架构的 <code>Mach-O</code>。</strong></p>
-<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&amp;token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3" alt="mach-o-loader.png"></p>
-<h3 id="内核加载进程"><a href="#内核加载进程" class="headerlink" title="内核加载进程"></a>内核加载进程</h3><p><strong>(1) 非配虚拟内存 <code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code></strong></p>
-<blockquote>
-<p><code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code> 指导内核如何设置新运行进程的内存空间，<strong><code>__PAGEZERO</code>段(空指针陷阱)、<code>__TEXT</code>段(程序代码)、<code>__DATA</code>段(程序数据) 和 <code>__LINKEDIT</code>段(连接器使用的字符和其他段)</strong> 直接从 <code>Mach-O</code> 二进制文件加载到内存中。   </p>
-</blockquote>
-<p><strong><code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code> 的参数：</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th><strong>用途</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>segment</code></td>
-<td><strong>load_segment</strong></td>
-</tr>
-<tr>
-<td><code>vmaddr</code></td>
-<td>所描述端的虚拟物理地址</td>
-</tr>
-<tr>
-<td><code>vmsize</code></td>
-<td>为这个段分配的虚拟内存大小</td>
-</tr>
-<tr>
-<td><code>fileoff</code></td>
-<td>段在该文件的偏移量</td>
-</tr>
-<tr>
-<td><code>filesize</code></td>
-<td>表示段在文本中占用的字节数</td>
-</tr>
-<tr>
-<td><code>maxport</code></td>
-<td>段的页面所需的最高内存保护，采用 8 进制表示</td>
-</tr>
-<tr>
-<td><code>initport</code></td>
-<td>段的页面最初始内存保护</td>
-</tr>
-<tr>
-<td><code>nsects</code></td>
-<td>段中的区 <code>section</code> 数量</td>
-</tr>
-<tr>
-<td><code>flags</code></td>
-<td>杂项标志位</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>对于上面每一段，将文件中相应的内容加载到内存中：<br>从偏移量为 <code>fileoff</code> 处加载 <code>filesize</code> 字节到虚拟内存地址 <code>vmaddr</code> 处的 <code>vmsize</code> 字节。每段的页面都是根据 <code>initport</code> 进行初始化，<code>initport</code> 指定如何通过 <strong>读/写</strong> 执行初始化页面的保护级别。</p>
-</blockquote>
-<p><strong>段进一步的分解区：</strong></p>
-<table>
-<thead>
-<tr>
-<th>区</th>
-<th><strong>用途</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>(2) 创建主线程 <code>LC_MAIN</code></strong></p>
-<p><strong><code>LC_MAIN：</code></strong>主要的作用就是设置程序的入口点地址和栈的大小，在设置的郭晨中除了程序的计数器之外所有寄存器都设置 <strong>0</strong>。 </p>
-<p><strong>(3) 代码签名 <code>LC_CODE_SIGATURE</code></strong></p>
-<p><strong><code>LC_CODE_SIGATURE：</code></strong> 包含了 <code>Mach-O</code> 二进制文件的签名，如果签名和代码本身不符合的话，<strong>内核就会立即给程序发送 <code>SIGKILL</code> 信号将程序杀掉。</strong>在后面苹果在 <code>iOS</code> 客户端采用 <code>entitlement</code> 机制后，代码签名就和沙盒机制绑定在一起，而且 <code>entitlement</code> 声明必须内嵌在 <code>Mach-O</code> 中并且通过签名盖章来设置执行安全敏感的操作时具有对应的权限。 </p>
-<p><strong>(4) 加密 <code>LC_ENCRYPTION_INFO</code></strong></p>
-<p><strong><code>LC_ENCRYPTION_INFO</code></strong>加密二进制文件，在 <code>iOS</code> 中普遍使用。</p>
-<p><strong>(5) <code>Dyld</code> 加载 <code>LC_LOAD_DYLINKER</code></strong></p>
-<p><strong><code>LC_LOAD_DYLINKER</code></strong> 调用 <code>Dyld</code>(/user/lib/dyld) 来加载 dyld 如下。</p>
-<h3 id="Dyld-加载进程"><a href="#Dyld-加载进程" class="headerlink" title="Dyld 加载进程"></a><code>Dyld</code> 加载进程</h3><p>在内核执行 <code>LC_DYLINKER</code> 来实现 <code>Dyld</code> 动态连接器来启动，然后就会把进程的控制权来交给 <code>Dyld</code>，因为内核会把进程的入口点设置为 <code>Dyld</code> 的入口点。<br>此时连接器 <code>Dyld</code> 就会在启动时因为进程采用动态链接在 <code>Mach-O</code> 镜像文件中 “空洞” 来进行填补。这个过程可以成为：<strong>符号绑定（<code>binding</code>）</strong>。</p>
-<p><strong>符号绑定具体实现过程</strong></p>
-<blockquote>
-<p>（1）二进制中使用外部定义的函数和符号，这时在文本段中会存在一个 <strong><code>__stubs</code>（桩）</strong>的区，在这个桩区存放本地未定义的占位符。<br>（2）编译器生成相关代码时创建符号桩区调用，链接其在运行时会解决桩区的调用。<br>（3）连接器解决的方式是在被调用的地址处防止一条 <code>JMP</code> 指令，<code>JMP</code> 指令会将控制权交给真实的函数体，于此同时不会对栈有任何修改，在调用的过程就像直接调用真实的函数。<br>（4）在实际链接过程中 <code>LC_LOAD_DYLB</code> 告诉连接器从哪里找到对应的符号，连接器<strong><code>采用递归的方式</code></strong>加载每一个指定的库，并且搜索对应匹配的字符。链接的库有一个符号表，符号表将这些符号名称和地址关联起来。符号表可以通过 <code>Mach-O</code> 目标文件地址可以通过 <code>LC_SYMTAB</code> 加载命令指定的 <code>symoff</code> 找到</p>
-</blockquote>
-<p><strong><code>dyld</code> 是一个用户态进程，是由苹果公司来进行维护。从内核的角度来看， <code>dyld</code> 是一个可插入的组件，也可以替换为第三方连接器。</strong></p>
-<h3 id="Dyld-共享库"><a href="#Dyld-共享库" class="headerlink" title="Dyld 共享库"></a><code>Dyld</code> 共享库</h3><p><code>Dyld</code> 的另一个机制就是共享库缓存，共享库缓存：一些库经过预先链接，然后保存在磁盘的一个文件中。采用共享库缓存的预加载模式，可以节省加载时间。在 <code>iOS 3.0</code> 后 <code>Apple</code> 就开始把一些基础库移到次缓存，比如我们在开发中常用到的 <code>UIKit</code>、<code>Foundation</code>、<code>Quartz</code>、<code>AVFoundation</code>、<code>StoreKit</code> 等。</p>
-<p><strong>参考资料:</strong><br>深入解析 <code>Mac OS X &amp; iOS 操作系统</code> 第四章<br><a href="https://satanwoo.github.io/2017/10/18/abort/" target="_blank" rel="external">iOS内存abort(Jetsam) 原理探究</a><br><a href="http://wereadteam.github.io/2017/03/13/Signature/" target="_blank" rel="external">iOS App 签名的原理</a>  </p>
-<p>最后一次修改：</p>
-<p>10月9日 02：09：45，广州天河🏠</p>
-
+        
+          <a class="article-more-a" href="/2019/10/09/iOS XNU - 进程及 Mach-O 格式/#more">more >></a>
+        
       
 
       
@@ -429,86 +276,9 @@ var _hmt = _hmt || [];
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
 <p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
-<h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
-<blockquote>
-<p>(1)可运行状态：当一个进程被添加到运行队列在等待时期，但是因为 <code>CPU</code> 忙于运行其他的 <code>App</code> 此时还没有加载改进程的寄存器时 <strong>既短暂状态</strong>。<br>(2)运行状态：当 <code>CPU</code> 从运行队列中开始执行进程的寄存器，改 <code>App</code> 也就处于运行转台。</p>
-</blockquote>
-<p><strong>在 <code>App</code>(进程) 在执行过程中时间片用完或者是被更高优先级的进程占用时，此时会由 运行转态加入到可以运行队列中变为可运行状态。</strong></p>
-<blockquote>
-<p><strong>在 <code>iOS</code> 中 <code>App</code> 启动的标志如下 == <code>SRUN</code> ：</strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面执行是在系统加载完 `Mach-O` 和 `dyld` 链接库之后执行 </span></span><br><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line"></span><br><span class="line">      func application(_ applicatxion: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">UIApplication</span>.LaunchOptionsKey: Any]?) -&gt; Bool &#123; &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//每次 `App` 第一次加载或者从后台 --&gt; 前台均会执行</span></span><br><span class="line">      func applicationDidBecomeActive(_ application: <span class="built_in">UIApplication</span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="睡眠（SSLEEP）"><a href="#睡眠（SSLEEP）" class="headerlink" title="睡眠（SSLEEP）"></a>睡眠（SSLEEP）</h3><p><strong><code>SSLEEP</code></strong> 在 <code>App</code> 执行过程中可能出现等待某一个资源或者是进行后台工作，这时进程就不要使用 <code>CPU</code> 甚至不用进入 <strong>可运行队列</strong> 而是进行睡眠。当再次获取改资源或者进行前台 <strong>通常会重新加入到可运行队列，并且当在当前运行队列之后。</strong></p>
-<p>这里睡眠状态也可以在结束信号时间来处理：</p>
-<blockquote>
-<p><strong><code>pid_suspend</code></strong> 和 <strong><code>pid_resume</code></strong> 可以实现 <code>App</code> 进行休眠和唤醒之间的切换。这个睡眠我们可以成为<strong>深度睡眠</strong>，这个操作是在我们说的 <code>Mach</code> 层面来实现的，可以玩限次来进行切换操作。<br><strong>在手机中我们采用按 <code>HOME</code> 键就是基础此来实现，App 睡眠状态。</strong></p>
-</blockquote>
-<p><strong>在应用程序从 <code>SRUN</code> 状态到我们所说的 <code>SSLEEP</code> 休眠状态过程中在 <code>iOS</code> 会执行如下操作：</strong></p>
-<blockquote>
-<p><strong>可以文件 <code>xxxx.plist</code> 设置 <code>UIApplicationExitsOnSuspend</code> || <code>Application does not run in background</code> 设置对应的属性 <code>true</code> || <code>false</code> 来设置进入后台设置，在 <code>App</code> 中按下 <code>Home</code> 键 == <code>SSLEEP</code>。</strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line">      <span class="comment">//下面是在运行期间点击 `Home` 键，`App` 进行后台</span></span><br><span class="line">      func applicationWillResignActive(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">      func applicationDidEnterBackground(_ application: <span class="built_in">UIApplication</span>) &#123; </span><br><span class="line">      <span class="comment">//此位置如果有需求可以实现延迟进入后台</span></span><br><span class="line">       &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//从后台进入运行状态 </span></span><br><span class="line">      func applicationWillEnterForeground(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">      func applicationDidBecomeActive(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&gt;</p>
-<h3 id="停止（SSTOP）"><a href="#停止（SSTOP）" class="headerlink" title="停止（SSTOP）"></a>停止（SSTOP）</h3><p><strong><code>SSTOP</code></strong> 这个状态是通过一个特殊的信号<strong><code>TSTOP</code> || <code>TOSTOP</code></strong>来时正在进行的 <code>App</code> 停止运行，使程序来处在 <strong>深度睡眠状态</strong>。可以通过信号 <strong><code>CONT</code></strong> 来切为可运行状态来重新被调度。 </p>
-<h3 id="退出ing（SZONE）"><a href="#退出ing（SZONE）" class="headerlink" title="退出ing（SZONE）"></a>退出ing（SZONE）</h3><p>在程序执行完之后运行 <code>exit()</code> 来对程序进行退出。</p>
-<blockquote>
-<p><strong><code>iOS</code> 中程序的关闭 == <code>SZONE</code></strong></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序在关闭时 `iOS` 的函数调用 </span></span><br><span class="line">class AppDelegate: <span class="built_in">UIResponder</span>, <span class="built_in">UIApplicationDelegate</span> &#123;</span><br><span class="line">      func applicationWillTerminate(_ application: <span class="built_in">UIApplication</span>) &#123;  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="终止（Dead）"><a href="#终止（Dead）" class="headerlink" title="终止（Dead）"></a>终止（Dead）</h3><p>在程序退出之后，也就是会终止该进程所有线程。在此之前会极端的时间出现一个僵尸状态。</p>
-<blockquote>
-<p><strong>僵尸状态：</strong> 进程的空壳，占用的资源全部释放，只是对应的 <code>PID</code> 还在占用。如果父类进行没预释放就交由父类线程，如果释放就交给其祖先进程（<code>PID</code> = 1） 可以理解为操作系统来进行收养。</p>
-</blockquote>
-<h2 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h2><p>特殊文件在内存中加载执行就是我们所见到的进程，执行过程中文件中会有一个签名来表明当前文件是否有效：“魔数”。<br>下面给出 <code>OS X</code> 中对应的魔数和可执行文件类型：</p>
-<table>
-<thead>
-<tr>
-<th><strong>执行格式</strong></th>
-<th>魔数</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>通用二进制格式</strong></td>
-<td><code>0xcafebabess</code>（小尾顺序）   <code>0xbebafeca</code>（大尾顺序）</td>
-<td>包含多种架构的二进制格式，目前只在 <code>OS X</code> 使用。 目前我们见过一些 <code>Framework</code> 的库可以在 <code>Mac</code> 的虚拟机上运行及支持 <code>Intel</code> 的 <code>i386</code>等，同时也支持移动端的 <code>ARM</code> 的 32 位和 64 位高通处理器。<strong>包体偏大。</strong></td>
-</tr>
-<tr>
-<td><strong><code>Mach-O</code></strong></td>
-<td><code>0xfeedface</code>（32位） <code>0xfeedfacf</code>（64位）</td>
-<td><code>OS X</code> 原生二进制。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>下面给出在 <code>Fat</code>（通用二进制格式） VS <code>Mach</code> 格式头文件：</strong></p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&amp;token=ed90d759-c48e-4306-9a3c-ced32ff741cb" alt="fat-mach-header-info.png"></p>
-<h3 id="胖二进制（Fat）"><a href="#胖二进制（Fat）" class="headerlink" title="胖二进制（Fat）"></a>胖二进制（Fat）</h3><p><strong><code>fat_headers</code></strong></p>
-<blockquote>
-<p><code>magic</code>：固定值在上面给出 <code>0xcafebabe</code>，来表示通用二进制文件；<br><code>nfa_arch</code>：当前通用二进制包含的架构数目。 </p>
-</blockquote>
-<p><strong><code>fat_arch</code></strong></p>
-<blockquote>
-<p><code>cputype</code>：定义的 <code>CPU</code> 类型；<br><code>cpusubtype</code>：定义的机器标识符；<br><code>offset</code>：架构的二进制代码在整个通用二进制文件中的偏移量；<br><code>magic</code>：内层二进制代码大小；<br><code>magic</code>：对其页边界（4k），表示 2 幂函数。</p>
-</blockquote>
-<p>在通用二进制代码加载执行时，<code>Mach</code> 加载器会根据自己的架构加载适合架构代码。所以不相关的架构代码不用占用相关的内存，但是加载整个 <code>IPA</code> 包体会比较大。这里可以采用 <code>lipo</code> 来对二进制文件进行阉割，<a href=""><code>lipo</code>阉割文件</a><br><strong>通用二进制的镜像文件做了优化，对其页边界，内核只需加载第一页就可以读取文件。用这个文件当做目录加载合适的镜像。</strong></p>
-<h3 id="Mach-O-二进制格式"><a href="#Mach-O-二进制格式" class="headerlink" title="Mach-O 二进制格式"></a><code>Mach-O</code> 二进制格式</h3><p><strong><code>mach_header</code></strong></p>
-<blockquote>
-<p><code>magic</code>：<code>0xfeedface</code> 表示 32 位二进制，<code>0xfeedfacf</code> 表示 64 位二进制文件；<br><code>cputype</code> &amp; <code>cpusubtype</code>：<code>CPU</code> 类型和子类型；<br><code>filetype</code>：文件类型（可执行文件、库文件、核心转储文件、内核拓展等）；<br><code>ncmds</code> &amp; <code>sizeofncmds</code>：用于加载器的 “加载命令” 的条目和大小；<br><code>flags</code>：动态连接器的标志（<strong><code>dyld</code></strong>）；<br><code>Reserved</code>： 64 位预留。。。</p>
-</blockquote>
-<p><strong>我们在目前编译过程总采用 <code>Bitcode</code> 来进行编码实际就是生成 <code>Mach-O</code> 文件，然后在由 <code>Apple Server</code> 根据应用端的处理架构来在实现安装时生成对应架构的 <code>Mach-O</code>。</strong></p>
-<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&amp;token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3" alt="mach-o-loader.png"></p>
-<h3 id="内核加载进程"><a href="#内核加载进程" class="headerlink" title="内核加载进程"></a>内核加载进程</h3><p><strong>（1）非配虚拟内存 <code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code></strong></p>
-<p><strong>(2) 创建主线程 <code>LC_MAIN</code></strong></p>
-<p><strong>(2) 代码签名 ``</strong></p>
-<h3 id="Dyld-加载进程"><a href="#Dyld-加载进程" class="headerlink" title="Dyld 加载进程"></a><code>Dyld</code> 加载进程</h3><p>在内核执行 <code>LC_DYLINKER</code> 来实现 <code>Dyld</code> 动态连接器来启动，然后就会把进程的控制权来交给 <code>Dyld</code>，因为内核会把进程的入口点设置为 <code>Dyld</code> 的入口点。<br>此时连接器 <code>Dyld</code> 就会在启动时因为进程采用动态链接在 <code>Mach-O</code> 镜像文件中 “空洞” 来进行填补。这个过程可以成为：<strong>符号绑定（<code>binding</code>）</strong>。</p>
-<p><strong>符号绑定具体实现过程</strong></p>
-<blockquote>
-<p>（1）二进制中使用外部定义的函数和符号，这时在文本段中会存在一个 <strong><code>__stubs</code>（桩）</strong>的区，在这个桩区存放本地未定义的占位符。<br>（2）编译器生成相关代码时创建符号桩区调用，链接其在运行时会解决桩区的调用。<br>（3）连接器解决的方式是在被调用的地址处防止一条 <code>JMP</code> 指令，<code>JMP</code> 指令会将控制权交给真实的函数体，于此同时不会对栈有任何修改，在调用的过程就像直接调用真实的函数。<br>（4）在实际链接过程中 <code>LC_LOAD_DYLB</code> 告诉连接器从哪里找到对应的符号，连接器<strong><code>采用递归的方式</code></strong>加载每一个指定的库，并且搜索对应匹配的字符。链接的库有一个符号表，符号表将这些符号名称和地址关联起来。符号表可以通过 <code>Mach-O</code> 目标文件地址可以通过 <code>LC_SYMTAB</code> 加载命令指定的 <code>symoff</code> 找到</p>
-</blockquote>
-<p><strong><code>dyld</code> 是一个用户态进程，是由苹果公司来进行维护。从内核的角度来看， <code>dyld</code> 是一个可插入的组件，也可以替换为第三方连接器。</strong></p>
-<h3 id="Dyld-共享库"><a href="#Dyld-共享库" class="headerlink" title="Dyld 共享库"></a><code>Dyld</code> 共享库</h3><p><code>Dyld</code> 的另一个机制就是共享库缓存，共享库缓存：一些库经过预先链接，然后保存在磁盘的一个文件中。采用共享库缓存的预加载模式，可以节省加载时间。在 <code>iOS 3.0</code> 后 <code>Apple</code> 就开始把一些基础库移到次缓存，比如我们在开发中常用到的 <code>UIKit</code>、<code>Foundation</code>、<code>Quartz</code>、<code>AVFoundation</code>、<code>StoreKit</code> 等。</p>
-
+        
+          <a class="article-more-a" href="/2019/10/05/iOS XNU - Mach-O 格式/#more">more >></a>
+        
       
 
       
@@ -583,7 +353,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="iOS-XNU-内存管理模型"><a href="#iOS-XNU-内存管理模型" class="headerlink" title="iOS XNU - 内存管理模型"></a>iOS XNU - 内存管理模型</h1><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1DyEEUYr7kV6hskf%2F-M7k1_ydxPinnfXXdwkG%2F1877765-8da36eff2f60a243.png?alt=media&amp;token=c4b48b2c-771b-4997-8e05-de0a27fa2a00" alt="memory.png"></p>
-
+        
+          <a class="article-more-a" href="/2019/10/04/iOS XNU - 内存管理模型/#more">more >></a>
+        
       
 
       

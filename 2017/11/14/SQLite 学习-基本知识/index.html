@@ -18,22 +18,22 @@
 <meta property="og:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
 数据库小编在这里提出一个问题：为什么要使用数据库？
 在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-22T16:15:20.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJpzXv-PL_T2Wv985%2F1877765-cf01782ef4981d1f.png?alt=media&token=d73ff224-f1f8-426a-a116-453c0bfbe63a">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mInJqabmybB_QXhLx%2F1877765-547fdedc07179652.png?alt=media&token=32e2ebde-0ddf-48a5-9043-ff030f1e9800">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ_c971YEoJBrtZN5%2F1877765-bc3c0b6014f5352e.png?alt=media&token=7beab7bf-3660-43e3-a8be-abd52eb43823">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ5pOQbN8Nq1j7Eq3%2F1877765-20278094efeb67e7.png?alt=media&token=a7b532d7-6e66-4b0f-845f-3ab1e88c1503">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJtjru16g_3AVhanp%2F1877765-d9a5593f194d23af.png?alt=media&token=69e44cd1-2706-45cf-83f6-dd7f9538515e">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJddKkB94vj73lav1%2F1877765-c274918e872d9441.png?alt=media&token=1ee98896-4a23-48ac-aa61-83cab13aac9a">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&token=adf17ace-1004-4c36-8bbd-1153ecadbaf9">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&token=adf17ace-1004-4c36-8bbd-1153ecadbaf9">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJkOlgheN_e6XJQWv%2F1877765-cdd0cd24fa746483.png?alt=media&token=e9ce7f74-4f92-4c91-8fee-e4918c0e335c">
+<meta property="og:updated_time" content="2020-05-20T13:57:51.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 学习-基础知识">
 <meta name="twitter:description" content="几天得闲，上周一想把数据库相关知识整理一份当做在看到数据库后续，但是一直都在看公司的项目重构工作。今天终于把相关的技术问题解决，打算重新整理一份新知识点。
 数据库小编在这里提出一个问题：为什么要使用数据库？
 在系统编译或者运行期间同时使用内存或者相关变量储存在堆中可以实现相关数据保存。但是在占用的内存或者是堆中的相关内容在程序 KILL 之后，相关的数据也会被系统回收。我们为了保存相关的数据实现永">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJpzXv-PL_T2Wv985%2F1877765-cf01782ef4981d1f.png?alt=media&token=d73ff224-f1f8-426a-a116-453c0bfbe63a">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -225,24 +225,24 @@ var _hmt = _hmt || [];
 <p>创建数据库的基本的语法是：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库表格创建的基本的语法</span></span><br><span class="line">CREATE TABLE table_name(column_one type, column_two type, ...);</span><br><span class="line"></span><br><span class="line"><span class="comment">//create table 表名(行名 当前行数据类型, ...);</span></span><br></pre></td></tr></table></figure>
 <p>小编以公司为例在终端操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cf01782ef4981d1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 20.16.10.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJpzXv-PL_T2Wv985%2F1877765-cf01782ef4981d1f.png?alt=media&amp;token=d73ff224-f1f8-426a-a116-453c0bfbe63a" alt="屏幕快照 2017-11-14 20.16.10.png"></p>
 <p><strong>小插曲</strong></p>
 <p><strong>(2.1)</strong>数据库表格查询</p>
 <p>数据库相关操作的语法：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单表格查询 -- 只列出表格名称</span></span><br><span class="line">.tables</span><br><span class="line"></span><br><span class="line"><span class="comment">//详细表格查询 -- 列出表格名称和相关创建执行语句</span></span><br><span class="line">.schme</span><br></pre></td></tr></table></figure>
 <p>在终端的基本操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-547fdedc07179652.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.27.54.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mInJqabmybB_QXhLx%2F1877765-547fdedc07179652.png?alt=media&amp;token=32e2ebde-0ddf-48a5-9043-ff030f1e9800" alt="屏幕快照 2017-11-14 21.27.54.png"></p>
 <p><strong>(3)</strong>对表现有的列操作</p>
 <p>现有表格中的列操作分为三种情况：新增列、删除已有的列和修改现有列的属性。</p>
 <p>操作的基本语法结构：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新增 基本的语法结构</span></span><br><span class="line">ALTER TABLE table_name ADD column <span class="keyword">char</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除 基本的语法结构</span></span><br><span class="line">ALTER TABLE table_name DROP COLUMN column;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改列字段的属性</span></span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name ALTER COLUMN column <span class="keyword">char</span>;</span><br></pre></td></tr></table></figure>
 <p>在终端的基本操作：</p>
 <p><strong>3.1</strong> 对数据表新增列</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-bc3c0b6014f5352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.41.07.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ_c971YEoJBrtZN5%2F1877765-bc3c0b6014f5352e.png?alt=media&amp;token=7beab7bf-3660-43e3-a8be-abd52eb43823" alt="屏幕快照 2017-11-14 21.41.07.png"></p>
 <p><strong>3.2</strong> 对数据表删除列</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-20278094efeb67e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.51.55.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ5pOQbN8Nq1j7Eq3%2F1877765-20278094efeb67e7.png?alt=media&amp;token=a7b532d7-6e66-4b0f-845f-3ab1e88c1503" alt="屏幕快照 2017-11-14 21.51.55.png"></p>
 <p><strong>3.3</strong> 对数据修改相关列属性</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-d9a5593f194d23af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 21.55.28.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJtjru16g_3AVhanp%2F1877765-d9a5593f194d23af.png?alt=media&amp;token=69e44cd1-2706-45cf-83f6-dd7f9538515e" alt="屏幕快照 2017-11-14 21.55.28.png"></p>
 <blockquote>
 <p>在上面的表格中可以看出在操作过程中 <strong>新增加的列成功</strong>， 但在实现数据表删除和修改列的相关信息中失败。 小编找了下资料：<code>Sqlite3</code> 值支持相关增加和重名民操作。 </p>
 </blockquote>
@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
 <p><strong>1.2 局部的参数选择插入</strong></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现数据表数据的局部数据插入</span></span><br><span class="line">INSERT INTO table_name(column_one, column_two, ...) VALUES (param_one, param_two, ...);</span><br></pre></td></tr></table></figure>
 <p>终端的实例操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-c274918e872d9441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 22.29.39.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJddKkB94vj73lav1%2F1877765-c274918e872d9441.png?alt=media&amp;token=1ee98896-4a23-48ac-aa61-83cab13aac9a" alt="屏幕快照 2017-11-14 22.29.39.png"></p>
 <p><strong>小插曲</strong></p>
 <p>由上面看出小编在查看数据输出进行相关格式化操作：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在输出时包括行头</span></span><br><span class="line">sqlite&gt; .header on</span><br><span class="line">sqlite&gt; .mode colum</span><br></pre></td></tr></table></figure>
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 <p><strong>2.1 删除全部数据</strong></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除数据库中的全部数据内容</span></span><br><span class="line">DELETE FROM table_name;</span><br></pre></td></tr></table></figure>
 <p>删除数据的实力操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1f4ae7490d89e45e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.06.16.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&amp;token=adf17ace-1004-4c36-8bbd-1153ecadbaf9" alt="屏幕快照 2017-11-14 23.06.16.png"></p>
 <blockquote>
 <p>上面可以看出小编为了更好的展示数据 <code>DELETE</code> 效果就在原来的基础又增加一条数据，更好展示删除过程中效果。</p>
 </blockquote>
@@ -276,7 +276,7 @@ var _hmt = _hmt || [];
 <p>数据修改基本语法：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据修改的基本语法类型 condation 是数据修改条件</span></span><br><span class="line">UPDATE table_name SET column_one = value1, column_two = value2, ... WHERE condation;</span><br></pre></td></tr></table></figure>
 <p>数据修改的实例操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-0924ab7dde94b7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.16.47.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIrln0c_CiKpJOOMi%2F1877765-0924ab7dde94b7a5.png?alt=media&amp;token=adf17ace-1004-4c36-8bbd-1153ecadbaf9" alt="屏幕快照 2017-11-14 23.16.47.png"></p>
 <p><strong>(4)</strong>查询数据</p>
 <p>数据查询的基本操作基本分为两种：</p>
 <ul>
@@ -289,7 +289,7 @@ var _hmt = _hmt || [];
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//**a.**查询所有的数据</span></span><br><span class="line"></span><br><span class="line">SELECT * FROM table_name;</span><br></pre></td></tr></table></figure>
 <p><strong>b.</strong>按条件查询数据  </p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//**b.**按条件查询数据 column1 是要查询列名 &amp;condation 是要查询的条件</span></span><br><span class="line"></span><br><span class="line">SELECT column1, column2, ... FROM table_name WHERE condation;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-cdd0cd24fa746483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-11-14 23.31.54.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJkOlgheN_e6XJQWv%2F1877765-cdd0cd24fa746483.png?alt=media&amp;token=e9ce7f74-4f92-4c91-8fee-e4918c0e335c" alt="屏幕快照 2017-11-14 23.31.54.png"></p>
 <p>目前小编对 <code>SQLite</code> 的基本操作博文到这里的，可以看出在多条件查询过程中操作失败的小案例。</p>
 <p>后面会整理数据之间比较复杂的关系操作。</p>
 <p>发布于：2017/11/14 23:34:40<br>地点：讯美科技广场 1 座 10 楼</p>
