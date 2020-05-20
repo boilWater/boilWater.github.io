@@ -1782,11 +1782,11 @@
     <link href="http://yoursite.com/2017/08/17/iOS-%E9%95%9C%E5%A4%B4%E9%87%87%E9%9B%86(AVCaptureDevice)/"/>
     <id>http://yoursite.com/2017/08/17/iOS-镜头采集(AVCaptureDevice)/</id>
     <published>2017-08-17T09:42:32.000Z</published>
-    <updated>2017-08-25T09:29:18.000Z</updated>
+    <updated>2020-05-20T14:53:04.650Z</updated>
     
     <content type="html">&lt;p&gt;承接上一篇博文小编讲述在镜头采集过程所需知识点和 &lt;code&gt;AVCaptureSession&lt;/code&gt; 基本使用方法，本篇博文将要讲述 &lt;code&gt;AVCaptureDevice&lt;/code&gt; 相关使用方法。&lt;/p&gt;
 &lt;p&gt;下图为本博文写作思路：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-02f3ce2f37fba73c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;AVCaptureDevice博文写作思维导图.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZMoSkjk0Ro1AJOxL%2F1877765-02f3ce2f37fba73c.png?alt=media&amp;amp;token=34aa05cf-16bf-452a-80cb-9c2581162732&quot; alt=&quot;AVCaptureDevice博文写作思维导图.png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h1 id=&quot;AVCaptureDevice&quot;&gt;&lt;a href=&quot;#AVCaptureDevice&quot; class=&quot;headerlink&quot; title=&quot;AVCaptureDevice&quot;&gt;&lt;/a&gt;AVCaptureDevice&lt;/h1&gt;&lt;p&gt;AVCaptureDevice 在这个采集过程中相当于在发电过程中“发电设备”，提供实现摄像头和麦克风相关初始化。而且可以对摄像头进行一些基本设置，例如：闪光灯、手电筒、聚焦、曝光、白平衡等一些基本设置。&lt;/p&gt;
 &lt;ul&gt;
@@ -1869,7 +1869,7 @@
     
       &lt;p&gt;承接上一篇博文小编讲述在镜头采集过程所需知识点和 &lt;code&gt;AVCaptureSession&lt;/code&gt; 基本使用方法，本篇博文将要讲述 &lt;code&gt;AVCaptureDevice&lt;/code&gt; 相关使用方法。&lt;/p&gt;
 &lt;p&gt;下图为本博文写作思路：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-02f3ce2f37fba73c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;AVCaptureDevice博文写作思维导图.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZMoSkjk0Ro1AJOxL%2F1877765-02f3ce2f37fba73c.png?alt=media&amp;amp;token=34aa05cf-16bf-452a-80cb-9c2581162732&quot; alt=&quot;AVCaptureDevice博文写作思维导图.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1885,10 +1885,10 @@
     <link href="http://yoursite.com/2017/08/11/iOS-Camera%20Capture%20(iOS%20%E9%95%9C%E5%A4%B4%E9%87%87%E9%9B%86)/"/>
     <id>http://yoursite.com/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/</id>
     <published>2017-08-10T16:07:15.000Z</published>
-    <updated>2017-08-25T09:26:48.000Z</updated>
+    <updated>2020-05-20T14:53:47.116Z</updated>
     
     <content type="html">&lt;p&gt;iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 &lt;code&gt;AVCaptureSession&lt;/code&gt; ，并最后给出 &lt;code&gt;FYCameraKit&lt;/code&gt; 项目Demo。&lt;br&gt;下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-Camera Capture (iOS 镜头采集).png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZPepb4fI4s5aXSOH%2F1877765-b727b7f54b3df9bf.png?alt=media&amp;amp;token=b6724ed1-8edd-4f27-8b69-213ebfa59604&quot; alt=&quot;iOS-Camera Capture (iOS 镜头采集).png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;总体介绍&quot;&gt;&lt;a href=&quot;#总体介绍&quot; class=&quot;headerlink&quot; title=&quot;总体介绍&quot;&gt;&lt;/a&gt;总体介绍&lt;/h2&gt;&lt;p&gt;在整个镜头采集过程小编把整个过程比作我们常见发电过程：均是通过特定的步骤实现得到最后的产物。下面👇做详细解释：&lt;/p&gt;
 &lt;h3 id=&quot;AVCaptureSession-发电机&quot;&gt;&lt;a href=&quot;#AVCaptureSession-发电机&quot; class=&quot;headerlink&quot; title=&quot;AVCaptureSession (发电机)&quot;&gt;&lt;/a&gt;AVCaptureSession (发电机)&lt;/h3&gt;&lt;p&gt;&lt;code&gt;AVCaptureSession&lt;/code&gt; ：作为音视频捕捉会话，把镜头和麦克风捕捉到的音视频源输出到设备中。&lt;br&gt;提示：可以有多个输入和输出。&lt;/p&gt;
@@ -1896,7 +1896,7 @@
 &lt;h3 id=&quot;AVCaptureInput-水风能源&quot;&gt;&lt;a href=&quot;#AVCaptureInput-水风能源&quot; class=&quot;headerlink&quot; title=&quot;AVCaptureInput (水风能源)&quot;&gt;&lt;/a&gt;AVCaptureInput (水风能源)&lt;/h3&gt;&lt;p&gt;&lt;code&gt;AVCaptureInput&lt;/code&gt;：输入数据管理对象，经过 AVCaptureDevice 实现初始化，然后添加到 AVCaptureSession (发电机) 中进行相应的输出。&lt;br&gt;子类：&lt;code&gt;AVCaptureDeviceInput&lt;/code&gt;、&lt;code&gt;AVCaptureScreenInput&lt;/code&gt;和&lt;code&gt;AVCaptureMetadataInput&lt;/code&gt;。&lt;/p&gt;
 &lt;h3 id=&quot;AVCaptureOutput-电力&quot;&gt;&lt;a href=&quot;#AVCaptureOutput-电力&quot; class=&quot;headerlink&quot; title=&quot;AVCaptureOutput (电力)&quot;&gt;&lt;/a&gt;AVCaptureOutput (电力)&lt;/h3&gt;&lt;p&gt;&lt;code&gt;AVCaptureOut&lt;/code&gt;：数据输出管理，通过 AVCaptureSession 中输出。可以通过相关的协议实对应的数据输出。&lt;br&gt;子类：&lt;code&gt;AVCaptureFileOutput&lt;/code&gt;、&lt;code&gt;AVCapturePhotoOutput&lt;/code&gt;、&lt;code&gt;AVCaptureStillImageOutput&lt;/code&gt;、&lt;code&gt;AVCaptureVideoDataOutput&lt;/code&gt;、&lt;code&gt;AVCaptureAudioDataOutput&lt;/code&gt;、&lt;code&gt;AVCaptureAudioPreviewOutput&lt;/code&gt;、&lt;code&gt;AVCaptureDepthDataOutput&lt;/code&gt;和&lt;code&gt;AVCaptureMetadataOutput&lt;/code&gt;。&lt;/p&gt;
 &lt;h3 id=&quot;AVCaptureVideoPreviewLayer-发电预览&quot;&gt;&lt;a href=&quot;#AVCaptureVideoPreviewLayer-发电预览&quot; class=&quot;headerlink&quot; title=&quot;AVCaptureVideoPreviewLayer (发电预览)&quot;&gt;&lt;/a&gt;AVCaptureVideoPreviewLayer (发电预览)&lt;/h3&gt;&lt;p&gt;&lt;code&gt;AVCaptureVideoPreviewLayer&lt;/code&gt;：可以支持在拍摄过程中进行相关的预览，只需要在初始时实现对应的 AVCaptureSession 即可。&lt;/p&gt;
-&lt;h2 id=&quot;视频录制&quot;&gt;&lt;a href=&quot;#视频录制&quot; class=&quot;headerlink&quot; title=&quot;视频录制&quot;&gt;&lt;/a&gt;视频录制&lt;/h2&gt;&lt;p&gt;下面展示在苹果官方开发文档给出的图：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-4cbf9ba736afdb69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-Video Capture(iOS 视频录制).png&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;视频录制&quot;&gt;&lt;a href=&quot;#视频录制&quot; class=&quot;headerlink&quot; title=&quot;视频录制&quot;&gt;&lt;/a&gt;视频录制&lt;/h2&gt;&lt;p&gt;下面展示在苹果官方开发文档给出的图：&lt;br&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZTtSNRz65IwsH2I7%2F1877765-4cbf9ba736afdb69.png?alt=media&amp;amp;token=d6ff6419-aae4-4630-bb47-de8ab12569d8&quot; alt=&quot;iOS-Video Capture(iOS 视频录制).png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;视频录制总概&quot;&gt;&lt;a href=&quot;#视频录制总概&quot; class=&quot;headerlink&quot; title=&quot;视频录制总概&quot;&gt;&lt;/a&gt;视频录制总概&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;创建 &lt;code&gt;AVCaptureSession&lt;/code&gt; 对象&lt;/li&gt;
 &lt;li&gt;使用 &lt;code&gt;AVCaptureDevice&lt;/code&gt; 静态方法获取设备常使用设备，例如：拍照和录像需要的摄像头，录音所需的麦克风&lt;/li&gt;
@@ -1953,7 +1953,7 @@
     <summary type="html">
     
       &lt;p&gt;iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 &lt;code&gt;AVCaptureSession&lt;/code&gt; ，并最后给出 &lt;code&gt;FYCameraKit&lt;/code&gt; 项目Demo。&lt;br&gt;下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-Camera Capture (iOS 镜头采集).png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZPepb4fI4s5aXSOH%2F1877765-b727b7f54b3df9bf.png?alt=media&amp;amp;token=b6724ed1-8edd-4f27-8b69-213ebfa59604&quot; alt=&quot;iOS-Camera Capture (iOS 镜头采集).png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1969,14 +1969,14 @@
     <link href="http://yoursite.com/2017/06/09/iOS-%E8%A7%86%E9%A2%91%E5%A4%A7%E7%BA%B2%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/06/09/iOS-视频大纲总结/</id>
     <published>2017-06-08T16:31:48.000Z</published>
-    <updated>2017-06-13T15:30:57.000Z</updated>
+    <updated>2020-05-20T14:56:12.165Z</updated>
     
     <content type="html">&lt;p&gt;本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。&lt;/p&gt;
 &lt;p&gt;下面是本博文的写作思路：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kI514iYGro0zD2pE4%2F1877765-bbdb773a30fc44a2.png?alt=media&amp;amp;token=c66eabe5-ab28-42a6-8f69-03c987044c8a&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;流媒体数据接收到播放&quot;&gt;&lt;a href=&quot;#流媒体数据接收到播放&quot; class=&quot;headerlink&quot; title=&quot;流媒体数据接收到播放&quot;&gt;&lt;/a&gt;流媒体数据接收到播放&lt;/h2&gt;&lt;p&gt;在网络传输过程中我们接收到相关媒体数据要经过一些列的处理来实现对媒体数据的播放，具体过程如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-aab07b57fde17c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS 视频播放流程图.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kI9_WHsWqVA3lpLEx%2F1877765-aab07b57fde17c34.png?alt=media&amp;amp;token=5af25745-0f9d-4506-8d1f-78fc16e6f8f8&quot; alt=&quot;iOS 视频播放流程图.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;可以看出我们在获取流媒体协议需要经过一下处理方式：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;解协议 —&amp;gt; 解封装  —&amp;gt; 音视频的解码 （实现音视频同步 &amp;amp; 播放）&lt;/p&gt;
@@ -1986,11 +1986,11 @@
 
 &lt;h3 id=&quot;媒体封装格式&quot;&gt;&lt;a href=&quot;#媒体封装格式&quot; class=&quot;headerlink&quot; title=&quot;媒体封装格式&quot;&gt;&lt;/a&gt;媒体封装格式&lt;/h3&gt;&lt;p&gt;媒体封装就是把视频数据和音频数据进行按照一定的格式进行封装。我们常见的封装格式：&lt;code&gt;AVI&lt;/code&gt;、&lt;code&gt;MP4&lt;/code&gt;、&lt;code&gt;TS&lt;/code&gt;、&lt;code&gt;FLV&lt;/code&gt;、&lt;code&gt;MKV&lt;/code&gt;和&lt;code&gt;RMVB&lt;/code&gt;。&lt;/p&gt;
 &lt;h4 id=&quot;媒体封装格式简介&quot;&gt;&lt;a href=&quot;#媒体封装格式简介&quot; class=&quot;headerlink&quot; title=&quot;媒体封装格式简介&quot;&gt;&lt;/a&gt;媒体封装格式简介&lt;/h4&gt;&lt;p&gt;下面是对媒体封装格式的整理和简介：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-0491caa322fa42c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;媒体封装格式整理.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIG2aLKKAj-ito-kf%2F1877765-0491caa322fa42c8.png?alt=media&amp;amp;token=8026a521-78f6-40ec-9775-03f5f0396f77&quot; alt=&quot;媒体封装格式整理.png&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;音视频编码格式&quot;&gt;&lt;a href=&quot;#音视频编码格式&quot; class=&quot;headerlink&quot; title=&quot;音视频编码格式&quot;&gt;&lt;/a&gt;音视频编码格式&lt;/h3&gt;&lt;p&gt;在音视频录制完成后为方便传输需要对其进行编码压缩处理，我们常见的音视频编码格式：&lt;/p&gt;
 &lt;p&gt;视频编码格式：&lt;code&gt;H.264&lt;/code&gt;、&lt;code&gt;H.265(HEVC)&lt;/code&gt;、&lt;code&gt;MPEG4&lt;/code&gt;、&lt;code&gt;MPEG2&lt;/code&gt;、&lt;code&gt;VP9&lt;/code&gt;、&lt;code&gt;VP8&lt;/code&gt;和&lt;code&gt;VC-1&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;音频编码格式：&lt;code&gt;AAC&lt;/code&gt;、&lt;code&gt;AC-3&lt;/code&gt;、&lt;code&gt;MP3&lt;/code&gt;和&lt;code&gt;WMP&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;视音频编码格式&quot;&gt;&lt;a href=&quot;#视音频编码格式&quot; class=&quot;headerlink&quot; title=&quot;视音频编码格式&quot;&gt;&lt;/a&gt;视音频编码格式&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1e3ce321225f5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;视音频编码格式.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;视音频编码格式&quot;&gt;&lt;a href=&quot;#视音频编码格式&quot; class=&quot;headerlink&quot; title=&quot;视音频编码格式&quot;&gt;&lt;/a&gt;视音频编码格式&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIKEPe8nzj6GeVCtS%2F1877765-1e3ce321225f5706.png?alt=media&amp;amp;token=175c127b-3ae3-469b-ab9e-3a80a411c570&quot; alt=&quot;视音频编码格式.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;编码格式地址&quot;&gt;&lt;a href=&quot;#编码格式地址&quot; class=&quot;headerlink&quot; title=&quot;编码格式地址&quot;&gt;&lt;/a&gt;编码格式地址&lt;/h4&gt;&lt;p&gt;下面是编码格式地址：&lt;/p&gt;
 &lt;p&gt;H.264 :&lt;/p&gt;
 &lt;table&gt;
@@ -2072,7 +2072,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id=&quot;解码简介&quot;&gt;&lt;a href=&quot;#解码简介&quot; class=&quot;headerlink&quot; title=&quot;解码简介&quot;&gt;&lt;/a&gt;解码简介&lt;/h3&gt;&lt;p&gt;在视频播放过程中我们需要对视频进行解码处理，常见的解码方式：硬解码和软解码。&lt;/p&gt;
-&lt;h4 id=&quot;解码方式简介&quot;&gt;&lt;a href=&quot;#解码方式简介&quot; class=&quot;headerlink&quot; title=&quot;解码方式简介&quot;&gt;&lt;/a&gt;解码方式简介&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-b70e26b3769a95c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;软解码&amp;amp;硬解码对比.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;解码方式简介&quot;&gt;&lt;a href=&quot;#解码方式简介&quot; class=&quot;headerlink&quot; title=&quot;解码方式简介&quot;&gt;&lt;/a&gt;解码方式简介&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIPjM7nk8CK24ptNz%2F1877765-b70e26b3769a95c7.png?alt=media&amp;amp;token=99d423a0-3577-4d28-85b1-6a9a2191b695&quot; alt=&quot;软解码&amp;amp;硬解码对比.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;编码资料地址&quot;&gt;&lt;a href=&quot;#编码资料地址&quot; class=&quot;headerlink&quot; title=&quot;编码资料地址&quot;&gt;&lt;/a&gt;编码资料地址&lt;/h4&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -2119,10 +2119,10 @@
 &lt;/table&gt;
 &lt;h3 id=&quot;AVFoundation-框架介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-框架介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 框架介绍&quot;&gt;&lt;/a&gt;AVFoundation 框架介绍&lt;/h3&gt;&lt;p&gt;AVFoundation 可以用来播放和创建基于时间视听媒体的框架之一，提供基于时间的视听数据详细的 Objective-C上的接口。&lt;/p&gt;
 &lt;h4 id=&quot;AVFoundation-功能介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-功能介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 功能介绍&quot;&gt;&lt;/a&gt;AVFoundation 功能介绍&lt;/h4&gt;&lt;p&gt;使用 &lt;code&gt;AVFoundation&lt;/code&gt; 可以实现视频的播放、编辑、静态媒体的捕捉、输出和时间媒体的表现等功能，如果仅仅是播放电影的话可以使用 &lt;code&gt;AVKit&lt;/code&gt;框架。 &lt;/p&gt;
-&lt;h4 id=&quot;AVFoundation-接口介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-接口介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 接口介绍&quot;&gt;&lt;/a&gt;AVFoundation 接口介绍&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-c3069ae787712d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetTrack.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ed13785f38e3a77c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableAudioMix.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-1ee84500bda738b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableVideoComposition.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-9993bccb095d6642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetExportSession.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;AVFoundation-接口介绍&quot;&gt;&lt;a href=&quot;#AVFoundation-接口介绍&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 接口介绍&quot;&gt;&lt;/a&gt;AVFoundation 接口介绍&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIWMF9DUsY57LDJ4m%2F1877765-c3069ae787712d75.png?alt=media&amp;amp;token=da389856-d004-48d3-983f-0a7f55c45073&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetTrack.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIZoebgJrBp6u7OIW%2F1877765-1ee84500bda738b3.png?alt=media&amp;amp;token=f270c289-c6f6-476a-8b28-04e9ac0daf9c&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableAudioMix.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIekxVb4bhiICcZID%2F1877765-1ee84500bda738b3.png?alt=media&amp;amp;token=2b8324ab-51ec-4304-9084-de95c8efda99&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVMutableVideoComposition.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kIj1lnq1BQbul_I4E%2F1877765-9993bccb095d6642.png?alt=media&amp;amp;token=62cc6d76-69d1-4174-b16d-285d432c70f7&quot; alt=&quot;iOS-AVFoundation-AVMutableComposition-AVAssetExportSession.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;AVFoundation-类继承关系&quot;&gt;&lt;a href=&quot;#AVFoundation-类继承关系&quot; class=&quot;headerlink&quot; title=&quot;AVFoundation 类继承关系&quot;&gt;&lt;/a&gt;AVFoundation 类继承关系&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/boilWater/boilWater.github.io/tree/master/Images/PPT&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公司分享 PPT 下载地址&lt;/a&gt;&lt;/p&gt;
 </content>
     
@@ -2130,7 +2130,7 @@
     
       &lt;p&gt;本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。&lt;/p&gt;
 &lt;p&gt;下面是本博文的写作思路：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kHe-oyUamKn5jOUff%2F-M7kHgKqFCt7oBd-t_AT%2F-M7kI514iYGro0zD2pE4%2F1877765-bbdb773a30fc44a2.png?alt=media&amp;amp;token=c66eabe5-ab28-42a6-8f69-03c987044c8a&quot; alt=&quot;iOS-视频大纲总结.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -2146,12 +2146,12 @@
     <link href="http://yoursite.com/2017/05/31/NSError(%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF)/"/>
     <id>http://yoursite.com/2017/05/31/NSError(错误信息)/</id>
     <published>2017-05-31T06:35:13.000Z</published>
-    <updated>2017-06-01T09:51:07.000Z</updated>
+    <updated>2020-05-20T14:59:15.907Z</updated>
     
     <content type="html">&lt;p&gt;开发过过程中我们经常会遇到异常问题&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7kF1m4dYjrMhZI8W9s%2F-M7kFHp_4F_Exx5-j0On%2F1877765-ebec37c09e21ba91.png?alt=media&amp;amp;token=fed35aef-4893-447d-9a7b-c8421f8e58a5&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;NSError-错误信息&quot;&gt;&lt;a href=&quot;#NSError-错误信息&quot; class=&quot;headerlink&quot; title=&quot;NSError(错误信息)&quot;&gt;&lt;/a&gt;NSError(错误信息)&lt;/h3&gt;&lt;h4 id=&quot;采用NSError的情况&quot;&gt;&lt;a href=&quot;#采用NSError的情况&quot; class=&quot;headerlink&quot; title=&quot;采用NSError的情况&quot;&gt;&lt;/a&gt;采用NSError的情况&lt;/h4&gt;&lt;p&gt;  使用 &lt;code&gt;NSError&lt;/code&gt; 的形式可以把程序中导致错误原因回报给调用者，而且使程序正常运行不会造成奔溃的后果&lt;/p&gt;
 &lt;h4 id=&quot;NSError包含的内容&quot;&gt;&lt;a href=&quot;#NSError包含的内容&quot; class=&quot;headerlink&quot; title=&quot;NSError包含的内容&quot;&gt;&lt;/a&gt;NSError包含的内容&lt;/h4&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NSError&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &amp;lt;&lt;span class=&quot;title&quot;&gt;NSCopying&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;NSSecureCoding&lt;/span&gt;&amp;gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;@private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *_reserved;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSInteger&lt;/span&gt; _code;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *_domain;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; *_userInfo;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -2211,8 +2211,8 @@
     <summary type="html">
     
       &lt;p&gt;开发过过程中我们经常会遇到异常问题&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1877765-ebec37c09e21ba91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7kF1m4dYjrMhZI8W9s%2F-M7kFHp_4F_Exx5-j0On%2F1877765-ebec37c09e21ba91.png?alt=media&amp;amp;token=fed35aef-4893-447d-9a7b-c8421f8e58a5&quot; alt=&quot;iOS异常.png&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;a href=&quot;#iOS-开发过程中的错误处理&quot; class=&quot;headerlink&quot; title=&quot;iOS-开发过程中的错误处理&quot;&gt;&lt;/a&gt;iOS-开发过程中的错误处理&lt;/h1&gt;&lt;p&gt;我们在程序开发过程中经常会遇到异常，对异常的处理一般采用打印或者直接抛出。这样也可以很方便我们调试过程有所参考，而且方便我们查看异常产生的位置信息&lt;/p&gt;
     
     </summary>
     

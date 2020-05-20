@@ -14,13 +14,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 AVCaptureSession ，并最后给出 FYCameraKit 项目Demo。下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4cbf9ba736afdb69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-25T09:26:48.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZPepb4fI4s5aXSOH%2F1877765-b727b7f54b3df9bf.png?alt=media&token=b6724ed1-8edd-4f27-8b69-213ebfa59604">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZTtSNRz65IwsH2I7%2F1877765-4cbf9ba736afdb69.png?alt=media&token=d6ff6419-aae4-4630-bb47-de8ab12569d8">
+<meta property="og:updated_time" content="2020-05-20T14:53:47.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-镜头采集(Camera capture & AVCaptureSession)">
 <meta name="twitter:description" content="iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp;amp; 录制很有趣的视频。本章将详细讲解 AVCaptureSession ，并最后给出 FYCameraKit 项目Demo。下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZPepb4fI4s5aXSOH%2F1877765-b727b7f54b3df9bf.png?alt=media&token=b6724ed1-8edd-4f27-8b69-213ebfa59604">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -195,7 +195,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp; 录制很有趣的视频。本章将详细讲解 <code>AVCaptureSession</code> ，并最后给出 <code>FYCameraKit</code> 项目Demo。<br>下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Camera Capture (iOS 镜头采集).png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZPepb4fI4s5aXSOH%2F1877765-b727b7f54b3df9bf.png?alt=media&amp;token=b6724ed1-8edd-4f27-8b69-213ebfa59604" alt="iOS-Camera Capture (iOS 镜头采集).png"></p>
 <a id="more"></a>
 <h2 id="总体介绍"><a href="#总体介绍" class="headerlink" title="总体介绍"></a>总体介绍</h2><p>在整个镜头采集过程小编把整个过程比作我们常见发电过程：均是通过特定的步骤实现得到最后的产物。下面👇做详细解释：</p>
 <h3 id="AVCaptureSession-发电机"><a href="#AVCaptureSession-发电机" class="headerlink" title="AVCaptureSession (发电机)"></a>AVCaptureSession (发电机)</h3><p><code>AVCaptureSession</code> ：作为音视频捕捉会话，把镜头和麦克风捕捉到的音视频源输出到设备中。<br>提示：可以有多个输入和输出。</p>
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
 <h3 id="AVCaptureInput-水风能源"><a href="#AVCaptureInput-水风能源" class="headerlink" title="AVCaptureInput (水风能源)"></a>AVCaptureInput (水风能源)</h3><p><code>AVCaptureInput</code>：输入数据管理对象，经过 AVCaptureDevice 实现初始化，然后添加到 AVCaptureSession (发电机) 中进行相应的输出。<br>子类：<code>AVCaptureDeviceInput</code>、<code>AVCaptureScreenInput</code>和<code>AVCaptureMetadataInput</code>。</p>
 <h3 id="AVCaptureOutput-电力"><a href="#AVCaptureOutput-电力" class="headerlink" title="AVCaptureOutput (电力)"></a>AVCaptureOutput (电力)</h3><p><code>AVCaptureOut</code>：数据输出管理，通过 AVCaptureSession 中输出。可以通过相关的协议实对应的数据输出。<br>子类：<code>AVCaptureFileOutput</code>、<code>AVCapturePhotoOutput</code>、<code>AVCaptureStillImageOutput</code>、<code>AVCaptureVideoDataOutput</code>、<code>AVCaptureAudioDataOutput</code>、<code>AVCaptureAudioPreviewOutput</code>、<code>AVCaptureDepthDataOutput</code>和<code>AVCaptureMetadataOutput</code>。</p>
 <h3 id="AVCaptureVideoPreviewLayer-发电预览"><a href="#AVCaptureVideoPreviewLayer-发电预览" class="headerlink" title="AVCaptureVideoPreviewLayer (发电预览)"></a>AVCaptureVideoPreviewLayer (发电预览)</h3><p><code>AVCaptureVideoPreviewLayer</code>：可以支持在拍摄过程中进行相关的预览，只需要在初始时实现对应的 AVCaptureSession 即可。</p>
-<h2 id="视频录制"><a href="#视频录制" class="headerlink" title="视频录制"></a>视频录制</h2><p>下面展示在苹果官方开发文档给出的图：<br><img src="http://upload-images.jianshu.io/upload_images/1877765-4cbf9ba736afdb69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Video Capture(iOS 视频录制).png"></p>
+<h2 id="视频录制"><a href="#视频录制" class="headerlink" title="视频录制"></a>视频录制</h2><p>下面展示在苹果官方开发文档给出的图：<br><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mWrmBhiluPPavCHE1%2F-M7mZTtSNRz65IwsH2I7%2F1877765-4cbf9ba736afdb69.png?alt=media&amp;token=d6ff6419-aae4-4630-bb47-de8ab12569d8" alt="iOS-Video Capture(iOS 视频录制).png"></p>
 <h3 id="视频录制总概"><a href="#视频录制总概" class="headerlink" title="视频录制总概"></a>视频录制总概</h3><ul>
 <li>创建 <code>AVCaptureSession</code> 对象</li>
 <li>使用 <code>AVCaptureDevice</code> 静态方法获取设备常使用设备，例如：拍照和录像需要的摄像头，录音所需的麦克风</li>

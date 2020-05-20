@@ -9,20 +9,44 @@
   <title>iOS Deep Copy &amp; Shallow Copy(深层和浅层复制) | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
-下面展示浅层 Copy 和 深层 Copy 展示：">
+下面展示浅层 Copy 和 深层 Copy 展示：
+
+
+简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp;amp; 内存地址发生改变。
+
+更具复制的对象不同可以分为两种情况：
+
+集合类对象复制
+非集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Deep Copy & Shallow Copy(深层和浅层复制)">
 <meta property="og:url" content="http://yoursite.com/2017/01/20/iOS 复制理解/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
-下面展示浅层 Copy 和 深层 Copy 展示：">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-23T16:10:06.000Z">
+下面展示浅层 Copy 和 深层 Copy 展示：
+
+
+简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp;amp; 内存地址发生改变。
+
+更具复制的对象不同可以分为两种情况：
+
+集合类对象复制
+非集合">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maJsOMkbRXGZmbGl8%2F-M7maQ-cCzWjsSnd7Uf_%2F1877765-66733ce3e4c7d54d.png?alt=media&token=2d9ff058-96cb-4193-b93c-3e2e8e2bcee2">
+<meta property="og:updated_time" content="2020-05-20T15:01:12.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Deep Copy & Shallow Copy(深层和浅层复制)">
 <meta name="twitter:description" content="总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。
-下面展示浅层 Copy 和 深层 Copy 展示：">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+下面展示浅层 Copy 和 深层 Copy 展示：
+
+
+简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp;amp; 内存地址发生改变。
+
+更具复制的对象不同可以分为两种情况：
+
+集合类对象复制
+非集合">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maJsOMkbRXGZmbGl8%2F-M7maQ-cCzWjsSnd7Uf_%2F1877765-66733ce3e4c7d54d.png?alt=media&token=2d9ff058-96cb-4193-b93c-3e2e8e2bcee2">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -198,8 +222,7 @@ var _hmt = _hmt || [];
       
         <p>总概：在复制过程中有浅层 Copy和深层 Copy。从字面意思上理解：浅层 Copy 是仅仅复制指向内存对象，深层 Copy 是复制对象和对象指向的内存。</p>
 <p>下面展示浅层 Copy 和 深层 Copy 展示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-66733ce3e4c7d54d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 深层复制和浅层复制.png"></p>
-<a id="more"></a>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maJsOMkbRXGZmbGl8%2F-M7maQ-cCzWjsSnd7Uf_%2F1877765-66733ce3e4c7d54d.png?alt=media&amp;token=2d9ff058-96cb-4193-b93c-3e2e8e2bcee2" alt="iOS 深层复制和浅层复制.png"></p>
 <blockquote>
 <p>简言之：浅层 Copy 只复制对象内存地址不变，深层 Copy 既复制对象又复制指向的内存 &amp; 内存地址发生改变。</p>
 </blockquote>
@@ -208,6 +231,7 @@ var _hmt = _hmt || [];
 <li>集合类对象复制</li>
 <li>非集合类对象</li>
 </ul>
+<a id="more"></a>
 <h2 id="集合类复制"><a href="#集合类复制" class="headerlink" title="集合类复制"></a>集合类复制</h2><h3 id="集合类的浅复制-Shallow-Copy"><a href="#集合类的浅复制-Shallow-Copy" class="headerlink" title="集合类的浅复制(Shallow Copy)"></a>集合类的浅复制(Shallow Copy)</h3><p>集合类在浅层复制即时 retain 计数进行 + 1，而且指向内存对象复制添加到新的集合之中。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *person = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"name"</span>, <span class="string">@"age"</span>, <span class="string">@"school"</span>, <span class="string">@"company"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *personShallowCopy = [person copyWithZone:<span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"person : %p, personCopy : %p"</span>, person, personShallowCopy);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//打印的结果：</span></span><br><span class="line"><span class="comment">//DeepShallowCopyDemo[31046:7675704] person : 0x604000443d20, personCopy : 0x604000443d20</span></span><br></pre></td></tr></table></figure>
 <h3 id="集合类的深复制-Deep-Copy"><a href="#集合类的深复制-Deep-Copy" class="headerlink" title="集合类的深复制(Deep Copy)"></a>集合类的深复制(Deep Copy)</h3><p>集合类深层复制有两种方法可以实现：</p>
