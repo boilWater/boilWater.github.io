@@ -172,6 +172,378 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS UI 优化 一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/06/iOS UI 优化 一/">iOS UI 优化 - 总纲</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/06/iOS UI 优化 一/" class="archive-article-date">
+  	<time datetime="2019-01-06T12:23:44.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="iOS-UI-优化博文大纲"><a href="#iOS-UI-优化博文大纲" class="headerlink" title="iOS UI 优化博文大纲"></a>iOS UI 优化博文大纲</h1><p>2019 年开年第一篇博文，今天先起个头。</p>
+<p>今年第一个主题是关于 UI 界面实现原理，UI 目前实现主要方式在其实现上相关缺陷。开始从 <code>Core Animation</code> 框架总结以及实现方式上讲解，然后从 <code>Core Graphics</code> 和 <code>Core Iamge</code> 在绘制层面三者如何把 <code>UIKit</code> 控件如何实现绘制交由 <code>OpenGL ES</code> | <code>Metal</code> 来实现每一帧绘制。</p>
+<p>最后分析 <code>FB</code> 开源的框架 <code>ASDK</code> 和 <code>YYKit</code> 实现 <code>UI</code> 优化方式，对 <code>Core Text</code> 进行最后封装来结束 <code>UI</code> 专题。</p>
+<h2 id="iOS-UI-架构图"><a href="#iOS-UI-架构图" class="headerlink" title="iOS UI 架构图"></a>iOS UI 架构图</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-c39a990fda4aa0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS UI Strcture.png"></p>
+<h2 id="Core-Animation-大纲"><a href="#Core-Animation-大纲" class="headerlink" title="Core Animation 大纲"></a>Core Animation 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Animation API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
+<td><code>Core Animation</code> <strong>a、</strong> 作为 <code>UIKit</code> 和 <code>AppKit</code> 内容实际绘制主要承担的载体，为具体在屏幕上控件内容绘制，布局以及提供隐式和显示动画提供优雅的 <code>API</code> 接口。<strong>b、</strong> 作为硬件绘制输入把需要显示具体内容传入 <code>GPU</code> 生成纹理在屏幕上进行渲染。</td>
+</tr>
+<tr>
+<td><a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/">2、作用</a></td>
+<td><code>Core Animation</code> <strong>a、</strong> 通过 <code>CATypeLayer</code> 类族显示效果，位置布局为 <code>UIKit</code> 层提供底层绘制实现。<strong>b、</strong>屏幕上直接与渲染硬件直接进行内容绘制，实现各种酷炫的效果以及更加高效绘制。<strong>c、</strong> 通过 <code>CATypeAnimation</code> 及其属性 <code>CATypeTiming</code> 实现各种动画效果类型。<strong>d、</strong>为 <code>UIKit</code> 和 <code>AppKit</code> 代码块动画代理对象，提供具体实现支持。<strong>在 iOS 的主要职能是为 UIKit 框架在 APP UI 控件实现基础上的绘制。</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-5a0f1f734a47cb5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Animation.png"></p>
+<p>注：参考资料会在 <a href="http://boilwater.github.io/2019/01/06/iOS%20UI%20优化%20-%20Core%20Animation%20/">iOS UI 优化 - Core Animation</a> 最后给出：<br>在 <code>Core Animation</code> 中可以看到在 <code>Application</code> 中 <code>Handle Events</code> 处理手势原理实际就是我们响应链处理过程。<br><a href="http://boilwater.github.io/2017/05/15/iOS-Responder%20Chain/">响应链</a><br><a href="http://boilwater.github.io/2017/01/13/APP控件在屏幕上显示/">iOS 空间绘制原理</a></p>
+<h2 id="Core-Graphics-大纲"><a href="#Core-Graphics-大纲" class="headerlink" title="Core Graphics 大纲"></a>Core Graphics 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Graphics API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
+<td><code>Core Graphics</code> <strong>a、</strong> 作为基于 <code>Quartz</code> 绘图引擎来实现在 <code>iOS</code> 和 <code>OS X</code> 2D 图形绘制功能，接口实现是基于 <code>C</code> 不符合 <code>iOS</code> 中 <code>ARC</code> 内存管理方式需要进行手动管理其内存。 <strong>b、</strong> 作为 <code>CA</code> 层具体显示内容 <code>CATypeLayer</code> 层实际绘制执行者和 <code>OpenGL</code>或者<code>Metal</code> 一起承担起界面具体的绘制工作。</td>
+</tr>
+<tr>
+<td><a href="http://boilwater.github.io/2019/03/08/IOS%20UI%20优化%20-%20Core%20Graphics/">2、APP 作用</a></td>
+<td><code>Core Graphics</code> <strong>a、</strong> 通过提供基础的 <code>API</code> 接口来实现控件在 <code>UI</code> 层面布局，色彩填充，画布绘制等具体的绘制实现。<strong>b、</strong> 通过针对不同的绘制对象：<code>Window</code>、<code>CALayer</code>、<code>Bitmap</code>、<code>PDF</code> 和 <code>Printer</code> 来生成对应的 <code>Context</code> 实现具体内容的绘制生成可视化的效果展示在屏幕上。 <strong>c、</strong> 在文本绘制的过程中我猜测使用 <code>PDF</code> 文档解析的功能，为 <code>Core Text</code> 提供实际的计算，<strong>依据 <code>Quartz</code> 使用轮廓周围像素显示来实现抗锯齿完美展现文本显示。</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-Text-大纲"><a href="#Core-Text-大纲" class="headerlink" title="Core Text 大纲"></a>Core Text 大纲</h2><table>
+<thead>
+<tr>
+<th><a href="https://upload-images.jianshu.io/upload_images/1877765-4ace47c5dff6e0f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><code>Core Text API</code></a></th>
+<th>层次 &amp; 作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://upload-images.jianshu.io/upload_images/1877765-9f0af182b0f5d5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">1、APP 结构层次</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 作为基于 <code>Core Graphics</code> 封装实现，是 <code>Apple</code> 基础库中唯一一个处理字体绘制模块。<strong>b、</strong>  在 <code>iOS 7</code> 之后在此基础之上实现的 <code>Text Kit</code> 实现跨 <code>UIKit</code> 和 <code>AppKit</code> 来作为文本绘制。</td>
+</tr>
+<tr>
+<td><a href="https://www.jianshu.com/p/684e2a323620">2、作用</a></td>
+<td><code>Core Text</code> <strong>a、</strong> 通过以 <code>Core Text</code> 为基础实现文字绘制 <code>Text Kit</code> 来实现富文本绘制，展示丰富多彩的文字效果。<strong>b、</strong> 提供后台绘制能力，在实际绘制过程中可以放在 <code>Background Thread</code> 来实现绘制工作。<strong>c、</strong> 在实现中可以通过 <code>CTRunDelegate</code> 来设置 <code>CTRun</code> 来实现图文混排来时更加丰富的效果。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Text Kit 实现逻辑</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1877765-df9bbf81678c6a58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Text Kit.png"></p>
+<blockquote>
+<p>同时也会对本文进行在每一博文更新！！！</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/01/06/iOS UI 优化 一/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/06/iOS UI 优化 一/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-iOS 内购注意事项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/iOS 内购注意事项/">iOS 内购注意事项</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/29/iOS 内购注意事项/" class="archive-article-date">
+  	<time datetime="2018-06-29T03:42:23.494Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="iOS-内购注意事项"><a href="#iOS-内购注意事项" class="headerlink" title="iOS 内购注意事项"></a>iOS 内购注意事项</h1><ul>
+<li>What do users obtain when purchasing the auto-renewable subscription?</li>
+<li>Is the content obtained through the auto-renewable In-App Purchase static or dynamically updated?</li>
+<li>If updated, how often is the content modified?</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 内购</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/29/iOS 内购注意事项/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-StoreKit 框架使用和分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/StoreKit 框架使用和分析/">StoreKit 框架使用和分析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/25/StoreKit 框架使用和分析/" class="archive-article-date">
+  	<time datetime="2018-06-25T06:46:08.670Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在公司做关于 <code>iOS</code> 内购方面相关内容，所以本着如果使用到那块具体内容就要实现完全了解心态把 <code>StoreKit</code> 框架相关接口了解和实现具体封装。</p>
+<h2 id="StoreKit-接口分析"><a href="#StoreKit-接口分析" class="headerlink" title="StoreKit 接口分析"></a><code>StoreKit</code> 接口分析</h2><h3 id="SKAdNetwork"><a href="#SKAdNetwork" class="headerlink" title="SKAdNetwork"></a><code>SKAdNetwork</code></h3><p>翻译不是非常准确，目前是定义为在广告展示和点击时来做为依据标准。</p>
+<h3 id="SKCloudServiceController"><a href="#SKCloudServiceController" class="headerlink" title="SKCloudServiceController"></a><code>SKCloudServiceController</code></h3><p>来获取用户音乐文件管理的相关权限。</p>
+<h3 id="SKCloudServiceSetupViewController"><a href="#SKCloudServiceSetupViewController" class="headerlink" title="SKCloudServiceSetupViewController"></a><code>SKCloudServiceSetupViewController</code></h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS 内购</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/25/StoreKit 框架使用和分析/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
+    <article id="post-JavaScript学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/JavaScript学习总结/">JavaScript 学习总结</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/28/JavaScript学习总结/" class="archive-article-date">
+  	<time datetime="2018-03-27T16:14:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="external">学习资源地址</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端开发/" class="article-tag-list-link color5">前端开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/28/JavaScript学习总结/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS 11 新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -585,316 +957,6 @@ var _hmt = _hmt || [];
 <!-- 目录内容结束 -->
 
   
-    <article id="post-开发架构设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/开发架构设计/">开发架构设计</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/01/开发架构设计/" class="archive-article-date">
-  	<time datetime="2017-09-01T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">移动开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/架构/" class="article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/01/开发架构设计/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS-镜头采集(AVCaptureDevice)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/17/iOS-镜头采集(AVCaptureDevice)/">iOS-镜头采集(AVCaptureDevice)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/17/iOS-镜头采集(AVCaptureDevice)/" class="archive-article-date">
-  	<time datetime="2017-08-17T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>承接上一篇博文小编讲述在镜头采集过程所需知识点和 <code>AVCaptureSession</code> 基本使用方法，本篇博文将要讲述 <code>AVCaptureDevice</code> 相关使用方法。</p>
-<p>下图为本博文写作思路：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-02f3ce2f37fba73c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AVCaptureDevice博文写作思维导图.png"></p>
-        
-          <a class="article-more-a" href="/2017/08/17/iOS-镜头采集(AVCaptureDevice)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/17/iOS-镜头采集(AVCaptureDevice)/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS-Camera Capture (iOS 镜头采集)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/">iOS-镜头采集(Camera capture &amp; AVCaptureSession)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/" class="archive-article-date">
-  	<time datetime="2017-08-10T16:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>iPhone 手机在图片拍照和视频录制方面有很强大的功能，小编认为如果很好使用 iPhone 拍摄出很好照片 &amp; 录制很有趣的视频。本章将详细讲解 <code>AVCaptureSession</code> ，并最后给出 <code>FYCameraKit</code> 项目Demo。<br>下面小编为大家讲解 iOS 拍照和视频录制功能实现，下图是镜头采集需要的类：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-b727b7f54b3df9bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-Camera Capture (iOS 镜头采集).png"></p>
-        
-          <a class="article-more-a" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/11/iOS-Camera Capture (iOS 镜头采集)/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS-视频大纲总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/iOS-视频大纲总结/">iOS-视频大纲总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/09/iOS-视频大纲总结/" class="archive-article-date">
-  	<time datetime="2017-06-08T16:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本次博客思路来自与公司的一次技术分享。前段时间被公司委派做视频相关的开发，就把视频总体内容梳理一下当做备忘。</p>
-<p>下面是本博文的写作思路：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-bbdb773a30fc44a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-视频大纲总结.png"></p>
-        
-          <a class="article-more-a" href="/2017/06/09/iOS-视频大纲总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/09/iOS-视频大纲总结/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -909,7 +971,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 JackJin
+    		&copy; 2020 JackJin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
