@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="iOS XNU - 进程及 Mach-O 格式本来小编想先把内存这块梳理下，但是联系到内存在 iOS 平台中也是 app 编译后的 Mach-O 可执行文件，所以就先把 OS 编译启动过程来讲述。
 进程生命周期因为小编是一位 iOSer 这里讲解进程可以大概理解为：进程 == App，下面给出进程的生命周期。进程的生命周期可以分为：创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（S">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-12ce1122453ddc54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-898ef103c8cbaa7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-b691948709c528af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-08T17:07:48.927Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&token=82c790db-352a-4266-aee2-60679c3d81d7">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&token=ed90d759-c48e-4306-9a3c-ced32ff741cb">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3">
+<meta property="og:updated_time" content="2020-05-20T13:18:18.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS XNU - 内存管理模型">
 <meta name="twitter:description" content="iOS XNU - 进程及 Mach-O 格式本来小编想先把内存这块梳理下，但是联系到内存在 iOS 平台中也是 app 编译后的 Mach-O 可执行文件，所以就先把 OS 编译启动过程来讲述。
 进程生命周期因为小编是一位 iOSer 这里讲解进程可以大概理解为：进程 == App，下面给出进程的生命周期。进程的生命周期可以分为：创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（S">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-12ce1122453ddc54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&token=82c790db-352a-4266-aee2-60679c3d81d7">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
       
         <h1 id="iOS-XNU-进程及-Mach-O-格式"><a href="#iOS-XNU-进程及-Mach-O-格式" class="headerlink" title="iOS XNU - 进程及 Mach-O 格式"></a>iOS XNU - 进程及 Mach-O 格式</h1><p>本来小编想先把内存这块梳理下，但是联系到内存在 <code>iOS</code> 平台中也是 <code>app</code> 编译后的 <code>Mach-O</code> 可执行文件，所以就先把 <code>OS</code> 编译启动过程来讲述。</p>
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-12ce1122453ddc54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="process-lifecycle.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
 <h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
 <blockquote>
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p><strong>下面给出在 <code>Fat</code>（通用二进制格式） VS <code>Mach</code> 格式头文件：</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-898ef103c8cbaa7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fat-mach-header-info.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&amp;token=ed90d759-c48e-4306-9a3c-ced32ff741cb" alt="fat-mach-header-info.png"></p>
 <h3 id="胖二进制（Fat）"><a href="#胖二进制（Fat）" class="headerlink" title="胖二进制（Fat）"></a>胖二进制（Fat）</h3><p><strong><code>fat_headers</code></strong></p>
 <blockquote>
 <p><code>magic</code>：固定值在上面给出 <code>0xcafebabe</code>，来表示通用二进制文件；<br><code>nfa_arch</code>：当前通用二进制包含的架构数目。 </p>
@@ -270,7 +270,7 @@ var _hmt = _hmt || [];
 <p><code>magic</code>：<code>0xfeedface</code> 表示 32 位二进制，<code>0xfeedfacf</code> 表示 64 位二进制文件；<br><code>cputype</code> &amp; <code>cpusubtype</code>：<code>CPU</code> 类型和子类型；<br><code>filetype</code>：文件类型（可执行文件、库文件、核心转储文件、内核拓展等）；<br><code>ncmds</code> &amp; <code>sizeofncmds</code>：用于加载器的 “加载命令” 的条目和大小；<br><code>flags</code>：动态连接器的标志（<strong><code>dyld</code></strong>）；<br><code>Reserved</code>： 64 位预留。。。</p>
 </blockquote>
 <p><strong>我们在目前编译过程总采用 <code>Bitcode</code> 来进行编码实际就是生成 <code>Mach-O</code> 文件，然后在由 <code>Apple Server</code> 根据应用端的处理架构来在实现安装时生成对应架构的 <code>Mach-O</code>。</strong></p>
-<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-b691948709c528af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mach-o-loader.png"></p>
+<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&amp;token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3" alt="mach-o-loader.png"></p>
 <h3 id="内核加载进程"><a href="#内核加载进程" class="headerlink" title="内核加载进程"></a>内核加载进程</h3><p><strong>（1）非配虚拟内存 <code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code></strong></p>
 <p><strong>(2) 创建主线程 <code>LC_MAIN</code></strong></p>
 <p><strong>(2) 代码签名 ``</strong></p>

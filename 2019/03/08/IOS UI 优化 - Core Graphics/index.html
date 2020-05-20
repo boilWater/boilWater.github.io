@@ -20,17 +20,17 @@ Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 
 Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 实现，这里仅仅展示 Core Graphics 实现的基础实现架构。
 
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-08T18:14:50.105Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDLWE3usJFGTpiN-L%2F1877765-33be471164252941.png?alt=media&token=aab36ea8-f7ee-45b0-ab38-e2b81a42c908">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDV4DmXj8KDHjEHYx%2F1877765-156381bdec28dba6.png?alt=media&token=d89c6f0b-1eb0-4ed0-a2a3-cb4fb23f903c">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7m7I-gpIe6G1W653KZ%2F-M7mCs6rbjLXuA4DGrzT%2F1877765-1f9cff8b51261139.png?alt=media&token=b589ad9c-ee9f-432b-8c45-4d831bf96b84">
+<meta property="og:updated_time" content="2020-05-20T13:13:45.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS UI 优化 - Core Graphics">
 <meta name="twitter:description" content="Core Graphics 实现探索又是一个常用但是不知怎么开篇博文。🤔🤔🤔
 Core Graphics 在 iOS 整个架构的层次结构可以和上篇 Core Animation 实现，这里仅仅展示 Core Graphics 实现的基础实现架构。
 
 在讲解 Core Graphics 之前还是按照小编的🍉惯，对该框架 API 的接口进行整理。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDLWE3usJFGTpiN-L%2F1877765-33be471164252941.png?alt=media&token=aab36ea8-f7ee-45b0-ab38-e2b81a42c908">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -206,9 +206,9 @@ var _hmt = _hmt || [];
       
         <h1 id="Core-Graphics-实现探索"><a href="#Core-Graphics-实现探索" class="headerlink" title="Core Graphics 实现探索"></a>Core Graphics 实现探索</h1><p>又是一个常用但是不知怎么开篇博文。🤔🤔🤔</p>
 <p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以和上篇 <code>Core Animation</code> 实现，这里仅仅展示 <code>Core Graphics</code> 实现的基础实现架构。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Graphics.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDLWE3usJFGTpiN-L%2F1877765-33be471164252941.png?alt=media&amp;token=aab36ea8-f7ee-45b0-ab38-e2b81a42c908" alt="Core Graphics.png"></p>
 <p>在讲解 <code>Core Graphics</code> 之前还是按照小编的🍉惯，对该框架 <code>API</code> 的接口进行整理。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDV4DmXj8KDHjEHYx%2F1877765-156381bdec28dba6.png?alt=media&amp;token=d89c6f0b-1eb0-4ed0-a2a3-cb4fb23f903c" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
 <a id="more"></a>
 <blockquote>
 <p>作为基于 <a href="https://zh.wikipedia.org/wiki/Quartz" target="_blank" rel="external">Quartz</a> 的框架，上面 👆 的 <code>API</code> 类型 <code>CGType</code> 在 <code>C</code> 层面的绘图引擎。主要在上面 <code>Core Animation 探索</code> 中验证过程中位置参数、颜色值、路径以及图像等等方面……<br>讲真这个框架不知道怎么开笔，就按照上面 <code>API</code> 来各个阐述自己理解吧。</p>
@@ -249,7 +249,7 @@ var _hmt = _hmt || [];
 </table>
 <p>注：上述没有详细讲述其均为 <code>Struct</code> 值类型结构</p>
 <h3 id="CGAffineTransform-使用"><a href="#CGAffineTransform-使用" class="headerlink" title="CGAffineTransform 使用"></a>CGAffineTransform 使用</h3><p>在 <code>CGAffineTransform</code> 初始化仿射变换初始化中显示 <code>CGAffineTransform.init(a: , b: , c: , d: , tx: , ty: )</code> 来作为 <strong>3*3</strong> 的矩阵。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-1f9cff8b51261139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-04-03 23.22.54.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7m7I-gpIe6G1W653KZ%2F-M7mCs6rbjLXuA4DGrzT%2F1877765-1f9cff8b51261139.png?alt=media&amp;token=b589ad9c-ee9f-432b-8c45-4d831bf96b84" alt="屏幕快照 2019-04-03 23.22.54.png"></p>
 <blockquote>
 <p>上面根据在仿射变换后坐标:<br>X 轴上的坐标 <strong>X`= ax + cy + tx</strong>, a 表示在 x 轴的缩放比例系数，c 表示在 y 轴偏移系数在旋转时使用， tx 是在当前坐标系的平移距离。     </p>
 <p>Y 轴上的坐标 <strong>Y`= bx + dy + ty</strong>, b 表示在 y 轴的缩放比例系数，d 表示在 x 轴偏移系数在旋转时使用， ty 是在当前坐标系的平移距离。</p>

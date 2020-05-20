@@ -194,7 +194,7 @@ var _hmt = _hmt || [];
       
         <h1 id="iOS-XNU-进程及-Mach-O-格式"><a href="#iOS-XNU-进程及-Mach-O-格式" class="headerlink" title="iOS XNU - 进程及 Mach-O 格式"></a>iOS XNU - 进程及 Mach-O 格式</h1><p>本来小编想先把内存这块梳理下，但是联系到内存在 <code>iOS</code> 平台中也是 <code>app</code> 编译后的 <code>Mach-O</code> 可执行文件，所以就先把 <code>OS</code> 编译启动过程来讲述。</p>
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-12ce1122453ddc54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="process-lifecycle.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
 <h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
 <blockquote>
@@ -249,7 +249,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p><strong>下面给出在 <code>Fat</code>（通用二进制格式） VS <code>Mach</code> 格式头文件：</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-898ef103c8cbaa7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fat-mach-header-info.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&amp;token=ed90d759-c48e-4306-9a3c-ced32ff741cb" alt="fat-mach-header-info.png"></p>
 <h3 id="胖二进制（Fat）"><a href="#胖二进制（Fat）" class="headerlink" title="胖二进制（Fat）"></a>胖二进制（Fat）</h3><p><strong><code>fat_headers</code></strong></p>
 <blockquote>
 <p><code>magic</code>：固定值在上面给出 <code>0xcafebabe</code>，来表示通用二进制文件；<br><code>nfa_arch</code>：当前通用二进制包含的架构数目。 </p>
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
 <p><code>magic</code>：<code>0xfeedface</code> 表示 32 位二进制，<code>0xfeedfacf</code> 表示 64 位二进制文件；<br><code>cputype</code> &amp; <code>cpusubtype</code>：<code>CPU</code> 类型和子类型；<br><code>filetype</code>：文件类型（可执行文件、库文件、核心转储文件、内核拓展等）；<br><code>ncmds</code> &amp; <code>sizeofncmds</code>：用于加载器的 “加载命令” 的条目和大小；<br><code>flags</code>：动态连接器的标志（<strong><code>dyld</code></strong>）；<br><code>Reserved</code>： 64 位预留。。。</p>
 </blockquote>
 <p><strong>我们在目前编译过程总采用 <code>Bitcode</code> 来进行编码实际就是生成 <code>Mach-O</code> 文件，然后在由 <code>Apple Server</code> 根据应用端的处理架构来在实现安装时生成对应架构的 <code>Mach-O</code>。</strong></p>
-<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-b691948709c528af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mach-o-loader.png"></p>
+<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&amp;token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3" alt="mach-o-loader.png"></p>
 <h3 id="内核加载进程"><a href="#内核加载进程" class="headerlink" title="内核加载进程"></a>内核加载进程</h3><p><strong>(1) 非配虚拟内存 <code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code></strong></p>
 <blockquote>
 <p><code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code> 指导内核如何设置新运行进程的内存空间，<strong><code>__PAGEZERO</code>段(空指针陷阱)、<code>__TEXT</code>段(程序代码)、<code>__DATA</code>段(程序数据) 和 <code>__LINKEDIT</code>段(连接器使用的字符和其他段)</strong> 直接从 <code>Mach-O</code> 二进制文件加载到内存中。   </p>
@@ -427,7 +427,7 @@ var _hmt = _hmt || [];
       
         <h1 id="iOS-XNU-进程及-Mach-O-格式"><a href="#iOS-XNU-进程及-Mach-O-格式" class="headerlink" title="iOS XNU - 进程及 Mach-O 格式"></a>iOS XNU - 进程及 Mach-O 格式</h1><p>本来小编想先把内存这块梳理下，但是联系到内存在 <code>iOS</code> 平台中也是 <code>app</code> 编译后的 <code>Mach-O</code> 可执行文件，所以就先把 <code>OS</code> 编译启动过程来讲述。</p>
 <h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p>因为小编是一位 <code>iOSer</code> 这里讲解进程可以大概理解为：<strong>进程 == <code>App</code></strong>，下面给出进程的生命周期。进程的生命周期可以分为：<strong>创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）</strong>。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-12ce1122453ddc54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="process-lifecycle.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2QTK31K5V4dNyjvz%2F1877765-12ce1122453ddc54.png?alt=media&amp;token=82c790db-352a-4266-aee2-60679c3d81d7" alt="process-lifecycle.png"></p>
 <h3 id="创建（SIDL）"><a href="#创建（SIDL）" class="headerlink" title="创建（SIDL）"></a>创建（SIDL）</h3><p><strong><code>SIDL</code></strong> 这个状态是被父进程刚刚 <code>Fork</code> 创建生成一个唯一的 <code>PID</code>，处于一个临时空闲状态。此时让然被称为：<strong>“正在初始化”</strong>，不会响应任何的信号和操作。这个初始化的过程是在单线程中来进行内存布局设置和加载所需要的引来模块。<br>实现处理完成只有进程可以执行，同时不会返回 <strong><code>SIDL</code></strong> 状态。<strong>相当与用户在手机屏幕点击 <code>ICON</code> 按钮后执行。</strong></p>
 <h3 id="运行（SRUN）"><a href="#运行（SRUN）" class="headerlink" title="运行（SRUN）"></a>运行（SRUN）</h3><p><strong><code>SRUN</code></strong> 如果在进一步来进行细分可以分为两种：</p>
 <blockquote>
@@ -482,7 +482,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p><strong>下面给出在 <code>Fat</code>（通用二进制格式） VS <code>Mach</code> 格式头文件：</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-898ef103c8cbaa7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fat-mach-header-info.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2luA1DFjTMhevnny%2F1877765-898ef103c8cbaa7d.png?alt=media&amp;token=ed90d759-c48e-4306-9a3c-ced32ff741cb" alt="fat-mach-header-info.png"></p>
 <h3 id="胖二进制（Fat）"><a href="#胖二进制（Fat）" class="headerlink" title="胖二进制（Fat）"></a>胖二进制（Fat）</h3><p><strong><code>fat_headers</code></strong></p>
 <blockquote>
 <p><code>magic</code>：固定值在上面给出 <code>0xcafebabe</code>，来表示通用二进制文件；<br><code>nfa_arch</code>：当前通用二进制包含的架构数目。 </p>
@@ -497,7 +497,7 @@ var _hmt = _hmt || [];
 <p><code>magic</code>：<code>0xfeedface</code> 表示 32 位二进制，<code>0xfeedfacf</code> 表示 64 位二进制文件；<br><code>cputype</code> &amp; <code>cpusubtype</code>：<code>CPU</code> 类型和子类型；<br><code>filetype</code>：文件类型（可执行文件、库文件、核心转储文件、内核拓展等）；<br><code>ncmds</code> &amp; <code>sizeofncmds</code>：用于加载器的 “加载命令” 的条目和大小；<br><code>flags</code>：动态连接器的标志（<strong><code>dyld</code></strong>）；<br><code>Reserved</code>： 64 位预留。。。</p>
 </blockquote>
 <p><strong>我们在目前编译过程总采用 <code>Bitcode</code> 来进行编码实际就是生成 <code>Mach-O</code> 文件，然后在由 <code>Apple Server</code> 根据应用端的处理架构来在实现安装时生成对应架构的 <code>Mach-O</code>。</strong></p>
-<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://upload-images.jianshu.io/upload_images/1877765-b691948709c528af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mach-o-loader.png"></p>
+<h2 id="Mach-O-加载进程"><a href="#Mach-O-加载进程" class="headerlink" title="Mach-O 加载进程"></a><code>Mach-O</code> 加载进程</h2><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1mssvT2pBaW1gbna%2F-M7k2zQdhpr_Gwptcw_Z%2F1877765-b691948709c528af.png?alt=media&amp;token=6b4e79d8-3066-4827-ab1a-37ee0c4a8da3" alt="mach-o-loader.png"></p>
 <h3 id="内核加载进程"><a href="#内核加载进程" class="headerlink" title="内核加载进程"></a>内核加载进程</h3><p><strong>（1）非配虚拟内存 <code>LC_SEGMENT</code> || <code>LC_SEGMENT_64</code></strong></p>
 <p><strong>(2) 创建主线程 <code>LC_MAIN</code></strong></p>
 <p><strong>(2) 代码签名 ``</strong></p>
@@ -582,7 +582,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="iOS-XNU-内存管理模型"><a href="#iOS-XNU-内存管理模型" class="headerlink" title="iOS XNU - 内存管理模型"></a>iOS XNU - 内存管理模型</h1><p><img src="https://upload-images.jianshu.io/upload_images/1877765-8da36eff2f60a243.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="memory.png"></p>
+        <h1 id="iOS-XNU-内存管理模型"><a href="#iOS-XNU-内存管理模型" class="headerlink" title="iOS XNU - 内存管理模型"></a>iOS XNU - 内存管理模型</h1><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1DyEEUYr7kV6hskf%2F-M7k1_ydxPinnfXXdwkG%2F1877765-8da36eff2f60a243.png?alt=media&amp;token=c4b48b2c-771b-4997-8e05-de0a27fa2a00" alt="memory.png"></p>
 
       
 
@@ -657,7 +657,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="iOS-内核-XNU-总纲"><a href="#iOS-内核-XNU-总纲" class="headerlink" title="iOS 内核 XNU -总纲"></a>iOS 内核 XNU -总纲</h1><p><img src="https://upload-images.jianshu.io/upload_images/1877765-08e5a7043383d728.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mach-structature.png"></p>
+        <h1 id="iOS-内核-XNU-总纲"><a href="#iOS-内核-XNU-总纲" class="headerlink" title="iOS 内核 XNU -总纲"></a>iOS 内核 XNU -总纲</h1><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k3UdMuP01BQXu8CMh%2F-M7k4KoDhvrgVYdwi0Ko%2F1877765-08e5a7043383d728.png?alt=media&amp;token=f2d71aea-77d8-439e-a82c-1a510e91c258" alt="mach-structature.png"></p>
 <p>上面是 <code>XNU</code> 内核在架构图，由上图我们可以看出 <code>XNU</code> 包含：<strong><code>Mach</code> 微内核、<code>BSD</code> 层、<code>libKern</code> 和 <code>I/O Kit</code></strong>。</p>
 <h2 id="Mach-微内核"><a href="#Mach-微内核" class="headerlink" title="Mach 微内核"></a><code>Mach</code> 微内核</h2><p><code>Mach</code> 微内核研发者是卡内基梅隆大学开发的操作系统，主要是致力于开发一套轻量级且高效平台。这个成果的就是我们讲述的 <code>Mach</code> 内核。<br>该操作系统包含：</p>
 <blockquote>
@@ -902,7 +902,7 @@ var _hmt = _hmt || [];
       
         <h1 id="Core-Text-富文本编辑"><a href="#Core-Text-富文本编辑" class="headerlink" title="Core Text 富文本编辑"></a>Core Text 富文本编辑</h1><p>在 <code>Core Graphics</code> 后面一篇文章本该对 <code>Core Image</code> 框架进行整理，但是基于 <code>Core Graphics</code> 的富文本编辑 <code>Core Text</code> 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 <code>Texture</code> 即 <code>ASDK</code> 和 <code>YYKit</code> 详细描述。</p>
 <h2 id="Core-Text-结构层级"><a href="#Core-Text-结构层级" class="headerlink" title="Core Text 结构层级"></a>Core Text 结构层级</h2><p>这里小编对 <code>Core Text</code> 在实现的层次结构上所处位置，以及在对 <code>UIKit</code> 框架我们常见控件 <code>UITextFiled</code>、<code>UITextView</code> 和 <code>UILabel</code> 具体实现基础。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-d9fa387d512dd42d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Text.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kDbQuzCiS4ZyHn30r%2F-M7kE8qFvBCueh8O8d1_%2F1877765-d9fa387d512dd42d.png?alt=media&amp;token=3d406869-6df1-4a7c-bcb6-6c228a9d1fce" alt="Core Text.png"></p>
 <blockquote>
 <p>上图是小编根据 <strong>2018 WWDC</strong> 中 <a href="https://developer.apple.com/videos/play/wwdc2018/221/">TextKit Best Practices</a> 和 <a href="https://developer.apple.com/videos/play/wwdc2013/210">Introducing Text Kit</a> 得出 <code>Core Graphics</code>、<code>Core Text</code> 和 <code>UIKit</code> 中能够实现文本绘制的控件实现结构图。<br>根据上面结构可以看出：<br>（1）基于 <code>Quartz</code> 封装的 <code>Core Graphics</code> 为 <code>Core Text</code> 的实现基础。而且 <code>Quartz</code> 可以直接处理字体和字形将文字渲染到界面，也是在 Apple 基础库中唯一一个处理字体模块。<br>（2）基于 <code>Core Text</code> 封装实现的 <code>Text Kit</code> 为在 <code>UIKit</code> 和 <code>AppKit</code> 中文本显示控件 <code>TypeTextFiled</code>、<code>TypeTextView</code> 等提供最直接的接口。</p>
 </blockquote>
@@ -984,9 +984,9 @@ var _hmt = _hmt || [];
       
         <h1 id="Core-Graphics-实现探索"><a href="#Core-Graphics-实现探索" class="headerlink" title="Core Graphics 实现探索"></a>Core Graphics 实现探索</h1><p>又是一个常用但是不知怎么开篇博文。🤔🤔🤔</p>
 <p><code>Core Graphics</code> 在 <code>iOS</code> 整个架构的层次结构可以和上篇 <code>Core Animation</code> 实现，这里仅仅展示 <code>Core Graphics</code> 实现的基础实现架构。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-33be471164252941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Core Graphics.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDLWE3usJFGTpiN-L%2F1877765-33be471164252941.png?alt=media&amp;token=aab36ea8-f7ee-45b0-ab38-e2b81a42c908" alt="Core Graphics.png"></p>
 <p>在讲解 <code>Core Graphics</code> 之前还是按照小编的🍉惯，对该框架 <code>API</code> 的接口进行整理。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-156381bdec28dba6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7kD55cdBlRKqbyxwvK%2F-M7kDV4DmXj8KDHjEHYx%2F1877765-156381bdec28dba6.png?alt=media&amp;token=d89c6f0b-1eb0-4ed0-a2a3-cb4fb23f903c" alt="屏幕快照 2019-03-16 20.43.18.png"></p>
         
           <a class="article-more-a" href="/2019/03/08/IOS UI 优化 - Core Graphics/#more">more >></a>
         
@@ -1064,7 +1064,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行O对比。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-f0cb74a53c9ba8dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k6-E548XUtcpJOExw%2F1877765-f0cb74a53c9ba8dc.png?alt=media&amp;token=85da9e64-1e31-4e59-a392-e6346b786a2d" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
 <blockquote>
 <p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>
 </blockquote>
@@ -1073,7 +1073,7 @@ var _hmt = _hmt || [];
 <p>1、<code>Core Animation</code> 作为主要内容载体承接对 <code>iOS</code> 和 <code>OS</code> 具体显示的绘制；<br>2、<code>UIKit</code> 框架从初始化到通过 <code>GPU</code> 生成纹理显示在屏幕上是依靠 <code>Core Animation</code>、 <code>Core Graphics</code>、 <code>OpenGL ES</code>(<code>iOS</code> 11) 和 <code>Matel</code>(<code>iOS</code> 12)   来实现;<br>3、在 <code>iOS 8.0</code> 中苹果官方尝试使用 <code>Metal</code> 来替代 <code>OpenGL ES</code> 在目前最新的官方文档中实现在绘制生成纹理底层架构依据 <code>Metal</code> 进行。</p>
 </blockquote>
 <p>想要深入了解一个架构我们就从最基本的系统 <code>API</code> 着手，下面是小编对系统 <code>API</code> 根据分类来对具体类的 <code>API</code> 进行整理。 </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1877765-3b86566386d064e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k69JihU77jBBE8Kvm%2F-M7k6M58rz6cyT1AO8Pv%2F1877765-3b86566386d064e4.png?alt=media&amp;token=3e463096-20b5-4bb2-bb15-39ccf7c6525c" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
         
           <a class="article-more-a" href="/2019/01/06/iOS UI 优化 - Core Animation /#more">more >></a>
         
