@@ -8,16 +8,52 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>开发架构设计 | JackJin&#39;s 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。
+出发角度：
+
+项目整体创建 FloDer 结构
+在模块开发过程中选择开发方式 
+基础类和公有类提取
+具体模块开发中架构设计
+相关类在开发中应该准守的规则
+
+项目整体创建 Floder 架构下面创建的文件目录以 LLDemo 为例
+LLDemo    
+
+resourc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开发架构设计">
 <meta property="og:url" content="http://yoursite.com/2017/09/01/开发架构设计/index.html">
 <meta property="og:site_name" content="JackJin's 博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2018-01-16T02:23:57.000Z">
+<meta property="og:description" content="目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。
+出发角度：
+
+项目整体创建 FloDer 结构
+在模块开发过程中选择开发方式 
+基础类和公有类提取
+具体模块开发中架构设计
+相关类在开发中应该准守的规则
+
+项目整体创建 Floder 架构下面创建的文件目录以 LLDemo 为例
+LLDemo    
+
+resourc">
+<meta property="og:updated_time" content="2020-05-20T16:14:56.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发架构设计">
-<meta name="twitter:description">
+<meta name="twitter:description" content="目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。
+出发角度：
+
+项目整体创建 FloDer 结构
+在模块开发过程中选择开发方式 
+基础类和公有类提取
+具体模块开发中架构设计
+相关类在开发中应该准守的规则
+
+项目整体创建 Floder 架构下面创建的文件目录以 LLDemo 为例
+LLDemo    
+
+resourc">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -191,7 +227,67 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。</p>
+<p>出发角度：</p>
+<ul>
+<li>项目整体创建 FloDer 结构</li>
+<li>在模块开发过程中选择开发方式 </li>
+<li>基础类和公有类提取</li>
+<li>具体模块开发中架构设计</li>
+<li>相关类在开发中应该准守的规则</li>
+</ul>
+<p>项目整体创建 Floder 架构<br>下面创建的文件目录以 LLDemo 为例</p>
+<p>LLDemo    </p>
+<ul>
+<li>resource（资源文件）     <ul>
+<li>builtin   （内置资源）     </li>
+<li>images （图片资源，assets）      </li>
+</ul>
+</li>
+<li>lib （第三方库的代码引入）        </li>
+<li>base utils                （项目中基础库，开发过程中基本保持不变）     <ul>
+<li>layout constant     （布局常量判断）       </li>
+<li>basic informations（一些基础配置信息）          </li>
+</ul>
+</li>
+<li>utils                            （依据基础库来封装使用与多个模块公共接口，经常变动）        <ul>
+<li>interface of module  （模块中接口）        </li>
+<li>heigh api                  （基于基础库开发瞒住模块高级方法）      </li>
+</ul>
+</li>
+<li>custom view（项目中多个模块使用自定义 View）         </li>
+<li>extensions     (可以直接执行 App 的功能)     </li>
+<li>module        （按模 块划分，在具体模块开发需要根据开发选型：MVC，MVP 或者 MVVM）             <ul>
+<li>home          （首页）            </li>
+<li>setting        （设置）            </li>
+<li>vip page     （VIP Page）     </li>
+<li>editor          （编辑模块）       </li>
+</ul>
+</li>
+</ul>
+<p>之所以这样创建 FFloder 文件原因：<br>   （1）瞒住在开发过程中明确每一个 floder 的职能；<br>   （2）在新模块添加过程中更好管理相关资源；<br>   （3）提取相关基类以及抽象方法，方便复用在查找和维护过程中减少成本；<br>   （4）Floder 职能明确在后续新队员接手学习成本低。       </p>
+<p>在模块开发过程中选择开发方式<br>在模块开发过程中选定相关开发方式其实目前做常用的是 MVC，MVVM 两者      </p>
+<p> 目前项目开发基本是基于 MVC 开发来进行构架模块下面在 module 中 Home 为例解释：</p>
+<ul>
+<li>Home      <ul>
+<li>model（数据模型）         </li>
+<li>view controller（视图控制器）       </li>
+<li>view（控件）       <ul>
+<li>custom view（Home 中独有 view）       </li>
+<li>global view（对 Home 中 view 拆分）        </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>上面在模块构建过程中可以通过对 View 拆分，然后减少 View 在 VC 初始化，把数据处理搬移到 Model，也可以减少 VC 肥大。但是当 VC 功能逐渐增多，趋向于平台入口 VC 肥大很难避免。</p>
+<p>可以在新的简单模块逐渐引入 MVVM 开发模式，这样既可以熟悉 MVVM 开发模式，同时在新添加模块中逐渐向 MVVM 转变在不妨碍工作进度情况下也为后续 VM 的单独测试以及 LLDemo 功能多样化防止 VC 肥大做准备。（在后续估计也需要做统一大家一起使用，不能凭个人爱好）</p>
+<p>这里给出在 github 上面模式介绍<br>参考地址：<a href="https://github.com/Optimize-iOS/app-architecture" target="_blank" rel="external">https://github.com/Optimize-iOS/app-architecture</a></p>
+<p> 基础类和公有类提取<br>  感觉不用详说好处多多</p>
+<p>具体模块开发中架构设计<br>因为目前 LLDemo 整个 APP 功能最详细，而且最全是在图片编辑类。<br>可以对改编辑类的框架搭建，减少不必要的 View 的创建和保存取消操作重复实现。</p>
+<p>目前大概思路是：<br>   （1）对共用的 View 的进行提取在 EditVC 实现，然后对渲染，展示这些 View 提供接口在编辑子类可以添加独有的 View；<br>    （2）对在每一个编辑子类中保存，取消，展示原图这些方法在 EditVC 实现，给每一个子编辑调用。</p>
+<p>不过存在一定的风险，就是在每个子编辑需要重新按照原来的逻辑实现功能，修改起来难度较大，测试周期长。好的一点就是后续添加方便修改内容少，实现更加便捷。也可以给大家一个思路，后续模块搭建过程中更好设计架构。</p>
+
       
 
       

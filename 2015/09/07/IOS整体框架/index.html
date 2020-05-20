@@ -18,19 +18,19 @@
 <meta property="og:description" content="感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。
 我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
 下面是关于OS X的结构图（官网地址）：">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-ed77042d637deed4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhVqQ1QtNXevzivwW%2F1877765-29d05633d733a8f8.png?alt=media&token=2d92ec87-f229-4982-a0f4-be1d3b1cc6d2">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7miCIPR6_nu1upOcbd%2F1877765-237c7e26cf4e5d32.png?alt=media&token=778c1b04-6e43-4d66-b00c-4116e78eb9ce">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-2388dbca231656e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-237c7e26cf4e5d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-26f0be3c3ff81a93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-a154101abbd0091a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-16T02:42:43.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7miCIPR6_nu1upOcbd%2F1877765-237c7e26cf4e5d32.png?alt=media&token=778c1b04-6e43-4d66-b00c-4116e78eb9ce">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhSB1BOYrOnzNK8qj%2F1877765-26f0be3c3ff81a93.png?alt=media&token=b1793a48-a536-4059-b89e-bfd71454bbce">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mjy4pNyokAPfSPfsR%2F1877765-a154101abbd0091a.jpg?alt=media&token=43737003-720f-4820-9ccd-88d4a41c99f2">
+<meta property="og:updated_time" content="2020-05-20T16:37:37.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 整体框架">
 <meta name="twitter:description" content="感觉在博客上有大牛介绍iOS框架讲解的比较详细，在此向大牛致敬写篇文章。大牛文章关于框架。
 我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：
 下面是关于OS X的结构图（官网地址）：">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhVqQ1QtNXevzivwW%2F1877765-29d05633d733a8f8.png?alt=media&token=2d92ec87-f229-4982-a0f4-be1d3b1cc6d2">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -208,7 +208,7 @@ var _hmt = _hmt || [];
 <p>我们在做iOS开发过程针对对象来进行类的分装，然后实现具体方法解决问题。但是我们整体语言框架不是很清楚，废话不多说开始：</p>
 <p>下面是关于OS X的结构图（<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">官网地址</a>）：</p>
 <a id="more"></a>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-29d05633d733a8f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-layers_2x.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhVqQ1QtNXevzivwW%2F1877765-29d05633d733a8f8.png?alt=media&amp;token=2d92ec87-f229-4982-a0f4-be1d3b1cc6d2" alt="osx_architecture-layers_2x.png"></p>
 <p>官方文档的具体内容：</p>
 <p>The Cocoa (Application) layer（应用层） includes technologies for building an app’s user interface, for responding to user events, and for managing app behavior.</p>
 <p>The Media layer （媒体层）encompasses specialized technologies for playing, recording, and editing audiovisual media and for rendering and animating 2D and 3D graphics.</p>
@@ -217,18 +217,18 @@ var _hmt = _hmt || [];
 <p>The Kernel and Device Drivers layer（内核和驱动层） consists of the Mach kernel environment, device drivers, BSD library functions (libSystem), and other low-level components. The layer includes support for file systems, networking, security, interprocess communication, programming languages, device drivers, and extensions to the kernel.</p>
 <p>下面对于每层的讲解：</p>
 <p>（1）应用层即可触摸层（cocoa touch layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1" target="_blank" rel="external">官方地址</a>:提供接口为应用，主要用于touch和管理应用的操作。其中我们最常用的UIKit的框架在Cocoa Touch层</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-ed77042d637deed4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-cocoa_2x.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7miCIPR6_nu1upOcbd%2F1877765-237c7e26cf4e5d32.png?alt=media&amp;token=778c1b04-6e43-4d66-b00c-4116e78eb9ce" alt="osx_architecture-cocoa_2x.png"></p>
 <p>（2）媒体层（media layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1" target="_blank" rel="external">官方地址</a>：包括多种多样的媒体文件，录音，播放，图像绘制，2D和3D图形基础动画</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1877765-2388dbca231656e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-media_2x.png"></p>
 <p>主要包括以下：AV Foundation, Core Animation, Core Audio, Core Image, Core Text, OpenAl, OpenGL, Quartez</p>
 <p>（3）核心服务层（Core Service Layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ" target="_blank" rel="external">官方地址</a>：通过提供一些接口进行网络连接，包括一些在CPU和GPU更高计算性能，使用广泛的Foundation框架位于本层</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-237c7e26cf4e5d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-core_services_2x.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7miCIPR6_nu1upOcbd%2F1877765-237c7e26cf4e5d32.png?alt=media&amp;token=778c1b04-6e43-4d66-b00c-4116e78eb9ce" alt="osx_architecture-core_services_2x.png"></p>
 <p>只要包括以下：Address Book, Core Foundation, Foundation, Core Data, Quick Look</p>
 <p>, Social, WebKit, Security</p>
 <p>(4)核心系统操作层（Core OS Layer）<a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">官方地址</a>：内存管理、文件系统、电源管理以及一些其他的操作系统任务。它可以直接和硬件设备进行交互</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-26f0be3c3ff81a93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="osx_architecture-core_os_2x.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhSB1BOYrOnzNK8qj%2F1877765-26f0be3c3ff81a93.png?alt=media&amp;token=b1793a48-a536-4059-b89e-bfd71454bbce" alt="osx_architecture-core_os_2x.png"></p>
 <p>只要包括以下：Accelerate, Open CL, Directory Services, System Configuration, Disk Arbitration</p>
-<p><strong>下面给出 iOS 系统框架：</strong><br><img src="http://upload-images.jianshu.io/upload_images/1877765-a154101abbd0091a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IOS 系统结构.jpg"><br><strong>【后续对框架进行添加】</strong></p>
+<p><strong>下面给出 iOS 系统框架：</strong><br><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mjy4pNyokAPfSPfsR%2F1877765-a154101abbd0091a.jpg?alt=media&amp;token=43737003-720f-4820-9ccd-88d4a41c99f2" alt="IOS 系统结构.jpg"><br><strong>【后续对框架进行添加】</strong></p>
 <p>参考资料：<br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html#//apple_ref/doc/uid/TP40001067-CH204-TPXREF101" target="_blank" rel="external">About Developing for Mac</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW1" target="_blank" rel="external">Cocoa Application Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW1" target="_blank" rel="external">Media Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BCICAIFJ" target="_blank" rel="external">Core Services Layer</a><br><a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW1" target="_blank" rel="external">Core OS Layer</a>  </p>
 
       

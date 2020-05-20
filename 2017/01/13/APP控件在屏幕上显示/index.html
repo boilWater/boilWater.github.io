@@ -16,19 +16,19 @@
 <meta property="og:site_name" content="JackJin's 博客">
 <meta property="og:description" content="在每个 App 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods 进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
 下面给出整理的图形绘制思维导图：">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-17T03:51:46.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mjjtWRqpw_W_5O61f%2F1877765-40724fb9be7691c4.jpg?alt=media&token=73e90e2d-5fb8-47c1-87d2-d40caebd9a78">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mrZTBARVIvkcK7ZFP%2F-M7mvRC4WXO7yjHeohWn%2F1877765-420d6100d6bc6ea1.png?alt=media&token=87e0ce19-a816-41eb-a69f-22c8eec39ba2">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mi2RIOKWKu5hYVd6V%2F1877765-94ee3d3de417be2c.png?alt=media&token=dc7827bb-9b01-4780-be66-90bb1cd14473">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhdB_6B2MIiE6c2Qh%2F1877765-57d7c6a78203fe32.png?alt=media&token=4d46877d-7049-4b5c-83f9-f84b32d88942">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhry2mki1C9NRqJHI%2F1877765-080f3f114f51b563.png?alt=media&token=b92c8d69-aeb8-4e95-aa7d-941deb63eab6">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7moYetfJjJ76BsiO9X%2F1877765-de4eaec88c23be92.png?alt=media&token=58956f71-f38d-4de7-b841-68f765fdece6">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mi_j929wT-RmjoMnL%2F1877765-618b4dfde6e991a7.png?alt=media&token=c7b87d17-d972-47b9-8deb-ffbaa1c191dd">
+<meta property="og:updated_time" content="2020-05-20T16:34:30.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 空间绘制原理">
 <meta name="twitter:description" content="在每个 App 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用CocoaPods 进行插件化管理。但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。
 下面给出整理的图形绘制思维导图：">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mjjtWRqpw_W_5O61f%2F1877765-40724fb9be7691c4.jpg?alt=media&token=73e90e2d-5fb8-47c1-87d2-d40caebd9a78">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -204,12 +204,12 @@ var _hmt = _hmt || [];
       
         <p>在每个 <code>App</code> 中如果想要实现界面的精美，多数情况下我们需要对相关控件进行分装，采用<code>CocoaPods</code> 进行插件化管理。<br>但是我们在程序里的空间是怎么显示在屏幕上的，下面将初略的讲述屏幕上显示控件的过程。</p>
 <p><strong>下面给出整理的图形绘制思维导图：</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-40724fb9be7691c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图形绘制到屏幕上.jpg"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mjjtWRqpw_W_5O61f%2F1877765-40724fb9be7691c4.jpg?alt=media&amp;token=73e90e2d-5fb8-47c1-87d2-d40caebd9a78" alt="图形绘制到屏幕上.jpg"></p>
 <a id="more"></a>
 <p>使用 <code>Xmind</code> 来展示博客讲述 <code>App</code> 控件在屏幕上显示的思路和相关知识点的整理思路，具体思路看下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-420d6100d6bc6ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS 控件在屏幕上显示思维导图.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mrZTBARVIvkcK7ZFP%2F-M7mvRC4WXO7yjHeohWn%2F1877765-420d6100d6bc6ea1.png?alt=media&amp;token=87e0ce19-a816-41eb-a69f-22c8eec39ba2" alt="iOS 控件在屏幕上显示思维导图.png"></p>
 <h2 id="屏幕显示图像的原理"><a href="#屏幕显示图像的原理" class="headerlink" title="屏幕显示图像的原理"></a>屏幕显示图像的原理</h2><p>记得第一台电视机是最老式的黑白电视机，上面具备天线、需要手动转动旋转调台那种，目前这种电视📺很少出现额。<br>上面那种老式的电视机画面的显示就是采用 <code>CRT</code> 显示，显示的原理如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-94ee3d3de417be2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CRT.png"><br>【图片来至于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mi2RIOKWKu5hYVd6V%2F1877765-94ee3d3de417be2c.png?alt=media&amp;token=dc7827bb-9b01-4780-be66-90bb1cd14473" alt="CRT.png"><br>【图片来至于网络】</p>
 <p>其原理：<code>CRT</code> 按照上面图片展示的那样，从上到下进行逐行扫描，当扫描完成就会显示一整张图像，随后电子枪回到原来的位置从头开始进行图像素材的扫描。具体的过程当显示器扫完一行换到新的一行，显示器就会发出一个水平信号：<strong>HSync</strong>，当显示器扫完整张的图片后电子进行复位，开始下一次的重新扫描，显示器也会发出一个新的垂直信号：<strong>VSync</strong></p>
 <blockquote>
 <p>我们 <code>App</code> 在屏幕上的刷新的频率就是 <code>VSync</code> 信号产生的频率，所以我们在解决界面卡顿的过程就要根据 <code>VSync</code> 的基础上进行相关的完善和优化。</p>
@@ -222,7 +222,7 @@ var _hmt = _hmt || [];
 <p>iOS 设备采用双缓存 + 垂直同步； Android采用的三缓存 + 垂直同步</p>
 </blockquote>
 <p>在一些游戏中我们经常会见到一些场景如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-57d7c6a78203fe32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕错位.png"><br>【图片来至于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhdB_6B2MIiE6c2Qh%2F1877765-57d7c6a78203fe32.png?alt=media&amp;token=4d46877d-7049-4b5c-83f9-f84b32d88942" alt="屏幕错位.png"><br>【图片来至于网络】</p>
 <h2 id="CPU-和-GPU-的工作原理"><a href="#CPU-和-GPU-的工作原理" class="headerlink" title="CPU 和 GPU 的工作原理"></a>CPU 和 GPU 的工作原理</h2><h3 id="CPU-工作原理"><a href="#CPU-工作原理" class="headerlink" title="CPU 工作原理"></a>CPU 工作原理</h3><p><code>CPU</code>（中央处理器，<code>Central Processing Unit</code>）主要是解释计算机中的指令，处理计算机软件中的数据。<code>CPU</code> 内部存储器和输入/输出设备是计算机的三大核心组件。</p>
 <p><code>CPU</code> 目前很大一部分是采用 冯·诺依曼结构，在工作的过程之中其过程一般可以分为四个阶段：提取、解码、执行和调回</p>
 <ul>
@@ -231,15 +231,15 @@ var _hmt = _hmt || [];
 <li>执行：</li>
 <li>调回：</li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-080f3f114f51b563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CPU.png"><br>【图片来至于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mhry2mki1C9NRqJHI%2F1877765-080f3f114f51b563.png?alt=media&amp;token=b92c8d69-aeb8-4e95-aa7d-941deb63eab6" alt="CPU.png"><br>【图片来至于网络】</p>
 <h3 id="GPU-工作原理"><a href="#GPU-工作原理" class="headerlink" title="GPU 工作原理"></a>GPU 工作原理</h3><p><code>GPU</code>（图形处理器，<code>Graphics Processing Unit</code>）主要是进行绘图运算的微处理器，对图像进行处理和相关显示绘制工作<br>后面随着 <code>OpenGL APL</code> 和 <code>DirectX</code> 功能的出现，图形处理器可以增加可编程着色的能力，目前我们处理在屏幕上显示的任何像素，也可以在纹理在屏幕上显示前和每一个几何顶点在投射到屏幕前都可以进行相关的处理工作</p>
 <h2 id="iOS-绘制像素在屏幕上"><a href="#iOS-绘制像素在屏幕上" class="headerlink" title="iOS 绘制像素在屏幕上"></a>iOS 绘制像素在屏幕上</h2><h3 id="App绘制像素过程分析"><a href="#App绘制像素过程分析" class="headerlink" title="App绘制像素过程分析"></a>App绘制像素过程分析</h3><p>下面绘制像素在屏幕上的原理图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-de4eaec88c23be92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GPU显示.png"><br>【图片来至于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7moYetfJjJ76BsiO9X%2F1877765-de4eaec88c23be92.png?alt=media&amp;token=58956f71-f38d-4de7-b841-68f765fdece6" alt="GPU显示.png"><br>【图片来至于网络】</p>
 <p><code>iOS</code> 界面上的内容大多是通过 <code>Core Animation</code> 来完成绘制<br>在 <code>Mac OS</code> 大多是绕过 <code>Core Animation</code> 使用 <code>Core Graphics</code> 来进行绘制<br>手游行业中直接使用 <code>OpenGL/OpenGL ES</code> 来进行相关材质的内容绘制</p>
 <p><code>Core Animation</code> 大多使用 <code>Core Graphics</code> 来进行内容的渲染</p>
 <p><code>GPU Driver</code> 是直接和 <code>GPU</code> 进行相关交互的代码块，可以对对 <code>GPU</code> 直接操作</p>
 <p><code>GPU</code> 是专门为图形高并发计算量身定制的处理单元，优点：短时间可以实现图像浮点运算，耗电少，高效</p>
-<h3 id="App-绘制像素硬件分析"><a href="#App-绘制像素硬件分析" class="headerlink" title="App 绘制像素硬件分析"></a>App 绘制像素硬件分析</h3><p><img src="http://upload-images.jianshu.io/upload_images/1877765-618b4dfde6e991a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GPU缓存.png"></p>
+<h3 id="App-绘制像素硬件分析"><a href="#App-绘制像素硬件分析" class="headerlink" title="App 绘制像素硬件分析"></a>App 绘制像素硬件分析</h3><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mi_j929wT-RmjoMnL%2F1877765-618b4dfde6e991a7.png?alt=media&amp;token=c7b87d17-d972-47b9-8deb-ffbaa1c191dd" alt="GPU缓存.png"></p>
 <p>在图片显示的过程中，我们需要相关的 <code>GPU</code> 对图片生成 <code>frame</code> 的纹理，<br>我们在生成纹理的过程中会使用 <code>VRAM</code> 的空间，所以在生成过程是有限制的<br>把相关的数据从 <code>CPU</code> 上传输到 <code>GPU</code> 上 ——&gt; 既是把内容从 <code>RAM</code> 上传到 <code>VRAM</code> 上， 如果上传的纹理太大就会对性能有所影响。</p>
 <p>在文本显示的过程中，我们使用 <code>GPU</code> 进行文本的绘制比较复杂，这会促使 <code>Core Text</code> 和 <code>Core Graphics</code> 来合成生成一个文本，然后上传到 <code>GPU</code>。<br>但我们在界面滑动过程中， <code>CPU</code> 只需要把相关的文本坐标发送到 <code>GPU</code> 就行， <code>GPU</code>会根据相关的信息进行绘制。</p>
 <h2 id="APP绘制过程方式和细节讲解"><a href="#APP绘制过程方式和细节讲解" class="headerlink" title="APP绘制过程方式和细节讲解"></a>APP绘制过程方式和细节讲解</h2><h3 id="合成："><a href="#合成：" class="headerlink" title="合成："></a>合成：</h3><p>在我们看到的所有的视图都是基于不同图片进行相关的合成而来<br>这里我么准守一切的图像皆纹理的概念，当把第二个纹理遮在第一个纹理上时， <code>GPU</code> 就会把第二个纹理合成到第一个纹理中</p>

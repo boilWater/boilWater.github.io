@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-20T14:41:54.007Z</updated>
+  <updated>2020-05-20T16:10:13.133Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2019/10/09/iOS%20XNU%20-%20%E8%BF%9B%E7%A8%8B%E5%8F%8A%20Mach-O%20%E6%A0%BC%E5%BC%8F/"/>
     <id>http://yoursite.com/2019/10/09/iOS XNU - 进程及 Mach-O 格式/</id>
     <published>2019-10-08T17:09:02.404Z</published>
-    <updated>2020-05-20T14:41:54.007Z</updated>
+    <updated>2020-05-20T16:10:13.133Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
 &lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
@@ -205,7 +205,7 @@
     <link href="http://yoursite.com/2019/10/05/iOS%20XNU%20-%20Mach-O%20%E6%A0%BC%E5%BC%8F/"/>
     <id>http://yoursite.com/2019/10/05/iOS XNU - Mach-O 格式/</id>
     <published>2019-10-05T06:14:46.750Z</published>
-    <updated>2020-05-20T14:43:07.166Z</updated>
+    <updated>2020-05-20T16:08:45.762Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-进程及-Mach-O-格式&quot;&gt;&lt;a href=&quot;#iOS-XNU-进程及-Mach-O-格式&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 进程及 Mach-O 格式&quot;&gt;&lt;/a&gt;iOS XNU - 进程及 Mach-O 格式&lt;/h1&gt;&lt;p&gt;本来小编想先把内存这块梳理下，但是联系到内存在 &lt;code&gt;iOS&lt;/code&gt; 平台中也是 &lt;code&gt;app&lt;/code&gt; 编译后的 &lt;code&gt;Mach-O&lt;/code&gt; 可执行文件，所以就先把 &lt;code&gt;OS&lt;/code&gt; 编译启动过程来讲述。&lt;/p&gt;
 &lt;h2 id=&quot;进程生命周期&quot;&gt;&lt;a href=&quot;#进程生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程生命周期&quot;&gt;&lt;/a&gt;进程生命周期&lt;/h2&gt;&lt;p&gt;因为小编是一位 &lt;code&gt;iOSer&lt;/code&gt; 这里讲解进程可以大概理解为：&lt;strong&gt;进程 == &lt;code&gt;App&lt;/code&gt;&lt;/strong&gt;，下面给出进程的生命周期。进程的生命周期可以分为：&lt;strong&gt;创建（SIDL）、运行（SRUN）、睡眠（SSLEEP）、停止（SSTOP）、退出ing（SZONE）和终止（Dead）&lt;/strong&gt;。&lt;/p&gt;
@@ -314,7 +314,7 @@
     <link href="http://yoursite.com/2019/10/04/iOS%20XNU%20-%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9E%8B/"/>
     <id>http://yoursite.com/2019/10/04/iOS XNU - 内存管理模型/</id>
     <published>2019-10-04T13:01:44.090Z</published>
-    <updated>2020-05-20T14:41:47.859Z</updated>
+    <updated>2020-05-20T16:10:17.585Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-XNU-内存管理模型&quot;&gt;&lt;a href=&quot;#iOS-XNU-内存管理模型&quot; class=&quot;headerlink&quot; title=&quot;iOS XNU - 内存管理模型&quot;&gt;&lt;/a&gt;iOS XNU - 内存管理模型&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k1DyEEUYr7kV6hskf%2F-M7k1_ydxPinnfXXdwkG%2F1877765-8da36eff2f60a243.png?alt=media&amp;amp;token=c4b48b2c-771b-4997-8e05-de0a27fa2a00&quot; alt=&quot;memory.png&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;</content>
@@ -337,7 +337,7 @@
     <link href="http://yoursite.com/2019/10/04/iOS%20XNU%20%E5%86%85%E6%A0%B8/"/>
     <id>http://yoursite.com/2019/10/04/iOS XNU 内核/</id>
     <published>2019-10-04T11:47:23.226Z</published>
-    <updated>2020-05-20T14:43:12.357Z</updated>
+    <updated>2020-05-20T16:08:58.541Z</updated>
     
     <content type="html">&lt;h1 id=&quot;iOS-内核-XNU-总纲&quot;&gt;&lt;a href=&quot;#iOS-内核-XNU-总纲&quot; class=&quot;headerlink&quot; title=&quot;iOS 内核 XNU -总纲&quot;&gt;&lt;/a&gt;iOS 内核 XNU -总纲&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k0gevo7iEONXQTl6x%2F-M7k3UdMuP01BQXu8CMh%2F-M7k4KoDhvrgVYdwi0Ko%2F1877765-08e5a7043383d728.png?alt=media&amp;amp;token=f2d71aea-77d8-439e-a82c-1a510e91c258&quot; alt=&quot;mach-structature.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;上面是 &lt;code&gt;XNU&lt;/code&gt; 内核在架构图，由上图我们可以看出 &lt;code&gt;XNU&lt;/code&gt; 包含：&lt;strong&gt;&lt;code&gt;Mach&lt;/code&gt; 微内核、&lt;code&gt;BSD&lt;/code&gt; 层、&lt;code&gt;libKern&lt;/code&gt; 和 &lt;code&gt;I/O Kit&lt;/code&gt;&lt;/strong&gt;。&lt;/p&gt;
@@ -371,7 +371,7 @@
     <link href="http://yoursite.com/2019/07/22/Core%20Text%20%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/"/>
     <id>http://yoursite.com/2019/07/22/Core Text 富文本编辑/</id>
     <published>2019-07-22T14:51:09.042Z</published>
-    <updated>2020-05-20T13:05:56.949Z</updated>
+    <updated>2020-05-20T16:08:10.852Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Text-富文本编辑&quot;&gt;&lt;a href=&quot;#Core-Text-富文本编辑&quot; class=&quot;headerlink&quot; title=&quot;Core Text 富文本编辑&quot;&gt;&lt;/a&gt;Core Text 富文本编辑&lt;/h1&gt;&lt;p&gt;在 &lt;code&gt;Core Graphics&lt;/code&gt; 后面一篇文章本该对 &lt;code&gt;Core Image&lt;/code&gt; 框架进行整理，但是基于 &lt;code&gt;Core Graphics&lt;/code&gt; 的富文本编辑 &lt;code&gt;Core Text&lt;/code&gt; 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 &lt;code&gt;Texture&lt;/code&gt; 即 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 详细描述。&lt;/p&gt;
 &lt;h2 id=&quot;Core-Text-结构层级&quot;&gt;&lt;a href=&quot;#Core-Text-结构层级&quot; class=&quot;headerlink&quot; title=&quot;Core Text 结构层级&quot;&gt;&lt;/a&gt;Core Text 结构层级&lt;/h2&gt;&lt;p&gt;这里小编对 &lt;code&gt;Core Text&lt;/code&gt; 在实现的层次结构上所处位置，以及在对 &lt;code&gt;UIKit&lt;/code&gt; 框架我们常见控件 &lt;code&gt;UITextFiled&lt;/code&gt;、&lt;code&gt;UITextView&lt;/code&gt; 和 &lt;code&gt;UILabel&lt;/code&gt; 具体实现基础。&lt;/p&gt;
@@ -596,7 +596,7 @@
     <link href="http://yoursite.com/2019/05/05/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20ASDK%20VS%20YYKit/"/>
     <id>http://yoursite.com/2019/05/05/iOS UI 优化 - ASDK VS YYKit/</id>
     <published>2019-05-05T11:46:11.570Z</published>
-    <updated>2020-05-20T13:14:58.978Z</updated>
+    <updated>2020-05-20T16:08:18.756Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Text-富文本编辑&quot;&gt;&lt;a href=&quot;#Core-Text-富文本编辑&quot; class=&quot;headerlink&quot; title=&quot;Core Text 富文本编辑&quot;&gt;&lt;/a&gt;Core Text 富文本编辑&lt;/h1&gt;&lt;p&gt;在 &lt;code&gt;Core Graphics&lt;/code&gt; 后面一篇文章本该对 &lt;code&gt;Core Image&lt;/code&gt; 框架进行整理，但是基于 &lt;code&gt;Core Graphics&lt;/code&gt; 的富文本编辑 &lt;code&gt;Core Text&lt;/code&gt; 框架更方便讲述。而且结合自己兴趣和好玩的程度在讲述自己对 &lt;code&gt;Texture&lt;/code&gt; 即 &lt;code&gt;ASDK&lt;/code&gt; 和 &lt;code&gt;YYKit&lt;/code&gt; 详细描述。&lt;/p&gt;
 &lt;h2 id=&quot;Core-Text-结构层级&quot;&gt;&lt;a href=&quot;#Core-Text-结构层级&quot; class=&quot;headerlink&quot; title=&quot;Core Text 结构层级&quot;&gt;&lt;/a&gt;Core Text 结构层级&lt;/h2&gt;&lt;p&gt;这里小编对 &lt;code&gt;Core Text&lt;/code&gt; 在实现的层次结构上所处位置，以及在对 &lt;code&gt;UIKit&lt;/code&gt; 框架我们常见控件 &lt;code&gt;UITextFiled&lt;/code&gt;、&lt;code&gt;UITextView&lt;/code&gt; 和 &lt;code&gt;UILabel&lt;/code&gt; 具体实现基础。&lt;/p&gt;
@@ -797,7 +797,7 @@
     <link href="http://yoursite.com/2019/03/08/IOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Graphics/"/>
     <id>http://yoursite.com/2019/03/08/IOS UI 优化 - Core Graphics/</id>
     <published>2019-03-08T14:07:07.579Z</published>
-    <updated>2020-05-20T14:42:10.475Z</updated>
+    <updated>2020-05-20T16:08:26.092Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Graphics-实现探索&quot;&gt;&lt;a href=&quot;#Core-Graphics-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Graphics 实现探索&quot;&gt;&lt;/a&gt;Core Graphics 实现探索&lt;/h1&gt;&lt;p&gt;又是一个常用但是不知怎么开篇博文。🤔🤔🤔&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Core Graphics&lt;/code&gt; 在 &lt;code&gt;iOS&lt;/code&gt; 整个架构的层次结构可以和上篇 &lt;code&gt;Core Animation&lt;/code&gt; 实现，这里仅仅展示 &lt;code&gt;Core Graphics&lt;/code&gt; 实现的基础实现架构。&lt;/p&gt;
@@ -997,7 +997,7 @@
     <link href="http://yoursite.com/2019/01/06/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Core%20Animation%20/"/>
     <id>http://yoursite.com/2019/01/06/iOS UI 优化 - Core Animation /</id>
     <published>2019-01-06T12:39:52.865Z</published>
-    <updated>2020-05-20T14:42:45.774Z</updated>
+    <updated>2020-05-20T16:08:40.307Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Core-Animation-实现探索&quot;&gt;&lt;a href=&quot;#Core-Animation-实现探索&quot; class=&quot;headerlink&quot; title=&quot;Core Animation 实现探索&quot;&gt;&lt;/a&gt;Core Animation 实现探索&lt;/h1&gt;&lt;p&gt;小编回顾粗略的写完 19 年 想要写的系列博文中 &lt;code&gt;iOS UI&lt;/code&gt; 优化总纲中第一篇博文 &lt;code&gt;Core Animation&lt;/code&gt; 一直在想怎么样展示自己的理解，就先从我们熟知的 &lt;code&gt;Core Animation&lt;/code&gt; 在整个 &lt;code&gt;APP&lt;/code&gt; 提供架构方面来进行O对比。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k6-E548XUtcpJOExw%2F1877765-f0cb74a53c9ba8dc.png?alt=media&amp;amp;token=85da9e64-1e31-4e59-a392-e6346b786a2d&quot; alt=&quot;屏幕快照 2019-01-15 23.12.22.png&quot;&gt;&lt;/p&gt;
@@ -1369,7 +1369,7 @@
     <link href="http://yoursite.com/2017/12/21/iOS%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     <id>http://yoursite.com/2017/12/21/iOS 11 新特性/</id>
     <published>2017-12-20T16:04:50.000Z</published>
-    <updated>2020-05-20T14:13:10.931Z</updated>
+    <updated>2020-05-20T16:09:06.881Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;iOS 11&lt;/code&gt; 的最新技术发布在 &lt;strong&gt;6月6号&lt;/strong&gt;，由于小编在工作上的原因只能在今天把 &lt;code&gt;iOS 11&lt;/code&gt;的相关信息整理出来对后面的开发便利以及在实际开发过程中可以更好的避免踩过的坑。&lt;/p&gt;
 &lt;h1 id=&quot;新增的框架&quot;&gt;&lt;a href=&quot;#新增的框架&quot; class=&quot;headerlink&quot; title=&quot;新增的框架&quot;&gt;&lt;/a&gt;新增的框架&lt;/h1&gt;&lt;p&gt;对于上一个版本总体来说新增加两个主要大的框架 &lt;code&gt;Core ML&lt;/code&gt; 和 &lt;code&gt;ARKit&lt;/code&gt;&lt;/p&gt;
@@ -1476,7 +1476,7 @@
     <link href="http://yoursite.com/2017/11/18/SQLite%20%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%BF%90%E7%AE%97&%E8%A1%A8%E8%BE%BE/"/>
     <id>http://yoursite.com/2017/11/18/SQLite 学习-多表查询&运算&表达/</id>
     <published>2017-11-18T15:57:40.000Z</published>
-    <updated>2020-05-20T14:02:36.698Z</updated>
+    <updated>2020-05-20T16:10:07.416Z</updated>
     
     <content type="html">&lt;p&gt;前篇博文小编写了基本的 &lt;code&gt;SQLite&lt;/code&gt; 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。&lt;/p&gt;
 &lt;p&gt;本篇将会列出下面的数据库相关知识：&lt;/p&gt;
@@ -1491,11 +1491,11 @@
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;amp;token=8e9c945c-71b6-49ef-93a8-351680080648&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 &lt;strong&gt;a * b&lt;/strong&gt; 行内容。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;（2）&lt;/strong&gt;使用格式：&lt;/p&gt;
 &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;（3）&lt;/strong&gt;操作实例：&lt;/p&gt;
@@ -1557,6 +1557,10 @@
 &lt;p&gt;一下操作均以 &lt;code&gt;Employee&lt;/code&gt; 和 &lt;code&gt;Programmer&lt;/code&gt; 两个表格为基础来实现使用用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;amp;token=8e9c945c-71b6-49ef-93a8-351680080648&quot; alt=&quot;屏幕快照 2017-11-20 01.14.27.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;交叉连接-CROSS-JION&quot;&gt;&lt;a href=&quot;#交叉连接-CROSS-JION&quot; class=&quot;headerlink&quot; title=&quot;交叉连接(CROSS JION)&quot;&gt;&lt;/a&gt;交叉连接(CROSS JION)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;（1）&lt;/strong&gt;交叉连接特点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 &lt;strong&gt;a * b&lt;/strong&gt; 行内容。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -1684,7 +1688,7 @@
     <link href="http://yoursite.com/2017/11/07/SQLite%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2017/11/07/SQLite 基本操作/</id>
     <published>2017-11-06T16:49:29.000Z</published>
-    <updated>2020-05-20T13:49:56.210Z</updated>
+    <updated>2020-05-20T16:09:26.276Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;Sqlite&lt;/code&gt; 学习总结&lt;/p&gt;
 &lt;h3 id=&quot;SQLite-的安装&quot;&gt;&lt;a href=&quot;#SQLite-的安装&quot; class=&quot;headerlink&quot; title=&quot;SQLite 的安装&quot;&gt;&lt;/a&gt;&lt;code&gt;SQLite&lt;/code&gt; 的安装&lt;/h3&gt;&lt;p&gt;一般在 &lt;code&gt;MAC&lt;/code&gt; 上面系统会自带 &lt;code&gt;Sqlite&lt;/code&gt; 的数据库版本的。&lt;/p&gt;
@@ -1762,11 +1766,77 @@
     <link href="http://yoursite.com/2017/09/01/%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     <id>http://yoursite.com/2017/09/01/开发架构设计/</id>
     <published>2017-09-01T09:42:32.000Z</published>
-    <updated>2018-01-16T02:23:57.000Z</updated>
+    <updated>2020-05-20T16:14:56.716Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。&lt;/p&gt;
+&lt;p&gt;出发角度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目整体创建 FloDer 结构&lt;/li&gt;
+&lt;li&gt;在模块开发过程中选择开发方式 &lt;/li&gt;
+&lt;li&gt;基础类和公有类提取&lt;/li&gt;
+&lt;li&gt;具体模块开发中架构设计&lt;/li&gt;
+&lt;li&gt;相关类在开发中应该准守的规则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目整体创建 Floder 架构&lt;br&gt;下面创建的文件目录以 LLDemo 为例&lt;/p&gt;
+&lt;p&gt;LLDemo    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;resource（资源文件）     &lt;ul&gt;
+&lt;li&gt;builtin   （内置资源）     &lt;/li&gt;
+&lt;li&gt;images （图片资源，assets）      &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lib （第三方库的代码引入）        &lt;/li&gt;
+&lt;li&gt;base utils                （项目中基础库，开发过程中基本保持不变）     &lt;ul&gt;
+&lt;li&gt;layout constant     （布局常量判断）       &lt;/li&gt;
+&lt;li&gt;basic informations（一些基础配置信息）          &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;utils                            （依据基础库来封装使用与多个模块公共接口，经常变动）        &lt;ul&gt;
+&lt;li&gt;interface of module  （模块中接口）        &lt;/li&gt;
+&lt;li&gt;heigh api                  （基于基础库开发瞒住模块高级方法）      &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;custom view（项目中多个模块使用自定义 View）         &lt;/li&gt;
+&lt;li&gt;extensions     (可以直接执行 App 的功能)     &lt;/li&gt;
+&lt;li&gt;module        （按模 块划分，在具体模块开发需要根据开发选型：MVC，MVP 或者 MVVM）             &lt;ul&gt;
+&lt;li&gt;home          （首页）            &lt;/li&gt;
+&lt;li&gt;setting        （设置）            &lt;/li&gt;
+&lt;li&gt;vip page     （VIP Page）     &lt;/li&gt;
+&lt;li&gt;editor          （编辑模块）       &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之所以这样创建 FFloder 文件原因：&lt;br&gt;   （1）瞒住在开发过程中明确每一个 floder 的职能；&lt;br&gt;   （2）在新模块添加过程中更好管理相关资源；&lt;br&gt;   （3）提取相关基类以及抽象方法，方便复用在查找和维护过程中减少成本；&lt;br&gt;   （4）Floder 职能明确在后续新队员接手学习成本低。       &lt;/p&gt;
+&lt;p&gt;在模块开发过程中选择开发方式&lt;br&gt;在模块开发过程中选定相关开发方式其实目前做常用的是 MVC，MVVM 两者      &lt;/p&gt;
+&lt;p&gt; 目前项目开发基本是基于 MVC 开发来进行构架模块下面在 module 中 Home 为例解释：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Home      &lt;ul&gt;
+&lt;li&gt;model（数据模型）         &lt;/li&gt;
+&lt;li&gt;view controller（视图控制器）       &lt;/li&gt;
+&lt;li&gt;view（控件）       &lt;ul&gt;
+&lt;li&gt;custom view（Home 中独有 view）       &lt;/li&gt;
+&lt;li&gt;global view（对 Home 中 view 拆分）        &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上面在模块构建过程中可以通过对 View 拆分，然后减少 View 在 VC 初始化，把数据处理搬移到 Model，也可以减少 VC 肥大。但是当 VC 功能逐渐增多，趋向于平台入口 VC 肥大很难避免。&lt;/p&gt;
+&lt;p&gt;可以在新的简单模块逐渐引入 MVVM 开发模式，这样既可以熟悉 MVVM 开发模式，同时在新添加模块中逐渐向 MVVM 转变在不妨碍工作进度情况下也为后续 VM 的单独测试以及 LLDemo 功能多样化防止 VC 肥大做准备。（在后续估计也需要做统一大家一起使用，不能凭个人爱好）&lt;/p&gt;
+&lt;p&gt;这里给出在 github 上面模式介绍&lt;br&gt;参考地址：&lt;a href=&quot;https://github.com/Optimize-iOS/app-architecture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/Optimize-iOS/app-architecture&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; 基础类和公有类提取&lt;br&gt;  感觉不用详说好处多多&lt;/p&gt;
+&lt;p&gt;具体模块开发中架构设计&lt;br&gt;因为目前 LLDemo 整个 APP 功能最详细，而且最全是在图片编辑类。&lt;br&gt;可以对改编辑类的框架搭建，减少不必要的 View 的创建和保存取消操作重复实现。&lt;/p&gt;
+&lt;p&gt;目前大概思路是：&lt;br&gt;   （1）对共用的 View 的进行提取在 EditVC 实现，然后对渲染，展示这些 View 提供接口在编辑子类可以添加独有的 View；&lt;br&gt;    （2）对在每一个编辑子类中保存，取消，展示原图这些方法在 EditVC 实现，给每一个子编辑调用。&lt;/p&gt;
+&lt;p&gt;不过存在一定的风险，就是在每个子编辑需要重新按照原来的逻辑实现功能，修改起来难度较大，测试周期长。好的一点就是后续添加方便修改内容少，实现更加便捷。也可以给大家一个思路，后续模块搭建过程中更好设计架构。&lt;/p&gt;
+</content>
     
     <summary type="html">
+    
+      &lt;p&gt;目前对于 LLDemo 方面的架构思考，是针对于个人理解以及自己在以往项目经验来给出的个人的建议，可能会有不合适的地方望多多包涵。&lt;/p&gt;
+&lt;p&gt;出发角度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目整体创建 FloDer 结构&lt;/li&gt;
+&lt;li&gt;在模块开发过程中选择开发方式 &lt;/li
     
     </summary>
     

@@ -272,6 +272,15 @@ var _hmt = _hmt || [];
       
         <p>目前在公司做白领社交产品 “在一起”，工作也快一年下面对 <code>iOS</code> 相关面试做一份总结。<br>说实话目前<code>iOS</code>开发真是太多很多情况下大家情况良莠不齐很难分辨。目前在广州快一年了，其实还是很开心的，因为这里有自己😍事物所在。</p>
 <h2 id="OC理解和特性"><a href="#OC理解和特性" class="headerlink" title="OC理解和特性"></a>OC理解和特性</h2><p>作为开发者我们都知道语言的特性包括：面对对象，面向过程。<code>Objc</code>就是关于面对对象语言，也就包括面向对象的特点：封装、继承、多态。下面是对三者优点列表😉</p>
+<ul>
+<li>封装：对于要处理的问题进行模块开发，好处有利于我们对于功能的拓展</li>
+<li>继承：通过继承实现对父类方法的实现，也可以在子类中重写父类方法</li>
+<li>多态：通过同名函数但是输入形式参数的种类，数目，类型不同实现具体函数功能不同（具体实现可以参照<code>C &amp; C++</code>在编译后形式~想了解的可以自己查找）</li>
+</ul>
+<p><code>Objc</code>的动态特性：动态类型、动态加载、动态绑定。其实前面我们在<code>runtime</code>的理解过程中有所讲解。</p>
+<blockquote>
+<p>(1)<strong>动态类型</strong>：在<code>iOS</code>中我们经常见到<code>id</code>类型，<code>id</code>类型指在<code>Objc</code>中动态类型。在实际应用中我们一般使用静态类型，静态类型：固定和可预知性。静态类型是强类型，动态类型是弱类型。例如：我们经常见到的<code>protrcol</code>委托协议就是采取<code>@proerty(nonatomic, weak) id&lt;protrcol&gt; delegate</code><br>(2)<strong>动态加载</strong>：基于动态类型，在某个实例对象被确定后，其类型便被确定了，该对象对应的属性和响应消息也被完全确定。<br>(3)<strong>动态绑定</strong>：是我们在适配机型加载过程中，动态实现图片的实现。例如，在<code>Retina</code>设备上加载<code>@2x</code>的图片。</p>
+</blockquote>
         
           <a class="article-more-a" href="/2016/07/05/IOS面试梳理&自己理解&详细资料库/#more">more >></a>
         
@@ -351,7 +360,7 @@ var _hmt = _hmt || [];
         <p>今天有点悲剧，回到住的地方身体就开始不舒服，一觉睡到现在。看到11点多，赶紧找时间开始码 <code>iOS 10.0</code> 新的改变。</br><br>昨天凌晨 <code>iOS</code> 举行 <code>WWDC</code> 全球发布者大会，<code>watch OS</code>、<code>tv OS</code>、<code>OS X</code>以及<code>iOS 10</code>系统的新特性。</br></p>
 <p>展示会第一个是 <code>Apple</code> 的掌舵人是库克，有点搞笑的是大家好像没有理解库克的第一个梗大家都没有欢呼。看完视频给我比较好的感觉就是在 <code>siri</code> 操作程序和 <code>Apple Pay</code>的使用过程，付款使用起来感觉比支付宝更加便捷。</p>
 <p>下面我们列表 <code>iOS 10</code> 的新功能的体现，下面将给出相关知识的思维导图。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-01d41dbb1ed9ed64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WWDC（2016）的副本.png"></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mrZTBARVIvkcK7ZFP%2F-M7muS8YHdekv3maSAu7%2F1877765-01d41dbb1ed9ed64.png?alt=media&amp;token=4cbbce3b-dd21-4e0c-8de5-a391beed9fa2" alt="WWDC（2016）的副本.png"></p>
         
           <a class="article-more-a" href="/2016/07/01/IOS 10/#more">more >></a>
         
@@ -592,6 +601,9 @@ var _hmt = _hmt || [];
       
         <p>到今天为止进入美人信息大概有 7 个月时间，在项目结构原来一直采用 <code>MVC</code> 的架构来进行搭建。但是随着目前在一起的项目功能模块越来越多，<code>MVC</code> 越来越难以瞒着当前实现灵活拓展功能。所以公司就打算采用 <code>MVVM</code> 架构来对项目进行重构，下面小编就以 <code>MVC</code> 和 <code>MVVM</code> 来进行讲解和对比两者之间的优劣。</p>
 <h2 id="MVC-和-MVVM-简述"><a href="#MVC-和-MVVM-简述" class="headerlink" title="MVC 和 MVVM 简述"></a><code>MVC</code> 和 <code>MVVM</code> 简述</h2><h3 id="MVC介绍"><a href="#MVC介绍" class="headerlink" title="MVC介绍"></a><code>MVC</code>介绍</h3><p>记得大概在一年前的时候曾经写过 <code>MVC</code> 的使用和相关一些介绍，这里方便做对比再次对 <code>MVC</code> 进行详解。参考资料 <a href="http://boilwater.github.io/2015/07/06/iOS%20`MVC`%20设计模式/">iOS <code>MVC</code> 设计模式</a></p>
+<p>在 <code>GUI</code> 编程领域，<code>MVC</code> 已经拥有差不多 50 年的历史了。早在几十年前，<code>Smalltalk-76</code> 就对 <code>MVC</code> 架构模式进行了实现，在随后的几十年历史中，<code>MVC</code> 产生了很多的变种，例如：<code>HMVC</code>、<code>MVA</code>、<code>MVP</code>、<code>MVVM</code> 和其它将 <code>MVC</code> 运用于其它不同领域的模式。</p>
+<h3 id="传统的-MVC"><a href="#传统的-MVC" class="headerlink" title="传统的 MVC"></a>传统的 <code>MVC</code></h3><p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mrZTBARVIvkcK7ZFP%2F-M7mtK7R5DcR1E27_hrP%2F1877765-c235a626e5bec39a.png?alt=media&amp;token=f403b030-78ba-41a9-8b9d-fb72c9c06e7e" alt="93c3aeab-92c0-4cc0-8344-969b668fe76b.png"></p>
+<p><strong>【图片来源于网络】</strong></p>
         
           <a class="article-more-a" href="/2016/05/12/iOS MVC 和 MVVM 比较/#more">more >></a>
         

@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJ0vBRyw0XILFvA9U%2F1877765-7685938dc35e7563.png?alt=media&token=515d3d32-de16-4443-99e8-bc277772f763">
 <meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mIRU2U4mPo4Y54SWZ%2F1877765-1d1d594962201b69.png?alt=media&token=6d105abe-a2c5-4242-92e2-b5ac511b1d5b">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-f591c5239159984c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-05-20T14:02:36.698Z">
+<meta property="og:updated_time" content="2020-05-20T16:10:07.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite 学习-多表查询">
 <meta name="twitter:description" content="前篇博文小编写了基本的 SQLite 操作方式，如果只是对数据库采取基本的操作看完小编第一篇博文就可以。后面小编将会讲述一些数据的相对来说比较复杂的操作方式。
@@ -238,11 +238,11 @@ var _hmt = _hmt || [];
 <p>一下操作均以 <code>Employee</code> 和 <code>Programmer</code> 两个表格为基础来实现使用用例。</p>
 <p><strong>内容是乱取的，上次取名可能气到在意的人，后面名字均是乱取！！！</strong></p>
 <p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mHxSgOrxgPBvwLcry%2F-M7mJIllH7XFxk8Hu6TL%2F1877765-a5f1beaa1ce3c512.png?alt=media&amp;token=8e9c945c-71b6-49ef-93a8-351680080648" alt="屏幕快照 2017-11-20 01.14.27.png"></p>
-<a id="more"></a>
 <h3 id="交叉连接-CROSS-JION"><a href="#交叉连接-CROSS-JION" class="headerlink" title="交叉连接(CROSS JION)"></a>交叉连接(CROSS JION)</h3><p><strong>（1）</strong>交叉连接特点：</p>
 <blockquote>
 <p>在实现交叉连接过程中数据库中每一行和每一行会做对比，生成一张查找出来内容很大的数据。例如：如果一个表格有 a 行，另一个表格有 b 行，生成的表格大小为 <strong>a * b</strong> 行内容。</p>
 </blockquote>
+<a id="more"></a>
 <p><strong>（2）</strong>使用格式：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要实现 SELECT 具体行 FROM 数据库1 CROSS JION 数据库2;</span></span><br><span class="line">SELECT column_one, column_two, ... FROM tableName_one CROSS JION tableName_two;</span><br></pre></td></tr></table></figure>
 <p><strong>（3）</strong>操作实例：</p>

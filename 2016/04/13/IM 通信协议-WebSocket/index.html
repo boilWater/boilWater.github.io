@@ -18,16 +18,16 @@ WebSocket 简介起源WebSocket 是一种">
 <meta property="og:description" content="前几天讲解过 Socket 的相关知识，但是在查找资料后看到 IM zhong还有其他的相关协议。今天小编就讲解其他的协议：WebSocket。
 之所以研究 WebSocket 原因是相比较与 Socket，WebSocket可以是 server 端向 client 进行信息发送，不需要 client 为获取信息而采用长期轮询方式来获取信息。
 WebSocket 简介起源WebSocket 是一种">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mguG4IeOviaTajfOX%2F1877765-1d07511543bed064.png?alt=media&token=7e0f7cbc-49b5-414b-8fa0-0f20122fc682">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-1173f15eb0573348.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1877765-4eb84e40e71ae02b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-17T16:09:54.000Z">
+<meta property="og:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mh3wus8jo1DetP0qd%2F1877765-4eb84e40e71ae02b.png?alt=media&token=ebafe68b-f32b-45e5-ac92-6f09bc75666b">
+<meta property="og:updated_time" content="2020-05-20T16:17:03.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IM 通信协议-WebSocket">
 <meta name="twitter:description" content="前几天讲解过 Socket 的相关知识，但是在查找资料后看到 IM zhong还有其他的相关协议。今天小编就讲解其他的协议：WebSocket。
 之所以研究 WebSocket 原因是相比较与 Socket，WebSocket可以是 server 端向 client 进行信息发送，不需要 client 为获取信息而采用长期轮询方式来获取信息。
 WebSocket 简介起源WebSocket 是一种">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mguG4IeOviaTajfOX%2F1877765-1d07511543bed064.png?alt=media&token=7e0f7cbc-49b5-414b-8fa0-0f20122fc682">
   
     <link rel="alternative" href="/atom.xml" title="JackJin&#39;s 博客" type="application/atom+xml">
   
@@ -214,7 +214,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>初始轮询结构图</li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-1d07511543bed064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="c3bbs290ff12b9094e57e6044be0149cd.png"><br>【图片来源于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mguG4IeOviaTajfOX%2F1877765-1d07511543bed064.png?alt=media&amp;token=7e0f7cbc-49b5-414b-8fa0-0f20122fc682" alt="c3bbs290ff12b9094e57e6044be0149cd.png"><br>【图片来源于网络】</p>
 <p>由上图可以看出：</p>
 <blockquote>
 <p>在初始轮询过程中每次进行数据访问都要执行数据访问申请。但是这种方式不适合做轮询，因为这样需要 <code>client</code> 每个一段时间就会向 <code>server</code> 发起请求。这样就会每次请求都会包含 <code>HTTP</code> 的 <code>Header</code> hui增加流量，也会消耗 <code>GPU</code>。</p>
@@ -230,7 +230,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><code>WebSocket</code> 轮询方式</li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/1877765-4eb84e40e71ae02b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9e7b0cb6029cd4028ab8cfcc73c078ba.png"><br>【图片来源于网络】</p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7maUtSnmckIir4Bb-D%2F-M7mh3wus8jo1DetP0qd%2F1877765-4eb84e40e71ae02b.png?alt=media&amp;token=ebafe68b-f32b-45e5-ac92-6f09bc75666b" alt="9e7b0cb6029cd4028ab8cfcc73c078ba.png"><br>【图片来源于网络】</p>
 <p>由上图可以看出：</p>
 <blockquote>
 <p><code>Websocket</code> 和 轮询方式 <code>Polling</code> 的区别，从图中可以看到 <code>Polling</code> 里 <code>client</code> 发送了好多 <code>Request</code>，而下图，只有一个 <code>Upgrade</code>，非常简洁高效。</p>
