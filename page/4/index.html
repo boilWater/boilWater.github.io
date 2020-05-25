@@ -172,6 +172,86 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-UIView&amp;CALayer&amp;Core Animation~1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/16/UIView&CALayer&Core Animation~1/">iOS UIView &amp; CALayer 对比及 UIImage 使用小技巧</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/16/UIView&CALayer&Core Animation~1/" class="archive-article-date">
+  	<time datetime="2016-07-16T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目前dome已经做好啦，但是感觉自己理解还不是很透彻。打算改下自己的博客从头开始对博客进行重新更新，更新时间7/16/2016。</p>
+<p><strong>下面给出界面优化知识思维导图</strong></p>
+<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mrZTBARVIvkcK7ZFP%2F-M7muwQF4VN41n8vJU9A%2F1877765-917b3f75519f69fc.jpg?alt=media&amp;token=f8b06eab-a195-4bdd-8f9d-aa0f84704fcb" alt="IOS界面优化.jpg"></p>
+<div style="color:#008B8B" ><br><p>今天也打算写关于图片、音频和视频在深层原理，以及图像在屏幕显示原理以及后面提出如何进行在此方面优化。<br>下面就讲述在IOS开发过程中经常使用的UIView和CALayer两者之间的关系和在动画使用过程的具体封装（网上也有许多关于这个话题的文章，也是站在巨人肩膀上）。</p><br></div>
+        
+          <a class="article-more-a" href="/2016/07/16/UIView&CALayer&Core Animation~1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图片视频</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/视图&amp;图层&amp;动画/" class="article-tag-list-link color4">视图&图层&动画</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/16/UIView&CALayer&Core Animation~1/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-UIView&amp;CALayer&amp;Core Animation-总体" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -806,83 +886,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/04/28/Fastlane讲解/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-Git 使用详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/Git 使用详解/">git 使用详解</a>
-    </h1>
-  
-
-        
-        <a href="/2016/04/25/Git 使用详解/" class="archive-article-date">
-  	<time datetime="2016-04-25T09:42:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以前工作的项目都是基于 <code>SVN</code> 来对项目进行管理，小编今天在这里向大家讲述另外一种管理方式 <code>git</code>。</p>
-<p>下面👇小编先对 <code>git</code> 展示使用思维导图：</p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M7mRRMwQDoZgeMl-mLO%2F-M7mS9hxCjEKcjesoqjG%2F1877765-183573606b779b06.jpg?alt=media&amp;token=24a5adae-2d9b-41dd-ba17-0dc6312de576" alt="Git.jpg"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/25/Git 使用详解/">详细 >></a>
         </p>
       
 

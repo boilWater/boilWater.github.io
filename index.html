@@ -172,6 +172,81 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS UI 优化 - Hybrid" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/25/iOS UI 优化 - Hybrid/">iOS UI 优化 - Hybrid</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/25/iOS UI 优化 - Hybrid/" class="archive-article-date">
+  	<time datetime="2020-05-25T15:51:45.606Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M8BWKFutbzP6nYADc1U%2F-M8BWZSqZJ9-5WEhvjKC%2F屏幕快照%202020-05-25%2023.47.30.png?alt=media&amp;token=627aeebc-c07a-4945-92d1-bed1139efd8b" alt="iOS UI 优化 - Hybrid"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/25/iOS UI 优化 - Hybrid/">详细 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+  
     <article id="post-iOS XNU - 进程及 Mach-O 格式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -796,93 +871,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/08/IOS UI 优化 - Core Graphics/">详细 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-  
-    <article id="post-iOS UI 优化 - Core Animation " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/06/iOS UI 优化 - Core Animation /">iOS UI 优化 - Core Animation</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/06/iOS UI 优化 - Core Animation /" class="archive-article-date">
-  	<time datetime="2019-01-06T12:39:52.865Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Core-Animation-实现探索"><a href="#Core-Animation-实现探索" class="headerlink" title="Core Animation 实现探索"></a>Core Animation 实现探索</h1><p>小编回顾粗略的写完 19 年 想要写的系列博文中 <code>iOS UI</code> 优化总纲中第一篇博文 <code>Core Animation</code> 一直在想怎么样展示自己的理解，就先从我们熟知的 <code>Core Animation</code> 在整个 <code>APP</code> 提供架构方面来进行O对比。</p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k4dwO5EuaRVogKZGQ%2F-M7k6-E548XUtcpJOExw%2F1877765-f0cb74a53c9ba8dc.png?alt=media&amp;token=85da9e64-1e31-4e59-a392-e6346b786a2d" alt="屏幕快照 2019-01-15 23.12.22.png"></p>
-<blockquote>
-<p>注：上图分别是从 2014 年的 <code>WWDC</code> 讲述 <a href="https://developer.apple.com/videos/play/wwdc2014/419/">Advanced Graphics and Animations for iOS Apps</a> 中截取 和 2018 年最新描述 <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514-CH1-SW1">About Core Animation</a> 文档获取<code>Core Animation</code> 在架构中实现。</p>
-</blockquote>
-<p>由上面显示具体信息我们可以得出下面结论：   </p>
-<blockquote>
-<p>1、<code>Core Animation</code> 作为主要内容载体承接对 <code>iOS</code> 和 <code>OS</code> 具体显示的绘制；<br>2、<code>UIKit</code> 框架从初始化到通过 <code>GPU</code> 生成纹理显示在屏幕上是依靠 <code>Core Animation</code>、 <code>Core Graphics</code>、 <code>OpenGL ES</code>(<code>iOS</code> 11) 和 <code>Matel</code>(<code>iOS</code> 12)   来实现;<br>3、在 <code>iOS 8.0</code> 中苹果官方尝试使用 <code>Metal</code> 来替代 <code>OpenGL ES</code> 在目前最新的官方文档中实现在绘制生成纹理底层架构依据 <code>Metal</code> 进行。</p>
-</blockquote>
-<p>想要深入了解一个架构我们就从最基本的系统 <code>API</code> 着手，下面是小编对系统 <code>API</code> 根据分类来对具体类的 <code>API</code> 进行整理。 </p>
-<p><img src="https://gblobscdn.gitbook.com/assets%2F-M7k4T_Ro92aishHjmI4%2F-M7k69JihU77jBBE8Kvm%2F-M7k6M58rz6cyT1AO8Pv%2F1877765-3b86566386d064e4.png?alt=media&amp;token=3e463096-20b5-4bb2-bb15-39ccf7c6525c" alt="屏幕快照 2019-01-14 22.50.21.png"></p>
-        
-          <a class="article-more-a" href="/2019/01/06/iOS UI 优化 - Core Animation /#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">iOS UI 界面</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS/" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/06/iOS UI 优化 - Core Animation /">详细 >></a>
         </p>
       
 
