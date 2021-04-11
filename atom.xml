@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>JackJin&#39;s 博客</title>
-  <subtitle>一位脚踏实地，拥有梦想的90后，想要一直努力追上你！</subtitle>
+  <subtitle>一位脚踏实地，拥有梦想的90后！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-25T15:55:58.233Z</updated>
+  <updated>2020-05-25T15:58:52.558Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2020/05/25/iOS%20UI%20%E4%BC%98%E5%8C%96%20-%20Hybrid/"/>
     <id>http://yoursite.com/2020/05/25/iOS UI 优化 - Hybrid/</id>
     <published>2020-05-25T15:51:45.606Z</published>
-    <updated>2020-05-25T15:55:58.233Z</updated>
+    <updated>2020-05-25T15:58:52.558Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;https://gblobscdn.gitbook.com/assets%2F-M7kEzccLDjVTwU_reo2%2F-M8BWKFutbzP6nYADc1U%2F-M8BWZSqZJ9-5WEhvjKC%2F屏幕快照%202020-05-25%2023.47.30.png?alt=media&amp;amp;token=627aeebc-c07a-4945-92d1-bed1139efd8b&quot; alt=&quot;iOS UI 优化 - Hybrid&quot;&gt;&lt;/p&gt;
 </content>
